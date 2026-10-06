@@ -32,6 +32,7 @@ python3 tools/gt_fbe_tab.py Dk6F Dk7F Dv4F Dv5F > $T/fbe_ii_factor_rounds_7_9.tx
 { for z in z3 z4 z5 z6; do python3 tools/gt_long_hold.py $([ $z = z6 ] && echo -b) $(have D${z}F_c1 D${z}F_c2 D${z}F_c3 D${z}F_c4 D${z}F_c5); done; } > $T/fbe_long_hold_round11.txt 2>&1
 python3 tools/gt_long_split.py > $T/fbe_long_hold_split_round11.txt 2>&1
 python3 tools/gt_charged_t0.py > $T/charged_t0_check.txt 2>&1
+python3 tools/gt_held.py > $T/held_node_round12.txt 2>&1
 ( cd runs; for r in $ids $q $part; do ls $r/${r}_des.cmd $r/run.json $r/*.plt 2>/dev/null; done; ls _struct/*_dvs.cmd ) > $O/files.txt
 tar czf /tmp/share_vblhwl.tgz -C $O tables -C ~/vblhwl_3d_dram/runs -T $O/files.txt
 echo "complete runs packed: $(echo $ids | wc -w) + scan and Id-Vg runs $(echo $q | wc -w) + partial runs kept as evidence $(echo $part | wc -w); files $(wc -l < $O/files.txt); $(ls -la /tmp/share_vblhwl.tgz | awk '{printf "%.1f MB", $5 / 1e6}')"

@@ -139,7 +139,13 @@ generation, Codex's runs); the state with the paper's first-phase loss has the b
 loses 142 / 76 / 17.5 / 10.1 mV by 200 ns (paper 100 / 50 / 14.6 / 7); Case 5 fits; Fig.8(a) by the paper's words is the rise between t = 0 and
 t_A, which a charged body does not have (0.3 mV in 21 ns). Codex runs a screen of 720 conditions on this line (first low phase only);
 what is missing (own generation, node held, whole waveform) is written as a prompt for Codex that the user hands over.
+Round 12 (NOTES (bi), `tools/gt_held.py`) ran that state with the model's own generation and the node held at 1.1 V (hold 15.2 / 18 / 20 /
+22 us, then the whole waveform): at one common hold of 19.1 us the five first-phase losses are inside the reading tolerance (61.0 / 55.6 /
+3.8 / 3.9 / 0.15 mV, largest deviation 0.28 decades), but the bars are then 42 - 141 mV too high, the 200 ns losses 1.5 / 2.2 / 0.86 / 1.5 times
+the paper's, and none of 24 readings of the body potential (also across the thickness) gives the bars. Stand-in and own
+generation give the same losses at the same body rise (2 - 15 %). Fig.8(a) and (b), (c) do not come out of one state in 2D.
 3D (unit cell `g3_c2h`, X-X' pair `g3x_c2h`) was rebuilt from today's structure files and held against Fig.2 (NOTES (ba)); the decks
 E3* with the 2D values are written; the user gave the word on 2026-10-07 for the 3D FBE check (E3K sizing, E3H, E3W, E3I, then FBE of
-Case 2 at the sized rate x 1.0 / 1.25; not the pair runs E3X): start after Codex's screen of 720 has ended and the disk has been looked at. Rounds 6 - 11 are over; no run of mine is on the server.
+Case 2 at the sized rate x 1.0 / 1.25; not the pair runs E3X): started on 2026-10-07 01:30 after the user said to go on at once (structure check and top view done; a 3D unit-cell run is 16 MB).
+3D Id-Vg with the final values (E3I_c2) is the 2D curve: 0.33 / 0.45 / 0.58 V, read with GT_W=2 (half cell). Rounds 6 - 11 are over; no run of mine is on the server.
 No open parameter of mine is left in 2D: next steps are the user's (3D, merging the branch `claude`, what to ask the authors).

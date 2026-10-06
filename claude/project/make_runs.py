@@ -105,6 +105,11 @@ def currentplot(p, indent="  "):
         for u in (p["Lsp1"] / 2, p["Lsp1"] + 0.1 * p["Lg"], p["Lsp1"] + 0.9 * p["Lg"]):
             q = f"({(p['Wbl'] / 2 + u) / 1000:.5f} {yb:.5f})"
             extra += f"{indent}  ElectrostaticPotential( {q} )\n{indent}  hQuasiFermiPotential( {q} )\n"
+        if p["ProbeT"]:      # across the body thickness at the centre probe's x: 1 nm inside both gate-oxide interfaces, 1/4 and 3/4
+            y0 = p["Dvox"] / 2 + p["Tgm"] + p["Tox"]; xq = pos.strip("()").split()[0]
+            for d in (1.0, p["Tbody"] / 4, 3 * p["Tbody"] / 4, p["Tbody"] - 1.0):
+                q = f"({xq} {(y0 + d) / 1000:.5f})"
+                extra += f"{indent}  ElectrostaticPotential( {q} )\n{indent}  hQuasiFermiPotential( {q} )\n"
     return (f"{indent}CurrentPlot {{\n"
             f"{indent}  ElectrostaticPotential( {pos} )   # V_B probe: victim channel centre at body level\n"
             f"{indent}  hQuasiFermiPotential( {pos} )\n"
@@ -261,6 +266,11 @@ def deck_cho(rid, p, struct, test):
         # Row hammer: the same during the hold with the BL still at Vdd, before it goes to Vdd/2 (the pre-charge is common to both).
         tgen = (t2 + 2e-10, tS - 1e-9); tset = (tset[0], tS - 5e-10)
         S.add(t2, tset[1], hold / 40); S.add(tset[1], tS, 5e-11)
+    elif p["SNhold"] and tset and test == "FBE":          # own generation, the node held through the hold and released 0.5 ns before the fall
+        if hold < 1.5e-9: raise ValueError(f"{rid}: a held node needs a hold of 1.5 ns or more")
+        tset = (tset[0], tS - 5e-10)
+        S.log(t2, tset[1]) if hold > 1e-6 else S.add(t2, tset[1], hold / 40)
+        S.add(tset[1], tS, 5e-11)
     elif hold > 1e-6: S.log(t2, tS)                       # long hold (time scale of the cited FBE tests): steps even in log time
     else: S.add(t2, tS, hold / 20)
     t = tS
@@ -635,6 +645,12 @@ for f_ in (5, 7): cfg2d(f"w{f_}", "R", Rwl=2e5, tWr=1.0, rhsel=("Rzi_zz", "Rzg_z
 # the write and then free. Asks: does the model's own tunnelling generation bring the body to the bars of Fig.8(a), after how
 # long, what does the node do meanwhile, and what is lost in the BL-low phases. A diagnosis off the paper's printed time axis.
 for k_, f_ in (("z3", 1e3), ("z4", 1e4), ("z5", 1e5), ("z6", 1e6)): cfg2d(k_, "F", tHold=21.0 * f_, Tper=21 * f_, **B1)
+# Round 12 (user 2026-10-07: check "the body is already charged at t = 0"; run it here, not at Codex): the state made by the
+# model's own generation with the storage node held at 1.1 V through the hold (released 0.5 ns before the first BL fall), then
+# the paper's waveform whole (period 21 ns, 9 low phases). Hold 15.2 / 18 / 20 / 22 us: the bars fit near 15 us, the first-phase
+# losses near 20 us (NOTES (bg)). Probes across the body thickness. Codex's screen has 15.2 and 21 us with the node held, up
+# to the end of the first low phase only. A diagnosis off the paper's printed time axis; the held node is a preparation.
+for k_, h_ in (("n1", 15.2), ("n2", 18.0), ("n3", 20.0), ("n4", 22.0)): cfg2d(k_, "F", tHold=h_ * 1e3, SNhold=1, ProbeT=1, **B1)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
@@ -646,6 +662,7 @@ F3 = dict(P3, II=1, Tper=21, tEdge=0.5, tHold=21.0, ErrH=1e14)
 RUNS.append(R("E3H_c2", "GT", "g3_c2h", "cho:FBE", WFs=4.7, WFd=4.7, Cs=1.8e-15, **dict(F3, Npulse=0)))                 # write + 21 ns hold, no supply
 RUNS.append(R("E3K_c2", "GT", "g3_c2h", "cho:FBE", WFs=4.7, WFd=4.7, Cs=1.8e-15, **dict(F3, Npulse=0, Gb=GB0[2])))      # sizing of the supply in 3D
 RUNS.append(R("E3F_c2", "GT", "g3_c2h", "cho:FBE", WFs=4.7, WFd=4.7, Cs=1.8e-15, **dict(F3, Npulse=9, Gb=GBQ[2])))      # FBE at the 2D rate (to be replaced by the 3D sizing)
+RUNS.append(R("E3F125_c2", "GT", "g3_c2h", "cho:FBE", WFs=4.7, WFd=4.7, Cs=1.8e-15, **dict(F3, Npulse=9, Gb=GBQ[2] * 1.25)))     # 1.25 x that charge (2D: where the losses fit); user 2026-10-07: the check in 3D
 for nm_, ii in (("E3X_xx", 0), ("E3Xi_xx", 1)):
     RUNS.append(R(nm_, "GT", "g3x_c2h", "cho:RH", WFs=4.7, WFd=4.7, II=ii, Cs=1.8e-15, **dict(P3, ErrH=1e14, tON=0.094, tOFF=0.094, Ncyc=10)))
 

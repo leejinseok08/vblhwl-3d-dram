@@ -79,6 +79,11 @@ P = dict(
                         # the body-centre potential at t_A stands above its value at the start of the transient by what Fig.8(a)
                         # shows (555 / 445 / 365 / 320 / 368 mV): Fig.8(a) used as a condition. The source of the paper's holes
                         # is not known; this is a stand-in for it, off after t_A.               [fit to ChoF Fig.8(a)]
+    SNhold=0,           # 1 (FBE, with SNset, without Gb): the storage node stays held at SNset through the whole hold and is
+                        # released 0.5 ns before the first BL fall: the body charges by the model's own generation while the
+                        # node does not pay for it ("charged at t = 0" as a state that was prepared; a diagnosis)      [ASM]
+    ProbeT=0,           # 1: CurrentPlot probes across the body thickness at the probe's x (1 nm inside both gate-oxide
+                        # interfaces, 1/4 and 3/4 of the thickness): the paper does not say where it reads the body potential
     tHold=0.05,         # wait after the write / before the first edge. Fig.8(b) from the pixels (2026-10-06): first BL fall
                         # at 21.0 ns (FB2 in make_runs.py: 20.7 after the write); read by eye before: about 16 ns (FB)   [ChoF]
     tEdge=0.1,          # BL edge of the FBE pulses (not given; FB2: 0.5 ns, 10 + 0.5 + 10 + 0.5 = 21)   [ASM]

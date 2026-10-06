@@ -3,6 +3,55 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-07 (bi) round 12 (user: run it yourself, and 3D too): own generation with the node held, whole waveform; 3D check started
+- User (01:35): the 20 runs written for Codex are run here; 3D now as well. The prompt for Codex is withdrawn (note at its head, both
+  copies; register pushed before the start, commit 7df9f66).
+- Code: `SNhold` (FBE, with SNset, no Gb: the node stays held at SNset through the hold and is released 0.5 ns before the first BL
+  fall; long holds in log steps) and `ProbeT` (probes across the body thickness at the centre x: 1 nm inside both gate-oxide
+  interfaces, 1/4 and 3/4) in params.py / make_runs.py; 11 older decks byte-identical, 2D and 3D. Configurations n1 .. n4 = hold
+  15.2 / 18 / 20 / 22 us, B1, impact ionization at the default coefficients, then the waveform of Fig.8(b) (period 21 ns, 9 low
+  phases). Decks read (Dn3F_c1: Cs 2.19 fF, node set at 0.13 ns and released at 19999.64 ns, first fall at 20000.14 ns, probes).
+  Conditions held against the paper: structure and write as always; off the paper: the hold of 15 - 22 us and the held node (a
+  preparation). Gate 01:28, ALL PASS on gr_c1h .. gr_c4h, every line read. `run_d12.sh`, 16 jobs, 20 runs complete at 02:00 (exit 0).
+  Tools: `tools/gt_held.py` (tables A - E), `tools/plot_held.py` -> `gt2d_held_node_round12.png`.
+- Result, Cases 1 / 2 / 3 / 4 / 5 (node 1.1000 V at t_A in every run):
+    hold      holes                           body rise [mV]             first low phase [mV]               200 ns [mV]
+    15.2 us   1227 / 1282 / 1020 / 916 / 1383     592 / 503 / 345 / 308 / 429    11.34 / 14.64 / 0.59 / 0.77 / 0.13     60.8 / 53.1 / 4.27 / 4.43 / 1.57
+    18 us     1413 / 1478 / 1196 / 1076 / 1627    638 / 550 / 389 / 349 / 486    42.58 / 42.61 / 2.38 / 2.68 / 0.14     125.4 / 93.4 / 9.87 / 8.80 / 1.55
+    20 us     1542 / 1610 / 1320 / 1188 / 1798    669 / 582 / 420 / 377 / 526    79.48 / 67.66 / 5.26 / 5.15 / 0.15     170.5 / 120.8 / 14.94 / 12.38 / 1.55
+    22 us     1666 / 1737 / 1442 / 1299 / 1968    699 / 612 / 449 / 404 / 565    119.79 / 92.54 / 9.38 / 8.24 / 0.17    211.1 / 146.0 / 20.26 / 16.03 / 1.57
+    paper                                     555 / 445 / 365 / 320 / 368    55 / 29 / 7.1 / 3.5 / 0               100 / 50 / 14.6 / 7 / 1
+  The 15.2 us row repeats Codex's group 17 (11.49 / 14.95 / 0.59 / 0.77 / 0.13 mV, same holes and rises): two independent runs agree.
+- Q1 (one hold for all cases?): the paper's first-phase loss needs a hold of 18.9 / 17.0 / 21.1 / 18.9 us (Cases 1 - 4). At ONE
+  hold, 19.1 us, the four losses are 61.0 / 55.6 / 3.8 / 3.9 mV = 1.11 / 1.92 / 0.53 / 1.11 times the paper's, Case 5 0.15 mV: the
+  largest deviation is 0.28 decades, inside the reading tolerance of 0.3. So the first-phase losses of all five cases do
+  come out of one prepared state, barely.
+- Q2 (the rest of the curve at 19.1 us): 200 ns 149.7 / 108.3 / 12.5 / 10.7 / 1.5 mV against 100 / 50 / 14.6 / 7 / 1 (1.5 / 2.2 / 0.86 / 1.5
+  times; Case 2 outside the tolerance); Case 1 after phases 2 - 4 87 / 103 / 115 (67 / 76 / 83); 5 ns after the fall 38.9 / 40.1 (43 / 23),
+  3 ns after it 1.4 / 1.6 (3.3 / 1.4); Case 4 after two phases 5.7 (5.2).
+- Q3 (the bars at 19.1 us): body-centre rise 656 / 569 / 407 / 365 / 509 mV = 101 / 124 / 42 / 45 / 141 mV above the bars. None of the 24
+  readings (four places along the channel, four more across the thickness, electrostatic and hole quasi-Fermi potential,
+  from the start of the transient and from t = 0) is within 30 mV in all five cases. Nearest: the potential 1 nm from a gate
+  oxide, from the start: 443 / 442 / 353 / 320 / 461 (-112 / -3 / -12 / 0 / +93): right for Cases 2 - 4, wrong for 1 and 5.
+- Q4 (does it matter how the charge was made?): no. At the same body rise the stand-in states (Dh1F .. Dh4F) lose the same
+  within 2 - 15 % through the whole curve (Case 1 at 638 mV: 42.6 / 39.0 mV in the first phase, 125.4 / 118.7 mV at 200 ns).
+- Q5: in the last 21 ns of the hold the body rises 0.28 - 0.45 mV. A body charged at t = 0 has no rise to show in Fig.8(a).
+- Reading: "charged at t = 0", made by the model's own generation with the node held, gives the five first-phase losses at
+  one hold inside the tolerance - and at that state the bars are 42 - 141 mV too high, the 200 ns losses of the thick bodies
+  1.5 - 2.2 times too large, and no place or reference of the body potential mends the bars. Fig.8(a) and Fig.8(b), (c) do not
+  come out of one state in the 2D model. Not a reproduction.
+- 3D check started 01:30 (user: now). g3_c2h unchanged since 2026-10-06 17:28; `gt3_check.sh` read line by line (53280 vertices,
+  no errors; junctions 25.00 / 150.00 nm at z = 25 nm; silicon 0 .. 50 nm across the rows, model ends at 100 nm; word line not
+  interrupted), top view drawn next to Fig.2 (`gt3_unit_top_vs_cho_fig2_check_2026-10-07.png`, pic folder, not for the repository).
+  Four batches side by side, 8 threads each: `run_3d_k.sh` E3K_c2 (sizing of the supply), `run_3d_f1.sh` E3F_c2 (FBE at the 2D rate
+  of the bar, 1.808e26), `run_3d_f2.sh` E3F125_c2 (x 1.25, new run), `run_3d_s.sh` E3I_c2, E3W_c2, E3H_c2 one after the other.
+  The FBE runs start at the 2D rate without waiting for the sizing: their own body rise at t_A shows whether the bar is met;
+  if it is off by more than 30 mV they are stopped and started again at the sized rate.
+  E3I_c2 done (21 min): thresholds 0.33 / 0.45 / 0.58 V at 1e-10 / 1e-8 / 1e-6 A, 60.4 mV/dec, 10^-13.01 A at -1 V, 10^-3.63 A at 1.8 V
+  (2D DfinI_c2 0.33 / 0.45 / 0.59, 60.3, -13.24, -3.67; paper 0.33 / 0.44 / 0.57). Read with `GT_W=2` (the 3D current is that of
+  the half cell; with the 2D setting 0.1 it comes out 20 times too low: a reading matter, noticed and checked).
+  Disk: a 3D unit-cell run folder is 16 MB; account 8011 of 9216 MB at 02:01.
+
 ## 2026-10-07 (bh) user decisions: Codex's 20 runs before its screen; 3D check after the screen
 - User (01:10): (1) the 20 runs of the prompt go in front of Codex's queue (written into the prompt, both copies); (2) the 3D check
   is on: start it after Codex's screen of 720 has ended and the disk has been looked at. 3D is no longer paused for this check.

@@ -174,6 +174,26 @@ Dm1I_c2      complete
 Dm1I_c2      ended, exit=1                
 Dm1W_c2      stopped early (exit=1)       0.015 ns of 0.18 ns
 Dm1W_c2      stopped early (exit=143)     0.015 ns of 0.18 ns
+Dn1F_c1      complete                     1.539e+04 ns of 1.539e+04 ns
+Dn1F_c2      complete                     1.539e+04 ns of 1.539e+04 ns
+Dn1F_c3      complete                     1.539e+04 ns of 1.539e+04 ns
+Dn1F_c4      complete                     1.539e+04 ns of 1.539e+04 ns
+Dn1F_c5      complete                     1.539e+04 ns of 1.539e+04 ns
+Dn2F_c1      complete                     1.819e+04 ns of 1.819e+04 ns
+Dn2F_c2      complete                     1.819e+04 ns of 1.819e+04 ns
+Dn2F_c3      complete                     1.819e+04 ns of 1.819e+04 ns
+Dn2F_c4      complete                     1.819e+04 ns of 1.819e+04 ns
+Dn2F_c5      complete                     1.819e+04 ns of 1.819e+04 ns
+Dn3F_c1      complete                     2.019e+04 ns of 2.019e+04 ns
+Dn3F_c2      complete                     2.019e+04 ns of 2.019e+04 ns
+Dn3F_c3      complete                     2.019e+04 ns of 2.019e+04 ns
+Dn3F_c4      complete                     2.019e+04 ns of 2.019e+04 ns
+Dn3F_c5      complete                     2.019e+04 ns of 2.019e+04 ns
+Dn4F_c1      complete                     2.219e+04 ns of 2.219e+04 ns
+Dn4F_c2      complete                     2.219e+04 ns of 2.219e+04 ns
+Dn4F_c3      complete                     2.219e+04 ns of 2.219e+04 ns
+Dn4F_c4      complete                     2.219e+04 ns of 2.219e+04 ns
+Dn4F_c5      complete                     2.219e+04 ns of 2.219e+04 ns
 Dq0F_c1      complete                     210.1 ns of 210.1 ns
 Dq0F_c2      complete                     210.1 ns of 210.1 ns
 Dq0F_c3      complete                     210.1 ns of 210.1 ns
