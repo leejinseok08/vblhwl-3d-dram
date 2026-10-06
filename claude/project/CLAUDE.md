@@ -140,5 +140,6 @@ loses 142 / 76 / 17.5 / 10.1 mV by 200 ns (paper 100 / 50 / 14.6 / 7); Case 5 fi
 t_A, which a charged body does not have (0.3 mV in 21 ns). Codex runs a screen of 720 conditions on this line (first low phase only);
 what is missing (own generation, node held, whole waveform) is written as a prompt for Codex that the user hands over.
 3D (unit cell `g3_c2h`, X-X' pair `g3x_c2h`) was rebuilt from today's structure files and held against Fig.2 (NOTES (ba)); the decks
-E3* with the 2D values are written and wait for the user's word. Rounds 6 - 11 are over; no run of mine is on the server.
+E3* with the 2D values are written; the user gave the word on 2026-10-07 for the 3D FBE check (E3K sizing, E3H, E3W, E3I, then FBE of
+Case 2 at the sized rate x 1.0 / 1.25; not the pair runs E3X): start after Codex's screen of 720 has ended and the disk has been looked at. Rounds 6 - 11 are over; no run of mine is on the server.
 No open parameter of mine is left in 2D: next steps are the user's (3D, merging the branch `claude`, what to ask the authors).

@@ -3,6 +3,18 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-07 (bh) user decisions: Codex's 20 runs before its screen; 3D check after the screen
+- User (01:10): (1) the 20 runs of the prompt go in front of Codex's queue (written into the prompt, both copies); (2) the 3D check
+  is on: start it after Codex's screen of 720 has ended and the disk has been looked at. 3D is no longer paused for this check.
+  Plan: gt3_check on g3_c2h and the top view first (rule 1), pull / register / push (rule 6); stage 1 E3K_c2 (sizing of the
+  supply in 3D), E3H_c2 (write + 21 ns hold), E3W_c2, E3I_c2; stage 2 FBE of Case 2 at the sized rate x 1.0 and x 1.25, held
+  against Dh1F_c2 / Dh2F_c2 and the paper's 29 mV. The pair runs E3X_xx / E3Xi_xx are not part of it.
+- Measured for the time and disk estimate (server, 01:20): 2D FBE with 9 pulses 13 - 20 min (Dh1F_c3 / c1); 3D unit cell write
+  30 min (V3Wp_c2), Id-Vg 21 min (V3I_c2); 3D pair row hammer 7 h 20 min (X3p_xx). A 3D unit-cell run folder is 16 MB (two
+  field files of 7.7 MB), a pair run 32 - 33 MB: the '7 GB' of (aw) is not disk. Account 7829 of 9216 MB; this project 3137 MB
+  (runs 2236, Codex 901), the dropped bcvfet_tcad 2923 MB. Codex's screen: 91 runs ended in 110 min (started 23:30).
+  So the disk was no reason to wait with 3D (said so to the user; the order stays the user's).
+
 ## 2026-10-07 (bg) "the body is already charged at t = 0 of Fig.8" held against the paper's numbers; Codex's screen; prompt for the missing runs
 - User: check whether the paper's numbers come out if t = 0 is a charged state; write the prompt for the missing runs, the user hands
   it to Codex. No run of mine was started (the user gives this line to Codex).
