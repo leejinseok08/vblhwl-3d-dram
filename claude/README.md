@@ -8,13 +8,15 @@ Codex가 올린 파일(`docs/`, `fbe_joint_20261006/` 등)은 건드리지 않�
 
 ## 읽는 순서
 
+빨리 보려면 `reports/GT_IRPS2026_현황보고_eliU_2026-10-06_저녁.html`부터예요 (그림 6장, 쉬운 문장, 실제 용어).
+
 1. [STATUS.md](STATUS.md) — 무엇이 재현됐고 무엇이 안 됐는지, 사용자가 정한 것, 지금 돌고 있는 것
 2. [EXPERIMENTS.md](EXPERIMENTS.md) — **실험 등록부.** 끝난 것 / 돌고 있는 것 / 하지 않기로 한 것. 새 실행을 만들기 전에 양쪽이 먼저 보는 표
 3. [ANALYSIS.md](ANALYSIS.md) — 그림별 분석, Codex 결과와 맞춰 본 것, 고친 판단
 4. `data/tables/` — 도구가 낸 표 그대로 (점수표, FBE, 로우 해머, 쓰기와 WL 꺼짐, Id–Vg, 실행 상태, 실행 전 구조 검사 기록)
 5. `data/runs/<실행 이름>/` — 원시 자료: 덱 `<이름>_des.cmd`, 실행 설명 `run.json`, 노드 전압 `<이름>_sys.plt`, 소자 탐침 `c1_<이름>_dev.plt`
 6. `project/` — 덱 생성기와 도구의 스냅샷 (`make_runs.py`, `params.py`, 구조 템플릿, `tools/`, `NOTES.md`, `CLAUDE.md`)
-7. `reports/` — 보고서, 비교표, 그림
+7. `reports/` — eliU 형식 현황 보고서(저녁), 2D 완성 보고서(9절이 저녁 갱신), 논문 대비 비교표, 15시의 현황 보고서, 그림
 
 ## 자료를 다시 읽는 법
 

@@ -158,16 +158,16 @@ Dj7F_c2      complete                     21.14 ns of 21.14 ns
 Dj7F_c3      complete                     21.14 ns of 21.14 ns
 Dj7F_c4      complete                     21.14 ns of 21.14 ns
 Dj7F_c5      complete                     21.14 ns of 21.14 ns
-Dk6F_c1      running                      0.125 ns of 210.1 ns
-Dk6F_c2      running                      0.124 ns of 210.1 ns
-Dk6F_c3      running                      0.124 ns of 210.1 ns
-Dk6F_c4      running                      0.126 ns of 210.1 ns
-Dk6F_c5      running                      0.121 ns of 210.1 ns
-Dk7F_c1      running                      0.124 ns of 210.1 ns
-Dk7F_c2      running                      0.124 ns of 210.1 ns
-Dk7F_c3      running                      0.124 ns of 210.1 ns
-Dk7F_c4      running                      0.124 ns of 210.1 ns
-Dk7F_c5      running                      0.121 ns of 210.1 ns
+Dk6F_c1      stopped early (exit=143)     0.125 ns of 210.1 ns
+Dk6F_c2      complete                     210.1 ns of 210.1 ns
+Dk6F_c3      complete                     210.1 ns of 210.1 ns
+Dk6F_c4      complete                     210.1 ns of 210.1 ns
+Dk6F_c5      complete                     210.1 ns of 210.1 ns
+Dk7F_c1      stopped early (exit=143)     22.17 ns of 210.1 ns
+Dk7F_c2      stopped early (exit=143)     25.85 ns of 210.1 ns
+Dk7F_c3      complete                     210.1 ns of 210.1 ns
+Dk7F_c4      stopped early (exit=143)     0.124 ns of 210.1 ns
+Dk7F_c5      complete                     210.1 ns of 210.1 ns
 Dm1F_c2      stopped early (exit=1)       0.015 ns of 210.1 ns
 Dm1F_c2      stopped early (exit=143)     0.015 ns of 210.1 ns
 Dm1I_c2      complete                     
@@ -243,12 +243,32 @@ DtcRzi_zz    complete, PLOT FILE DAMAGED  4.92 ns of 4.92 ns
 DtcRz_zz     complete, PLOT FILE DAMAGED  4.92 ns of 4.92 ns
 DtdRz_zz     stopped early (exit=143), PLOT FILE DAMAGED 3.605 ns of 4.92 ns
 DtfRz_zz     stopped early (exit=143), PLOT FILE DAMAGED 2.035 ns of 8.68 ns
+Du7Ryi_yy    stopped early (exit=143)     0.124 ns of 2.125 ns
+Du7Rzg_zz    stopped early (exit=143)     0.132 ns of 2.125 ns
+Du7Rzi_zz    stopped early (exit=143)     0.124 ns of 2.125 ns
+Du9Ryi_yy    stopped early (exit=143)     0.123 ns of 2.125 ns
+Du9Rzg_zz    stopped early (exit=143)     0.191 ns of 2.125 ns
+Du9Rzi_zz    stopped early (exit=143)     0.123 ns of 2.125 ns
+Dv4F_c1      stopped early (exit=143)     27.96 ns of 210.1 ns
+Dv4F_c2      stopped early (exit=143)     63.44 ns of 210.1 ns
+Dv4F_c3      complete                     210.1 ns of 210.1 ns
+Dv4F_c4      complete                     210.1 ns of 210.1 ns
+Dv4F_c5      complete                     210.1 ns of 210.1 ns
+Dv5F_c1      stopped early (exit=143)     21.64 ns of 210.1 ns
+Dv5F_c2      stopped early (exit=143)     48.43 ns of 210.1 ns
+Dv5F_c3      complete                     210.1 ns of 210.1 ns
+Dv5F_c4      complete                     210.1 ns of 210.1 ns
+Dv5F_c5      complete                     210.1 ns of 210.1 ns
 Dw3F_c1      complete                     210.3 ns of 210.3 ns
 Dw3F_c2      complete                     210.3 ns of 210.3 ns
 Dw3F_c3      complete                     210.3 ns of 210.3 ns
 Dw3F_c4      complete                     210.3 ns of 210.3 ns
 Dw3F_c5      complete                     210.3 ns of 210.3 ns
 Dw3W_c2      complete                     0.375 ns of 0.375 ns
+Dw5Rzg_zz    stopped early (exit=143)     3.139 ns of 4.92 ns
+Dw5Rzi_zz    stopped early (exit=143)     3.327 ns of 4.92 ns
+Dw7Rzg_zz    stopped early (exit=143)     3.139 ns of 4.92 ns
+Dw7Rzi_zz    stopped early (exit=143)     3.169 ns of 4.92 ns
 DyaRy_yy     stopped early (exit=143), PLOT FILE DAMAGED 0 ns of 2.125 ns
 DybRy_yy     complete                     2.125 ns of 2.125 ns
 DycRy_yy     complete, PLOT FILE DAMAGED  2.125 ns of 2.125 ns

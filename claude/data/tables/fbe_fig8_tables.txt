@@ -120,14 +120,14 @@
 == Dk6F   (paper in brackets)
    case  t[ns] | holes: written   t_A | t=0 -> t_A [mV]: psi rise, phi_p(t_A) - psi(0) | SN [mV]: hold, 1st low phase, at 200 ns
    1     0.12 | write not finished
-   2     0.12 | write not finished
-   3     0.12 | write not finished
-   4     0.13 | write not finished
-   5     0.12 | write not finished
+   2    210.1 |   751.31    753.1 |   +362   +816  [445] |   -0.15    0.38 [29]     3.83 [50]
+   3    210.1 |   729.87    731.3 |   +268   +742  [365] |   -0.14    0.12 [7]     1.38 [14.6]
+   4    210.1 |    17.12     18.4 |    +11   +443  [320] |   -0.13    0.07 [3.5]     1.12 [7]
+   5    210.1 |  1084.52   1086.4 |   +355   +847  [368] |   -0.19    0.12 [0]     1.60 [1]
 == Dk7F   (paper in brackets)
    case  t[ns] | holes: written   t_A | t=0 -> t_A [mV]: psi rise, phi_p(t_A) - psi(0) | SN [mV]: hold, 1st low phase, at 200 ns
-   1     0.12 | write not finished
-   2     0.12 | write not finished
-   3     0.12 | write not finished
+   1     22.2 |  1462.68   1464.1 |   +651  +1099  [555] |   -0.10       - [55]   575.94* [100]
+   2     25.9 |  1334.49   1336.1 |   +516   +971  [445] |   -0.13       - [29]   703.58* [50]
+   3    210.1 |  1302.20   1303.5 |   +416   +892  [365] |   -0.13    9.53 [7]    29.93 [14.6]
    4     0.12 | write not finished
-   5     0.12 | write not finished
+   5    210.1 |  1969.67   1971.5 |   +566  +1060  [368] |   -0.18    0.17 [0]     1.60 [1]

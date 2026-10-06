@@ -3,6 +3,66 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-06 (bc) rounds 6 - 10: steps 2 - 5 finished; impact-ionization factor diagnosis; the paper's Fig.7 and Fig.8 read again
+- Round 6 (reruns, clean). Step 2, Case 2, baseline B1 + bar charge: SiO2 spacer write 0.72 / 0.90 / 1.01 / 1.08 V, GIDL -13.37,
+  FBE rise 444 mV, first loss 2.32, 200 ns 16.3 mV; HfO2 spacer 0.79 / 0.96 / 1.05 / 1.11 V, -12.81, 438, 1.84, 13.7; 50 nm pillar: write and
+  thresholds the same, 442, 2.15, 13.8 (baseline 0.74 / 0.92 / 1.02 / 1.09 V, -13.24, 442, 2.16, 15.5). No score improves: Si3N4 and the
+  100 nm pillar stay (and the 50 nm pillar of the 3D model is no difference). Lombardi mobility (Mob=1): thresholds the same, on-
+  current 0.07 - 0.09 decade lower; the transients do not get past the WL rise (56 min at 15 ps), stopped.
+  Step 4, row hammer with the body charged (ideal WL, impact ionization on): 1056 holes: Y-Y' node rises 0.0026 mV per cycle,
+  Z-Z' loss 0.00065; 1970 holes: rises 0.0049, loss 0.00005. No collapse.
+  Step 5, Y-Y': BL series resistor 10 kOhm 0.00144, with the aggressor node at 1.1 V 0.00144, WL resistor 2e5 0.00137 mV per cycle.
+  R = 2e5 at 1.8 fF, settled gate: grounded body -0.4449 mV at cycle 1, -0.4542 after ten (4.2 fF: -0.1904 / -0.1962): the same
+  charge, 0.80 aC; floating 0.37 - 0.39 aC (-0.2033 mV at 1.8 fF, -0.0929 at 4.2 fF). One shift in cycle 1 in every deck.
+  DtcRz_zz (and DtcRzi_zz, DycRy_yy) ran through the full-quota window: whole rows are missing (DtcRz_zz: the first aggressor
+  pulse), the files look whole to `run_state.py`. Not rerun (Codex's R = 2e5 pairs cover the question); left out of the share.
+  Step 3: x5 leaves 207 / 119 / 114 / 14 / 7 holes after the WL switch-off, x7 1462 / 1334 / 1302 / 1320 / 1969 (node -151 / -177 / -203 / -207 /
+  -60 mV at the switch-off, body rise 651 / 516 / 416 / 409 / 566 mV, hold droop 0.10 - 0.18 mV); coarse mesh at x1: 100 / 36 (103 / 35).
+- Round 7, FBE without the stand-in generation. x7: Case 3 first loss 9.53 mV, 200 ns 29.9 mV (paper 7.1 / 14.6); Case 5 0.17 / 1.60
+  (0 / 1); Cases 1 and 2 latch when the BL reaches 0 V (node -576 / -635 mV within a nanosecond, solver crawling); Case 4 still
+  at the switch-off. x6: Case 2 753 holes, rise 362 mV, 0.38 / 3.83 mV; Case 4 no avalanche (18 holes); Case 5 1086 holes, 355 mV,
+  0.12 / 1.60 mV; Cases 1, 3 crawl at the switch-off. So the factor at which the switch-off avalanches differs from case to case
+  (5 already at x6, 2 partly, 4 not), the charge it leaves is not that of the bars, and above it the thick bodies latch.
+- Round 9, final configuration with the coefficients x4 / x5: the stand-in generation is itself multiplied (holes at t_A 1630 /
+  1736 / 1630 / 1405 / 1970 at x4, 1861 / 2062 / 1890 / 1603 / 2372 at x5, against 1058 / 1045 / 1091 / 957 / 1134), so these are no runs at the
+  bar charge. At equal hole number against the charge series h1 .. h4: Case 3 x 1.6 (x4), x 3.0 (x5), x 2.1 (x7); Case 4 x 1.5, x 2.2;
+  Cases 1 and 2 latch (x4, 1630 / 1736 holes: -565 / -517 mV in the first low phase). The first-phase loss depends strongly on the
+  coefficients; to bring the bar charge to the paper's 55 / 29 / 7.1 / 3.5 mV the loop gain would have to sit at 0.95 / 0.92 / 0.85 / 0.69
+  in the four cases at once: not a robust way to Fig.8.
+- The paper read again for the models and for Fig.7 / Fig.8 (text by pdftotext, figure images carved from the PDF into the
+  scratch folder, looked at, not kept):
+  * Models named: "BTBT Hurkx model ... to evaluate the gate induced drain leakage"; "an avalanche model for impact ionization"
+    is "incorporated" for Fig.7. No model name, no coefficients, no driving force. Whether Fig.8 has it on is not said.
+  * Fig.7(b): in both configurations (grounded, floating) a resistor R sits between the victim gate node V_gate2 and the
+    victim WL source (0 V); a capacitor between the aggressor gate V_gate1 and V_gate2, another between V_gate2 and V_body
+    (grounded or left open). So R on the victim WL is the paper's, without a value; my reading of earlier days was right.
+  * Fig.7(a) / (c): with the model on the node of Case 2 falls in steps, one per aggressor pulse, from about 0.45 ns (= t_A) on,
+    and ends at 0.58 V; Fig.7(e): body rise between t = 0 and t_A: 2.4 mV (off, floating), 665.1 mV (on, floating), 1.8 mV (on,
+    grounded). The body is charged during the first two aggressor cycles, not before the hammer.
+  * Fig.8: t = 0 at the start of the plot, t_A at the first BL fall. The paper explains the loss by the threshold shift of the
+    body effect (formula under Fig.8(a); gamma ~ sqrt(NA) / Cox in Fig.8(c)), not by a bipolar transistor.
+  * Consequence for R: with R in the WL path the write of Fig.4(a) needs R x C_gate of a few ps (R below about 1e4 Ohm), and
+    then the victim gate does not jump. One R cannot serve Fig.4(a) and Fig.7 in this lumped 2D model.
+- Rounds 8 and 10: row hammer with the coefficients x7 / x9 (ideal WL) and x5 / x7 with R = 2e5 Ohm (the configuration Fig.7(b)
+  draws), floating and grounded. The grounded-body cell cannot be written and cannot hold: node during the write 0.08 V (x5),
+  -0.19 V (x7), -0.15 V (x7, ideal WL), -0.28 V (x9); set to 1.1 V it is back at 0.096 V / -0.27 V before the hammer (x5 / x7) and
+  at 0.40 V after 10 ps (x9); the same deck with the default coefficients: 0.83 V in the write (body effect of the grounded
+  body), 1.055 V before the hammer. With the body tied to 0 V nothing stops the avalanche: the N+ / p junction breaks down at
+  1.1 V. The paper's grounded body keeps 1.1 V with the model on (Fig.7(c), 0.036 mV per cycle). So a factor of 5 or more is
+  not the paper's model: the factor diagnosis is closed, nothing adopted. Floating with R: the WL falls slowly, no avalanche at
+  the switch-off even at x7 (body -0.187 V before the hammer), cycle 1 at x5 -0.1996 mV (the usual shift); stopped after 1 - 2
+  cycles. Floating with the ideal WL (u7, u9): 30 min at the switch-off avalanche without progress, stopped. All runs of mine
+  stopped at 20:21 (`gt_kill.sh -`); only Codex's CDR_r2e5_i1_on is left on the server. Disk 7.3 GB after `gz_logs.sh`.
+- The scorecard line of k7 (first loss 0.40) counts only the cases that finished (3 and 5); m1's write score is from a run
+  that was stopped. Neither is a score of a configuration.
+- Shared: branch `claude` of the GitHub repository, commits 81cf3ef (first share), b65b511, a0a2b89, 57cca0a (register entries
+  before rounds 8 - 10), and the final one of today; `tools/share_pack.sh` packs tables, the 221 complete runs, the resistor scan,
+  the YE Id-Vg runs and 12 stopped runs kept as evidence (33 MB). Report section 9 and the workbook are updated (the workbook
+  is built with the virtual environment in the session scratch folder: the PC's Python has no openpyxl).
+- State: 2D configuration fin2 as the user decided; what is left open in 2D has no open parameter of mine any more: the hole
+  source, bars and first-phase loss together, row hammer. Next steps are the user's: 3D (E3 decks), merging the branch,
+  Codex's reruns of the two runs the quota broke.
+
 ## 2026-10-06 (bb) shared GitHub repository with Codex; what Codex tested; the disk quota ran full; rounds 4 / 5 as far as they survived; rerun round 6
 - User (18:1x): `https://github.com/leejinseok08/vblhwl-3d-dram` (private) holds what Codex checked. Share status, experiment
   data and analysis there and do not run conditions or experiments that are already tested or under test. My working copy:

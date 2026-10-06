@@ -57,6 +57,7 @@ if [ "$m" = sa ]; then python3 tools/run_state.py -a $B | grep -E 'running|DAMAG
 date +%H:%M; python3 tools/run_state.py $B | cut -c1-900; bash tools/_q.sh live; echo "disk quota: $(quota -s | tail -1 | awk '{print $1, "of", $2}'), $(uptime | sed 's/.*load/load/')"
 [ "$m" = st ] && exit 0
 if [ "$m" = pf ]; then for r in "$@"; do python3 tools/run_state.py -f runs/$r/*.plt | sed 's|runs/[^/]*/||'; done; exit 0; fi    # every plot file of the named runs
+if [ "$m" = rp ]; then for r in "$@"; do python3 tools/gt_tran.py runs/$r 2>&1 | grep -E "^== |probe|Pos\(|hole|Hole|body" | cut -c1-200 | head -14; done; exit 0; fi    # row hammer: the body probes at the marked instants
 if [ "$m" = rc ]; then for r in "$@"; do python3 tools/gt_tran.py runs/$r 2>&1 | grep -E "^== |RH" | cut -c1-260; done; exit 0; fi    # row hammer cycle by cycle
 if [ "$m" = c1 ]; then    # the first hammer cycle of the named runs: node, victim gate node, aggressor WL every 15 ps
   for r in "$@"; do t0=$(python3 tools/gt_tran.py runs/$r 2>&1 | grep -o 'first aggressor rise at [0-9.]*' | grep -o '[0-9.]*$'); [ -z "$t0" ] && t0=3.04; python3 tools/plt_at.py $r $(echo "$t0 - 0.03" | bc -l) $(echo "$t0 + 0.39" | bc -l) 28 'nSN)' nGv nWLa 'nBL'; done; exit 0

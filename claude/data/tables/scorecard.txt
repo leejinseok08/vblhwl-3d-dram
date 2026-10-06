@@ -134,13 +134,13 @@ m1         0.78*  21.65   11.70*   6.21*   4.83*   4.71*  11.88* |  10.90
       W: 0.33 / 0.33 / 0.33 / 0.33 V (Dm1W_c2)
       BR: c1 rise +193 first 0.09 200ns 0.51 (SN0 1.100); c2 not far enough; c3 rise +9 first 0.09 200ns 0.60 (SN0 1.100); c4 rise +3 first 0.09 200ns 0.54 (SN0 1.100); c5 rise +0 first 0.13 200ns 0.82 (SN0 1.100)
       RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
-k6         0.79*   6.49*    -       -       -      4.71*  11.88* |   7.17
+k6         0.79*   6.49*   5.57    4.30    2.79    4.71*  11.88* |   6.13
       IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
       W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
-      BR: c1 not far enough; c2 not far enough; c3 not far enough; c4 not far enough; c5 not far enough
+      BR: c1 not far enough; c2 rise +362 first 0.53 200ns 3.97 (SN0 1.100); c3 rise +268 first 0.26 200ns 1.52 (SN0 1.100); c4 rise +11 first 0.20 200ns 1.25 (SN0 1.100); c5 rise +355 first 0.31 200ns 1.79 (SN0 1.100)
       RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
-k7         0.79*   6.49*    -       -       -      4.71*  11.88* |   7.17
+k7         0.79*   6.49*   4.82    0.40    0.94    4.71*  11.88* |   5.73
       IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
       W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
-      BR: c1 not far enough; c2 not far enough; c3 not far enough; c4 not far enough; c5 not far enough
+      BR: c1 not far enough; c2 not far enough; c3 rise +416 first 9.66 200ns 30.05 (SN0 1.100); c4 not far enough; c5 rise +566 first 0.35 200ns 1.76 (SN0 1.100)
       RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011

@@ -117,10 +117,14 @@ row hammer 4.39, row hammer with impact ionization 11.88. At the bar charge the 
 1.1 / 0.13 mV against 55 / 29 / 7.1 / 3.5 / 0); at 1.25 x the charge (`fin`) they fit (0.84 / 0.51) and the bars come out 53 - 68 mV high.
 Fig.8(a) itself: the bars are one end potential (0.25 V for WF 4.7, 0.0 V for WF 5.0) minus the potential of the depleted body.
 Not reproduced in 2D: where the hole charge comes from (write, WL switch-off, hold, three driving forces, tunnelling calibration,
-microsecond holds (Codex) all tried; with the impact-ionization coefficients x 10 an avalanche at the WL switch-off leaves 2200 -
-2350 holes in Cases 2 - 4, twice the charge of the bars, and takes 0.26 - 0.29 V off the node: a diagnosis, the factor has no
-source); the first-phase loss together with the bars; row hammer Y-Y' (0.0014 against 0.0535 mV per cycle with any WL resistor, BL
-series resistor or aggressor state); the collapse of Z-Z' with impact ionization (Fig.7(a)).
+microsecond holds (Codex) all tried. Larger impact-ionization coefficients were diagnosed and rejected (NOTES (bc)): x 7 leaves
+about 1300 holes at the WL switch-off (x 5 none), but with x 5 or more a cell with a grounded body cannot hold 1.1 V at all
+(the N+ / p junction breaks down; the paper's grounded body holds, Fig.7(c)) and the thick bodies latch in the FBE); the
+first-phase loss together with the bars; row hammer Y-Y' (0.0014 against 0.0535 mV per cycle with any WL resistor, BL series
+resistor, aggressor state or body charge); the collapse of Z-Z' with impact ionization (Fig.7(a)).
+The paper's own words and drawings on the models (read again on 2026-10-06, NOTES (bc)): Hurkx for the tunnelling; "an avalanche
+model" without name or coefficients, said for Fig.7 only; R of Fig.7(b) sits between the victim gate node and its WL source, no
+value; the 665 mV of Fig.7(e) build up during the first 0.45 ns of hammering; Fig.8 is explained by the body effect.
 3D (unit cell `g3_c2h`, X-X' pair `g3x_c2h`) was rebuilt from today's structure files and held against Fig.2 (NOTES (ba)); the decks
-E3* with the 2D values are written and wait for the user's word. Round 6 (`run_d6.sh`, the reruns after the disk quota ran full)
-was started at 18:39.
+E3* with the 2D values are written and wait for the user's word. Rounds 6 - 10 are over; no run of mine is on the server.
+No open parameter of mine is left in 2D: next steps are the user's (3D, merging the branch `claude`, what to ask the authors).

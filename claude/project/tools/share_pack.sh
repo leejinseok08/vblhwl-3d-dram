@@ -6,10 +6,12 @@
 cd ~/vblhwl_3d_dram || exit 1
 O=/tmp/share_vblhwl_$(date +%H%M%S); mkdir -p $O/tables; T=$O/tables
 B=$(cd runs; ls run_d*.sh)
-python3 tools/run_state.py -a $B | sort -u > $T/run_state.txt
+python3 tools/run_state.py -a $B | grep '^[A-Z]' | sort -u > $T/run_state.txt
 # DtcRz_zz ran through the full-quota window of 2026-10-06 and lost whole rows (the first aggressor pulse): its files look whole
 ids=$(for r in $(python3 tools/run_state.py -c $B); do [ $r = DtcRz_zz ] || echo -n "$r "; done)
 q=$(cd runs; ls -d QS*_zz QR*_zz QY*_yy QSid_zz YE_c[1-5] 2>/dev/null | sort -u)    # the WL-resistor scan of the morning and the confirmed Id-Vg runs
+# stopped by hand on 2026-10-06 once their question was settled; kept as evidence (whole up to the stop, the last row may be cut)
+part=$(cd runs; ls -d Dw5Rzg_zz Dw7Rzg_zz Du7Rzg_zz Du9Rzg_zz Dw5Rzi_zz Dw7Rzi_zz Dk7F_c1 Dk7F_c2 Dv4F_c1 Dv4F_c2 Dv5F_c1 Dv5F_c2 2>/dev/null)
 have() { for r in "$@"; do echo " $ids $q " | grep -q " $r " && echo $r; done; }    # only complete runs
 python3 tools/score2d.py -v b0 cs ep e1 e2 w3 a5 ab r2 q0 q1 qn q3 f1 f2 f3 h1 h2 h3 h4 fin fin2 ra sx sh bw m1 k6 k7 > $T/scorecard.txt 2>&1
 python3 tools/gt_fbe_tab.py Db0F Dq0F Dq1F DqnF Dq3F Df1F Df2F Df3F Dh1F Dh2F Dh3F Dh4F DfinF DraF DsxF DshF DbwF Dk6F Dk7F > $T/fbe_fig8_tables.txt 2>&1
@@ -22,7 +24,12 @@ env GT_W=0.1 python3 tools/gt_fig5c.py $(for c in 1 2 3 4 5; do echo runs/DfinI_
 env GT_W=0.1 python3 tools/gt_fig5c.py $(for c in 1 2 3 4 5; do echo runs/YE_c$c; done) > $T/idvg_fig5c_b0_YE.txt 2>&1
 env GT_W=0.1 python3 tools/gt_fig5c.py $(for r in $(have DsxI_c2 DshI_c2 DbwI_c2 Dm1I_c2); do echo runs/$r; done) > $T/idvg_fig5c_sensitivity_case2.txt 2>&1
 cat runs/run_d*.check > $T/structure_checks_before_each_batch.txt 2>/dev/null
-( cd runs; for r in $ids $q; do ls $r/${r}_des.cmd $r/run.json $r/*.plt 2>/dev/null; done; ls _struct/*_dvs.cmd ) > $O/files.txt
+{ echo "Grounded body with the impact-ionization coefficients x5 / x7 / x9: the storage node from the write to the start of the hammer"
+  echo "(DtcRzg_zz = the same deck with the default coefficients). Columns: time, node, BL, victim gate node or WL."
+  for r in DtcRzg_zz Dw5Rzg_zz Dw7Rzg_zz; do python3 tools/plt_at.py $r 0.0 3.0 15 'nSN)' nBL nGv; done
+  for r in Du7Rzg_zz Du9Rzg_zz; do python3 tools/plt_at.py $r 0.10 0.19 9 'nSN)' nBL 'nWL)'; done; } > $T/strong_ii_grounded_body_cannot_hold.txt 2>&1
+python3 tools/gt_fbe_tab.py Dk6F Dk7F Dv4F Dv5F > $T/fbe_ii_factor_rounds_7_9.txt 2>&1
+( cd runs; for r in $ids $q $part; do ls $r/${r}_des.cmd $r/run.json $r/*.plt 2>/dev/null; done; ls _struct/*_dvs.cmd ) > $O/files.txt
 tar czf /tmp/share_vblhwl.tgz -C $O tables -C ~/vblhwl_3d_dram/runs -T $O/files.txt
-echo "complete runs packed: $(echo $ids | wc -w) + scan runs $(echo $q | wc -w); files $(wc -l < $O/files.txt); $(ls -la /tmp/share_vblhwl.tgz | awk '{printf "%.1f MB", $5 / 1e6}')"
+echo "complete runs packed: $(echo $ids | wc -w) + scan and Id-Vg runs $(echo $q | wc -w) + partial runs kept as evidence $(echo $part | wc -w); files $(wc -l < $O/files.txt); $(ls -la /tmp/share_vblhwl.tgz | awk '{printf "%.1f MB", $5 / 1e6}')"
 wc -c $T/* | tail -12
