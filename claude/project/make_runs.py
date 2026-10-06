@@ -600,6 +600,12 @@ for f_ in (6, 7): cfg2d(f"k{f_}", "F", k_cs=1.8 / 4.2, par=cal_par(1.7e21, 2.25e
 # in 10 ns): the parasitic bipolar transistor latches. Fig.7(a) shows such a fall for Z-Z' at BL = 0.55 V (1.1 -> 0.58 V in
 # 2 ns, body 665 mV: x 7 gives 516 mV at the WL switch-off, x 10 750 mV) and none with the body grounded (0.036 mV per cycle).
 for f_ in (7, 9): cfg2d(f"u{f_}", "R", rhsel=("Ryi_yy", "Rzi_zz", "Rzg_zz"), k_cs=1.8 / 4.2, par=cal_par(1.7e21, 2.25e7, ii=f_))
+# Round 9 (step 2: how the FBE of the final configuration reacts to the impact-ionization coefficients, below the avalanche at
+# the WL switch-off): fin2 (bar charge GBQ as a condition, node held meanwhile) with the coefficients x 4 and x 5. Round 7: with
+# x 7 and about 1300 holes the first-phase loss of Case 3 is 9.5 mV (6.4 mV at that charge with the default coefficients) and
+# Case 2 latches: multiplication raises the loss per hole, the more the thicker the body - the direction the paper's
+# 55 / 29 / 7.1 mV ask for (model at the bar charge: 2.6 / 2.2 / 1.1).
+for f_ in (4, 5): cfg2d(f"v{f_}", "F", gb=GBQ, k_cs=1.8 / 4.2, par=cal_par(1.7e21, 2.25e7, ii=f_))
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
