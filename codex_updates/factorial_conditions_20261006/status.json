@@ -1,0 +1,81 @@
+{
+  "checked_at": "2026-10-06T23:44:15.235693+09:00",
+  "planned": 720,
+  "reused": 20,
+  "new_completed": 8,
+  "running": [
+    {
+      "id": "FC015_c1",
+      "pid": 47344,
+      "active": true,
+      "started_at": "2026-10-06T23:40:13.833431+09:00",
+      "saved_ns": 1.0275,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "FC015_c2",
+      "pid": 47429,
+      "active": true,
+      "started_at": "2026-10-06T23:40:16.596426+09:00",
+      "saved_ns": 27.015,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "FC016_c1",
+      "pid": 47511,
+      "active": true,
+      "started_at": "2026-10-06T23:40:17.698855+09:00",
+      "saved_ns": 1.0025,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "FC016_c2",
+      "pid": 47636,
+      "active": true,
+      "started_at": "2026-10-06T23:40:26.806050+09:00",
+      "saved_ns": 8.90250000000001,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "FC018_c1",
+      "pid": 49240,
+      "active": true,
+      "started_at": "2026-10-06T23:42:06.711997+09:00",
+      "saved_ns": 0.12187500000000001,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "FC018_c2",
+      "pid": 49380,
+      "active": true,
+      "started_at": "2026-10-06T23:42:23.003879+09:00",
+      "saved_ns": 0.12125,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "FC019_c1",
+      "pid": 49530,
+      "active": true,
+      "started_at": "2026-10-06T23:42:32.983238+09:00",
+      "saved_ns": 0.12125,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "FC019_c2",
+      "pid": 49628,
+      "active": true,
+      "started_at": "2026-10-06T23:42:38.335359+09:00",
+      "saved_ns": 0.12125,
+      "partial_output_well_formed": true
+    }
+  ],
+  "analysed": 28,
+  "valid": 28,
+  "complete_groups": 4,
+  "quota": {
+    "used_KB": 7747380,
+    "soft_KB": 9437184,
+    "hard_KB": 10485760,
+    "reserve_ok": true
+  }
+}
