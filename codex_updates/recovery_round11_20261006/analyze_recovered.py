@@ -38,7 +38,6 @@ def analyse(j):
              'psi_V':at(d,psi,x),'psi_rise_equilibrium_mV':(at(d,psi,x)-at(d,psi,0))*1000,
              'psi_rise_after_reset_mV':(at(d,psi,x)-at(d,psi,release))*1000}
     row['snapshots']=[snap(x) for x in [release,min(ts,last)] if x<=last]
-    if last<ts:return row
     def phase(a,b,body=False):
         drop=at(s,sn,a)-at(s,sn,b);cur=integ(d,'sn_v TotalCurrent',a,b);qcap=cap*drop
         r={'start_ns':a*1e9,'end_ns':b*1e9,'SN_loss_mV':drop*1000,'SN_total_fC':cur*1e15,
@@ -55,7 +54,13 @@ def analyse(j):
             delta=r['body_holes_end']-r['body_holes_start']
             r.update(BTBT_body_pairs=gbt,II_body_pairs=gii,SRH_body_signed_net_recombination_pairs=rs,
                 body_hole_delta=delta,net_outward_body_hole_flux_plus_discretization_residual=gbt+gii-rs-delta)
+            for label,words in [('BTBT_all_Si_pairs','band2bandgeneration'),('II_all_Si_pairs','impactionization'),('SRH_all_Si_signed_net_recombination_pairs','srhrecombination')]:
+                key=next((k for k in d if k.startswith('IntegrSemiconductor ') and k.lower().endswith(words)),None)
+                if key:r[label]=integ(d,key,a,b)*scale
         return r
+    if last<ts:
+        if j['kind']=='body_balance_observation':row['hold_partial']=phase(release,last,True)
+        return row
     row['prefall']=snap(ts);row['hold']=phase(release,ts,j['kind']=='body_balance_observation')
     if last>=ts+10.5e-9:
         row['first_10p5ns_after_fall']=phase(ts,ts+10.5e-9,j['kind']=='body_balance_observation')
