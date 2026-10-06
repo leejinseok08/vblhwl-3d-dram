@@ -3,6 +3,48 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-06 (be) reference [4] obtained and read; the time scale of the cited FBE tests; the conclusions of Sec.VI held against our runs
+- User: get [4] and read it. Deng .. Liu, "Balancing Charge Loss and Carrier Mobility ...", IEEE TED 72(1) 2025, DOI
+  10.1109/TED.2024.3493066, IEEE document 10752092; PDF 14.1 MB through the user's Chrome session (access by Sogang library),
+  kept as `Desktop\서강대\반엘프\관련논문\R03_deng_ted2025.pdf`, entered in that folder's source list (md + json, SHA256). Read: text of
+  Sec.I - VI, Table II and Fig.5 on the publisher's page.
+  * Holes: "mostly generated from gate-induced drain leakage", they gather in the thicker, partially depleted body, which with the
+    n-doped source / drain forms a parasitic n-p-n transistor; with the BL low the transistor of a cell holding "1" amplifies:
+    loss current = (beta + 1) x I_GIDL (Fig.5(a)). A fully depleted thin body cannot take the holes up.
+  * How the loss is computed: transient of a 1T1C cell, BL at 50 % duty, node evaluated at 64 ms (one refresh cycle), plate
+    at 0.5 V. Fig.5(b): time axis 0 .. 0.12 s, BL period 20 ms, the node falls in steps in the BL-low phases (20 nm body: 1.0 ->
+    0.6 V after the first low phase). Reference [3], Fig.6 (looked at again): the same test, 0 .. 120 ms, BL period 20 ms, node flat
+    for the first 10 ms (BL high), then steps.
+  * Models: density gradient (fitted to their Schroedinger-Poisson solver), band-to-band tunnelling, Auger, SRH, band-gap
+    narrowing, interface traps 5e10 cm-2 eV-1; no impact ionization. Device (Table II): gate length 80 nm, gate oxide 5 nm SiO2,
+    width 40 nm, S/D 1e20, LDD 1e17; off-current taken at V_G = -0.3 V; channel 5 - 20 nm. An LDD-like junction lowers the
+    gate-to-drain field, the GIDL and with it the loss.
+- What follows for Fig.8 of the IRPS paper: its two references run the BL-toggling test over 120 ms with a BL period of 20 ms,
+  where GIDL has the time to fill the body; Fig.8(b) shows the same staircase with "Time [ns]" on the axis (first fall 21,
+  period 21, window 200). Our model, as built, generates 14.7 pA at the storage-node junction right after the write (hold test of
+  2026-10-05) and Codex's 2.1 us hold gains 180 holes (13.7 pA): at that rate the charge of the bars (1050 holes) takes about 12 us
+  and 21 ns give 2 holes. A question for the authors (unit of the time axis of Fig.8, or how the body is charged in 21 ns), and a
+  test that would follow the cited frame: the FBE without stand-in generation with hold and BL period stretched (21 us .. 21 ms).
+  That is Codex's family (long holds): proposed to the user, not started.
+- Correction to (bd): the comparison with the DC curve of Fig.5(c) does not bound the transient. Right after the WL switch-off
+  the floating body is in deep depletion and the generation is far above the steady-state leakage (model: 14.7 pA against
+  1e-17 A in the DC sweep). What stands is the transient number: 8 nA are needed for 1050 holes in 21 ns, the model gives 14.7 pA.
+- User: do our runs also show the on-current rising a little when the doping is lowered or the gate work function raised, and
+  the other conclusions of Sec.VI? On-current from the Id-Vg runs DfinI (Vd 1.1 V, width 0.1 um), relative to Case 3:
+    Vg 1.79 V: Case 3 195.3 uA, Case 4 253.5 (x 1.298), Case 5 221.4 (x 1.134; x 0.873 against Case 4)
+    Vg 1.5 V: x 1.359 / x 1.089;  1.2 V: x 1.510 / x 0.773;  1.0 V: x 1.748 / x 0.379.   Paper, inset of Fig.8(c) (bar heights 106 /
+    128 / 111 px): x 1.21 / x 1.04 ("3.9 %"); Case 5 against Case 4 x 0.87.
+  So: lower doping raises the on-current (ours +30 %, paper +21 %), the higher work function lowers it (ours -13 %, paper -13 %),
+  both together leave a small gain (ours +13 % at Vpp, paper +3.9 %; in ours the sign depends on the gate voltage: below about
+  1.4 V Case 5 is under Case 3). Thresholds at 1e-8 A: 0.426 / 0.387 / 0.687 V. Case 5 does not reach 1.1 V in the write
+  (0.97 V at 60 ps, 0.995 V before the WL falls; Cases 3 / 4: 1.12 / 1.17 V): the on-current at Vpp hides that.
+  Sec.VI, statement by statement (paper | ours): thicker body, larger body rise (555 / 445 / 365 mV | with the same 1050 holes in
+  every case 545 / 440 / 351; with no charge put in 193 / 55 / 9: same direction; in fin2 the rise is a condition); larger rise,
+  larger loss (200 ns: 100 / 50 / 14.6 | 20.3 / 15.5 / 6.2 mV: same direction, 2.4 - 5 times smaller); lower doping, Case 3 -> 4, less loss
+  (14.6 -> 7, first phase 7.1 -> 3.5 | 6.2 -> 5.4, first phase 1.06 -> 1.09: weak, and at equal holes Case 4 loses more: 0.88 against
+  0.30 mV); higher work function, Case 4 -> 5, a little more rise but the loss suppressed (320 -> 368 mV, 7 -> 1 | at equal holes 340
+  -> 344 mV; loss 5.4 -> 1.6, first phase 1.09 -> 0.13: same). Not the same: the size of the doping effect.
+
 ## 2026-10-06 (bd) user: was the caption of Fig.8 looked at when the source of the holes of Fig.8(a) was sought? Read, not weighed - done now
 - The caption of Fig.8 was among the text read this evening but was not used in the question. Looked at now:
   * Its item (a) speaks of model parameters and the design space and of the floating body effect "explored at different body
