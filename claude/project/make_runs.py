@@ -155,20 +155,32 @@ class Sched:
         L = t2 - t1
         if L <= 0: return t2
         self.add(t1, t2, L / 50 if L > 1e-6 else L / 10); return t2
+    def log(self, t1, t2, first=1e-9, n=20):
+        """A long stretch after a fast event (microseconds to milliseconds): pieces that grow by a decade, n steps each, so that
+        the solver and the plot files resolve the nanoseconds after the event and still reach the end (one piece of L / 20 would
+        start with a step of L / 200)."""
+        a, b = t1, min(t1 + first, t2); self.add(a, b, (b - a) / n)
+        while b < t2 - 1e-18:
+            a, b = b, min(t1 + (b - t1) * 10, t2); self.add(a, b, (b - a) / n)
+
+def ft(t):
+    """A time in the deck: 7 digits as always; 13 only where 7 cannot hold it (a 0.5 ns BL edge at 21 ms would print as zero length)."""
+    s = f"{t:.6e}"
+    return s if abs(float(s) - t) <= 1e-12 * abs(t) else f"{t:.12e}"
 
 def pwl(pts):
-    return " ".join(f"{t:.6e} {v:.6g}" for t, v in pts)
+    return " ".join(f"{ft(t)} {v:.6g}" for t, v in pts)
 
 def solve_transient(S):
     lines = ["Solve {",
              "  Coupled( Iterations=200 LineSearchDamping=1e-4 ){ Poisson eQuantumPotential }",
              "  Coupled{ Poisson Electron Hole eQuantumPotential Contact Circuit }"]
     for (t1, t2, dt) in S.seg:
-        lines.append(f"  Transient( InitialTime={t1:.6e} FinalTime={t2:.6e} InitialStep={dt/10:.3e} "
+        lines.append(f"  Transient( InitialTime={ft(t1)} FinalTime={ft(t2)} InitialStep={dt/10:.3e} "
                      f"MaxStep={dt:.3e} MinStep=1e-18 Increment=1.5 Decrement=2 )")
         lines.append("    { Coupled{ Poisson Electron Hole eQuantumPotential Contact Circuit }")
         nint = max(4, min(50, round((t2 - t1) / dt)))       # the system and current files get a point per maximum step (4 was too coarse for the write curve)
-        lines.append(f"      CurrentPlot( Time=( Range=({t1:.6e} {t2:.6e}) Intervals={nint} ) ) }}")
+        lines.append(f"      CurrentPlot( Time=( Range=({ft(t1)} {ft(t2)}) Intervals={nint} ) ) }}")
     lines.append('  Plot( FilePrefix="end" )')
     lines.append("}")
     return "\n".join(lines) + "\n"
@@ -249,6 +261,7 @@ def deck_cho(rid, p, struct, test):
         # Row hammer: the same during the hold with the BL still at Vdd, before it goes to Vdd/2 (the pre-charge is common to both).
         tgen = (t2 + 2e-10, tS - 1e-9); tset = (tset[0], tS - 5e-10)
         S.add(t2, tset[1], hold / 40); S.add(tset[1], tS, 5e-11)
+    elif hold > 1e-6: S.log(t2, tS)                       # long hold (time scale of the cited FBE tests): steps even in log time
     else: S.add(t2, tS, hold / 20)
     t = tS
     if test == "H":      # hold only, no write: BL and storage node driven to Vdd together with the WL at 0 V (what the junctions generate)
@@ -260,7 +273,8 @@ def deck_cho(rid, p, struct, test):
         e = p["tEdge"] * 1e-9; h = p["Tper"] * 1e-9 / 2; BL.append((tS, Vdd))
         for k in range(int(p["Npulse"])):                  # low half first, then high
             BL += [(t + e, 0.0), (t + h, 0.0), (t + h + e, Vdd), (t + 2 * h, Vdd)]
-            S.add(t, t + e, e / 5); S.add(t + e, t + h, h / 20); S.add(t + h, t + h + e, e / 5); S.add(t + h + e, t + 2 * h, h / 20); t += 2 * h
+            plat = (lambda a, b: S.log(a, b, n=10)) if h > 1e-6 else (lambda a, b: S.add(a, b, h / 20))      # long phases: log steps after each edge
+            S.add(t, t + e, e / 5); plat(t + e, t + h); S.add(t + h, t + h + e, e / 5); plat(t + h + e, t + 2 * h); t += 2 * h
     elif test == "RH":
         BL += [(tS, Vdd), (tS + te, Vdd / 2)]; S.add(tS, tS + te, te / 5); t = tS + te + hold; S.add(tS + te, t, hold / 20)
         tS = t; WA.append((t, 0.0)); ton, toff = p["tON"] * 1e-9, p["tOFF"] * 1e-9
@@ -295,7 +309,7 @@ def deck_cho(rid, p, struct, test):
     sns = [] if test == "H" else ["nSN", "nSNa"] if pair else ["nSN"]; sysl += [f"Set( {n} = 0 )" for n in sns]      # DC start: a node that sees only its capacitor and a 1e-21 A contact is singular
     solve = solve_transient(S).replace("Contact Circuit }\n", "Contact Circuit }\n" + "".join(f"  Unset( {n} )\n" for n in sns), 1)
     if tset:
-        a, b = (f"  Transient( InitialTime={x:.6e} " for x in tset)
+        a, b = (f"  Transient( InitialTime={ft(x)} " for x in tset)
         if solve.count(a) != 1 or solve.count(b) != 1: raise ValueError(f"{rid}: cannot place Set / Unset of the storage node")
         sa, ua = (f"  Set( nSNa = {p['SNa0']:g} )\n", "  Unset( nSNa )\n") if p["SNa0"] and pair else ("", "")       # the aggressor's node with the victim's
         solve = solve.replace(a, f"  Set( nSN = {p['SNset']:g} )\n" + sa + a).replace(b, "  Unset( nSN )\n" + ua + b)
@@ -613,6 +627,14 @@ for f_ in (4, 5): cfg2d(f"v{f_}", "F", gb=GBQ, k_cs=1.8 / 4.2, par=cal_par(1.7e2
 # the body is charged during the hammer, by the jumps of the victim gate. R = 2e5 Ohm (jump 0.21 V) with the coefficients x 5
 # (no avalanche at the WL switch-off) and x 7; write and hold 1 ns each (gate node settled).
 for f_ in (5, 7): cfg2d(f"w{f_}", "R", Rwl=2e5, tWr=1.0, rhsel=("Rzi_zz", "Rzg_zz"), rh=dict(tHold=1.0), k_cs=1.8 / 4.2, par=cal_par(1.7e21, 2.25e7, ii=f_))
+# Round 11 (user, 2026-10-06 night: Codex does not run this): the FBE test on the time scale of the papers the IRPS paper cites
+# for it. Its references [3] (Khan, TED 2024, Fig.6) and [4] (Deng, TED 2025, Fig.5(b)) toggle the BL with a period of 20 ms over
+# 120 ms and let GIDL fill the floating body in the BL-high phases; Fig.8(b) of the IRPS paper shows the same staircase on an
+# axis marked in ns (first fall 21, period 21). Here: no stand-in generation, nothing changed but the time scale - hold before
+# the first BL fall and BL period x 1e3 .. 1e6 (21 us .. 21 ms), BL edges kept at 0.5 ns, storage node set to 1.1 V for 10 ps after
+# the write and then free. Asks: does the model's own tunnelling generation bring the body to the bars of Fig.8(a), after how
+# long, what does the node do meanwhile, and what is lost in the BL-low phases. A diagnosis off the paper's printed time axis.
+for k_, f_ in (("z3", 1e3), ("z4", 1e4), ("z5", 1e5), ("z6", 1e6)): cfg2d(k_, "F", tHold=21.0 * f_, Tper=21 * f_, **B1)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
