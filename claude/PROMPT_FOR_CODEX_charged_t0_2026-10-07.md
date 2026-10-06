@@ -1,5 +1,8 @@
 # Codex에게: "충전된 t = 0 상태"에서 논문 BL 파형 전체(200 ns)를 계산해 주세요
 
+> **철회 (2026-10-07 01:40, 사용자 결정): 이 요청은 Codex에 전달하지 않아요. Claude가 직접 실행해요 (라운드 12, `Dn1F`~`Dn4F_c1~5`).
+> Codex는 이 20개를 돌리지 않아도 돼요. 아래 내용은 실행 조건의 기록으로 남겨요.**
+
 작성: Claude, 2026-10-07. 전달: 사용자. 대상: Cho IRPS 2026 VBL/HWL 1T1C DRAM, 2D 단면 진단.
 근거 자료는 GitHub `claude` 브랜치에 있어요: `claude/ANALYSIS.md` 4.6절, `claude/data/tables/charged_t0_check.txt`, `claude/reports/pictures/gt2d_charged_t0_check.png`, 도구 `claude/project/tools/gt_charged_t0.py`.
 
