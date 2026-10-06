@@ -1,0 +1,43 @@
+* written by make_runs.py (par_text): parameter file of the Cho-cell decks
+
+Material = "HfO2" {
+  Epsilon
+  {
+    epsilon = 22                * 5 nm gate dielectric; 22 = Sentaurus default
+  }
+}
+
+Material = "Si3N4" {
+  Epsilon
+  {
+    epsilon = 7.0                 * spacers: Lee .. Yu, IMW 2026 (Sentaurus default 7.5)
+  }
+}
+
+Material = "SiO2" {
+  Epsilon
+  {
+    epsilon = 3.9
+  }
+}
+
+Material = "Silicon" {
+  Scharfetter
+  {
+    taumax  = 1.0000e-05 ,   3.0000e-06     # [s] electrons , holes (default x 1)
+  }
+
+  Band2BandTunneling
+  {
+    Agen = 1.7e+21
+    Arec = 1.7e+21
+    Bgen = 2.25e+07
+    Brec = 2.25e+07
+  }
+
+  vanOverstraetendeMan
+  {
+    a(low)  = 3.515e+06 , 7.91e+06
+    a(high) = 3.515e+06 , 3.355e+06
+  }
+}

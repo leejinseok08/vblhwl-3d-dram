@@ -1,0 +1,90 @@
+Dh1F_c1
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 2.62 5.07 7.45 9.76 12.00 14.17 16.30 18.37 20.38
+   FBE: loss at 200 ns: 20.28 mV
+   paper Fig.8, same instants:                  55 67 76 83 87 93 98 101 | at 200 ns 100 mV | body rise t=0 -> t_A 555 mV
+   FBE: body centre, WL off -> first BL fall: +375 mV; tunnelling generation in the hold -0.126 nA per cell
+Dh1F_c2
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 2.16 4.16 6.04 7.82 9.51 11.12 12.66 14.13 15.54
+   FBE: loss at 200 ns: 15.48 mV
+   paper Fig.8, same instants:                  29 34 38 40 43 45 46 49 | at 200 ns 50 mV | body rise t=0 -> t_A 445 mV
+   FBE: body centre, WL off -> first BL fall: +394 mV; tunnelling generation in the hold -0.28 nA per cell
+Dh1F_c3
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 1.06 1.97 2.76 3.47 4.12 4.70 5.25 5.76 6.23
+   FBE: loss at 200 ns: 6.21 mV
+   paper Fig.8, same instants:                   | at 200 ns 14 mV | body rise t=0 -> t_A 365 mV
+   FBE: body centre, WL off -> first BL fall: +357 mV; tunnelling generation in the hold -0.647 nA per cell
+Dh1F_c4
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 1.09 1.95 2.65 3.25 3.78 4.25 4.68 5.07 5.43
+   FBE: loss at 200 ns: 5.41 mV
+   paper Fig.8, same instants:                   | at 200 ns 7 mV | body rise t=0 -> t_A 320 mV
+   FBE: body centre, WL off -> first BL fall: +317 mV; tunnelling generation in the hold -0.568 nA per cell
+Dh1F_c5
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 0.13 0.31 0.50 0.69 0.87 1.06 1.25 1.44 1.62
+   FBE: loss at 200 ns: 1.60 mV
+   paper Fig.8, same instants:                   | at 200 ns 1 mV | body rise t=0 -> t_A 368 mV
+   FBE: body centre, WL off -> first BL fall: +367 mV; tunnelling generation in the hold -0.846 nA per cell
+DfinF_c1
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 18.90 32.64 43.44 52.34 59.91 66.50 72.30 77.52 82.25
+   FBE: loss at 200 ns: 82.14 mV
+   paper Fig.8, same instants:                  55 67 76 83 87 93 98 101 | at 200 ns 100 mV | body rise t=0 -> t_A 555 mV
+   FBE: body centre, WL off -> first BL fall: +434 mV; tunnelling generation in the hold -0.152 nA per cell
+DfinF_c2
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 15.95 25.67 32.69 38.19 42.73 46.61 49.99 53.01 55.72
+   FBE: loss at 200 ns: 55.65 mV
+   paper Fig.8, same instants:                  29 34 38 40 43 45 46 49 | at 200 ns 50 mV | body rise t=0 -> t_A 445 mV
+   FBE: body centre, WL off -> first BL fall: +458 mV; tunnelling generation in the hold -0.322 nA per cell
+DfinF_c3
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 6.42 9.23 11.05 12.41 13.52 14.45 15.25 15.97 16.61
+   FBE: loss at 200 ns: 16.58 mV
+   paper Fig.8, same instants:                   | at 200 ns 14 mV | body rise t=0 -> t_A 365 mV
+   FBE: body centre, WL off -> first BL fall: +422 mV; tunnelling generation in the hold -0.792 nA per cell
+DfinF_c4
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 5.26 7.35 8.66 9.63 10.41 11.06 11.62 12.11 12.56
+   FBE: loss at 200 ns: 12.54 mV
+   paper Fig.8, same instants:                   | at 200 ns 7 mV | body rise t=0 -> t_A 320 mV
+   FBE: body centre, WL off -> first BL fall: +376 mV; tunnelling generation in the hold -0.699 nA per cell
+DfinF_c5
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 0.14 0.32 0.50 0.69 0.87 1.06 1.24 1.42 1.61
+   FBE: loss at 200 ns: 1.58 mV
+   paper Fig.8, same instants:                   | at 200 ns 1 mV | body rise t=0 -> t_A 368 mV
+   FBE: body centre, WL off -> first BL fall: +436 mV; tunnelling generation in the hold -1.04 nA per cell
+DraF_c1
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 2.09 4.06 5.99 7.87 9.72 11.53 13.30 15.04 16.75
+   FBE: loss at 200 ns: 16.28 mV
+   paper Fig.8, same instants:                  55 67 76 83 87 93 98 101 | at 200 ns 100 mV | body rise t=0 -> t_A 555 mV
+   FBE: body centre, WL off -> first BL fall: -941 mV; tunnelling generation in the hold -0.126 nA per cell
+DraF_c2
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 1.86 3.61 5.26 6.85 8.36 9.81 11.21 12.55 13.85
+   FBE: loss at 200 ns: 13.41 mV
+   paper Fig.8, same instants:                  29 34 38 40 43 45 46 49 | at 200 ns 50 mV | body rise t=0 -> t_A 445 mV
+   FBE: body centre, WL off -> first BL fall: -834 mV; tunnelling generation in the hold -0.28 nA per cell
+DraF_c3
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 0.99 1.85 2.61 3.29 3.91 4.48 5.01 5.51 5.97
+   FBE: loss at 200 ns: 5.62 mV
+   paper Fig.8, same instants:                   | at 200 ns 14 mV | body rise t=0 -> t_A 365 mV
+   FBE: body centre, WL off -> first BL fall: -801 mV; tunnelling generation in the hold -0.646 nA per cell
+DraF_c4
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 1.06 1.91 2.60 3.20 3.72 4.19 4.61 5.00 5.36
+   FBE: loss at 200 ns: 5.02 mV
+   paper Fig.8, same instants:                   | at 200 ns 7 mV | body rise t=0 -> t_A 320 mV
+   FBE: body centre, WL off -> first BL fall: -610 mV; tunnelling generation in the hold -0.567 nA per cell
+DraF_c5
+   FBE: first BL fall at 21.14 ns, period 21.00 ns; SN before it 1.10000 V
+   FBE: loss at the end of each low phase [mV]: 0.13 0.31 0.50 0.69 0.87 1.06 1.25 1.44 1.62
+   FBE: loss at 200 ns: 1.29 mV
+   paper Fig.8, same instants:                   | at 200 ns 1 mV | body rise t=0 -> t_A 368 mV
+   FBE: body centre, WL off -> first BL fall: -264 mV; tunnelling generation in the hold -0.845 nA per cell

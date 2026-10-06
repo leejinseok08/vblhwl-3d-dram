@@ -1,0 +1,146 @@
+config      IV      W       BR      L1      L2      RH      RI    | total   (rms of deviation / tolerance, < 1 = within reading error; * = taken from the baseline, - = not there yet)
+b0         0.79*   6.49   11.97    6.62    5.14    4.71   11.88  |   7.74
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +193 first 0.09 200ns 0.51 (SN0 1.100); c2 rise +55 first 0.11 200ns 0.69 (SN0 1.100); c3 rise +9 first 0.09 200ns 0.60 (SN0 1.100); c4 rise +3 first 0.09 200ns 0.54 (SN0 1.100); c5 rise +0 first 0.13 200ns 0.82 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+cs         0.79*   0.93   12.17    5.58    4.13    4.36   11.88  |   7.15
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.74 / 0.92 / 1.02 / 1.09 V (DcsW_c2)
+      BR: c1 rise +174 first 0.21 200ns 1.18 (SN0 1.100); c2 rise +49 first 0.25 200ns 1.58 (SN0 1.100); c3 rise +7 first 0.22 200ns 1.38 (SN0 1.100); c4 rise +2 first 0.20 200ns 1.24 (SN0 1.100); c5 rise +1 first 0.30 200ns 1.89 (SN0 1.100)
+      RH: yy off +0.0015 (last 5: +0.0015); zz off -0.0015 (last 5: +0.0015); yy on +0.0006; zz on -0.0167 mV total; zz gnd on -0.0015
+ep         0.79*   6.49*  11.81    6.62    5.14    4.71   11.88  |   7.70
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +206 first 0.09 200ns 0.51 (SN0 1.100); c2 rise +65 first 0.11 200ns 0.69 (SN0 1.100); c3 rise +10 first 0.09 200ns 0.60 (SN0 1.100); c4 rise +3 first 0.09 200ns 0.54 (SN0 1.100); c5 rise +1 first 0.13 200ns 0.82 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on -0.0001; zz on -0.0122 mV total; zz gnd on -0.0011
+e1         0.79*   6.49*  11.97    6.63    5.14    4.71*  11.88* |   7.74
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +193 first 0.09 200ns 0.51 (SN0 1.100); c2 rise +55 first 0.11 200ns 0.69 (SN0 1.100); c3 rise +9 first 0.09 200ns 0.60 (SN0 1.100); c4 rise +3 first 0.08 200ns 0.54 (SN0 1.100); c5 rise +0 first 0.13 200ns 0.82 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+e2         0.79*   6.49*  12.02    6.63    5.13    4.71*  11.88* |   7.75
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +188 first 0.09 200ns 0.52 (SN0 1.100); c2 rise +54 first 0.11 200ns 0.69 (SN0 1.100); c3 rise +9 first 0.10 200ns 0.60 (SN0 1.100); c4 rise +3 first 0.09 200ns 0.54 (SN0 1.100); c5 rise +0 first 0.13 200ns 0.82 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+w3         0.79*   6.49   12.58    6.64    5.13    4.71*  11.88* |   7.88
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Dw3W_c2)
+      BR: c1 rise +143 first 0.09 200ns 0.52 (SN0 1.100); c2 rise +23 first 0.11 200ns 0.69 (SN0 1.100); c3 rise +6 first 0.09 200ns 0.60 (SN0 1.100); c4 rise +2 first 0.09 200ns 0.54 (SN0 1.100); c5 rise +0 first 0.13 200ns 0.82 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+a5         0.73    6.49*  11.98    6.65    5.17    4.71*  11.88* |   7.75
+      IV: c1 0.36/0.48/0.61 gidl -13.49; c2 0.33/0.45/0.59 gidl -13.24; c3 0.31/0.43/0.56 gidl -13.17; c4 0.27/0.39/0.51 gidl -13.43; c5 0.57/0.69/0.81 gidl -12.83
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +191 first 0.09 200ns 0.49 (SN0 1.100); c2 rise +56 first 0.11 200ns 0.67 (SN0 1.100); c3 rise +10 first 0.09 200ns 0.60 (SN0 1.100); c4 rise +2 first 0.09 200ns 0.54 (SN0 1.100); c5 rise +0 first 0.13 200ns 0.82 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+ab         0.74    6.49*  11.99    6.71    5.24    4.71*  11.88* |   7.76
+      IV: c1 0.36/0.48/0.61 gidl -13.45; c2 0.33/0.45/0.59 gidl -13.26; c3 0.31/0.43/0.56 gidl -13.23; c4 0.27/0.39/0.51 gidl -13.43; c5 0.57/0.69/0.81 gidl -12.93
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +191 first 0.08 200ns 0.45 (SN0 1.100); c2 rise +55 first 0.10 200ns 0.62 (SN0 1.100); c3 rise +9 first 0.09 200ns 0.59 (SN0 1.100); c4 rise +2 first 0.08 200ns 0.54 (SN0 1.100); c5 rise +0 first 0.13 200ns 0.82 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+r2         0.79*   6.49*  13.20    3.62    2.26    4.07    7.92  |   6.70
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +84 first 9.58 200ns 9.86 (SN0 1.100); c2 rise +6 first 10.56 200ns 10.98 (SN0 1.100); c3 rise +1 first 10.30 200ns 10.67 (SN0 1.100); c4 rise +1 first 10.51 200ns 10.83 (SN0 1.100); c5 rise +0 first 7.35 200ns 7.92 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off +0.0093 (last 5: +0.0003); yy on +0.0001; zz on +0.0979 mV total; zz gnd on +0.0196
+q0         0.79*   6.49*   0.09    3.98    2.40    4.71*  11.88* |   5.70
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +553 first 1.34 200ns 10.16 (SN0 1.100); c2 rise +441 first 0.91 200ns 6.56 (SN0 1.100); c3 rise +363 first 0.44 200ns 2.59 (SN0 1.100); c4 rise +318 first 0.45 200ns 2.22 (SN0 1.100); c5 rise +366 first 0.06 200ns 0.70 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+q1         0.79*   6.49*   0.16    3.04    1.50    4.71*  11.88* |   5.57
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +547 first 2.56 200ns 19.79 (SN0 1.100); c2 rise +440 first 1.99 200ns 14.44 (SN0 1.100); c3 rise +361 first 0.98 200ns 5.80 (SN0 1.100); c4 rise +317 first 1.02 200ns 5.09 (SN0 1.100); c5 rise +366 first 0.13 200ns 1.60 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+qn         0.79*   6.49*   0.54    4.10    2.53    4.71*  11.88* |   5.72
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +545 first 1.02 200ns 8.07 (SN0 1.100); c2 rise +440 first 0.87 200ns 6.32 (SN0 1.100); c3 rise +351 first 0.30 200ns 2.02 (SN0 1.100); c4 rise +340 first 0.88 200ns 3.23 (SN0 1.100); c5 rise +344 first 0.06 200ns 0.70 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+q3         0.79*   6.49*   0.22    4.21    2.81    4.71*  11.88* |   5.75
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +544 first 0.95 200ns 6.16 (SN0 1.100); c2 rise +437 first 0.76 200ns 4.77 (SN0 1.100); c3 rise +362 first 0.41 200ns 2.14 (SN0 1.100); c4 rise +317 first 0.42 200ns 1.85 (SN0 1.100); c5 rise +366 first 0.06 200ns 0.70 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+f1         0.79*   6.49*    -       -       -      4.71*  11.88* |   7.17
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 not far enough; c2 not far enough; c3 not far enough; c4 not far enough; c5 not far enough
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+f2         0.79*   6.49*    -       -       -      4.71*  11.88* |   7.17
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 not far enough; c2 not far enough; c3 not far enough; c4 not far enough; c5 not far enough
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+f3         0.79*   6.49*    -       -       -      4.71*  11.88* |   7.17
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 not far enough; c2 not far enough; c3 not far enough; c4 not far enough; c5 not far enough
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+h1         0.79*   6.49*   0.12    2.97    1.44    4.71*  11.88* |   5.56
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +548 first 2.62 200ns 20.25 (SN0 1.100); c2 rise +442 first 2.16 200ns 15.46 (SN0 1.100); c3 rise +363 first 1.06 200ns 6.20 (SN0 1.100); c4 rise +319 first 1.09 200ns 5.41 (SN0 1.100); c5 rise +367 first 0.13 200ns 1.60 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+h2         0.79*   6.49*   2.03    0.84    0.51    4.71*  11.88* |   5.49
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +608 first 18.93 200ns 82.11 (SN0 1.100); c2 rise +506 first 15.98 200ns 55.64 (SN0 1.100); c3 rise +429 first 6.43 200ns 16.58 (SN0 1.100); c4 rise +378 first 5.27 200ns 12.53 (SN0 1.100); c5 rise +436 first 0.14 200ns 1.57 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+h3         0.79*   6.49*   4.05    1.09    1.05    4.71*  11.88* |   5.66
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +665 first 73.62 200ns 164.14 (SN0 1.100); c2 rise +566 first 54.70 200ns 107.01 (SN0 1.100); c3 rise +492 first 16.93 200ns 28.47 (SN0 1.100); c4 rise +435 first 12.34 200ns 20.40 (SN0 1.100); c5 rise +501 first 0.15 200ns 1.55 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+h4         0.79*   6.49*   7.86    2.25    1.86    4.71*  11.88* |   6.28
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 rise +771 first 215.29 200ns 298.70 (SN0 1.100); c2 rise +680 first 148.69 200ns 200.84 (SN0 1.100); c3 rise +612 first 41.31 200ns 53.11 (SN0 1.100); c4 rise +543 first 28.36 200ns 36.59 (SN0 1.100); c5 rise +624 first 0.48 200ns 2.39 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+fin        0.73    0.93    2.03    0.84    0.51    4.39   11.88  |   4.88
+      IV: c1 0.36/0.48/0.61 gidl -13.49; c2 0.33/0.45/0.59 gidl -13.24; c3 0.31/0.43/0.56 gidl -13.17; c4 0.27/0.39/0.51 gidl -13.43; c5 0.57/0.69/0.81 gidl -12.83
+      W: 0.74 / 0.92 / 1.02 / 1.09 V (DfinW_c2)
+      BR: c1 rise +608 first 18.93 200ns 82.11 (SN0 1.100); c2 rise +506 first 15.98 200ns 55.64 (SN0 1.100); c3 rise +429 first 6.43 200ns 16.58 (SN0 1.100); c4 rise +378 first 5.27 200ns 12.53 (SN0 1.100); c5 rise +436 first 0.14 200ns 1.57 (SN0 1.100)
+      RH: yy off +0.0014 (last 5: +0.0014); zz off -0.0016 (last 5: +0.0014); yy on +0.0003; zz on -0.0173 mV total; zz gnd on -0.0016
+fin2       0.73    0.93    0.12    2.97    1.44    4.39   11.88  |   4.97
+      IV: c1 0.36/0.48/0.61 gidl -13.49; c2 0.33/0.45/0.59 gidl -13.24; c3 0.31/0.43/0.56 gidl -13.17; c4 0.27/0.39/0.51 gidl -13.43; c5 0.57/0.69/0.81 gidl -12.83
+      W: 0.74 / 0.92 / 1.02 / 1.09 V (DfinW_c2)
+      BR: c1 rise +548 first 2.62 200ns 20.25 (SN0 1.100); c2 rise +442 first 2.16 200ns 15.46 (SN0 1.100); c3 rise +363 first 1.06 200ns 6.20 (SN0 1.100); c4 rise +319 first 1.09 200ns 5.41 (SN0 1.100); c5 rise +367 first 0.13 200ns 1.60 (SN0 1.100)
+      RH: yy off +0.0014 (last 5: +0.0014); zz off -0.0016 (last 5: +0.0014); yy on +0.0003; zz on -0.0173 mV total; zz gnd on -0.0016
+ra         0.79*  18.85    0.24    3.14    1.60     -       -    |   8.59
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.07 / 0.22 / 0.51 / 0.88 V (DraW_c2)
+      BR: c1 rise +542 first 2.10 200ns 16.28 (SN0 1.100); c2 rise +438 first 1.87 200ns 13.42 (SN0 1.100); c3 rise +361 first 0.99 200ns 5.63 (SN0 1.100); c4 rise +318 first 1.07 200ns 5.04 (SN0 1.100); c5 rise +367 first 0.13 200ns 1.31 (SN0 1.100)
+      RH: yy off: not complete; zz off: not complete; yy on: not complete; zz on: not complete; zz gnd on: not complete
+sx         0.78*   1.17   10.47*   5.79*   4.38*   4.71*  11.88* |   6.84
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -13.37; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.72 / 0.90 / 1.01 / 1.08 V (DsxW_c2)
+      BR: c1 rise +193 first 0.09 200ns 0.51 (SN0 1.100); c2 rise +444 first 2.32 200ns 16.26 (SN0 1.100); c3 rise +9 first 0.09 200ns 0.60 (SN0 1.100); c4 rise +3 first 0.09 200ns 0.54 (SN0 1.100); c5 rise +0 first 0.13 200ns 0.82 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+sh         0.81*   1.35   10.47*   5.83*   4.40*   4.71*  11.88* |   6.85
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.81; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.79 / 0.96 / 1.05 / 1.11 V (DshW_c2)
+      BR: c1 rise +193 first 0.09 200ns 0.51 (SN0 1.100); c2 rise +438 first 1.84 200ns 13.69 (SN0 1.100); c3 rise +9 first 0.09 200ns 0.60 (SN0 1.100); c4 rise +3 first 0.09 200ns 0.54 (SN0 1.100); c5 rise +0 first 0.13 200ns 0.82 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+bw         0.77*   0.94   10.47*   5.80*   4.40*   4.71*  11.88* |   6.84
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.58 gidl -13.27; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.74 / 0.92 / 1.02 / 1.09 V (DbwW_c2)
+      BR: c1 rise +193 first 0.09 200ns 0.51 (SN0 1.100); c2 rise +442 first 2.15 200ns 13.84 (SN0 1.100); c3 rise +9 first 0.09 200ns 0.60 (SN0 1.100); c4 rise +3 first 0.09 200ns 0.54 (SN0 1.100); c5 rise +0 first 0.13 200ns 0.82 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+m1         0.78*  21.65   11.70*   6.21*   4.83*   4.71*  11.88* |  10.90
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -13.26; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.33 / 0.33 / 0.33 / 0.33 V (Dm1W_c2)
+      BR: c1 rise +193 first 0.09 200ns 0.51 (SN0 1.100); c2 not far enough; c3 rise +9 first 0.09 200ns 0.60 (SN0 1.100); c4 rise +3 first 0.09 200ns 0.54 (SN0 1.100); c5 rise +0 first 0.13 200ns 0.82 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+k6         0.79*   6.49*    -       -       -      4.71*  11.88* |   7.17
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 not far enough; c2 not far enough; c3 not far enough; c4 not far enough; c5 not far enough
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+k7         0.79*   6.49*    -       -       -      4.71*  11.88* |   7.17
+      IV: c1 0.36/0.48/0.61 gidl -13.18; c2 0.33/0.45/0.59 gidl -12.94; c3 0.31/0.43/0.56 gidl -12.88; c4 0.27/0.39/0.51 gidl -13.14; c5 0.57/0.69/0.81 gidl -12.59
+      W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
+      BR: c1 not far enough; c2 not far enough; c3 not far enough; c4 not far enough; c5 not far enough
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011

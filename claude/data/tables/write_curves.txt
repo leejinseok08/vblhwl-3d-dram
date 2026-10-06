@@ -1,0 +1,16 @@
+== Db0W_c2: t = 0.1800 ns, 107 steps, SN now 1.038378 V
+   write: SN at +12 / 24 / 39 / 60 / 100 ps after the WL edge: 0.512 0.716 0.859 0.968 1.064 | after WL off 1.03838 V
+== DcsW_c2: t = 0.1800 ns, 107 steps, SN now 1.075525 V
+   write: SN at +12 / 24 / 39 / 60 / 100 ps after the WL edge: 0.743 0.921 1.025 1.093 1.143 | after WL off 1.07553 V
+== DfinW_c2: t = 0.1800 ns, 107 steps, SN now 1.075532 V
+   write: SN at +12 / 24 / 39 / 60 / 100 ps after the WL edge: 0.743 0.921 1.025 1.093 1.143 | after WL off 1.07553 V
+== DraW_c2: t = 0.1800 ns, 107 steps, SN now 1.052396 V
+   write: SN at +12 / 24 / 39 / 60 / 100 ps after the WL edge: 0.065 0.220 0.514 0.878 1.132 | after WL off 1.05964 V
+== Dw3W_c2: t = 0.3750 ns, 123 steps, SN now 1.126814 V
+   write: SN at +12 / 24 / 39 / 60 / 100 ps after the WL edge: 0.512 0.716 0.859 0.968 1.064 | after WL off 1.12681 V
+== DsxW_c2: t = 0.1800 ns, 107 steps, SN now 1.076439 V
+   write: SN at +12 / 24 / 39 / 60 / 100 ps after the WL edge: 0.723 0.903 1.011 1.083 1.138 | after WL off 1.07644 V
+== DshW_c2: t = 0.1800 ns, 107 steps, SN now 1.064605 V
+   write: SN at +12 / 24 / 39 / 60 / 100 ps after the WL edge: 0.788 0.959 1.053 1.111 1.150 | after WL off 1.06461 V
+== DbwW_c2: t = 0.1800 ns, 107 steps, SN now 1.075717 V
+   write: SN at +12 / 24 / 39 / 60 / 100 ps after the WL edge: 0.742 0.920 1.024 1.092 1.142 | after WL off 1.07572 V
