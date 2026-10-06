@@ -1,0 +1,5 @@
+# Preserve the exact executed bytes, including input and waveform hashes.
+* -text
+*.tdr binary
+*.png binary
+*.plt -diff

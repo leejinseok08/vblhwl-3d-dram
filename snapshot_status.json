@@ -1,0 +1,164 @@
+{
+  "snapshot_started_at": "2026-10-06T17:53:59.534508+09:00",
+  "snapshot_finished_at": "2026-10-06T17:54:02.166852+09:00",
+  "note": "Incomplete raw PLT files are read-only copies; analysis uses complete parsed rows. No incomplete run is marked complete.",
+  "runs": [
+    {
+      "batch": "numeric_A1",
+      "id": "JN_c1_q1050",
+      "status_at_copy": "complete",
+      "exit_code_at_copy": "0",
+      "copy_started_at": "2026-10-06T17:53:59.547535+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.552385+09:00"
+    },
+    {
+      "batch": "numeric_A1",
+      "id": "JN_c1_q1300",
+      "status_at_copy": "complete",
+      "exit_code_at_copy": "0",
+      "copy_started_at": "2026-10-06T17:53:59.552795+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.556693+09:00"
+    },
+    {
+      "batch": "numeric_A1",
+      "id": "JN_c2_q1050",
+      "status_at_copy": "complete",
+      "exit_code_at_copy": "0",
+      "copy_started_at": "2026-10-06T17:53:59.557128+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.561024+09:00"
+    },
+    {
+      "batch": "numeric_A1",
+      "id": "JN_c2_q1300",
+      "status_at_copy": "complete",
+      "exit_code_at_copy": "0",
+      "copy_started_at": "2026-10-06T17:53:59.561510+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.566814+09:00"
+    },
+    {
+      "batch": "free_sn_A3",
+      "id": "FS_c1_q1050",
+      "status_at_copy": "complete",
+      "exit_code_at_copy": "0",
+      "copy_started_at": "2026-10-06T17:53:59.576497+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.585187+09:00"
+    },
+    {
+      "batch": "free_sn_A3",
+      "id": "FS_c1_q1300",
+      "status_at_copy": "complete",
+      "exit_code_at_copy": "0",
+      "copy_started_at": "2026-10-06T17:53:59.585730+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.595108+09:00"
+    },
+    {
+      "batch": "free_sn_A3",
+      "id": "FS_c2_q1050",
+      "status_at_copy": "incomplete",
+      "exit_code_at_copy": null,
+      "copy_started_at": "2026-10-06T17:53:59.595676+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.597418+09:00"
+    },
+    {
+      "batch": "free_sn_A3",
+      "id": "FS_c2_q1300",
+      "status_at_copy": "incomplete",
+      "exit_code_at_copy": null,
+      "copy_started_at": "2026-10-06T17:53:59.597755+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.598219+09:00"
+    },
+    {
+      "batch": "spatial_A2",
+      "id": "UP_c1_uniform",
+      "status_at_copy": "complete",
+      "exit_code_at_copy": "0",
+      "copy_started_at": "2026-10-06T17:53:59.617391+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.622307+09:00"
+    },
+    {
+      "batch": "spatial_A2",
+      "id": "UP_c2_uniform",
+      "status_at_copy": "complete",
+      "exit_code_at_copy": "0",
+      "copy_started_at": "2026-10-06T17:53:59.622872+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.627361+09:00"
+    },
+    {
+      "batch": "condition_discrimination_20261006",
+      "id": "CDH_c1_i1",
+      "status_at_copy": "complete",
+      "exit_code_at_copy": "0",
+      "copy_started_at": "2026-10-06T17:53:59.638591+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.643043+09:00"
+    },
+    {
+      "batch": "condition_discrimination_20261006",
+      "id": "CDR_r2e5_i0_on",
+      "status_at_copy": "complete",
+      "exit_code_at_copy": "0",
+      "copy_started_at": "2026-10-06T17:53:59.643599+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.652187+09:00"
+    },
+    {
+      "batch": "condition_discrimination_20261006",
+      "id": "CDR_r2e5_i0_idle",
+      "status_at_copy": "complete",
+      "exit_code_at_copy": "0",
+      "copy_started_at": "2026-10-06T17:53:59.652748+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.661053+09:00"
+    },
+    {
+      "batch": "condition_discrimination_20261006",
+      "id": "CDH_c1_i0",
+      "status_at_copy": "complete",
+      "exit_code_at_copy": "0",
+      "copy_started_at": "2026-10-06T17:53:59.661617+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.666826+09:00"
+    },
+    {
+      "batch": "condition_discrimination_20261006",
+      "id": "CDR_id_i0_on",
+      "status_at_copy": "complete",
+      "exit_code_at_copy": "0",
+      "copy_started_at": "2026-10-06T17:53:59.667403+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.674190+09:00"
+    },
+    {
+      "batch": "condition_discrimination_20261006",
+      "id": "CDR_id_i0_idle",
+      "status_at_copy": "incomplete",
+      "exit_code_at_copy": null,
+      "copy_started_at": "2026-10-06T17:53:59.674594+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.676346+09:00"
+    },
+    {
+      "batch": "condition_discrimination_20261006",
+      "id": "CDR_r2e5_i1_on",
+      "status_at_copy": "incomplete",
+      "exit_code_at_copy": null,
+      "copy_started_at": "2026-10-06T17:53:59.676862+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.677602+09:00"
+    },
+    {
+      "batch": "condition_discrimination_20261006",
+      "id": "CDR_r2e5_i1_idle",
+      "status_at_copy": "incomplete",
+      "exit_code_at_copy": null,
+      "copy_started_at": "2026-10-06T17:53:59.677974+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.678685+09:00"
+    },
+    {
+      "batch": "condition_discrimination_20261006",
+      "id": "CDH_c2_i1",
+      "status_at_copy": "incomplete",
+      "exit_code_at_copy": null,
+      "copy_started_at": "2026-10-06T17:53:59.679042+09:00",
+      "copy_finished_at": "2026-10-06T17:53:59.679633+09:00"
+    }
+  ],
+  "device_mesh_sha256": {
+    "gr_c1h": "c9c50820ee739fd5653b541bdd2a91ceea11e775605f5a784ece72268826a070",
+    "gr_c2h": "e44c0359c930d640d42ee9f1fffcf61ddb960c40da99432776fe1420d0b7b8c5",
+    "gr_zz": "43768c65a04290b5ece53ea0b811a37fc0a94b0e2a5eb5dfce562a982ea7ae9a"
+  }
+}

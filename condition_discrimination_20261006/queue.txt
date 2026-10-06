@@ -1,0 +1,9 @@
+CDH_c1_i1
+CDR_r2e5_i0_on
+CDR_r2e5_i0_idle
+CDH_c1_i0
+CDR_id_i0_on
+CDR_id_i0_idle
+CDR_r2e5_i1_on
+CDR_r2e5_i1_idle
+CDH_c2_i1

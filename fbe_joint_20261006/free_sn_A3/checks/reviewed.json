@@ -1,0 +1,11 @@
+{
+  "manifest_sha256": "9d2ceb7dc363fa56c438d3703e02c1eb1f4970a7e4ab0f5a47b9c3e3624aba06",
+  "reviewed_at_local": "2026-10-06T17:10:10.748033+09:00",
+  "paper_review": "Cho IRPS2026 III/IV/VI and Figs2/4/5/8 reviewed; 2D diagnostic, not full 3D FBE reproduction",
+  "mesh_checks_read": 8,
+  "release_time_ns": 0.14,
+  "control_release_time_ns": 20.64,
+  "A1_internal_validation": "all four completed and passed; generation, Cs, bias, II preserved",
+  "review_document_sha256": "efa50959cf00a3a396fbf51a99efaf840a6da86ebcc35615df35dc18cd929e54",
+  "authorization": "User explicitly requested proceeding with approved diagnostic experiments"
+}

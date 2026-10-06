@@ -1,0 +1,678 @@
+{
+  "runs": [
+    {
+      "run": "Dh1F_c1",
+      "case": 1,
+      "Cs_fF": 2.185714285714286,
+      "target_first_mV": 55,
+      "target_200_mV": 100,
+      "target_rise_mV": 555,
+      "Nholes_preBL": 1057.7308116298452,
+      "excess_holes_vs_equilibrium": 1057.5865978343138,
+      "rise_from_eq_mV": 548.2307905445142,
+      "rise_from_FBEorigin_mV": 375.42145423156416,
+      "first_loss_from_origin_mV": 2.622956534555465,
+      "first_loss_from_prefall_mV": 2.620508990635706,
+      "loss200_from_origin_mV": 20.253489348480038,
+      "first_SN_total_integral_fC": 0.0059302187143355995,
+      "first_Cs_deltaV_fC": 0.005727683936675186,
+      "clamped_SN_terminal_charge_fC": 0.06999132173137473,
+      "exact_lowend_ns": 31.639000000000003,
+      "FBE_origin_ns": 0.13999999999999993,
+      "prefall_ns": 21.139000000000003,
+      "last_ns": 210.14000000000001,
+      "body_rise_normalized_error": -0.22564031518285976,
+      "first_normalized_error": -4.405238652032055,
+      "loss200_normalized_error": -2.311667146972119
+    },
+    {
+      "run": "Dh1F_c2",
+      "case": 2,
+      "Cs_fF": 1.7999999999999996,
+      "target_first_mV": 29,
+      "target_200_mV": 50,
+      "target_rise_mV": 445,
+      "Nholes_preBL": 1044.565416305949,
+      "excess_holes_vs_equilibrium": 1044.562482442757,
+      "rise_from_eq_mV": 441.9661197341417,
+      "rise_from_FBEorigin_mV": 394.9677739900227,
+      "first_loss_from_origin_mV": 2.1643010797836038,
+      "first_loss_from_prefall_mV": 2.1610274618342196,
+      "loss200_from_origin_mV": 15.462180775850154,
+      "first_SN_total_integral_fC": 0.0039805923553894495,
+      "first_Cs_deltaV_fC": 0.0038898494313015946,
+      "clamped_SN_terminal_charge_fC": 0.07176167945638688,
+      "exact_lowend_ns": 31.639000000000003,
+      "FBE_origin_ns": 0.13999999999999993,
+      "prefall_ns": 21.139000000000003,
+      "last_ns": 210.14000000000001,
+      "body_rise_normalized_error": -0.10112934219527574,
+      "first_normalized_error": -3.756934405939224,
+      "loss200_normalized_error": -1.698997526081642
+    },
+    {
+      "run": "Dh1F_c3",
+      "case": 3,
+      "Cs_fF": 1.542857142857143,
+      "target_first_mV": 7.1,
+      "target_200_mV": 14.6,
+      "target_rise_mV": 365,
+      "Nholes_preBL": 1091.01790606708,
+      "excess_holes_vs_equilibrium": 1091.017749842368,
+      "rise_from_eq_mV": 362.98235939885035,
+      "rise_from_FBEorigin_mV": 357.12075471439135,
+      "first_loss_from_origin_mV": 1.0604922303527609,
+      "first_loss_from_prefall_mV": 1.057329460937284,
+      "loss200_from_origin_mV": 6.201602078540036,
+      "first_SN_total_integral_fC": 0.0016752826208330871,
+      "first_Cs_deltaV_fC": 0.001631308311160381,
+      "clamped_SN_terminal_charge_fC": 0.07027655903310341,
+      "exact_lowend_ns": 31.639000000000003,
+      "FBE_origin_ns": 0.13999999999999993,
+      "prefall_ns": 21.139000000000003,
+      "last_ns": 210.14000000000001,
+      "body_rise_normalized_error": -0.06725468670498837,
+      "first_normalized_error": -2.7525028589775284,
+      "loss200_normalized_error": -1.2394965306361516
+    },
+    {
+      "run": "Dh1F_c4",
+      "case": 4,
+      "Cs_fF": 1.542857142857143,
+      "target_first_mV": 3.5,
+      "target_200_mV": 7,
+      "target_rise_mV": 320,
+      "Nholes_preBL": 956.7540447312653,
+      "excess_holes_vs_equilibrium": 956.7540257665112,
+      "rise_from_eq_mV": 318.7525429589341,
+      "rise_from_FBEorigin_mV": 317.25398208535614,
+      "first_loss_from_origin_mV": 1.091258631204406,
+      "first_loss_from_prefall_mV": 1.0883849468528162,
+      "loss200_from_origin_mV": 5.409131877150086,
+      "first_SN_total_integral_fC": 0.0017305118818484921,
+      "first_Cs_deltaV_fC": 0.0016792224894300592,
+      "clamped_SN_terminal_charge_fC": 0.061947918112291236,
+      "exact_lowend_ns": 31.639000000000003,
+      "FBE_origin_ns": 0.13999999999999993,
+      "prefall_ns": 21.139000000000003,
+      "last_ns": 210.14000000000001,
+      "body_rise_normalized_error": -0.041581901368863326,
+      "first_normalized_error": -1.6871345087098044,
+      "loss200_normalized_error": -0.37323490047242275
+    },
+    {
+      "run": "Dh1F_c5",
+      "case": 5,
+      "Cs_fF": 1.542857142857143,
+      "target_first_mV": 0,
+      "target_200_mV": 1,
+      "target_rise_mV": 368,
+      "Nholes_preBL": 1133.9661416740541,
+      "excess_holes_vs_equilibrium": 1132.0712012112583,
+      "rise_from_eq_mV": 367.14194044562424,
+      "rise_from_FBEorigin_mV": 367.79810308044426,
+      "first_loss_from_origin_mV": 0.12984191007681112,
+      "first_loss_from_prefall_mV": 0.12539607732309221,
+      "loss200_from_origin_mV": 1.5991241240300713,
+      "first_SN_total_integral_fC": 0.00022266542909273675,
+      "first_Cs_deltaV_fC": 0.00019346823358419943,
+      "clamped_SN_terminal_charge_fC": 0.06974063569970684,
+      "exact_lowend_ns": 31.639000000000003,
+      "FBE_origin_ns": 0.13999999999999993,
+      "prefall_ns": 21.139000000000003,
+      "last_ns": 210.14000000000001,
+      "body_rise_normalized_error": -0.028601985145858558,
+      "first_normalized_error": 0.12984191007681112,
+      "loss200_normalized_error": 0.6796072499883257
+    },
+    {
+      "run": "DfinF_c1",
+      "case": 1,
+      "Cs_fF": 2.185714285714286,
+      "target_first_mV": 55,
+      "target_200_mV": 100,
+      "target_rise_mV": 555,
+      "Nholes_preBL": 1291.2844148945737,
+      "excess_holes_vs_equilibrium": 1291.1402010990423,
+      "rise_from_eq_mV": 608.1798464075531,
+      "rise_from_FBEorigin_mV": 435.37051009460305,
+      "first_loss_from_origin_mV": 18.9284057273158,
+      "first_loss_from_prefall_mV": 18.92606497503424,
+      "loss200_from_origin_mV": 82.1148149299702,
+      "first_SN_total_integral_fC": 0.0416914937627234,
+      "first_Cs_deltaV_fC": 0.04136697058828912,
+      "clamped_SN_terminal_charge_fC": 0.08705228126321723,
+      "exact_lowend_ns": 31.639000000000003,
+      "FBE_origin_ns": 0.13999999999999993,
+      "prefall_ns": 21.139000000000003,
+      "last_ns": 210.14000000000001,
+      "body_rise_normalized_error": 1.7726615469184366,
+      "first_normalized_error": -1.5441621769287663,
+      "loss200_normalized_error": -0.2852616053024413
+    },
+    {
+      "run": "DfinF_c2",
+      "case": 2,
+      "Cs_fF": 1.7999999999999996,
+      "target_first_mV": 29,
+      "target_200_mV": 50,
+      "target_rise_mV": 445,
+      "Nholes_preBL": 1294.6823047306864,
+      "excess_holes_vs_equilibrium": 1294.6793708674945,
+      "rise_from_eq_mV": 505.7439823044667,
+      "rise_from_FBEorigin_mV": 458.74563656034866,
+      "first_loss_from_origin_mV": 15.974904375964272,
+      "first_loss_from_prefall_mV": 15.971844905582122,
+      "loss200_from_origin_mV": 55.63729743871004,
+      "first_SN_total_integral_fC": 0.029102496257958382,
+      "first_Cs_deltaV_fC": 0.02874932083004781,
+      "clamped_SN_terminal_charge_fC": 0.08973197441432977,
+      "exact_lowend_ns": 31.639000000000003,
+      "FBE_origin_ns": 0.13999999999999993,
+      "prefall_ns": 21.139000000000003,
+      "last_ns": 210.14000000000001,
+      "body_rise_normalized_error": 2.024799410148891,
+      "first_normalized_error": -0.86319910233384,
+      "loss200_normalized_error": 0.15465340600456667
+    },
+    {
+      "run": "DfinF_c3",
+      "case": 3,
+      "Cs_fF": 1.542857142857143,
+      "target_first_mV": 7.1,
+      "target_200_mV": 14.6,
+      "target_rise_mV": 365,
+      "Nholes_preBL": 1358.0847962024436,
+      "excess_holes_vs_equilibrium": 1358.0846399777315,
+      "rise_from_eq_mV": 428.9389567749294,
+      "rise_from_FBEorigin_mV": 423.07735209047036,
+      "first_loss_from_origin_mV": 6.432226286544829,
+      "first_loss_from_prefall_mV": 6.429178852265016,
+      "loss200_from_origin_mV": 16.579222588489984,
+      "first_SN_total_integral_fC": 0.010272737066629253,
+      "first_Cs_deltaV_fC": 0.009919304514923167,
+      "clamped_SN_terminal_charge_fC": 0.08779340977214684,
+      "exact_lowend_ns": 31.639000000000003,
+      "FBE_origin_ns": 0.13999999999999993,
+      "prefall_ns": 21.139000000000003,
+      "last_ns": 210.14000000000001,
+      "body_rise_normalized_error": 2.1312985591643137,
+      "first_normalized_error": -0.14299011391470165,
+      "loss200_normalized_error": 0.18403768843622473
+    },
+    {
+      "run": "DfinF_c4",
+      "case": 4,
+      "Cs_fF": 1.542857142857143,
+      "target_first_mV": 3.5,
+      "target_200_mV": 7,
+      "target_rise_mV": 320,
+      "Nholes_preBL": 1193.1218392829455,
+      "excess_holes_vs_equilibrium": 1193.1218203181913,
+      "rise_from_eq_mV": 378.19583425311777,
+      "rise_from_FBEorigin_mV": 376.69727337953975,
+      "first_loss_from_origin_mV": 5.270245619251712,
+      "first_loss_from_prefall_mV": 5.2674653551838535,
+      "loss200_from_origin_mV": 12.53347393443005,
+      "first_SN_total_integral_fC": 0.008469382515433421,
+      "first_Cs_deltaV_fC": 0.008126946547997945,
+      "clamped_SN_terminal_charge_fC": 0.07738638243294088,
+      "exact_lowend_ns": 31.639000000000003,
+      "FBE_origin_ns": 0.13999999999999993,
+      "prefall_ns": 21.139000000000003,
+      "last_ns": 210.14000000000001,
+      "body_rise_normalized_error": 1.9398611417705922,
+      "first_normalized_error": 0.5925427052777354,
+      "loss200_normalized_error": 0.8432447405229212
+    },
+    {
+      "run": "DfinF_c5",
+      "case": 5,
+      "Cs_fF": 1.542857142857143,
+      "target_first_mV": 0,
+      "target_200_mV": 1,
+      "target_rise_mV": 368,
+      "Nholes_preBL": 1412.8935190186085,
+      "excess_holes_vs_equilibrium": 1410.9985785558126,
+      "rise_from_eq_mV": 435.6829225388578,
+      "rise_from_FBEorigin_mV": 436.33908517367774,
+      "first_loss_from_origin_mV": 0.14005317743848167,
+      "first_loss_from_prefall_mV": 0.1356859009908895,
+      "loss200_from_origin_mV": 1.5717728358199956,
+      "first_SN_total_integral_fC": 0.0002496157339491615,
+      "first_Cs_deltaV_fC": 0.00020934396152880096,
+      "clamped_SN_terminal_charge_fC": 0.08710500320545725,
+      "exact_lowend_ns": 31.639000000000003,
+      "FBE_origin_ns": 0.13999999999999993,
+      "prefall_ns": 21.139000000000003,
+      "last_ns": 210.14000000000001,
+      "body_rise_normalized_error": 2.256097417961926,
+      "first_normalized_error": 0.14005317743848167,
+      "loss200_normalized_error": 0.6546325960113499
+    }
+  ],
+  "detail": [
+    {
+      "run": "Dh1F_c1",
+      "snapshots": {
+        "equilibrium": {
+          "ns": 0.0,
+          "SN_V": 0.0,
+          "psi_V": -0.295542880224654,
+          "phi_p_V": 0.0,
+          "N_holes": 0.144213795531413
+        },
+        "post_write_SNset": {
+          "ns": 0.13999999999999993,
+          "SN_V": 1.1,
+          "psi_V": -0.122733543911704,
+          "phi_p_V": 0.31982254282216,
+          "N_holes": 102.691962895202
+        },
+        "pre_BL_fall": {
+          "ns": 21.139000000000003,
+          "SN_V": 1.0999975524560803,
+          "psi_V": 0.25268791031986015,
+          "phi_p_V": 0.7006857419832588,
+          "N_holes": 1057.7308116298452
+        }
+      },
+      "all_potential_probes_preBL": {
+        "Pos(0.125,0.055) ElectrostaticPotential": 0.25268791031986015,
+        "Pos(0.125,0.055) hQuasiFermiPotential": 0.7006857419832588,
+        "Pos(0.125,0.055) eQuasiFermiPotential": 0.8881752764056493,
+        "Pos(0.0625,0.055) ElectrostaticPotential": 0.8402899342471556,
+        "Pos(0.0625,0.055) hQuasiFermiPotential": 0.7006861129586337,
+        "Pos(0.085,0.055) ElectrostaticPotential": 0.265793566873913,
+        "Pos(0.085,0.055) hQuasiFermiPotential": 0.7006857376619284,
+        "Pos(0.165,0.055) ElectrostaticPotential": 0.7097184611381163,
+        "Pos(0.165,0.055) hQuasiFermiPotential": 0.7007076353528849
+      },
+      "electron_integral_available": false
+    },
+    {
+      "run": "Dh1F_c2",
+      "snapshots": {
+        "equilibrium": {
+          "ns": 0.0,
+          "SN_V": 0.0,
+          "psi_V": -0.190450380359311,
+          "phi_p_V": 0.0,
+          "N_holes": 0.00293386319179448
+        },
+        "post_write_SNset": {
+          "ns": 0.13999999999999993,
+          "SN_V": 1.1,
+          "psi_V": -0.143452034615192,
+          "phi_p_V": 0.285246870705031,
+          "N_holes": 34.8986579977789
+        },
+        "pre_BL_fall": {
+          "ns": 21.139000000000003,
+          "SN_V": 1.0999967263820507,
+          "psi_V": 0.25151573937483074,
+          "phi_p_V": 0.7060994196081668,
+          "N_holes": 1044.565416305949
+        }
+      },
+      "all_potential_probes_preBL": {
+        "Pos(0.125,0.05) ElectrostaticPotential": 0.25151573937483074,
+        "Pos(0.125,0.05) hQuasiFermiPotential": 0.7060994196081668,
+        "Pos(0.125,0.05) eQuasiFermiPotential": 0.7836073191768487,
+        "Pos(0.0625,0.05) ElectrostaticPotential": 0.8180656906963611,
+        "Pos(0.0625,0.05) hQuasiFermiPotential": 0.706099542699948,
+        "Pos(0.085,0.05) ElectrostaticPotential": 0.2556143006707334,
+        "Pos(0.085,0.05) hQuasiFermiPotential": 0.7060994145111522,
+        "Pos(0.165,0.05) ElectrostaticPotential": 0.5234345538700222,
+        "Pos(0.165,0.05) hQuasiFermiPotential": 0.706103113874098
+      },
+      "electron_integral_available": false
+    },
+    {
+      "run": "Dh1F_c3",
+      "snapshots": {
+        "equilibrium": {
+          "ns": 0.0,
+          "SN_V": 0.0,
+          "psi_V": -0.114054693204077,
+          "phi_p_V": 0.0,
+          "N_holes": 0.000156224712189582
+        },
+        "post_write_SNset": {
+          "ns": 0.13999999999999993,
+          "SN_V": 1.1,
+          "psi_V": -0.108193088519618,
+          "phi_p_V": 0.290956475679919,
+          "N_holes": 8.66717713753548
+        },
+        "pre_BL_fall": {
+          "ns": 21.139000000000003,
+          "SN_V": 1.0999968372305846,
+          "psi_V": 0.24892766619477336,
+          "phi_p_V": 0.7249572828923516,
+          "N_holes": 1091.01790606708
+        }
+      },
+      "all_potential_probes_preBL": {
+        "Pos(0.125,0.045) ElectrostaticPotential": 0.24892766619477336,
+        "Pos(0.125,0.045) hQuasiFermiPotential": 0.7249572828923516,
+        "Pos(0.125,0.045) eQuasiFermiPotential": 0.7364883573502689,
+        "Pos(0.0625,0.045) ElectrostaticPotential": 0.8064336659487159,
+        "Pos(0.0625,0.045) hQuasiFermiPotential": 0.7249573171342524,
+        "Pos(0.085,0.045) ElectrostaticPotential": 0.24919053600551652,
+        "Pos(0.085,0.045) hQuasiFermiPotential": 0.7249572786652663,
+        "Pos(0.165,0.045) ElectrostaticPotential": 0.2950803976222162,
+        "Pos(0.165,0.045) hQuasiFermiPotential": 0.7249572926650953
+      },
+      "electron_integral_available": false
+    },
+    {
+      "run": "Dh1F_c4",
+      "snapshots": {
+        "equilibrium": {
+          "ns": 0.0,
+          "SN_V": 0.0,
+          "psi_V": -0.0745597237600518,
+          "phi_p_V": 0.0,
+          "N_holes": 1.89647540986105e-05
+        },
+        "post_write_SNset": {
+          "ns": 0.13999999999999993,
+          "SN_V": 1.1,
+          "psi_V": -0.0730611628864738,
+          "phi_p_V": 0.306401730667292,
+          "N_holes": 2.18160584600422
+        },
+        "pre_BL_fall": {
+          "ns": 21.139000000000003,
+          "SN_V": 1.0999971263156485,
+          "psi_V": 0.24419281919888233,
+          "phi_p_V": 0.7351348053560368,
+          "N_holes": 956.7540447312653
+        }
+      },
+      "all_potential_probes_preBL": {
+        "Pos(0.125,0.045) ElectrostaticPotential": 0.24419281919888233,
+        "Pos(0.125,0.045) hQuasiFermiPotential": 0.7351348053560368,
+        "Pos(0.125,0.045) eQuasiFermiPotential": 0.7376357034783361,
+        "Pos(0.0625,0.045) ElectrostaticPotential": 0.8576967588211776,
+        "Pos(0.0625,0.045) hQuasiFermiPotential": 0.735134807638491,
+        "Pos(0.085,0.045) ElectrostaticPotential": 0.24475232888188356,
+        "Pos(0.085,0.045) hQuasiFermiPotential": 0.7351348037404957,
+        "Pos(0.165,0.045) ElectrostaticPotential": 0.30130617267912135,
+        "Pos(0.165,0.045) hQuasiFermiPotential": 0.7351348091969921
+      },
+      "electron_integral_available": false
+    },
+    {
+      "run": "Dh1F_c5",
+      "snapshots": {
+        "equilibrium": {
+          "ns": 0.0,
+          "SN_V": 0.0,
+          "psi_V": -0.373418813638389,
+          "phi_p_V": 0.0,
+          "N_holes": 1.8949404627957602
+        },
+        "post_write_SNset": {
+          "ns": 0.13999999999999993,
+          "SN_V": 1.1,
+          "psi_V": -0.374074976273209,
+          "phi_p_V": -0.0292129784601763,
+          "N_holes": 0.551792216661288
+        },
+        "pre_BL_fall": {
+          "ns": 21.139000000000003,
+          "SN_V": 1.0999955541672464,
+          "psi_V": -0.006276873192764761,
+          "phi_p_V": 0.4855334984778005,
+          "N_holes": 1133.9661416740541
+        }
+      },
+      "all_potential_probes_preBL": {
+        "Pos(0.125,0.045) ElectrostaticPotential": -0.006276873192764761,
+        "Pos(0.125,0.045) hQuasiFermiPotential": 0.4855334984778005,
+        "Pos(0.125,0.045) eQuasiFermiPotential": 0.49097204109186515,
+        "Pos(0.0625,0.045) ElectrostaticPotential": 0.7205387640342598,
+        "Pos(0.0625,0.045) hQuasiFermiPotential": 0.4856699056834677,
+        "Pos(0.085,0.045) ElectrostaticPotential": -0.00569237668274697,
+        "Pos(0.085,0.045) hQuasiFermiPotential": 0.4855334963772393,
+        "Pos(0.165,0.045) ElectrostaticPotential": 0.05720642532346544,
+        "Pos(0.165,0.045) hQuasiFermiPotential": 0.48553350342197105
+      },
+      "electron_integral_available": false
+    },
+    {
+      "run": "DfinF_c1",
+      "snapshots": {
+        "equilibrium": {
+          "ns": 0.0,
+          "SN_V": 0.0,
+          "psi_V": -0.295542880224654,
+          "phi_p_V": 0.0,
+          "N_holes": 0.144213795531413
+        },
+        "post_write_SNset": {
+          "ns": 0.13999999999999993,
+          "SN_V": 1.1,
+          "psi_V": -0.122733543911704,
+          "phi_p_V": 0.31982254282216,
+          "N_holes": 102.691962895202
+        },
+        "pre_BL_fall": {
+          "ns": 21.139000000000003,
+          "SN_V": 1.0999976592477185,
+          "psi_V": 0.31263696618289905,
+          "phi_p_V": 0.7607190712156383,
+          "N_holes": 1291.2844148945737
+        }
+      },
+      "all_potential_probes_preBL": {
+        "Pos(0.125,0.055) ElectrostaticPotential": 0.31263696618289905,
+        "Pos(0.125,0.055) hQuasiFermiPotential": 0.7607190712156383,
+        "Pos(0.125,0.055) eQuasiFermiPotential": 0.9561986117364139,
+        "Pos(0.0625,0.055) ElectrostaticPotential": 0.8584509599436306,
+        "Pos(0.0625,0.055) hQuasiFermiPotential": 0.7607191402887659,
+        "Pos(0.085,0.055) ElectrostaticPotential": 0.3229524563376993,
+        "Pos(0.085,0.055) hQuasiFermiPotential": 0.7607190677108971,
+        "Pos(0.165,0.055) ElectrostaticPotential": 0.7382732727861386,
+        "Pos(0.165,0.055) hQuasiFermiPotential": 0.7607214963326895
+      },
+      "electron_integral_available": false
+    },
+    {
+      "run": "DfinF_c2",
+      "snapshots": {
+        "equilibrium": {
+          "ns": 0.0,
+          "SN_V": 0.0,
+          "psi_V": -0.190450380359311,
+          "phi_p_V": 0.0,
+          "N_holes": 0.00293386319179448
+        },
+        "post_write_SNset": {
+          "ns": 0.13999999999999993,
+          "SN_V": 1.1,
+          "psi_V": -0.143452034615193,
+          "phi_p_V": 0.28524687070503,
+          "N_holes": 34.8986579977786
+        },
+        "pre_BL_fall": {
+          "ns": 21.139000000000003,
+          "SN_V": 1.099996940529618,
+          "psi_V": 0.31529360194515565,
+          "phi_p_V": 0.7701449706504103,
+          "N_holes": 1294.6823047306864
+        }
+      },
+      "all_potential_probes_preBL": {
+        "Pos(0.125,0.05) ElectrostaticPotential": 0.31529360194515565,
+        "Pos(0.125,0.05) hQuasiFermiPotential": 0.7701449706504103,
+        "Pos(0.125,0.05) eQuasiFermiPotential": 0.8540470600070834,
+        "Pos(0.0625,0.05) ElectrostaticPotential": 0.8355240112690817,
+        "Pos(0.0625,0.05) hQuasiFermiPotential": 0.7701449865263202,
+        "Pos(0.085,0.05) ElectrostaticPotential": 0.3182304188661315,
+        "Pos(0.085,0.05) hQuasiFermiPotential": 0.77014496669391,
+        "Pos(0.165,0.05) ElectrostaticPotential": 0.5601910962659689,
+        "Pos(0.165,0.05) hQuasiFermiPotential": 0.770145807638784
+      },
+      "electron_integral_available": false
+    },
+    {
+      "run": "DfinF_c3",
+      "snapshots": {
+        "equilibrium": {
+          "ns": 0.0,
+          "SN_V": 0.0,
+          "psi_V": -0.114054693204077,
+          "phi_p_V": 0.0,
+          "N_holes": 0.000156224712189582
+        },
+        "post_write_SNset": {
+          "ns": 0.13999999999999993,
+          "SN_V": 1.1,
+          "psi_V": -0.108193088519618,
+          "phi_p_V": 0.290956475679919,
+          "N_holes": 8.66717713753555
+        },
+        "pre_BL_fall": {
+          "ns": 21.139000000000003,
+          "SN_V": 1.0999969525657203,
+          "psi_V": 0.31488426357085236,
+          "phi_p_V": 0.7917356345980244,
+          "N_holes": 1358.0847962024436
+        }
+      },
+      "all_potential_probes_preBL": {
+        "Pos(0.125,0.045) ElectrostaticPotential": 0.31488426357085236,
+        "Pos(0.125,0.045) hQuasiFermiPotential": 0.7917356345980244,
+        "Pos(0.125,0.045) eQuasiFermiPotential": 0.8037275633626889,
+        "Pos(0.0625,0.045) ElectrostaticPotential": 0.8216275503961196,
+        "Pos(0.0625,0.045) hQuasiFermiPotential": 0.7917356356744535,
+        "Pos(0.085,0.045) ElectrostaticPotential": 0.3150351556927652,
+        "Pos(0.085,0.045) hQuasiFermiPotential": 0.7917356312503334,
+        "Pos(0.165,0.045) ElectrostaticPotential": 0.3495740140083055,
+        "Pos(0.165,0.045) hQuasiFermiPotential": 0.791735642082807
+      },
+      "electron_integral_available": false
+    },
+    {
+      "run": "DfinF_c4",
+      "snapshots": {
+        "equilibrium": {
+          "ns": 0.0,
+          "SN_V": 0.0,
+          "psi_V": -0.0745597237600518,
+          "phi_p_V": 0.0,
+          "N_holes": 1.89647540986105e-05
+        },
+        "post_write_SNset": {
+          "ns": 0.13999999999999993,
+          "SN_V": 1.1,
+          "psi_V": -0.0730611628864738,
+          "phi_p_V": 0.306401730667292,
+          "N_holes": 2.18160584600421
+        },
+        "pre_BL_fall": {
+          "ns": 21.139000000000003,
+          "SN_V": 1.0999972197359322,
+          "psi_V": 0.30363611049306594,
+          "phi_p_V": 0.7955927133867322,
+          "N_holes": 1193.1218392829455
+        }
+      },
+      "all_potential_probes_preBL": {
+        "Pos(0.125,0.045) ElectrostaticPotential": 0.30363611049306594,
+        "Pos(0.125,0.045) hQuasiFermiPotential": 0.7955927133867322,
+        "Pos(0.125,0.045) eQuasiFermiPotential": 0.8014038932084311,
+        "Pos(0.0625,0.045) ElectrostaticPotential": 0.8695922552321393,
+        "Pos(0.0625,0.045) hQuasiFermiPotential": 0.7955927123510793,
+        "Pos(0.085,0.045) ElectrostaticPotential": 0.30396735326926555,
+        "Pos(0.085,0.045) hQuasiFermiPotential": 0.7955927121019533,
+        "Pos(0.165,0.045) ElectrostaticPotential": 0.3478481941101197,
+        "Pos(0.165,0.045) hQuasiFermiPotential": 0.7955927163095474
+      },
+      "electron_integral_available": false
+    },
+    {
+      "run": "DfinF_c5",
+      "snapshots": {
+        "equilibrium": {
+          "ns": 0.0,
+          "SN_V": 0.0,
+          "psi_V": -0.373418813638389,
+          "phi_p_V": 0.0,
+          "N_holes": 1.8949404627957602
+        },
+        "post_write_SNset": {
+          "ns": 0.13999999999999993,
+          "SN_V": 1.1,
+          "psi_V": -0.374074976273209,
+          "phi_p_V": -0.0292129784601752,
+          "N_holes": 0.5517922166613111
+        },
+        "pre_BL_fall": {
+          "ns": 21.139000000000003,
+          "SN_V": 1.0999956327235525,
+          "psi_V": 0.06226410890046874,
+          "phi_p_V": 0.5549472613485207,
+          "N_holes": 1412.8935190186085
+        }
+      },
+      "all_potential_probes_preBL": {
+        "Pos(0.125,0.045) ElectrostaticPotential": 0.06226410890046874,
+        "Pos(0.125,0.045) hQuasiFermiPotential": 0.5549472613485207,
+        "Pos(0.125,0.045) eQuasiFermiPotential": 0.5623539923523376,
+        "Pos(0.0625,0.045) ElectrostaticPotential": 0.7342024917870591,
+        "Pos(0.0625,0.045) hQuasiFermiPotential": 0.5549559619704328,
+        "Pos(0.085,0.045) ElectrostaticPotential": 0.06261152034931343,
+        "Pos(0.085,0.045) hQuasiFermiPotential": 0.5549472596505576,
+        "Pos(0.165,0.045) ElectrostaticPotential": 0.11162937854516247,
+        "Pos(0.165,0.045) hQuasiFermiPotential": 0.554947265177546
+      },
+      "electron_integral_available": false
+    }
+  ],
+  "source_sha256": {
+    "runs\\Dh1F_c1\\c1_Dh1F_c1_dev.plt": "e40cecb524fe9aae50ae6b198f7c143f19e8dc2e0e7c0071616a549c8a03de5d",
+    "runs\\Dh1F_c1\\Dh1F_c1_sys.plt": "0d4c9feab2375cba197fd5e9fd1d84fd81d81a5ea6851deaa5e55fe6a7da8a8e",
+    "runs\\Dh1F_c1\\Dh1F_c1_des.cmd": "f2035d5105f50b82ca18d22e29a7db0be8e3d8f4c23490cbf2ae6f00d0ab8c97",
+    "runs\\Dh1F_c1\\run.json": "b77864ba23d3a16f1094ecb5a425a9ba24760573784f059adb93576c23546e89",
+    "runs\\Dh1F_c2\\c1_Dh1F_c2_dev.plt": "a7e8a6c2f11f986ad06615297c3b572881c1bbba0db1c0e3c2a81917762f653e",
+    "runs\\Dh1F_c2\\Dh1F_c2_sys.plt": "6b01c5e07a9574632b2ecda0fabfbb3eb89c4030e342e4adbace3859f88435d9",
+    "runs\\Dh1F_c2\\Dh1F_c2_des.cmd": "561e10721329a15651a16595276d7c3cfcab0112391129687c04a2156307fcaa",
+    "runs\\Dh1F_c2\\run.json": "04c454e24d7705e2b53dcc7677452ad326907656ceda9d3a12ddce628835d267",
+    "runs\\Dh1F_c3\\c1_Dh1F_c3_dev.plt": "901f8c463b0e1a1772cdece00ed26d37ec9263517124503316380c7d763e4a4c",
+    "runs\\Dh1F_c3\\Dh1F_c3_sys.plt": "1016fdd11e2566deef9097905f7017ac40d51b7285bcd362df684afecf24cb00",
+    "runs\\Dh1F_c3\\Dh1F_c3_des.cmd": "6dcb5ca200c6a43fb96a864ff4dbbc686a122a0b93295bf7fab73f3ccdcf9a0b",
+    "runs\\Dh1F_c3\\run.json": "af9e006fb95b7f78d29b5e36cbfce98cc1d229b0dc64b3402594d8c1b41a5544",
+    "runs\\Dh1F_c4\\c1_Dh1F_c4_dev.plt": "bd44d2c1ac8edb06526373b893e0d9dbcb7f1864bfa45734b6acaca68c46249f",
+    "runs\\Dh1F_c4\\Dh1F_c4_sys.plt": "5bbda2187f27c7c8b9e84a7f2cff4c585cd29223a1ad2da69bcfccfe8cb04dea",
+    "runs\\Dh1F_c4\\Dh1F_c4_des.cmd": "ca3401be0a8671d119d86615ca63518cdbeee179849c550e8ae1a89701af04f1",
+    "runs\\Dh1F_c4\\run.json": "50a45286e54bbc96d3ac7e4b339e5c58cab22cc8456b022276390b99ce7ae5fb",
+    "runs\\Dh1F_c5\\c1_Dh1F_c5_dev.plt": "c536ea3cd0965f29c921c2aceca9ae8e531ecaa6dc8def6062e14131f39e5a18",
+    "runs\\Dh1F_c5\\Dh1F_c5_sys.plt": "b2ab9f29cc66911db9357d0d62f6d37906b27cda00e6302981fd4159351f8cd9",
+    "runs\\Dh1F_c5\\Dh1F_c5_des.cmd": "e33f1754a08469910437923b24b580aa098a53851dd65b14861ee155a1051e71",
+    "runs\\Dh1F_c5\\run.json": "2c9e088e4291a698a2cbcaa8649fe692eb1c5aa56020789860d27dc51e1e87bd",
+    "runs\\DfinF_c1\\c1_DfinF_c1_dev.plt": "3d05e19aca51d2c4535ec7eebaa62878988f8cdd69f8163d3a1f7fc2c208e3ae",
+    "runs\\DfinF_c1\\DfinF_c1_sys.plt": "75d26f04e5b21e489422891e5cfceb5bd90d27ddf36908a5e4f60da9d374e56e",
+    "runs\\DfinF_c1\\DfinF_c1_des.cmd": "66ada3672a7396ffee7d4c3063c8527bae29d84ae598e1bfaa8df9f60d17a5bd",
+    "runs\\DfinF_c1\\run.json": "ba43033076d967d322b58f3cf0e597c1a2efce9b863ac0572eca4a53e8575f46",
+    "runs\\DfinF_c2\\c1_DfinF_c2_dev.plt": "43645bf46fe9e274bb665f207568cb105cf9d9fa7b413cbe1dce14d9907de2b6",
+    "runs\\DfinF_c2\\DfinF_c2_sys.plt": "cfd217afc3ae2799b78f0d1ee20501500e3c8fd785744e9d86c4fbdd8cd5a021",
+    "runs\\DfinF_c2\\DfinF_c2_des.cmd": "540017626674de04ef133a68c72471bc8dad345b67d1d121eda5ced4113a5e0d",
+    "runs\\DfinF_c2\\run.json": "347c5cf6de83e78efe58cd0ccd91762d409ea4eef1379d4009653e8bbda3d8b2",
+    "runs\\DfinF_c3\\c1_DfinF_c3_dev.plt": "231d6f1650a02363f69c0dfb81cef35983db5b9703c4e26ebaa4918020acd529",
+    "runs\\DfinF_c3\\DfinF_c3_sys.plt": "8f7ff051f04b6bdd19ff182cb3441e558694f8d1537f96ac1324e2f1d66145c5",
+    "runs\\DfinF_c3\\DfinF_c3_des.cmd": "cb973aba6406f4379700dc1eea0620930ec6fe6909e31e2886331ec916db2e5e",
+    "runs\\DfinF_c3\\run.json": "baf4ac910a869def14a533caee882247bed01e7cff7ab1de2ca62a8231b10eb7",
+    "runs\\DfinF_c4\\c1_DfinF_c4_dev.plt": "7331119b0a91b768dff33a9d129ebf6793af2bbc4c320556015991381c0f365e",
+    "runs\\DfinF_c4\\DfinF_c4_sys.plt": "5853f91a90bccaaab11ee75f147314994ee55c1ee053c99992a8fbc264436a5a",
+    "runs\\DfinF_c4\\DfinF_c4_des.cmd": "573366d1e6cc6ea603f747b17bb9e236cc0bc4f72957f0f8646b1cf7b637f4d5",
+    "runs\\DfinF_c4\\run.json": "dcc9b73b86b081a7b68d050e02266b94b7394f246d1778b5b8367f494545d87b",
+    "runs\\DfinF_c5\\c1_DfinF_c5_dev.plt": "e2a3c52c88af0fb4de4613180c6a92008ac0f495188cbcd94be503c5aa9009dd",
+    "runs\\DfinF_c5\\DfinF_c5_sys.plt": "5b04cba1dbb9087ea0f836bcb85b70bf2f335f74ab36b10b1b3cb2bcb3c4e815",
+    "runs\\DfinF_c5\\DfinF_c5_des.cmd": "469c9cdedcf6e0c2196a521aa92578904da168a5b37fd8a640d731b114e3b814",
+    "runs\\DfinF_c5\\run.json": "235f4809535f0dc15003dc16d15897d5fcc233821e4a4f22e83aab840bae99a2"
+  }
+}

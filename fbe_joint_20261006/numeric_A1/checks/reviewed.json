@@ -1,0 +1,14 @@
+{
+  "manifest_sha256": "7aaad8d722e75f0809a752306d7c233531fa3289cdd09222689d62fc4c9a70c0",
+  "reviewed_at_local": "2026-10-06T15:43:21.672319",
+  "paper_review": "Cho IRPS 2026 Fig.2/4/5/7/8 and VI; same meshes, diagnostic assumptions explicitly separated in PRE_RUN_CHECK.md",
+  "mesh_checks_read": 8,
+  "original_deck_equivalence": [
+    "Dh1F_c1",
+    "DfinF_c1",
+    "Dh1F_c2",
+    "DfinF_c2"
+  ],
+  "authorization": "User: proceed with designed FBE joint reproduction experiments",
+  "review_document_sha256": "dfec779cc531abb9b02c695f6597f43c96917e8bb9566bc81facdaa213085f8c"
+}

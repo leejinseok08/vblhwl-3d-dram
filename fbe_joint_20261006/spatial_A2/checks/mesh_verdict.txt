@@ -1,0 +1,9 @@
+PASS gr_c1h_L0_lo: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3
+PASS gr_c1h_L0_mid: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3
+PASS gr_c1h_L0_hi: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3
+PASS gr_c2h_L0_lo: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3
+PASS gr_c2h_L0_mid: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3
+PASS gr_c2h_L0_hi: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3
+PASS gr_c1h: actual mesh body 40.000..70.000 nm, thickness 30 nm
+PASS gr_c2h: actual mesh body 40.000..60.000 nm, thickness 20 nm
+ALL 6 CUTLINES PASS; human paper/geometry review still required before launch

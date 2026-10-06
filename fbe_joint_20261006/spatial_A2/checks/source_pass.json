@@ -1,0 +1,11 @@
+{
+  "pass": true,
+  "checks": [
+    "PASS source c1 uniform: inside (50,175)nm=1e26 cm^-3 s^-1, outside/peak<1e-5 (actual 0); exclude 1nm interface interpolation band",
+    "PASS source c1 bl: inside (50,75)nm=1e26 cm^-3 s^-1, outside/peak<1e-5 (actual 0); exclude 1nm interface interpolation band",
+    "PASS source c1 sn: inside (150,175)nm=1e26 cm^-3 s^-1, outside/peak<1e-5 (actual 3.47e-07); exclude 1nm interface interpolation band",
+    "PASS source c2 uniform: inside (50,175)nm=1e26 cm^-3 s^-1, outside/peak<1e-5 (actual 0); exclude 1nm interface interpolation band",
+    "PASS source c2 bl: inside (50,75)nm=1e26 cm^-3 s^-1, outside/peak<1e-5 (actual 9.54e-07); exclude 1nm interface interpolation band",
+    "PASS source c2 sn: inside (150,175)nm=1e26 cm^-3 s^-1, outside/peak<1e-5 (actual 0); exclude 1nm interface interpolation band"
+  ]
+}

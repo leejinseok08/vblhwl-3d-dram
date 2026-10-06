@@ -1,0 +1,159 @@
+{
+  "checked_at": "2026-10-06T17:53:59.744521+09:00",
+  "runs": [
+    {
+      "id": "JN_c1_q1050",
+      "exit_code": "0",
+      "new": {
+        "last_ns": 63.13999999999999,
+        "first_low_complete": true,
+        "psi_prefall_V": 0.2526906818189824,
+        "Nholes_prefall": 1057.7412820748991,
+        "first_loss_origin_mV": 2.6169248108760534,
+        "first_loss_prefall_mV": 2.6144772714971065,
+        "SN_current_integral_fC": 0.005734083644775644,
+        "Cs_deltaV_fC": 0.005714500321986533,
+        "charge_mismatch_fC": 1.9583322789111512e-05,
+        "charge_relative_mismatch": 0.0034269527842643917
+      },
+      "baseline": {
+        "last_ns": 210.14000000000001,
+        "first_low_complete": true,
+        "psi_prefall_V": 0.25268791031986015,
+        "Nholes_prefall": 1057.7308116298452,
+        "first_loss_origin_mV": 2.622956534555465,
+        "first_loss_prefall_mV": 2.620508990635706,
+        "SN_current_integral_fC": 0.005930218714335598,
+        "Cs_deltaV_fC": 0.005727683936675186,
+        "charge_mismatch_fC": 0.00020253477766041163,
+        "charge_relative_mismatch": 0.03536067630470185
+      },
+      "comparison": {
+        "delta_psi_mV": 0.0027714991222560492,
+        "relative_Nholes_change": 9.898969509797775e-06,
+        "delta_first_loss_mV": -0.006031723679411627,
+        "potential_pass": true,
+        "holes_pass": true,
+        "loss_pass": true,
+        "charge_balance_pass": true
+      },
+      "pass": true
+    },
+    {
+      "id": "JN_c1_q1300",
+      "exit_code": "0",
+      "new": {
+        "last_ns": 63.13999999999999,
+        "first_low_complete": true,
+        "psi_prefall_V": 0.31264085645502593,
+        "Nholes_prefall": 1291.3000000483298,
+        "first_loss_origin_mV": 18.924264618607857,
+        "first_loss_prefall_mV": 18.921923873841173,
+        "SN_current_integral_fC": 0.0413987770294999,
+        "Cs_deltaV_fC": 0.04135791932425285,
+        "charge_mismatch_fC": 4.085770524705351e-05,
+        "charge_relative_mismatch": 0.0009879052407526217
+      },
+      "baseline": {
+        "last_ns": 210.14000000000001,
+        "first_low_complete": true,
+        "psi_prefall_V": 0.31263696618289905,
+        "Nholes_prefall": 1291.2844148945737,
+        "first_loss_origin_mV": 18.9284057273158,
+        "first_loss_prefall_mV": 18.92606497503424,
+        "SN_current_integral_fC": 0.04169149376272341,
+        "Cs_deltaV_fC": 0.04136697058828912,
+        "charge_mismatch_fC": 0.00032452317443428663,
+        "charge_relative_mismatch": 0.007844982840637556
+      },
+      "comparison": {
+        "delta_psi_mV": 0.0038902721268829765,
+        "relative_Nholes_change": 1.2069497297668913e-05,
+        "delta_first_loss_mV": -0.004141108707941044,
+        "potential_pass": true,
+        "holes_pass": true,
+        "loss_pass": true,
+        "charge_balance_pass": true
+      },
+      "pass": true
+    },
+    {
+      "id": "JN_c2_q1050",
+      "exit_code": "0",
+      "new": {
+        "last_ns": 63.13999999999999,
+        "first_low_complete": true,
+        "psi_prefall_V": 0.2515477826217115,
+        "Nholes_prefall": 1044.687412981639,
+        "first_loss_origin_mV": 2.1537982399670863,
+        "first_loss_prefall_mV": 2.150524720969438,
+        "SN_current_integral_fC": 0.0038820684242425693,
+        "Cs_deltaV_fC": 0.003870944497744987,
+        "charge_mismatch_fC": 1.1123926497582249e-05,
+        "charge_relative_mismatch": 0.002873698267712822
+      },
+      "baseline": {
+        "last_ns": 210.14000000000001,
+        "first_low_complete": true,
+        "psi_prefall_V": 0.25151573937483074,
+        "Nholes_prefall": 1044.565416305949,
+        "first_loss_origin_mV": 2.1643010797836038,
+        "first_loss_prefall_mV": 2.1610274618342196,
+        "SN_current_integral_fC": 0.0039805923553894495,
+        "Cs_deltaV_fC": 0.0038898494313015946,
+        "charge_mismatch_fC": 9.074292408785484e-05,
+        "charge_relative_mismatch": 0.023328132795487424
+      },
+      "comparison": {
+        "delta_psi_mV": 0.0320432468807752,
+        "relative_Nholes_change": 0.000116791800480534,
+        "delta_first_loss_mV": -0.01050283981651745,
+        "potential_pass": true,
+        "holes_pass": true,
+        "loss_pass": true,
+        "charge_balance_pass": true
+      },
+      "pass": true
+    },
+    {
+      "id": "JN_c2_q1300",
+      "exit_code": "0",
+      "new": {
+        "last_ns": 63.13999999999999,
+        "first_low_complete": true,
+        "psi_prefall_V": 0.31529684538308217,
+        "Nholes_prefall": 1294.6953696070843,
+        "first_loss_origin_mV": 16.034045450702195,
+        "first_loss_prefall_mV": 16.03098599201669,
+        "SN_current_integral_fC": 0.028897974144273746,
+        "Cs_deltaV_fC": 0.028855774785630037,
+        "charge_mismatch_fC": 4.219935864370819e-05,
+        "charge_relative_mismatch": 0.001462423343584008
+      },
+      "baseline": {
+        "last_ns": 210.14000000000001,
+        "first_low_complete": true,
+        "psi_prefall_V": 0.31529360194515565,
+        "Nholes_prefall": 1294.6823047306864,
+        "first_loss_origin_mV": 15.974904375964272,
+        "first_loss_prefall_mV": 15.971844905582122,
+        "SN_current_integral_fC": 0.029102496257958382,
+        "Cs_deltaV_fC": 0.02874932083004781,
+        "charge_mismatch_fC": 0.00035317542791057227,
+        "charge_relative_mismatch": 0.012284652914007115
+      },
+      "comparison": {
+        "delta_psi_mV": 0.003243437926514492,
+        "relative_Nholes_change": 1.0091183258016064e-05,
+        "delta_first_loss_mV": 0.05914107473792285,
+        "potential_pass": true,
+        "holes_pass": true,
+        "loss_pass": true,
+        "charge_balance_pass": true
+      },
+      "pass": true
+    }
+  ],
+  "all_finished": true,
+  "A1_pass": true
+}

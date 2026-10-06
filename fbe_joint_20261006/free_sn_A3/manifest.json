@@ -1,0 +1,849 @@
+{
+  "runs": [
+    {
+      "id": "FS_c1_q1050",
+      "structure": "gr_c1h",
+      "source_template": "Dh1F_c1",
+      "parameters": {
+        "Dim": 2,
+        "Tpl": "sde_gt_dvs.cmd",
+        "BodyMode": "NOBODY",
+        "Lg": 100,
+        "Tbody": 30,
+        "Tox": 5.0,
+        "Tgm": 20,
+        "Dvox": 30,
+        "Nsd": 1e+20,
+        "Nch": 1e+18,
+        "Gdi": "HfO2",
+        "Spm": "Si3N4",
+        "Lsp1": 25,
+        "Lsp2": 25,
+        "Wbl": 100,
+        "Wact": 100,
+        "Dhox": 100,
+        "Wcut": 20,
+        "Pair": "one",
+        "Bgc": 0,
+        "Mc": 2,
+        "Mj": 0.5,
+        "Mv": 1,
+        "Mi": 0.2,
+        "Mg": 1,
+        "WFs": 4.7,
+        "WFd": 4.7,
+        "Vdd": 1.1,
+        "Vpp": 1.8,
+        "Vnwl": 0.0,
+        "Vb": 0.0,
+        "Rb": 0.001,
+        "Cs": 2.1857142857142857e-15,
+        "Rwl": 0.0,
+        "Vds": 1.1,
+        "Dterm": "bl",
+        "VgMin": -1.0,
+        "VgMax": 1.8,
+        "SwDown": 1,
+        "SwT": 0.0,
+        "Vwr": 1.168,
+        "tWr": 0.105,
+        "SNset": 1.1,
+        "tWf": 5.0,
+        "Gb": 1.137e+26,
+        "tHold": 21.0,
+        "tEdge": 0.5,
+        "Tper": 21,
+        "Npulse": 2,
+        "tON": 0.094,
+        "tOFF": 0.094,
+        "Ncyc": 10,
+        "Temp": 300,
+        "Bgn": "OldSlotboom",
+        "GR": 1,
+        "SRHon": 1,
+        "SRHdd": 1,
+        "TAT": 0,
+        "BTBT": 1,
+        "II": 1,
+        "IIdf": "",
+        "BLhv": -1.0,
+        "Dit": 0,
+        "QC": 0,
+        "ThinL": 0,
+        "Mob": 3,
+        "NewtIter": 60,
+        "NotDamped": 10,
+        "Extrap": 0,
+        "ErrH": 100000000000000.0,
+        "ErrE": 100000000.0,
+        "XP": 0,
+        "RefD": 1000000000000.0,
+        "Dig": 5,
+        "Nthr": 4,
+        "Lin3": "ILS",
+        "Par": "sdevice_cal_a1.7e21_b2.25e07.par"
+      },
+      "schedule": {
+        "kind": "cho",
+        "test": "FBE",
+        "tS": 2.1140000000000003e-08,
+        "tEnd": 6.314000000000001e-08
+      },
+      "deck_sha256": "b89f610dc0683bf42a274fe21afa08443d5adad67b2beef228a2a5c7a3e1be96",
+      "mesh_sha256": "c9c50820ee739fd5653b541bdd2a91ceea11e775605f5a784ece72268826a070",
+      "segments": [
+        {
+          "start_ns": 0.0,
+          "end_ns": 0.005,
+          "max_step_ps": 5.0,
+          "output_intervals": 4
+        },
+        {
+          "start_ns": 0.005,
+          "end_ns": 0.015,
+          "max_step_ps": 1.0,
+          "output_intervals": 10
+        },
+        {
+          "start_ns": 0.015,
+          "end_ns": 0.115,
+          "max_step_ps": 2.0,
+          "output_intervals": 50
+        },
+        {
+          "start_ns": 0.115,
+          "end_ns": 0.12,
+          "max_step_ps": 10.0,
+          "output_intervals": 4
+        },
+        {
+          "start_ns": 0.12,
+          "end_ns": 0.125,
+          "max_step_ps": 1.0,
+          "output_intervals": 5
+        },
+        {
+          "start_ns": 0.125,
+          "end_ns": 0.12999999999999998,
+          "max_step_ps": 1.0,
+          "output_intervals": 5
+        },
+        {
+          "start_ns": 0.12999999999999998,
+          "end_ns": 0.14,
+          "max_step_ps": 1.0,
+          "output_intervals": 10
+        },
+        {
+          "start_ns": 0.14,
+          "end_ns": 20.64,
+          "max_step_ps": 525.0,
+          "output_intervals": 40
+        },
+        {
+          "start_ns": 20.64,
+          "end_ns": 21.14,
+          "max_step_ps": 50.0,
+          "output_intervals": 10
+        },
+        {
+          "start_ns": 21.14,
+          "end_ns": 21.64,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 21.64,
+          "end_ns": 31.639999999999997,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        },
+        {
+          "start_ns": 31.639999999999997,
+          "end_ns": 32.14,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 32.14,
+          "end_ns": 42.14,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        },
+        {
+          "start_ns": 42.14,
+          "end_ns": 42.64,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 42.64,
+          "end_ns": 52.64,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        },
+        {
+          "start_ns": 52.64,
+          "end_ns": 53.14,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 53.14,
+          "end_ns": 63.13999999999999,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        }
+      ],
+      "purpose": "A3: same electron-hole generation, release SN after 10ps initialisation; no retuning",
+      "baseline_sha256": {
+        "c1_Dh1F_c1_dev.plt": "e40cecb524fe9aae50ae6b198f7c143f19e8dc2e0e7c0071616a549c8a03de5d",
+        "Dh1F_c1_des.cmd": "f2035d5105f50b82ca18d22e29a7db0be8e3d8f4c23490cbf2ae6f00d0ab8c97",
+        "Dh1F_c1_sys.plt": "0d4c9feab2375cba197fd5e9fd1d84fd81d81a5ea6851deaa5e55fe6a7da8a8e",
+        "run.json": "b77864ba23d3a16f1094ecb5a425a9ba24760573784f059adb93576c23546e89"
+      },
+      "differences": [
+        "SN release moved from 20.64ns to 0.14ns; same 0.13..0.14ns initialisation",
+        "additional electron/net-charge probes and state plots; all numeric/bias/source settings unchanged"
+      ],
+      "control_id": "JN_c1_q1050"
+    },
+    {
+      "id": "FS_c1_q1300",
+      "structure": "gr_c1h",
+      "source_template": "DfinF_c1",
+      "parameters": {
+        "Dim": 2,
+        "Tpl": "sde_gt_dvs.cmd",
+        "BodyMode": "NOBODY",
+        "Lg": 100,
+        "Tbody": 30,
+        "Tox": 5.0,
+        "Tgm": 20,
+        "Dvox": 30,
+        "Nsd": 1e+20,
+        "Nch": 1e+18,
+        "Gdi": "HfO2",
+        "Spm": "Si3N4",
+        "Lsp1": 25,
+        "Lsp2": 25,
+        "Wbl": 100,
+        "Wact": 100,
+        "Dhox": 100,
+        "Wcut": 20,
+        "Pair": "one",
+        "Bgc": 0,
+        "Mc": 2,
+        "Mj": 0.5,
+        "Mv": 1,
+        "Mi": 0.2,
+        "Mg": 1,
+        "WFs": 4.7,
+        "WFd": 4.7,
+        "Vdd": 1.1,
+        "Vpp": 1.8,
+        "Vnwl": 0.0,
+        "Vb": 0.0,
+        "Rb": 0.001,
+        "Cs": 2.1857142857142857e-15,
+        "Rwl": 0.0,
+        "Vds": 1.1,
+        "Dterm": "bl",
+        "VgMin": -1.0,
+        "VgMax": 1.8,
+        "SwDown": 1,
+        "SwT": 0.0,
+        "Vwr": 1.168,
+        "tWr": 0.105,
+        "SNset": 1.1,
+        "tWf": 5.0,
+        "Gb": 1.42125e+26,
+        "tHold": 21.0,
+        "tEdge": 0.5,
+        "Tper": 21,
+        "Npulse": 2,
+        "tON": 0.094,
+        "tOFF": 0.094,
+        "Ncyc": 10,
+        "Temp": 300,
+        "Bgn": "OldSlotboom",
+        "GR": 1,
+        "SRHon": 1,
+        "SRHdd": 1,
+        "TAT": 0,
+        "BTBT": 1,
+        "II": 1,
+        "IIdf": "",
+        "BLhv": -1.0,
+        "Dit": 0,
+        "QC": 0,
+        "ThinL": 0,
+        "Mob": 3,
+        "NewtIter": 60,
+        "NotDamped": 10,
+        "Extrap": 0,
+        "ErrH": 100000000000000.0,
+        "ErrE": 100000000.0,
+        "XP": 0,
+        "RefD": 1000000000000.0,
+        "Dig": 5,
+        "Nthr": 4,
+        "Lin3": "ILS",
+        "Par": "sdevice_cal_a1.7e21_b2.25e07.par"
+      },
+      "schedule": {
+        "kind": "cho",
+        "test": "FBE",
+        "tS": 2.1140000000000003e-08,
+        "tEnd": 6.314000000000001e-08
+      },
+      "deck_sha256": "28902a5817101bce5c9680748092ddf4b729722be8605531d3c1ae33eb31b477",
+      "mesh_sha256": "c9c50820ee739fd5653b541bdd2a91ceea11e775605f5a784ece72268826a070",
+      "segments": [
+        {
+          "start_ns": 0.0,
+          "end_ns": 0.005,
+          "max_step_ps": 5.0,
+          "output_intervals": 4
+        },
+        {
+          "start_ns": 0.005,
+          "end_ns": 0.015,
+          "max_step_ps": 1.0,
+          "output_intervals": 10
+        },
+        {
+          "start_ns": 0.015,
+          "end_ns": 0.115,
+          "max_step_ps": 2.0,
+          "output_intervals": 50
+        },
+        {
+          "start_ns": 0.115,
+          "end_ns": 0.12,
+          "max_step_ps": 10.0,
+          "output_intervals": 4
+        },
+        {
+          "start_ns": 0.12,
+          "end_ns": 0.125,
+          "max_step_ps": 1.0,
+          "output_intervals": 5
+        },
+        {
+          "start_ns": 0.125,
+          "end_ns": 0.12999999999999998,
+          "max_step_ps": 1.0,
+          "output_intervals": 5
+        },
+        {
+          "start_ns": 0.12999999999999998,
+          "end_ns": 0.14,
+          "max_step_ps": 1.0,
+          "output_intervals": 10
+        },
+        {
+          "start_ns": 0.14,
+          "end_ns": 20.64,
+          "max_step_ps": 525.0,
+          "output_intervals": 40
+        },
+        {
+          "start_ns": 20.64,
+          "end_ns": 21.14,
+          "max_step_ps": 50.0,
+          "output_intervals": 10
+        },
+        {
+          "start_ns": 21.14,
+          "end_ns": 21.64,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 21.64,
+          "end_ns": 31.639999999999997,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        },
+        {
+          "start_ns": 31.639999999999997,
+          "end_ns": 32.14,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 32.14,
+          "end_ns": 42.14,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        },
+        {
+          "start_ns": 42.14,
+          "end_ns": 42.64,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 42.64,
+          "end_ns": 52.64,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        },
+        {
+          "start_ns": 52.64,
+          "end_ns": 53.14,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 53.14,
+          "end_ns": 63.13999999999999,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        }
+      ],
+      "purpose": "A3: same electron-hole generation, release SN after 10ps initialisation; no retuning",
+      "baseline_sha256": {
+        "c1_DfinF_c1_dev.plt": "3d05e19aca51d2c4535ec7eebaa62878988f8cdd69f8163d3a1f7fc2c208e3ae",
+        "DfinF_c1_des.cmd": "66ada3672a7396ffee7d4c3063c8527bae29d84ae598e1bfaa8df9f60d17a5bd",
+        "DfinF_c1_sys.plt": "75d26f04e5b21e489422891e5cfceb5bd90d27ddf36908a5e4f60da9d374e56e",
+        "run.json": "ba43033076d967d322b58f3cf0e597c1a2efce9b863ac0572eca4a53e8575f46"
+      },
+      "differences": [
+        "SN release moved from 20.64ns to 0.14ns; same 0.13..0.14ns initialisation",
+        "additional electron/net-charge probes and state plots; all numeric/bias/source settings unchanged"
+      ],
+      "control_id": "JN_c1_q1300"
+    },
+    {
+      "id": "FS_c2_q1050",
+      "structure": "gr_c2h",
+      "source_template": "Dh1F_c2",
+      "parameters": {
+        "Dim": 2,
+        "Tpl": "sde_gt_dvs.cmd",
+        "BodyMode": "NOBODY",
+        "Lg": 100,
+        "Tbody": 20,
+        "Tox": 5.0,
+        "Tgm": 20,
+        "Dvox": 30,
+        "Nsd": 1e+20,
+        "Nch": 1e+18,
+        "Gdi": "HfO2",
+        "Spm": "Si3N4",
+        "Lsp1": 25,
+        "Lsp2": 25,
+        "Wbl": 100,
+        "Wact": 100,
+        "Dhox": 100,
+        "Wcut": 20,
+        "Pair": "one",
+        "Bgc": 0,
+        "Mc": 2,
+        "Mj": 0.5,
+        "Mv": 1,
+        "Mi": 0.2,
+        "Mg": 1,
+        "WFs": 4.7,
+        "WFd": 4.7,
+        "Vdd": 1.1,
+        "Vpp": 1.8,
+        "Vnwl": 0.0,
+        "Vb": 0.0,
+        "Rb": 0.001,
+        "Cs": 1.7999999999999997e-15,
+        "Rwl": 0.0,
+        "Vds": 1.1,
+        "Dterm": "bl",
+        "VgMin": -1.0,
+        "VgMax": 1.8,
+        "SwDown": 1,
+        "SwT": 0.0,
+        "Vwr": 1.168,
+        "tWr": 0.105,
+        "SNset": 1.1,
+        "tWf": 5.0,
+        "Gb": 1.808e+26,
+        "tHold": 21.0,
+        "tEdge": 0.5,
+        "Tper": 21,
+        "Npulse": 2,
+        "tON": 0.094,
+        "tOFF": 0.094,
+        "Ncyc": 10,
+        "Temp": 300,
+        "Bgn": "OldSlotboom",
+        "GR": 1,
+        "SRHon": 1,
+        "SRHdd": 1,
+        "TAT": 0,
+        "BTBT": 1,
+        "II": 1,
+        "IIdf": "",
+        "BLhv": -1.0,
+        "Dit": 0,
+        "QC": 0,
+        "ThinL": 0,
+        "Mob": 3,
+        "NewtIter": 60,
+        "NotDamped": 10,
+        "Extrap": 0,
+        "ErrH": 100000000000000.0,
+        "ErrE": 100000000.0,
+        "XP": 0,
+        "RefD": 1000000000000.0,
+        "Dig": 5,
+        "Nthr": 4,
+        "Lin3": "ILS",
+        "Par": "sdevice_cal_a1.7e21_b2.25e07.par"
+      },
+      "schedule": {
+        "kind": "cho",
+        "test": "FBE",
+        "tS": 2.1140000000000003e-08,
+        "tEnd": 6.314000000000001e-08
+      },
+      "deck_sha256": "09f261cece49e7464b6dcbd86e38fcb32a00df826b0c2162a3a6e34d2b7517a8",
+      "mesh_sha256": "e44c0359c930d640d42ee9f1fffcf61ddb960c40da99432776fe1420d0b7b8c5",
+      "segments": [
+        {
+          "start_ns": 0.0,
+          "end_ns": 0.005,
+          "max_step_ps": 5.0,
+          "output_intervals": 4
+        },
+        {
+          "start_ns": 0.005,
+          "end_ns": 0.015,
+          "max_step_ps": 1.0,
+          "output_intervals": 10
+        },
+        {
+          "start_ns": 0.015,
+          "end_ns": 0.115,
+          "max_step_ps": 2.0,
+          "output_intervals": 50
+        },
+        {
+          "start_ns": 0.115,
+          "end_ns": 0.12,
+          "max_step_ps": 10.0,
+          "output_intervals": 4
+        },
+        {
+          "start_ns": 0.12,
+          "end_ns": 0.125,
+          "max_step_ps": 1.0,
+          "output_intervals": 5
+        },
+        {
+          "start_ns": 0.125,
+          "end_ns": 0.12999999999999998,
+          "max_step_ps": 1.0,
+          "output_intervals": 5
+        },
+        {
+          "start_ns": 0.12999999999999998,
+          "end_ns": 0.14,
+          "max_step_ps": 1.0,
+          "output_intervals": 10
+        },
+        {
+          "start_ns": 0.14,
+          "end_ns": 20.64,
+          "max_step_ps": 525.0,
+          "output_intervals": 40
+        },
+        {
+          "start_ns": 20.64,
+          "end_ns": 21.14,
+          "max_step_ps": 50.0,
+          "output_intervals": 10
+        },
+        {
+          "start_ns": 21.14,
+          "end_ns": 21.64,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 21.64,
+          "end_ns": 31.639999999999997,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        },
+        {
+          "start_ns": 31.639999999999997,
+          "end_ns": 32.14,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 32.14,
+          "end_ns": 42.14,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        },
+        {
+          "start_ns": 42.14,
+          "end_ns": 42.64,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 42.64,
+          "end_ns": 52.64,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        },
+        {
+          "start_ns": 52.64,
+          "end_ns": 53.14,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 53.14,
+          "end_ns": 63.13999999999999,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        }
+      ],
+      "purpose": "A3: same electron-hole generation, release SN after 10ps initialisation; no retuning",
+      "baseline_sha256": {
+        "c1_Dh1F_c2_dev.plt": "a7e8a6c2f11f986ad06615297c3b572881c1bbba0db1c0e3c2a81917762f653e",
+        "Dh1F_c2_des.cmd": "561e10721329a15651a16595276d7c3cfcab0112391129687c04a2156307fcaa",
+        "Dh1F_c2_sys.plt": "6b01c5e07a9574632b2ecda0fabfbb3eb89c4030e342e4adbace3859f88435d9",
+        "run.json": "04c454e24d7705e2b53dcc7677452ad326907656ceda9d3a12ddce628835d267"
+      },
+      "differences": [
+        "SN release moved from 20.64ns to 0.14ns; same 0.13..0.14ns initialisation",
+        "additional electron/net-charge probes and state plots; all numeric/bias/source settings unchanged"
+      ],
+      "control_id": "JN_c2_q1050"
+    },
+    {
+      "id": "FS_c2_q1300",
+      "structure": "gr_c2h",
+      "source_template": "DfinF_c2",
+      "parameters": {
+        "Dim": 2,
+        "Tpl": "sde_gt_dvs.cmd",
+        "BodyMode": "NOBODY",
+        "Lg": 100,
+        "Tbody": 20,
+        "Tox": 5.0,
+        "Tgm": 20,
+        "Dvox": 30,
+        "Nsd": 1e+20,
+        "Nch": 1e+18,
+        "Gdi": "HfO2",
+        "Spm": "Si3N4",
+        "Lsp1": 25,
+        "Lsp2": 25,
+        "Wbl": 100,
+        "Wact": 100,
+        "Dhox": 100,
+        "Wcut": 20,
+        "Pair": "one",
+        "Bgc": 0,
+        "Mc": 2,
+        "Mj": 0.5,
+        "Mv": 1,
+        "Mi": 0.2,
+        "Mg": 1,
+        "WFs": 4.7,
+        "WFd": 4.7,
+        "Vdd": 1.1,
+        "Vpp": 1.8,
+        "Vnwl": 0.0,
+        "Vb": 0.0,
+        "Rb": 0.001,
+        "Cs": 1.7999999999999997e-15,
+        "Rwl": 0.0,
+        "Vds": 1.1,
+        "Dterm": "bl",
+        "VgMin": -1.0,
+        "VgMax": 1.8,
+        "SwDown": 1,
+        "SwT": 0.0,
+        "Vwr": 1.168,
+        "tWr": 0.105,
+        "SNset": 1.1,
+        "tWf": 5.0,
+        "Gb": 2.2600000000000003e+26,
+        "tHold": 21.0,
+        "tEdge": 0.5,
+        "Tper": 21,
+        "Npulse": 2,
+        "tON": 0.094,
+        "tOFF": 0.094,
+        "Ncyc": 10,
+        "Temp": 300,
+        "Bgn": "OldSlotboom",
+        "GR": 1,
+        "SRHon": 1,
+        "SRHdd": 1,
+        "TAT": 0,
+        "BTBT": 1,
+        "II": 1,
+        "IIdf": "",
+        "BLhv": -1.0,
+        "Dit": 0,
+        "QC": 0,
+        "ThinL": 0,
+        "Mob": 3,
+        "NewtIter": 60,
+        "NotDamped": 10,
+        "Extrap": 0,
+        "ErrH": 100000000000000.0,
+        "ErrE": 100000000.0,
+        "XP": 0,
+        "RefD": 1000000000000.0,
+        "Dig": 5,
+        "Nthr": 4,
+        "Lin3": "ILS",
+        "Par": "sdevice_cal_a1.7e21_b2.25e07.par"
+      },
+      "schedule": {
+        "kind": "cho",
+        "test": "FBE",
+        "tS": 2.1140000000000003e-08,
+        "tEnd": 6.314000000000001e-08
+      },
+      "deck_sha256": "de5aa389dccb87f0d9477862ee5693e029c53ff5e1796f0f4adb2f7b241143ab",
+      "mesh_sha256": "e44c0359c930d640d42ee9f1fffcf61ddb960c40da99432776fe1420d0b7b8c5",
+      "segments": [
+        {
+          "start_ns": 0.0,
+          "end_ns": 0.005,
+          "max_step_ps": 5.0,
+          "output_intervals": 4
+        },
+        {
+          "start_ns": 0.005,
+          "end_ns": 0.015,
+          "max_step_ps": 1.0,
+          "output_intervals": 10
+        },
+        {
+          "start_ns": 0.015,
+          "end_ns": 0.115,
+          "max_step_ps": 2.0,
+          "output_intervals": 50
+        },
+        {
+          "start_ns": 0.115,
+          "end_ns": 0.12,
+          "max_step_ps": 10.0,
+          "output_intervals": 4
+        },
+        {
+          "start_ns": 0.12,
+          "end_ns": 0.125,
+          "max_step_ps": 1.0,
+          "output_intervals": 5
+        },
+        {
+          "start_ns": 0.125,
+          "end_ns": 0.12999999999999998,
+          "max_step_ps": 1.0,
+          "output_intervals": 5
+        },
+        {
+          "start_ns": 0.12999999999999998,
+          "end_ns": 0.14,
+          "max_step_ps": 1.0,
+          "output_intervals": 10
+        },
+        {
+          "start_ns": 0.14,
+          "end_ns": 20.64,
+          "max_step_ps": 525.0,
+          "output_intervals": 40
+        },
+        {
+          "start_ns": 20.64,
+          "end_ns": 21.14,
+          "max_step_ps": 50.0,
+          "output_intervals": 10
+        },
+        {
+          "start_ns": 21.14,
+          "end_ns": 21.64,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 21.64,
+          "end_ns": 31.639999999999997,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        },
+        {
+          "start_ns": 31.639999999999997,
+          "end_ns": 32.14,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 32.14,
+          "end_ns": 42.14,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        },
+        {
+          "start_ns": 42.14,
+          "end_ns": 42.64,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 42.64,
+          "end_ns": 52.64,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        },
+        {
+          "start_ns": 52.64,
+          "end_ns": 53.14,
+          "max_step_ps": 5.0,
+          "output_intervals": 100
+        },
+        {
+          "start_ns": 53.14,
+          "end_ns": 63.13999999999999,
+          "max_step_ps": 50.0,
+          "output_intervals": 200
+        }
+      ],
+      "purpose": "A3: same electron-hole generation, release SN after 10ps initialisation; no retuning",
+      "baseline_sha256": {
+        "c1_DfinF_c2_dev.plt": "43645bf46fe9e274bb665f207568cb105cf9d9fa7b413cbe1dce14d9907de2b6",
+        "DfinF_c2_des.cmd": "540017626674de04ef133a68c72471bc8dad345b67d1d121eda5ced4113a5e0d",
+        "DfinF_c2_sys.plt": "cfd217afc3ae2799b78f0d1ee20501500e3c8fd785744e9d86c4fbdd8cd5a021",
+        "run.json": "347c5cf6de83e78efe58cd0ccd91762d409ea4eef1379d4009653e8bbda3d8b2"
+      },
+      "differences": [
+        "SN release moved from 20.64ns to 0.14ns; same 0.13..0.14ns initialisation",
+        "additional electron/net-charge probes and state plots; all numeric/bias/source settings unchanged"
+      ],
+      "control_id": "JN_c2_q1300"
+    }
+  ],
+  "meshes": {
+    "gr_c1h": "c9c50820ee739fd5653b541bdd2a91ceea11e775605f5a784ece72268826a070",
+    "gr_c2h": "e44c0359c930d640d42ee9f1fffcf61ddb960c40da99432776fe1420d0b7b8c5"
+  },
+  "snapshot_sha256": {
+    "chk_struct.tcl": "a94796eed746f6000eb559bdd7a4d4d4b6c37d80db427fdd4100517c3117e501",
+    "gt_tran.py": "6db1ee5cb26df0a063390616d2345bc080488b262b33cc482afb8acb5f9c021f",
+    "make_runs.py": "bb1fc803547d04d8042abfa1fe2379b5771404eddd43d50191d6f286dfc20df6",
+    "params.py": "b92eaf0a2b2a26ce52cabfa999f56eb08bbf93a7ad3fb7ac6652bdd4d78b23e0",
+    "sdevice_cal_a1.7e21_b2.25e07.par": "fb8718cca6809a4f4d1ee849e38cfcd6dc5e20cc59ce18e7fa96c9f56fee9a0d",
+    "sde_gt_dvs.cmd": "d523186cbf090e4ad8d46ad10d1d982118103bdc6aa1b81d51914aa8bd3cf87d"
+  },
+  "control_A1_analysis_sha256": "3b8c87fe1df39278f8ef290676717bba3aef6c90c72f2b2b3f2c1209c7073b05"
+}

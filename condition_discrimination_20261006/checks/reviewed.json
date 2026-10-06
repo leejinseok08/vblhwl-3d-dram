@@ -1,0 +1,8 @@
+{
+  "reviewed": "2026-10-06",
+  "manifest_sha256": "9f643b4c07126e1689a02ec96804f34d5d9157e3a35e30f34ca285f0c2d08687",
+  "paper": "Cho IRPS2026 pp2-5 Fig2-8",
+  "scope": "2D diagnostic, explicit assumptions; not full3D reproduction",
+  "cutlines_read": 12,
+  "dry_run_contacts": "c1h,c2h,zz PASS"
+}
