@@ -595,6 +595,11 @@ cfg2d("q5", "F", k_cs=1.8 / 4.2, par=cal_par(1.7e21, 2.25e7), cases=((1, "gq5_c1
 # (207 / 119 / 114 / 14). Does that state lose charge as Fig.8(b), (c) show, and where does x 6 land against the bars of
 # Fig.8(a)? The factor has no source: a diagnosis, nothing to adopt without the user's word.
 for f_ in (6, 7): cfg2d(f"k{f_}", "F", k_cs=1.8 / 4.2, par=cal_par(1.7e21, 2.25e7, ii=f_))
+# Round 8 (diagnosis): the row hammer of Fig.7 with the impact-ionization coefficients x 7 and x 9, ideal WL, no stand-in
+# generation. Round 7: with x 7 the node of Case 2 falls by 0.27 V within the first 0.5 ns of BL = 0 V in the FBE (paper: 29 mV
+# in 10 ns): the parasitic bipolar transistor latches. Fig.7(a) shows such a fall for Z-Z' at BL = 0.55 V (1.1 -> 0.58 V in
+# 2 ns, body 665 mV: x 7 gives 516 mV at the WL switch-off, x 10 750 mV) and none with the body grounded (0.036 mV per cycle).
+for f_ in (7, 9): cfg2d(f"u{f_}", "R", rhsel=("Ryi_yy", "Rzi_zz", "Rzg_zz"), k_cs=1.8 / 4.2, par=cal_par(1.7e21, 2.25e7, ii=f_))
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
