@@ -1,0 +1,72 @@
+A. charged at t = 0, node at 1.1 V at t_A (stand-in charge x 1.0 / 1.25 / 1.5 / 2.0 of the bars). Losses in mV; paper in brackets
+case charge  holes  rise[mV]   node[V] | +5 ns   +3 ns | after low phase 1 .. 4              |  200 ns | first / 200 ns
+  1  x1.0     1058    548    1.1000 |   1.35    0.85 |    2.62    5.08    7.45    9.76   |   20.25 |  0.13
+  1  x1.25    1291    608    1.1000 |  10.14    6.31 |   18.93   32.66   43.46   52.36   |   82.11 |  0.23
+  1  x1.5     1523    665    1.1000 |  48.81   34.31 |   73.62  100.99  117.80  129.91   |  164.14 |  0.45
+  1  x2.0     1982    771    1.1000 | 184.68  161.32 |  215.28  243.04  258.58  269.36   |  298.70 |  0.72
+     paper           555    1.1000 |   43.0 at +5 ns |    55.0    67.0    76.0    83.0   |   100.0 |  0.55
+  2  x1.0     1045    442    1.1000 |   1.12    0.71 |    2.16    4.16    6.05    7.83   |   15.46 |  0.14
+  2  x1.25    1295    506    1.1000 |   9.06    5.79 |   15.97   25.69   32.70   38.20   |   55.64 |  0.29
+  2  x1.5     1543    566    1.1000 |  39.25   29.39 |   54.69   70.72   80.34   87.24   |  107.01 |  0.51
+  2  x2.0     2034    680    1.1000 | 130.49  116.82 |  148.68  165.54  175.19  181.96   |  200.84 |  0.74
+     paper           445    1.1000 |   23.0 at +5 ns |    29.0                           |    50.0 |  0.58
+  3  x1.0     1091    363    1.1000 |   0.56    0.36 |    1.06    1.97    2.77    3.47   |    6.20 |  0.17
+  3  x1.25    1358    429    1.1000 |   4.09    2.79 |    6.43    9.23   11.05   12.42   |   16.58 |  0.39
+  3  x1.5     1624    492    1.1000 |  13.33   10.83 |   16.93   20.48   22.58   24.08   |   28.47 |  0.59
+  3  x2.0     2150    612    1.1000 |  37.34   34.36 |   41.30   45.03   47.18   48.70   |   53.11 |  0.78
+     paper           365    1.1000 |    3.3 at +3 ns |     7.1                           |    14.6 |  0.49
+  4  x1.0      957    319    1.1000 |   0.59    0.37 |    1.09    1.95    2.65    3.25   |    5.41 |  0.20
+  4  x1.25    1193    378    1.1000 |   3.46    2.41 |    5.27    7.35    8.66    9.64   |   12.53 |  0.42
+  4  x1.5     1428    435    1.1000 |   9.76    7.95 |   12.33   14.85   16.33   17.38   |   20.40 |  0.60
+  4  x2.0     1894    543    1.1000 |  25.53   23.39 |   28.35   30.99   32.50   33.56   |   36.59 |  0.77
+     paper           320    1.1000 |    1.4 at +3 ns |     3.5                           |     7.0 |  0.50
+  5  x1.0     1134    367    1.1000 |   0.08    0.06 |    0.13    0.31    0.50    0.69   |    1.60 |  0.08
+  5  x1.25    1413    436    1.1000 |   0.09    0.07 |    0.14    0.32    0.50    0.69   |    1.57 |  0.09
+  5  x1.5     1690    501    1.1000 |   0.10    0.09 |    0.15    0.33    0.51    0.69   |    1.55 |  0.10
+  5  x2.0     2231    624    1.1000 |   0.30    0.22 |    0.48    0.83    1.12    1.38   |    2.39 |  0.20
+     paper           368    1.1000 |                |     0.0                           |     1.0 |     -
+
+B. the state that gives the paper's loss of the first low phase (Cases 1 - 4; Case 5 loses 0.13 - 0.15 mV up to x 1.5, paper 0)
+case  first loss | rise there  bar   above the bar | charge   holes | +5 or +3 ns (paper)  | phases 2 .. 4 (paper)                 | 200 ns (paper)
+  1     55.0 mV |    653      555      +98 mV     | x 1.45    1473 |   34.8 (43.0)       |   79.3   95.1  106.9 (67 76 83)       |  141.5 (100.0)
+  2     29.0 mV |    535      445      +90 mV     | x 1.37    1415 |   18.4 (23.0)       |   42.0   50.5   57.0                  |   76.4 (50.0)
+  3      7.1 mV |    435      365      +70 mV     | x 1.28    1385 |    3.2 ( 3.3)       |   10.0   11.9   13.3                  |   17.5 (14.6)
+  4      3.5 mV |    363      320      +43 mV     | x 1.19    1132 |    1.5 ( 1.4)       |    5.2    6.4    7.3                  |   10.1 (7.0)
+     the other way round, the state that gives the paper's loss at 200 ns:
+  1  200 ns 100.0 mV: rise  624 mV (+69 against the bar), charge x1.32, first loss there  27.9 mV (paper 55)
+  2  200 ns  50.0 mV: rise  500 mV (+55 against the bar), charge x1.23, first loss there  13.5 mV (paper 29)
+  3  200 ns  14.6 mV: rise  420 mV (+55 against the bar), charge x1.22, first loss there   5.1 mV (paper 7.1)
+  4  200 ns   7.0 mV: rise  337 mV (+17 against the bar), charge x1.08, first loss there   1.8 mV (paper 3.5)
+
+C. every recorded reading of a body potential at the states of B [mV], against the bars 555 / 445 / 365 / 320 (Cases 1 - 4)
+   rms    48 mV      598    502    422    347   deviation   +43   +57   +57   +27   x = 0.085 um ElectrostaticPotential | since the start
+   rms    58 mV      479    487    429    361   deviation   -76   +42   +64   +41   x = 0.125 um ElectrostaticPotential | since t = 0
+   rms    78 mV      653    535    435    363   deviation   +98   +90   +70   +43   x = 0.125 um ElectrostaticPotential | since the start
+   rms    78 mV      686    531    368    314   deviation  +131   +86    +3    -6   x = 0.165 um ElectrostaticPotential | since the start
+   rms    79 mV      403    409    390    317   deviation  -152   -36   +25    -3   x = 0.085 um ElectrostaticPotential | since t = 0
+   rms   114 mV      484    513    505    470   deviation   -71   +68  +140  +150   x = 0.085 um hQuasiFermiPotential | since t = 0
+   rms   114 mV      484    513    505    470   deviation   -71   +68  +140  +150   x = 0.125 um hQuasiFermiPotential | since t = 0
+   rms   161 mV      308    418    505    470   deviation  -247   -27  +140  +150   x = 0.165 um hQuasiFermiPotential | since t = 0
+   rms   261 mV      159    174    224    170   deviation  -396  -271  -141  -150   x = 0.165 um ElectrostaticPotential | since t = 0
+   rms   267 mV      774    705    642    625   deviation  +219  +260  +277  +305   x = 0.0625 um ElectrostaticPotential | since the start
+   rms   357 mV      103     82     56     39   deviation  -452  -363  -309  -281   x = 0.0625 um ElectrostaticPotential | since t = 0
+   rms   383 mV      805    799    798    780   deviation  +250  +354  +433  +460   x = 0.085 um hQuasiFermiPotential | since the start
+   rms   383 mV      805    799    798    780   deviation  +250  +354  +433  +460   x = 0.125 um hQuasiFermiPotential | since the start
+   rms   383 mV      805    799    798    780   deviation  +250  +354  +433  +460   x = 0.0625 um hQuasiFermiPotential | since the start
+   rms   383 mV      805    799    798    780   deviation  +250  +354  +433  +460   x = 0.165 um hQuasiFermiPotential | since the start
+   rms   439 mV        8    -22    -35     15   deviation  -547  -467  -400  -305   x = 0.0625 um hQuasiFermiPotential | since t = 0
+
+D. charged by the model's own generation (Codex's runs) against the stand-in curve at the same body rise; first low phase [mV]
+   hold 15.2 us, node clamped    | rise   592   503   345   308   429 | node before the fall 1.100 1.100 1.100 1.100 1.100
+        loss, Codex's run        |   11.49   14.95    0.59    0.77    0.13
+        stand-in curve, same rise|   11.22   14.73    0.64*    0.82*    0.13
+   hold 15.2 us, node early      | rise   569   469   325   289   404 | node before the fall 1.027 1.004 1.006 1.015 0.971
+        loss, Codex's run        |    5.19    5.27    0.32    0.40    0.12
+        stand-in curve, same rise|    5.21    5.10    0.38*    0.50*    0.13
+   hold 15.2 us, node late_reset | rise   571   471   326   290   405 | node before the fall 1.100 1.100 1.100 1.100 1.100
+        loss, Codex's run        |    5.59    5.59    0.33    0.41    0.13
+        stand-in curve, same rise|    5.48    5.34    0.39*    0.51*    0.13
+   hold 21 us, node early      | rise   646   544   401   358   501 | node before the fall 1.005 0.979 0.976 0.988 0.930
+        loss, Codex's run        |   48.28   36.47    3.27    3.39    0.13
+        stand-in curve, same rise|   47.37   34.78    2.98    3.11    0.15
+   paper: rise   555   445   365   320   368 | loss  55.0  29.0   7.1   3.5   0.0

@@ -3,6 +3,55 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-07 (bg) "the body is already charged at t = 0 of Fig.8" held against the paper's numbers; Codex's screen; prompt for the missing runs
+- User: check whether the paper's numbers come out if t = 0 is a charged state; write the prompt for the missing runs, the user hands
+  it to Codex. No run of mine was started (the user gives this line to Codex).
+- Codex meanwhile (its commits ce037a9 .. 32f5e2a on main, server read at 00:35): a screen of 720 conditions
+  (`codex_validation/factorial_conditions_20261006`, 8 at a time, 50 of 720 done at 00:33): Cases 1 - 5 x preparation (own
+  generation, hold 21 ns / 15.2 us / 21 us; stand-in in the whole body / 25 nm at the BL side / 25 nm at the SN side, x 1 / 1.125 / 1.25)
+  x node (free / held at 1.1 V up to 0.5 ns before the fall / put back to 1.1 V 10 ps before the fall) x impact ionization on / off
+  x Cs (text / x 1.8 / 4.2). The BL period is the paper's 21 ns; every run ends at the end of the first BL-low phase. The run I
+  named as missing (BL fall at 15.2 us) is its group 13 and is done:
+    hold 15.2 us, node free:      rise 569 / 469 / 325 / 289 / 404 mV, node 1.027 / 1.004 / 1.006 / 1.015 / 0.971 V, first low 5.19 / 5.27 / 0.32 / 0.40 / 0.12 mV
+    the same, node put back:      rise 571 / 471 / 326 / 290 / 405 mV, node 1.1 V,                                 first low 5.59 / 5.59 / 0.33 / 0.41 / 0.13 mV
+    the same, node held at 1.1 V: rise 592 / 503 / 345 / 308 / 429 mV (holes 1228 / 1284 / 1020 / 916 / 1384),         first low 11.49 / 14.95 / 0.59 / 0.77 / 0.13 mV
+  (its result files, not recomputed by me from the raw data). Paper: 555 / 445 / 365 / 320 / 368 mV and 55 / 29 / 7.1 / 3.5 / 0 mV.
+- The check, with the runs that have the state "charged, node at 1.1 V" and the whole waveform: Dh1F .. Dh4F (stand-in charge
+  x 1.0 / 1.25 / 1.5 / 2.0 of the bar charge). `tools/gt_charged_t0.py` (tables A - D; GT_CODEX = Codex's results folder for D),
+  picture `tools/plot_charged_t0.py` -> `gt2d_charged_t0_check.png`.
+  * The loss of the first low phase is one function of the body rise at t_A, whatever made the charge: Codex's states charged
+    by the model's own generation lie on the curve of the stand-in states at the same rise (11.49 against 11.22, 14.95 / 14.73,
+    5.19 / 5.21, 48.28 / 47.37 mV; thin bodies 0.59 / 0.64, 0.32 / 0.38, extrapolated), node at 1.1 V or at 0.93 - 1.03 V.
+  * At the bars (x 1.0): first low phase 2.62 / 2.16 / 1.06 / 1.09 / 0.13 mV, 200 ns 20.3 / 15.5 / 6.2 / 5.4 / 1.6 (paper 55 / 29 / 7.1 / 3.5 / 0
+    and 100 / 50 / 14.6 / 7 / 1): Case 5 fits, Cases 1 - 4 lose 21 / 13 / 6.7 / 3.2 times too little.
+  * The state that gives the paper's first-phase loss (interpolated, Cases 1 - 4): body rise 653 / 535 / 435 / 363 mV = 98 / 90 / 70 /
+    43 mV above the bar, charge x 1.45 / 1.37 / 1.28 / 1.19 (1473 / 1415 / 1385 / 1132 holes). There: loss 5 ns (Cases 3, 4: 3 ns) after
+    the fall 34.8 / 18.4 / 3.2 / 1.5 mV (paper 43 / 23 / 3.3 / 1.4), Case 1 after low phases 2 - 4 79 / 95 / 107 (67 / 76 / 83), Case 4 after two
+    phases 5.2 (5.2 at 63 ns), 200 ns 142 / 76 / 17.5 / 10.1 (100 / 50 / 14.6 / about 7). The other way round, the state with the paper's
+    200 ns loss (rise 624 / 500 / 420 / 337 mV) has a first-phase loss of 27.9 / 13.5 / 5.1 / 1.8 mV.
+  * No recorded reading of a body potential gives the bars at those states (four positions along the channel at mid-thickness,
+    electrostatic and hole quasi-Fermi potential, counted from the start of the transient or from t = 0): best rms 48 mV
+    (x = 85 nm, electrostatic, from the start: +43 / +57 / +57 / +27). Positions across the thickness were never recorded.
+  * In the low phases the holes leave (x 1.5, Case 1: 1523 -> 1356 -> 1291 -> 1251 ..), the body falls (-42, -59, -69 mV) and the
+    steps shrink (73.6, 27.5, 16.9, 12.2 mV); nothing is refilled in the 10.5 ns high phases. The paper's steps shrink faster
+    (55, 12, 9, 7): at an equal first step the model's later steps are about twice the paper's.
+  * Fig.8(a) by the paper's own words is the rise between two time stamps, t = 0 and t_A (Sec.VI), and its numbers are counted
+    from the body without hole charge ((ax): bars + depleted potentials of this model = one end potential). A body that is
+    charged already rises 0.25 - 0.36 mV in 21 ns (12 - 17 mV per us between 15.2 and 21 us). So "charged at t = 0", taken
+    literally, leaves no rise for Fig.8(a); it needs the t = 0 of Fig.8(a) to be another, uncharged state than the t = 0 of the
+    curves, which the paper does not say.
+  * A body left alone until it saturates (100 us and more, node free) loses 221 / 126 / 28 / 23 / 4.6 mV in the first 10.5 ns: four
+    times the paper's Case 1, Case 5 no longer immune. The paper's losses are near a state "about 20 us after the write" (own
+    generation, node held: 19.9 / 17.7 / 22.1 / 19.8 us by my estimate at 13 mV per us from Codex's group 17; not run), a time nothing
+    in the paper gives.
+- Verdict: with a charged state at t = 0 the flat node, the order of the cases, Case 5, the early part of Cases 3, 4 and a
+  staircase that saturates come out. Bars and losses do not come out of one state (43 - 98 mV apart), the later steps of the
+  thick bodies are too large, and Fig.8(a) as the paper describes it is left without a rise. Not a reproduction.
+- Missing for this check and asked of Codex (prompt `PROMPT_FOR_CODEX_charged_t0_2026-10-07.md` in the shared folder `claude/`
+  and in the results folder; the user hands it over): own generation with the node held at 1.1 V for 15.2 / 18 / 20 / 22 us, then
+  the whole waveform of Fig.8(b) (9 low phases), Cases 1 - 5, probes across the body thickness: 20 runs. Codex's screen stops
+  after the first low phase. Mine to offer, the user's to decide: the same check in 3D (decks E3* wait).
+
 ## 2026-10-06 (bf) round 11: the FBE with the hold and the BL period stretched (21 us .. 21 ms), no stand-in generation (user: Codex does not run this)
 - `run_d11.sh`, 20 runs Dz3F .. Dz6F_c1..5: hold before the first BL fall and BL period 21 us / 210 us / 2.1 ms / 21 ms, BL edges 0.5 ns,
   baseline B1, impact ionization at the default coefficients, node set to 1.1 V for 10 ps after the write and then free. Code:

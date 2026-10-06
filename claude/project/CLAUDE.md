@@ -93,7 +93,7 @@ Run names must differ by more than letter case (the PC's file system is case-bli
   need quotes or loops (the remote shell is tcsh).
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
-## State (2026-10-06 night; details NOTES (ax) .. (bf))
+## State (2026-10-07; details NOTES (ax) .. (bg))
 The 2D device is configuration `fin2` = the runs DfinI_c1..5, DfinW_c2, Dh1F_c1..5, DfinR* (`COMPOSE` in tools/score2d.py; the
 user's decisions of the afternoon of 2026-10-06 are in it):
 - from the paper: Fig.2 section, Fig.5(a)/(b) dimensions, doping, work functions, Vdd 1.1, Vpp 1.8, write as Fig.4(a) (BL 1.168 V),
@@ -133,6 +133,12 @@ The loss in the first 10.5 ns after the BL fall has the paper's size at a hold o
 the bars are 36 - 133 mV too high: bars and losses do not fit at one instant, as with `fin2` / `fin`. The FBE decks carry 2.19 / 1.80 /
 1.54 fF (the text's 5.1 / 4.2 / 3.6 fF x 1.8 / 4.2), not 1.8 fF in every case. Codex continues this line (`NG_*` runs of its own):
 nothing of mine starts there without the user's word.
+"The body is already charged at t = 0" was held against the paper on 2026-10-07 with the existing runs (NOTES (bg), `tools/gt_charged_t0.py`):
+the loss of the first low phase is one function of the body rise at t_A, whatever made the charge (stand-in or the model's own
+generation, Codex's runs); the state with the paper's first-phase loss has the body 98 / 90 / 70 / 43 mV above the bar (Cases 1 - 4) and
+loses 142 / 76 / 17.5 / 10.1 mV by 200 ns (paper 100 / 50 / 14.6 / 7); Case 5 fits; Fig.8(a) by the paper's words is the rise between t = 0 and
+t_A, which a charged body does not have (0.3 mV in 21 ns). Codex runs a screen of 720 conditions on this line (first low phase only);
+what is missing (own generation, node held, whole waveform) is written as a prompt for Codex that the user hands over.
 3D (unit cell `g3_c2h`, X-X' pair `g3x_c2h`) was rebuilt from today's structure files and held against Fig.2 (NOTES (ba)); the decks
 E3* with the 2D values are written and wait for the user's word. Rounds 6 - 11 are over; no run of mine is on the server.
 No open parameter of mine is left in 2D: next steps are the user's (3D, merging the branch `claude`, what to ask the authors).
