@@ -1,0 +1,17 @@
+{
+  "pass": true,
+  "checks": [
+    "PASS gr_c1h_L0_lo: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3",
+    "PASS gr_c1h_L0_mid: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3",
+    "PASS gr_c1h_L0_hi: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3",
+    "PASS gr_c2h_L0_lo: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3",
+    "PASS gr_c2h_L0_mid: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3",
+    "PASS gr_c2h_L0_hi: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3",
+    "PASS gr_zz_L0_lo: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3",
+    "PASS gr_zz_L0_mid: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3",
+    "PASS gr_zz_L0_hi: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3",
+    "PASS gr_zz_L1_lo: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3",
+    "PASS gr_zz_L1_mid: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3",
+    "PASS gr_zz_L1_hi: junctions 50 / 175 nm; donor 1e20, acceptor 1e18 cm^-3"
+  ]
+}

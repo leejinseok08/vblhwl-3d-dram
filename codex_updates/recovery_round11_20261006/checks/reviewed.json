@@ -1,0 +1,19 @@
+{
+  "reviewed_at": "2026-10-06T21:30:45.175487+09:00",
+  "manifest_sha256": "e3f9f45de6140fb2f6c7469c63442a62368b3099cdbd2bf5be4400596e4e9295",
+  "document_sha256": "f59751f64d94c3e47b22e4d65220b1d942a660907ce3c763ac34fa71ac8688f0",
+  "human_read_all_horizontal_checks": 12,
+  "vertical_checks": [
+    "PASS vertical gr_c1h L0: body 40.000..70.000nm",
+    "PASS vertical gr_c2h L0: body 40.000..60.000nm",
+    "PASS vertical gr_zz L0: body 40.000..60.000nm",
+    "PASS vertical gr_zz L1: body 140.000..160.000nm"
+  ],
+  "paper": "Cho III/IV/V/VI/VIII and Fig2/4/5/6/7/8 read from original pages before this batch",
+  "user_authorization": "User explicitly instructed exact damage recovery and source/recombination-separated Round11 analysis",
+  "quota": {
+    "used_KB": 7774660,
+    "soft_KB": 9437184,
+    "hard_KB": 10485760
+  }
+}
