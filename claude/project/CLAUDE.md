@@ -151,4 +151,5 @@ curve, 32 holes after a 21 ns hold, the bar with 1094 holes), and with the charg
 same body rise: bar state 1.48 mV in the first low phase and 10.4 mV at 200 ns (2D 2.16 / 15.5, paper 29 / 50), x 1.25 9.94 / 34.6 mV (2D
 15.97 / 55.6). The gap between Fig.8(a) and Fig.8(b), (c) is not a matter of the 2D section. Rounds 6 - 12 and the 3D check are over; no
 run of mine is on the server.
-No open parameter of mine is left in 2D: next steps are the user's (3D, merging the branch `claude`, what to ask the authors).
+No open parameter of mine is left in 2D or in the 3D unit cell: next steps are the user's (what to ask the authors, merging the branch
+`claude`, the other cases or the row hammer in 3D).
