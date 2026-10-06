@@ -606,6 +606,13 @@ for f_ in (7, 9): cfg2d(f"u{f_}", "R", rhsel=("Ryi_yy", "Rzi_zz", "Rzg_zz"), k_c
 # Case 2 latches: multiplication raises the loss per hole, the more the thicker the body - the direction the paper's
 # 55 / 29 / 7.1 mV ask for (model at the bar charge: 2.6 / 2.2 / 1.1).
 for f_ in (4, 5): cfg2d(f"v{f_}", "F", gb=GBQ, k_cs=1.8 / 4.2, par=cal_par(1.7e21, 2.25e7, ii=f_))
+# Round 10 (diagnosis of Fig.7 as the paper draws it). Fig.7(b), looked at again on 2026-10-06: a resistor R sits between the
+# victim gate node and its WL source (0 V) in the floating and in the grounded configuration, a capacitor between the
+# aggressor gate and the victim gate; Fig.7(a): the node falls in steps, one per aggressor pulse, from 0.45 ns on; Fig.7(e): the
+# body rises 665 mV between t = 0 and t_A (0.45 ns of hammering) with the impact-ionization model on, 2.4 mV with it off. So
+# the body is charged during the hammer, by the jumps of the victim gate. R = 2e5 Ohm (jump 0.21 V) with the coefficients x 5
+# (no avalanche at the WL switch-off) and x 7; write and hold 1 ns each (gate node settled).
+for f_ in (5, 7): cfg2d(f"w{f_}", "R", Rwl=2e5, tWr=1.0, rhsel=("Rzi_zz", "Rzg_zz"), rh=dict(tHold=1.0), k_cs=1.8 / 4.2, par=cal_par(1.7e21, 2.25e7, ii=f_))
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
