@@ -84,6 +84,9 @@ P = dict(
                         # node does not pay for it ("charged at t = 0" as a state that was prepared; a diagnosis)      [ASM]
     ProbeT=0,           # 1: CurrentPlot probes across the body thickness at the probe's x (1 nm inside both gate-oxide
                         # interfaces, 1/4 and 3/4 of the thickness): the paper does not say where it reads the body potential
+    ProbeX=0,           # 1: probes along the whole channel every 5 nm (pillar face to the end of the source) at mid-depth and 1 nm
+                        # under one gate oxide, and average / minimum / maximum of the potential over the body region, its gated
+                        # part and the part under the BL-side spacer: to back-calculate where and when Fig.8(a) reads the body
     tHold=0.05,         # wait after the write / before the first edge. Fig.8(b) from the pixels (2026-10-06): first BL fall
                         # at 21.0 ns (FB2 in make_runs.py: 20.7 after the write); read by eye before: about 16 ns (FB)   [ChoF]
     tEdge=0.1,          # BL edge of the FBE pulses (not given; FB2: 0.5 ns, 10 + 0.5 + 10 + 0.5 = 21)   [ASM]

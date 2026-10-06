@@ -110,6 +110,15 @@ def currentplot(p, indent="  "):
             for d in (1.0, p["Tbody"] / 4, 3 * p["Tbody"] / 4, p["Tbody"] - 1.0):
                 q = f"({xq} {(y0 + d) / 1000:.5f})"
                 extra += f"{indent}  ElectrostaticPotential( {q} )\n{indent}  hQuasiFermiPotential( {q} )\n"
+        if p["ProbeX"]:      # the whole channel every 5 nm at mid-depth and 1 nm under one gate oxide; statistics over the body region and its two parts
+            y0 = p["Dvox"] / 2 + p["Tgm"] + p["Tox"]; x0 = p["Wbl"] / 2; L = p["Lsp1"] + p["Lg"] + p["Lsp2"]
+            for yy in (y0 + p["Tbody"] / 2, y0 + 1.0):
+                for i in range(int(L / 5)):
+                    extra += f"{indent}  ElectrostaticPotential( ({(x0 + 2.5 + 5 * i) / 1000:.5f} {yy / 1000:.5f}) )\n"
+            win = lambda a, b: f"Window[({a / 1000:.5f} {y0 / 1000:.5f}) ({b / 1000:.5f} {(y0 + p['Tbody']) / 1000:.5f})]"
+            gated, under = win(x0 + p["Lsp1"], x0 + p["Lsp1"] + p["Lg"]), win(x0, x0 + p["Lsp1"])
+            extra += (f'{indent}  ElectrostaticPotential( Average(Region="R.Ch_v") Minimum(Region="R.Ch_v") Maximum(Region="R.Ch_v") Average({gated}) Average({under}) )\n'
+                      f'{indent}  hQuasiFermiPotential( Average(Region="R.Ch_v") Average({gated}) )\n')
     return (f"{indent}CurrentPlot {{\n"
             f"{indent}  ElectrostaticPotential( {pos} )   # V_B probe: victim channel centre at body level\n"
             f"{indent}  hQuasiFermiPotential( {pos} )\n"
@@ -651,6 +660,13 @@ for k_, f_ in (("z3", 1e3), ("z4", 1e4), ("z5", 1e5), ("z6", 1e6)): cfg2d(k_, "F
 # losses near 20 us (NOTES (bg)). Probes across the body thickness. Codex's screen has 15.2 and 21 us with the node held, up
 # to the end of the first low phase only. A diagnosis off the paper's printed time axis; the held node is a preparation.
 for k_, h_ in (("n1", 15.2), ("n2", 18.0), ("n3", 20.0), ("n4", 22.0)): cfg2d(k_, "F", tHold=h_ * 1e3, SNhold=1, ProbeT=1, **B1)
+# Round 13 (user 2026-10-07: the authors cannot be asked, back-calculate): WHERE and WHEN does Fig.8(a) read the body potential?
+# The hole charge of each case is set by the paper's loss of the first low phase instead of by the bar (x 1.45 / 1.37 / 1.28 / 1.19 of
+# the bar charge, NOTES (bg); two runs per case around that value, Case 5 at x 1.0 / 1.15), the potential is written along the whole
+# channel and as region statistics. With the existing probes the reading "under the gate, BL side, BL low" gives the four bars
+# within 20 mV at those states (tools/gt_ta_scan.py); this round holds every simple reading against the bars.
+PLO = {1: 1.40, 2: 1.32, 3: 1.23, 4: 1.14, 5: 1.00}; PHI = {1: 1.50, 2: 1.42, 3: 1.33, 4: 1.24, 5: 1.15}
+for k_, f_ in (("p1", PLO), ("p2", PHI)): cfg2d(k_, "F", gb={c: GBQ[c] * f_[c] for c in GBQ}, ProbeX=1, ProbeT=1, **B1)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
