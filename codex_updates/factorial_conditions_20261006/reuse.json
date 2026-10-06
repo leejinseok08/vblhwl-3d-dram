@@ -1,0 +1,122 @@
+[
+  {
+    "id": "FC025_c1",
+    "source": "/home/e20241515/vblhwl_3d_dram/codex_validation/recovery_round11_20261006/runs/NG_c1_21us",
+    "source_run": "NG_c1_21us",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC025_c2",
+    "source": "/home/e20241515/vblhwl_3d_dram/codex_validation/recovery_round11_20261006/runs/NG_c2_21us",
+    "source_run": "NG_c2_21us",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC041_c1",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Dh1F_c1",
+    "source_run": "Dh1F_c1",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC041_c2",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Dh1F_c2",
+    "source_run": "Dh1F_c2",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC065_c1",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Dh2F_c1",
+    "source_run": "Dh2F_c1",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC065_c2",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Dh2F_c2",
+    "source_run": "Dh2F_c2",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC002_c1",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Da5F_c1",
+    "source_run": "Da5F_c1",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC002_c2",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Da5F_c2",
+    "source_run": "Da5F_c2",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC025_c3",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Dz3F_c3",
+    "source_run": "Dz3F_c3",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC025_c4",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Dz3F_c4",
+    "source_run": "Dz3F_c4",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC025_c5",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Dz3F_c5",
+    "source_run": "Dz3F_c5",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC041_c3",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Dh1F_c3",
+    "source_run": "Dh1F_c3",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC041_c4",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Dh1F_c4",
+    "source_run": "Dh1F_c4",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC041_c5",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Dh1F_c5",
+    "source_run": "Dh1F_c5",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC065_c3",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Dh2F_c3",
+    "source_run": "Dh2F_c3",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC065_c4",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Dh2F_c4",
+    "source_run": "Dh2F_c4",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC065_c5",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Dh2F_c5",
+    "source_run": "Dh2F_c5",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC002_c3",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Da5F_c3",
+    "source_run": "Da5F_c3",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC002_c4",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Da5F_c4",
+    "source_run": "Da5F_c4",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  },
+  {
+    "id": "FC002_c5",
+    "source": "/home/e20241515/vblhwl_3d_dram/runs/Da5F_c5",
+    "source_run": "Da5F_c5",
+    "reason": "Same device/coefficients/pulse prefix/SN clamp/history; reanalysed intact stored first10.5ns"
+  }
+]

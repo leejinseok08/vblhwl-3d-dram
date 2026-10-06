@@ -1,0 +1,15 @@
+{
+  "reviewed_at": "2026-10-06T23:26:05.257042+09:00",
+  "manifest_sha256": "ec325d246af8da2b221aeb1f30a0eb30a74b2f7092a2af595a18a89d8520e2b5",
+  "paper_review_sha256": "d0000eb2257a5f68cd81dc64de8b69ad76d9722adbd3666365f7756583f3dec0",
+  "checks_sha256": "0e9f1c05c8a93df55341ba986c3df20c5f049289089916adda9a095f43dce9a9",
+  "checks_read": 24,
+  "paper": "Cho original III/IV/VI Figs2/4/5/8 and Fig7 grounded control; p2-p5 reviewed before this batch",
+  "authorization": "User explicitly requested finite candidate combinations and simulated shortlist",
+  "quota": {
+    "used_KB": 7709500,
+    "soft_KB": 9437184,
+    "hard_KB": 10485760,
+    "reserve_ok": true
+  }
+}

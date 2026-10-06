@@ -1,0 +1,30 @@
+{
+  "pass": true,
+  "checks": [
+    "PASS mesh gr_c1h lo: junction50/175nm Nsd1e20 Nch1e+18 body40..70nm",
+    "PASS mesh gr_c1h mid: junction50/175nm Nsd1e20 Nch1e+18 body40..70nm",
+    "PASS mesh gr_c1h hi: junction50/175nm Nsd1e20 Nch1e+18 body40..70nm",
+    "PASS mesh gr_c2h lo: junction50/175nm Nsd1e20 Nch1e+18 body40..60nm",
+    "PASS mesh gr_c2h mid: junction50/175nm Nsd1e20 Nch1e+18 body40..60nm",
+    "PASS mesh gr_c2h hi: junction50/175nm Nsd1e20 Nch1e+18 body40..60nm",
+    "PASS mesh gr_c3h lo: junction50/175nm Nsd1e20 Nch1e+18 body40..50nm",
+    "PASS mesh gr_c3h mid: junction50/175nm Nsd1e20 Nch1e+18 body40..50nm",
+    "PASS mesh gr_c3h hi: junction50/175nm Nsd1e20 Nch1e+18 body40..50nm",
+    "PASS mesh gr_c4h lo: junction50/175nm Nsd1e20 Nch1e+16 body40..50nm",
+    "PASS mesh gr_c4h mid: junction50/175nm Nsd1e20 Nch1e+16 body40..50nm",
+    "PASS mesh gr_c4h hi: junction50/175nm Nsd1e20 Nch1e+16 body40..50nm",
+    "PASS optical source c1 uniform: 50..175nm only; Grid unmodified",
+    "PASS optical source c1 bl: 50..75nm only; Grid unmodified",
+    "PASS optical source c1 sn: 150..175nm only; Grid unmodified",
+    "PASS optical source c2 uniform: 50..175nm only; Grid unmodified",
+    "PASS optical source c2 bl: 50..75nm only; Grid unmodified",
+    "PASS optical source c2 sn: 150..175nm only; Grid unmodified",
+    "PASS optical source c3 uniform: 50..175nm only; Grid unmodified",
+    "PASS optical source c3 bl: 50..75nm only; Grid unmodified",
+    "PASS optical source c3 sn: 150..175nm only; Grid unmodified",
+    "PASS optical source c4 uniform: 50..175nm only; Grid unmodified",
+    "PASS optical source c4 bl: 50..75nm only; Grid unmodified",
+    "PASS optical source c4 sn: 150..175nm only; Grid unmodified"
+  ],
+  "performed_at": "2026-10-06T23:21:54.033520+09:00"
+}

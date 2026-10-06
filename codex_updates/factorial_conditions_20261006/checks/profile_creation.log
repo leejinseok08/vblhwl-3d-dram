@@ -1,0 +1,37 @@
+SOURCE case=1 window=uniform region=R.Ch_v x=(0.05,0.175) vertices=5447 active=5447 unit=cm^-3*s^-1
+SAVED /home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/profiles/c1_uniform.tdr (OpticalGenerationInput only; original device mesh untouched)
+SOURCE case=1 window=bl region=R.Ch_v x=(0.05,0.175) vertices=5447 active=1667 unit=cm^-3*s^-1
+SAVED /home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/profiles/c1_bl.tdr (OpticalGenerationInput only; original device mesh untouched)
+SOURCE case=1 window=sn region=R.Ch_v x=(0.05,0.175) vertices=5447 active=1665 unit=cm^-3*s^-1
+SAVED /home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/profiles/c1_sn.tdr (OpticalGenerationInput only; original device mesh untouched)
+SOURCE case=2 window=uniform region=R.Ch_v x=(0.05,0.175) vertices=4481 active=4481 unit=cm^-3*s^-1
+SAVED /home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/profiles/c2_uniform.tdr (OpticalGenerationInput only; original device mesh untouched)
+SOURCE case=2 window=bl region=R.Ch_v x=(0.05,0.175) vertices=4481 active=1373 unit=cm^-3*s^-1
+SAVED /home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/profiles/c2_bl.tdr (OpticalGenerationInput only; original device mesh untouched)
+SOURCE case=2 window=sn region=R.Ch_v x=(0.05,0.175) vertices=4481 active=1369 unit=cm^-3*s^-1
+SAVED /home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/profiles/c2_sn.tdr (OpticalGenerationInput only; original device mesh untouched)
+SOURCE case=3 window=uniform region=R.Ch_v x=(0.05,0.175) vertices=2791 active=2791 unit=cm^-3*s^-1
+SAVED /home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/profiles/c3_uniform.tdr (OpticalGenerationInput only; original device mesh untouched)
+SOURCE case=3 window=bl region=R.Ch_v x=(0.05,0.175) vertices=2791 active=859 unit=cm^-3*s^-1
+SAVED /home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/profiles/c3_bl.tdr (OpticalGenerationInput only; original device mesh untouched)
+SOURCE case=3 window=sn region=R.Ch_v x=(0.05,0.175) vertices=2791 active=851 unit=cm^-3*s^-1
+SAVED /home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/profiles/c3_sn.tdr (OpticalGenerationInput only; original device mesh untouched)
+SOURCE case=4 window=uniform region=R.Ch_v x=(0.05,0.175) vertices=2791 active=2791 unit=cm^-3*s^-1
+SAVED /home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/profiles/c4_uniform.tdr (OpticalGenerationInput only; original device mesh untouched)
+SOURCE case=4 window=bl region=R.Ch_v x=(0.05,0.175) vertices=2791 active=859 unit=cm^-3*s^-1
+SAVED /home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/profiles/c4_bl.tdr (OpticalGenerationInput only; original device mesh untouched)
+SOURCE case=4 window=sn region=R.Ch_v x=(0.05,0.175) vertices=2791 active=851 unit=cm^-3*s^-1
+SAVED /home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/profiles/c4_sn.tdr (OpticalGenerationInput only; original device mesh untouched)
+
+****************************************************************************
+***                       Sentaurus Data Explorer                        ***
+***                          Version U-2022.12                           ***
+***                      (2.7886616, x86_64, Linux)                      ***
+***                                                                      ***
+***                Copyright (c) 1994-2022 Synopsys, Inc.                ***
+***                                                                      ***
+***  This software and the associated documentation are confidential     ***
+***  and proprietary to Synopsys, Inc.  Your use or disclosure of this   ***
+***  software is subject to the terms and conditions of a written        ***
+***  license agreement between you, or your company, and Synopsys, Inc.  ***
+****************************************************************************
