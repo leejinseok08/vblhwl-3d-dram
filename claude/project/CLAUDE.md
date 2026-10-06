@@ -146,6 +146,9 @@ the paper's, and none of 24 readings of the body potential (also across the thic
 generation give the same losses at the same body rise (2 - 15 %). Fig.8(a) and (b), (c) do not come out of one state in 2D.
 3D (unit cell `g3_c2h`, X-X' pair `g3x_c2h`) was rebuilt from today's structure files and held against Fig.2 (NOTES (ba)); the decks
 E3* with the 2D values are written; the user gave the word on 2026-10-07 for the 3D FBE check (E3K sizing, E3H, E3W, E3I, then FBE of
-Case 2 at the sized rate x 1.0 / 1.25; not the pair runs E3X): started on 2026-10-07 01:30 after the user said to go on at once (structure check and top view done; a 3D unit-cell run is 16 MB).
-3D Id-Vg with the final values (E3I_c2) is the 2D curve: 0.33 / 0.45 / 0.58 V, read with GT_W=2 (half cell). Rounds 6 - 11 are over; no run of mine is on the server.
+Case 2 at the sized rate x 1.0 / 1.25; not the pair runs E3X): ran on 2026-10-07 (NOTES (bj), `tools/gt3_fbe.py`): the 3D device is the 2D device (Id-Vg 0.33 / 0.45 / 0.58 V read with GT_W=2, write
+curve, 32 holes after a 21 ns hold, the bar with 1094 holes), and with the charge put in its losses are those of the 2D section at the
+same body rise: bar state 1.48 mV in the first low phase and 10.4 mV at 200 ns (2D 2.16 / 15.5, paper 29 / 50), x 1.25 9.94 / 34.6 mV (2D
+15.97 / 55.6). The gap between Fig.8(a) and Fig.8(b), (c) is not a matter of the 2D section. Rounds 6 - 12 and the 3D check are over; no
+run of mine is on the server.
 No open parameter of mine is left in 2D: next steps are the user's (3D, merging the branch `claude`, what to ask the authors).

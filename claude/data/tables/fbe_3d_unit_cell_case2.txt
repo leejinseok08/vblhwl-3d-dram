@@ -1,0 +1,15 @@
+run          dim | node at t_A  holes  rise from start / from t = 0 [mV] | +3 ns   +5 ns | after low phase 1 .. 9 [mV]                                            | 200 ns
+E3H_c2       3D  | in the hold: t = 21.14 ns, node 1.0998 V, holes 32, rise +45 / +2 mV
+E3K_c2       3D  | in the hold: t = 21.14 ns, node 1.1000 V, holes 2770, rise +819 / +775 mV
+E3F_c2       3D  | 1.1000 V   1038    +431 /   +387              |    0.50    0.78 |    1.48    2.83    4.11    5.31    6.44    7.52    8.55    9.54   10.49 |   10.41   (now at 210.1 ns)
+E3F125_c2    3D  | 1.1000 V   1287    +493 /   +449              |    3.65    5.67 |    9.94   15.96   20.31   23.73   26.56   28.98   31.10   33.00   34.71 |   34.62   (now at 210.1 ns)
+Dh1F_c2      2D  | 1.1000 V   1045    +442 /   +394              |    0.71    1.12 |    2.16    4.16    6.05    7.83    9.51   11.12   12.66   14.13   15.54 |   15.46   (now at 210.1 ns)
+Dh2F_c2      2D  | 1.1000 V   1295    +506 /   +458              |    5.79    9.06 |   15.97   25.69   32.70   38.20   42.74   46.61   50.00   53.01   55.73 |   55.64   (now at 210.1 ns)
+paper Case 2:      rise 445 mV | +5 ns 23 mV | first low phase 29 mV | 200 ns 50 mV
+E3K_c2: target 445 mV crossed at 7.80 ns with 1094 holes in the body (psi +0.256 V, phi_p +0.711 V), 37.7 % of the supply delivered -> rate 1.886e+26 (sizing rate 5e+26); at the end: rise +819.2 mV, 2770 holes, storage node 1.1000 V
+W = 2.0 um.  columns: Vg at 1e-10 / 1e-8 / 1e-6 A | SS (1e-10..1e-8) mV/dec | minimum Vg, log10 I | log10 I at Vg -1, +1, +1.8 V
+E3I_c2         +0.33 +0.45 +0.58 | +60.4 | -0.09 -17.01 | -13.01 -4.13 -3.63   Vg -1.00..+1.79 (82 pts)
+  paper Case 2  +0.33 +0.44 +0.57 | +55.0 | -0.07 -16.40 | -13.20   -     -
+W = 0.1 um.  columns: Vg at 1e-10 / 1e-8 / 1e-6 A | SS (1e-10..1e-8) mV/dec | minimum Vg, log10 I | log10 I at Vg -1, +1, +1.8 V
+DfinI_c2       +0.33 +0.45 +0.59 | +60.3 | -0.12 -17.10 | -13.24 -4.15 -3.67   Vg -1.00..+1.79 (103 pts)
+  paper Case 2  +0.33 +0.44 +0.57 | +55.0 | -0.07 -16.40 | -13.20   -     -

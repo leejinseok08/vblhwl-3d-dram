@@ -3,6 +3,38 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-07 (bj) the check in 3D (unit cell g3_c2h, Case 2): the gap between the bars and the losses is not a matter of the 2D section
+- Six runs, started 01:30 after the structure check of (bi), all exit 0: E3I_c2 21 min, E3K_c2 59 min, E3F_c2 / E3F125_c2 2 h 20 min each
+  (a BL period of 21 ns in about 10 min; the 5 - 6 h told before were too many), E3W_c2, E3H_c2. 16 - 26 MB a run folder.
+  Tools: `tools/gt3_fbe.py` (3D and 2D runs read the same way; holes of a 3D run = integral x 2e-12), `tools/gt_probes.py -k` now
+  counts the holes of a 3D run rightly (it used the 2D factor: 20 times too few), picture `tools/plot_3d_fbe.py` ->
+  `gt3_fbe_case2_vs_2d.png`, table `fbe_3d_unit_cell_case2.txt` in the share pack.
+- The 3D device with the final values is the 2D device:
+    Id-Vg (E3I_c2, GT_W=2): 0.33 / 0.45 / 0.58 V at 1e-10 / 1e-8 / 1e-6 A, 60.4 mV/dec, 10^-13.01 A at -1 V, 10^-3.63 A at 1.8 V
+                            (2D DfinI_c2: 0.33 / 0.45 / 0.59, 60.3, -13.24, -3.67; paper 0.33 / 0.44 / 0.57)
+    write (E3W_c2, 1.8 fF): 0.744 / 0.957 / 1.046 / 1.106 V at 24 / 39 / 54 / 75 ps, 1.074 V after the WL is off (2D 0.725 / 0.942 / 1.035 / 1.098, 1.076)
+    hold without supply (E3H_c2): 32 holes at t_A, body +45 mV from the start, +2 mV within the 21 ns (2D DcsF_c2: 37 holes, +49 mV):
+                            the 3D body does not fill by itself in 21 ns either.
+    sizing (E3K_c2): the bar of 445 mV is passed with 1094 holes (2D 1056), body centre at +0.256 V (2D +0.255 V); the rate that
+                            ends there is 1.886e26 (2D 1.808e26, 4 % less).
+- FBE with the charge put in and the node held, then the waveform of Fig.8(b) [mV]:
+                           holes  rise   +3 ns  +5 ns | low phase 1 .. 9                                              | 200 ns
+    3D bar charge  E3F_c2     1038  +431   0.50   0.78 |  1.48  2.83  4.11  5.31  6.44  7.52  8.55  9.54 10.49 | 10.41
+    2D bar charge  Dh1F_c2    1045  +442   0.71   1.12 |  2.16  4.16  6.05  7.83  9.51 11.12 12.66 14.13 15.54 | 15.46
+    3D x 1.25      E3F125_c2  1287  +493   3.65   5.67 |  9.94 15.96 20.31 23.73 26.56 28.98 31.10 33.00 34.71 | 34.62
+    2D x 1.25      Dh2F_c2    1295  +506   5.79   9.06 | 15.97 25.69 32.70 38.20 42.74 46.61 50.00 53.01 55.73 | 55.64
+    paper Case 2                    445          23    | 29                                                    | 50
+  The same charge lifts the 3D body 11 - 13 mV less, and the 3D losses are 0.68 (bar) and 0.62 (x 1.25) times the 2D ones in
+  every phase. At the same body rise the 3D points lie on the 2D curve: 1.48 mV at 431 mV (2D curve 1.53), 9.94 mV at 493 mV
+  (2D curve 10.6). E3F_c2 ran at the 2D rate; its rise is 14 mV under the bar, inside the 30 mV, so it was not run again at
+  the sized rate.
+- So in 3D too the bar state loses 1.5 mV in the first low phase where the paper shows 29 mV (a factor 20), and 10 mV at 200 ns
+  where the paper shows 50. The 2D section is a faithful stand-in for the unit cell in this test; what separates Fig.8(a) from
+  Fig.8(b), (c) is not the dimension of the model. Left as candidates: what the authors call the body potential and where they
+  read it, their initial state, their capacitor in this test, the models of their deck. Questions for the authors.
+- Disk: account 8360 of 9216 MB at 03:55, growing about 3 MB per minute with Codex's screen (its own guard stops new runs with
+  less than 512 MiB free: about 05:50 at this pace). Said to the user; nothing of mine is running.
+
 ## 2026-10-07 (bi) round 12 (user: run it yourself, and 3D too): own generation with the node held, whole waveform; 3D check started
 - User (01:35): the 20 runs written for Codex are run here; 3D now as well. The prompt for Codex is withdrawn (note at its head, both
   copies; register pushed before the start, commit 7df9f66).
