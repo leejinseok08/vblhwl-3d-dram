@@ -3,6 +3,74 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-06 (bf) round 11: the FBE with the hold and the BL period stretched (21 us .. 21 ms), no stand-in generation (user: Codex does not run this)
+- `run_d11.sh`, 20 runs Dz3F .. Dz6F_c1..5: hold before the first BL fall and BL period 21 us / 210 us / 2.1 ms / 21 ms, BL edges 0.5 ns,
+  baseline B1, impact ionization at the default coefficients, node set to 1.1 V for 10 ps after the write and then free. Code:
+  `Sched.log` (decade pieces, steps even in log time) for holds and BL phases longer than 1 us; `ft()` prints deck times with 13
+  digits where 7 cannot hold them (a 0.5 ns edge at 21 ms); older decks byte-identical (8 checked). Conditions held against the
+  paper (only the time scale leaves the printed axis of Fig.8(b)); gate 21:11, ALL PASS on gr_c1h .. gr_c4h, every line read;
+  register entry pushed first. All 20 complete at 21:43 (32 min). Tools: `tools/gt_long_hold.py [-q] [-b] <runs>` (charging,
+  bar crossing, loss per phase), `tools/gt_long_split.py` (first phase against the idle control; first 10.5 ns), picture
+  `tools/plot_long_hold.py` -> `gt2d_long_hold_round11.png` (pic folder).
+- Storage capacitor of the FBE decks, said exactly: `CSB[tbody] * k_cs` = the paper's 5.1 / 4.2 / 3.6 fF times 1.8 / 4.2 = 2.19 fF
+  (Case 1), 1.80 fF (Case 2), 1.54 fF (Cases 3 - 5). "1.8 fF" in other entries is the 20 nm value. The charge sums below use these.
+- How the body fills by itself (one curve, the same in all four scales up to their hold), Cases 1 / 2 / 3 / 4 / 5:
+    after t = 0     holes in the body                  body rise [mV]               node change [mV]
+    10 ns           103 / 36 / 9 / 3 / 1               174 / 48 / 6 / 2 / 0         -0.06 .. -0.09
+    1 us            182 / 123 / 77 / 63 / 93           235 / 119 / 44 / 35 / 49     -5.6 / -7.6 / -6.8 / -6.2 / -9.4
+    10 us           821 / 824 / 648 / 577 / 873        482 / 381 / 244 / 215 / 299  -50 / -68 / -64 / -58 / -88
+    15.2 us         1136 / 1146 / 944 / 843 / 1280     567 / 467 / 324 / 288 / 402  -73 / -95 / -94 / -84 / -128
+    21 us           1452 / 1454 / 1248 / 1117 / 1695   645 / 543 / 401 / 358 / 501  -94 / -121 / -124 / -112 / -170
+    100 us on       2151 / 2000 / 1882 / 1745 / 2655   804 / 668 / 549 / 507 / 714  -143 / -167 / -187 / -174 / -265   (saturated)
+    Fig.8(a), 21 ns                                    555 / 445 / 365 / 320 / 368  0 (flat up to t_A)
+  The bar of Fig.8(a) is passed after 14.3 / 13.7 / 18.2 / 17.7 / 13.3 us with 1087 / 1055 / 1099 / 960 / 1130 holes in the body and
+  the node 69 / 87 / 109 / 96 / 113 mV down. At one common hold, 15.2 us, the five rises lie closest to the bars: rms 30 mV, the
+  order of the cases as in the paper (1 > 2 > 5 > 3 > 4). No stand-in; the one thing fitted is that time.
+- The node pays: C dV of the node at the bar crossing = 943 / 979 / 1052 / 925 / 1093 electrons against 984 / 1019 / 1090 / 957 / 1129
+  holes gained in the hold: 96 - 97 % in every case. Codex's integrals for Case 1 at 21 us say the same (holes +1349, node 0.2075 fC
+  = 1295 electrons; pairs in all silicon: tunnelling 1229, impact ionization 126, so about 9 % of it is not GIDL). Mean rate
+  to the bar 9 - 14 pA (8 nA would fill the body in 21 ns); I = C dV/dt between 10 and 21 us 8.7 / 8.8 / 8.4 / 7.6 / 11.5 pA = 4.0 / 4.9 /
+  5.5 / 4.9 / 7.5 mV per us. A node of 1.5 - 2.2 fF cannot stay flat for microseconds at this current; over 21 ns it moves
+  0.1 - 0.2 mV. The paper's node is flat. (An earlier draft of this entry used 1.8 fF for all cases and got 79 - 113 %: wrong.)
+- First BL-low phase of the 21 us runs (10.5 us long) against the same span of the 21 ms runs, where the BL stays high (the
+  same history: an idle control), [mV]:
+    loss with the BL low    334.5 / 239.6 / 76.6 / 62.3 / 66.5
+    loss with the BL high    28.5 /  30.4 / 39.8 / 37.2 / 57.6     (the generation going on)
+    added by the BL low     305.9 / 209.2 / 36.8 / 25.1 /  8.9
+    holes, start -> end     1452 -> 745, 1454 -> 716, 1248 -> 684, 1117 -> 524, 1695 -> 1709   (BL high: 1848 / 1795 / 1635 / 1479 / 2258)
+  In Case 5 87 % of the loss in the stretched phase is the hold loss and the holes do not leave; in Cases 1, 2 the BL-low
+  phase itself takes 0.2 - 0.3 V. What the BL adds keeps the paper's order (1 > 2 > 3 > 4 > 5).
+- The length of the paper's phase (a reading Codex made first, docs/CODEX_ROUND11_CAUSE_AND_RECOVERY_2026-10-06.md at f26b62d; my
+  tool gives the same numbers): loss in the first 10.5 ns after the first BL fall [mV]
+    hold 21 ns (DcsF)     0.08 / 0.09 / 0.07 / 0.07 / 0.10     body 174 / 49 / 7 / 2 / 1 mV, node flat
+    hold 21 us            46.5 / 35.0 / 3.3 / 3.4 / 0.13       body 645 / 543 / 401 / 358 / 501 mV (36 - 133 mV above the bars), node -94 .. -170 mV
+    hold 210 us .. 21 ms  221 / 126 / 28 / 23 / 4.6            body 804 / 668 / 549 / 507 / 714 mV (saturated), node -143 .. -265 mV
+    paper                 55 / 29 / 7.1 / 3.5 / 0              body 555 / 445 / 365 / 320 / 368 mV, node flat
+  At 21 us the loss is 0.85 / 1.2 / 0.46 / 0.97 times the paper's (Case 5: 0.13 mV against 0). It is the trade-off of round 3
+  again, now with the model's own generation: the bars fit at 15.2 us (the state of `fin2`, whose loss in 10.5 ns is 3 - 20
+  times too small), the losses fit near 21 us (the state of `fin`: bars 53 - 68 mV high there, 36 - 133 mV here).
+  Not run: the BL falling at 15.2 us (the loss at the hold where the bars fit). Codex is on this line now (below).
+- Whole stretched phases, loss against the node at t_A, first phase -> after nine [mV]:
+    21 us:  334 / 240 / 77 / 62 / 67  ->  489 / 447 / 403 / 389 / 362      (node at the end 0.52 - 0.60 V)
+    210 us: 460 / 406 / 318 / 286 / 262  ->  518 / 481 / 437 / 443 / 350
+    2.1 ms: 522 / 483 / 438 / 443 / 352  ->  590 / 555 / 512 / 521 / 414
+    21 ms:  592 / 557 / 513 / 523 / 415  ->  662 / 633 / 604 / 705 / 474   (node at the end 0.22 - 0.36 V)
+  Not to be held against the paper's 55 / 29 / 7.1 / 3.5 / 0 (10.5 ns phases); the cited papers show losses of this size in
+  their ms phases ([4] Fig.5(b): 20 nm body about 1.0 -> 0.6 V after the first low phase, (be)). Case 4 at 21 ms goes on losing
+  21 mV per period after the others have settled: 1.5 fA, read as the off-current of the lowest threshold (0.387 V), not
+  looked into further. With the paper's 21 ns timing and no stand-in the same model loses 0.07 - 0.10 mV in the first phase,
+  1.1 - 1.7 mV after nine.
+- Reading: the frame of the cited papers (holes of the GIDL collect in the body while the BL is high) works in this model
+  without any stand-in and gives the pattern of the five bars at one hold time. What does not fit Fig.8: the time (15 us
+  against 21 ns), the node (down 73 - 128 mV at that time, flat in the paper), and bars and losses at one instant. The
+  paper's body is charged without the node paying: a state that was set, a generation on the BL side, or a time axis that
+  does not show the charging. Not decidable from the paper. `fin2` stays a condition.
+- Codex (read 21:55, its commit f26b62d on main; read-only for me): analysed the 20 runs at 21:33 (11 complete then), same
+  conclusion ("natural generation fills the body but the node discharges meanwhile"); runs `NG_c1_21us`, `NG_c2_21us` = my
+  Dz3F Cases 1, 2 again with the body's electron density, tunnelling, impact ionization and SRH written out and four times
+  finer steps, to the end of the first low phase; reran its two runs the quota broke (`RR_FS_c2_q1300` done and whole,
+  `RR_CDR_id_i0_idle` running). I start nothing on this line while it runs.
+
 ## 2026-10-06 (be) reference [4] obtained and read; the time scale of the cited FBE tests; the conclusions of Sec.VI held against our runs
 - User: get [4] and read it. Deng .. Liu, "Balancing Charge Loss and Carrier Mobility ...", IEEE TED 72(1) 2025, DOI
   10.1109/TED.2024.3493066, IEEE document 10752092; PDF 14.1 MB through the user's Chrome session (access by Sogang library),

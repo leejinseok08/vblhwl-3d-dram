@@ -1,0 +1,105 @@
+Dz3F_c1: Case 1, bar 555 mV | hold 21 us (t_A): holes 1452, rise +645 mV, node -94.48 mV | bar reached after 14.3 us (holes 1089, node -69.17 mV) | loss after BL-low phase 1 .. 9 [mV]: 334.46 414.80 443.22 457.89 467.48 474.60 480.24 484.93 488.93 | node at the end 0.5180 V
+   time after t = 0        10 ns    100 ns      1 us     10 us     21 us
+   holes in the body         103       111       182       821      1452
+   body rise [mV]           +174      +180      +235      +482      +645
+   node change [mV]        -0.06     -0.56     -5.55    -50.49    -94.48
+Dz3F_c2: Case 2, bar 445 mV | hold 21 us (t_A): holes 1454, rise +543 mV, node -120.99 mV | bar reached after 13.7 us (holes 1061, node -87.64 mV) | loss after BL-low phase 1 .. 9 [mV]: 239.60 340.63 384.50 406.62 420.10 429.51 436.68 442.43 447.24 | node at the end 0.5328 V
+   time after t = 0        10 ns    100 ns      1 us     10 us     21 us
+   holes in the body          36        44       123       824      1454
+   body rise [mV]            +48       +56      +119      +381      +543
+   node change [mV]        -0.08     -0.77     -7.60    -67.51   -120.99
+Dz3F_c3: Case 3, bar 365 mV | hold 21 us (t_A): holes 1248, rise +401 mV, node -124.08 mV | bar reached after 18.1 us (holes 1103, node -109.61 mV) | loss after BL-low phase 1 .. 9 [mV]: 76.57 178.73 253.72 306.33 341.80 365.60 382.13 394.17 403.38 | node at the end 0.5713 V
+   time after t = 0        10 ns    100 ns      1 us     10 us     21 us
+   holes in the body           9        15        77       648      1248
+   body rise [mV]             +6       +10       +44      +244      +401
+   node change [mV]        -0.07     -0.69     -6.82    -64.15   -124.08
+Dz3F_c4: Case 4, bar 320 mV | hold 21 us (t_A): holes 1117, rise +358 mV, node -111.69 mV | bar reached after 17.7 us (holes 964, node -96.47 mV) | loss after BL-low phase 1 .. 9 [mV]: 62.28 149.06 216.74 267.92 306.68 336.08 358.39 375.48 388.78 | node at the end 0.5957 V
+   time after t = 0        10 ns    100 ns      1 us     10 us     21 us
+   holes in the body           3         8        63       577      1117
+   body rise [mV]             +2        +5       +35      +215      +358
+   node change [mV]        -0.06     -0.62     -6.17    -57.71   -111.69
+Dz3F_c5: Case 5, bar 368 mV | hold 21 us (t_A): holes 1695, rise +501 mV, node -169.84 mV | bar reached after 13.3 us (holes 1141, node -114.47 mV) | loss after BL-low phase 1 .. 9 [mV]: 66.54 169.60 242.27 287.68 315.68 333.56 345.79 354.78 361.78 | node at the end 0.5692 V
+   time after t = 0        10 ns    100 ns      1 us     10 us     21 us
+   holes in the body           1        10        93       873      1695
+   body rise [mV]             -0        +5       +49      +299      +501
+   node change [mV]        -0.09     -0.94     -9.36    -87.64   -169.84
+Dz4F_c1: Case 1, bar 555 mV | hold 210 us (t_A): holes 2151, rise +804 mV, node -142.92 mV | bar reached after 14.3 us (holes 1087, node -69.09 mV) | loss after BL-low phase 1 .. 9 [mV]: 459.52 477.20 488.00 495.80 501.92 506.96 511.24 514.98 518.28 | node at the end 0.4417 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us    210 us
+   holes in the body         103       111       182       821      2151      2151
+   body rise [mV]           +174      +180      +235      +482      +804      +804
+   node change [mV]        -0.06     -0.56     -5.55    -50.49   -142.92   -142.92
+Dz4F_c2: Case 2, bar 445 mV | hold 210 us (t_A): holes 2000, rise +668 mV, node -167.07 mV | bar reached after 13.7 us (holes 1055, node -87.16 mV) | loss after BL-low phase 1 .. 9 [mV]: 405.54 432.29 446.09 455.43 462.51 468.21 472.99 477.11 480.72 | node at the end 0.4545 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us    210 us
+   holes in the body          36        44       123       824      2000      2000
+   body rise [mV]            +48       +56      +119      +381      +668      +668
+   node change [mV]        -0.08     -0.77     -7.60    -67.51   -167.07   -167.07
+Dz4F_c3: Case 3, bar 365 mV | hold 210 us (t_A): holes 1882, rise +549 mV, node -187.14 mV | bar reached after 18.2 us (holes 1099, node -109.24 mV) | loss after BL-low phase 1 .. 9 [mV]: 317.73 374.89 395.40 407.60 416.24 422.93 428.39 433.00 436.98 | node at the end 0.4773 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us    210 us
+   holes in the body           9        15        77       648      1882      1882
+   body rise [mV]             +6       +10       +44      +244      +549      +549
+   node change [mV]        -0.07     -0.69     -6.82    -64.15   -187.14   -187.14
+Dz4F_c4: Case 4, bar 320 mV | hold 210 us (t_A): holes 1745, rise +507 mV, node -174.25 mV | bar reached after 17.7 us (holes 960, node -96.00 mV) | loss after BL-low phase 1 .. 9 [mV]: 286.28 367.28 394.46 409.37 419.47 427.07 433.14 438.20 442.53 | node at the end 0.4839 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us    210 us
+   holes in the body           3         8        63       577      1745      1745
+   body rise [mV]             +2        +5       +35      +215      +507      +507
+   node change [mV]        -0.06     -0.62     -6.17    -57.71   -174.25   -174.25
+Dz4F_c5: Case 5, bar 368 mV | hold 210 us (t_A): holes 2655, rise +714 mV, node -265.19 mV | bar reached after 13.3 us (holes 1130, node -113.45 mV) | loss after BL-low phase 1 .. 9 [mV]: 261.84 299.25 315.10 325.12 332.42 338.16 342.89 346.90 350.39 | node at the end 0.4876 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us    210 us
+   holes in the body           1        10        93       873      2655      2655
+   body rise [mV]             -0        +5       +49      +299      +714      +714
+   node change [mV]        -0.09     -0.94     -9.36    -87.64   -265.19   -265.19
+Dz5F_c1: Case 1, bar 555 mV | hold 2.1 ms (t_A): holes 2151, rise +804 mV, node -142.92 mV | bar reached after 14.3 us (holes 1087, node -69.09 mV) | loss after BL-low phase 1 .. 9 [mV]: 522.00 542.62 554.93 563.83 570.85 576.68 581.69 586.07 589.94 | node at the end 0.3693 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us      1 ms    2.1 ms
+   holes in the body         103       111       182       821      2151      2151      2151
+   body rise [mV]           +174      +180      +235      +482      +804      +804      +804
+   node change [mV]        -0.06     -0.56     -5.55    -50.49   -142.92   -142.92   -142.92
+Dz5F_c2: Case 2, bar 445 mV | hold 2.1 ms (t_A): holes 2000, rise +668 mV, node -167.07 mV | bar reached after 13.7 us (holes 1055, node -87.16 mV) | loss after BL-low phase 1 .. 9 [mV]: 483.24 505.30 518.25 527.57 534.90 541.00 546.23 550.85 554.98 | node at the end 0.3794 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us      1 ms    2.1 ms
+   holes in the body          36        44       123       824      2000      2000      2000
+   body rise [mV]            +48       +56      +119      +381      +668      +668      +668
+   node change [mV]        -0.08     -0.77     -7.60    -67.51   -167.07   -167.07   -167.07
+Dz5F_c3: Case 3, bar 365 mV | hold 2.1 ms (t_A): holes 1882, rise +549 mV, node -187.14 mV | bar reached after 18.2 us (holes 1099, node -109.24 mV) | loss after BL-low phase 1 .. 9 [mV]: 438.05 461.69 475.02 484.45 491.80 497.87 503.06 507.62 511.70 | node at the end 0.4020 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us      1 ms    2.1 ms
+   holes in the body           9        15        77       648      1882      1882      1882
+   body rise [mV]             +6       +10       +44      +244      +549      +549      +549
+   node change [mV]        -0.07     -0.69     -6.82    -64.15   -187.14   -187.14   -187.14
+Dz5F_c4: Case 4, bar 320 mV | hold 2.1 ms (t_A): holes 1745, rise +507 mV, node -174.25 mV | bar reached after 17.7 us (holes 960, node -96.00 mV) | loss after BL-low phase 1 .. 9 [mV]: 442.83 468.24 482.22 492.07 499.77 506.16 511.66 516.53 520.93 | node at the end 0.4052 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us      1 ms    2.1 ms
+   holes in the body           3         8        63       577      1745      1745      1745
+   body rise [mV]             +2        +5       +35      +215      +507      +507      +507
+   node change [mV]        -0.06     -0.62     -6.17    -57.71   -174.25   -174.25   -174.25
+Dz5F_c5: Case 5, bar 368 mV | hold 2.1 ms (t_A): holes 2655, rise +714 mV, node -265.19 mV | bar reached after 13.3 us (holes 1130, node -113.45 mV) | loss after BL-low phase 1 .. 9 [mV]: 351.64 372.15 383.62 391.61 397.73 402.70 406.88 410.49 413.66 | node at the end 0.4240 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us      1 ms    2.1 ms
+   holes in the body           1        10        93       873      2655      2655      2655
+   body rise [mV]             -0        +5       +49      +299      +714      +714      +714
+   node change [mV]        -0.09     -0.94     -9.36    -87.64   -265.19   -265.19   -265.19
+Dz6F_c1: Case 1, bar 555 mV | hold 21 ms (t_A): holes 2151, rise +804 mV, node -142.91 mV | bar reached after 14.3 us (holes 1087, node -69.09 mV) | loss after BL-low phase 1 .. 9 [mV]: 591.89 614.34 627.12 636.17 643.21 649.01 653.95 658.26 662.09 | node at the end 0.2964 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us      1 ms     10 ms     21 ms
+   holes in the body         103       111       182       821      2151      2151      2151      2151
+   body rise [mV]           +174      +180      +235      +482      +804      +804      +804      +804
+   node change [mV]        -0.06     -0.56     -5.55    -50.49   -142.92   -142.92   -142.92   -142.91
+Dz6F_c2: Case 2, bar 445 mV | hold 21 ms (t_A): holes 2000, rise +668 mV, node -167.07 mV | bar reached after 13.7 us (holes 1055, node -87.16 mV) | loss after BL-low phase 1 .. 9 [mV]: 556.91 581.86 595.68 605.39 612.95 619.19 624.53 629.20 633.38 | node at the end 0.3002 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us      1 ms     10 ms     21 ms
+   holes in the body          36        44       123       824      2000      2000      2000      2000
+   body rise [mV]            +48       +56      +119      +381      +668      +668      +668      +668
+   node change [mV]        -0.08     -0.77     -7.60    -67.51   -167.07   -167.07   -167.07   -167.07
+Dz6F_c3: Case 3, bar 365 mV | hold 21 ms (t_A): holes 1882, rise +549 mV, node -187.14 mV | bar reached after 18.2 us (holes 1099, node -109.24 mV) | loss after BL-low phase 1 .. 9 [mV]: 513.37 540.12 556.76 568.39 577.55 585.25 591.98 598.04 603.59 | node at the end 0.3094 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us      1 ms     10 ms     21 ms
+   holes in the body           9        15        77       648      1882      1882      1882      1882
+   body rise [mV]             +6       +10       +44      +244      +549      +549      +549      +549
+   node change [mV]        -0.07     -0.69     -6.82    -64.15   -187.14   -187.14   -187.14   -187.14
+Dz6F_c4: Case 4, bar 320 mV | hold 21 ms (t_A): holes 1745, rise +507 mV, node -174.25 mV | bar reached after 17.7 us (holes 960, node -96.00 mV) | loss after BL-low phase 1 .. 9 [mV]: 522.73 553.53 577.24 599.18 620.66 641.97 663.16 684.22 705.17 | node at the end 0.2206 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us      1 ms     10 ms     21 ms
+   holes in the body           3         8        63       577      1745      1745      1745      1745
+   body rise [mV]             +2        +5       +35      +215      +507      +507      +507      +507
+   node change [mV]        -0.06     -0.62     -6.17    -57.71   -174.25   -174.25   -174.25   -174.25
+Dz6F_c5: Case 5, bar 368 mV | hold 21 ms (t_A): holes 2655, rise +714 mV, node -265.19 mV | bar reached after 13.3 us (holes 1130, node -113.45 mV) | loss after BL-low phase 1 .. 9 [mV]: 414.88 433.94 444.93 452.66 458.63 463.48 467.58 471.11 474.22 | node at the end 0.3630 V
+   time after t = 0        10 ns    100 ns      1 us     10 us    100 us      1 ms     10 ms     21 ms
+   holes in the body           1        10        93       873      2655      2655      2655      2655
+   body rise [mV]             -0        +5       +49      +299      +714      +714      +714      +714
+   node change [mV]        -0.09     -0.94     -9.36    -87.64   -265.19   -265.19   -265.19   -265.19
+closest to the bars of Fig.8(a) at one common hold time: 15.2 us (rms deviation 30 mV over Cases 1 2 3 4 5)
+   bar [mV]                  555       445       365       320       368
+   body rise [mV]           +567      +467      +324      +288      +402
+   holes in the body        1136      1146       944       843      1280
+   node change [mV]       -72.50    -94.85    -93.74    -84.29   -128.43

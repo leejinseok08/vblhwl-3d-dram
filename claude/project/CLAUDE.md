@@ -93,7 +93,7 @@ Run names must differ by more than letter case (the PC's file system is case-bli
   need quotes or loops (the remote shell is tcsh).
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
-## State (2026-10-06 evening; details NOTES (ax) .. (bb))
+## State (2026-10-06 night; details NOTES (ax) .. (bf))
 The 2D device is configuration `fin2` = the runs DfinI_c1..5, DfinW_c2, Dh1F_c1..5, DfinR* (`COMPOSE` in tools/score2d.py; the
 user's decisions of the afternoon of 2026-10-06 are in it):
 - from the paper: Fig.2 section, Fig.5(a)/(b) dimensions, doping, work functions, Vdd 1.1, Vpp 1.8, write as Fig.4(a) (BL 1.168 V),
@@ -125,6 +125,14 @@ resistor, aggressor state or body charge); the collapse of Z-Z' with impact ioni
 The paper's own words and drawings on the models (read again on 2026-10-06, NOTES (bc)): Hurkx for the tunnelling; "an avalanche
 model" without name or coefficients, said for Fig.7 only; R of Fig.7(b) sits between the victim gate node and its WL source, no
 value; the 665 mV of Fig.7(e) build up during the first 0.45 ns of hammering; Fig.8 is explained by the body effect.
+The paper's own frame for the holes of Fig.8 is GIDL (its Sec.I and references [3], [4], both read: NOTES (bd), (be)); those papers
+run the test over 120 ms. Round 11 (NOTES (bf)) ran ours with the hold and the BL period stretched to 21 us .. 21 ms and no stand-in:
+the model's own generation fills the body to the bars in 13 - 18 us (one common hold of 15.2 us: 567 / 467 / 324 / 288 / 402 mV, rms
+30 mV), and the storage node pays for it (96 - 97 % of the electrons go into it: -73 .. -128 mV by then; the paper's node is flat).
+The loss in the first 10.5 ns after the BL fall has the paper's size at a hold of 21 us (46.5 / 35.0 / 3.3 / 3.4 / 0.13 mV), where
+the bars are 36 - 133 mV too high: bars and losses do not fit at one instant, as with `fin2` / `fin`. The FBE decks carry 2.19 / 1.80 /
+1.54 fF (the text's 5.1 / 4.2 / 3.6 fF x 1.8 / 4.2), not 1.8 fF in every case. Codex continues this line (`NG_*` runs of its own):
+nothing of mine starts there without the user's word.
 3D (unit cell `g3_c2h`, X-X' pair `g3x_c2h`) was rebuilt from today's structure files and held against Fig.2 (NOTES (ba)); the decks
-E3* with the 2D values are written and wait for the user's word. Rounds 6 - 10 are over; no run of mine is on the server.
+E3* with the 2D values are written and wait for the user's word. Rounds 6 - 11 are over; no run of mine is on the server.
 No open parameter of mine is left in 2D: next steps are the user's (3D, merging the branch `claude`, what to ask the authors).

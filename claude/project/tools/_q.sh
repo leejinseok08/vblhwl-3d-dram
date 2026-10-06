@@ -51,6 +51,9 @@ if [ "$m" = cx ]; then    # read-only: are the system plot files that Codex's ru
   for d in $(for p in $(pgrep -u "$USER" -x sdevice); do readlink /proc/$p/cwd; done | grep codex_validation); do echo "live: ${d#*codex_validation/}: $(ls -la --time-style=+%H:%M $d | awk 'NR>1 && $7 ~ /plt|log|out/ {printf "%s(%s,%s) ", $7, $5, $6}')"; done
   exit 0
 fi
+if [ "$m" = lh ]; then    # round 11: state of the batch, then the long-hold table of the named tags (z3 z4 z5 z6), all cases
+  python3 tools/run_state.py run_d11.sh | cut -c1-400; R=""; for t in "$@"; do for c in 1 2 3 4 5; do R="$R D${t}F_c$c"; done; done; python3 tools/gt_long_hold.py $R; exit 0
+fi
 B=$(cd runs; ls run_d4.sh run_d4y.sh run_d4r.sh run_d5.sh run_d6.sh 2>/dev/null)
 if [ "$m" = start6 ]; then bash tools/gt_start.sh run_d6.sh "$@"; m=st; fi
 if [ "$m" = sa ]; then python3 tools/run_state.py -a $B | grep -E 'running|DAMAGED|no output|stopped' | sort -u; exit 0; fi

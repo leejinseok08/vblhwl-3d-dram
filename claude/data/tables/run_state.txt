@@ -273,3 +273,23 @@ DyaRy_yy     stopped early (exit=143), PLOT FILE DAMAGED 0 ns of 2.125 ns
 DybRy_yy     complete                     2.125 ns of 2.125 ns
 DycRy_yy     complete, PLOT FILE DAMAGED  2.125 ns of 2.125 ns
 DydRy_yy     complete                     2.125 ns of 2.125 ns
+Dz3F_c1      complete                     2.1e+05 ns of 2.1e+05 ns
+Dz3F_c2      complete                     2.1e+05 ns of 2.1e+05 ns
+Dz3F_c3      complete                     2.1e+05 ns of 2.1e+05 ns
+Dz3F_c4      complete                     2.1e+05 ns of 2.1e+05 ns
+Dz3F_c5      complete                     2.1e+05 ns of 2.1e+05 ns
+Dz4F_c1      complete                     2.1e+06 ns of 2.1e+06 ns
+Dz4F_c2      complete                     2.1e+06 ns of 2.1e+06 ns
+Dz4F_c3      complete                     2.1e+06 ns of 2.1e+06 ns
+Dz4F_c4      complete                     2.1e+06 ns of 2.1e+06 ns
+Dz4F_c5      complete                     2.1e+06 ns of 2.1e+06 ns
+Dz5F_c1      complete                     2.1e+07 ns of 2.1e+07 ns
+Dz5F_c2      complete                     2.1e+07 ns of 2.1e+07 ns
+Dz5F_c3      complete                     2.1e+07 ns of 2.1e+07 ns
+Dz5F_c4      complete                     2.1e+07 ns of 2.1e+07 ns
+Dz5F_c5      complete                     2.1e+07 ns of 2.1e+07 ns
+Dz6F_c1      complete                     2.1e+08 ns of 2.1e+08 ns
+Dz6F_c2      complete                     2.1e+08 ns of 2.1e+08 ns
+Dz6F_c3      complete                     2.1e+08 ns of 2.1e+08 ns
+Dz6F_c4      complete                     2.1e+08 ns of 2.1e+08 ns
+Dz6F_c5      complete                     2.1e+08 ns of 2.1e+08 ns
