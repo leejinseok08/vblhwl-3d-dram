@@ -16,7 +16,9 @@ if sys.argv[1]=='export':
   for p in rd.iterdir():
    if p.is_file() and (p.name.endswith(('.plt.gz','.tdr.gz','.log.gz','.stdout.gz'))):files.append(dict(relative=str(p.relative_to(B)),size=p.stat().st_size,sha256=sha(p)))
   if len(jobs)==4:break
- if not jobs:print(json.dumps(dict(empty=True,queue_complete=(B/'queue_complete.json').exists())));sys.exit()
+ if not jobs:
+  complete=all((B/'results'/(j['id']+'.json')).exists() and (j['reuse_from'] or (B/'runs'/j['id']/'finished.json').exists()) for j in manifest['runs'])
+  print(json.dumps(dict(empty=True,queue_complete=complete)));sys.exit()
  batch='batch_'+jobs[0]+'_'+jobs[-1];pack=M/(batch+'.tar');tmp=pack.with_suffix('.tmp')
  with tarfile.open(tmp,'w') as tar:
   for f in files:tar.add(str(B/f['relative']),arcname=f['relative'],recursive=False)

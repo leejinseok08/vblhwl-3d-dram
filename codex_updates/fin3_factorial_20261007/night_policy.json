@@ -1,0 +1,17 @@
+{
+  "configured_at": "2026-10-07T21:41:19.972349+09:00",
+  "timezone": "Asia/Seoul",
+  "window": "00:00 inclusive to07:00 exclusive",
+  "daytime_workers": 16,
+  "night_max_total": 28,
+  "night_supplemental_max": 12,
+  "reserve_logical_cpus": 16,
+  "threads_per_job": 4,
+  "mem_reserve_GiB": 32,
+  "quota_reserve_MiB": 512,
+  "input_sha256": "361a3a0e540e88584abf13eadf6663108fb9972a14996becb9fed00c213bc258",
+  "unchanged_conditions": true,
+  "at_0700": "Stop new night launches; let active simulations finish",
+  "on_nonzero_exit": "Stop further night launches; keep active jobs",
+  "completion": "All720 result files plus raw-output finished markers, then exit"
+}

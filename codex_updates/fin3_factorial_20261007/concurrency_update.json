@@ -1,0 +1,13 @@
+{
+  "started_at": "2026-10-07T21:37:27.458193+09:00",
+  "original_workers": 8,
+  "supplemental_workers": 8,
+  "total_cap": 16,
+  "threads_per_job": 4,
+  "manifest_sha256": "361a3a0e540e88584abf13eadf6663108fb9972a14996becb9fed00c213bc258",
+  "unchanged_input_verified": true,
+  "paper_review": "Original pages2/3/5 reread 2026-10-07 21:35; Fig2/4/5/8; same mesh hashes, profiles, parameters and 720 conditions",
+  "duplicate_prevention": "shared process.lock plus recheck under lock; original queue starts front, supplemental starts back",
+  "resource_limits": "load1min<96; MemAvailable>32GiB; quota reserve512MiB",
+  "available_jobs": 430
+}
