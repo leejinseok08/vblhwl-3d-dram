@@ -119,6 +119,10 @@ def currentplot(p, indent="  "):
             gated, under = win(x0 + p["Lsp1"], x0 + p["Lsp1"] + p["Lg"]), win(x0, x0 + p["Lsp1"])
             extra += (f'{indent}  ElectrostaticPotential( Average(Region="R.Ch_v") Minimum(Region="R.Ch_v") Maximum(Region="R.Ch_v") Average({gated}) Average({under}) )\n'
                       f'{indent}  hQuasiFermiPotential( Average(Region="R.Ch_v") Average({gated}) )\n')
+    if p["ProbeX"] and p["Tpl"] == "sde_gt_dvs.cmd" and p["Pair"] != "one":       # 2D pair: average over the victim's body under its gate, holes in the aggressor's body
+        y0 = p["Dvox"] / 2 + p["Tgm"] + p["Tox"]; xa = p["Lsp2"] if p["Pair"] == "yy" else p["Wbl"] / 2 + p["Lsp1"]
+        extra += (f"{indent}  ElectrostaticPotential( Average(Window[({xa / 1000:.5f} {y0 / 1000:.5f}) ({(xa + p['Lg']) / 1000:.5f} {(y0 + p['Tbody']) / 1000:.5f})]) )\n"
+                  f'{indent}  hDensity( Integrate( Region="R.Ch_a" ) )\n')
     if p["ProbeX"] and p["Tpl"] == "sde_gt3_dvs.cmd" and p["Pair"] == "one":      # 3D unit cell: the average over the body under the gate (the half row of the model)
         y0 = p["Dvox"] / 2 + p["Tgm"] + p["Tox"]; x0 = p["Wbl"] / 2 + p["Lsp1"]
         extra += (f"{indent}  ElectrostaticPotential( Average(Window[({x0 / 1000:.5f} {y0 / 1000:.5f} 0) "
@@ -698,6 +702,17 @@ cfg2d("x4", "R", rhsel=RHS, Rwl=2e5, tWr=1.0, rh=dict(SNhold=2, tHold=2.0, tHold
 cfg2d("x5", "R", rhsel=RHS, rh=dict(SNhold=2, tHold=2.0, tHold2=HIS, Idle=1), **B1)
 cfg2d("x6", "R", rhsel=RHS, rh=dict(SNhold=2, tHold=2.0, tHold2=1e5, Idle=1), **B1)
 cfg2d("x7", "R", rhsel=RHS, rh=dict(SNhold=2, tHold=2.0, tHold2=1e5), **B1)
+# Round 16 (2026-10-07, back-calculation of Fig.7): can the holes that impact ionization makes in the AGGRESSOR reach the victim's body?
+# Fig.7(c) marks t = 0 and t_A on the first aggressor pulse and Fig.7(e) gives 665.1 mV of body rise between them with the model on (2.4 mV
+# off, 1.8 mV grounded) while the node is still at 1.1 V: 1000 - 2000 holes in 94 ps that the victim's own node does not pay for. In the runs
+# so far the aggressor makes 60 - 71 pairs per cycle and 0.4 (Z-Z') / 3.3 (Y-Y') holes per cycle reach the victim; 10 - 12 leave through
+# the BL contact, which the 2D section puts on the pillar axis (in the array it is at the end of the pillar). Two choices the paper
+# leaves open: g1 the avalanche driving force ElectricField (the write made 17 000 pairs with it instead of 600 - 900) | g2 a BL contact
+# that takes no holes | g3 both | g4 both with the resistor of Fig.7(b) (2e5 Ohm, a fit). Paper timing, no stand-in, no history.
+cfg2d("g1", "R", rhsel=("Ryi_yy", "Rzi_zz", "Rzg_zz"), IIdf="ElectricField", ProbeX=1, **B1)
+cfg2d("g2", "R", rhsel=("Ry_yy", "Ryi_yy", "Rz_zz", "Rzi_zz"), BLhv=0.0, ProbeX=1, **B1)
+cfg2d("g3", "R", rhsel=("Ryi_yy", "Rzi_zz", "Rzg_zz"), IIdf="ElectricField", BLhv=0.0, ProbeX=1, **B1)
+cfg2d("g4", "R", rhsel=("Rzi_zz", "Rzg_zz"), IIdf="ElectricField", BLhv=0.0, ProbeX=1, Rwl=2e5, tWr=1.0, rh=dict(tHold=1.0), **B1)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the

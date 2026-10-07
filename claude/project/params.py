@@ -87,7 +87,8 @@ P = dict(
                         # interfaces, 1/4 and 3/4 of the thickness): the paper does not say where it reads the body potential
     tHold2=0.0,         # row hammer: hold with the BL at Vdd/2 before the hammer [ns]; 0 = as long as tHold (the hold at Vdd)
     Idle=0,             # row hammer: 1 = the aggressor WL stays at 0 V through the hammer window (control: what the cell loses anyway)
-    ProbeX=0,           # 1: probes along the whole channel every 5 nm (pillar face to the end of the source) at mid-depth and 1 nm
+    ProbeX=0,           # (2D pair structures: 1 = average potential of the victim's body under its gate and the holes in the aggressor's body)
+                        # 1: probes along the whole channel every 5 nm (pillar face to the end of the source) at mid-depth and 1 nm
                         # under one gate oxide, and average / minimum / maximum of the potential over the body region, its gated
                         # part and the part under the BL-side spacer: to back-calculate where and when Fig.8(a) reads the body
     tHold=0.05,         # wait after the write / before the first edge. Fig.8(b) from the pixels (2026-10-06): first BL fall

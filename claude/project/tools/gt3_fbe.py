@@ -3,14 +3,15 @@
 # of the storage node 3 / 5 ns after the first BL fall, after every BL-low phase the run has reached, and at 200 ns of the
 # paper's axis. Works on running jobs (what is not reached yet is "-").
 # Holes: integral of the hole density over the body region; 2D: x 1e-13 (um^2 -> cm^2, width 0.1 um); 3D: x 2e-12 (um^3 -> cm^3,
-# half cell x 2). The body probe is the first ElectrostaticPotential of the deck (body centre) in both.
+# half cell x 2). The body probe is the first ElectrostaticPotential of the deck (body centre) in both. Runs with ProbeX=1 also give the
+# average potential of the body under the gate, counted from the start of the transient (the back-calculated reading of Fig.8(a)).
 import sys, os, glob
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from gt_tran import load, at, edges
 import paper_targets as P
 RUNS = os.environ.get("GT_RUNS") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "runs")
 f2 = lambda x, w=7: f"{x:{w}.2f}" if x == x else " " * (w - 1) + "-"
-print("run          dim | node at t_A  holes  rise from start / from t = 0 [mV] | +3 ns   +5 ns | after low phase 1 .. 9 [mV]" + " " * 44 + "| 200 ns")
+print("run          dim | node at t_A  holes  centre: from start / from t = 0 | gated-body average from the start: before the fall, 0.25 ns after [mV] | +3 ns   +5 ns | after low phase 1 .. 9 [mV]" + " " * 44 + "| 200 ns")
 for rid in sys.argv[1:]:
     d = os.path.join(RUNS, rid)
     try: s = load(os.path.join(d, rid + "_sys.plt")); dv = load(glob.glob(os.path.join(d, "*_dev.plt"))[0])
@@ -26,7 +27,9 @@ for rid in sys.argv[1:]:
     r = [x for x in edges(t, s[k("nBL")], 0, 1.1, True) if x > f[0]]; tA = f[0] - 3e-10
     L = lambda x: (at(t, sn, tA) - at(t, sn, x)) * 1e3 if x <= end else float("nan")
     ph = [L(x - 3e-10) for x in r[:9]] + [float("nan")] * (9 - len(r[:9]))
+    ka = next((x for x in dv if x.startswith("AveWindow((0.075") or x.startswith("AveWindow((0.05,0.04,0)")), None)   # gated body, 2D / 3D (ProbeX=1)
+    av = f"{(at(T, dv[ka], tA) - dv[ka][0]) * 1e3:+5.0f} {(at(T, dv[ka], f[0] + 5e-10) - dv[ka][0]) * 1e3:+5.0f}" if ka and end >= f[0] + 5e-10 else "    -     -"
     print(f"{rid:12s} {'3D' if three else '2D'}  | {at(t, sn, tA):.4f} V {at(T, dv[kh], tA) * hf:6.0f}  {(at(T, dv[kc], tA) - dv[kc][0]) * 1e3:+6.0f} / {(at(T, dv[kc], tA) - at(T, dv[kc], t0)) * 1e3:+6.0f}"
-          + " " * 14 + f"| {f2(L(f[0] + 3e-9))} {f2(L(f[0] + 5e-9))} | " + " ".join(f2(x) for x in ph) + f" | {f2(L(f[0] + 179e-9))}   (now at {end * 1e9:.1f} ns)")
+          + f"  {av}  | {f2(L(f[0] + 3e-9))} {f2(L(f[0] + 5e-9))} | " + " ".join(f2(x) for x in ph) + f" | {f2(L(f[0] + 179e-9))}   (now at {end * 1e9:.1f} ns)")
 c = 2
 print(f"paper Case {c}:      rise {P.FBE_RISE[c]} mV | +5 ns 23 mV | first low phase {P.FBE_FIRST[c]} mV | 200 ns {P.FBE_200[c]} mV")
