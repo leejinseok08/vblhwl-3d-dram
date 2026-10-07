@@ -22,12 +22,15 @@ elog = lambda s, r: math.log10(max(s, P.FLOOR) / max(r, P.FLOOR)) / P.DEC_TOL
 
 # A configuration whose decks are, line by line, those of runs already made is scored from those runs (checked 2026-10-06:
 # fin2 = storage node 1.8 fF, Hurkx Agen 1.7e21, hole charge of Fig.8(a), ideal WL = DfinI / DfinW / Dh1F / DfinR).
-COMPOSE = {"fin2": dict(I="fin", W="fin", F="h1", R="fin"), "fin3": dict(I="fin", W="fin", F="s2", R="fin")}
+COMPOSE = {"fin2": dict(I="fin", W="fin", F="h1", R="fin"), "fin3": dict(I="fin", W="fin", F="s2", R="fin"),
+           # 2026-10-07 evening (NOTES (bn)): fin3 on the cells with the BL contact at the pillar end (b), fin3 with the avalanche model off
+           # in the FBE (n), both (bn). Their row hammer is fin's (axis contact), not redone.
+           "fin3b": dict(I="d0", W="dc", F="dc", R="fin"), "fin3n": dict(I="fin", W="fin", F="dj", R="fin"), "fin3bn": dict(I="d0", W="dc", F="dk", R="fin")}
 # Reading of Fig.8(a), back-calculated on 2026-10-07 (NOTES (bk); the paper does not say where it reads the body potential): for the FBE
 # runs named here the body rise is the AVERAGE electrostatic potential of the body under the gate (column AveWindow, runs with
 # ProbeX=1), counted from the start of the transient and read at this offset from the middle of the first BL fall [s]:
 # +0.5 ns = 0.25 ns after the fall is complete, -0.3 ns = just before it. Other runs: the body-centre point just before the fall.
-AVGREAD = {"s2": 5e-10, "p1": 5e-10, "p2": 5e-10, "s1": -3e-10}
+AVGREAD = {"s2": 5e-10, "p1": 5e-10, "p2": 5e-10, "s1": -3e-10, "dc": 5e-10, "dd": 5e-10, "de": 5e-10, "dj": 5e-10, "dk": 5e-10}
 part = lambda tag, k: COMPOSE.get(tag, {}).get(k, tag)
 FB = []                                               # filled by first(): True where a baseline run stands in for the configuration's own
 def first(*ids):

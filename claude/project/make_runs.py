@@ -789,6 +789,12 @@ cfg2d("di", "I", cases=CASEB[1:2], iv=dict(II=1, IIdf="ElectricField", SwDown=0,
 # with the BL contact at the pillar end.
 cfg2d("dj", "F", gb={c: GBQ[c] * GBB[c] for c in GBQ}, ProbeX=1, ProbeT=1, II=0, **B1)
 cfg2d("dk", "F", cases=CASEB, gb={c: GBQ[c] * GBB[c] for c in GBQ}, ProbeX=1, ProbeT=1, II=0, **B1)
+# Round 26 (after the first reading of round 25: without the avalanche model the same stand-in rate leaves 1298 / 1142 / 1142 / 992 / 1139
+# holes, fin3 has 1579 / 1354 / 1294 / 1118 / 1335: the model multiplies the stand-in's pairs during the hold). dl, dm = dj, dk with the rate
+# raised so that the charge is back on the bars.
+FN = {1: 1.23, 2: 1.195, 3: 1.14, 4: 1.135, 5: 1.18}
+cfg2d("dl", "F", gb={c: GBQ[c] * GBB[c] * FN[c] for c in GBQ}, ProbeX=1, ProbeT=1, II=0, **B1)
+cfg2d("dm", "F", cases=CASEB, gb={c: GBQ[c] * GBB[c] * FN[c] for c in GBQ}, ProbeX=1, ProbeT=1, II=0, **B1)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
