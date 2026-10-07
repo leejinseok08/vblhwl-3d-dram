@@ -1,0 +1,97 @@
+== Y-Y', impact ionization off   (paper per cycle: 0.0535)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |     0       +3 mV  1.1000 V     |  +0.00144   +0.00144             |   +0.0144  |    +0.2 mV     +0          |     -     | complete
+   x1      16.2 us at Vdd             |  1319     +503 mV  1.0999 V     |  +0.00115   +0.00115             |   +0.0115  |    +0.0 mV     +0          |     -     | complete
+   x2      16.2 us at Vdd/2           |  1324     +504 mV  1.1000 V     |  +0.00115   +0.00115             |   +0.0115  |    +0.0 mV     +0          |     -     | complete
+   x3      16.2 us at Vdd, R 200k     |  1319     +503 mV  1.0999 V     |  +0.00115   +0.00115             |   +0.0115  |    +0.0 mV     +0          |     +0 mV | complete
+   x4      16.2 us at Vdd/2, R 200k   |  1324     +504 mV  1.1000 V     |  +0.00115   +0.00115             |   +0.0115  |    +0.0 mV     +0          |     +0 mV | complete
+   x7      100 us at Vdd/2            |  2761     +826 mV  1.1000 V     |  -0.00015   +0.00019             |   -0.0015  |    +0.3 mV     +2          |     -     | complete
+   x5      idle: 16.2 us at Vdd/2     |  1324     +504 mV  1.1000 V     |  +0.00115   +0.00115             |   +0.0115  |    +0.0 mV     +0          |     -     | complete
+   x6      idle: 100 us at Vdd/2      |  2761     +826 mV  1.1000 V     |  +0.00019   +0.00019             |   +0.0019  |    -0.0 mV     +0          |     -     | complete
+   x2 minus its idle control x5: -0.00000 mV per cycle over 10 cycles (what the aggressor adds)
+   x7 minus its idle control x6: -0.00035 mV per cycle over 10 cycles (what the aggressor adds)
+   fin: node below its start after cycle 1 .. 10 [mV]: +0.0014 +0.0029 +0.0043 +0.0058 +0.0072 +0.0086 +0.0101 +0.0115 +0.0130 +0.0144
+   x1: node below its start after cycle 1 .. 10 [mV]: +0.0012 +0.0023 +0.0035 +0.0046 +0.0058 +0.0069 +0.0081 +0.0092 +0.0104 +0.0115
+   x2: node below its start after cycle 1 .. 10 [mV]: +0.0011 +0.0023 +0.0034 +0.0046 +0.0057 +0.0069 +0.0080 +0.0092 +0.0103 +0.0115
+   x3: node below its start after cycle 1 .. 10 [mV]: +0.0011 +0.0023 +0.0034 +0.0046 +0.0057 +0.0069 +0.0080 +0.0092 +0.0103 +0.0115
+   x4: node below its start after cycle 1 .. 10 [mV]: +0.0011 +0.0023 +0.0034 +0.0046 +0.0057 +0.0069 +0.0080 +0.0092 +0.0103 +0.0115
+   x7: node below its start after cycle 1 .. 10 [mV]: -0.0025 -0.0030 -0.0029 -0.0027 -0.0025 -0.0023 -0.0021 -0.0019 -0.0017 -0.0015
+   x5: node below its start after cycle 1 .. 10 [mV]: +0.0011 +0.0023 +0.0034 +0.0046 +0.0057 +0.0069 +0.0080 +0.0092 +0.0103 +0.0115
+   x6: node below its start after cycle 1 .. 10 [mV]: +0.0002 +0.0004 +0.0006 +0.0008 +0.0010 +0.0012 +0.0013 +0.0015 +0.0017 +0.0019
+== Y-Y', impact ionization on   (paper per cycle: 0.0535)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |    37      +46 mV  1.1000 V     |  +0.00034   +0.00006             |   +0.0034  |   +25.1 mV    +28          |     -     | complete
+   x1      16.2 us at Vdd             |  1355     +511 mV  1.0999 V     |  -0.00257   -0.00326             |   -0.0257  |    +6.7 mV    +27          |     -     | complete
+   x2      16.2 us at Vdd/2           |  1360     +513 mV  1.1000 V     |  -0.00261   -0.00332             |   -0.0261  |    +6.7 mV    +28          |     -     | complete
+   x3      16.2 us at Vdd, R 200k     |  1326     +504 mV  1.0999 V     |  -0.00261   -0.00323             |   -0.0261  |    +6.7 mV    +28          |     +1 mV | complete
+   x4      16.2 us at Vdd/2, R 200k   |  1331     +506 mV  1.1000 V     |  -0.00262   -0.00324             |   -0.0262  |    +6.7 mV    +28          |     +1 mV | complete
+   x7      100 us at Vdd/2            |  2763     +826 mV  1.1000 V     |  -0.00640   -0.00692             |   -0.0640  |    +6.2 mV    +30          |     -     | complete
+   x5      idle: 16.2 us at Vdd/2     |  1360     +513 mV  1.1000 V     |  +0.00114   +0.00114             |   +0.0114  |    +0.0 mV     +0          |     -     | complete
+   x6      idle: 100 us at Vdd/2      |  2763     +826 mV  1.1000 V     |  +0.00019   +0.00019             |   +0.0019  |    -0.0 mV     +0          |     -     | complete
+   x2 minus its idle control x5: -0.00375 mV per cycle over 10 cycles (what the aggressor adds)
+   x7 minus its idle control x6: -0.00660 mV per cycle over 10 cycles (what the aggressor adds)
+   fin: node below its start after cycle 1 .. 10 [mV]: +0.0014 +0.0023 +0.0027 +0.0030 +0.0031 +0.0032 +0.0033 +0.0034 +0.0034 +0.0034
+   x1: node below its start after cycle 1 .. 10 [mV]: +0.0011 -0.0007 -0.0037 -0.0063 -0.0094 -0.0126 -0.0159 -0.0192 -0.0224 -0.0257
+   x2: node below its start after cycle 1 .. 10 [mV]: +0.0011 -0.0008 -0.0037 -0.0063 -0.0095 -0.0127 -0.0160 -0.0194 -0.0227 -0.0261
+   x3: node below its start after cycle 1 .. 10 [mV]: +0.0011 -0.0013 -0.0043 -0.0068 -0.0100 -0.0131 -0.0163 -0.0195 -0.0229 -0.0261
+   x4: node below its start after cycle 1 .. 10 [mV]: +0.0011 -0.0013 -0.0044 -0.0069 -0.0100 -0.0132 -0.0164 -0.0196 -0.0228 -0.0262
+   x7: node below its start after cycle 1 .. 10 [mV]: -0.0027 -0.0091 -0.0158 -0.0226 -0.0294 -0.0364 -0.0434 -0.0503 -0.0572 -0.0640
+   x5: node below its start after cycle 1 .. 10 [mV]: +0.0011 +0.0023 +0.0034 +0.0046 +0.0057 +0.0069 +0.0080 +0.0091 +0.0103 +0.0114
+   x6: node below its start after cycle 1 .. 10 [mV]: +0.0002 +0.0004 +0.0006 +0.0008 +0.0010 +0.0012 +0.0014 +0.0016 +0.0018 +0.0019
+== Z-Z', impact ionization off   (paper per cycle: 0.0100)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |     0       +3 mV  1.1000 V     |  -0.00157   +0.00144             |   -0.0157  |    +0.2 mV     +0          |     -     | complete
+   x1      16.2 us at Vdd             |  1319     +503 mV  1.0999 V     |  -0.00187   +0.00115             |   -0.0187  |    +0.0 mV     +0          |     -     | complete
+   x2      16.2 us at Vdd/2           |  1325     +504 mV  1.1000 V     |  -0.00187   +0.00115             |   -0.0187  |    +0.0 mV     +0          |     -     | complete
+   x3      16.2 us at Vdd, R 200k     |  1319     +503 mV  1.0999 V     |  +0.01020   +0.00106             |   +0.1020  |    -3.8 mV     +0          |   +207 mV | complete
+   x4      16.2 us at Vdd/2, R 200k   |  1325     +504 mV  1.1000 V     |  +0.01019   +0.00120             |   +0.1019  |    -3.8 mV     +0          |   +206 mV | complete
+   x7      100 us at Vdd/2            |  2758     +825 mV  1.1000 V     |  -0.00282   +0.00020             |   -0.0282  |    +0.0 mV     +0          |     -     | complete
+   x5      idle: 16.2 us at Vdd/2     |  1325     +504 mV  1.1000 V     |  +0.00115   +0.00115             |   +0.0115  |    +0.0 mV     +0          |     -     | complete
+   x6      idle: 100 us at Vdd/2      |  2758     +825 mV  1.1000 V     |  +0.00020   +0.00020             |   +0.0020  |    -0.0 mV     +0          |     -     | complete
+   x2 minus its idle control x5: -0.00302 mV per cycle over 10 cycles (what the aggressor adds)
+   x7 minus its idle control x6: -0.00302 mV per cycle over 10 cycles (what the aggressor adds)
+   fin: node below its start after cycle 1 .. 10 [mV]: -0.0287 -0.0273 -0.0258 -0.0244 -0.0229 -0.0215 -0.0201 -0.0186 -0.0172 -0.0157
+   x1: node below its start after cycle 1 .. 10 [mV]: -0.0290 -0.0279 -0.0268 -0.0256 -0.0245 -0.0233 -0.0222 -0.0210 -0.0199 -0.0187
+   x2: node below its start after cycle 1 .. 10 [mV]: -0.0290 -0.0279 -0.0268 -0.0256 -0.0245 -0.0233 -0.0222 -0.0210 -0.0199 -0.0187
+   x3: node below its start after cycle 1 .. 10 [mV]: +0.0983 +0.0933 +0.0943 +0.1017 +0.0967 +0.0974 +0.0990 +0.0997 +0.1013 +0.1020
+   x4: node below its start after cycle 1 .. 10 [mV]: +0.0984 +0.0927 +0.0936 +0.0950 +0.0959 +0.0973 +0.0982 +0.0996 +0.1005 +0.1019
+   x7: node below its start after cycle 1 .. 10 [mV]: -0.0300 -0.0298 -0.0296 -0.0294 -0.0292 -0.0290 -0.0288 -0.0286 -0.0284 -0.0282
+   x5: node below its start after cycle 1 .. 10 [mV]: +0.0011 +0.0023 +0.0034 +0.0046 +0.0057 +0.0069 +0.0080 +0.0092 +0.0103 +0.0115
+   x6: node below its start after cycle 1 .. 10 [mV]: +0.0002 +0.0004 +0.0006 +0.0008 +0.0010 +0.0012 +0.0014 +0.0016 +0.0018 +0.0020
+== Z-Z', impact ionization on   (paper per cycle: node 1.1 -> 0.58 V)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |    35      +44 mV  1.1000 V     |  -0.00173   +0.00126             |   -0.0173  |    +4.5 mV     +5          |     -     | complete
+   x1      16.2 us at Vdd             |  1353     +511 mV  1.0999 V     |  -0.00244   +0.00051             |   -0.0244  |    +1.1 mV     +4          |     -     | complete
+   x2      16.2 us at Vdd/2           |  1359     +513 mV  1.1000 V     |  -0.00244   +0.00051             |   -0.0244  |    +1.1 mV     +4          |     -     | complete
+   x3      16.2 us at Vdd, R 200k     |  1326     +504 mV  1.0999 V     |  +0.00947   +0.00068             |   +0.0947  |    -2.8 mV     +4          |   +206 mV | complete
+   x4      16.2 us at Vdd/2, R 200k   |  1331     +506 mV  1.1000 V     |  +0.00946   +0.00066             |   +0.0946  |    -2.8 mV     +4          |   +206 mV | complete
+   x7      100 us at Vdd/2            |  2760     +826 mV  1.1000 V     |  -0.00367   -0.00086             |   -0.0367  |    +0.8 mV     +4          |     -     | complete
+   x5      idle: 16.2 us at Vdd/2     |  1359     +513 mV  1.1000 V     |  +0.00114   +0.00114             |   +0.0114  |    +0.0 mV     +0          |     -     | complete
+   x6      idle: 100 us at Vdd/2      |  2760     +826 mV  1.1000 V     |  +0.00020   +0.00020             |   +0.0020  |    -0.0 mV     +0          |     -     | complete
+   x2 minus its idle control x5: -0.00358 mV per cycle over 10 cycles (what the aggressor adds)
+   x7 minus its idle control x6: -0.00387 mV per cycle over 10 cycles (what the aggressor adds)
+   fin: node below its start after cycle 1 .. 10 [mV]: -0.0286 -0.0274 -0.0261 -0.0249 -0.0236 -0.0223 -0.0210 -0.0198 -0.0186 -0.0173
+   x1: node below its start after cycle 1 .. 10 [mV]: -0.0289 -0.0284 -0.0278 -0.0274 -0.0269 -0.0264 -0.0259 -0.0254 -0.0249 -0.0244
+   x2: node below its start after cycle 1 .. 10 [mV]: -0.0289 -0.0284 -0.0278 -0.0274 -0.0269 -0.0264 -0.0259 -0.0254 -0.0249 -0.0244
+   x3: node below its start after cycle 1 .. 10 [mV]: +0.0908 +0.0900 +0.0909 +0.0915 +0.0913 +0.0941 +0.0918 +0.0928 +0.0959 +0.0947
+   x4: node below its start after cycle 1 .. 10 [mV]: +0.0908 +0.0901 +0.0910 +0.0916 +0.0913 +0.0942 +0.0940 +0.0936 +0.0959 +0.0946
+   x7: node below its start after cycle 1 .. 10 [mV]: -0.0298 -0.0302 -0.0310 -0.0317 -0.0324 -0.0334 -0.0342 -0.0350 -0.0358 -0.0367
+   x5: node below its start after cycle 1 .. 10 [mV]: +0.0011 +0.0023 +0.0034 +0.0046 +0.0057 +0.0069 +0.0080 +0.0092 +0.0103 +0.0114
+   x6: node below its start after cycle 1 .. 10 [mV]: +0.0002 +0.0004 +0.0006 +0.0008 +0.0010 +0.0012 +0.0014 +0.0016 +0.0018 +0.0020
+== Z-Z', BL contact at the bottom end of the pillar, impact ionization on   (paper per cycle: node 1.1 -> 0.58 V)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   (no run of the named configurations)
+== Z-Z', grounded body, impact ionization on   (paper per cycle: 0.036)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |     4       +3 mV  1.1000 V     |  -0.00155   +0.00145             |   -0.0155  |    +0.0 mV     -0          |     -     | complete
+   x1      16.2 us at Vdd             | no data
+   x2      16.2 us at Vdd/2           | no data
+   x3      16.2 us at Vdd, R 200k     | no data
+   x4      16.2 us at Vdd/2, R 200k   | no data
+   x7      100 us at Vdd/2            | no data
+   x5      idle: 16.2 us at Vdd/2     | no data
+   x6      idle: 100 us at Vdd/2      | no data
+   fin: node below its start after cycle 1 .. 10 [mV]: -0.0286 -0.0272 -0.0257 -0.0243 -0.0228 -0.0213 -0.0199 -0.0184 -0.0170 -0.0155
+== Z-Z', BL contact at the bottom end, grounded body, impact ionization on   (paper per cycle: 0.036)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   (no run of the named configurations)

@@ -14,7 +14,7 @@ RUNS = os.environ.get("GT_RUNS") or os.path.join(os.path.dirname(os.path.abspath
 TAGS = [a for a in sys.argv[1:] if not a.startswith("-")] or ["fin", "x1", "x2", "x3", "x4", "x7", "x5", "x6"]
 WHAT = {"fin": "no history", "x1": "16.2 us at Vdd", "x2": "16.2 us at Vdd/2", "x3": "16.2 us at Vdd, R 200k", "x4": "16.2 us at Vdd/2, R 200k",
         "x7": "100 us at Vdd/2", "x5": "idle: 16.2 us at Vdd/2", "x6": "idle: 100 us at Vdd/2"}
-PAPER = {"Ry_yy": "0.0535", "Ryi_yy": "0.0535", "Rz_zz": "0.0100", "Rzi_zz": "node 1.1 -> 0.58 V"}
+PAPER = {"Ry_yy": "0.0535", "Ryi_yy": "0.0535", "Rz_zz": "0.0100", "Rzi_zz": "node 1.1 -> 0.58 V", "Rzbi_zz": "node 1.1 -> 0.58 V", "Rzg_zz": "0.036", "Rzbg_zz": "0.036"}
 
 def run(rid):
     d = os.path.join(RUNS, rid)
@@ -34,10 +34,13 @@ def run(rid):
         g = s[k("nGv")]; o["gate"] = max(v for x, v in zip(t, g) if tS <= x <= end) * 1e3
     return o
 
-for nm, lab in (("Ry_yy", "Y-Y', impact ionization off"), ("Ryi_yy", "Y-Y', impact ionization on"), ("Rz_zz", "Z-Z', impact ionization off"), ("Rzi_zz", "Z-Z', impact ionization on")):
+for nm, lab in (("Ry_yy", "Y-Y', impact ionization off"), ("Ryi_yy", "Y-Y', impact ionization on"), ("Rz_zz", "Z-Z', impact ionization off"), ("Rzi_zz", "Z-Z', impact ionization on"),
+                ("Rzbi_zz", "Z-Z', BL contact at the bottom end of the pillar, impact ionization on"), ("Rzg_zz", "Z-Z', grounded body, impact ionization on"),
+                ("Rzbg_zz", "Z-Z', BL contact at the bottom end, grounded body, impact ionization on")):
     print(f"== {lab}   (paper per cycle: {PAPER[nm]})")
     print("   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state")
     R = {tag: run(f"D{tag}{nm}") for tag in TAGS}
+    if not any(R.values()): print("   (no run of the named configurations)"); continue
     for tag in TAGS:
         o = R[tag]
         if o is None: print(f"   {tag:6s}  {WHAT.get(tag, ''):26s} | no data"); continue

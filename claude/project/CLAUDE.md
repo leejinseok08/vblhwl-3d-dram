@@ -83,20 +83,23 @@ Run names must differ by more than letter case (the PC's file system is case-bli
 - `sde_gt_dvs.cmd` = 2D section along the channel (one cell, or two cells across the BL "yy", or two layers "zz");
   `sde_gt3_dvs.cmd` = 3D unit cell, transistor only. Doping is set per region. `tools/sde_dryrun.py` checks an SDE file
   without Sentaurus.
-- Structures in use: `gr_c1h .. gr_c4h` (Fig.5(b) Cases 1-5 with HfO2), `gr_yy`, `gr_zz`, `gq*` (mesh variants), 3D `g3_c2h`
+- Structures in use: `gr_c1h .. gr_c4h` (Fig.5(b) Cases 1-5 with HfO2), `gr_yy`, `gr_zz`, `gr_zzg` (grounded victim body), `gr_zzb` /
+  `gr_zzbg` (zz with the BL contact at the bottom end of the pillar, 2026-10-07), `gq*` (mesh variants), 3D `g3_c2h`
   (unit cell), `g3x_c2h` / `g3x40_c2h` (X-X' pair). Runs: `YE_c<n>` Id-Vg; `CFk` FBE with the timing of Fig.8(b) (`FB2`; the
   older `RF` runs use 16 ns / 20 ns); `CF<x>`, `FW`, `FB_`, `FR` FBE variants; `RQ` / `QR` row hammer in 2D (`QR` with the WL
   resistor); `CH`, `CI`, `CT`, `CFd` tunnelling calibration (closed); `MQ` mesh; `V3*`, `X3*` 3D. Older run folders in `runs/`
   (`X*`, `T*`, `G*` on `gt_` / `gx_` / `gp_` meshes) are history: their definitions are not in the run table any more.
 - Tools: `score2d.py` + `paper_targets.py` (scorecard of a configuration), `gt_probes.py` (potential probes at the four instants;
   `-w` write phase, `-k` sizing of the hole supply), `gt_fig5c.py` (Id-Vg against Fig.5(c)), `gt_fig4a.py` (write curve), `gt_tran.py` (transients: loss, probes,
-  generation), `gt_fbe_tab.py` (five FBE cases against Fig.8 in one table), `gt_hold.py`, `gt_iv_at.py`, `gt_steps.py` (how a
+  generation), `gt_fbe_tab.py` (five FBE cases against Fig.8 in one table), `gt_avg_tab.py` (the same with the reading of `fin3`), row-hammer
+  pairs: `gt_rh_hist.py` (node per cycle per configuration), `gt_rh_pairs.py` (pairs and holes per cycle, holes through each contact),
+  `gt_rh_body.py`, `gt_rh_wave.py` (inside the cycles), `_rh_tab.sh` + `plot_rh_transfer.py` (table and picture of rounds 16 - 19), `gt_hold.py`, `gt_iv_at.py`, `gt_steps.py` (how a
   run stepped), `gt_map.sh` (peak field / generation in a window of a saved plot), `man_grep.sh` (search the installed
   Sentaurus manual), `gt_log.sh`, `plot_gt.py`, `plot_gt3.py`. `tools/_q.sh` = scratch script for one-off server queries that
   need quotes or loops (the remote shell is tcsh).
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
-## State (2026-10-07; details NOTES (ax) .. (bk))
+## State (2026-10-07; details NOTES (ax) .. (bm))
 **User, 2026-10-07: the authors cannot be asked. What the paper leaves open is back-calculated from its figures and labelled as such.**
 Back-calculated so far (NOTES (bk)): Fig.8(a) reads the body potential as the AVERAGE electrostatic potential of the body under the gate,
 counted from the start of the transient, at the first BL edge (not the body-centre point before the fall: with that reading bars and
@@ -104,7 +107,25 @@ losses lie 43 - 98 mV apart). With the hole charge sized to the bars through tha
 x 1.56 / 1.31 / 1.19 / 1.17 / 1.18 of the old bar charge, 1118 - 1579 holes) every number of Fig.8 is inside its tolerance: scores Id-Vg 0.73,
 write 0.93, body rise 0.02, first-phase loss 0.47, loss at 200 ns 0.58 (row hammer 4.39 / 11.88 unchanged). Tools: `tools/gt_where.py`,
 `tools/gt_avg_tab.py`, `tools/score2d.py` (AVGREAD), probes `ProbeX`. The hole charge stays a condition; where it comes from and the row
-hammer are the next things to back-calculate. What follows describes `fin2`, the configuration before this step.
+hammer are the next things to back-calculate.
+Rounds 15 - 20 of 2026-10-07 (NOTES (bl), (bm)); `fin3` is unchanged by them:
+- The reading of (bk) holds in the 3D unit cell (Case 2: E3S2_c2, 1486 holes, bar +13 mV, losses inside 0.1 decade).
+- Round 15 (user: test the origin hypothesis on the row hammer): the history that fills the body by the model's own generation (16.2 us,
+  100 us, node held) gives neither Fig.6(e) nor Fig.7; with the BL at Vdd/2 a charged body is inert (attack - idle = 0.0000 mV per cycle).
+- Fig.7(c) read again: t_A is the END OF THE FIRST aggressor pulse (0.09 ns), not 0.45 ns. The 665.1 mV of Fig.7(e) arise in one pulse with
+  the node still at 1.1 V; the node then falls only while the aggressor is high.
+- Back-calculated candidate for Fig.7 (rounds 16, 18, 19; not the paper's statement): with the avalanche driving force `IIdf="ElectricField"`
+  the aggressor makes 4000 - 18 000 pairs per cycle (default 60 - 70) and its holes reach the victim's body through the shared N+ BL pillar
+  when the BL contact sits at the end of the pillar (structure gr_zzb, `Blc="bot"`) or takes no holes (`BLhv=0`): 440 - 870 holes per cycle,
+  body rise 158 - 320 mV in the first pulse (paper 665), node falling while the aggressor is high, grounded body immune (0.010 - 0.013 mV per
+  cycle, paper 0.036), nothing with the model off. Not matched: size, the collapse (runs stall numerically near 3000 holes in the victim;
+  `ErrE=1e17` gets further), and Y-Y', which is hit as well in the model and not in the paper.
+- With ElectricField the write is faster: the text's 4.2 fF gives 0.79 / 1.02 / 1.10 / 1.14 V at 12 / 24 / 39 / 60 ps (paper 0.72 / 0.92 / 1.06 / 1.13;
+  default driving force with 4.2 fF 0.51 / 0.72 / 0.86 / 0.97). The 1.8 fF of `fin3` and the driving force are therefore coupled; not decided.
+- Fig.8 without stand-in (rounds 17, 20): the write's own ionization leaves 5 - 704 holes (needed 1118 - 1579) when the BL contact takes
+  none, 2300 - 5300 when the storage-node contact takes none either: the origin of the charge of Fig.8 is still open.
+- ElectricField is NOT adopted into the device: Fig.5(c) / Fig.8 / the scores have not been redone with it.
+What follows describes `fin2`, the configuration before this step.
 The 2D device is configuration `fin2` = the runs DfinI_c1..5, DfinW_c2, Dh1F_c1..5, DfinR* (`COMPOSE` in tools/score2d.py; the
 user's decisions of the afternoon of 2026-10-06 are in it):
 - from the paper: Fig.2 section, Fig.5(a)/(b) dimensions, doping, work functions, Vdd 1.1, Vpp 1.8, write as Fig.4(a) (BL 1.168 V),
@@ -162,5 +183,5 @@ curve, 32 holes after a 21 ns hold, the bar with 1094 holes), and with the charg
 same body rise: bar state 1.48 mV in the first low phase and 10.4 mV at 200 ns (2D 2.16 / 15.5, paper 29 / 50), x 1.25 9.94 / 34.6 mV (2D
 15.97 / 55.6). The gap between Fig.8(a) and Fig.8(b), (c) is not a matter of the 2D section. Rounds 6 - 12 and the 3D check are over; no
 run of mine is on the server.
-No open parameter of mine is left in 2D or in the 3D unit cell: next steps are the user's (what to ask the authors, merging the branch
-`claude`, the other cases or the row hammer in 3D).
+(That was the state at 04:00 on 2026-10-07. Since then the user has ruled that the authors cannot be asked and that open points are
+back-calculated: see the top of this section for rounds 13 - 20. Still the user's call: merging the branch `claude` into `main`.)

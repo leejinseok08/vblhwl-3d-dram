@@ -37,6 +37,7 @@
 (define Spm  "Si3N4")            ; spacer material (its own colour in Fig.2)
 (define Pair "one")           ; one / yy / zz (see the header)
 (define Bgc  0)              ; 1 = body contact in the victim
+(define Blc  "axis")            ; BL contact: "axis" = on the pillar axis ("yy": top end of the pillar), "bot" = bottom end of the pillar
 (define yy? (string=? Pair "yy")) (define zz? (string=? Pair "zz"))
 (define Lc (+ S1 Lg S2))                          ; cell length from the pillar face
 (define Zp (+ (* 2 Tox) Tb (* 2 Tg) Dv))          ; Z pitch = 2 Tox + Tbody + 2 Tg + Dvox
@@ -107,8 +108,9 @@
 (cell xb1 1 0 (if yy? "a" "v"))           ; the cell right of the pillar: the victim, in "yy" the aggressor
 (if yy? (cell xb0 -1 0 "v"))              ; victim left of the pillar
 (if zz? (cell xb1 1 Zp "a"))              ; aggressor one layer up
-(if yy? (edge-contact "bl" (position (+ xb0 Hb) ymax 0))      ; top end of the pillar
-        (edge-contact "bl" (position 0 (* 0.5 Zp) 0)))        ; pillar axis
+(if (string=? Blc "bot") (edge-contact "bl" (position (* 0.5 (+ xb0 xb1)) 0 0))   ; bottom end of the pillar (below the victim in "zz")
+    (if yy? (edge-contact "bl" (position (+ xb0 Hb) ymax 0))      ; top end of the pillar
+            (edge-contact "bl" (position 0 (* 0.5 Zp) 0))))       ; pillar axis
 
 (sde:save-model "gr_c1h_bnd")
 (sde:build-mesh "gr_c1h")

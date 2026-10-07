@@ -95,6 +95,26 @@ DfinRzg_zz   complete                     2.125 ns of 2.125 ns
 DfinRzi_zz   complete                     2.125 ns of 2.125 ns
 DfinRz_zz    complete                     2.125 ns of 2.125 ns
 DfinW_c2     complete                     0.18 ns of 0.18 ns
+Dg0Rzbi_zz   stopped early (exit=143)     1.259 ns of 2.125 ns
+Dg1Ryi_yy    complete                     2.125 ns of 2.125 ns
+Dg1Rzg_zz    complete                     2.125 ns of 2.125 ns
+Dg1Rzi_zz    complete                     2.125 ns of 2.125 ns
+Dg2Ryi_yy    complete                     2.125 ns of 2.125 ns
+Dg2Ry_yy     complete                     2.125 ns of 2.125 ns
+Dg2Rzi_zz    complete                     2.125 ns of 2.125 ns
+Dg2Rz_zz     complete                     2.125 ns of 2.125 ns
+Dg3Ryi_yy    stopped early (exit=143)     0.7596 ns of 2.125 ns
+Dg3Rzg_zz    complete                     2.125 ns of 2.125 ns
+Dg3Rzi_zz    stopped early (exit=143)     0.9476 ns of 2.125 ns
+Dg4Rzg_zz    complete                     4.92 ns of 4.92 ns
+Dg4Rzi_zz    stopped early (exit=143)     3.911 ns of 4.92 ns
+Dg5Ryi_yy    stopped early (exit=143)     0.7497 ns of 2.125 ns
+Dg5Rzi_zz    stopped early (exit=143)     0.9377 ns of 2.125 ns
+Dg6Rzi_zz    stopped early (exit=143)     0.5913 ns of 2.125 ns
+Dg7Rzbg_zz   complete                     2.125 ns of 2.125 ns
+Dg7Rzbi_zz   stopped early (exit=143)     1.314 ns of 2.125 ns
+Dg8Rzi_zz    stopped early (exit=143)     1.282 ns of 2.125 ns
+Dg9Rzbi_zz   stopped early (exit=143)     1.586 ns of 2.125 ns
 Dh1F_c1      complete                     210.1 ns of 210.1 ns
 Dh1F_c2      complete                     210.1 ns of 210.1 ns
 Dh1F_c3      complete                     210.1 ns of 210.1 ns
@@ -194,6 +214,28 @@ Dn4F_c2      complete                     2.219e+04 ns of 2.219e+04 ns
 Dn4F_c3      complete                     2.219e+04 ns of 2.219e+04 ns
 Dn4F_c4      complete                     2.219e+04 ns of 2.219e+04 ns
 Dn4F_c5      complete                     2.219e+04 ns of 2.219e+04 ns
+Do1F_c1      complete                     210.1 ns of 210.1 ns
+Do1F_c2      complete                     210.1 ns of 210.1 ns
+Do1F_c3      complete                     210.1 ns of 210.1 ns
+Do1F_c4      complete                     210.1 ns of 210.1 ns
+Do1F_c5      complete                     210.1 ns of 210.1 ns
+Do2F_c1      stopped early (exit=143)     0.13 ns of 210.1 ns
+Do2F_c2      stopped early (exit=143)     0.137 ns of 210.1 ns
+Do2F_c3      stopped early (exit=143)     0.14 ns of 210.1 ns
+Do2F_c4      stopped early (exit=143)     0.14 ns of 210.1 ns
+Do2F_c5      stopped early (exit=2)       0.14 ns of 210.1 ns
+Do3F_c1      complete                     210.1 ns of 210.1 ns
+Do3F_c2      complete                     210.1 ns of 210.1 ns
+Do3F_c3      complete                     210.1 ns of 210.1 ns
+Do3F_c4      complete                     210.1 ns of 210.1 ns
+Do3F_c5      complete                     210.1 ns of 210.1 ns
+Do4F_c1      complete                     210.1 ns of 210.1 ns
+Do4F_c2      complete                     210.1 ns of 210.1 ns
+Do4F_c3      complete                     210.1 ns of 210.1 ns
+Do4F_c4      complete                     210.1 ns of 210.1 ns
+Do4F_c5      complete                     210.1 ns of 210.1 ns
+Do4W_c2      complete                     0.18 ns of 0.18 ns
+Do5W_c2      complete                     0.18 ns of 0.18 ns
 Dp1F_c1      complete                     210.1 ns of 210.1 ns
 Dp1F_c2      complete                     210.1 ns of 210.1 ns
 Dp1F_c3      complete                     210.1 ns of 210.1 ns
@@ -309,6 +351,34 @@ Dw5Rzg_zz    stopped early (exit=143)     3.139 ns of 4.92 ns
 Dw5Rzi_zz    stopped early (exit=143)     3.327 ns of 4.92 ns
 Dw7Rzg_zz    stopped early (exit=143)     3.139 ns of 4.92 ns
 Dw7Rzi_zz    stopped early (exit=143)     3.169 ns of 4.92 ns
+Dx1Ryi_yy    complete                     1.62e+04 ns of 1.62e+04 ns
+Dx1Ry_yy     complete                     1.62e+04 ns of 1.62e+04 ns
+Dx1Rzi_zz    complete                     1.62e+04 ns of 1.62e+04 ns
+Dx1Rz_zz     complete                     1.62e+04 ns of 1.62e+04 ns
+Dx2Ryi_yy    complete                     1.62e+04 ns of 1.62e+04 ns
+Dx2Ry_yy     complete                     1.62e+04 ns of 1.62e+04 ns
+Dx2Rzi_zz    complete                     1.62e+04 ns of 1.62e+04 ns
+Dx2Rz_zz     complete                     1.62e+04 ns of 1.62e+04 ns
+Dx3Ryi_yy    complete                     1.62e+04 ns of 1.62e+04 ns
+Dx3Ry_yy     complete                     1.62e+04 ns of 1.62e+04 ns
+Dx3Rzi_zz    complete                     1.62e+04 ns of 1.62e+04 ns
+Dx3Rz_zz     complete                     1.62e+04 ns of 1.62e+04 ns
+Dx4Ryi_yy    complete                     1.62e+04 ns of 1.62e+04 ns
+Dx4Ry_yy     complete                     1.62e+04 ns of 1.62e+04 ns
+Dx4Rzi_zz    complete                     1.62e+04 ns of 1.62e+04 ns
+Dx4Rz_zz     complete                     1.62e+04 ns of 1.62e+04 ns
+Dx5Ryi_yy    complete                     1.62e+04 ns of 1.62e+04 ns
+Dx5Ry_yy     complete                     1.62e+04 ns of 1.62e+04 ns
+Dx5Rzi_zz    complete                     1.62e+04 ns of 1.62e+04 ns
+Dx5Rz_zz     complete                     1.62e+04 ns of 1.62e+04 ns
+Dx6Ryi_yy    complete                     1e+05 ns of 1e+05 ns
+Dx6Ry_yy     complete                     1e+05 ns of 1e+05 ns
+Dx6Rzi_zz    complete                     1e+05 ns of 1e+05 ns
+Dx6Rz_zz     complete                     1e+05 ns of 1e+05 ns
+Dx7Ryi_yy    complete                     1e+05 ns of 1e+05 ns
+Dx7Ry_yy     complete                     1e+05 ns of 1e+05 ns
+Dx7Rzi_zz    complete                     1e+05 ns of 1e+05 ns
+Dx7Rz_zz     complete                     1e+05 ns of 1e+05 ns
 DyaRy_yy     stopped early (exit=143), PLOT FILE DAMAGED 0 ns of 2.125 ns
 DybRy_yy     complete                     2.125 ns of 2.125 ns
 DycRy_yy     complete, PLOT FILE DAMAGED  2.125 ns of 2.125 ns

@@ -26,6 +26,31 @@ PASS gr_c2h: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e
 PASS gr_c3h: Fig.5(a)/(b) Lg=100 Tbody=10 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
 PASS gr_c4h: Fig.5(a)/(b) Lg=100 Tbody=10 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+16 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+16 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
 ALL PASS
+structure match before run_d15.sh, 2026-10-07 09:58:56
+PASS gr_yy: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 25.00 / 150.00 / 250.00 / 375.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+PASS gr_zz: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 6 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+ALL PASS
+structure match before run_d16.sh, 2026-10-07 12:27:12
+PASS gr_yy: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 25.00 / 150.00 / 250.00 / 375.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+PASS gr_zz: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 6 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+PASS gr_zzg: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 6 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+ALL PASS
+structure match before run_d17.sh, 2026-10-07 12:48:23
+PASS gr_c1h: Fig.5(a)/(b) Lg=100 Tbody=30 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+PASS gr_c2h: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+PASS gr_c3h: Fig.5(a)/(b) Lg=100 Tbody=10 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+PASS gr_c4h: Fig.5(a)/(b) Lg=100 Tbody=10 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+16 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+16 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+ALL PASS
+structure match before run_d18.sh, 2026-10-07 13:34:01
+PASS gr_yy: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 25.00 / 150.00 / 250.00 / 375.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+PASS gr_zz: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 6 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+PASS gr_zzb: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 6 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+PASS gr_zzbg: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 6 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+ALL PASS
+structure match before run_d19.sh, 2026-10-07 14:19:47
+PASS gr_zz: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 6 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+PASS gr_zzb: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 6 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+ALL PASS
 structure match before run_d1.sh, 2026-10-06 10:41:22
 PASS gr_c1h: Fig.5(a)/(b) Lg=100 Tbody=30 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
 PASS gr_c2h: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
@@ -34,6 +59,12 @@ PASS gr_c4h: Fig.5(a)/(b) Lg=100 Tbody=10 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e
 PASS gr_yy: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 25.00 / 150.00 / 250.00 / 375.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
 PASS gr_zz: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 6 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
 PASS gr_zzg: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 6 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+ALL PASS
+structure match before run_d20.sh, 2026-10-07 14:41:17
+PASS gr_c1h: Fig.5(a)/(b) Lg=100 Tbody=30 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+PASS gr_c2h: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+PASS gr_c3h: Fig.5(a)/(b) Lg=100 Tbody=10 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
+PASS gr_c4h: Fig.5(a)/(b) Lg=100 Tbody=10 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+16 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+16 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
 ALL PASS
 structure match before run_d2.sh, 2026-10-06 12:06:45
 PASS gr_c1h: Fig.5(a)/(b) Lg=100 Tbody=30 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100

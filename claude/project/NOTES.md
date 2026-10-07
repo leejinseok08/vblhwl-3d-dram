@@ -3,6 +3,137 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-07 (bm) back-calculation of Fig.7, rounds 16 - 19: the holes of the victim come from the AGGRESSOR through the BL pillar (driving force ElectricField, BL contact at the end of the pillar); round 17: Fig.8 without stand-in
+- Why: (bl) left one candidate for the 665.1 mV that Fig.7(e) shows after ONE aggressor pulse with the node still at 1.1 V: holes made by
+  impact ionization in the aggressor that reach the victim. With the default driving force the aggressor makes 60 - 71 pairs per cycle and the
+  BL contact of the section (pillar axis, 50 nm from the junctions, whole height) takes most of what enters the pillar. Two things the paper
+  does not fix were varied (model choices and contact placement, no numbers from outside): the driving force of the avalanche model
+  (`IIdf="ElectricField"`, a Sentaurus keyword; default GradQuasiFermi) and where / whether the BL contact takes holes.
+- Code: `SNhv` (hole recombination velocity of the storage-node contacts, like `BLhv`), `Blc` ("axis" = as before, "bot" = BL contact at the
+  bottom end of the pillar; template sde_gt_dvs.cmd), structures gr_zzb / gr_zzbg (zz with that contact, floating / grounded victim body),
+  run names Rzbi_zz / Rzbg_zz in cfg2d (only when named in rhsel). Older decks byte-identical (checked four times); older structure files
+  differ by the two Blc lines only (their meshes are not rebuilt). gr_zzb drawn next to Fig.2 before use (scratch folder, has a crop of the
+  paper figure: not for the repository): regions and doping as gr_zz, "bl" at the bottom end.
+  Tools: `gt_rh_pairs.py` (pairs per cycle, holes in both bodies, holes through each contact), `gt_rh_body.py`, `gt_rh_wave.py` (inside the
+  cycles), `gt_rh_hist.py` (now also the grounded and bottom-contact runs), `_q.sh steps` (time steps of named runs), `_q.sh zb`.
+- Batches (each: Codex's state read first, registered and pushed, decks md5-equal PC / server, gate ALL PASS with every line read):
+  round 16 `run_d16.sh` 12:27, 12 runs, gr_yy / gr_zz / gr_zzg | round 17 `run_d17.sh` 12:48, 15 runs, gr_c1h .. gr_c4h |
+  round 18 `run_d18.sh` 13:34, 5 runs, gr_yy / gr_zz / gr_zzb / gr_zzbg | round 19 `run_d19.sh` 14:19, 3 runs, gr_zz / gr_zzb.
+  Paper re-read for them: Sec.V, Fig.6(b),(c), Fig.7(a) - (e) (round 16, 18, 19); Sec.VI, Fig.8, Fig.4(a) (round 17).
+- Round 16 (Case 2 pair, B1, paper timing, no history, no stand-in; Z-Z' unless said; "holes" = into the victim's body):
+  * g2, default driving force, BL contact takes no holes: 60 - 71 pairs per cycle as before; holes +52 (Z-Z') / +74 (Y-Y') in ten cycles;
+    node as fin. Ionization off: unchanged to the digit (0.00144 mV per cycle). The contact alone does nothing: too few pairs.
+  * g1, ElectricField, contacts as they were: 9500 - 10000 pairs in cycle 1, 3800 - 4100 per cycle after (x 60 - 150). Z-Z' (axis contact):
+    holes +77, then +31 per cycle; node rises 0.021 mV per cycle, no loss in ten cycles. Y-Y' (contact at the top end, 40 nm from both
+    junctions): holes +441, then +200 - 250 per cycle; node falls from cycle 3 on: 0.17 / 0.47 / 0.85 / 1.33 / 1.84 / 2.43 mV per cycle.
+  * g3, both: holes +874 in cycle 1 (+664 within the first pulse), then +648 / +628 (Z-Z'); +1236, +830 (Y-Y'). Victim's gated-body average
+    +208 -> +378 mV in the first pulse (+170 mV; centre +205; paper 665.1), +426 / +566 / +694 / +817 mV after cycles 1 - 4. Node: -0.49 /
+    -4.0 / -7.0 mV per cycle (Z-Z'), -1.96 / -7.8 (Y-Y'); it falls while the aggressor is HIGH (cycle 4: -6.9 mV in the high phase, -0.8 in
+    the low one), as Fig.7(a) draws it. Both stall in cycle 4 / 3 (below).
+  * g4, both + R = 2e5: the same hole gain (+852 / +584 / +580 / +644), node -1.1 (rise) / +1.9 / +4.6 / +8.1 mV per cycle; gate jump +264 mV.
+  * grounded victim body (paper 0.036 mV per cycle, node flat): g3 0.0101 mV per cycle (last five, a steady loss), g4 (R) 0.0133,
+    g1 (axis contact) 0.0019, default driving force 0.00145. 4 holes in the body throughout. The grounded body is immune, as in Fig.7(c).
+- Round 18:
+  * g7, ElectricField, BL contact at the bottom end of the pillar (below the victim), OHMIC: holes +682 in cycle 1, then +448 / +423 / +439;
+    only 118 - 235 holes per cycle leave through the BL contact. Gated-body average +159 -> +316 mV in the first pulse (+158 mV). Node +0.31
+    (rise) / -1.05 / -2.6 / -4.2 mV per cycle. So the transfer does not need a contact that refuses holes: a contact where a pillar has it
+    is enough. Grounded (g7 Rzbg): node 1.10001 / 1.10000 / 1.09999 after cycles 1 - 3.
+  * g6 = g3 with the text's 4.2 fF on both cells: 18 070 pairs in cycle 1, holes +1319 within the first pulse, +1815 in cycle 1; gated-body
+    average +190 -> +509 mV in the first pulse (+320 mV; centre +375; paper 665.1). Node -3.0 mV in cycle 1.
+  * g5 = g3 with ErrRef(Electron) 1e12: identical to g3 to the digit and stalls at the same instant.
+- The stall (g3, g4, g5 at about 3000 - 3300 holes in the victim; o2 right after the write): time steps of 1e-16 .. 1e-18 s. The Newton
+  iteration oscillates on the electron density (3e12 .. 4.5e12 cm^-3) at the gate-oxide interface 10 nm inside the gate from the storage-node
+  side, inside a hole accumulation layer of 1.5e20 cm^-3; the node moves 2 mV per 23 ps there, nothing runs away. A numerical matter of the
+  ElectricField driving force in an accumulation layer. Stopped by hand (`gt_kill.sh -`), files kept: Dg3Rzi_zz, Dg3Ryi_yy, Dg4Rzi_zz,
+  Dg5Rzi_zz, Dg5Ryi_yy, Do2F_c1 .. c4 (Do2F_c5 ended by itself, exit 2).
+- Round 17, FBE of the five cases with the paper's waveform and NO stand-in (does the write's own ionization leave the charge of Fig.8?):
+  * o1, ElectricField + BL contact takes no holes (storage-node contact ohmic, as the drawing has a metal electrode at the end of the N+
+    source): holes at t_A 704 / 519 / 345 / 213 / 18 (needed for the bars 1579 / 1354 / 1294 / 1118 / 1335), gated-body average 0.25 ns after
+    the fall +366 / +252 / +142 / +104 / +43 mV (bars 555 / 445 / 365 / 320 / 368), first-phase loss 0.24 / 0.12 / 0.08 / 0.07 / 0.10 mV.
+  * o3, default driving force, both contacts closed for holes: 213 / 151 / 114 / 161 / 205 holes, +220 / +140 / +77 / +90 / +99 mV.
+  * o2, ElectricField, both closed: 5349 / 4971 / 4109 / 3282 / 2293 holes right after the write (3 - 4 x the bars' charge), then the stall.
+  VERDICT: the write's own ionization does leave hundreds of holes once the BL contact does not take them, but not the charge of Fig.8
+  and not its pattern over the cases (Case 5: 18). Fig.8's charge lies between "the storage-node contact takes holes" and "it takes none";
+  nothing fixes a value in between. The origin of the charge of Fig.8 stays open; `fin3` keeps it as a condition.
+- What rounds 16, 18 say about Fig.7 (a back-calculated candidate, not the paper's statement): with the driving force ElectricField the
+  aggressor makes 4000 - 18 000 pairs per cycle; its holes enter the N+ BL pillar (the aggressor's body is forward biased while its WL is
+  high) and the victim's body - BL junction collects them: p (aggressor body) - N+ (pillar) - p (victim body). That gives, for the first
+  time in this model, (1) a body rise of hundreds of mV within the first aggressor pulse with the node still at 1.1 V (158 - 320 mV; paper
+  665), (2) nothing with ionization off, (3) a node that falls only while the aggressor is high and faster from pulse to pulse,
+  (4) a grounded body that keeps 1.1 V with 0.010 - 0.013 mV per cycle (paper 0.036). Not matched: the size (first-pulse rise 1/2 - 1/4 of
+  the paper's; node loss 4 - 8 mV per pulse where the paper has 30 - 120), the collapse itself (the runs stall first), and the directions:
+  in this model Y-Y' is hit as well (with an end contact 1/2 - 1/3 as much as Z-Z'), in the paper Y-Y' does not change at all.
+- Round 19 (numerics only: ErrRef(Electron) 1e17, which takes the oscillating density out of the convergence test): before the hammer and
+  in cycles 1 - 4 the runs repeat their twins (g9 against g7: holes 857 / 1312 / 1723 / 2164 against 857 / 1305 / 1728 / 2167, node equal to
+  0.05 mV; g8 against g3: holes 1220 / 1868 / 2493 against 1202 / 1850 / 2478, pairs in cycle 1 3 % lower) and they get past the instant where
+  g3 / g5 stalled. g8 (BL contact takes no holes): node -0.55 / -4.1 / -7.0 / -10.1 mV per cycle, 3187 holes after cycle 4.
+  g0 (BL contact at the bottom end, ohmic, 4.2 fF): 18 274 pairs in cycle 1, holes 1551 / 2292 / 2823 / 3320, node -0.94 / -3.05 / -3.11 / -3.26 mV
+  per cycle: it levels off near 3.3 mV per cycle = 0.605 V / 180 cycles (the paper's node is at 0.58 V after seven pulses; with the model
+  off the paper has 60.5k cycles, this model 0.00144 mV per cycle). They slow down again from cycle 5 on (steps of 1e-14 .. 1e-13 s);
+  how far each got and which were stopped at the end of the session: see the last lines of this entry.
+- Round 20 = `run_d20.sh`, 14:41, 7 runs (gate ALL PASS on gr_c1h .. gr_c4h, four lines read). Seen in the pair runs: with ElectricField
+  the write of the cell is much faster, because its body fills with holes while the WL is high (the body effect lowers the threshold).
+  Storage node at 12 / 24 / 39 / 60 ps after the WL edge (paper Fig.4(a): 0.72 / 0.92 / 1.06 / 1.13 V):
+    default driving force, 1.8 fF (`fin3`, the fit)   0.743 / 0.921 / 1.025 / 1.093   (deviation +23 / +1 / -35 / -37 mV)
+    default driving force, 4.2 fF (the text's value)   0.512 / 0.716 / 0.859 / 0.968   (-208 / -204 / -201 / -162 mV)
+    ElectricField, 4.2 fF (Do4W_c2, Do5W_c2)           0.785 / 1.019 / 1.104 / 1.140   (+65 / +99 / +44 / +10 mV)
+    ElectricField, 1.8 fF (pair runs g1, g7)           0.96 - 0.98 / 1.13 / 1.16 / 1.17
+  So the 1.8 fF of `fin3` and the driving force are coupled: the text's 4.2 fF was 160 - 208 mV too slow with the default driving force
+  and is 10 - 99 mV too fast with ElectricField. Neither is inside the 30 mV; which pair the paper has cannot be told from Fig.4(a) alone.
+  FBE with ElectricField, the text's capacitors (5.1 / 4.2 / 3.6 fF), BL contact that takes no holes, no stand-in (o4): 479 / 354 / 216 /
+  149 / 5 holes, gated-body average +307 / +206 / +107 / +86 / +39 mV, losses 0.05 mV: no Fig.8 either.
+- End of the session, 15:50: the three runs of round 19 needed more than ten minutes per cycle and were stopped by hand after 5 - 7 cycles
+  (files kept): g9 (bottom-end contact, 1.8 fF) node -0.31 (rise) / 1.08 / 2.52 / 4.25 / 6.15 / 7.61 / 8.18 mV per cycle, 3712 holes; g8 0.55 /
+  4.14 / 7.04 / 10.07 / 11.22 mV per cycle, 3915 holes; g0 (4.2 fF) 0.94 / 3.05 / 3.11 / 3.26 / 3.14 mV per cycle, 3810 holes. The loss per cycle
+  levels off (g0 at 3.1 - 3.3 mV, g9 near 8 - 9 mV, g8 near 11 - 12 mV): no collapse within the cycles computed. Also stopped earlier:
+  Dg6Rzi_zz (cycle 2), Dg7Rzbi_zz (cycle 6, stalled). Nothing of mine runs on the server; quota 7.8 of 9.2 GB.
+- Shared: register, status, analysis 4.9 / 5.4 - 5.7 / 7.2, tables (`row_hammer_history_round15.txt`, `row_hammer_pairs_and_body_round15.txt`,
+  `row_hammer_aggressor_holes_rounds16_18.txt`, `fbe_and_write_no_standin_rounds17_20.txt`, `fbe_3d_new_reading_case2.txt`), 72 new run
+  folders, pictures `gt2d_rh_history_round15.png`, `gt2d_rh_hole_transfer_rounds16_19.png` (`tools/_rh_tab.sh` on the server, then
+  `tools/plot_rh_transfer.py <table>` on the PC). Report sections 9.13 - 9.16. Not updated: the eliU HTML report, the comparison workbook.
+- Not changed: `fin3` and its scores. ElectricField is not adopted for the device: with it the write is faster (round 20) and Fig.5(c) /
+  Fig.8 / the scores have not been redone with it.
+
+## 2026-10-07 (bl) round 15 (user: go on with option 3): row hammer with the history that charges the body; 3D confirmation of the new reading; Fig.7(c) read again; round 16 started
+- User, 2026-10-07 ~09:50: "go on like this" on my recommendation of option 3 = put the history that gives Fig.8 its hole charge into the row
+  hammer and see whether Fig.6(e) and Fig.7 come out with it (the only test of the origin hypothesis on a figure independent of Fig.8).
+- Code: `tHold2` (hold at Vdd/2 before the hammer), `Idle` (aggressor WL stays at 0 V), `SNhold` also in the row-hammer deck (1: node held
+  through the hold at Vdd; 2: also through the hold at Vdd/2, released 0.5 ns before the hammer); `ProbeX=1` on 2D pair structures records the
+  average potential of the victim's body under its gate and the holes in the aggressor's body. Older decks byte-identical (11 checked, twice).
+- Round 15 = `run_d15.sh`, 28 runs Dx1..Dx7 x (Ry_yy, Ryi_yy, Rz_zz, Rzi_zz), B1, no stand-in: x1 16.2 us at Vdd then Vdd/2 for 1 ns | x2 16.2 us
+  at Vdd/2 | x3, x4 the same with R = 2e5 Ohm | x7 100 us at Vdd/2 | x5, x6 idle controls of x2, x7. Codex's state read before (commit 56023b0:
+  its fin3 follow-up, FBE only). Paper re-read: Sec.V, Fig.6(b),(c): BL Vdd/2, victim WL 0 V, aggressor 0 <-> Vpp, ten pulses in 2 ns.
+  Gate 09:58, ALL PASS on gr_yy and gr_zz (both lines read; `runs/run_d15.check`), 20 jobs, 09:58:56 - 11:55, all 28 complete.
+- Result (`tools/gt_rh_hist.py -c`; loss of the node per cycle in mV, + = falls; paper Y-Y' 0.0535 off and on, Z-Z' 0.0100 off, 1.1 -> 0.58 V on):
+  * state before the hammer: 1319 - 1360 holes, body centre +503 .. +513 mV (16.2 us); 2758 - 2763 holes, +826 mV (100 us);
+  * Y-Y' off: fin 0.00144 | x1 .. x4 0.00115 = idle x5 0.00115 (attack - idle 0.0000) | x7: one upward shift of 0.0025 mV, then 0.00019 = idle x6;
+  * Y-Y' on: fin 0.00034 | x1 .. x4 the node RISES 0.0026 per cycle (body +6.7 mV, +27 holes in ten cycles) | x7 rises 0.0064;
+  * Z-Z' off: fin -0.029 at cycle 1, then +0.00144 | x1, x2 -0.029, then +0.00115 | x3, x4 (R) +0.098 at cycle 1 (gate jump +207 mV), then +0.0011
+    (ten-cycle mean 0.0102, which happens to be the paper's number: one shift, no accumulation) | x7 -0.030, then +0.0002;
+  * Z-Z' on: the same shifts, then +0.0005 (x1, x2), +0.0007 (x3, x4), -0.0009 (x7). No collapse (victim body +1 mV, +4 holes in ten cycles).
+  The loss that is left is the tunnelling leak of the node junction (0.00115 mV per cycle = 11 pA at 1.8 fF); it FALLS as the body fills
+  (0.00019 = 1.8 pA after 100 us). With the BL at Vdd/2 a charged body does nothing: the BL-side barrier is 0.55 V higher than in Fig.8.
+  VERDICT: the history does not give Fig.6(e) or Fig.7. The origin hypothesis (charging over 16 us before t = 0) gets no support from a
+  figure that is independent of Fig.8; it is not refuted by them either (a body charged like Fig.8's is inert under the hammer bias).
+- From the device files (`tools/gt_rh_pairs.py`, `tools/gt_rh_body.py`): impact ionization makes 53 - 71 pairs per aggressor cycle, every cycle
+  (the aggressor node is pulled to 0.34 V at each WL fall and recharged to 0.55 V: about 2400 electrons pass its channel per cycle). Of the
+  holes 0.4 per cycle (Z-Z') / 3.3 (Y-Y') reach the victim's body, 10 - 12 leave through the BL contact, 18 - 23 through the aggressor's node
+  contact. With R = 2e5 the victim body is lifted +32 mV at mid-pulse, +4.3 mV at the end of the first pulse (paper, model off: 2.4 mV).
+- CORRECTION of (bc), from the figure image at 4 x: in Fig.7(c) the arrows "t = 0" and "t = t_A" end on the FIRST aggressor pulse (its start
+  and its end, 0.09 ns), not at 0.45 ns. So the 665.1 mV of Fig.7(e) build up within the first aggressor pulse. The node stays at 1.1 V through
+  pulses 1 and 2 and then falls only while the aggressor is HIGH (0.12 / 0.11 / 0.08 / 0.07 / 0.06 / 0.03 V per pulse), flat while it is low,
+  and stops at 0.58 V. 1000 - 2000 holes in 94 ps with the node flat cannot come from the victim's own channel current or from its
+  storage-node junction (either would cost the node 40 - 700 mV). What is left: holes made in the aggressor that reach the victim.
+- 3D confirmation of the reading of (bk), Case 2 (`tools/gt3_fbe.py`, now with the gated-body average): E3S1_c2 (x 1.31, 1347 holes) average
+  +456 / +433 mV (before the fall / 0.25 ns after), +5 ns 8.58, first phase 14.26, 200 ns 41.89 mV; E3S2_c2 (x 1.45, 1486 holes) +486 / +458,
+  18.90, 27.55, 59.40 mV; 2D Ds2F_c2 +470 / +445, 13.89, 23.18, 67.76; paper 445, 23, 29, 50. E3S2_c2 alone is inside every tolerance (bar +13 mV,
+  -0.09 / -0.02 / +0.07 decades); interpolated to the bar: 19.6 and 49.5 mV. The 3D cell needs about 10 % more holes for the same potential.
+  The reading of (bk) holds in 3D; "before the fall" fails there too (11 mV in the first phase at the bar).
+- Round 16 = `run_d16.sh`, 12 runs, started 12:27:12 (gate ALL PASS on gr_yy, gr_zz, gr_zzg, three lines read; `runs/run_d16.check`; Codex's
+  state read at 6116f98: its fin3 factorial is FBE only; registered 0d298b4): can the aggressor's holes reach the victim? g1 avalanche driving
+  force ElectricField (the write made 17 000 pairs with it instead of 600 - 900) | g2 BL contact that takes no holes (`BLhv=0`: the section
+  puts the contact on the pillar axis, the array has it at the end of the pillar) | g3 both | g4 both with R = 2e5 Ohm. Z-Z', Y-Y', grounded.
+
 ## 2026-10-07 (bk) back-calculation, step 1: where and when Fig.8(a) reads the body potential (rounds 13, 14); fin3; bcvfet_tcad moved
 - User (08:30): move bcvfet_tcad off the server; the authors cannot be asked, the open values have to be back-calculated; go on.
 - bcvfet_tcad: my part (runs 4354 files, tools, preview, files at the top: 4484 files, 1919 MB) packed (`tools/arch_manifest.sh`, tar in /tmp),

@@ -1,0 +1,1237 @@
+== Y-Y', impact ionization off   (paper per cycle: 0.0535)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |     0       +3 mV  1.1000 V     |  +0.00144   +0.00144             |   +0.0144  |    +0.2 mV     +0          |     -     | complete
+   g1                                 | no data
+   g2                                 |     0       +3 mV  1.1000 V     |  +0.00144   +0.00144             |   +0.0144  |    +0.2 mV     +0          |     -     | complete
+   g3                                 | no data
+   g4                                 | no data
+   g5                                 | no data
+   g6                                 | no data
+   g7                                 | no data
+   g8                                 | no data
+   g9                                 | no data
+   g0                                 | no data
+   fin: node below its start after cycle 1 .. 10 [mV]: +0.0014 +0.0029 +0.0043 +0.0058 +0.0072 +0.0086 +0.0101 +0.0115 +0.0130 +0.0144
+   g2: node below its start after cycle 1 .. 10 [mV]: +0.0014 +0.0029 +0.0043 +0.0058 +0.0072 +0.0086 +0.0101 +0.0115 +0.0130 +0.0144
+== Y-Y', impact ionization on   (paper per cycle: 0.0535)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |    37      +46 mV  1.1000 V     |  +0.00034   +0.00006             |   +0.0034  |   +25.1 mV    +28          |     -     | complete
+   g1                                 |   169     +141 mV  1.1000 V     |  +1.36020   +2.48766             |  +13.6020  |  +660.8 mV  +2481          |     -     | complete
+   g2                                 |    37      +47 mV  1.1000 V     |  -0.00184   -0.00259             |   -0.0184  |   +59.8 mV    +74          |     -     | complete
+   g3                                 |   270     +190 mV  1.1000 V     |  +4.88166       +nan             |   +9.7633  |  +724.6 mV  +2925          |     -     | 2 of 10 cycles
+   g4                                 | no data
+   g5                                 |   264     +188 mV  1.1000 V     |  +4.84019       +nan             |   +9.6804  |  +729.9 mV  +2944          |     -     | 2 of 10 cycles
+   g6                                 | no data
+   g7                                 | no data
+   g8                                 | no data
+   g9                                 | no data
+   g0                                 | no data
+   fin: node below its start after cycle 1 .. 10 [mV]: +0.0014 +0.0023 +0.0027 +0.0030 +0.0031 +0.0032 +0.0033 +0.0034 +0.0034 +0.0034
+   g1: node below its start after cycle 1 .. 10 [mV]: -0.2882 -0.3254 -0.1554 +0.3141 +1.1637 +2.4922 +4.3382 +6.7676 +9.8550 +13.6020
+   g2: node below its start after cycle 1 .. 10 [mV]: +0.0014 +0.0007 -0.0011 -0.0034 -0.0054 -0.0080 -0.0108 -0.0127 -0.0154 -0.0184
+   g3: node below its start after cycle 1 .. 2 [mV]: +1.9576 +9.7633
+   g5: node below its start after cycle 1 .. 2 [mV]: +1.9203 +9.6804
+== Z-Z', impact ionization off   (paper per cycle: 0.0100)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |     0       +3 mV  1.1000 V     |  -0.00157   +0.00144             |   -0.0157  |    +0.2 mV     +0          |     -     | complete
+   g1                                 | no data
+   g2                                 |     0       +3 mV  1.1000 V     |  -0.00158   +0.00144             |   -0.0158  |    +0.2 mV     +0          |     -     | complete
+   g3                                 | no data
+   g4                                 | no data
+   g5                                 | no data
+   g6                                 | no data
+   g7                                 | no data
+   g8                                 | no data
+   g9                                 | no data
+   g0                                 | no data
+   fin: node below its start after cycle 1 .. 10 [mV]: -0.0287 -0.0273 -0.0258 -0.0244 -0.0229 -0.0215 -0.0201 -0.0186 -0.0172 -0.0157
+   g2: node below its start after cycle 1 .. 10 [mV]: -0.0288 -0.0274 -0.0259 -0.0245 -0.0230 -0.0216 -0.0202 -0.0187 -0.0173 -0.0158
+== Z-Z', impact ionization on   (paper per cycle: node 1.1 -> 0.58 V)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |    35      +44 mV  1.1000 V     |  -0.00173   +0.00126             |   -0.0173  |    +4.5 mV     +5          |     -     | complete
+   g1                                 |   141     +125 mV  1.1000 V     |  -0.02496   -0.02117             |   -0.2496  |  +152.0 mV   +361          |     -     | complete
+   g2                                 |    38      +48 mV  1.1000 V     |  -0.00379   -0.00126             |   -0.0379  |   +44.1 mV    +52          |     -     | complete
+   g3                                 |   328     +214 mV  1.1000 V     |  +3.84761       +nan             |  +11.5428  |  +689.8 mV  +2815          |     -     | 3 of 10 cycles
+   g4                                 |     6      +11 mV  1.0727 V     |  +3.39165       +nan             |  +13.5666  |  +991.2 mV  +3312          |   +264 mV | 4 of 10 cycles
+   g5                                 |   328     +214 mV  1.1000 V     |  +3.84761       +nan             |  +11.5428  |  +686.7 mV  +2800          |     -     | 3 of 10 cycles
+   g6                                 |   268     +189 mV  1.1000 V     |  +2.98542       +nan             |   +2.9854  |  +721.5 mV  +2905          |     -     | 1 of 10 cycles
+   g7                                 | no data
+   g8                                 |   327     +214 mV  1.1000 V     |  +6.60389       +nan             |  +33.0195  |  +932.7 mV  +4064          |     -     | 5 of 10 cycles
+   g9                                 | no data
+   g0                                 | no data
+   fin: node below its start after cycle 1 .. 10 [mV]: -0.0286 -0.0274 -0.0261 -0.0249 -0.0236 -0.0223 -0.0210 -0.0198 -0.0186 -0.0173
+   g1: node below its start after cycle 1 .. 10 [mV]: -0.0692 -0.0872 -0.1050 -0.1240 -0.1437 -0.1640 -0.1849 -0.2064 -0.2282 -0.2496
+   g2: node below its start after cycle 1 .. 10 [mV]: -0.0286 -0.0287 -0.0292 -0.0303 -0.0316 -0.0325 -0.0339 -0.0354 -0.0364 -0.0379
+   g3: node below its start after cycle 1 .. 3 [mV]: +0.4921 +4.5355 +11.5428
+   g4: node below its start after cycle 1 .. 4 [mV]: -1.0870 +0.8531 +5.4881 +13.5666
+   g5: node below its start after cycle 1 .. 3 [mV]: +0.4921 +4.5355 +11.5428
+   g6: node below its start after cycle 1 .. 1 [mV]: +2.9854
+   g8: node below its start after cycle 1 .. 5 [mV]: +0.5476 +4.6903 +11.7315 +21.8020 +33.0195
+== Z-Z', BL contact at the bottom end of the pillar, impact ionization on   (paper per cycle: node 1.1 -> 0.58 V)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 | no data
+   g1                                 | no data
+   g2                                 | no data
+   g3                                 | no data
+   g4                                 | no data
+   g5                                 | no data
+   g6                                 | no data
+   g7                                 |   175     +145 mV  1.1000 V     |  +2.73620       +nan             |  +13.6810  |  +764.2 mV  +2989          |     -     | 5 of 10 cycles
+   g8                                 | no data
+   g9                                 |   177     +146 mV  1.1000 V     |  +4.21072   +5.74158             |  +29.4751  |  +884.5 mV  +3594          |     -     | 7 of 10 cycles
+   g0                                 |   183     +149 mV  1.1000 V     |  +2.69993       +nan             |  +13.4997  |  +949.5 mV  +3933          |     -     | 5 of 10 cycles
+   g7: node below its start after cycle 1 .. 5 [mV]: -0.3149 +0.7303 +3.3281 +7.5579 +13.6810
+   g9: node below its start after cycle 1 .. 7 [mV]: -0.3141 +0.7672 +3.2900 +7.5340 +13.6858 +21.3003 +29.4751
+   g0: node below its start after cycle 1 .. 5 [mV]: +0.9395 +3.9844 +7.0994 +10.3554 +13.4997
+== Z-Z', grounded body, impact ionization on   (paper per cycle: 0.036)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |     4       +3 mV  1.1000 V     |  -0.00155   +0.00145             |   -0.0155  |    +0.0 mV     -0          |     -     | complete
+   g1                                 |     4       +3 mV  1.1000 V     |  -0.00078   +0.00187             |   -0.0078  |    +0.0 mV     -0          |     -     | complete
+   g2                                 | no data
+   g3                                 |     4       +3 mV  1.1000 V     |  +0.00859   +0.01011             |   +0.0859  |    +0.0 mV     +0          |     -     | complete
+   g4                                 |     4       +3 mV  1.0545 V     |  +0.04156   +0.01328             |   +0.4156  |    -7.5 mV     +0          |   +139 mV | complete
+   g5                                 | no data
+   g6                                 | no data
+   g7                                 | no data
+   g8                                 | no data
+   g9                                 | no data
+   g0                                 | no data
+   fin: node below its start after cycle 1 .. 10 [mV]: -0.0286 -0.0272 -0.0257 -0.0243 -0.0228 -0.0213 -0.0199 -0.0184 -0.0170 -0.0155
+   g1: node below its start after cycle 1 .. 10 [mV]: -0.0249 -0.0228 -0.0209 -0.0190 -0.0171 -0.0153 -0.0134 -0.0115 -0.0096 -0.0078
+   g3: node below its start after cycle 1 .. 10 [mV]: -0.0082 +0.0046 +0.0152 +0.0253 +0.0353 +0.0454 +0.0553 +0.0654 +0.0756 +0.0859
+   g4: node below its start after cycle 1 .. 10 [mV]: +0.2880 +0.3076 +0.3227 +0.3358 +0.3492 +0.3625 +0.3757 +0.3888 +0.4004 +0.4156
+== Z-Z', BL contact at the bottom end, grounded body, impact ionization on   (paper per cycle: 0.036)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 | no data
+   g1                                 | no data
+   g2                                 | no data
+   g3                                 | no data
+   g4                                 | no data
+   g5                                 | no data
+   g6                                 | no data
+   g7                                 |     4       +3 mV  1.1000 V     |  +0.00622   +0.00800             |   +0.0622  |    +0.0 mV     +0          |     -     | complete
+   g8                                 | no data
+   g9                                 | no data
+   g0                                 | no data
+   g7: node below its start after cycle 1 .. 10 [mV]: -0.0122 -0.0022 +0.0062 +0.0142 +0.0222 +0.0301 +0.0381 +0.0462 +0.0543 +0.0622
+== Dg0Rzbi_zz: II 1, R 0 Ohm, BL contact hole velocity -1, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 1.2592 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |      14891.7                 -2.3      |        183                 78      | 1.10000        0.0001      |    -162.2      -0.0  -13743.8
+   cycle 1             |      18274.2                -13.6      |       1551               1841      | 1.09906        0.4451      |    -440.4   -9305.7      -0.0
+   cycle 2             |       4275.7                 -4.1      |       2292               1102      | 1.09601        0.4443      |    -202.1   -2850.1      -0.0
+   cycle 3             |       4497.6                 -7.0      |       2823                948      | 1.09290        0.4432      |    -128.9   -1928.6      -0.0
+   cycle 4             |       4618.4                -21.2      |       3320                899      | 1.08964        0.4442      |    -114.4   -1759.3      -0.0
+   cycle 5             |       4538.5                -59.5      |       3810                911      | 1.08650        0.4431      |    -116.0   -1682.1      -0.0
+== Dg1Ryi_yy: II 1, R 0 Ohm, BL contact hole velocity -1, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 2.1250 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |       6296.0                 -0.7      |        169                149      | 1.10000        0.0002      |    -361.8      -0.0   -5470.1
+   cycle 1             |       9512.2                 -3.9      |        610                724      | 1.10028        0.3148      |   -1359.2   -3556.7      -0.0
+   cycle 2             |       3836.4                 -3.0      |        807                657      | 1.10032        0.3115      |    -582.8   -1433.3      -0.0
+   cycle 3             |       3867.1                 -3.0      |        997                653      | 1.10015        0.3114      |    -549.1   -1368.9      -0.0
+   cycle 4             |       3909.1                 -3.1      |       1194                659      | 1.09968        0.3112      |    -545.8   -1359.4      -0.0
+   cycle 5             |       3988.9                 -3.1      |       1399                666      | 1.09883        0.3108      |    -544.2   -1388.2      -0.0
+   cycle 6             |       3934.6                 -3.1      |       1619                666      | 1.09750        0.3105      |    -554.0   -1386.3      -0.0
+   cycle 7             |       4013.9                 -3.2      |       1851                675      | 1.09566        0.3095      |    -553.1   -1384.8      -0.0
+   cycle 8             |       3908.5                 -3.2      |       2098                659      | 1.09323        0.3111      |    -556.5   -1377.3      -0.0
+   cycle 9             |       4087.6                 -3.6      |       2364                678      | 1.09014        0.3102      |    -567.8   -1396.4      -0.0
+   cycle 10            |       4055.0                 -4.8      |       2649                666      | 1.08639        0.3107      |    -575.7   -1427.1      -0.0
+== Dg1Rzg_zz: II 1, R 0 Ohm, BL contact hole velocity -1, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 2.1250 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |     154330.6               -231.6      |          4                 12      | 1.10000        0.0001      |     -21.7      -0.0    -169.0
+   cycle 1             |      10104.7                 -4.2      |          4                673      | 1.10002        0.3138      |   -2008.0   -3450.1      -0.0
+   cycle 2             |       3827.7                 -2.9      |          4                629      | 1.10002        0.3112      |    -814.0   -1349.0      -0.0
+   cycle 3             |       3901.7                 -2.9      |          4                633      | 1.10002        0.3109      |    -777.4   -1307.6      -0.0
+   cycle 4             |       3923.4                 -2.9      |          4                629      | 1.10002        0.3111      |    -775.6   -1317.5      -0.0
+   cycle 5             |       3931.8                 -2.9      |          4                633      | 1.10002        0.3109      |    -774.5   -1308.8      -0.0
+   cycle 6             |       3984.1                 -2.9      |          4                633      | 1.10001        0.3109      |    -770.4   -1319.1      -0.0
+   cycle 7             |       3968.4                 -2.9      |          4                628      | 1.10001        0.3112      |    -778.6   -1324.6      -0.0
+   cycle 8             |       3838.7                 -2.9      |          4                628      | 1.10001        0.3109      |    -781.3   -1310.3      -0.0
+   cycle 9             |       3903.1                 -2.9      |          4                633      | 1.10001        0.3109      |    -776.0   -1307.3      -0.0
+   cycle 10            |       3836.2                 -2.9      |          4                629      | 1.10001        0.3111      |    -782.8   -1315.4      -0.0
+== Dg1Rzi_zz: II 1, R 0 Ohm, BL contact hole velocity -1, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 2.1250 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |       6312.1                 -0.9      |        141                 27      | 1.10000        0.0001      |    -524.1      -0.0   -5477.2
+   cycle 1             |      10004.5                 -4.1      |        218                667      | 1.10006        0.3135      |   -2006.1   -3462.2      -0.0
+   cycle 2             |       3833.6                 -2.9      |        251                628      | 1.10008        0.3112      |    -809.3   -1343.5      -0.0
+   cycle 3             |       4126.1                 -2.9      |        282                630      | 1.10010        0.3111      |    -765.3   -1327.7      -0.0
+   cycle 4             |       3839.0                 -2.9      |        313                629      | 1.10012        0.3111      |    -781.6   -1312.0      -0.0
+   cycle 5             |       3835.4                 -2.9      |        345                628      | 1.10014        0.3112      |    -781.7   -1312.0      -0.0
+   cycle 6             |       3840.2                 -2.9      |        376                629      | 1.10016        0.3111      |    -781.0   -1310.6      -0.0
+   cycle 7             |       3859.8                 -2.9      |        408                637      | 1.10018        0.3110      |    -781.7   -1312.7      -0.0
+   cycle 8             |       3872.2                 -2.9      |        439                637      | 1.10020        0.3110      |    -785.2   -1323.5      -0.0
+   cycle 9             |       3853.4                 -2.9      |        471                637      | 1.10022        0.3110      |    -785.6   -1319.2      -0.0
+   cycle 10            |       3965.9                 -2.9      |        502                637      | 1.10024        0.3110      |    -775.3   -1320.6      -0.0
+== Dg2Ryi_yy: II 1, R 0 Ohm, BL contact hole velocity 0, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 2.1250 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |        158.5                 -0.2      |         37                  2      | 1.10000        0.0000      |      +0.0      -0.0    -114.5
+   cycle 1             |         64.4                 -1.5      |         37                 29      | 1.10000        0.3406      |      +0.0      -1.3      -0.0
+   cycle 2             |         70.9                 -2.6      |         43                 40      | 1.10000        0.3414      |      +0.0     -16.4      -0.0
+   cycle 3             |         71.2                 -2.6      |         51                 44      | 1.10000        0.3414      |      +0.0     -23.6      -0.0
+   cycle 4             |         60.3                 -2.6      |         60                 40      | 1.10000        0.3416      |      +0.0     -25.9      -0.0
+   cycle 5             |         71.2                 -2.6      |         69                 44      | 1.10000        0.3414      |      -0.0     -23.5      -0.0
+   cycle 6             |         71.3                 -2.6      |         78                 45      | 1.10001        0.3414      |      +0.0     -25.9      -0.0
+   cycle 7             |         53.6                 -2.6      |         87                 36      | 1.10001        0.3408      |      -0.0     -26.5      -0.0
+   cycle 8             |         71.1                 -2.6      |         94                 42      | 1.10001        0.3414      |      -0.0     -20.6      -0.0
+   cycle 9             |         71.2                 -2.6      |        103                 44      | 1.10001        0.3414      |      -0.0     -24.9      -0.0
+   cycle 10            |         53.6                 -2.6      |        112                 35      | 1.10002        0.3408      |      -0.0     -26.3      -0.0
+== Dg2Ry_yy: II 0, R 0 Ohm, BL contact hole velocity 0, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 2.1250 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |          0.0                  0.0      |          0                  0      | 1.10000        0.0000      |      -0.0      -0.0      -0.0
+   cycle 1             |          0.0                  0.0      |          0                  0      | 1.10000        0.3429      |      -0.0      -0.0      +0.0
+   cycle 2             |          0.0                  0.0      |          0                  0      | 1.10000        0.3418      |      +0.0      -0.0      +0.0
+   cycle 3             |          0.0                  0.0      |          0                  0      | 1.09999        0.3417      |      +0.0      -0.0      +0.0
+   cycle 4             |          0.0                  0.0      |          0                  0      | 1.09999        0.3417      |      +0.0      -0.0      -0.0
+   cycle 5             |          0.0                  0.0      |          0                  0      | 1.09999        0.3417      |      -0.0      -0.0      +0.0
+   cycle 6             |          0.0                  0.0      |          0                  0      | 1.09999        0.3417      |      -0.0      -0.0      +0.0
+   cycle 7             |          0.0                  0.0      |          0                  0      | 1.09999        0.3417      |      -0.0      -0.0      +0.0
+   cycle 8             |          0.0                  0.0      |          0                  0      | 1.09999        0.3417      |      +0.0      -0.0      +0.0
+   cycle 9             |          0.0                  0.0      |          0                  0      | 1.09999        0.3417      |      -0.0      -0.0      +0.0
+   cycle 10            |          0.0                  0.0      |          0                  0      | 1.09998        0.3417      |      -0.0      -0.0      +0.0
+== Dg2Rzi_zz: II 1, R 0 Ohm, BL contact hole velocity 0, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 2.1250 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |        156.0                 -0.2      |         38                  1      | 1.10000        0.0001      |      -0.0      -0.0    -115.2
+   cycle 1             |         64.6                 -1.1      |         38                 29      | 1.10003        0.3410      |      -0.0      -0.8      -0.0
+   cycle 2             |         60.1                 -2.6      |         42                 37      | 1.10003        0.3421      |      -0.0     -16.7      -0.0
+   cycle 3             |         71.3                 -2.6      |         47                 45      | 1.10003        0.3419      |      -0.0     -21.9      -0.0
+   cycle 4             |         71.5                 -2.6      |         54                 48      | 1.10003        0.3419      |      +0.0     -26.9      -0.0
+   cycle 5             |         53.9                 -2.6      |         60                 39      | 1.10003        0.3413      |      -0.0     -28.8      -0.0
+   cycle 6             |         71.4                 -2.6      |         66                 46      | 1.10003        0.3419      |      -0.0     -23.2      -0.0
+   cycle 7             |         71.5                 -2.6      |         72                 48      | 1.10003        0.3419      |      +0.0     -27.4      -0.0
+   cycle 8             |         53.9                 -2.6      |         79                 39      | 1.10003        0.3413      |      +0.0     -28.9      -0.0
+   cycle 9             |         71.4                 -2.6      |         84                 46      | 1.10003        0.3419      |      +0.0     -23.2      -0.0
+   cycle 10            |         53.8                 -2.6      |         91                 38      | 1.10004        0.3413      |      +0.0     -27.4      -0.0
+== Dg2Rz_zz: II 0, R 0 Ohm, BL contact hole velocity 0, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 2.1250 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |          0.0                  0.0      |          0                  0      | 1.10000        0.0001      |      -0.0      -0.0      -0.0
+   cycle 1             |          0.0                  0.0      |          0                  0      | 1.10003        0.3433      |      -0.0      -0.0      +0.0
+   cycle 2             |          0.0                  0.0      |          0                  0      | 1.10003        0.3434      |      -0.0      -0.0      -0.0
+   cycle 3             |          0.0                  0.0      |          0                  0      | 1.10003        0.3434      |      +0.0      -0.0      -0.0
+   cycle 4             |          0.0                  0.0      |          0                  0      | 1.10002        0.3434      |      -0.0      -0.0      +0.0
+   cycle 5             |          0.0                  0.0      |          0                  0      | 1.10002        0.3434      |      +0.0      -0.0      +0.0
+   cycle 6             |          0.0                  0.0      |          0                  0      | 1.10002        0.3434      |      -0.0      -0.0      +0.0
+   cycle 7             |          0.0                  0.0      |          0                  0      | 1.10002        0.3434      |      -0.0      -0.0      +0.0
+   cycle 8             |          0.0                  0.0      |          0                  0      | 1.10002        0.3434      |      -0.0      -0.0      -0.0
+   cycle 9             |          0.0                  0.0      |          0                  0      | 1.10002        0.3434      |      -0.0      -0.0      +0.0
+   cycle 10            |          0.0                  0.0      |          0                  0      | 1.10002        0.3434      |      -0.0      -0.0      +0.0
+== Dg3Ryi_yy: II 1, R 0 Ohm, BL contact hole velocity 0, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 0.7596 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |       6812.7                 -0.9      |        270                377      | 1.10000        0.0005      |      -0.0      -0.0   -5626.6
+   cycle 1             |       9127.1                 -4.4      |       1506                981      | 1.09805        0.3170      |      -0.0   -3686.2      -0.0
+   cycle 2             |       3895.1                 -3.9      |       2336                807      | 1.09024        0.3146      |      -0.0   -1777.0      -0.0
+== Dg3Rzg_zz: II 1, R 0 Ohm, BL contact hole velocity 0, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 2.1250 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |     154505.9               -231.6      |          4                 19      | 1.10000        0.0001      |      -0.0      -0.0    -169.1
+   cycle 1             |      10107.7                 -4.5      |          4               1230      | 1.10001        0.3208      |      +0.0   -3757.1      -0.0
+   cycle 2             |       3507.9                 -2.9      |          4                958      | 1.09999        0.3184      |      +0.0   -2124.8      -0.0
+   cycle 3             |       3787.3                 -2.9      |          4                921      | 1.09998        0.3170      |      +0.0   -1818.3      -0.0
+   cycle 4             |       3717.0                 -2.9      |          4                895      | 1.09997        0.3173      |      -0.0   -1769.0      -0.0
+   cycle 5             |       3742.5                 -2.9      |          4                896      | 1.09996        0.3174      |      +0.0   -1734.7      -0.0
+   cycle 6             |       3745.5                 -2.9      |          4                908      | 1.09995        0.3169      |      -0.0   -1735.2      -0.0
+   cycle 7             |       3911.1                 -2.9      |          4                903      | 1.09994        0.3172      |      -0.0   -1778.7      -0.0
+   cycle 8             |       3767.3                 -2.9      |          4                909      | 1.09993        0.3169      |      +0.0   -1747.7      -0.0
+   cycle 9             |       3737.4                 -2.9      |          4                911      | 1.09992        0.3167      |      -0.0   -1739.3      -0.0
+   cycle 10            |       3657.4                 -2.9      |          4                910      | 1.09991        0.3167      |      -0.0   -1724.8      -0.0
+== Dg3Rzi_zz: II 1, R 0 Ohm, BL contact hole velocity 0, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 0.9476 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |       6395.2                 -0.8      |        328                250      | 1.10001        0.0004      |      -0.0      -0.0   -5550.7
+   cycle 1             |       9790.3                 -4.6      |       1202               1227      | 1.09952        0.3202      |      -0.0   -3741.1      -0.0
+   cycle 2             |       3651.7                 -3.5      |       1850                961      | 1.09547        0.3182      |      -0.0   -2123.9      -0.0
+   cycle 3             |       3879.6                 -4.1      |       2478                925      | 1.08847        0.3171      |      +0.0   -1801.0      -0.0
+== Dg4Rzg_zz: II 1, R 200000 Ohm, BL contact hole velocity 0, aggressor node at the start 0 V; hammer from 3.0400 ns, now at 4.9200 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |      80067.1              -1821.5      |          4                 11      | 1.05447        0.0001      |      -0.0      -0.0     -93.2
+   cycle 1             |      10178.1                 -5.3      |          4               1234      | 1.05419        0.3222      |      -0.0   -3787.4      -0.1
+   cycle 2             |       3533.8                 -3.8      |          4                969      | 1.05417        0.3192      |      +0.0   -2125.7      -0.1
+   cycle 3             |       3701.5                 -3.8      |          4                921      | 1.05415        0.3176      |      -0.0   -1819.8      -0.1
+   cycle 4             |       3720.2                 -3.8      |          4                903      | 1.05414        0.3183      |      +0.0   -1751.4      -0.1
+   cycle 5             |       3687.0                 -3.8      |          4                902      | 1.05413        0.3183      |      -0.0   -1736.1      -0.1
+   cycle 6             |       3753.6                 -3.8      |          4                900      | 1.05411        0.3183      |      -0.0   -1739.5      -0.1
+   cycle 7             |       3769.2                 -3.8      |          4                900      | 1.05410        0.3183      |      +0.0   -1748.4      -0.1
+   cycle 8             |       3755.5                 -3.8      |          4                899      | 1.05409        0.3183      |      +0.0   -1737.1      -0.1
+   cycle 9             |       3720.3                 -3.8      |          4                901      | 1.05407        0.3183      |      +0.0   -1725.4      -0.1
+   cycle 10            |       3747.2                 -3.8      |          4                900      | 1.05406        0.3183      |      +0.0   -1735.5      -0.1
+== Dg4Rzi_zz: II 1, R 200000 Ohm, BL contact hole velocity 0, aggressor node at the start 0 V; hammer from 3.0400 ns, now at 3.9108 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |       2213.3                 -1.7      |          6                164      | 1.07274        0.0003      |      +0.0      -0.0   -1984.4
+   cycle 1             |       9819.0                 -5.5      |        858               1243      | 1.07382        0.3201      |      -0.0   -3783.2      -0.1
+   cycle 2             |       3661.5                 -4.2      |       1442                970      | 1.07188        0.3192      |      +0.0   -2162.3      -0.1
+   cycle 3             |       3738.0                 -4.2      |       2022                915      | 1.06725        0.3185      |      +0.0   -1766.2      -0.1
+   cycle 4             |       3890.2                 -5.5      |       2666                905      | 1.05917        0.3183      |      -0.0   -1723.6      -0.1
+== Dg5Ryi_yy: II 1, R 0 Ohm, BL contact hole velocity 0, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 0.7497 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |       6404.5                 -0.8      |        264                359      | 1.10000        0.0005      |      -0.0      -0.0   -5522.2
+   cycle 1             |       9160.4                 -4.4      |       1502                979      | 1.09808        0.3170      |      +0.0   -3683.5      -0.0
+   cycle 2             |       3898.9                 -3.9      |       2331                808      | 1.09032        0.3146      |      -0.0   -1793.0      -0.0
+== Dg5Rzi_zz: II 1, R 0 Ohm, BL contact hole velocity 0, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 0.9377 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |       6395.2                 -0.8      |        328                250      | 1.10001        0.0004      |      -0.0      -0.0   -5550.7
+   cycle 1             |       9790.3                 -4.6      |       1202               1227      | 1.09952        0.3202      |      +0.0   -3741.1      -0.0
+   cycle 2             |       3651.7                 -3.5      |       1850                961      | 1.09547        0.3182      |      -0.0   -2123.9      -0.0
+   cycle 3             |       3879.6                 -4.1      |       2478                925      | 1.08847        0.3171      |      +0.0   -1801.0      -0.0
+== Dg6Rzi_zz: II 1, R 0 Ohm, BL contact hole velocity 0, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 0.5913 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |      14902.8                 -2.3      |        268                119      | 1.10000        0.0001      |      -0.0      -0.0  -13778.7
+   cycle 1             |      18069.6                -13.1      |       2083               1812      | 1.09702        0.4475      |      -0.0   -9295.4      -0.0
+== Dg7Rzbg_zz: II 1, R 0 Ohm, BL contact hole velocity -1, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 2.1250 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |     152936.2               -229.4      |          4                  8      | 1.10000        0.0001      |     -11.0      -0.0    -168.1
+   cycle 1             |      10160.9                 -4.6      |          4               1221      | 1.10001        0.3177      |    -234.5   -3744.1      -0.0
+   cycle 2             |       3703.8                 -2.9      |          4                970      | 1.10000        0.3150      |    -142.3   -2205.6      -0.0
+   cycle 3             |       3895.5                 -2.9      |          4                909      | 1.09999        0.3148      |    -118.6   -1889.1      -0.0
+   cycle 4             |       3910.4                 -2.9      |          4                899      | 1.09998        0.3147      |    -114.0   -1828.6      -0.0
+   cycle 5             |       3922.8                 -2.9      |          4                897      | 1.09998        0.3146      |    -113.3   -1817.1      -0.0
+   cycle 6             |       3928.2                 -2.9      |          4                896      | 1.09997        0.3146      |    -113.1   -1820.4      -0.0
+   cycle 7             |       3881.5                 -2.9      |          4                896      | 1.09996        0.3146      |    -113.5   -1793.9      -0.0
+   cycle 8             |       3771.4                 -2.9      |          4                900      | 1.09995        0.3147      |    -115.3   -1765.1      -0.0
+   cycle 9             |       3871.5                 -2.9      |          4                897      | 1.09994        0.3146      |    -113.8   -1816.0      -0.0
+   cycle 10            |       4013.8                 -2.9      |          4                896      | 1.09994        0.3146      |    -112.3   -1788.8      -0.0
+== Dg7Rzbi_zz: II 1, R 0 Ohm, BL contact hole velocity -1, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 1.3137 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |       6360.1                 -0.8      |        175                152      | 1.10000        0.0003      |    -320.2      -0.0   -5496.5
+   cycle 1             |      10037.4                 -4.6      |        857               1232      | 1.10031        0.3171      |    -234.8   -3801.2      -0.0
+   cycle 2             |       3685.1                 -3.3      |       1305                969      | 1.09927        0.3150      |    -146.9   -2174.0      -0.0
+   cycle 3             |       3912.4                 -3.4      |       1728                910      | 1.09667        0.3151      |    -125.8   -1933.8      -0.0
+   cycle 4             |       4028.1                 -3.5      |       2167                907      | 1.09244        0.3149      |    -118.3   -1829.8      -0.0
+   cycle 5             |       4005.3                 -5.0      |       2651                901      | 1.08632        0.3144      |    -119.6   -1803.5      -0.0
+== Dg8Rzi_zz: II 1, R 0 Ohm, BL contact hole velocity 0, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 1.2820 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |       6399.3                 -0.8      |        327                248      | 1.10001        0.0004      |      -0.0      -0.0   -5548.5
+   cycle 1             |       9507.2                 -4.5      |       1220               1213      | 1.09946        0.3208      |      +0.0   -3817.8      -0.0
+   cycle 2             |       3623.9                 -3.6      |       1868                953      | 1.09532        0.3186      |      +0.0   -2101.4      -0.0
+   cycle 3             |       3922.8                 -4.2      |       2493                923      | 1.08828        0.3171      |      -0.0   -1835.0      -0.0
+   cycle 4             |       3895.5                -15.0      |       3187                902      | 1.07821        0.3178      |      -0.0   -1734.5      -0.1
+   cycle 5             |       3955.9                -70.3      |       3915                905      | 1.06699        0.3183      |      -0.0   -1673.4      -0.1
+== Dg9Rzbi_zz: II 1, R 0 Ohm, BL contact hole velocity -1, aggressor node at the start 0 V; hammer from 0.2450 ns, now at 1.5858 ns
+   interval            | pairs by impact ionization  by tunnelling | holes in the victim body  in the aggressor body | victim node [V]  aggressor node [V] | holes through the contacts (+ = out of the device): bl sn_a sn_v
+   write + hold        |       6338.9                 -0.8      |        177                155      | 1.10000        0.0003      |    -327.1      -0.0   -5472.9
+   cycle 1             |       9980.9                 -4.6      |        857               1231      | 1.10031        0.3171      |    -233.8   -3798.2      -0.0
+   cycle 2             |       3565.3                 -3.3      |       1312                974      | 1.09923        0.3151      |    -147.9   -2131.0      -0.0
+   cycle 3             |       3959.1                 -3.4      |       1723                915      | 1.09671        0.3151      |    -122.0   -1914.1      -0.0
+   cycle 4             |       3981.0                 -3.5      |       2164                919      | 1.09246        0.3136      |    -119.3   -1816.3      -0.0
+   cycle 5             |       3980.3                 -4.9      |       2651                898      | 1.08631        0.3155      |    -119.8   -1803.5      -0.0
+   cycle 6             |       4058.8                -14.6      |       3169                910      | 1.07870        0.3124      |    -119.9   -1797.9      -0.0
+   cycle 7             |       3965.3                -48.1      |       3712                899      | 1.07052        0.3158      |    -124.9   -1739.0      -0.0
+== Dg0Rzbi_zz: II 1, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||    -148.7     -406.5
+   hammer start            |   -0.0417       +0.4065      +0.2035      |   183 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   +0.1132       +0.5667      -0.1510      |   588 | 1.10032  ||    +155.0     +160.2
+   + 0.5 cycles            |   +0.2993       +0.7543      -0.0457      |  1270 | 1.09993  ||    +341.0     +347.9
+   + 1 cycles              |   +0.3679       +0.8229      +0.1123      |  1551 | 1.09906  ||    +409.6     +416.5
+   + 1.5 cycles            |   +0.5054       +0.9610      +0.1528      |  2161 | 1.09693  ||    +547.1     +554.6
+   + 2 cycles              |   +0.5349       +0.9902      +0.2822      |  2292 | 1.09601  ||    +576.6     +583.7
+   + 2.5 cycles            |   +0.6276       +1.0833      +0.2752      |  2728 | 1.09372  ||    +669.3     +676.9
+   + 5 cycles              |   +0.8489       +1.3045      +0.5724      |  3810 | 1.08650  ||    +890.6     +898.0
+== Dg1Ryi_yy: II 1, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||    -141.1     -398.2
+   hammer start            |   -0.0494       +0.3982      +0.2077      |   169 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   +0.0522       +0.5044      -0.1007      |   404 | 1.10014  ||    +101.5     +106.2
+   + 0.5 cycles            |   +0.1109       +0.5643      -0.1044      |   577 | 1.10026  ||    +160.3     +166.1
+   + 1 cycles              |   +0.1215       +0.5750      +0.0394      |   610 | 1.10028  ||    +170.8     +176.8
+   + 1.5 cycles            |   +0.1745       +0.6285      -0.0672      |   790 | 1.10033  ||    +223.8     +230.3
+   + 2 cycles              |   +0.1791       +0.6332      +0.0802      |   807 | 1.10032  ||    +228.5     +235.0
+   + 2.5 cycles            |   +0.2264       +0.6809      -0.0364      |   981 | 1.10018  ||    +275.8     +282.7
+   + 5 cycles              |   +0.3317       +0.7866      +0.1809      |  1399 | 1.09883  ||    +381.1     +388.4
+   + 10 cycles             |   +0.6115       +1.0669      +0.4684      |  2649 | 1.08639  ||    +660.8     +668.7
+== Dg1Rzg_zz: II 1, R 0 Ohm, body grounded; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.2470       +0.0000      +0.0000      |     4 | 0.00000  ||      -3.5       -0.0
+   hammer start            |   -0.2435       +0.0000      -0.0418      |     4 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   -0.2430       +0.0794      -0.3715      |     5 | 1.10050  ||      +0.5      +79.4
+   + 0.5 cycles            |   -0.2434       +0.0392      -0.3267      |     4 | 1.10050  ||      +0.1      +39.2
+   + 1 cycles              |   -0.2435       +0.0000      -0.0475      |     4 | 1.10002  ||      +0.0       +0.0
+   + 1.5 cycles            |   -0.2434       +0.0270      -0.3103      |     4 | 1.10050  ||      +0.1      +27.0
+   + 2 cycles              |   -0.2435       +0.0000      -0.0472      |     4 | 1.10002  ||      +0.0       +0.0
+   + 2.5 cycles            |   -0.2434       +0.0266      -0.3097      |     4 | 1.10049  ||      +0.1      +26.6
+   + 5 cycles              |   -0.2435       +0.0000      -0.0450      |     4 | 1.10002  ||      +0.0       +0.0
+   + 10 cycles             |   -0.2435       +0.0000      -0.0449      |     4 | 1.10001  ||      +0.0       +0.0
+== Dg1Rzi_zz: II 1, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||    -125.4     -381.1
+   hammer start            |   -0.0650       +0.3811      +0.2042      |   141 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   -0.0350       +0.4137      +0.0298      |   196 | 1.10053  ||     +30.1      +32.6
+   + 0.5 cycles            |   -0.0246       +0.4248      +0.0764      |   217 | 1.10054  ||     +40.4      +43.6
+   + 1 cycles              |   -0.0237       +0.4257      +0.2208      |   218 | 1.10006  ||     +41.3      +44.5
+   + 1.5 cycles            |   -0.0088       +0.4413      +0.1003      |   250 | 1.10056  ||     +56.2      +60.2
+   + 2 cycles              |   -0.0084       +0.4418      +0.2267      |   251 | 1.10008  ||     +56.6      +60.6
+   + 2.5 cycles            |   +0.0047       +0.4555      +0.0956      |   281 | 1.10057  ||     +69.7      +74.4
+   + 5 cycles              |   +0.0308       +0.4825      +0.2076      |   345 | 1.10014  ||     +95.8     +101.4
+   + 10 cycles             |   +0.0870       +0.5400      +0.1551      |   502 | 1.10024  ||    +152.0     +158.9
+== Dg2Ryi_yy: II 1, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||     -47.0     -285.3
+   hammer start            |   -0.1434       +0.2853      +0.3554      |    37 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   -0.1434       +0.2854      +0.3568      |    37 | 1.10000  ||      +0.0       +0.0
+   + 0.5 cycles            |   -0.1434       +0.2854      +0.3612      |    37 | 1.10000  ||      +0.0       +0.0
+   + 1 cycles              |   -0.1434       +0.2854      +0.3627      |    37 | 1.10000  ||      +0.0       +0.0
+   + 1.5 cycles            |   -0.1389       +0.2918      +0.1706      |    42 | 1.10000  ||      +4.5       +6.4
+   + 2 cycles              |   -0.1378       +0.2933      +0.3233      |    43 | 1.10000  ||      +5.6       +7.9
+   + 2.5 cycles            |   -0.1317       +0.3017      +0.1624      |    50 | 1.10000  ||     +11.7      +16.4
+   + 5 cycles              |   -0.1155       +0.3226      +0.3349      |    69 | 1.10000  ||     +28.0      +37.3
+   + 10 cycles             |   -0.0836       +0.3603      +0.3648      |   112 | 1.10002  ||     +59.8      +74.9
+== Dg2Ry_yy: II 0, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||      -3.1      -40.7
+   hammer start            |   -0.1873       +0.0407      +0.3295      |     0 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   -0.1873       +0.0494      +0.3382      |     0 | 1.10000  ||      +0.0       +8.7
+   + 0.5 cycles            |   -0.1873       +0.0559      +0.3446      |     0 | 1.10000  ||      +0.0      +15.2
+   + 1 cycles              |   -0.1873       +0.0655      +0.3541      |     0 | 1.10000  ||      +0.0      +24.7
+   + 1.5 cycles            |   -0.1873       +0.0724      +0.3610      |     0 | 1.10000  ||      +0.0      +31.7
+   + 2 cycles              |   -0.1873       +0.0779      +0.3664      |     0 | 1.10000  ||      +0.0      +37.2
+   + 2.5 cycles            |   -0.1872       +0.0824      +0.3709      |     0 | 1.10000  ||      +0.1      +41.7
+   + 5 cycles              |   -0.1872       +0.0976      +0.3860      |     0 | 1.09999  ||      +0.1      +56.9
+   + 10 cycles             |   -0.1871       +0.1142      +0.4024      |     0 | 1.09998  ||      +0.2      +73.5
+== Dg2Rzi_zz: II 1, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||     -47.9     -286.6
+   hammer start            |   -0.1425       +0.2866      +0.3562      |    38 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   -0.1425       +0.2866      +0.3612      |    38 | 1.10050  ||      +0.0       +0.0
+   + 0.5 cycles            |   -0.1425       +0.2866      +0.3632      |    38 | 1.10050  ||      +0.0       +0.0
+   + 1 cycles              |   -0.1425       +0.2866      +0.3639      |    38 | 1.10003  ||      +0.0       +0.0
+   + 1.5 cycles            |   -0.1396       +0.2908      +0.1833      |    41 | 1.10050  ||      +2.9       +4.2
+   + 2 cycles              |   -0.1388       +0.2920      +0.3211      |    42 | 1.10003  ||      +3.8       +5.4
+   + 2.5 cycles            |   -0.1351       +0.2972      +0.1763      |    46 | 1.10050  ||      +7.5      +10.6
+   + 5 cycles              |   -0.1224       +0.3139      +0.3204      |    60 | 1.10003  ||     +20.2      +27.3
+   + 10 cycles             |   -0.0985       +0.3431      +0.3455      |    91 | 1.10004  ||     +44.1      +56.5
+== Dg2Rz_zz: II 0, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||      -3.1      -40.7
+   hammer start            |   -0.1873       +0.0407      +0.3295      |     0 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   -0.1873       +0.0494      +0.3382      |     0 | 1.10050  ||      +0.0       +8.7
+   + 0.5 cycles            |   -0.1873       +0.0559      +0.3446      |     0 | 1.10050  ||      +0.0      +15.3
+   + 1 cycles              |   -0.1873       +0.0654      +0.3541      |     0 | 1.10003  ||      +0.0      +24.8
+   + 1.5 cycles            |   -0.1873       +0.0724      +0.3610      |     0 | 1.10050  ||      +0.0      +31.7
+   + 2 cycles              |   -0.1873       +0.0779      +0.3664      |     0 | 1.10003  ||      +0.0      +37.2
+   + 2.5 cycles            |   -0.1872       +0.0824      +0.3709      |     0 | 1.10050  ||      +0.1      +41.7
+   + 5 cycles              |   -0.1872       +0.0976      +0.3860      |     0 | 1.10002  ||      +0.1      +57.0
+   + 10 cycles             |   -0.1871       +0.1142      +0.4024      |     0 | 1.10002  ||      +0.2      +73.5
+== Dg3Ryi_yy: II 1, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||    -190.4     -450.5
+   hammer start            |   -0.0001       +0.4505      +0.1727      |   270 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   +0.1496       +0.6034      -0.1442      |   708 | 1.10023  ||    +149.7     +153.0
+   + 0.5 cycles            |   +0.3015       +0.7565      -0.0379      |  1279 | 1.09925  ||    +301.6     +306.1
+   + 1 cycles              |   +0.3572       +0.8122      +0.1010      |  1506 | 1.09805  ||    +357.3     +361.7
+   + 1.5 cycles            |   +0.5111       +0.9668      +0.1561      |  2188 | 1.09212  ||    +511.2     +516.3
+   + 2 cycles              |   +0.5444       +0.9998      +0.2814      |  2336 | 1.09024  ||    +544.5     +549.3
+   + 2.5 cycles            |   +0.6959       +1.1519      +0.3293      |  3061 | 1.08015  ||    +695.9     +701.4
+== Dg3Rzg_zz: II 1, R 0 Ohm, body grounded; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.2470       +0.0000      +0.0000      |     4 | 0.00000  ||      -3.5       -0.1
+   hammer start            |   -0.2435       +0.0001      -0.1638      |     4 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   -0.2394       +0.1368      -0.4261      |     8 | 1.10049  ||      +4.1     +136.7
+   + 0.5 cycles            |   -0.2405       +0.1278      -0.4183      |     7 | 1.10049  ||      +3.0     +127.7
+   + 1 cycles              |   -0.2434       +0.0419      -0.3301      |     4 | 1.10001  ||      +0.1      +41.8
+   + 1.5 cycles            |   -0.2418       +0.1125      -0.4043      |     6 | 1.10047  ||      +1.7     +112.4
+   + 2 cycles              |   -0.2434       +0.0318      -0.3172      |     4 | 1.09999  ||      +0.1      +31.7
+   + 2.5 cycles            |   -0.2420       +0.1079      -0.3999      |     5 | 1.10046  ||      +1.5     +107.8
+   + 5 cycles              |   -0.2434       +0.0280      -0.3118      |     4 | 1.09996  ||      +0.0      +27.8
+   + 10 cycles             |   -0.2434       +0.0285      -0.3126      |     4 | 1.09991  ||      +0.0      +28.4
+== Dg3Rzi_zz: II 1, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||    -214.4     -475.5
+   hammer start            |   +0.0240       +0.4755      +0.1202      |   328 | 1.10001  ||      +0.0       +0.0
+   + 0.25 cycles           |   +0.1132       +0.5666      -0.1401      |   586 | 1.10068  ||     +89.2      +91.1
+   + 0.5 cycles            |   +0.2290       +0.6835      -0.0858      |   992 | 1.10052  ||    +205.0     +208.1
+   + 1 cycles              |   +0.2834       +0.7381      +0.0369      |  1202 | 1.09952  ||    +259.4     +262.6
+   + 1.5 cycles            |   +0.4025       +0.8578      +0.0615      |  1702 | 1.09725  ||    +378.5     +382.3
+   + 2 cycles              |   +0.4368       +0.8920      +0.1760      |  1850 | 1.09547  ||    +412.9     +416.5
+   + 2.5 cycles            |   +0.5428       +0.9985      +0.1897      |  2333 | 1.09089  ||    +518.9     +523.0
+== Dg4Rzg_zz: II 1, R 200000 Ohm, body grounded; hammer starts at 3.0400 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.2470       +0.0000      +0.0000      |     4 | 0.00000  ||      -3.5       -0.0
+   hammer start            |   -0.2435       +0.0000      -0.0392      |     4 | 1.05447  ||      +0.0       +0.0
+   + 0.25 cycles           |   -0.2077       +0.1663      -0.4111      |     7 | 1.05622  ||     +35.8     +166.3
+   + 0.5 cycles            |   -0.2326       +0.1352      -0.4151      |     7 | 1.05526  ||     +10.9     +135.2
+   + 1 cycles              |   -0.2508       +0.0366      -0.3335      |     4 | 1.05419  ||      -7.4      +36.6
+   + 1.5 cycles            |   -0.2344       +0.1195      -0.4014      |     6 | 1.05523  ||      +9.1     +119.5
+   + 2 cycles              |   -0.2510       +0.0272      -0.3209      |     4 | 1.05417  ||      -7.5      +27.2
+   + 2.5 cycles            |   -0.2346       +0.1150      -0.3971      |     5 | 1.05521  ||      +8.9     +115.0
+   + 5 cycles              |   -0.2510       +0.0241      -0.3163      |     4 | 1.05413  ||      -7.5      +24.1
+   + 10 cycles             |   -0.2510       +0.0239      -0.3161      |     4 | 1.05406  ||      -7.5      +23.9
+== Dg4Rzi_zz: II 1, R 200000 Ohm, body floating; hammer starts at 3.0400 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||     -11.4     -211.2
+   hammer start            |   -0.1791       +0.2112      +0.1723      |     6 | 1.07274  ||      +0.0       +0.0
+   + 0.25 cycles           |   +0.2242       +0.6743      +0.2303      |   265 | 1.08044  ||    +403.3     +463.1
+   + 0.5 cycles            |   +0.3710       +0.8246      +0.1081      |   656 | 1.08103  ||    +550.1     +613.4
+   + 1 cycles              |   +0.2147       +0.6689      -0.0038      |   858 | 1.07382  ||    +393.8     +457.7
+   + 1.5 cycles            |   +0.4631       +0.9180      +0.1392      |  1307 | 1.07759  ||    +642.2     +706.8
+   + 2 cycles              |   +0.3548       +0.8098      +0.1064      |  1442 | 1.07188  ||    +533.9     +598.5
+   + 2.5 cycles            |   +0.5948       +1.0502      +0.2513      |  1885 | 1.07373  ||    +773.8     +838.9
+== Dg5Ryi_yy: II 1, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||    -187.7     -447.7
+   hammer start            |   -0.0028       +0.4477      +0.1742      |   264 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   +0.1480       +0.6018      -0.1447      |   702 | 1.10024  ||    +150.8     +154.2
+   + 0.5 cycles            |   +0.3008       +0.7558      -0.0385      |  1275 | 1.09928  ||    +303.5     +308.1
+   + 1 cycles              |   +0.3563       +0.8113      +0.1003      |  1502 | 1.09808  ||    +359.1     +363.7
+   + 1.5 cycles            |   +0.5100       +0.9656      +0.1550      |  2183 | 1.09220  ||    +512.7     +517.9
+   + 2 cycles              |   +0.5432       +0.9986      +0.2802      |  2331 | 1.09032  ||    +546.0     +550.9
+   + 2.5 cycles            |   +0.7001       +1.1562      +0.3327      |  3082 | 1.07984  ||    +702.9     +708.5
+== Dg5Rzi_zz: II 1, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||    -214.4     -475.5
+   hammer start            |   +0.0240       +0.4755      +0.1202      |   328 | 1.10001  ||      +0.0       +0.0
+   + 0.25 cycles           |   +0.1132       +0.5666      -0.1401      |   586 | 1.10068  ||     +89.2      +91.1
+   + 0.5 cycles            |   +0.2290       +0.6835      -0.0858      |   992 | 1.10052  ||    +205.0     +208.1
+   + 1 cycles              |   +0.2834       +0.7381      +0.0369      |  1202 | 1.09952  ||    +259.4     +262.6
+   + 1.5 cycles            |   +0.4025       +0.8578      +0.0615      |  1702 | 1.09725  ||    +378.5     +382.3
+   + 2 cycles              |   +0.4368       +0.8920      +0.1760      |  1850 | 1.09547  ||    +412.9     +416.5
+   + 2.5 cycles            |   +0.5428       +0.9985      +0.1897      |  2333 | 1.09089  ||    +518.9     +523.0
+== Dg6Rzi_zz: II 1, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||    -189.4     -449.5
+   hammer start            |   -0.0011       +0.4495      +0.1789      |   268 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   +0.1488       +0.6026      -0.1485      |   706 | 1.10032  ||    +149.8     +153.2
+   + 0.5 cycles            |   +0.3745       +0.8301      +0.0080      |  1587 | 1.09919  ||    +375.5     +380.6
+   + 1 cycles              |   +0.4890       +0.9443      +0.1929      |  2083 | 1.09702  ||    +490.0     +494.8
+   + 1.5 cycles            |   +0.6714       +1.1276      +0.2981      |  2943 | 1.09236  ||    +672.5     +678.1
+== Dg7Rzbg_zz: II 1, R 0 Ohm, body grounded; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.2470       +0.0000      +0.0000      |     4 | 0.00000  ||      -3.5       -0.0
+   hammer start            |   -0.2435       +0.0000      -0.1194      |     4 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   -0.2400       +0.1323      -0.4222      |     7 | 1.10050  ||      +3.5     +132.3
+   + 0.5 cycles            |   -0.2413       +0.1196      -0.4109      |     6 | 1.10049  ||      +2.2     +119.5
+   + 1 cycles              |   -0.2435       +0.0248      -0.3071      |     4 | 1.10001  ||      +0.0      +24.7
+   + 1.5 cycles            |   -0.2422       +0.1040      -0.3961      |     5 | 1.10048  ||      +1.3     +104.0
+   + 2 cycles              |   -0.2435       +0.0164      -0.2927      |     4 | 1.10000  ||      +0.0      +16.4
+   + 2.5 cycles            |   -0.2424       +0.0999      -0.3921      |     5 | 1.10047  ||      +1.1      +99.8
+   + 5 cycles              |   -0.2435       +0.0140      -0.2877      |     4 | 1.09998  ||      +0.0      +14.0
+   + 10 cycles             |   -0.2435       +0.0138      -0.2872      |     4 | 1.09994  ||      +0.0      +13.7
+== Dg7Rzbi_zz: II 1, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||    -144.7     -402.1
+   hammer start            |   -0.0458       +0.4021      +0.1999      |   175 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   +0.0557       +0.5081      -0.1086      |   414 | 1.10065  ||    +101.5     +106.0
+   + 0.5 cycles            |   +0.1575       +0.6114      -0.1176      |   732 | 1.10081  ||    +203.3     +209.3
+   + 1 cycles              |   +0.1932       +0.6474      +0.0022      |   857 | 1.10031  ||    +239.0     +245.3
+   + 1.5 cycles            |   +0.2892       +0.7440      -0.0219      |  1226 | 1.10006  ||    +335.0     +341.9
+   + 2 cycles              |   +0.3088       +0.7636      +0.0955      |  1305 | 1.09927  ||    +354.5     +361.5
+   + 2.5 cycles            |   +0.3909       +0.8461      +0.0631      |  1651 | 1.09777  ||    +436.6     +444.0
+   + 5 cycles              |   +0.6118       +1.0672      +0.3802      |  2651 | 1.08632  ||    +657.5     +665.1
+== Dg8Rzi_zz: II 1, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||    -214.2     -475.3
+   hammer start            |   +0.0238       +0.4753      +0.1208      |   327 | 1.10001  ||      +0.0       +0.0
+   + 0.25 cycles           |   +0.1154       +0.5688      -0.1406      |   593 | 1.10068  ||     +91.6      +93.6
+   + 0.5 cycles            |   +0.2329       +0.6874      -0.0836      |  1007 | 1.10051  ||    +209.1     +212.2
+   + 1 cycles              |   +0.2878       +0.7425      +0.0400      |  1220 | 1.09946  ||    +264.0     +267.3
+   + 1.5 cycles            |   +0.4066       +0.8619      +0.0652      |  1720 | 1.09711  ||    +382.8     +386.7
+   + 2 cycles              |   +0.4408       +0.8960      +0.1794      |  1868 | 1.09532  ||    +417.1     +420.8
+   + 2.5 cycles            |   +0.5461       +1.0018      +0.1928      |  2348 | 1.09071  ||    +522.3     +526.5
+   + 5 cycles              |   +0.8689       +1.3246      +0.5694      |  3915 | 1.06699  ||    +845.2     +849.4
+== Dg9Rzbi_zz: II 1, R 0 Ohm, body floating; hammer starts at 0.2450 ns
+   instant                 | potential [V]  hole QF [V]  electron QF [V] | holes | node [V]  || against the hammer start [mV]: potential, hole QF
+   start of the transient  |   -0.1905       +0.0000      +0.0000      |     0 | 0.00000  ||    -145.5     -403.0
+   hammer start            |   -0.0449       +0.4030      +0.2002      |   177 | 1.10000  ||      +0.0       +0.0
+   + 0.25 cycles           |   +0.0560       +0.5084      -0.1089      |   415 | 1.10065  ||    +100.9     +105.3
+   + 0.5 cycles            |   +0.1575       +0.6115      -0.1175      |   732 | 1.10081  ||    +202.4     +208.4
+   + 1 cycles              |   +0.1932       +0.6474      +0.0028      |   857 | 1.10031  ||    +238.1     +244.4
+   + 1.5 cycles            |   +0.2906       +0.7454      -0.0212      |  1232 | 1.10004  ||    +335.5     +342.4
+   + 2 cycles              |   +0.3105       +0.7653      +0.1006      |  1312 | 1.09923  ||    +355.4     +362.3
+   + 2.5 cycles            |   +0.3901       +0.8453      +0.0633      |  1648 | 1.09779  ||    +435.1     +442.3
+   + 5 cycles              |   +0.6118       +1.0672      +0.3913      |  2651 | 1.08631  ||    +656.7     +664.2
+== Dg1Rzi_zz: hammer from 0.2450 ns, now at 2.1250 ns; cycles 1 .. 11
+   t - t0 [ns]  aggressor WL [V]  victim node [V]   step [mV]  holes  body centre [mV]  gated-body average [mV]
+      0.0000      0.000        1.10000                 141     +125.4            +146.4
+      0.0235      1.800        1.10051       +0.511    162     +137.1            +154.1
+      0.0470      1.800        1.10053       +0.019    196     +155.5            +166.2
+      0.0705      1.800        1.10053       +0.008    211     +162.8            +171.2
+      0.0940      1.800        1.10054       +0.004    217     +165.9            +173.2
+      0.1175      0.000        1.10006       -0.473    218     +166.7            +173.7
+      0.1410      0.000        1.10006       -0.000    218     +166.7            +173.7
+      0.1645      0.000        1.10006       -0.000    218     +166.7            +173.7
+      0.1880      0.000        1.10006       -0.000    218     +166.7            +173.7
+      0.2115      1.800        1.10054       +0.480    229     +171.9            +177.5
+      0.2350      1.800        1.10055       +0.007    241     +177.6            +181.4
+      0.2585      1.800        1.10055       +0.003    247     +180.2            +183.3
+      0.2820      1.800        1.10056       +0.002    250     +181.6            +184.3
+      0.3055      0.000        1.10008       -0.474    251     +182.0            +184.5
+      0.3290      0.000        1.10008       -0.000    251     +182.0            +184.5
+      0.3525      0.000        1.10008       -0.000    251     +182.0            +184.5
+      0.3760      0.000        1.10008       -0.000    251     +182.0            +184.5
+      0.3995      1.800        1.10056       +0.480    261     +186.3            +187.7
+      0.4230      1.800        1.10057       +0.007    272     +191.5            +191.4
+      0.4465      1.800        1.10057       +0.003    278     +193.9            +193.2
+      0.4700      1.800        1.10057       +0.002    281     +195.2            +194.1
+      0.4935      0.000        1.10010       -0.474    282     +195.5            +194.3
+      0.5170      0.000        1.10010       -0.000    282     +195.6            +194.3
+      0.5405      0.000        1.10010       -0.000    282     +195.6            +194.3
+      0.5640      0.000        1.10010       -0.000    282     +195.6            +194.3
+      0.5875      1.800        1.10058       +0.480    292     +199.9            +197.6
+      0.6110      1.800        1.10059       +0.008    304     +204.8            +201.2
+      0.6345      1.800        1.10059       +0.004    310     +207.2            +202.9
+      0.6580      1.800        1.10059       +0.002    312     +208.3            +203.8
+      0.6815      0.000        1.10012       -0.474    313     +208.7            +204.0
+      0.7050      0.000        1.10012       -0.000    313     +208.7            +204.0
+      0.7285      0.000        1.10012       -0.000    313     +208.7            +204.0
+      0.7520      0.000        1.10012       -0.000    313     +208.7            +204.0
+      0.7755      1.800        1.10060       +0.480    324     +212.9            +207.2
+      0.7990      1.800        1.10061       +0.008    336     +217.6            +210.7
+      0.8225      1.800        1.10061       +0.004    341     +219.8            +212.4
+      0.8460      1.800        1.10061       +0.002    344     +220.9            +213.2
+      0.8695      0.000        1.10014       -0.474    345     +221.2            +213.4
+      0.8930      0.000        1.10014       -0.000    345     +221.2            +213.4
+      0.9165      0.000        1.10014       -0.000    345     +221.2            +213.4
+      0.9400      0.000        1.10014       -0.000    345     +221.2            +213.4
+      0.9635      1.800        1.10062       +0.481    355     +225.2            +216.6
+      0.9870      1.800        1.10063       +0.008    367     +229.7            +220.0
+      1.0105      1.800        1.10063       +0.004    373     +231.8            +221.6
+      1.0340      1.800        1.10063       +0.002    375     +232.9            +222.4
+      1.0575      0.000        1.10016       -0.474    376     +233.3            +222.6
+      1.0810      0.000        1.10016       -0.000    376     +233.3            +222.6
+      1.1045      0.000        1.10016       -0.000    376     +233.3            +222.6
+      1.1280      0.000        1.10016       -0.000    376     +233.3            +222.6
+      1.1515      1.800        1.10064       +0.481    387     +237.1            +225.7
+      1.1750      1.800        1.10065       +0.008    398     +241.4            +229.0
+      1.1985      1.800        1.10065       +0.004    404     +243.5            +230.6
+      1.2220      1.800        1.10065       +0.002    407     +244.5            +231.4
+      1.2455      0.000        1.10018       -0.474    408     +244.8            +231.6
+      1.2690      0.000        1.10018       -0.000    408     +244.8            +231.6
+      1.2925      0.000        1.10018       -0.000    408     +244.8            +231.6
+      1.3160      0.000        1.10018       -0.000    408     +244.8            +231.6
+      1.3395      1.800        1.10066       +0.481    418     +248.6            +234.6
+      1.3630      1.800        1.10067       +0.008    430     +252.8            +237.9
+      1.3865      1.800        1.10067       +0.004    436     +254.8            +239.5
+      1.4100      1.800        1.10068       +0.002    438     +255.8            +240.3
+      1.4335      0.000        1.10020       -0.474    439     +256.1            +240.4
+      1.4570      0.000        1.10020       -0.000    439     +256.1            +240.5
+      1.4805      0.000        1.10020       -0.000    439     +256.1            +240.5
+      1.5040      0.000        1.10020       -0.000    439     +256.1            +240.5
+      1.5275      1.800        1.10068       +0.481    450     +259.7            +243.4
+      1.5510      1.800        1.10069       +0.009    462     +263.8            +246.7
+      1.5745      1.800        1.10070       +0.004    467     +265.7            +248.2
+      1.5980      1.800        1.10070       +0.002    470     +266.7            +249.0
+      1.6215      0.000        1.10022       -0.474    471     +267.0            +249.1
+      1.6450      0.000        1.10022       -0.000    471     +267.0            +249.1
+      1.6685      0.000        1.10022       -0.000    471     +267.0            +249.1
+      1.6920      0.000        1.10022       -0.000    471     +267.0            +249.1
+      1.7155      1.800        1.10070       +0.481    481     +270.4            +252.0
+      1.7390      1.800        1.10071       +0.008    493     +274.4            +255.1
+      1.7625      1.800        1.10072       +0.004    498     +276.2            +256.6
+      1.7860      1.800        1.10072       +0.002    501     +277.2            +257.4
+      1.8095      0.000        1.10025       -0.474    502     +277.5            +257.6
+      1.8330      0.000        1.10025       -0.000    502     +277.5            +257.6
+      1.8565      0.000        1.10024       -0.000    502     +277.5            +257.6
+      1.8800      0.000        1.10024       -0.000    502     +277.5            +257.6
+== Dg1Ryi_yy: hammer from 0.2450 ns, now at 2.1250 ns; cycles 1 .. 11
+   t - t0 [ns]  aggressor WL [V]  victim node [V]   step [mV]  holes  body centre [mV]  gated-body average [mV]
+      0.0000      0.000        1.10000                 169     +141.1            +159.5
+      0.0235      1.800        1.10003       +0.035    233     +172.5            +181.3
+      0.0470      1.800        1.10014       +0.112    404     +242.6            +233.0
+      0.0705      1.800        1.10022       +0.081    516     +281.8            +263.9
+      0.0940      1.800        1.10026       +0.041    577     +301.4            +279.8
+      0.1175      0.000        1.10028       +0.016    603     +309.9            +286.7
+      0.1410      0.000        1.10028       +0.003    609     +311.5            +288.1
+      0.1645      0.000        1.10028       +0.000    610     +311.8            +288.3
+      0.1880      0.000        1.10028       -0.000    610     +311.9            +288.4
+      0.2115      1.800        1.10030       +0.019    647     +322.9            +297.6
+      0.2350      1.800        1.10033       +0.022    716     +343.6            +315.0
+      0.2585      1.800        1.10033       +0.003    763     +357.1            +326.4
+      0.2820      1.800        1.10033       -0.003    790     +364.9            +333.1
+      0.3055      0.000        1.10032       -0.003    804     +368.7            +336.3
+      0.3290      0.000        1.10032       -0.001    806     +369.4            +336.9
+      0.3525      0.000        1.10032       -0.000    807     +369.5            +337.0
+      0.3760      0.000        1.10032       -0.000    807     +369.6            +337.1
+      0.3995      1.800        1.10031       -0.007    841     +379.0            +345.2
+      0.4230      1.800        1.10027       -0.047    908     +397.4            +361.1
+      0.4465      1.800        1.10022       -0.051    954     +409.7            +371.8
+      0.4700      1.800        1.10018       -0.038    981     +416.9            +378.1
+      0.4935      0.000        1.10016       -0.021    994     +420.4            +381.2
+      0.5170      0.000        1.10015       -0.005    997     +421.1            +381.8
+      0.5405      0.000        1.10015       -0.001    997     +421.2            +381.9
+      0.5640      0.000        1.10015       -0.000    997     +421.3            +381.9
+      0.5875      1.800        1.10010       -0.047   1033     +430.3            +389.9
+      0.6110      1.800        1.09996       -0.149   1102     +448.2            +405.7
+      0.6345      1.800        1.09983       -0.129   1149     +460.3            +416.3
+      0.6580      1.800        1.09974       -0.086   1177     +467.4            +422.7
+      0.6815      0.000        1.09969       -0.046   1190     +470.9            +425.7
+      0.7050      0.000        1.09968       -0.010   1193     +471.6            +426.4
+      0.7285      0.000        1.09968       -0.002   1194     +471.7            +426.5
+      0.7520      0.000        1.09968       -0.001   1194     +471.7            +426.5
+      0.7755      1.800        1.09958       -0.099   1230     +480.5            +434.4
+      0.7990      1.800        1.09930       -0.279   1302     +498.4            +450.4
+      0.8225      1.800        1.09908       -0.226   1352     +510.5            +461.3
+      0.8460      1.800        1.09893       -0.147   1381     +517.7            +467.8
+      0.8695      0.000        1.09885       -0.077   1395     +521.2            +470.9
+      0.8930      0.000        1.09884       -0.016   1398     +522.0            +471.5
+      0.9165      0.000        1.09883       -0.004   1399     +522.1            +471.7
+      0.9400      0.000        1.09883       -0.001   1399     +522.2            +471.7
+      0.9635      1.800        1.09867       -0.165   1437     +531.1            +479.8
+      0.9870      1.800        1.09822       -0.445   1515     +549.5            +496.5
+      1.0105      1.800        1.09787       -0.349   1568     +562.2            +508.0
+      1.0340      1.800        1.09765       -0.222   1600     +569.7            +514.8
+      1.0575      0.000        1.09754       -0.115   1615     +573.4            +518.1
+      1.0810      0.000        1.09751       -0.025   1618     +574.1            +518.8
+      1.1045      0.000        1.09750       -0.006   1619     +574.3            +519.0
+      1.1280      0.000        1.09750       -0.001   1619     +574.3            +519.0
+      1.1515      1.800        1.09727       -0.236   1659     +583.2            +527.2
+      1.1750      1.800        1.09664       -0.626   1741     +602.0            +544.4
+      1.1985      1.800        1.09616       -0.481   1797     +615.0            +556.3
+      1.2220      1.800        1.09586       -0.303   1831     +622.8            +563.4
+      1.2455      0.000        1.09570       -0.157   1847     +626.6            +566.8
+      1.2690      0.000        1.09567       -0.033   1850     +627.4            +567.5
+      1.2925      0.000        1.09566       -0.008   1851     +627.6            +567.7
+      1.3160      0.000        1.09566       -0.002   1851     +627.6            +567.7
+      1.3395      1.800        1.09533       -0.331   1895     +637.0            +576.5
+      1.3630      1.800        1.09450       -0.831   1982     +656.5            +594.4
+      1.3865      1.800        1.09387       -0.625   2041     +669.9            +606.7
+      1.4100      1.800        1.09348       -0.389   2077     +677.9            +614.1
+      1.4335      0.000        1.09328       -0.201   2094     +681.9            +617.7
+      1.4570      0.000        1.09324       -0.042   2097     +682.7            +618.4
+      1.4805      0.000        1.09323       -0.009   2098     +682.8            +618.6
+      1.5040      0.000        1.09323       -0.002   2098     +682.9            +618.6
+      1.5275      1.800        1.09281       -0.417   2144     +692.4            +627.6
+      1.5510      1.800        1.09174       -1.074   2239     +713.1            +646.8
+      1.5745      1.800        1.09093       -0.803   2304     +727.5            +660.1
+      1.5980      1.800        1.09045       -0.486   2342     +735.9            +667.8
+      1.6215      0.000        1.09020       -0.248   2360     +740.0            +671.6
+      1.6450      0.000        1.09015       -0.052   2364     +740.8            +672.4
+      1.6685      0.000        1.09014       -0.007   2364     +741.0            +672.5
+      1.6920      0.000        1.09014       -0.001   2364     +741.0            +672.6
+      1.7155      1.800        1.08963       -0.514   2414     +750.8            +681.9
+      1.7390      1.800        1.08830       -1.322   2515     +772.6            +702.1
+      1.7625      1.800        1.08731       -0.993   2586     +787.9            +716.4
+      1.7860      1.800        1.08673       -0.578   2626     +796.6            +724.5
+      1.8095      0.000        1.08645       -0.284   2645     +800.9            +728.4
+      1.8330      0.000        1.08640       -0.052   2649     +801.8            +729.2
+      1.8565      0.000        1.08639       -0.004   2649     +801.9            +729.3
+      1.8800      0.000        1.08639       -0.001   2649     +801.9            +729.3
+== Dg3Rzi_zz: hammer from 0.2450 ns, now at 0.9476 ns; cycles 1 .. 4
+   t - t0 [ns]  aggressor WL [V]  victim node [V]   step [mV]  holes  body centre [mV]  gated-body average [mV]
+      0.0000      0.000        1.10001                 328     +214.4            +208.3
+      0.0235      1.800        1.10054       +0.534    378     +233.3            +223.1
+      0.0470      1.800        1.10068       +0.136    586     +303.6            +279.5
+      0.0705      1.800        1.10071       +0.026    806     +368.7            +334.4
+      0.0940      1.800        1.10052       -0.182    992     +419.4            +378.4
+      0.1175      0.000        1.09978       -0.741   1120     +452.6            +407.6
+      0.1410      0.000        1.09962       -0.160   1172     +466.1            +419.5
+      0.1645      0.000        1.09955       -0.073   1193     +471.6            +424.4
+      0.1880      0.000        1.09952       -0.031   1202     +473.8            +426.3
+      0.2115      1.800        1.09982       +0.301   1261     +488.0            +439.2
+      0.2350      1.800        1.09912       -0.696   1416     +525.6            +473.2
+      0.2585      1.800        1.09819       -0.930   1571     +562.5            +506.7
+      0.2820      1.800        1.09725       -0.948   1702     +592.9            +534.5
+      0.3055      0.000        1.09602       -1.227   1792     +613.8            +553.6
+      0.3290      0.000        1.09568       -0.340   1829     +622.3            +561.4
+      0.3525      0.000        1.09553       -0.145   1844     +625.8            +564.6
+      0.3760      0.000        1.09547       -0.059   1850     +627.3            +565.9
+      0.3995      1.800        1.09554       +0.061   1904     +638.9            +576.9
+      0.4230      1.800        1.09410       -1.434   2053     +672.0            +607.5
+      0.4465      1.800        1.09244       -1.666   2205     +705.3            +638.4
+      0.4700      1.800        1.09089       -1.542   2333     +733.3            +664.5
+      0.4935      0.000        1.08927       -1.624   2420     +752.6            +682.3
+      0.5170      0.000        1.08876       -0.508   2457     +760.7            +689.8
+      0.5405      0.000        1.08855       -0.211   2472     +764.0            +693.0
+      0.5640      0.000        1.08847       -0.082   2478     +765.4            +694.2
+      0.5875      1.800        1.08830       -0.171   2536     +777.0            +705.3
+      0.6110      1.800        1.08610       -2.202   2700     +811.1            +737.4
+      0.6345      1.800        1.08362       -2.478   2869     +846.5            +770.6
+      0.6580      1.800        1.08142       -2.194   3010     +876.1            +798.5
+      0.6815      0.000        1.07940       -2.019   3105     +896.2            +817.3
+== Dg3Ryi_yy: hammer from 0.2450 ns, now at 0.7596 ns; cycles 1 .. 3
+   t - t0 [ns]  aggressor WL [V]  victim node [V]   step [mV]  holes  body centre [mV]  gated-body average [mV]
+      0.0000      0.000        1.10000                 270     +190.4            +193.4
+      0.0235      1.800        1.10006       +0.060    365     +227.8            +221.8
+      0.0470      1.800        1.10023       +0.170    708     +340.0            +312.6
+      0.0705      1.800        1.09998       -0.255   1035     +430.0            +390.0
+      0.0940      1.800        1.09925       -0.725   1279     +492.0            +444.9
+      0.1175      0.000        1.09854       -0.712   1426     +528.2            +477.3
+      0.1410      0.000        1.09822       -0.318   1478     +541.0            +488.8
+      0.1645      0.000        1.09810       -0.127   1498     +545.8            +493.1
+      0.1880      0.000        1.09805       -0.050   1506     +547.6            +494.7
+      0.2115      1.800        1.09757       -0.475   1595     +567.8            +513.2
+      0.2350      1.800        1.09584       -1.737   1824     +620.1            +561.2
+      0.2585      1.800        1.09384       -1.995   2032     +667.0            +604.3
+      0.2820      1.800        1.09212       -1.721   2188     +701.6            +636.2
+      0.3055      0.000        1.09093       -1.189   2284     +723.1            +656.0
+      0.3290      0.000        1.09048       -0.452   2318     +730.8            +663.1
+      0.3525      0.000        1.09031       -0.172   2331     +733.7            +665.8
+      0.3760      0.000        1.09024       -0.065   2336     +734.9            +666.8
+      0.3995      1.800        1.08929       -0.949   2427     +753.0            +684.1
+      0.4230      1.800        1.08611       -3.185   2671     +804.1            +731.9
+      0.4465      1.800        1.08277       -3.337   2895     +851.5            +776.2
+      0.4700      1.800        1.08015       -2.624   3061     +886.3            +808.7
+      0.4935      0.000        1.07848       -1.666   3161     +907.6            +828.6
+== Dg4Rzi_zz: hammer from 3.0400 ns, now at 3.9108 ns; cycles 1 .. 5
+   t - t0 [ns]  aggressor WL [V]  victim node [V]   step [mV]  holes  body centre [mV]  gated-body average [mV]  victim gate [mV]
+      0.0000      0.000        1.07274                   6      +11.4             +85.9              +0.0
+      0.0235      1.800        1.07773       +4.998     57     +209.6            +246.9            +148.7
+      0.0470      1.800        1.08044       +2.709    265     +414.7            +401.7            +233.4
+      0.0705      1.800        1.08155       +1.110    479     +526.0            +492.7            +264.0
+      0.0940      1.800        1.08103       -0.521    656     +561.4            +519.6            +242.8
+      0.1175      0.000        1.07604       -4.994    779     +453.1            +413.4             +94.5
+      0.1410      0.000        1.07541       -0.626    829     +447.5            +406.8             +74.2
+      0.1645      0.000        1.07447       -0.940    850     +423.5            +383.5             +43.6
+      0.1880      0.000        1.07382       -0.649    858     +405.1            +365.9             +22.3
+      0.2115      1.800        1.07821       +4.386    911     +545.0            +497.8            +151.9
+      0.2350      1.800        1.07869       +0.480   1051     +601.8            +549.4            +173.0
+      0.2585      1.800        1.07853       -0.155   1190     +642.0            +585.7            +178.2
+      0.2820      1.800        1.07759       -0.942   1307     +653.6            +595.2            +160.5
+      0.3055      0.000        1.07281       -4.786   1390     +552.4            +497.6             +34.4
+      0.3290      0.000        1.07277       -0.040   1423     +564.9            +509.1             +39.0
+      0.3525      0.000        1.07227       -0.494   1437     +555.1            +499.6             +25.3
+      0.3760      0.000        1.07188       -0.388   1442     +545.3            +490.1             +13.7
+      0.3995      1.800        1.07602       +4.136   1493     +681.7            +620.0            +143.3
+      0.4230      1.800        1.07597       -0.053   1630     +735.9            +670.6            +167.0
+      0.4465      1.800        1.07521       -0.752   1769     +775.0            +706.8            +174.7
+      0.4700      1.800        1.07373       -1.485   1885     +785.2            +715.8            +157.9
+      0.4935      0.000        1.06845       -5.284   1970     +686.5            +620.6             +34.6
+      0.5170      0.000        1.06823       -0.219   2003     +698.0            +631.3             +38.8
+      0.5405      0.000        1.06767       -0.560   2017     +688.5            +622.1             +25.5
+      0.5640      0.000        1.06725       -0.418   2022     +678.8            +612.8             +13.9
+      0.5875      1.800        1.07120       +3.953   2083     +820.7            +748.5            +149.4
+      0.6110      1.800        1.07051       -0.695   2230     +876.4            +801.2            +174.9
+      0.6345      1.800        1.06913       -1.379   2381     +919.5            +841.8            +186.2
+      0.6580      1.800        1.06705       -2.081   2510     +933.2            +854.2            +171.5
+      0.6815      0.000        1.06107       -5.978   2607     +838.3            +762.6             +49.2
+      0.7050      0.000        1.06047       -0.600   2644     +844.5            +768.2             +47.2
+      0.7285      0.000        1.05971       -0.756   2659     +831.9            +756.1             +30.3
+      0.7520      0.000        1.05917       -0.543   2666     +819.9            +744.5             +16.1
+      0.7755      1.800        1.06286       +3.685   2738     +965.9            +884.7            +155.8
+      0.7990      1.800        1.06164       -1.211   2899    +1027.1            +943.1            +186.4
+      0.8225      1.800        1.05953       -2.110   3063    +1069.6            +983.4            +196.5
+      0.8460      1.800        1.05679       -2.740   3201    +1083.4            +996.2            +181.2
+      0.8695      0.000        1.05033       -6.466   3314    +1000.3            +915.7             +66.6
+== Dg5Rzi_zz: hammer from 0.2450 ns, now at 0.9377 ns; cycles 1 .. 4
+   t - t0 [ns]  aggressor WL [V]  victim node [V]   step [mV]  holes  body centre [mV]  gated-body average [mV]
+      0.0000      0.000        1.10001                 328     +214.4            +208.3
+      0.0235      1.800        1.10054       +0.534    378     +233.3            +223.1
+      0.0470      1.800        1.10068       +0.136    586     +303.6            +279.5
+      0.0705      1.800        1.10071       +0.026    806     +368.7            +334.4
+      0.0940      1.800        1.10052       -0.182    992     +419.4            +378.4
+      0.1175      0.000        1.09978       -0.741   1120     +452.6            +407.6
+      0.1410      0.000        1.09962       -0.160   1172     +466.1            +419.5
+      0.1645      0.000        1.09955       -0.073   1193     +471.6            +424.4
+      0.1880      0.000        1.09952       -0.031   1202     +473.8            +426.3
+      0.2115      1.800        1.09982       +0.301   1261     +488.0            +439.2
+      0.2350      1.800        1.09912       -0.696   1416     +525.6            +473.2
+      0.2585      1.800        1.09819       -0.930   1571     +562.5            +506.7
+      0.2820      1.800        1.09725       -0.948   1702     +592.9            +534.5
+      0.3055      0.000        1.09602       -1.227   1792     +613.8            +553.6
+      0.3290      0.000        1.09568       -0.340   1829     +622.3            +561.4
+      0.3525      0.000        1.09553       -0.145   1844     +625.8            +564.6
+      0.3760      0.000        1.09547       -0.059   1850     +627.3            +565.9
+      0.3995      1.800        1.09554       +0.061   1904     +638.9            +576.9
+      0.4230      1.800        1.09410       -1.434   2053     +672.0            +607.5
+      0.4465      1.800        1.09244       -1.666   2205     +705.3            +638.4
+      0.4700      1.800        1.09089       -1.542   2333     +733.3            +664.5
+      0.4935      0.000        1.08927       -1.624   2420     +752.6            +682.3
+      0.5170      0.000        1.08876       -0.508   2457     +760.7            +689.8
+      0.5405      0.000        1.08855       -0.211   2472     +764.0            +693.0
+      0.5640      0.000        1.08847       -0.082   2478     +765.4            +694.2
+      0.5875      1.800        1.08830       -0.171   2536     +777.0            +705.3
+      0.6110      1.800        1.08610       -2.202   2700     +811.1            +737.4
+      0.6345      1.800        1.08362       -2.478   2869     +846.5            +770.6
+      0.6580      1.800        1.08142       -2.194   3010     +876.1            +798.5
+      0.6815      0.000        1.07940       -2.019   3105     +896.2            +817.3
+== Dg5Ryi_yy: hammer from 0.2450 ns, now at 0.7497 ns; cycles 1 .. 3
+   t - t0 [ns]  aggressor WL [V]  victim node [V]   step [mV]  holes  body centre [mV]  gated-body average [mV]
+      0.0000      0.000        1.10000                 264     +187.7            +191.4
+      0.0235      1.800        1.10006       +0.059    359     +225.4            +220.1
+      0.0470      1.800        1.10024       +0.174    702     +338.4            +311.2
+      0.0705      1.800        1.10000       -0.241   1030     +428.9            +389.0
+      0.0940      1.800        1.09928       -0.714   1275     +491.2            +444.2
+      0.1175      0.000        1.09858       -0.707   1423     +527.4            +476.6
+      0.1410      0.000        1.09826       -0.316   1475     +540.1            +488.0
+      0.1645      0.000        1.09813       -0.126   1495     +544.9            +492.3
+      0.1880      0.000        1.09808       -0.049   1502     +546.8            +494.0
+      0.2115      1.800        1.09762       -0.467   1590     +566.7            +512.3
+      0.2350      1.800        1.09589       -1.723   1819     +619.0            +560.1
+      0.2585      1.800        1.09391       -1.984   2027     +665.8            +603.2
+      0.2820      1.800        1.09220       -1.714   2183     +700.4            +635.1
+      0.3055      0.000        1.09101       -1.185   2279     +722.0            +654.9
+      0.3290      0.000        1.09056       -0.451   2313     +729.6            +662.0
+      0.3525      0.000        1.09039       -0.172   2326     +732.6            +664.7
+      0.3760      0.000        1.09032       -0.065   2331     +733.7            +665.7
+      0.3995      1.800        1.08938       -0.946   2422     +751.9            +683.0
+      0.4230      1.800        1.08608       -3.298   2674     +804.8            +732.5
+      0.4465      1.800        1.08261       -3.472   2908     +854.0            +778.5
+      0.4700      1.800        1.07984       -2.769   3082     +890.6            +812.7
+      0.4935      0.000        1.07812       -1.719   3185     +912.5            +833.2
+== Dg6Rzi_zz: hammer from 0.2450 ns, now at 0.5913 ns; cycles 1 .. 2
+   t - t0 [ns]  aggressor WL [V]  victim node [V]   step [mV]  holes  body centre [mV]  gated-body average [mV]
+      0.0000      0.000        1.10000                 268     +189.4            +189.8
+      0.0235      1.800        1.10023       +0.233    326     +213.0            +207.7
+      0.0470      1.800        1.10032       +0.081    706     +339.2            +309.6
+      0.0705      1.800        1.10006       -0.259   1168     +463.4            +417.7
+      0.0940      1.800        1.09919       -0.868   1587     +564.9            +509.3
+      0.1175      0.000        1.09794       -1.245   1884     +633.7            +572.3
+      0.1410      0.000        1.09736       -0.585   2014     +663.6            +599.8
+      0.1645      0.000        1.09712       -0.241   2063     +674.8            +610.1
+      0.1880      0.000        1.09702       -0.101   2083     +679.4            +614.3
+      0.2115      1.800        1.09678       -0.237   2189     +701.7            +635.4
+      0.2350      1.800        1.09542       -1.355   2454     +758.3            +688.4
+      0.2585      1.800        1.09383       -1.598   2721     +815.0            +741.6
+      0.2820      1.800        1.09236       -1.463   2943     +861.9            +785.6
+      0.3055      0.000        1.09110       -1.261   3092     +893.4            +815.2
+      0.3290      0.000        1.09067       -0.436   3152     +906.4            +827.4
+== Dg7Rzbi_zz: hammer from 0.2450 ns, now at 1.3137 ns; cycles 1 .. 6
+   t - t0 [ns]  aggressor WL [V]  victim node [V]   step [mV]  holes  body centre [mV]  gated-body average [mV]
+      0.0000      0.000        1.10000                 175     +144.7            +158.8
+      0.0235      1.800        1.10052       +0.529    227     +169.9            +176.5
+      0.0470      1.800        1.10065       +0.123    414     +246.2            +233.2
+      0.0705      1.800        1.10077       +0.118    593     +306.1            +281.4
+      0.0940      1.800        1.10081       +0.047    732     +347.9            +316.4
+      0.1175      0.000        1.10033       -0.482    817     +372.4            +337.2
+      0.1410      0.000        1.10032       -0.013    845     +380.2            +343.9
+      0.1645      0.000        1.10031       -0.005    854     +382.8            +346.1
+      0.1880      0.000        1.10031       -0.002    857     +383.6            +346.9
+      0.2115      1.800        1.10076       +0.447    908     +397.2            +358.8
+      0.2350      1.800        1.10060       -0.162   1030     +429.5            +387.2
+      0.2585      1.800        1.10034       -0.259   1141     +458.2            +412.6
+      0.2820      1.800        1.10006       -0.275   1226     +479.6            +431.7
+      0.3055      0.000        1.09938       -0.683   1280     +492.9            +443.5
+      0.3290      0.000        1.09930       -0.077   1297     +497.2            +447.3
+      0.3525      0.000        1.09928       -0.027   1303     +498.7            +448.7
+      0.3760      0.000        1.09927       -0.009   1305     +499.2            +449.1
+      0.3995      1.800        1.09958       +0.315   1348     +509.6            +458.7
+      0.4230      1.800        1.09901       -0.572   1462     +536.8            +483.4
+      0.4465      1.800        1.09836       -0.650   1567     +561.8            +506.0
+      0.4700      1.800        1.09777       -0.587   1651     +581.3            +523.8
+      0.4935      0.000        1.09688       -0.887   1703     +593.6            +535.0
+      0.5170      0.000        1.09674       -0.147   1720     +597.6            +538.7
+      0.5405      0.000        1.09669       -0.052   1726     +599.0            +539.9
+      0.5640      0.000        1.09667       -0.018   1728     +599.5            +540.4
+      0.5875      1.800        1.09683       +0.166   1773     +609.5            +549.7
+      0.6110      1.800        1.09583       -0.999   1890     +635.8            +574.0
+      0.6345      1.800        1.09477       -1.061   1999     +660.4            +596.7
+      0.6580      1.800        1.09386       -0.914   2086     +679.7            +614.6
+      0.6815      0.000        1.09276       -1.099   2141     +692.0            +625.9
+      0.7050      0.000        1.09254       -0.220   2159     +696.1            +629.6
+      0.7285      0.000        1.09246       -0.076   2165     +697.5            +630.9
+      0.7520      0.000        1.09244       -0.026   2167     +698.0            +631.4
+      0.7755      1.800        1.09243       -0.008   2217     +708.4            +641.3
+      0.7990      1.800        1.09092       -1.509   2347     +736.3            +667.3
+      0.8225      1.800        1.08937       -1.551   2467     +762.3            +691.5
+      0.8460      1.800        1.08807       -1.301   2563     +782.9            +710.8
+      0.8695      0.000        1.08672       -1.346   2623     +795.9            +722.9
+      0.8930      0.000        1.08643       -0.294   2642     +800.3            +726.9
+      0.9165      0.000        1.08634       -0.092   2649     +801.8            +728.3
+      0.9400      0.000        1.08632       -0.022   2651     +802.2            +728.7
+      0.9635      1.800        1.08613       -0.185   2707     +813.2            +739.2
+      0.9870      1.800        1.08410       -2.028   2849     +842.6            +767.0
+      1.0105      1.800        1.08205       -2.048   2983     +870.5            +793.2
+      1.0340      1.800        1.08040       -1.657   3088     +892.5            +813.8
+      1.0575      0.000        1.07890       -1.499   3151     +905.9            +826.3
+== Dg7Rzbg_zz: hammer from 0.2450 ns, now at 2.1250 ns; cycles 1 .. 11
+   t - t0 [ns]  aggressor WL [V]  victim node [V]   step [mV]  holes  body centre [mV]  gated-body average [mV]
+      0.0000      0.000        1.10000                   4       +3.5             +85.2
+      0.0235      1.800        1.10050       +0.500      6       +5.6             +86.0
+      0.0470      1.800        1.10050       -0.004      7       +7.0             +86.5
+      0.0705      1.800        1.10049       -0.004      7       +6.5             +86.3
+      0.0940      1.800        1.10049       -0.003      6       +5.7             +86.0
+      0.1175      0.000        1.10001       -0.475      5       +4.4             +85.5
+      0.1410      0.000        1.10001       -0.001      5       +3.8             +85.3
+      0.1645      0.000        1.10001       -0.000      4       +3.6             +85.2
+      0.1880      0.000        1.10001       -0.000      4       +3.5             +85.2
+      0.2115      1.800        1.10048       +0.472      6       +5.1             +85.9
+      0.2350      1.800        1.10048       -0.003      6       +5.5             +86.0
+      0.2585      1.800        1.10048       -0.002      6       +5.2             +85.9
+      0.2820      1.800        1.10048       -0.002      5       +4.7             +85.7
+      0.3055      0.000        1.10000       -0.475      5       +4.0             +85.4
+      0.3290      0.000        1.10000       -0.000      4       +3.7             +85.3
+      0.3525      0.000        1.10000       -0.000      4       +3.5             +85.2
+      0.3760      0.000        1.10000       -0.000      4       +3.5             +85.2
+      0.3995      1.800        1.10047       +0.473      5       +4.8             +85.8
+      0.4230      1.800        1.10047       -0.002      6       +5.2             +85.9
+      0.4465      1.800        1.10047       -0.002      5       +4.9             +85.8
+      0.4700      1.800        1.10047       -0.002      5       +4.6             +85.7
+      0.4935      0.000        1.09999       -0.475      5       +3.9             +85.4
+      0.5170      0.000        1.09999       -0.000      4       +3.6             +85.3
+      0.5405      0.000        1.09999       -0.000      4       +3.5             +85.2
+      0.5640      0.000        1.09999       -0.000      4       +3.5             +85.2
+      0.5875      1.800        1.10047       +0.473      5       +4.8             +85.7
+      0.6110      1.800        1.10046       -0.002      6       +5.1             +85.9
+      0.6345      1.800        1.10046       -0.002      5       +4.8             +85.8
+      0.6580      1.800        1.10046       -0.001      5       +4.5             +85.6
+      0.6815      0.000        1.09999       -0.475      5       +3.9             +85.3
+      0.7050      0.000        1.09999       -0.000      4       +3.6             +85.3
+      0.7285      0.000        1.09999       -0.000      4       +3.5             +85.2
+      0.7520      0.000        1.09998       -0.000      4       +3.5             +85.2
+      0.7755      1.800        1.10046       +0.473      5       +4.8             +85.7
+      0.7990      1.800        1.10046       -0.002      6       +5.1             +85.8
+      0.8225      1.800        1.10045       -0.002      5       +4.8             +85.8
+      0.8460      1.800        1.10045       -0.001      5       +4.5             +85.6
+      0.8695      0.000        1.09998       -0.475      5       +3.9             +85.3
+      0.8930      0.000        1.09998       -0.000      4       +3.6             +85.3
+      0.9165      0.000        1.09998       -0.000      4       +3.5             +85.2
+      0.9400      0.000        1.09998       -0.000      4       +3.5             +85.2
+      0.9635      1.800        1.10045       +0.473      5       +4.8             +85.7
+      0.9870      1.800        1.10045       -0.002      6       +5.1             +85.8
+      1.0105      1.800        1.10045       -0.002      5       +4.8             +85.8
+      1.0340      1.800        1.10044       -0.001      5       +4.5             +85.6
+      1.0575      0.000        1.09997       -0.475      5       +3.9             +85.4
+      1.0810      0.000        1.09997       -0.000      4       +3.6             +85.3
+      1.1045      0.000        1.09997       -0.000      4       +3.5             +85.2
+      1.1280      0.000        1.09997       -0.000      4       +3.5             +85.2
+      1.1515      1.800        1.10044       +0.473      5       +4.8             +85.7
+      1.1750      1.800        1.10044       -0.002      6       +5.1             +85.8
+      1.1985      1.800        1.10044       -0.002      5       +4.8             +85.8
+      1.2220      1.800        1.10044       -0.001      5       +4.5             +85.6
+      1.2455      0.000        1.09996       -0.475      5       +3.9             +85.3
+      1.2690      0.000        1.09996       -0.000      4       +3.6             +85.3
+      1.2925      0.000        1.09996       -0.000      4       +3.5             +85.2
+      1.3160      0.000        1.09996       -0.000      4       +3.5             +85.2
+      1.3395      1.800        1.10043       +0.473      5       +4.8             +85.7
+      1.3630      1.800        1.10043       -0.002      6       +5.1             +85.9
+      1.3865      1.800        1.10043       -0.002      5       +4.9             +85.8
+      1.4100      1.800        1.10043       -0.001      5       +4.5             +85.6
+      1.4335      0.000        1.09995       -0.475      5       +3.9             +85.3
+      1.4570      0.000        1.09995       -0.000      4       +3.6             +85.3
+      1.4805      0.000        1.09995       -0.000      4       +3.5             +85.2
+      1.5040      0.000        1.09995       -0.000      4       +3.5             +85.2
+      1.5275      1.800        1.10043       +0.473      5       +4.8             +85.7
+      1.5510      1.800        1.10042       -0.002      6       +5.1             +85.8
+      1.5745      1.800        1.10042       -0.002      5       +4.8             +85.8
+      1.5980      1.800        1.10042       -0.001      5       +4.5             +85.6
+      1.6215      0.000        1.09995       -0.475      5       +3.9             +85.3
+      1.6450      0.000        1.09995       -0.000      4       +3.6             +85.3
+      1.6685      0.000        1.09995       -0.000      4       +3.5             +85.2
+      1.6920      0.000        1.09994       -0.000      4       +3.5             +85.2
+      1.7155      1.800        1.10042       +0.473      5       +4.7             +85.7
+      1.7390      1.800        1.10042       -0.002      6       +5.1             +85.8
+      1.7625      1.800        1.10041       -0.002      5       +4.8             +85.8
+      1.7860      1.800        1.10041       -0.001      5       +4.5             +85.6
+      1.8095      0.000        1.09994       -0.475      5       +3.9             +85.3
+      1.8330      0.000        1.09994       -0.000      4       +3.6             +85.3
+      1.8565      0.000        1.09994       -0.000      4       +3.5             +85.2
+      1.8800      0.000        1.09994       -0.000      4       +3.5             +85.2
+== Dg3Rzg_zz: hammer from 0.2450 ns, now at 2.1250 ns; cycles 1 .. 11
+   t - t0 [ns]  aggressor WL [V]  victim node [V]   step [mV]  holes  body centre [mV]  gated-body average [mV]
+      0.0000      0.000        1.10000                   4       +3.5             +85.2
+      0.0235      1.800        1.10050       +0.500      6       +5.8             +86.1
+      0.0470      1.800        1.10049       -0.004      8       +7.6             +86.7
+      0.0705      1.800        1.10049       -0.005      7       +7.3             +86.6
+      0.0940      1.800        1.10049       -0.004      7       +6.5             +86.3
+      0.1175      0.000        1.10001       -0.476      6       +5.0             +85.7
+      0.1410      0.000        1.10001       -0.001      5       +4.1             +85.4
+      0.1645      0.000        1.10001       -0.001      4       +3.7             +85.3
+      0.1880      0.000        1.10001       -0.000      4       +3.6             +85.2
+      0.2115      1.800        1.10048       +0.472      6       +5.4             +85.9
+      0.2350      1.800        1.10048       -0.003      6       +6.0             +86.1
+      0.2585      1.800        1.10047       -0.003      6       +5.7             +86.0
+      0.2820      1.800        1.10047       -0.002      6       +5.2             +85.9
+      0.3055      0.000        1.10000       -0.475      5       +4.4             +85.5
+      0.3290      0.000        1.10000       -0.001      5       +3.8             +85.3
+      0.3525      0.000        1.09999       -0.000      4       +3.6             +85.3
+      0.3760      0.000        1.09999       -0.000      4       +3.5             +85.2
+      0.3995      1.800        1.10047       +0.472      5       +5.0             +85.8
+      0.4230      1.800        1.10046       -0.002      6       +5.5             +86.0
+      0.4465      1.800        1.10046       -0.002      6       +5.3             +85.9
+      0.4700      1.800        1.10046       -0.002      5       +4.9             +85.8
+      0.4935      0.000        1.09999       -0.475      5       +4.2             +85.4
+      0.5170      0.000        1.09998       -0.001      4       +3.8             +85.3
+      0.5405      0.000        1.09998       -0.000      4       +3.6             +85.2
+      0.5640      0.000        1.09998       -0.000      4       +3.5             +85.2
+      0.5875      1.800        1.10046       +0.473      5       +4.9             +85.8
+      0.6110      1.800        1.10045       -0.002      6       +5.5             +86.0
+      0.6345      1.800        1.10045       -0.002      6       +5.3             +85.9
+      0.6580      1.800        1.10045       -0.002      5       +4.9             +85.8
+      0.6815      0.000        1.09997       -0.475      5       +4.2             +85.4
+      0.7050      0.000        1.09997       -0.001      4       +3.8             +85.3
+      0.7285      0.000        1.09997       -0.000      4       +3.6             +85.2
+      0.7520      0.000        1.09997       -0.000      4       +3.5             +85.2
+      0.7755      1.800        1.10045       +0.473      5       +4.9             +85.8
+      0.7990      1.800        1.10044       -0.002      6       +5.4             +86.0
+      0.8225      1.800        1.10044       -0.002      6       +5.2             +85.9
+      0.8460      1.800        1.10044       -0.002      5       +4.9             +85.8
+      0.8695      0.000        1.09996       -0.475      5       +4.2             +85.4
+      0.8930      0.000        1.09996       -0.001      4       +3.8             +85.3
+      0.9165      0.000        1.09996       -0.000      4       +3.6             +85.2
+      0.9400      0.000        1.09996       -0.000      4       +3.5             +85.2
+      0.9635      1.800        1.10044       +0.473      5       +4.9             +85.8
+      0.9870      1.800        1.10043       -0.002      6       +5.4             +86.0
+      1.0105      1.800        1.10043       -0.002      6       +5.2             +85.9
+      1.0340      1.800        1.10043       -0.002      5       +4.9             +85.8
+      1.0575      0.000        1.09995       -0.475      5       +4.2             +85.4
+      1.0810      0.000        1.09995       -0.001      4       +3.8             +85.3
+      1.1045      0.000        1.09995       -0.000      4       +3.6             +85.2
+      1.1280      0.000        1.09995       -0.000      4       +3.5             +85.2
+      1.1515      1.800        1.10043       +0.473      5       +4.9             +85.8
+      1.1750      1.800        1.10042       -0.002      6       +5.4             +86.0
+      1.1985      1.800        1.10042       -0.002      6       +5.2             +85.9
+      1.2220      1.800        1.10042       -0.002      5       +4.9             +85.8
+      1.2455      0.000        1.09994       -0.475      5       +4.2             +85.4
+      1.2690      0.000        1.09994       -0.001      4       +3.8             +85.3
+      1.2925      0.000        1.09994       -0.000      4       +3.6             +85.2
+      1.3160      0.000        1.09994       -0.000      4       +3.5             +85.2
+      1.3395      1.800        1.10042       +0.473      5       +4.9             +85.8
+      1.3630      1.800        1.10041       -0.002      6       +5.4             +86.0
+      1.3865      1.800        1.10041       -0.002      6       +5.2             +85.9
+      1.4100      1.800        1.10041       -0.002      5       +4.9             +85.8
+      1.4335      0.000        1.09993       -0.475      5       +4.2             +85.4
+      1.4570      0.000        1.09993       -0.001      4       +3.8             +85.3
+      1.4805      0.000        1.09993       -0.000      4       +3.6             +85.2
+      1.5040      0.000        1.09993       -0.000      4       +3.5             +85.2
+      1.5275      1.800        1.10041       +0.473      5       +4.9             +85.8
+      1.5510      1.800        1.10040       -0.002      6       +5.5             +86.0
+      1.5745      1.800        1.10040       -0.002      6       +5.3             +85.9
+      1.5980      1.800        1.10040       -0.002      5       +4.9             +85.8
+      1.6215      0.000        1.09992       -0.475      5       +4.2             +85.4
+      1.6450      0.000        1.09992       -0.001      5       +3.8             +85.3
+      1.6685      0.000        1.09992       -0.000      4       +3.6             +85.2
+      1.6920      0.000        1.09992       -0.000      4       +3.5             +85.2
+      1.7155      1.800        1.10040       +0.473      5       +4.9             +85.8
+      1.7390      1.800        1.10039       -0.002      6       +5.5             +86.0
+      1.7625      1.800        1.10039       -0.002      6       +5.3             +85.9
+      1.7860      1.800        1.10039       -0.002      5       +4.9             +85.8
+      1.8095      0.000        1.09991       -0.475      5       +4.2             +85.4
+      1.8330      0.000        1.09991       -0.001      4       +3.8             +85.3
+      1.8565      0.000        1.09991       -0.000      4       +3.6             +85.2
+      1.8800      0.000        1.09991       -0.000      4       +3.5             +85.2
+== Dg8Rzi_zz: hammer from 0.2450 ns, now at 1.2820 ns; cycles 1 .. 6
+   t - t0 [ns]  aggressor WL [V]  victim node [V]   step [mV]  holes  body centre [mV]  gated-body average [mV]
+      0.0000      0.000        1.10001                 327     +214.2            +208.1
+      0.0235      1.800        1.10055       +0.535    380     +234.2            +223.7
+      0.0470      1.800        1.10068       +0.138    593     +305.8            +281.3
+      0.0705      1.800        1.10070       +0.017    816     +371.7            +336.9
+      0.0940      1.800        1.10051       -0.195   1007     +423.3            +381.8
+      0.1175      0.000        1.09974       -0.762   1136     +456.8            +411.3
+      0.1410      0.000        1.09957       -0.171   1189     +470.4            +423.4
+      0.1645      0.000        1.09950       -0.078   1211     +476.0            +428.3
+      0.1880      0.000        1.09946       -0.032   1220     +478.2            +430.3
+      0.2115      1.800        1.09975       +0.292   1279     +492.5            +443.2
+      0.2350      1.800        1.09903       -0.720   1434     +530.0            +477.2
+      0.2585      1.800        1.09808       -0.954   1589     +566.7            +510.6
+      0.2820      1.800        1.09711       -0.967   1720     +597.0            +538.3
+      0.3055      0.000        1.09588       -1.236   1809     +617.7            +557.2
+      0.3290      0.000        1.09553       -0.348   1846     +626.3            +565.1
+      0.3525      0.000        1.09538       -0.148   1861     +629.9            +568.3
+      0.3760      0.000        1.09532       -0.061   1868     +631.3            +569.6
+      0.3995      1.800        1.09538       +0.061   1921     +642.7            +580.4
+      0.4230      1.800        1.09394       -1.442   2069     +675.5            +610.8
+      0.4465      1.800        1.09226       -1.676   2220     +708.7            +641.6
+      0.4700      1.800        1.09071       -1.550   2348     +736.6            +667.5
+      0.4935      0.000        1.08908       -1.630   2435     +755.8            +685.3
+      0.5170      0.000        1.08857       -0.510   2472     +763.8            +692.8
+      0.5405      0.000        1.08836       -0.211   2487     +767.2            +695.9
+      0.5640      0.000        1.08828       -0.082   2493     +768.6            +697.2
+      0.5875      1.800        1.08808       -0.196   2552     +780.5            +708.6
+      0.6110      1.800        1.08582       -2.260   2720     +815.2            +741.3
+      0.6345      1.800        1.08329       -2.533   2891     +851.1            +775.0
+      0.6580      1.800        1.08107       -2.220   3033     +880.8            +803.0
+      0.6815      0.000        1.07903       -2.042   3130     +901.1            +822.0
+      0.7050      0.000        1.07842       -0.607   3168     +909.5            +829.7
+      0.7285      0.000        1.07824       -0.180   3182     +912.6            +832.7
+      0.7520      0.000        1.07821       -0.034   3187     +913.7            +833.7
+      0.7755      1.800        1.07788       -0.333   3252     +925.8            +845.4
+      0.7990      1.800        1.07499       -2.885   3436     +962.2            +880.1
+      0.8225      1.800        1.07191       -3.080   3623     +999.9            +915.7
+      0.8460      1.800        1.06945       -2.465   3776    +1030.7            +944.9
+      0.8695      0.000        1.06764       -1.809   3869    +1049.7            +962.8
+      0.8930      0.000        1.06729       -0.349   3900    +1056.4            +969.0
+      0.9165      0.000        1.06712       -0.167   3911    +1058.6            +971.1
+      0.9400      0.000        1.06699       -0.129   3915    +1059.4            +971.8
+      0.9635      1.800        1.06697       -0.019   3966    +1068.3            +980.6
+      0.9870      1.800        1.06456       -2.411   4137    +1100.3           +1011.3
+      1.0105      1.800        1.06187       -2.696   4290    +1129.1           +1038.7
+      1.0340      1.800        1.05886       -3.006   4383    +1145.7           +1054.5
+== Dg9Rzbi_zz: hammer from 0.2450 ns, now at 1.5858 ns; cycles 1 .. 8
+   t - t0 [ns]  aggressor WL [V]  victim node [V]   step [mV]  holes  body centre [mV]  gated-body average [mV]
+      0.0000      0.000        1.10000                 177     +145.5            +159.4
+      0.0235      1.800        1.10052       +0.529    228     +170.5            +176.9
+      0.0470      1.800        1.10065       +0.122    415     +246.4            +233.5
+      0.0705      1.800        1.10077       +0.118    593     +306.2            +281.5
+      0.0940      1.800        1.10081       +0.047    732     +348.0            +316.4
+      0.1175      0.000        1.10033       -0.482    817     +372.4            +337.2
+      0.1410      0.000        1.10032       -0.013    845     +380.2            +343.9
+      0.1645      0.000        1.10031       -0.005    854     +382.8            +346.1
+      0.1880      0.000        1.10031       -0.002    857     +383.6            +346.8
+      0.2115      1.800        1.10076       +0.445    909     +397.6            +359.2
+      0.2350      1.800        1.10058       -0.174   1033     +430.2            +387.8
+      0.2585      1.800        1.10032       -0.264   1146     +459.3            +413.5
+      0.2820      1.800        1.10004       -0.283   1232     +481.1            +433.0
+      0.3055      0.000        1.09934       -0.691   1286     +494.6            +445.0
+      0.3290      0.000        1.09927       -0.079   1304     +499.0            +448.9
+      0.3525      0.000        1.09924       -0.028   1310     +500.5            +450.3
+      0.3760      0.000        1.09923       -0.008   1312     +501.0            +450.7
+      0.3995      1.800        1.09954       +0.314   1355     +511.2            +460.1
+      0.4230      1.800        1.09899       -0.557   1465     +537.5            +484.0
+      0.4465      1.800        1.09836       -0.630   1567     +561.6            +505.9
+      0.4700      1.800        1.09779       -0.568   1648     +580.6            +523.2
+      0.4935      0.000        1.09692       -0.872   1698     +592.5            +534.0
+      0.5170      0.000        1.09677       -0.143   1715     +596.4            +537.6
+      0.5405      0.000        1.09672       -0.050   1721     +597.8            +538.8
+      0.5640      0.000        1.09671       -0.017   1723     +598.3            +539.3
+      0.5875      1.800        1.09687       +0.163   1769     +608.5            +548.8
+      0.6110      1.800        1.09587       -1.003   1887     +635.0            +573.3
+      0.6345      1.800        1.09480       -1.064   1996     +659.6            +596.0
+      0.6580      1.800        1.09389       -0.916   2083     +679.1            +614.0
+      0.6815      0.000        1.09279       -1.099   2138     +691.4            +625.3
+      0.7050      0.000        1.09257       -0.222   2156     +695.5            +629.1
+      0.7285      0.000        1.09249       -0.077   2162     +696.9            +630.4
+      0.7520      0.000        1.09246       -0.026   2164     +697.4            +630.9
+      0.7755      1.800        1.09245       -0.014   2215     +708.0            +640.9
+      0.7990      1.800        1.09093       -1.517   2346     +736.0            +667.0
+      0.8225      1.800        1.08937       -1.556   2466     +762.1            +691.4
+      0.8460      1.800        1.08807       -1.304   2562     +782.8            +710.7
+      0.8695      0.000        1.08672       -1.348   2623     +795.9            +722.8
+      0.8930      0.000        1.08642       -0.298   2642     +800.3            +726.9
+      0.9165      0.000        1.08633       -0.097   2649     +801.8            +728.3
+      0.9400      0.000        1.08631       -0.016   2651     +802.2            +728.7
+      0.9635      1.800        1.08614       -0.173   2706     +813.0            +739.0
+      0.9870      1.800        1.08414       -1.997   2846     +841.9            +766.3
+      1.0105      1.800        1.08214       -2.002   2977     +869.2            +792.0
+      1.0340      1.800        1.08050       -1.643   3081     +891.0            +812.5
+      1.0575      0.000        1.07902       -1.480   3143     +904.2            +824.8
+      1.0810      0.000        1.07875       -0.270   3162     +908.4            +828.7
+      1.1045      0.000        1.07870       -0.044   3167     +909.6            +829.8
+      1.1280      0.000        1.07870       -0.006   3169     +910.0            +830.2
+      1.1515      1.800        1.07843       -0.267   3228     +921.1            +840.9
+      1.1750      1.800        1.07604       -2.387   3381     +951.6            +869.9
+      1.1985      1.800        1.07374       -2.303   3523     +980.3            +897.1
+      1.2220      1.800        1.07202       -1.714   3632    +1002.6            +918.1
+      1.2455      0.000        1.07073       -1.293   3690    +1014.8            +929.6
+      1.2690      0.000        1.07059       -0.139   3706    +1018.2            +932.7
+      1.2925      0.000        1.07055       -0.046   3711    +1019.2            +933.6
+      1.3160      0.000        1.07052       -0.025   3712    +1019.5            +933.9
+      1.3395      1.800        1.07047       -0.053   3765    +1028.9            +943.2
+== Dg0Rzbi_zz: hammer from 0.2450 ns, now at 1.2592 ns; cycles 1 .. 6
+   t - t0 [ns]  aggressor WL [V]  victim node [V]   step [mV]  holes  body centre [mV]  gated-body average [mV]
+      0.0000      0.000        1.10000                 183     +148.7            +161.5
+      0.0235      1.800        1.10023       +0.233    247     +179.0            +183.0
+      0.0470      1.800        1.10032       +0.092    588     +303.7            +279.9
+      0.0705      1.800        1.10027       -0.050    963     +411.0            +371.2
+      0.0940      1.800        1.09993       -0.342   1270     +489.7            +441.0
+      0.1175      0.000        1.09933       -0.602   1457     +535.6            +482.2
+      0.1410      0.000        1.09914       -0.185   1523     +551.6            +496.7
+      0.1645      0.000        1.09908       -0.063   1544     +556.6            +501.2
+      0.1880      0.000        1.09906       -0.022   1551     +558.4            +502.8
+      0.2115      1.800        1.09904       -0.014   1637     +577.8            +520.8
+      0.2350      1.800        1.09836       -0.681   1837     +623.3            +562.7
+      0.2585      1.800        1.09760       -0.763   2019     +664.3            +600.6
+      0.2820      1.800        1.09693       -0.674   2161     +695.9            +629.8
+      0.3055      0.000        1.09626       -0.666   2248     +715.5            +648.0
+      0.3290      0.000        1.09609       -0.169   2278     +722.2            +654.1
+      0.3525      0.000        1.09603       -0.059   2288     +724.5            +656.3
+      0.3760      0.000        1.09601       -0.020   2292     +725.3            +657.0
+      0.3995      1.800        1.09595       -0.067   2351     +737.4            +668.6
+      0.4230      1.800        1.09517       -0.777   2493     +767.7            +696.9
+      0.4465      1.800        1.09438       -0.789   2624     +795.8            +723.3
+      0.4700      1.800        1.09372       -0.657   2728     +818.0            +744.1
+      0.4935      0.000        1.09309       -0.635   2793     +832.0            +757.1
+      0.5170      0.000        1.09295       -0.144   2814     +836.7            +761.5
+      0.5405      0.000        1.09291       -0.040   2821     +838.2            +762.9
+      0.5640      0.000        1.09290       -0.007   2823     +838.7            +763.3
+      0.5875      1.800        1.09280       -0.100   2879     +849.4            +773.7
+      0.6110      1.800        1.09192       -0.880   3014     +877.2            +799.9
+      0.6345      1.800        1.09105       -0.865   3139     +903.1            +824.4
+      0.6580      1.800        1.09036       -0.696   3239     +923.7            +843.9
+      0.6815      0.000        1.08975       -0.609   3297     +936.1            +855.4
+      0.7050      0.000        1.08966       -0.091   3314     +939.8            +858.9
+      0.7285      0.000        1.08964       -0.013   3319     +940.9            +859.9
+      0.7520      0.000        1.08964       -0.002   3320     +941.2            +860.2
+      0.7755      1.800        1.08955       -0.094   3376     +951.5            +870.2
+      0.7990      1.800        1.08860       -0.944   3515     +979.1            +896.5
+      0.8225      1.800        1.08772       -0.890   3643    +1005.1            +921.1
+      0.8460      1.800        1.08710       -0.616   3739    +1024.5            +939.6
+      0.8695      0.000        1.08661       -0.486   3791    +1035.3            +949.7
+      0.8930      0.000        1.08655       -0.061   3805    +1038.3            +952.5
+      0.9165      0.000        1.08652       -0.031   3809    +1039.1            +953.3
+      0.9400      0.000        1.08650       -0.023   3810    +1039.3            +953.4
+      0.9635      1.800        1.08650       +0.000   3858    +1048.0            +961.9
+      0.9870      1.800        1.08573       -0.773   3989    +1073.2            +986.0
+      1.0105      1.800        1.08504       -0.689   4101    +1095.3           +1007.0
