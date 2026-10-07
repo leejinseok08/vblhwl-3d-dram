@@ -811,6 +811,21 @@ HS = ((3, "gr_c3h", 4.3, 10), (4, "gr_c4h", 4.3, 10)); IH = dict(Vds=1.0, VgMin=
 cfg2d("dr", "I", cases=HS, iv=IH, par=B1["par"])
 cfg2d("ds", "I", cases=HS, iv=IH)
 cfg2d("dt", "I", cases=HS[1:], iv=dict(IH, Vds=1.1), par=B1["par"])
+# Round 30 (user, 2026-10-07 night: decisions A, B, C as recommended = no avalanche model in Fig.4(a) / Fig.8, BL contact of the single
+# cells at the pillar end, the blue line of Fig.8(c) read as curve 5; and "start D" = back-calculate the Hurkx field coefficient B).
+# Three things hold (A, B): the GIDL point of Cho's Fig.5(c) at Vg = -1 V in five cases (V_DS 1.1 V), the GIDL branch of the silicon
+# reference transistor of Hsu .. Yu, Fig.2(c), from -0.7 to -1.75 V (V_DS 1.0 V, work function 4.27 eV on the Case 3 cell, round 29), and
+# Case 5 of Fig.8(c) staying on the 1.1 V line (the hold leak of the storage-node junction, NOTES (bo)). Scan of B with A set so that
+# the generation at the 0.91 MV/cm of the Id-Vg branch stays (A = 1.7e21 exp((B - 2.25e7) / 0.91e6); the current goes with A, so one
+# run per B fixes A afterwards): dv / dw / dx = B 2.1e7 / 2.0e7 / 1.9e7: Id-Vg of the five cases (Cho's conditions, end-contact cells)
+# and the FBE of Case 5 (end contact, no avalanche model, rate of dm) | hu .. hx = Hsu's conditions with B 2.25e7 / 2.1e7 / 2.0e7 / 1.9e7.
+HB = {"u": (1.7e21, 2.25e7), "v": (3.3e20, 2.1e7), "w": (1.1e20, 2.0e7), "x": (3.6e19, 1.9e7)}
+HS3 = ((3, "gr_c3hb", 4.27, 10),)
+for k_, (a_, b_) in HB.items():
+    cfg2d("h" + k_, "I", cases=HS3, iv=IH, par=cal_par(a_, b_))
+    if k_ != "u":
+        cfg2d("d" + k_, "I", cases=CASEB, par=cal_par(a_, b_))
+        cfg2d("d" + k_, "F", cases=CASEB[4:], gb={5: GBQ[5] * GBB[5] * FN[5]}, ProbeX=1, ProbeT=1, II=0, k_cs=1.8 / 4.2, par=cal_par(a_, b_))
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
