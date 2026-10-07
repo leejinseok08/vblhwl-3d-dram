@@ -1,0 +1,42 @@
+{
+  "active_baseline": "fin3",
+  "compared_baseline": "fin2",
+  "source": "origin/claude@5e6deb4",
+  "source_sections": [
+    "ANALYSIS.md4.8",
+    "2D report9.12"
+  ],
+  "body_reading": {
+    "quantity": "average electrostatic potential over gated body",
+    "window_x_nm": [
+      75,
+      175
+    ],
+    "window_y_nm": "40..40+Tbody",
+    "reference": "transient initial equilibrium",
+    "sample_time": "first BL fall complete +0.25ns"
+  },
+  "composition": {
+    "I": "DfinI_c1..5",
+    "W": "DfinW_c2",
+    "F": "Ds2F_c1..5",
+    "RH": "DfinR*"
+  },
+  "proxy_GBQ_factors": [
+    1.56,
+    1.31,
+    1.19,
+    1.17,
+    1.18
+  ],
+  "legacy_720_screen": "original fin2-reading diagnostic; inputs/results unchanged; not ranked as fin3 because gated-window probes were not recorded",
+  "new_runs": [
+    "F3N_c1",
+    "F3N_c2",
+    "F3N_c3",
+    "F3N_c4",
+    "F3N_c5"
+  ],
+  "new_run_condition": "own generation, SN clamp during case-specific long hold, nine BL cycles; diagnostic history",
+  "updated_at": "2026-10-07T09:44:54.890109+09:00"
+}

@@ -1,0 +1,23 @@
+{
+  "pass_all": true,
+  "checks": [
+    "PASS mesh gr_c1h lo: junction50/175nm, Nsd1e20, Nch1e+18, body40..70nm",
+    "PASS mesh gr_c1h mid: junction50/175nm, Nsd1e20, Nch1e+18, body40..70nm",
+    "PASS mesh gr_c1h hi: junction50/175nm, Nsd1e20, Nch1e+18, body40..70nm",
+    "PASS mesh gr_c2h lo: junction50/175nm, Nsd1e20, Nch1e+18, body40..60nm",
+    "PASS mesh gr_c2h mid: junction50/175nm, Nsd1e20, Nch1e+18, body40..60nm",
+    "PASS mesh gr_c2h hi: junction50/175nm, Nsd1e20, Nch1e+18, body40..60nm",
+    "PASS mesh gr_c3h lo: junction50/175nm, Nsd1e20, Nch1e+18, body40..50nm",
+    "PASS mesh gr_c3h mid: junction50/175nm, Nsd1e20, Nch1e+18, body40..50nm",
+    "PASS mesh gr_c3h hi: junction50/175nm, Nsd1e20, Nch1e+18, body40..50nm",
+    "PASS mesh gr_c4h lo: junction50/175nm, Nsd1e20, Nch1e+16, body40..50nm",
+    "PASS mesh gr_c4h mid: junction50/175nm, Nsd1e20, Nch1e+16, body40..50nm",
+    "PASS mesh gr_c4h hi: junction50/175nm, Nsd1e20, Nch1e+16, body40..50nm",
+    "PASS F3N_c1: unchanged fin3 geometry/models, source0, hold20600ns, averaged gated body at fall_complete+0.25ns, nine BL cycles",
+    "PASS F3N_c2: unchanged fin3 geometry/models, source0, hold16200ns, averaged gated body at fall_complete+0.25ns, nine BL cycles",
+    "PASS F3N_c3: unchanged fin3 geometry/models, source0, hold19600ns, averaged gated body at fall_complete+0.25ns, nine BL cycles",
+    "PASS F3N_c4: unchanged fin3 geometry/models, source0, hold18700ns, averaged gated body at fall_complete+0.25ns, nine BL cycles",
+    "PASS F3N_c5: unchanged fin3 geometry/models, source0, hold14600ns, averaged gated body at fall_complete+0.25ns, nine BL cycles"
+  ],
+  "performed_at": "2026-10-07T09:41:45.989840+09:00"
+}

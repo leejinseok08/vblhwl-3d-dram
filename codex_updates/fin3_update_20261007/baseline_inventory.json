@@ -1,0 +1,107 @@
+{
+  "claude_commit": "5e6deb4",
+  "baseline": "fin3",
+  "FBE": "Ds2F_c1..5",
+  "files": [
+    {
+      "source": "claude/data/runs/Ds2F_c1/Ds2F_c1_des.cmd",
+      "sha256": "0583dbdb7a6651508e7ddd445639490f88d0cbdbaf446f5ac69b633729f9fff7",
+      "bytes": 20053
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c1/Ds2F_c1_sys.plt",
+      "sha256": "cbdaf3c3598d3ef9d0e35276c52ffe86512321d70f59dfb98a28cb48629b1bf4",
+      "bytes": 59314
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c1/c1_Ds2F_c1_dev.plt",
+      "sha256": "c15c78e6eddaa5d9a5d14dee19e81b63ef3f047b5a07366fc67583f8ed51681a",
+      "bytes": 1799681
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c1/run.json",
+      "sha256": "e36c119472b47dc7b5c1e56e9ece778206969cb4347270aef1dd5888b7d10ca9",
+      "bytes": 1527
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c2/Ds2F_c2_des.cmd",
+      "sha256": "65d6dde17eb7575466b60706ae08650d9566eb4f7c6ae3abf905dc291d0fa01c",
+      "bytes": 20045
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c2/Ds2F_c2_sys.plt",
+      "sha256": "26f8ebaf100dd05f1ed9d8bdd2174998a8d2b0f2047305ff3173ef8713138ffc",
+      "bytes": 59314
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c2/c1_Ds2F_c2_dev.plt",
+      "sha256": "026957f2dce8ca9b2eb3aaf633cfd31bf90310cb2c406ddb5139aa51a158b759",
+      "bytes": 1799639
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c2/run.json",
+      "sha256": "e97814df580b180f5cc4983b43e0cc60d4f3a3108e5c441fb30c71ec767a94d5",
+      "bytes": 1538
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c3/Ds2F_c3_des.cmd",
+      "sha256": "940dad71c48d48f5183ea602505ae19e98fcf80f1000dfb3bb82738108404f25",
+      "bytes": 20053
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c3/Ds2F_c3_sys.plt",
+      "sha256": "0c18315644a2144f490a2a32246741052ea4f9bc4bcbbf058377bfa069fa983c",
+      "bytes": 59314
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c3/c1_Ds2F_c3_dev.plt",
+      "sha256": "811baf2c60a6644b4d42f17947e3aa2c61a34201fae50b6c338cb9baa663f0a9",
+      "bytes": 1799681
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c3/run.json",
+      "sha256": "10f13e4943d4042e52b2c350b4f4d04e54d6a07172675d60419dbca33910f12b",
+      "bytes": 1527
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c4/Ds2F_c4_des.cmd",
+      "sha256": "c21e982c2aaaa922eaab0f7acfb06b866c5e66607a9c0bb39af6324b669c53b3",
+      "bytes": 20053
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c4/Ds2F_c4_sys.plt",
+      "sha256": "07df063fea5d429c9330e29318eef10991b792debad8499a6d52dd29254ce715",
+      "bytes": 59314
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c4/c1_Ds2F_c4_dev.plt",
+      "sha256": "128bcd4e6073ccb73f19d87563a6f706a4f42062e575708d380b233a79aa7da6",
+      "bytes": 1799681
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c4/run.json",
+      "sha256": "62905b2cd3803de6e56b54c53d38e8ecccde27bdbf4d1fe4dd9c8e475c8bcd3d",
+      "bytes": 1523
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c5/Ds2F_c5_des.cmd",
+      "sha256": "c0071f664f229c3f6b119ab466f49860ca0505035e9dba3ba25443eab0fc004a",
+      "bytes": 20049
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c5/Ds2F_c5_sys.plt",
+      "sha256": "c5d6f1b07cc23435fd0e51e5f73191fa33df11a16fe34b48ea212e3195887184",
+      "bytes": 59314
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c5/c1_Ds2F_c5_dev.plt",
+      "sha256": "f2fbb14d907251e62af0b02c5782842d90ca43a73252acefe9842896bd921d4f",
+      "bytes": 1799681
+    },
+    {
+      "source": "claude/data/runs/Ds2F_c5/run.json",
+      "sha256": "8546744154961161ce9197d982170531b7abf87acc90d78dd714d90fd319dc39",
+      "bytes": 1534
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "reviewed_at": "2026-10-07T09:43:46.429396+09:00",
+  "checks_read": 17,
+  "paper_sections": "III/VI, Fig2/4/5/8, originalp2/p3/p5 andp4text reviewed anew",
+  "manifest_sha256": "cdc4540fdcf6b019086e0939cde64e76c274af9ad598445d0cf8a59d367300e8",
+  "paper_sha256": "67ee28549c61b8c6683ee141777c63f6a5f3b5a41ab604535d78b52f520450b0",
+  "preflight_sha256": "2cbb5347eda4c94dd7d2c8f867aff0c34749aacfaa5dcf3fbcdd0f9af1ac2fdd",
+  "quota": {
+    "used_KB": 7344144,
+    "soft_KB": 9437184,
+    "hard_KB": 10485760,
+    "reserve_ok": true
+  }
+}

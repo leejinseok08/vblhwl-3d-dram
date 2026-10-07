@@ -1,0 +1,33 @@
+###########################################
+# Sentaurus Visual U-2022.12.
+# Tcl log file.
+#------------------------------------------
+# Date: Oct 07, 2026. 09:41:45.
+# Version: 34.2.7893487 (2.7893487)
+# Mode: Batch.
+# Hostname: sogangic1.
+# Machine: Linux, x86_64, x86_64.
+# Kernel: 3.10.0-1160.el7.x86_64.
+###########################################
+
+load_script_file /home/e20241515/vblhwl_3d_dram/codex_validation/fin3_update_20261007/snapshot/chk_struct.tcl
+cd /home/e20241515/vblhwl_3d_dram/codex_validation/fin3_update_20261007/snapshot
+  load_file /home/e20241515/vblhwl_3d_dram/runs/_struct/gr_c4h_msh.tdr
+#--> gr_c4h_msh
+  create_plot -dataset gr_c4h_msh
+  select_plots {Plot_gr_c4h_msh}
+#--> Plot_gr_c4h_msh
+#--> Plot_gr_c4h_msh
+  list_regions -plot Plot_gr_c4h_msh -geom gr_c4h_msh
+#--> JunctionLine R.BL R.BL+R.GoxT_v R.Ch_v R.Ch_v+R.BL R.Ch_v+R.GoxB_v R.Ch_v+R.GoxT_v R.Ch_v+R.Src_v R.GoxB_v R.GoxB_v+R.BL R.GoxT_v R.Ox_lump_1 R.Ox_lump_1+R.BL R.Ox_lump_1+R.SpB2_v R.Ox_lump_2 R.Ox_lump_2+R.BL R.Ox_lump_2+R.SpT2_v R.SpB1_v R.SpB1_v+R.BL R.SpB1_v+R.GoxB_v R.SpB1_v+R.Ox_lump_1 R.SpB2_v R.SpB2_v+R.GoxB_v R.SpT1_v R.SpT1_v+R.BL R.SpT1_v+R.GoxT_v R.SpT1_v+R.Ox_lump_2 R.SpT2_v R.SpT2_v+R.GoxT_v R.Src_v R.Src_v+R.GoxB_v R.Src_v+R.GoxT_v bl gd_v gs_v sn_v
+  create_cutline -plot Plot_gr_c4h_msh -type x -at 0.125
+#--> C1(gr_c4h_msh)
+  export_variables {Y DopingConcentration} -dataset C1(gr_c4h_msh) -filename /home/e20241515/vblhwl_3d_dram/codex_validation/fin3_update_20261007/checks/gr_c4h_hi_vertical.csv -overwrite
+#--> /home/e20241515/vblhwl_3d_dram/codex_validation/fin3_update_20261007/checks/gr_c4h_hi_vertical.csv
+  create_cutline -plot Plot_gr_c4h_msh -type y -at 0.0495
+#--> C2(gr_c4h_msh)
+  export_variables {X DopingConcentration} -dataset C2(gr_c4h_msh) -filename /home/e20241515/vblhwl_3d_dram/codex_validation/fin3_update_20261007/checks/gr_c4h_hi_horizontal.csv -overwrite
+#--> /home/e20241515/vblhwl_3d_dram/codex_validation/fin3_update_20261007/checks/gr_c4h_hi_horizontal.csv
+  exit 0
+#--> 0
+ 
