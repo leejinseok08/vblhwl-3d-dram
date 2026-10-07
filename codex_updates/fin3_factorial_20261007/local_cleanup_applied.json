@@ -1,0 +1,100 @@
+{
+    "CheckedAt":  "2026-10-07T21:33:23.0556367+09:00",
+    "Entries":  [
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\factorial_conditions_20261006\\completed_snapshot",
+                        "Bytes":  27080843
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\factorial_conditions_20261006\\results",
+                        "Bytes":  158980
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\factorial_conditions_20261006\\completed_snapshot.tar.gz",
+                        "Bytes":  26756561
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\factorial_conditions_20261006\\candidate_ranking.csv",
+                        "Bytes":  3207
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\factorial_conditions_20261006\\ranking.json",
+                        "Bytes":  3389986
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\factorial_conditions_20261006\\first_results.png",
+                        "Bytes":  77458
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\factorial_conditions_20261006\\GT_IRPS2026_조건조합_후보표_2026-10-06.xlsx",
+                        "Bytes":  91805
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\factorial_conditions_20261006\\GT_IRPS2026_조건조합_후보표_2026-10-06.xlsx.inspect.ndjson",
+                        "Bytes":  4336851
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\factorial_conditions_20261006\\preview_전체조건.png",
+                        "Bytes":  55996
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\factorial_conditions_20261006\\preview_후보결과.png",
+                        "Bytes":  61407
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\github_repository\\vblhwl-3d-dram\\codex_updates\\factorial_conditions_20261006\\completed_snapshot",
+                        "Bytes":  27080843
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\github_repository\\vblhwl-3d-dram\\codex_updates\\factorial_conditions_20261006\\candidate_ranking.csv",
+                        "Bytes":  3178
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\github_repository\\vblhwl-3d-dram\\codex_updates\\factorial_conditions_20261006\\ranking.json",
+                        "Bytes":  211328
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\github_repository\\vblhwl-3d-dram\\codex_updates\\factorial_conditions_20261006\\first_results.png",
+                        "Bytes":  77458
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\github_repository\\vblhwl-3d-dram\\codex_updates\\factorial_conditions_20261006\\GT_IRPS2026_조건조합_후보표_2026-10-06.xlsx",
+                        "Bytes":  41573
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\Desktop\\서강대\\반엘프\\results_vbl_hwl_1t1c_3ddram\\Codex_독립검증_2026-10-06\\조건조합_후보탐색\\best_common_candidate.png",
+                        "Bytes":  63324
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\Desktop\\서강대\\반엘프\\results_vbl_hwl_1t1c_3ddram\\Codex_독립검증_2026-10-06\\조건조합_후보탐색\\first_results.png",
+                        "Bytes":  77458
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\Desktop\\서강대\\반엘프\\results_vbl_hwl_1t1c_3ddram\\Codex_독립검증_2026-10-06\\조건조합_후보탐색\\candidate_ranking.csv",
+                        "Bytes":  3207
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\Desktop\\서강대\\반엘프\\results_vbl_hwl_1t1c_3ddram\\Codex_독립검증_2026-10-06\\조건조합_후보탐색\\ranking.json",
+                        "Bytes":  211328
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\Desktop\\서강대\\반엘프\\results_vbl_hwl_1t1c_3ddram\\Codex_독립검증_2026-10-06\\조건조합_후보탐색\\snapshot_20261007_0915_ranking.json",
+                        "Bytes":  3389986
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\Desktop\\서강대\\반엘프\\results_vbl_hwl_1t1c_3ddram\\Codex_독립검증_2026-10-06\\조건조합_후보탐색\\snapshot_20261007_0915_status.json",
+                        "Bytes":  1945
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\Desktop\\서강대\\반엘프\\results_vbl_hwl_1t1c_3ddram\\Codex_독립검증_2026-10-06\\조건조합_후보탐색\\status.json",
+                        "Bytes":  1943
+                    },
+                    {
+                        "Path":  "C:\\Users\\LEEJINSEOK\\Desktop\\서강대\\반엘프\\results_vbl_hwl_1t1c_3ddram\\Codex_독립검증_2026-10-06\\조건조합_후보탐색\\GT_IRPS2026_조건조합_후보표_2026-10-06.xlsx",
+                        "Bytes":  91805
+                    }
+                ],
+    "Bytes":  93268470,
+    "Scope":  "Old720 outputs only; live fin3 inputs excluded",
+    "DeletedAt":  "2026-10-07T21:34:07.5531327+09:00"
+}
