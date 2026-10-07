@@ -39,6 +39,16 @@ if [ "$m" = steps ]; then    # how the named runs step in time: their last three
   for r in "$@"; do f=runs/$r/$r.out; [ -f $f ] || f=$f.gz; echo "=== $r"; zcat -f $f | grep -E 'Computing .*step from' | tail -3 | cut -c1-120; done
   exit 0
 fi
+if [ "$m" = why ]; then    # why the named runs ended: the last steps and the last failure lines of their output
+  for r in "$@"; do f=runs/$r/$r.out; [ -f $f ] || f=$f.gz; echo "=== $r"; zcat -f $f | grep -E 'Computing|Step size|not converge|failed|rror' | tail -7 | cut -c1-150; done
+  exit 0
+fi
+if [ "$m" = cb ]; then    # the four single cells with the BL contact at the bottom end of the pillar: mesh (structure only), check, doping map of Case 2
+  ( cd runs/_struct; for s in gr_c1hb gr_c2hb gr_c3hb gr_c4hb; do [ -f ${s}_msh.tdr ] || sde -e -l ${s}_dvs.cmd > ${s}_sde.log 2>&1; ls -la --time-style=+%H:%M ${s}_msh.tdr | awk '{print $7, $5, $6}'; done
+    bash ../../tools/export_doping.sh gr_c2hb 0.200 | tail -2; wc -l gr_c2hb_dopmap.csv )
+  bash tools/gt_precheck.sh gr_c1hb:30 gr_c2hb:20 gr_c3hb:10 gr_c4hb:10
+  exit 0
+fi
 if [ "$m" = zb ]; then    # the two pair structures with the BL contact at the bottom end of the pillar: mesh (structure only), check, doping map
   ( cd runs/_struct; for s in gr_zzb gr_zzbg; do [ -f ${s}_msh.tdr ] || sde -e -l ${s}_dvs.cmd > ${s}_sde.log 2>&1; ls -la --time-style=+%H:%M ${s}_msh.tdr | awk '{print $7, $5, $6}'; done
     bash ../../tools/export_doping.sh gr_zzb 0.200 | tail -2; wc -l gr_zzb_dopmap.csv )

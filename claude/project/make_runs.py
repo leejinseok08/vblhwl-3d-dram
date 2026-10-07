@@ -553,13 +553,15 @@ PC = dict(TR, tWr=0.105, SNset=1.1, Vwr=1.168, Nthr=4)
 # tools/paper_targets.py)  4. adopt a change only if it lowers the score of the group it is meant for and leaves Fig.5(c)
 # inside its tolerance  5. next round from the new baseline. A configuration <tag> = runs D<tag>I_c<n> (Id-Vg), D<tag>W_c2
 # (write), D<tag>F_c<n> (FBE, impact ionization on), D<tag>Ry_yy / Ryi_yy / Rz_zz / Rzi_zz / Rzg_zz (row hammer).
-def cfg2d(tag, what, k_cs=1.0, par=None, rh=None, gb=None, cases=None, wst="gr_c2h", rhsel=None, iv=None, **ov):
-    """cases / wst: other structures for the cases and for the write run; rhsel: only these row-hammer runs; iv: overrides of the Id-Vg runs."""
+def cfg2d(tag, what, k_cs=1.0, par=None, rh=None, gb=None, cases=None, wst="gr_c2h", rhsel=None, iv=None, wcase=None, **ov):
+    """cases / wst: other structures for the cases and for the write run; rhsel: only these row-hammer runs; iv: overrides of the Id-Vg runs;
+    wcase: the write run on another case than Case 2 (an entry of CASES / CASEB: its structure, work function and text capacitor)."""
     pv = dict(Par=par) if par else {}; GB = gb or {}; CS = cases or CASES
     if "I" in what:
         for c, st, wf, tb in CS: RUNS.append(R(f"D{tag}I_c{c}", "GT", st, "idvg", WFs=wf, WFd=wf, **dict(IV, Nthr=4, **pv, **(iv or {}))))
     if "W" in what:
-        RUNS.append(R(f"D{tag}W_c2", "GT", wst, "cho:W", WFs=4.7, WFd=4.7, II=1, Cs=CSB[20] * k_cs, **dict(dict(PC, ErrH=1e14), **pv, **ov)))
+        wc_, wst_, wwf_, wtb_ = wcase or (2, wst, 4.7, 20)
+        RUNS.append(R(f"D{tag}W_c{wc_}", "GT", wst_, "cho:W", WFs=wwf_, WFd=wwf_, II=1, Cs=CSB[wtb_] * k_cs, **dict(dict(PC, ErrH=1e14), **pv, **ov)))
     if "F" in what:
         for c, st, wf, tb in CS:
             RUNS.append(R(f"D{tag}F_c{c}", "GT", st, "cho:FBE", WFs=wf, WFd=wf, Cs=CSB[tb] * k_cs,
@@ -755,6 +757,18 @@ CASEB = tuple((c, st + "b", wf, tb) for c, st, wf, tb in CASES)
 cfg2d("d0", "I", cases=CASEB, par=B1["par"])
 cfg2d("d1", "I", cases=CASEB, iv=dict(II=1, IIdf="ElectricField"), par=B1["par"])
 for k_, f_ in (("d2", 1.0), ("d3", 1.2), ("d4", 1.4), ("d5", 1.6)): cfg2d(k_, "W", wst="gr_c2hb", IIdf="ElectricField", k_cs=f_, par=B1["par"])
+# Round 22 (after round 21: with ElectricField the write of Fig.4(a) asks for about 5.7 fF on the Case 2 cell, score 0.79 at 5.88 fF, and the
+# DC Id-Vg with the model on stops in the gate ramp). d6 Id-Vg with the model on as a transient up-sweep 0 -> 1.8 V in 100 us (Cases 1, 2;
+# diagnostic) | d7 write at 4.2 fF x 1.35 | da, db write on the Case 1 / Case 3 cell with its own text capacitor (5.1 / 3.6 fF: the paper does
+# not say which case Fig.4(a) shows) | d8, d9 FBE with ElectricField, capacitors x 1.35, hole charge as in fin3 (x 1.0) and x 0.7 (the
+# stand-in generation is multiplied by the ionization, so its size has to be found again).
+KE = 1.35
+cfg2d("d6", "I", cases=CASEB[:2], iv=dict(II=1, IIdf="ElectricField", SwDown=0, VgMin=0.0, SwT=1e-4, ErrH=1e14), par=B1["par"])
+cfg2d("d7", "W", wst="gr_c2hb", IIdf="ElectricField", k_cs=KE, par=B1["par"])
+cfg2d("da", "W", wcase=CASEB[0], IIdf="ElectricField", par=B1["par"])
+cfg2d("db", "W", wcase=CASEB[2], IIdf="ElectricField", par=B1["par"])
+for k_, f_ in (("d8", 1.0), ("d9", 0.7)):
+    cfg2d(k_, "F", cases=CASEB, IIdf="ElectricField", gb={c: GBQ[c] * GBB[c] * f_ for c in GBQ}, ProbeX=1, ProbeT=1, k_cs=KE, par=B1["par"])
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
