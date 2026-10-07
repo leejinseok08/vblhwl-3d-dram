@@ -1,0 +1,81 @@
+{
+  "checked_at": "2026-10-07T09:15:15.162555+09:00",
+  "planned": 720,
+  "reused": 20,
+  "new_completed": 411,
+  "running": [
+    {
+      "id": "FC142_c3",
+      "pid": 62218,
+      "active": true,
+      "started_at": "2026-10-07T09:10:22.497343+09:00",
+      "saved_ns": 24.62,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "FC142_c4",
+      "pid": 62326,
+      "active": true,
+      "started_at": "2026-10-07T09:10:32.801049+09:00",
+      "saved_ns": 14.49,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "FC142_c5",
+      "pid": 62425,
+      "active": true,
+      "started_at": "2026-10-07T09:10:40.725138+09:00",
+      "saved_ns": 7.3149999999999995,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "FC143_c3",
+      "pid": 62812,
+      "active": true,
+      "started_at": "2026-10-07T09:12:01.843826+09:00",
+      "saved_ns": 20.727948717948703,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "FC143_c4",
+      "pid": 63033,
+      "active": true,
+      "started_at": "2026-10-07T09:12:20.053608+09:00",
+      "saved_ns": 0.126875,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "FC143_c5",
+      "pid": 63142,
+      "active": true,
+      "started_at": "2026-10-07T09:12:23.599729+09:00",
+      "saved_ns": 0.12125,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "FC144_c3",
+      "pid": 63822,
+      "active": true,
+      "started_at": "2026-10-07T09:14:30.729938+09:00",
+      "saved_ns": 0.115,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "FC144_c4",
+      "pid": 63960,
+      "active": true,
+      "started_at": "2026-10-07T09:14:52.143696+09:00",
+      "saved_ns": 0.012,
+      "partial_output_well_formed": true
+    }
+  ],
+  "analysed": 431,
+  "valid": 431,
+  "complete_groups": 85,
+  "quota": {
+    "used_KB": 7263736,
+    "soft_KB": 9437184,
+    "hard_KB": 10485760,
+    "reserve_ok": true
+  }
+}
