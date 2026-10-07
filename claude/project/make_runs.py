@@ -320,8 +320,9 @@ def deck_cho(rid, p, struct, test):
     for w in (BL, WL, WA):
         if w[-1][0] < tEnd: w.append((tEnd, w[-1][1]))
     el = ['{ Name="bl" Voltage=0.0 }' if p["BLhv"] < 0 else f'{{ Name="bl" Voltage=0.0 eRecVelocity=1e7 hRecVelocity={p["BLhv"]:g} }}']
+    snv = "" if p["SNhv"] < 0 else f' eRecVelocity=1e7 hRecVelocity={p["SNhv"]:g}'
     for c in ("va" if pair else "v"):
-        el += [f'{{ Name="sn_{c}" Voltage=0.0 }}', f'{{ Name="gs_{c}" Voltage=0.0 WorkFunction={p["WFs"]} }}', f'{{ Name="gd_{c}" Voltage=0.0 WorkFunction={p["WFd"]} }}']
+        el += [f'{{ Name="sn_{c}" Voltage=0.0{snv} }}', f'{{ Name="gs_{c}" Voltage=0.0 WorkFunction={p["WFs"]} }}', f'{{ Name="gd_{c}" Voltage=0.0 WorkFunction={p["WFd"]} }}']
     if p["Bgc"]: el.append('{ Name="body_v" Voltage=0.0 }')          # grounded body: held at 0 V
     ph = physics(p).replace("Physics {\n", f"Physics {{\n    AreaFactor = {2 if p['Dim'] == 3 else p['Wact'] / 1000:g}\n", 1); cp = currentplot(p)
     if tgen:      # constant generation in the body region, on between tgen[0] and tgen[1] with 0.1 ns ramps (manual: "Constant Optical Generation", eq. 699)
@@ -713,6 +714,13 @@ cfg2d("g1", "R", rhsel=("Ryi_yy", "Rzi_zz", "Rzg_zz"), IIdf="ElectricField", Pro
 cfg2d("g2", "R", rhsel=("Ry_yy", "Ryi_yy", "Rz_zz", "Rzi_zz"), BLhv=0.0, ProbeX=1, **B1)
 cfg2d("g3", "R", rhsel=("Ryi_yy", "Rzi_zz", "Rzg_zz"), IIdf="ElectricField", BLhv=0.0, ProbeX=1, **B1)
 cfg2d("g4", "R", rhsel=("Rzi_zz", "Rzg_zz"), IIdf="ElectricField", BLhv=0.0, ProbeX=1, Rwl=2e5, tWr=1.0, rh=dict(tHold=1.0), **B1)
+# Round 17 (2026-10-07, back-calculation of the hole charge of Fig.8 after the first look at round 16): with the driving force ElectricField the
+# write of the cell itself makes about 6300 pairs (default 150), and what the contacts do not take stays in a floating body. FBE of the five
+# cases with the paper's waveform, NO stand-in generation: o1 ElectricField + BL contact that takes no holes | o2 the same + storage-node
+# contact that takes no holes | o3 both contacts closed for holes, default driving force (which of the two does it).
+cfg2d("o1", "F", IIdf="ElectricField", BLhv=0.0, ProbeX=1, ProbeT=1, **B1)
+cfg2d("o2", "F", IIdf="ElectricField", BLhv=0.0, SNhv=0.0, ProbeX=1, ProbeT=1, **B1)
+cfg2d("o3", "F", BLhv=0.0, SNhv=0.0, ProbeX=1, ProbeT=1, **B1)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the

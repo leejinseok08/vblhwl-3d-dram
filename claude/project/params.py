@@ -111,6 +111,7 @@ P = dict(
     BLhv=-1.0,          # hole recombination velocity at the BL contact [cm/s]; -1 = ohmic. The 2D section puts the contact
                         # on the symmetry plane of the pillar, 50 nm from the junction; in the 3D array it sits at the
                         # end of the pillar. 0 = the contact takes no holes (electrons: 1e7 cm/s)   [ASM]
+    SNhv=-1.0,          # the same for the storage-node contacts (the section puts each at the end face of its 25 nm long N+ source); -1 = ohmic   [ASM]
     Dit=0, QC=0, ThinL=0,                # no interface traps, no quantum correction, no thin-layer mobility   [ASM]
     Mob=3,              # mobility: doping dependence + 3 = high-field saturation for electrons only (with it on holes the
                         # transient stalls at the WL edge; the Id-Vg is the same) / 2 = both carriers / 1 = + normal field /

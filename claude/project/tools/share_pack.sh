@@ -9,7 +9,7 @@ B=$(cd runs; ls run_d*.sh)
 python3 tools/run_state.py -a $B | grep '^[A-Z]' | sort -u > $T/run_state.txt
 # DtcRz_zz ran through the full-quota window of 2026-10-06 and lost whole rows (the first aggressor pulse): its files look whole
 ids=$(for r in $(python3 tools/run_state.py -c $B); do [ $r = DtcRz_zz ] || echo -n "$r "; done)
-q=$(cd runs; ls -d QS*_zz QR*_zz QY*_yy QSid_zz YE_c[1-5] E3I_c2 E3W_c2 E3H_c2 E3K_c2 E3F_c2 E3F125_c2 2>/dev/null | sort -u)    # the WL-resistor scan of the morning and the confirmed Id-Vg runs
+q=$(cd runs; ls -d QS*_zz QR*_zz QY*_yy QSid_zz YE_c[1-5] E3I_c2 E3W_c2 E3H_c2 E3K_c2 E3F_c2 E3F125_c2 E3S1_c2 E3S2_c2 2>/dev/null | sort -u)    # the WL-resistor scan of the morning and the confirmed Id-Vg runs
 # stopped by hand on 2026-10-06 once their question was settled; kept as evidence (whole up to the stop, the last row may be cut)
 part=$(cd runs; ls -d Dw5Rzg_zz Dw7Rzg_zz Du7Rzg_zz Du9Rzg_zz Dw5Rzi_zz Dw7Rzi_zz Dk7F_c1 Dk7F_c2 Dv4F_c1 Dv4F_c2 Dv5F_c1 Dv5F_c2 2>/dev/null)
 have() { for r in "$@"; do echo " $ids $q " | grep -q " $r " && echo $r; done; }    # only complete runs
@@ -37,6 +37,12 @@ python3 tools/gt_ta_scan.py > $T/body_reading_instants_round13.txt 2>&1
 python3 tools/gt_where.py > $T/body_reading_where_round13.txt 2>&1
 python3 tools/gt_avg_tab.py Dp1F Dp2F Ds1F Ds2F > $T/fbe_fig8_new_reading_rounds_13_14.txt 2>&1
 { python3 tools/gt3_fbe.py E3H_c2 E3K_c2 E3F_c2 E3F125_c2 Dh1F_c2 Dh2F_c2; python3 tools/gt_probes.py -k E3K_c2; env GT_W=2 python3 tools/gt_fig5c.py runs/E3I_c2; env GT_W=0.1 python3 tools/gt_fig5c.py runs/DfinI_c2; } > $T/fbe_3d_unit_cell_case2.txt 2>&1
+python3 tools/gt3_fbe.py E3S1_c2 E3S2_c2 E3F_c2 E3F125_c2 Ds1F_c2 Ds2F_c2 Dp1F_c2 Dp2F_c2 > $T/fbe_3d_new_reading_case2.txt 2>&1
+python3 tools/gt_rh_hist.py -c > $T/row_hammer_history_round15.txt 2>&1
+{ python3 tools/gt_rh_pairs.py DfinRzi_zz DfinRyi_yy Dx2Rzi_zz Dx2Ryi_yy Dx4Rzi_zz Dx7Rzi_zz Dx7Ryi_yy
+  python3 tools/gt_rh_body.py DfinRz_zz DfinRzi_zz DfinRzg_zz DfinRy_yy DfinRyi_yy Dx2Rzi_zz Dx4Rz_zz Dx4Rzi_zz Dx7Rzi_zz Dx7Ryi_yy; } > $T/row_hammer_pairs_and_body_round15.txt 2>&1
+g=$(have $(cd runs; ls -d Dg[1-4]R* 2>/dev/null))            # round 16: only what is complete
+[ -n "$g" ] && { python3 tools/gt_rh_hist.py -c fin g1 g2 g3 g4; python3 tools/gt_rh_pairs.py $g; python3 tools/gt_rh_body.py $g; } > $T/row_hammer_aggressor_holes_round16.txt 2>&1
 ( cd runs; for r in $ids $q $part; do ls $r/${r}_des.cmd $r/run.json $r/*.plt 2>/dev/null; done; ls _struct/*_dvs.cmd ) > $O/files.txt
 tar czf /tmp/share_vblhwl.tgz -C $O tables -C ~/vblhwl_3d_dram/runs -T $O/files.txt
 echo "complete runs packed: $(echo $ids | wc -w) + scan and Id-Vg runs $(echo $q | wc -w) + partial runs kept as evidence $(echo $part | wc -w); files $(wc -l < $O/files.txt); $(ls -la /tmp/share_vblhwl.tgz | awk '{printf "%.1f MB", $5 / 1e6}')"
