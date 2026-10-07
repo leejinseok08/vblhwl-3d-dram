@@ -60,6 +60,14 @@ the ones of that time (structures `gx_*` / `gp_*` are the meshes before the dopi
   these charges: no common time, Case 5 too fast); the row hammer (Fig.6(e), 7). 3D: E3S1_c2 / E3S2_c2 (x 1.31 / x 1.45, the average over
   the gated body recorded) started 09:19 after gt3_check (the same lines as at 01:29; mesh unchanged since 2026-10-06 17:28).
 
+- User (09:40): Codex's two folders in ~/bcvfet_tcad stay where they are. Asked for a detailed explanation of the open question
+  "where does the hole charge come from": given in the chat with a schematic (`tools/plot_hole_source.py` ->
+  `gt2d_hole_source_problem.png`). Numbers put side by side for it: holes needed (fin3) 1579 / 1354 / 1294 / 1118 / 1335 = 8.5 - 12 nA
+  if made in 21 ns; the model's generation in the hold 9 - 14 pA (about 1 / 900), its electrons 96 - 97 % into the storage node
+  (Q / C for these charges: 111 - 133 mV). Share of the needed charge that each known process gives: own generation for 18 us with
+  the node held 0.89 / 1.09 / 0.92 / 0.96 / 1.22; impact ionization x 7 at the WL switch-off 0.93 / 0.99 / 1.01 / 1.18 / 1.47 (rejected:
+  Fig.7(c)); pairs made by impact ionization during the write 0.57 / 0.52 / 0.47 / 0.76 / 0.60, of which 0 - 123 holes stay.
+
 ## 2026-10-07 (bj) the check in 3D (unit cell g3_c2h, Case 2): the gap between the bars and the losses is not a matter of the 2D section
 - Six runs, started 01:30 after the structure check of (bi), all exit 0: E3I_c2 21 min, E3K_c2 59 min, E3F_c2 / E3F125_c2 2 h 20 min each
   (a BL period of 21 ns in about 10 min; the 5 - 6 h told before were too many), E3W_c2, E3H_c2. 16 - 26 MB a run folder.
