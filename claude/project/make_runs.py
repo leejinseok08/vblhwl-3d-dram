@@ -561,7 +561,7 @@ def cfg2d(tag, what, k_cs=1.0, par=None, rh=None, gb=None, cases=None, wst="gr_c
         for c, st, wf, tb in CS: RUNS.append(R(f"D{tag}I_c{c}", "GT", st, "idvg", WFs=wf, WFd=wf, **dict(IV, Nthr=4, **pv, **(iv or {}))))
     if "W" in what:
         wc_, wst_, wwf_, wtb_ = wcase or (2, wst, 4.7, 20)
-        RUNS.append(R(f"D{tag}W_c{wc_}", "GT", wst_, "cho:W", WFs=wwf_, WFd=wwf_, II=1, Cs=CSB[wtb_] * k_cs, **dict(dict(PC, ErrH=1e14), **pv, **ov)))
+        RUNS.append(R(f"D{tag}W_c{wc_}", "GT", wst_, "cho:W", WFs=wwf_, WFd=wwf_, Cs=CSB[wtb_] * k_cs, **dict(dict(PC, ErrH=1e14, II=1), **pv, **ov)))
     if "F" in what:
         for c, st, wf, tb in CS:
             RUNS.append(R(f"D{tag}F_c{c}", "GT", st, "cho:FBE", WFs=wf, WFd=wf, Cs=CSB[tb] * k_cs,
@@ -795,6 +795,9 @@ cfg2d("dk", "F", cases=CASEB, gb={c: GBQ[c] * GBB[c] for c in GBQ}, ProbeX=1, Pr
 FN = {1: 1.23, 2: 1.195, 3: 1.14, 4: 1.135, 5: 1.18}
 cfg2d("dl", "F", gb={c: GBQ[c] * GBB[c] * FN[c] for c in GBQ}, ProbeX=1, ProbeT=1, II=0, **B1)
 cfg2d("dm", "F", cases=CASEB, gb={c: GBQ[c] * GBB[c] * FN[c] for c in GBQ}, ProbeX=1, ProbeT=1, II=0, **B1)
+# Round 27: dn = fin3's write with the avalanche model off (with dl: the device without an avalanche model in Fig.4(a), 5(c) and 8, as the
+# paper names the model for Fig.7 only).
+cfg2d("dn", "W", II=0, **B1)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the

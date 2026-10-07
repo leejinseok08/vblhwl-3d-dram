@@ -11,9 +11,9 @@ python3 tools/run_state.py -a $B | grep '^[A-Z]' | sort -u > $T/run_state.txt
 ids=$(for r in $(python3 tools/run_state.py -c $B); do [ $r = DtcRz_zz ] || echo -n "$r "; done)
 q=$(cd runs; ls -d QS*_zz QR*_zz QY*_yy QSid_zz YE_c[1-5] E3I_c2 E3W_c2 E3H_c2 E3K_c2 E3F_c2 E3F125_c2 E3S1_c2 E3S2_c2 2>/dev/null | sort -u)    # the WL-resistor scan of the morning and the confirmed Id-Vg runs
 # stopped by hand on 2026-10-06 once their question was settled; kept as evidence (whole up to the stop, the last row may be cut)
-part=$(cd runs; ls -d Dw5Rzg_zz Dw7Rzg_zz Du7Rzg_zz Du9Rzg_zz Dw5Rzi_zz Dw7Rzi_zz Dk7F_c1 Dk7F_c2 Dv4F_c1 Dv4F_c2 Dv5F_c1 Dv5F_c2 Dg3Rzi_zz Dg3Ryi_yy Dg4Rzi_zz Dg5Rzi_zz Dg5Ryi_yy Dg6Rzi_zz Dg7Rzbi_zz Dg8Rzi_zz Dg9Rzbi_zz Dg0Rzbi_zz Do2F_c1 Do2F_c2 Do2F_c3 Do2F_c4 Do2F_c5 2>/dev/null)
+part=$(cd runs; ls -d Dw5Rzg_zz Dw7Rzg_zz Du7Rzg_zz Du9Rzg_zz Dw5Rzi_zz Dw7Rzi_zz Dk7F_c1 Dk7F_c2 Dv4F_c1 Dv4F_c2 Dv5F_c1 Dv5F_c2 Dg3Rzi_zz Dg3Ryi_yy Dg4Rzi_zz Dg5Rzi_zz Dg5Ryi_yy Dg6Rzi_zz Dg7Rzbi_zz Dg8Rzi_zz Dg9Rzbi_zz Dg0Rzbi_zz Do2F_c1 Do2F_c2 Do2F_c3 Do2F_c4 Do2F_c5 Dd8F_c1 Dd9F_c1 DdeF_c1 DddF_c1 Dd1I_c1 Dd1I_c2 Dd1I_c3 Dd1I_c4 Dd1I_c5 Dd6I_c1 Dd6I_c2 DdgI_c1 DdgI_c2 DdhI_c2 DdiI_c2 2>/dev/null)
 have() { for r in "$@"; do echo " $ids $q " | grep -q " $r " && echo $r; done; }    # only complete runs
-python3 tools/score2d.py -v b0 cs ep e1 e2 w3 a5 ab r2 q0 q1 qn q3 f1 f2 f3 h1 h2 h3 h4 fin fin2 fin3 s1 p1 p2 ra sx sh bw m1 k6 k7 > $T/scorecard.txt 2>&1
+python3 tools/score2d.py -v b0 cs ep e1 e2 w3 a5 ab r2 q0 q1 qn q3 f1 f2 f3 h1 h2 h3 h4 fin fin2 fin3 fin3b fin3n fin3bn dj dk s1 p1 p2 ra sx sh bw m1 k6 k7 > $T/scorecard.txt 2>&1
 python3 tools/gt_fbe_tab.py Db0F Dq0F Dq1F DqnF Dq3F Df1F Df2F Df3F Dh1F Dh2F Dh3F Dh4F DfinF DraF DsxF DshF DbwF Dk6F Dk7F > $T/fbe_fig8_tables.txt 2>&1
 for t in h1 fin ra k6 k7; do for c in 1 2 3 4 5; do [ -n "$(have D${t}F_c$c)" ] || continue; echo "D${t}F_c$c"; python3 tools/gt_tran.py runs/D${t}F_c$c 2>&1 | grep -E "FBE|paper Fig.8" | cut -c1-220; done; done > $T/fbe_loss_per_phase.txt
 python3 tools/rh_tab.py $(have $(cd runs; ls -d Db0R* DcsR* DepR* Dr2R* DfinR* DtcR* DhaR* DhcR* DybR* DydR* Q[SRY]*_[yz][yz] 2>/dev/null)) > $T/row_hammer_table.txt 2>&1
@@ -47,6 +47,13 @@ G=$(cd runs; echo $(ls -d Dg[0-9]R* 2>/dev/null))
   for r in Dg1Rzi_zz Dg1Ryi_yy Dg3Rzi_zz Dg3Ryi_yy Dg4Rzi_zz Dg5Rzi_zz Dg5Ryi_yy Dg6Rzi_zz Dg7Rzbi_zz Dg7Rzbg_zz Dg3Rzg_zz Dg8Rzi_zz Dg9Rzbi_zz Dg0Rzbi_zz; do [ -d runs/$r ] && python3 tools/gt_rh_wave.py $r; done; } > $T/row_hammer_aggressor_holes_rounds16_18.txt 2>&1
 { python3 tools/gt_avg_tab.py Do1F Do3F Do4F; python3 tools/gt3_fbe.py Do2F_c1 Do2F_c2 Do2F_c3 Do2F_c4 Do2F_c5
   for r in DfinW_c2 Db0W_c2 Do4W_c2 Do5W_c2; do python3 tools/gt_tran.py runs/$r 2>&1 | head -2 | cut -c1-200; done; } > $T/fbe_and_write_no_standin_rounds17_20.txt 2>&1
+# rounds 21 - 26 (user: set the device up with ElectricField and the BL contact at the pillar end; by-products: contact position, avalanche model off in the FBE)
+{ env GT_W=0.1 python3 tools/gt_fig5c.py $(for c in 1 2 3 4 5; do echo runs/Dd0I_c$c; done) runs/DdgI_c1 runs/DdgI_c2 runs/DdhI_c2 runs/Dd6I_c2 runs/DdiI_c2
+  python3 tools/gt_write_tab.py DfinW_c2 DdcW_c2 Db0W_c2 Do4W_c2 Dd2W_c2 Dd3W_c2 Dd7W_c2 Dd4W_c2 Dd5W_c2 DdaW_c1 DdbW_c3
+  python3 tools/gt_avg_tab.py Ds2F DdcF DdjF DdkF DdlF DdmF Dd8F Dd9F DdeF DddF
+  python3 tools/gt3_fbe.py $(for t in d8 d9 de dd; do for c in 1 2 3 4 5; do echo D${t}F_c$c; done; done)
+  python3 tools/gt_fbe_pairs.py Ds2F_c1 DdcF_c1 DdlF_c1 DdmF_c1 DdeF_c1 Ds2F_c2 DdcF_c2 DdlF_c2 DdmF_c2 DddF_c2 DdeF_c2 Ds2F_c3 DdlF_c3 DdeF_c3
+  python3 tools/score2d.py -v fin3 fin3b fin3n fin3bn dj dk; } > $T/electricfield_end_contact_rounds21_26.txt 2>&1
 ( cd runs; for r in $ids $q $part; do ls $r/${r}_des.cmd $r/run.json $r/*.plt 2>/dev/null; done; ls _struct/*_dvs.cmd ) > $O/files.txt
 tar czf /tmp/share_vblhwl.tgz -C $O tables -C ~/vblhwl_3d_dram/runs -T $O/files.txt
 echo "complete runs packed: $(echo $ids | wc -w) + scan and Id-Vg runs $(echo $q | wc -w) + partial runs kept as evidence $(echo $part | wc -w); files $(wc -l < $O/files.txt); $(ls -la /tmp/share_vblhwl.tgz | awk '{printf "%.1f MB", $5 / 1e6}')"
