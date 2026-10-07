@@ -826,6 +826,17 @@ for k_, (a_, b_) in HB.items():
     if k_ != "u":
         cfg2d("d" + k_, "I", cases=CASEB, par=cal_par(a_, b_))
         cfg2d("d" + k_, "F", cases=CASEB[4:], gb={5: GBQ[5] * GBB[5] * FN[5]}, ProbeX=1, ProbeT=1, II=0, k_cs=1.8 / 4.2, par=cal_par(a_, b_))
+# Round 31 (after round 30: the GIDL branch of Hsu's silicon transistor has the model's shape at B = 2.0e7 V/cm (tilt +0.39 / +0.15 /
+# -0.01 / -0.18 at 2.25e7 / 2.1e7 / 2.0e7 / 1.9e7), Cho's points at -1 V then ask for A = 1.3e20 and Hsu's level for 1.0e20; the loss of
+# Case 5 does not move with A and B at all). dy = the device after the user's decisions with Hurkx A 1.2e20, B 2.0e7: Id-Vg, write and
+# FBE without an avalanche model on the end-contact cells, and the row hammer on the pairs with the BL contact at the pillar end
+# (Fig.6(e): model off; Fig.7: on, default driving force) | hy = Hsu's conditions with it.
+PN = cal_par(1.2e20, 2.0e7); B2 = dict(k_cs=1.8 / 4.2, par=PN)
+cfg2d("dy", "I", cases=CASEB, par=PN)
+cfg2d("dy", "W", wst="gr_c2hb", II=0, **B2)
+cfg2d("dy", "F", cases=CASEB, gb={c: GBQ[c] * GBB[c] * FN[c] for c in GBQ}, ProbeX=1, ProbeT=1, II=0, **B2)
+cfg2d("dy", "R", rhsel=("Ry_yy", "Ryi_yy", "Rzb_zz", "Rzbi_zz", "Rzbg_zz"), **B2)
+cfg2d("hy", "I", cases=HS3, iv=IH, par=PN)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the

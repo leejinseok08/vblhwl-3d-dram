@@ -25,6 +25,9 @@ elog = lambda s, r: math.log10(max(s, P.FLOOR) / max(r, P.FLOOR)) / P.DEC_TOL
 COMPOSE = {"fin2": dict(I="fin", W="fin", F="h1", R="fin"), "fin3": dict(I="fin", W="fin", F="s2", R="fin"),
            # 2026-10-07 evening (NOTES (bn)): fin3 on the cells with the BL contact at the pillar end (b), fin3 with the avalanche model off
            # in the FBE and the stand-in rate raised so that the charge is back on the bars (n), both (bn). Their row hammer is fin's (axis contact), not redone.
+           # fin4 = the device after the user's decisions of 2026-10-07 night (NOTES (br)): BL contact of the single cells at the pillar end,
+           # no avalanche model in Fig.4(a) / Fig.5(c) / Fig.8 (the same runs as fin3bn)
+           "fin4": dict(I="d0", W="do", F="dm", R="fin"),
            "fin3b": dict(I="d0", W="dc", F="dc", R="fin"), "fin3n": dict(I="fin", W="dn", F="dl", R="fin"), "fin3bn": dict(I="d0", W="do", F="dm", R="fin")}
 # Reading of Fig.8(a), back-calculated on 2026-10-07 (NOTES (bk); the paper does not say where it reads the body potential): for the FBE
 # runs named here the body rise is the AVERAGE electrostatic potential of the body under the gate (column AveWindow, runs with
@@ -94,13 +97,15 @@ def rh_run(rid):
 
 def rh(tag):
     tag = part(tag, "R"); e, ei, txt = [], [], []
-    for k, rid, ref in (("yy", f"D{tag}Ry_yy", P.RH["yy"]), ("zz", f"D{tag}Rz_zz", P.RH["zz"])):
-        rid = first(rid, rid.replace(f"D{tag}", "Db0"))
+    # a configuration that has the Z-Z' pair with the BL contact at the pillar end (run names Rzb.._zz) is scored from that pair
+    own = lambda n: next((x for x in (f"D{tag}{n.replace('Rz', 'Rzb', 1)}", f"D{tag}{n}") if os.path.isdir(rd(x))), f"D{tag}{n}")
+    for k, n, ref in (("yy", "Ry_yy", P.RH["yy"]), ("zz", "Rz_zz", P.RH["zz"])):
+        rid = first(own(n), "Db0" + n)
         m = rh_run(rid) if rid else None
         if not m or m["n"] < 10: txt.append(f"{k} off: not complete"); continue
         e.append(elog(m["per"], ref)); txt.append(f"{k} off {m['per']:+.4f} (last 5: {m['last']:+.4f})")
-    for k, rid, ref, kind in (("yy", f"D{tag}Ryi_yy", P.RH_II["yy"], "per"), ("zz", f"D{tag}Rzi_zz", P.RH_II["zz_drop"], "tot"), ("zz gnd", f"D{tag}Rzg_zz", P.RH_II["zz_gnd"], "per")):
-        rid = first(rid, rid.replace(f"D{tag}", "Db0"))
+    for k, n, ref, kind in (("yy", "Ryi_yy", P.RH_II["yy"], "per"), ("zz", "Rzi_zz", P.RH_II["zz_drop"], "tot"), ("zz gnd", "Rzg_zz", P.RH_II["zz_gnd"], "per")):
+        rid = first(own(n), "Db0" + n)
         m = rh_run(rid) if rid else None
         if not m or m["n"] < 10: txt.append(f"{k} on: not complete"); continue
         ei.append(elog(m[kind], ref)); txt.append(f"{k} on {m[kind]:+.4f}{' mV total' if kind == 'tot' else ''}")

@@ -17,15 +17,16 @@ def cross(pts, lev):                          # Vg where the curve of {Vg: log10
     for a, b in zip(v[k:], v[k + 1:]):
         if pts[a] < lev <= pts[b]: return a + (b - a) * (lev - pts[a]) / (pts[b] - pts[a])
 hv = [cross(HSU, l) for l in (-9, -7, -5)]
-print("Vg [V]          " + " ".join(f"{v:+6.2f}" for v in HSU))
-print("Hsu Fig.2(c)    " + " ".join(f"{l:6.2f}" for l in HSU.values()) + f"   | Vg at 1e-9 / 1e-7 / 1e-5 A/um: {hv[0]:+.3f} / {hv[1]:+.3f} / {hv[2]:+.3f} V, {(hv[1] - hv[0]) / 2 * 1e3:.1f} mV/dec; minimum under 1e-16 near -0.6 V")
-for rd in sys.argv[1:]:
-    name = os.path.basename(rd.rstrip("/\\"))
-    try: pts = G.curve(rd)
-    except Exception as e: print(f"{name:15s} no curve ({e})"); continue
-    m = [G.at(pts, v) for v in HSU]; k = min(range(len(pts)), key=lambda j: pts[j][1])
-    c = [G.cross(pts, 10.0 ** l) for l in (-9, -7, -5)]
-    print(f"{name:15s} " + " ".join("     -" if x is None else f"{x:6.2f}" for x in m) + "   | " + " / ".join("  -  " if x is None else f"{x:+.3f}" for x in c)
-          + (f" V, {(c[1] - c[0]) / 2 * 1e3:.1f} mV/dec" if None not in c[:2] else "") + f"; minimum {math.log10(pts[k][1]):.2f} at {pts[k][0]:+.2f} V; Vg {pts[0][0]:+.2f} .. {pts[-1][0]:+.2f}")
-    print(f"{'  minus Hsu':15s} " + " ".join("     -" if x is None else f"{x - l:+6.2f}" for x, l in zip(m, HSU.values()))
-          + ("   | " + " / ".join(f"{a - b:+.3f}" for a, b in zip(c, hv)) + " V" if None not in c else ""))
+if __name__ == "__main__":
+    print("Vg [V]          " + " ".join(f"{v:+6.2f}" for v in HSU))
+    print("Hsu Fig.2(c)    " + " ".join(f"{l:6.2f}" for l in HSU.values()) + f"   | Vg at 1e-9 / 1e-7 / 1e-5 A/um: {hv[0]:+.3f} / {hv[1]:+.3f} / {hv[2]:+.3f} V, {(hv[1] - hv[0]) / 2 * 1e3:.1f} mV/dec; minimum under 1e-16 near -0.6 V")
+    for rd in sys.argv[1:]:
+        name = os.path.basename(rd.rstrip("/\\"))
+        try: pts = G.curve(rd)
+        except Exception as e: print(f"{name:15s} no curve ({e})"); continue
+        m = [G.at(pts, v) for v in HSU]; k = min(range(len(pts)), key=lambda j: pts[j][1])
+        c = [G.cross(pts, 10.0 ** l) for l in (-9, -7, -5)]
+        print(f"{name:15s} " + " ".join("     -" if x is None else f"{x:6.2f}" for x in m) + "   | " + " / ".join("  -  " if x is None else f"{x:+.3f}" for x in c)
+              + (f" V, {(c[1] - c[0]) / 2 * 1e3:.1f} mV/dec" if None not in c[:2] else "") + f"; minimum {math.log10(pts[k][1]):.2f} at {pts[k][0]:+.2f} V; Vg {pts[0][0]:+.2f} .. {pts[-1][0]:+.2f}")
+        print(f"{'  minus Hsu':15s} " + " ".join("     -" if x is None else f"{x - l:+6.2f}" for x, l in zip(m, HSU.values()))
+              + ("   | " + " / ".join(f"{a - b:+.3f}" for a, b in zip(c, hv)) + " V" if None not in c else ""))

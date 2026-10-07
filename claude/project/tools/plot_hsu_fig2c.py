@@ -7,7 +7,7 @@ os.environ.setdefault("GT_RUNS", r"C:\Users\LEEJINSEOK\vblhwl-3d-dram\claude\dat
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import gt_hsu_fig2c as H                 # sets GT_W = 1 (A/um), prints its table for no runs
+import gt_hsu_fig2c as H                 # sets GT_W = 1 (A/um)
 G = H.G; RUNS = os.environ["GT_RUNS"]
 OUT = sys.argv[1] if len(sys.argv) > 1 else r"C:\Users\LEEJINSEOK\Desktop\서강대\반엘프\pic_vbl_hwl_1t1c_3ddram\gt2d_hsu_fig2c_si_reference_round29.png"
 plt.rcParams["font.family"] = ["Malgun Gothic", "DejaVu Sans"]; plt.rcParams["axes.unicode_minus"] = False
