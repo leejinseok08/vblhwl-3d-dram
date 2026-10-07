@@ -54,6 +54,8 @@ G=$(cd runs; echo $(ls -d Dg[0-9]R* 2>/dev/null))
   python3 tools/gt3_fbe.py $(for t in d8 d9 de dd; do for c in 1 2 3 4 5; do echo D${t}F_c$c; done; done)
   python3 tools/gt_fbe_pairs.py Ds2F_c1 DdcF_c1 DdlF_c1 DdmF_c1 DdeF_c1 Ds2F_c2 DdcF_c2 DdlF_c2 DdmF_c2 DddF_c2 DdeF_c2 Ds2F_c3 DdlF_c3 DdeF_c3
   python3 tools/score2d.py -v fin3 fin3b fin3n fin3bn dj dk; } > $T/electricfield_contact_avalanche_rounds21_28.txt 2>&1
+# round 29: our 10 nm cells at the conditions of the silicon reference transistor of Hsu .. Yu, IMW 2025 / TED 2026, Fig.2(c); NOTES (bq)
+python3 tools/gt_hsu_fig2c.py runs/DdrI_c3 runs/DdsI_c3 runs/DdrI_c4 runs/DdsI_c4 runs/DdtI_c4 > $T/hsu_fig2c_si_reference_round29.txt 2>&1
 # what the loss is made of (Case 5 = tunnelling at the storage-node junction, not the floating body); NOTES (bo)
 python3 tools/gt_fbe_leak.py Ds2F_c1 Ds2F_c2 Ds2F_c3 Ds2F_c4 Ds2F_c5 DdlF_c1 DdlF_c2 DdlF_c3 DdlF_c4 DdlF_c5 Dh1F_c5 DfinF_c5 DcsF_c5 Db0F_c5 > $T/fbe_leak_split_case5.txt 2>&1
 ( cd runs; for r in $ids $q $part; do ls $r/${r}_des.cmd $r/run.json $r/*.plt 2>/dev/null; done; ls _struct/*_dvs.cmd ) > $O/files.txt

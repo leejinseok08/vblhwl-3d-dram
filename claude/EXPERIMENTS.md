@@ -1,6 +1,6 @@
 # 실험 등록부 — 겹치지 않게 쓰는 표
 
-갱신: 2026-10-07 21:10 KST (Claude). **새 실행을 만들기 전에 이 파일과 Codex의 `docs/`, `snapshot_status.json`, 서버에서 돌고 있는 실행을 먼저 봐요.**
+갱신: 2026-10-07 21:25 KST (Claude). **새 실행을 만들기 전에 이 파일과 Codex의 `docs/`, `snapshot_status.json`, 서버에서 돌고 있는 실행을 먼저 봐요.**
 
 ## 규칙 (Claude가 지키는 것)
 
@@ -221,11 +221,23 @@ FBE 첫 BL 하강 21.0 ns · 주기 21.0 ns · 에지 0.5 ns · 저전위 9회 �
 - `fin3`는 바꾸지 않았어요. 두 부산물을 소자에 넣을지는 사용자 결정이에요 ("FBE에서 충돌 이온화 켬"은 2026-10-06의 사용자 조건).
 표 `data/tables/electricfield_contact_avalanche_rounds21_28.txt`, 그림 `reports/pictures/gt2d_electricfield_contact_avalanche_rounds21_28.png`, 분석 ANALYSIS.md 4.10절.
 
+### 라운드 29 (2026-10-07 21:03~21:11): 같은 저자의 산화물 채널 논문에 실린 실리콘 비교 트랜지스터 (사용자 질문)
+
+Hsu, Cho, Sharda, Park, Datta, Yu, IMW 2025 Fig. 2(c) (TED 73(9), 2026에 같은 그림): L 100 nm, t_Si 10 nm, 폭 100 nm, V_DS 1 V, Vg −2 ~ 2.5 V, A/µm. 덱은 `fin`의 Id–Vg 덱에서 V_DS, 게이트 범위, 게이트 일함수(4.3 eV, 그 곡선의 문턱에서 역산)만 바꿨어요.
+
+| 구성 | 바꾼 것 | 실행 | 결과 (논문의 실리콘 곡선과의 차이) |
+|---|---|---|---|
+| `dr` | Case 3 / Case 4 구조, Hurkx A 1.7×10²¹ | `DdrI_c3`, `DdrI_c4` (완료) | Case 3 구조: 문턱 +0.033 V, 기울기 60.2 = 60.2 mV/dec, 켜진 전류 ±0.02 decade, GIDL 가지 −0.09 ~ +0.16 decade (−0.7 ~ −1.75 V). Case 4 구조: 문턱 −0.006 V, 켜진 전류 +0.10~0.13, GIDL 가지 −0.50 ~ −0.10 |
+| `ds` | 같은 것, Hurkx A 기본값 | `DdsI_c3`, `DdsI_c4` (완료) | Case 3 구조: GIDL 가지 +0.21 ~ +0.45 decade |
+| `dt` | `dr` Case 4 구조를 V_DS 1.1 V로 | `DdtI_c4` (완료) | 드레인 0.1 V가 GIDL 가지를 0.4~0.7 decade 올림 |
+
+- 그 실리콘 비교 트랜지스터는 우리 Case 3 구조(몸체 10 nm, N_A 10¹⁸, HfO2 5 nm)에 게이트 일함수 약 4.27 eV를 준 것과 같아요.
+- Cho 논문에 맞춰 정한 HfO2 5 nm, Hurkx A 1.7×10²¹, 폭 0.1 µm, V_DS 1.1 V가 독립된 곡선으로 확인됐어요.
+표 `data/tables/hsu_fig2c_si_reference_round29.txt`, 그림 `reports/pictures/gt2d_hsu_fig2c_si_reference_round29.png`, 분석 ANALYSIS.md 9절.
+
 ## 3. 진행 중
 
-| 배치 | 구성 | 바꾼 것 | 실행 | 시작 |
-|---|---|---|---|---|
-| 라운드 29 `run_d29.sh` (2D) | `dr`, `ds`, `dt` | 사용자 질문 (2026-10-07 밤): 같은 저자의 산화물 채널 논문(Hsu IMW 2025, TED 2026)의 소자가 우리 소자와 같은가. 그 논문 Fig. 2(c)에 같은 셀 그림의 **실리콘** 비교 트랜지스터 TCAD Id–Vg가 있어요 (L 100 nm, t_Si 10 nm, W 100 nm, V_DS 1 V, Vg −2 ~ 2.5 V). 우리 10 nm 셀 두 개(`gr_c3h`, `gr_c4h`)를 그 조건으로 돌려 곡선을 겹쳐 봐요. 게이트 일함수는 그 곡선의 문턱에 맞는 4.3 eV(역산). `dr` = 맞춘 Hurkx A, `ds` = 기본 A, `dt` = `dr`을 V_DS 1.1 V로 | `DdrI_c3~4`, `DdsI_c3~4`, `DdtI_c4` (5개) | 2026-10-07 21:10 |
+Claude가 돌리고 있는 배치는 없어요 (2026-10-07 21:25).
 
 라운드 21~28은 2절로 옮겼어요. 아래는 앞선 배치들을 등록할 때 적어 둔 메모예요.
 

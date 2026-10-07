@@ -99,7 +99,7 @@ Run names must differ by more than letter case (the PC's file system is case-bli
   need quotes or loops (the remote shell is tcsh).
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
-## State (2026-10-07; details NOTES (ax) .. (bp))
+## State (2026-10-07; details NOTES (ax) .. (bq))
 **User, 2026-10-07: the authors cannot be asked. What the paper leaves open is back-calculated from its figures and labelled as such.**
 Back-calculated so far (NOTES (bk)): Fig.8(a) reads the body potential as the AVERAGE electrostatic potential of the body under the gate,
 counted from the start of the transient, at the first BL edge (not the body-centre point before the fall: with that reading bars and
@@ -147,6 +147,13 @@ Rounds 15 - 20 of 2026-10-07 (NOTES (bl), (bm)); `fin3` is unchanged by them:
   drawn only to 67 ns: 3.5 mV, 5.0 mV after the second low phase). NOT on the figure: Case 4 at 200 ns (the 7.0 was my extrapolation;
   the scorer now uses the 5.0 mV point, `paper_targets.FBE_LAST`). Case 5 rests on reading the blue stretch (121 - 200 ns) of the line
   on the 1.1 V level as curve 5 (it is black before); if that is not the curve, Case 5 is known only to 5.6 mV (left graph).
+- The authors' oxide-channel papers (Hsu .. Cho .. Yu, IMW 2025 = A02, TED 2026 = A08; NOTES (bq), round 29): their own device is an IWO
+  channel with L 25 nm, not ours, but the cell frame is the same, and the SILICON reference transistor of their Fig.2(c) (L 100 nm,
+  t_Si 10 nm, W 100 nm, V_DS 1 V, A/um) is our Case 3 cell: with only the gate work function changed (4.3 eV; theirs about 4.27) the
+  runs give the same slope (60.2 mV/dec), the on-current within 0.02 decade and the GIDL branch within 0.16 decade from -0.7 to
+  -1.75 V. An independent check of HfO2 5 nm, of Hurkx A 1.7e21 (the default is 0.2 - 0.45 decade high), of the 0.1 um width and of
+  V_DS = 1.1 V in Cho's Fig.5(c). Tools `gt_hsu_fig2c.py`, `plot_hsu_fig2c.py`. Nothing in those papers on the hole charge, on
+  impact ionization or on the storage node of the transient.
 What follows describes `fin2`, the configuration before this step.
 The 2D device is configuration `fin2` = the runs DfinI_c1..5, DfinW_c2, Dh1F_c1..5, DfinR* (`COMPOSE` in tools/score2d.py; the
 user's decisions of the afternoon of 2026-10-06 are in it):

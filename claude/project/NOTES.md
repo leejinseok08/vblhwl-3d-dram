@@ -3,6 +3,50 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-07 (bq) user: "isn't the device of the authors' oxide-channel papers ours?" (Hsu .. Cho .. Yu, IMW 2025 = A02; TED 73(9) 2026 = A08) - the papers' own device is not (IWO channel, L 25 nm), but the cell frame is the same and the SILICON reference transistor of their Fig.2(c) IS our cell: round 29 reproduces its Id-Vg with nothing changed but the gate work function
+- Read: both PDFs whole (A02 four pages, A08 seven; the user's copies in 저자의 논문). They propose an oxide-semiconductor (W-doped In2O3,
+  IWO) access transistor in the horizontal 1T1C / vertical-BL cell; A08 adds dual-deck stacking and a multilevel cell. No floating-body
+  effect, no row hammer in them: an n-type oxide channel has no p body, and the papers say its wide band gap suppresses band-to-band
+  tunnelling and GIDL.
+- Same frame as Cho's cell: A02 Fig.6(c),(d) = A08 Table I: channel thickness 10 nm, two gate oxides of 5 nm, two gates of 20 nm, isolation
+  oxide 30 nm (Z pitch 90 nm), BL pitch 200 nm, BL / capacitor radius 50 nm (A08), average WL pitch 275 nm, capacitor dielectric 4 nm (EOT
+  3 A), TiN / W 6 nm, 2WLtBL 175 nm, 2WLtC 375 nm; channel length 25 nm. Cho's Fig.5(a): the same numbers with Lg 100 nm and bodies of
+  30 / 20 / 10 nm. Bank tables of both papers: memory-cell pitch 625 nm for the Si-based array, 550 nm for the IWO one (the 75 nm of
+  channel length); V_DD 1.1 V, V_PP 1.8 V. Legend of Fig.1: the Si-based cell has "HKMG"; capacitor ZrOx with TiN. Cs = 4 fF, calculated
+  for EOT 3 A (both). A02 text: the hold voltage of the silicon transistor is designed to be -0.5 V; Si needs L = 100 nm for its leakage.
+- Fig.2(c), the same figure in both: measured IWO transistor against TCAD curves of a silicon dual-gate transistor "as shown in the
+  inset"; the inset is the cell drawing of Cho's Fig.2 ((ai) noted that and took the width from it). L_Si 100 / 25 nm, W_Si 100 nm, t_Si
+  10 nm, W_eff 200 nm, V_DS = 1 V (printed in the TED version), drain current in A/um, Vg -2 .. 2.5 V.
+  Blue curve (L = 100 nm) read off the embedded image of A08 (`tools/gt_hsu_fig2c.py`, dict HSU; frame x 146 .. 917, y 420 .. 806 of the
+  970 x 920 image: 0.036 decade and 0.006 V per pixel): Vg at 1e-9 / 1e-7 / 1e-5 A/um = -0.127 / -0.007 / +0.135 V, 60.2 mV/dec, minimum
+  below 1e-16 A/um near -0.6 V, GIDL branch log10 I = -15.84 / -15.18 / -14.56 / -14.04 / -13.17 / -12.56 / -12.05 at -0.7 / -0.8 / -0.9 /
+  -1.0 / -1.25 / -1.5 / -1.75 V, on-current -2.83 / -2.71 / -2.65 / -2.60 at 1.0 / 1.5 / 2.0 / 2.4 V.
+- Round 29 (`run_d29.sh`, 21:03, 5 runs, gr_c3h / gr_c4h; Codex's state fetched (73e8c4c, its factorial at F3C045), registered and
+  pushed, decks md5-equal PC / server, gate ALL PASS with both lines read; the structures were held against Cho's Fig.5(a)/(b) and the
+  conditions against Fig.2(c) of the two papers). Decks = fin's Id-Vg decks with V_DS 1.0 V, Vg 2.5 -> -2.0 V and the gate work function
+  4.3 eV [back-calculated from the thresholds above: Cho's Case 3 curve lies 0.43 V higher; Cho's cases have 4.7 / 5.0 eV].
+    run      cell, Hurkx A          | Vg at 1e-9 / 1e-7 / 1e-5 minus the paper | slope | GIDL branch minus the paper, -0.7 .. -1.75 V | on-current minus the paper, 1.0 .. 2.4 V | minimum
+    DdrI_c3  N_A 1e18, 1.7e21       | +0.033 / +0.033 / +0.024 V              | 60.2  | -0.09 -0.03 -0.02 -0.02 +0.09 +0.16 +0.14   | -0.02 -0.01 +0.01 +0.01                 | -16.62 at -0.56 V
+    DdsI_c3  N_A 1e18, default      | the same                                | 60.2  | +0.21 +0.28 +0.29 +0.29 +0.40 +0.45 +0.42   | the same                                | -16.48 at -0.56 V
+    DdrI_c4  N_A 1e16, 1.7e21       | -0.006 / -0.006 / -0.022 V              | 60.3  | (kink) -0.50 -0.44 -0.39 -0.21 -0.10 -0.10  | +0.13 +0.11 +0.11 +0.10                 | -16.18 at -0.73 V
+    DdsI_c4  N_A 1e16, default      | the same                                | 60.3  | -0.31 -0.19 -0.12 -0.08 +0.10 +0.19 +0.17   | the same                                | -16.32 at -0.68 V
+    DdtI_c4  1e16, 1.7e21, V_DS 1.1 | the same                                | 60.3  | +0.17 +0.22 +0.22 +0.23 +0.33 +0.36 +0.30   | +0.15 +0.13 +0.13 +0.12                 | -16.31 at -0.60 V
+  The Case 3 cell (10 nm body, N_A 1e18, HfO2 5 nm) with the fitted Hurkx A is their silicon transistor: slope equal to 0.1 mV/dec,
+  on-current within 0.02 decade from 1.0 to 2.4 V, GIDL branch within 0.16 decade over 1.05 V of gate voltage, minimum at -0.56 V
+  (theirs near -0.6 V). Its thresholds sit 0.03 V high: their work function is about 4.27 eV. The 1e16 cell has the thresholds at 4.3 eV
+  but not the on-current (+0.10 .. +0.13 decade) and not the branch.
+- What this confirms, none of it fitted to this curve: (1) gate dielectric and transport of our cell (HfO2 5 nm was a fit to Cho's
+  thresholds; here the slope and the on-current of an independent curve); (2) Hurkx A 1.7e21 (a fit to Cho's GIDL at -1 V with V_DS
+  1.1 V): the default A lies 0.21 - 0.45 decade above their branch; (3) the width: Cho's amperes are the 2D current x 0.1 um; (4) V_DS
+  of Cho's Fig.5(c) = 1.1 V and not 1.0 V, if both papers use one tunnelling model: 0.1 V of drain bias moves the branch by 0.4 - 0.7
+  decade (dt against dr), so a Fig.5(c) taken at 1.0 V would have asked for an A 2.5 - 5 times larger, which would miss this curve.
+- What it leaves open: the model's branch is a little steeper than theirs (residual -0.09 at -0.7 V, +0.14 at -1.75 V): a hint at a
+  smaller Hurkx B, the direction Case 5 asks for ((bo)); at this reading accuracy no more than a hint. The papers say nothing on the
+  body's hole charge, on impact ionization or on the storage node of a transient (their Cs = 4 fF is a calculated value for the sense
+  margin). Not ours: L 25 nm, IWO, the hold voltage of -0.5 V (belongs to their work function).
+- Picture: `pic_vbl_hwl_1t1c_3ddram\gt2d_hsu_fig2c_si_reference_round29.png` (`tools/plot_hsu_fig2c.py`, our curves and the read points,
+  no crop of the paper). Table `hsu_fig2c_si_reference_round29.txt`. Report 9.20, shared analysis section 9.
+
 ## 2026-10-07 (bp) user: "you are confusing Fig.8(c) with the index of the chart" - Fig.8(c) taken apart element by element: nothing was read from the inset or the legend, but two of my "paper values" are not on the figure as values (Case 4 at 200 ns, Case 5), and the zoom's scale was 4 % off in (bo)
 - The user's description, which is right: left graph = storage node of all three 10 nm cases on the full scale (0 .. 1.1 V), all at 1.1 V
   and a little lower with time; right graph = the on-current bars as an inset, and outside the inset the fall of the storage node with

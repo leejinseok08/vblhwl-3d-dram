@@ -117,6 +117,11 @@ DdnW_c2      complete                     0.18 ns of 0.18 ns
 DdoW_c2      complete                     0.18 ns of 0.18 ns
 DdpW_c2      complete                     0.18 ns of 0.18 ns
 DdqW_c2      complete                     0.18 ns of 0.18 ns
+DdrI_c3      complete                     
+DdrI_c4      complete                     
+DdsI_c3      complete                     
+DdsI_c4      complete                     
+DdtI_c4      complete                     
 De1F_c1      complete                     210.1 ns of 210.1 ns
 De1F_c2      complete                     210.1 ns of 210.1 ns
 De1F_c3      complete                     210.1 ns of 210.1 ns
