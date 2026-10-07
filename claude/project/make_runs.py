@@ -27,6 +27,8 @@ STRUCTS = dict(
     gr_c1=dict(Tbody=30, Gdi="SiO2"), gr_c2=dict(Gdi="SiO2"), gr_c3=dict(Tbody=10, Gdi="SiO2"), gr_c4=dict(Tbody=10, Nch=1e16, Gdi="SiO2"),
     gr_c1h=dict(Tbody=30), gr_c2h=dict(), gr_c3h=dict(Tbody=10), gr_c4h=dict(Tbody=10, Nch=1e16),
     gr_yy=dict(Pair="yy"), gr_zz=dict(Pair="zz"), gr_zzg=dict(Pair="zz", Bgc=1), gr_zzb=dict(Pair="zz", Blc="bot"), gr_zzbg=dict(Pair="zz", Blc="bot", Bgc=1),
+    # the single cells of Cases 1 - 5 with the BL contact at the bottom end of the pillar (2026-10-07; CASEB below)
+    gr_c1hb=dict(Tbody=30, Blc="bot"), gr_c2hb=dict(Blc="bot"), gr_c3hb=dict(Tbody=10, Blc="bot"), gr_c4hb=dict(Tbody=10, Nch=1e16, Blc="bot"),
     g3_c2h=dict(Tpl="sde_gt3_dvs.cmd", Wbl=50, Dim=3),
     # 3D, Case 2 device, row hammer Case 3 (X-X'): half victim row + wall + half aggressor row, WL cut by 20 nm (and 40 nm: does the gap matter?)
     g3x_c2h=dict(Tpl="sde_gt3_dvs.cmd", Wbl=50, Dim=3, Pair="xx"), g3x40_c2h=dict(Tpl="sde_gt3_dvs.cmd", Wbl=50, Dim=3, Pair="xx", Wcut=40),
@@ -564,7 +566,7 @@ def cfg2d(tag, what, k_cs=1.0, par=None, rh=None, gb=None, cases=None, wst="gr_c
                           **dict(dict(PC, II=1, Tper=21, Npulse=9, tEdge=0.5, tHold=21.0, ErrH=1e14 if c <= 3 else 1e10, Gb=GB.get(c, 0.0)), **pv, **ov)))
     if "R" in what:
         for nm_, st, ii in (("Ry_yy", "gr_yy", 0), ("Ryi_yy", "gr_yy", 1), ("Rz_zz", "gr_zz", 0), ("Rzi_zz", "gr_zz", 1), ("Rzg_zz", "gr_zzg", 1),
-                            ("Rzbi_zz", "gr_zzb", 1), ("Rzbg_zz", "gr_zzbg", 1)):      # the last two (BL contact at the bottom end of the pillar) only when named in rhsel
+                            ("Rzb_zz", "gr_zzb", 0), ("Rzbi_zz", "gr_zzb", 1), ("Rzbg_zz", "gr_zzbg", 1)):      # the last three (BL contact at the bottom end of the pillar) only when named in rhsel
             if (rhsel and nm_ not in rhsel) or (not rhsel and "zb" in nm_): continue
             RUNS.append(R(f"D{tag}{nm_}", "GT", st, "cho:RH", WFs=4.7, WFd=4.7, II=ii, Cs=CSB[20] * k_cs,
                           **dict(dict(PC, ErrH=1e14, tON=0.094, tOFF=0.094, Ncyc=10), **pv, **ov, **(rh or {}))))
@@ -745,6 +747,14 @@ cfg2d("o5", "W", IIdf="ElectricField", par=B1["par"])
 cfg2d("o1", "F", IIdf="ElectricField", BLhv=0.0, ProbeX=1, ProbeT=1, **B1)
 cfg2d("o2", "F", IIdf="ElectricField", BLhv=0.0, SNhv=0.0, ProbeX=1, ProbeT=1, **B1)
 cfg2d("o3", "F", BLhv=0.0, SNhv=0.0, ProbeX=1, ProbeT=1, **B1)
+# Round 21 (user, 2026-10-07 evening: "run (ga)" = set the device up anew with the avalanche driving force ElectricField and the BL contact
+# at the end of the pillar, and see whether Fig.5(c), Fig.4(a) and Fig.8 still come out). Single cells with that contact: gr_c1hb .. gr_c4hb.
+# d0 Id-Vg as it is, ionization off (does moving the contact change Fig.5(c)?) | d1 Id-Vg with ionization on, ElectricField (can Fig.5(c)
+# have the model on?) | d2 .. d5 write with ElectricField and Cs = 4.2 fF x 1.0 / 1.2 / 1.4 / 1.6 (which capacitor does Fig.4(a) ask for then?)
+CASEB = tuple((c, st + "b", wf, tb) for c, st, wf, tb in CASES)
+cfg2d("d0", "I", cases=CASEB, par=B1["par"])
+cfg2d("d1", "I", cases=CASEB, iv=dict(II=1, IIdf="ElectricField"), par=B1["par"])
+for k_, f_ in (("d2", 1.0), ("d3", 1.2), ("d4", 1.4), ("d5", 1.6)): cfg2d(k_, "W", wst="gr_c2hb", IIdf="ElectricField", k_cs=f_, par=B1["par"])
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
