@@ -731,6 +731,13 @@ cfg2d("g7", "R", rhsel=("Rzbi_zz", "Rzbg_zz"), IIdf="ElectricField", ProbeX=1, E
 cfg2d("g8", "R", rhsel=("Rzi_zz",), IIdf="ElectricField", BLhv=0.0, ProbeX=1, ErrE=1e17, **B1)
 cfg2d("g9", "R", rhsel=("Rzbi_zz",), IIdf="ElectricField", ProbeX=1, ErrE=1e17, **B1)
 cfg2d("g0", "R", rhsel=("Rzbi_zz",), IIdf="ElectricField", ProbeX=1, ErrE=1e17, k_cs=1.0, par=B1["par"])
+# Round 20 (2026-10-07): seen in rounds 16 - 19: with ElectricField the write is much faster (the body fills with holes while the WL is
+# high), 0.96 / 1.13 / 1.16 / 1.17 V at 12 / 24 / 39 / 60 ps with 1.8 fF, and 0.78 / 1.02 / 1.10 / 1.14 V with the TEXT's 4.2 fF (paper Fig.4(a)
+# 0.72 / 0.92 / 1.06 / 1.13 V; default driving force with 4.2 fF: 0.51 / 0.72 / 0.86 / 0.97 V, which is why 1.8 fF was fitted). So: the write and
+# the FBE of the five cases with ElectricField and the text's capacitors (5.1 / 4.2 / 3.6 fF), no stand-in. o4 BL contact takes no holes |
+# o5 contacts as they are (write only).
+cfg2d("o4", "WF", IIdf="ElectricField", BLhv=0.0, ProbeX=1, ProbeT=1, par=B1["par"])
+cfg2d("o5", "W", IIdf="ElectricField", par=B1["par"])
 # Round 17 (2026-10-07, back-calculation of the hole charge of Fig.8 after the first look at round 16): with the driving force ElectricField the
 # write of the cell itself makes about 6300 pairs (default 150), and what the contacts do not take stays in a floating body. FBE of the five
 # cases with the paper's waveform, NO stand-in generation: o1 ElectricField + BL contact that takes no holes | o2 the same + storage-node
