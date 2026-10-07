@@ -769,6 +769,15 @@ cfg2d("da", "W", wcase=CASEB[0], IIdf="ElectricField", par=B1["par"])
 cfg2d("db", "W", wcase=CASEB[2], IIdf="ElectricField", par=B1["par"])
 for k_, f_ in (("d8", 1.0), ("d9", 0.7)):
     cfg2d(k_, "F", cases=CASEB, IIdf="ElectricField", gb={c: GBQ[c] * GBB[c] * f_ for c in GBQ}, ProbeX=1, ProbeT=1, k_cs=KE, par=B1["par"])
+# Round 23 (after round 22: with ElectricField the Id-Vg has 44 mV/dec and thresholds 0.04 - 0.06 V lower, and in the FBE Case 1 collapses
+# while Cases 2 - 4 lose too little). dc = the device as it is (fin3: default driving force, 1.8 fF scale, fin3's hole charge) on the
+# structures with the BL contact at the pillar end: write and FBE (is fin3 unchanged by the contact?) | de, dd = ElectricField with the
+# hole charge put on the bars (rate factors read from d8 / d9, the charge does not depend on the capacitor): capacitors x 1.35 (de) and
+# the 1.8 fF scale of fin3 (dd): does any capacitor let ElectricField keep Fig.8?
+FE = {1: 0.75, 2: 0.816, 3: 0.908, 4: 0.936, 5: 0.919}
+cfg2d("dc", "WF", cases=CASEB, wst="gr_c2hb", gb={c: GBQ[c] * GBB[c] for c in GBQ}, ProbeX=1, ProbeT=1, **B1)
+cfg2d("de", "F", cases=CASEB, IIdf="ElectricField", gb={c: GBQ[c] * GBB[c] * FE[c] for c in GBQ}, ProbeX=1, ProbeT=1, k_cs=KE, par=B1["par"])
+cfg2d("dd", "F", cases=CASEB, IIdf="ElectricField", gb={c: GBQ[c] * GBB[c] * FE[c] for c in GBQ}, ProbeX=1, ProbeT=1, **B1)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
