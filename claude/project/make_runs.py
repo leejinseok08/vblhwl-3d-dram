@@ -667,6 +667,12 @@ for k_, h_ in (("n1", 15.2), ("n2", 18.0), ("n3", 20.0), ("n4", 22.0)): cfg2d(k_
 # within 20 mV at those states (tools/gt_ta_scan.py); this round holds every simple reading against the bars.
 PLO = {1: 1.40, 2: 1.32, 3: 1.23, 4: 1.14, 5: 1.00}; PHI = {1: 1.50, 2: 1.42, 3: 1.33, 4: 1.24, 5: 1.15}
 for k_, f_ in (("p1", PLO), ("p2", PHI)): cfg2d(k_, "F", gb={c: GBQ[c] * f_[c] for c in GBQ}, ProbeX=1, ProbeT=1, **B1)
+# Round 14: the reading that round 13 singles out among the definitions one would write down: the AVERAGE potential of the body under
+# the gate, counted from the start of the transient, at the first BL edge (the dot t_A of Fig.8(b) sits on that edge). The hole charge
+# is sized to the bars of Fig.8(a) with that reading, case by case (interpolated from round 13): s1 = read just before the BL fall,
+# s2 = read 0.25 ns after it. A fit to Fig.8(a) through a back-calculated definition; the losses of Fig.8(b), (c) are then predictions.
+GBA = {1: 1.37, 2: 1.20, 3: 1.12, 4: 1.10, 5: 1.13}; GBB = {1: 1.56, 2: 1.31, 3: 1.19, 4: 1.17, 5: 1.18}
+for k_, f_ in (("s1", GBA), ("s2", GBB)): cfg2d(k_, "F", gb={c: GBQ[c] * f_[c] for c in GBQ}, ProbeX=1, ProbeT=1, **B1)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
