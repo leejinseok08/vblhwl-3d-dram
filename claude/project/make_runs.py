@@ -802,6 +802,15 @@ cfg2d("dn", "W", II=0, **B1)
 # dp, dq = dn with 1.7 / 1.6 fF (does a slightly smaller capacitor bring the write back inside the tolerance?).
 cfg2d("do", "W", wst="gr_c2hb", II=0, **B1)
 for k_, c_ in (("dp", 1.7), ("dq", 1.6)): cfg2d(k_, "W", II=0, k_cs=c_ / 4.2, par=B1["par"])
+# Round 29 (user, 2026-10-07 night: the oxide-channel papers of the same authors, Hsu .. Cho .. Yu, IMW 2025 and TED 2026: is that our
+# device?). Their Fig.2(c) holds a TCAD Id-Vg of the SILICON reference transistor in the same cell drawing: L 100 nm, t_Si 10 nm, W 100 nm,
+# V_DS = 1 V, Vg -2 .. 2.5 V, in A/um. dr / ds = our two 10 nm cells at those conditions with the gate work function that puts the
+# thresholds on that curve (4.3 eV: back-calculated from the curve, not stated; Cho's cases have 4.7 / 5.0), fitted Hurkx A (dr) and the
+# default A (ds) | dt = dr at the 1.1 V drain bias of our Fig.5(c) runs (what 0.1 V of drain bias does to the GIDL branch).
+HS = ((3, "gr_c3h", 4.3, 10), (4, "gr_c4h", 4.3, 10)); IH = dict(Vds=1.0, VgMin=-2.0, VgMax=2.5)
+cfg2d("dr", "I", cases=HS, iv=IH, par=B1["par"])
+cfg2d("ds", "I", cases=HS, iv=IH)
+cfg2d("dt", "I", cases=HS[1:], iv=dict(IH, Vds=1.1), par=B1["par"])
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
