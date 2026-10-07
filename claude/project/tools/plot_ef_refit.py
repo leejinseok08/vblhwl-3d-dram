@@ -69,13 +69,14 @@ d.set(xlim=(-2, 185), xlabel="첫 BL 하강부터의 시간 [ns]  (회색 띠: B
 d.set_title("④ FBE 시험, Case 2: 몸체의 정공", fontsize=13.5, fontweight="bold", color=INK)
 # (f) Fig.8 scores of four configurations
 CF = (("fin3", "fin3\n기본 구동력\n접촉: 기둥 축", FIN), ("fin3b", "기본 구동력\n접촉: 기둥 끝", END), ("fin3n", "avalanche 끔\n접촉: 기둥 축", OFF), ("fin3bn", "avalanche 끔\n접촉: 기둥 끝", OFE))
+tops = []
 for i, (tag, lab, cl) in enumerate(CF):
-    v, txt = S.fbe(tag); print(tag, [round(x, 2) for x in v], txt)
+    v, txt = S.fbe(tag); print(tag, [round(x, 2) for x in v], txt); tops.append(max(v))
     for j, (x, al) in enumerate(zip(v, (0.45, 0.72, 1.0))):
         g.bar(i + (j - 1) * 0.26, x, 0.24, color=cl, alpha=al, ec=INK, lw=0.8); g.text(i + (j - 1) * 0.26, x + 0.02, f"{x:.2f}", ha="center", va="bottom", fontsize=9.5, color=INK)
 g.axhline(1.0, color=PAP, lw=1.4, ls="--"); g.text(3.45, 1.02, "허용 한계 (1.0)", color=PAP, fontsize=9.5, ha="right", va="bottom")
-g.set_xticks(range(len(CF))); g.set_xticklabels([q[1] for q in CF], fontsize=10); g.set_ylabel("점수 = (모델 - 논문) / 허용 오차의 rms", fontsize=11); g.set_ylim(0, 1.25)
-g.text(0.02, 0.97, "막대 셋: 몸체 전위 막대 (Fig. 8(a)) · 첫 구간 손실 · 200 ns 손실\nElectricField는 Case 1이 무너져서 점수를 낼 수 없어요", transform=g.transAxes, fontsize=9.8, va="top", color=INK)
+g.set_xticks(range(len(CF))); g.set_xticklabels([q[1] for q in CF], fontsize=10); g.set_ylabel("점수 = (모델 - 논문) / 허용 오차의 rms", fontsize=11); g.set_ylim(0, max(1.25, max(tops) * 1.3))
+g.text(0.02, 0.97, "막대 셋: 몸체 전위 막대 (Fig. 8(a)) · 첫 구간 손실 · 200 ns 손실\n200 ns 점수가 1을 넘는 것은 Case 5 때문이에요 (모델 1.58 mV, 논문의 선은 1.1 V 위: 0.5 mV 이하)\nElectricField는 Case 1이 무너져서 점수를 낼 수 없어요", transform=g.transAxes, fontsize=9.8, va="top", color=INK)
 g.set_title("⑥ Fig. 8 점수 (작을수록 좋음)", fontsize=13.5, fontweight="bold", color=INK)
 for q in (a, b, c, d, e, g):
     q.grid(alpha=0.25)

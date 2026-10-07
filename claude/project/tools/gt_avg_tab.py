@@ -34,15 +34,15 @@ for tag in sys.argv[1:]:
         o = D[c]; e = EARLY.get(c)
         print(f"   {c}    {o['holes']:5.0f} | {o['avg0']:5.0f} {o['avg1']:5.0f} [{P.FBE_RISE[c]}]" + " " * 34 + f"| {o['cen']:5.0f}" + " " * 15 + f"| {o['sn']:.4f}   | {o['l3']:6.2f} {o['l5']:6.2f}"
               + (f" [{e[1]} at +{e[0]}]" if e else "") + " | " + " ".join(f"{x:7.2f}" for x in o["ph"][:4]) + f"  {o['ph'][8]:7.2f}"
-              + (" [" + " ".join(map(str, PH[c])) + "]" if c in PH else f" [{P.FBE_FIRST[c]}]") + f" | {o['l200']:7.2f} [{P.FBE_200[c]}]")
+              + (" [" + " ".join(map(str, PH[c])) + "]" if c in PH else f" [{P.FBE_FIRST[c]}]") + f" | {o['l200']:7.2f} [{'on the 1.1 V line' if c in P.FBE_FLAT else P.FBE_200[c]}]")
     for lab, key in (("read just before the fall", "avg0"), ("read 0.25 ns after the fall", "avg1")):
         db = [D[c][key] - P.FBE_RISE[c] for c in range(1, 6)]
         print(f"   bars, {lab}: deviation " + " / ".join(f"{x:+.0f}" for x in db) + f" mV (tolerance {P.FBE_RISE_TOL:.0f}): {sum(abs(x) <= P.FBE_RISE_TOL for x in db)} of 5 inside")
     dec = lambda m, p_: math.log10(max(m, P.FLOOR) / p_)
-    d1 = [dec(D[c]["ph"][0], P.FBE_FIRST[c]) for c in range(1, 5)]; d2 = [dec(D[c]["l200"], P.FBE_200[c]) for c in range(1, 6)]
+    d1 = [dec(D[c]["ph"][0], P.FBE_FIRST[c]) for c in range(1, 5)]; d2 = [dec(D[c]["l200"], P.FBE_200[c]) for c in range(1, 5)]; fl = P.FBE_FLAT[5]
     de = [dec(D[c]["l5"] if EARLY[c][0] == 5 else D[c]["l3"], EARLY[c][1]) for c in range(1, 5)]
-    print(f"   first low phase: deviation " + " / ".join(f"{x:+.2f}" for x in d1) + f" decades (tolerance {P.DEC_TOL}), Case 5 {D[5]['ph'][0]:.2f} mV (paper 0, tolerance 1 mV): "
-          f"{sum(abs(x) <= P.DEC_TOL for x in d1) + (D[5]['ph'][0] <= 1.0)} of 5 inside")
-    print(f"   200 ns: deviation " + " / ".join(f"{x:+.2f}" for x in d2) + f" decades: {sum(abs(x) <= P.DEC_TOL for x in d2)} of 5 inside;   3 or 5 ns after the fall: " + " / ".join(f"{x:+.2f}" for x in de)
+    print(f"   first low phase: deviation " + " / ".join(f"{x:+.2f}" for x in d1) + f" decades (tolerance {P.DEC_TOL}), Case 5 {D[5]['ph'][0]:.2f} mV (paper: on the 1.1 V line, tolerance {fl} mV): "
+          f"{sum(abs(x) <= P.DEC_TOL for x in d1) + (D[5]['ph'][0] <= fl)} of 5 inside")
+    print(f"   200 ns: deviation " + " / ".join(f"{x:+.2f}" for x in d2) + f" decades, Case 5 {D[5]['l200']:.2f} mV (paper: on the 1.1 V line, tolerance {fl} mV): {sum(abs(x) <= P.DEC_TOL for x in d2) + (D[5]['l200'] <= fl)} of 5 inside;   3 or 5 ns after the fall: " + " / ".join(f"{x:+.2f}" for x in de)
           + f" decades: {sum(abs(x) <= P.DEC_TOL for x in de)} of 4 inside")
     if all(x == x for x in D[1]["ph"][:4]): print("   Case 1 after low phases 2 - 4: " + " / ".join(f"{x:.0f}" for x in D[1]["ph"][1:4]) + " mV (paper 67 / 76 / 83); Case 4 after two phases: " + f"{D[4]['ph'][1]:.1f} mV (paper 5.2 at 63 ns)")

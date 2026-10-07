@@ -3,6 +3,44 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-07 (bo) user: "why is the paper's Case 5 at 0 at the start, what differs from ours?" - in the model, too, Case 5 loses nothing to the floating body; its 0.13 -> 1.58 mV is tunnelling at the storage-node junction (13.6 pA). The paper's curve stays on the 1.1 V line: the 1.58 mV at 200 ns are NOT inside. Score target corrected
+- No new runs. Tool: `gt_fbe_leak.py` (loss as electrons, pairs by tunnelling / impact ionization, holes in the body, rate of the loss inside
+  the BL-low and inside the BL-high phases).
+- Model, `fin3` (Ds2F), from t_A to 200 ns:
+    case | loss [mV] = electrons | pairs: tunnelling / impact ion. | holes t_A -> 200 ns | rate BL low / BL high [uV/ns] = [pA]
+    1    | 182.9  = 2496         |    7.1 / 310.3                  | 1579 -> 1139        | 1932 / 3.17 = 4222 / 6.9
+    2    |  67.8  =  761         |    0.4 / 119.1                  | 1354 -> 1070        |  732 / 5.62 = 1317 / 10.1
+    3    |  13.8  =  133         |  -12.8 /  23.9                  | 1294 -> 1011        |  145 / 6.23 =  224 / 9.6
+    4    |  10.1  =   97         |   -7.7 /  17.6                  | 1118 ->  832        |  105 / 5.71 =  162 / 8.8
+    5    |   1.577 =  15.2       |   14.0 /   1.8                  | 1335 -> 1351        | 8.82 / 8.78 = 13.6 / 13.6
+  Case 5: the same rate with the BL low and with the BL high, the holes stay in the body (they grow by the 16 pairs), electrons lost =
+  pairs made (15.2 against 15.8). That is the leak of the storage-node junction under the gate edge (band-to-band tunnelling with the
+  WL at 0 V and the node at 1.1 V; (au): 3.44 MV/cm at that corner), not a floating-body loss. The same with the avalanche model off
+  (DdlF_c5: 15.7 pairs, 1.577 mV), with 1134 / 1413 holes in the body (Dh1F_c5, DfinF_c5: 14.0 / 13.9 pairs), and in every case while the
+  BL is high (6.9 - 10.1 pA in Cases 1 - 4; Case 5 has the most, as its GIDL branch in Fig.5(c) is the highest).
+  The floating-body part of Case 5 is zero because its threshold is 0.30 V higher (Fig.5(c): 0.57 / 0.69 / 0.81 V against 0.27 / 0.39 /
+  0.51 V of Case 4; paper 0.53 / 0.65 / 0.78 against 0.26 / 0.39 / 0.51). The paper's own label in Fig.8(c) says the same (V_th0 larger
+  with WF 5.0 eV).
+- Paper, zoom of Fig.8(c) read again from the embedded image (frame rows 462 .. 683 = 1.1 .. 1.0 V, 0.452 mV per row; check of the scale:
+  Case 3 ends 14.0 mV down, Case 4 goes 2.8 -> 5.0 mV before the inset hides it): the blue-tinted pixels of Case 5 sit ON the top frame
+  row from 124 ns to 196 ns (their centre -0.12 .. +0.17 mV from that row in six bands of 20 columns; before 124 ns the tint cannot be
+  told from the frame). So the paper's Case 5 is "on the 1.1 V line within one pixel row (0.45 mV)" over the whole 200 ns, not "0 -> 1.0
+  mV": the 1.0 of `paper_targets.FBE_200[5]` was the upper bound of the first reading ((au): "within 1 mV").
+- What follows: the 0.13 mV of the first low phase are below a pixel, there is no difference to explain. At 200 ns the model's 1.58 mV
+  would lie 3.5 rows under the frame: NOT what the paper shows. With the text's 3.6 fF the same 15 - 17 electrons are 0.68 - 0.74 mV
+  (Db0F_c5: 0.738 mV), 1.6 rows. Bound from the figure: I <= C x 0.45 mV / 179 ns = 3.9 pA (1.54 fF) or 9.1 pA (3.6 fF); the model has
+  13.6 pA. Two things the paper leaves open decide it: the storage capacitor of the transient (1.54 fF for the 10 nm bodies from the fit
+  of the write curve, 3.6 fF in the text) and the size of the tunnelling leak in the hold state. The Hurkx A was fitted at Vg = -1 V of
+  Fig.5(c), where the field is 0.91 MV/cm ((au)); the hold corner has 3.44 MV/cm, so the hold leak is an extrapolation and goes as
+  exp(B x 8.1e-7 cm/V) against the fitted point. Estimate from those two fields, NOT run: B 2.25e7 -> 2.1e7 V/cm with A re-fitted (about
+  3.5e20) would cut the hold leak by about 3. The same change makes the GIDL branch less steep, and the model's minimum current is 0.2 -
+  0.9 decade under the paper's in all five cases (-17.1 .. -17.3 against -16.4 .. -16.9).
+- Scoring corrected (my reading, not a new condition): `paper_targets.FBE_FLAT = {5: 0.5}`: a case whose curve stays on the 1.1 V line is
+  scored linearly, loss / 0.5 mV, at both instants (`score2d.py`, `gt_avg_tab.py`; FBE_200[5] = 1.0 stays for the log plots). Scores L1 /
+  L2 now: fin2 2.97 / 2.01 (was 2.97 / 1.44), fin 0.85 / 1.47 (0.84 / 0.51), `fin3` 0.48 / 1.50 (0.47 / 0.58), fin3b 0.69 / 1.69 (0.68 /
+  0.98), fin3n 0.45 / 1.43 (0.44 / 0.37), fin3bn 0.43 / 1.48 (0.42 / 0.55). Cases 1 - 4 are unchanged; the whole rise of L2 is Case 5 at
+  200 ns (1.58 / 0.5 = 3.2). "Every number of Fig.8 inside its tolerance" ((bk)) holds for 14 of the 15 numbers, not for this one.
+
 ## 2026-10-07 (bn) user: "run (가)" - the device set up with the driving force ElectricField and the BL contact at the pillar end (rounds 21 - 28): it does not carry Fig.5(c) and Fig.8. By-products: the contact position sets the gain of the parasitic BJT; without any avalanche model Fig.8 fits better
 - Why: (bm) left the driving force coupled to the write curve (with ElectricField the text's 4.2 fF nearly fits Fig.4(a)) and the Fig.7
   candidate needing a BL contact at the pillar end, while `fin3` has the default driving force and the contact on the pillar axis. The user

@@ -93,13 +93,13 @@ Run names must differ by more than letter case (the PC's file system is case-bli
   `-w` write phase, `-k` sizing of the hole supply), `gt_fig5c.py` (Id-Vg against Fig.5(c)), `gt_fig4a.py` (write curve), `gt_tran.py` (transients: loss, probes,
   generation), `gt_fbe_tab.py` (five FBE cases against Fig.8 in one table), `gt_avg_tab.py` (the same with the reading of `fin3`), row-hammer
   pairs: `gt_rh_hist.py` (node per cycle per configuration), `gt_rh_pairs.py` (pairs and holes per cycle, holes through each contact),
-  `gt_rh_body.py`, `gt_rh_wave.py` (inside the cycles), `gt_write_tab.py` (write runs against Fig.4(a)), `gt_fbe_pairs.py` (pairs and body holes per BL period of an FBE run), `plot_ef_refit.py` (picture of rounds 21 - 28), `_rh_tab.sh` + `plot_rh_transfer.py` (table and picture of rounds 16 - 19), `gt_hold.py`, `gt_iv_at.py`, `gt_steps.py` (how a
+  `gt_rh_body.py`, `gt_rh_wave.py` (inside the cycles), `gt_write_tab.py` (write runs against Fig.4(a)), `gt_fbe_pairs.py` (pairs and body holes per BL period of an FBE run), `gt_fbe_leak.py` (what the loss is made of: electrons, pairs, rate with the BL low / high), `plot_ef_refit.py` (picture of rounds 21 - 28), `_rh_tab.sh` + `plot_rh_transfer.py` (table and picture of rounds 16 - 19), `gt_hold.py`, `gt_iv_at.py`, `gt_steps.py` (how a
   run stepped), `gt_map.sh` (peak field / generation in a window of a saved plot), `man_grep.sh` (search the installed
   Sentaurus manual), `gt_log.sh`, `plot_gt.py`, `plot_gt3.py`. `tools/_q.sh` = scratch script for one-off server queries that
   need quotes or loops (the remote shell is tcsh).
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
-## State (2026-10-07; details NOTES (ax) .. (bn))
+## State (2026-10-07; details NOTES (ax) .. (bo))
 **User, 2026-10-07: the authors cannot be asked. What the paper leaves open is back-calculated from its figures and labelled as such.**
 Back-calculated so far (NOTES (bk)): Fig.8(a) reads the body potential as the AVERAGE electrostatic potential of the body under the gate,
 counted from the start of the transient, at the first BL edge (not the body-centre point before the fall: with that reading bars and
@@ -135,6 +135,13 @@ Rounds 15 - 20 of 2026-10-07 (NOTES (bl), (bm)); `fin3` is unchanged by them:
   only), stand-in rate x 1.23 / 1.195 / 1.14 / 1.135 / 1.18: 0.73 / 1.11 / 0.06 / 0.44 / 0.37 with the axis contact (`fin3n`), 0.73 / 1.12 / 0.07 /
   0.42 / 0.55 with the end contact (`fin3bn`); the driving force of Fig.7 then touches no other figure. "Impact ionization on in the FBE"
   is the user's condition of 2026-10-06 and stands until the user changes it.
+- Case 5 looked at again (NOTES (bo), `tools/gt_fbe_leak.py`): in the model it loses nothing to the floating body (same loss rate with the
+  BL low and high, the holes stay); its 0.13 -> 1.58 mV is band-to-band tunnelling at the storage-node junction, 13.6 pA. In the zoom
+  of Fig.8(c) the paper's curve stays on the 1.1 V line within one pixel row (0.45 mV) up to 196 ns, so the 1.58 mV at 200 ns are NOT
+  inside. The scorer now counts a case on the 1.1 V line linearly (loss / 0.5 mV, `paper_targets.FBE_FLAT`). Scores first-phase / 200 ns
+  with that: `fin3` 0.48 / 1.50, fin3b 0.69 / 1.69, fin3n 0.45 / 1.43, fin3bn 0.43 / 1.48 (the values 0.47 / 0.58 etc. above were made
+  with 1.0 mV as Case 5's value; Cases 1 - 4 are unchanged). Open: storage capacitor of the transient (1.54 fF fitted, 3.6 fF in the
+  text) or the hold-state tunnelling leak (Hurkx B is not fixed by the one point of Fig.5(c) that A was fitted to).
 What follows describes `fin2`, the configuration before this step.
 The 2D device is configuration `fin2` = the runs DfinI_c1..5, DfinW_c2, Dh1F_c1..5, DfinR* (`COMPOSE` in tools/score2d.py; the
 user's decisions of the afternoon of 2026-10-06 are in it):

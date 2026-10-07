@@ -76,8 +76,9 @@ def fbe(tag):
         rise = (at(T, dv[ka[0]], f[0] + AVGREAD[tag]) - dv[ka[0]][0]) * 1e3 if ka else (at(T, dv[kv], tA) - dv[kv][0]) * 1e3; v0 = at(t, sn, t0)
         l1 = (v0 - at(t, sn, r[0] - 3e-10)) * 1e3; l2 = (v0 - at(t, sn, min(t[-1], t0 + 2e-7))) * 1e3 if t[-1] >= t0 + 1.9e-7 else None
         er.append((rise - P.FBE_RISE[c]) / P.FBE_RISE_TOL)
-        e1.append(elog(l1, P.FBE_FIRST[c]) if P.FBE_FIRST[c] > 0 else l1 / 1.0)
-        if l2 is not None: e2.append(elog(l2, P.FBE_200[c]))
+        flat = P.FBE_FLAT.get(c)                      # curve on the 1.1 V line in the paper: linear, loss / reading error
+        e1.append(l1 / flat if flat else elog(l1, P.FBE_FIRST[c]))
+        if l2 is not None: e2.append(l2 / flat if flat else elog(l2, P.FBE_200[c]))
         txt.append(f"c{c} rise {rise:+.0f} first {l1:.2f} 200ns {'-' if l2 is None else format(l2, '.2f')} (SN0 {v0:.3f})")
     return (rms(er), rms(e1), rms(e2)), "; ".join(txt)
 
