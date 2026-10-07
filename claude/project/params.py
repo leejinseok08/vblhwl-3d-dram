@@ -79,11 +79,14 @@ P = dict(
                         # the body-centre potential at t_A stands above its value at the start of the transient by what Fig.8(a)
                         # shows (555 / 445 / 365 / 320 / 368 mV): Fig.8(a) used as a condition. The source of the paper's holes
                         # is not known; this is a stand-in for it, off after t_A.               [fit to ChoF Fig.8(a)]
-    SNhold=0,           # 1 (FBE, with SNset, without Gb): the storage node stays held at SNset through the whole hold and is
+    SNhold=0,           # 1 (FBE and RH, with SNset, without Gb): the storage node stays held at SNset through the whole hold and is
+                        # (RH: 2 = also through the hold at Vdd/2, released 0.5 ns before the hammer)
                         # released 0.5 ns before the first BL fall: the body charges by the model's own generation while the
                         # node does not pay for it ("charged at t = 0" as a state that was prepared; a diagnosis)      [ASM]
     ProbeT=0,           # 1: CurrentPlot probes across the body thickness at the probe's x (1 nm inside both gate-oxide
                         # interfaces, 1/4 and 3/4 of the thickness): the paper does not say where it reads the body potential
+    tHold2=0.0,         # row hammer: hold with the BL at Vdd/2 before the hammer [ns]; 0 = as long as tHold (the hold at Vdd)
+    Idle=0,             # row hammer: 1 = the aggressor WL stays at 0 V through the hammer window (control: what the cell loses anyway)
     ProbeX=0,           # 1: probes along the whole channel every 5 nm (pillar face to the end of the source) at mid-depth and 1 nm
                         # under one gate oxide, and average / minimum / maximum of the potential over the body region, its gated
                         # part and the part under the BL-side spacer: to back-calculate where and when Fig.8(a) reads the body

@@ -279,7 +279,7 @@ def deck_cho(rid, p, struct, test):
         # Row hammer: the same during the hold with the BL still at Vdd, before it goes to Vdd/2 (the pre-charge is common to both).
         tgen = (t2 + 2e-10, tS - 1e-9); tset = (tset[0], tS - 5e-10)
         S.add(t2, tset[1], hold / 40); S.add(tset[1], tS, 5e-11)
-    elif p["SNhold"] and tset and test == "FBE":          # own generation, the node held through the hold and released 0.5 ns before the fall
+    elif p["SNhold"] and tset and test in ("FBE", "RH"):  # own generation, the node held through the hold and released 0.5 ns before the fall (RH: before the BL step)
         if hold < 1.5e-9: raise ValueError(f"{rid}: a held node needs a hold of 1.5 ns or more")
         tset = (tset[0], tS - 5e-10)
         S.log(t2, tset[1]) if hold > 1e-6 else S.add(t2, tset[1], hold / 40)
@@ -299,10 +299,17 @@ def deck_cho(rid, p, struct, test):
             plat = (lambda a, b: S.log(a, b, n=10)) if h > 1e-6 else (lambda a, b: S.add(a, b, h / 20))      # long phases: log steps after each edge
             S.add(t, t + e, e / 5); plat(t + e, t + h); S.add(t + h, t + h + e, e / 5); plat(t + h + e, t + 2 * h); t += 2 * h
     elif test == "RH":
-        BL += [(tS, Vdd), (tS + te, Vdd / 2)]; S.add(tS, tS + te, te / 5); t = tS + te + hold; S.add(tS + te, t, hold / 20)
-        tS = t; WA.append((t, 0.0)); ton, toff = p["tON"] * 1e-9, p["tOFF"] * 1e-9
+        h2 = (p["tHold2"] or p["tHold"]) * 1e-9          # hold at Vdd/2 before the hammer
+        BL += [(tS, Vdd), (tS + te, Vdd / 2)]; S.add(tS, tS + te, te / 5); t = tS + te + h2
+        if p["SNhold"] == 2 and tset:                    # the history at Vdd/2: the node stays held, released 0.5 ns before the hammer
+            tset = (tset[0], t - 5e-10)
+            S.log(tS + te, tset[1]) if h2 > 1e-6 else S.add(tS + te, tset[1], h2 / 20)
+            S.add(tset[1], t, 5e-11)
+        elif h2 > 1e-6: S.log(tS + te, t)
+        else: S.add(tS + te, t, h2 / 20)
+        tS = t; WA.append((t, 0.0)); ton, toff = p["tON"] * 1e-9, p["tOFF"] * 1e-9; va = 0.0 if p["Idle"] else Vpp
         for k in range(int(p["Ncyc"])):
-            WA += [(t + te, Vpp), (t + ton, Vpp), (t + ton + te, 0.0), (t + ton + toff, 0.0)]
+            WA += [(t + te, va), (t + ton, va), (t + ton + te, 0.0), (t + ton + toff, 0.0)]
             S.add(t, t + te, te / 5); S.add(t + te, t + ton, ton / 10); S.add(t + ton, t + ton + te, te / 5); S.add(t + ton + te, t + ton + toff, toff / 10)
             t += ton + toff
     tEnd = t
@@ -677,6 +684,20 @@ for k_, f_ in (("p1", PLO), ("p2", PHI)): cfg2d(k_, "F", gb={c: GBQ[c] * f_[c] f
 # s2 = read 0.25 ns after it. A fit to Fig.8(a) through a back-calculated definition; the losses of Fig.8(b), (c) are then predictions.
 GBA = {1: 1.37, 2: 1.20, 3: 1.12, 4: 1.10, 5: 1.13}; GBB = {1: 1.56, 2: 1.31, 3: 1.19, 4: 1.17, 5: 1.18}
 for k_, f_ in (("s1", GBA), ("s2", GBB)): cfg2d(k_, "F", gb={c: GBQ[c] * f_[c] for c in GBQ}, ProbeX=1, ProbeT=1, **B1)
+# Round 15 (user 2026-10-07: test the origin of the body charge on a figure that is independent of Fig.8): the row hammer of Fig.6(e) /
+# Fig.7 with the history that gives Fig.8 its charge. The victim's body charges by the model's own generation while its storage node
+# is held at 1.1 V; then the hammer of the paper (BL Vdd/2, aggressor WL 0 <-> Vpp, 10 cycles). x1: 16.2 us with the BL at Vdd (the
+# state of fin3, Case 2), then Vdd/2 for 1 ns | x2: 16.2 us with the BL at Vdd/2 (the idle bias of the hammer test) | x3, x4: the same
+# with the resistor of Fig.7(b) on the victim WL (200 kOhm, a fit of 2026-10-06) | x7: 100 us at Vdd/2 (towards saturation) |
+# x5, x6: x2 and x7 with the aggressor WL kept at 0 V (what the cell loses anyway). Y-Y' and Z-Z', impact ionization off / on.
+HIS = 16.2e3; RHS = ("Ry_yy", "Ryi_yy", "Rz_zz", "Rzi_zz")
+cfg2d("x1", "R", rhsel=RHS, rh=dict(SNhold=1, tHold=HIS, tHold2=1.0), **B1)
+cfg2d("x2", "R", rhsel=RHS, rh=dict(SNhold=2, tHold=2.0, tHold2=HIS), **B1)
+cfg2d("x3", "R", rhsel=RHS, Rwl=2e5, tWr=1.0, rh=dict(SNhold=1, tHold=HIS, tHold2=1.0), **B1)
+cfg2d("x4", "R", rhsel=RHS, Rwl=2e5, tWr=1.0, rh=dict(SNhold=2, tHold=2.0, tHold2=HIS), **B1)
+cfg2d("x5", "R", rhsel=RHS, rh=dict(SNhold=2, tHold=2.0, tHold2=HIS, Idle=1), **B1)
+cfg2d("x6", "R", rhsel=RHS, rh=dict(SNhold=2, tHold=2.0, tHold2=1e5, Idle=1), **B1)
+cfg2d("x7", "R", rhsel=RHS, rh=dict(SNhold=2, tHold=2.0, tHold2=1e5), **B1)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
