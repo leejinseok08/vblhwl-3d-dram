@@ -1,0 +1,13 @@
+# contact_position_case_losses.txt - FBE of Fig.8 without an avalanche model: BL contact on the pillar axis (fin3n = runs DdlF) against the pillar end
+# (fin4 = DdmF; fin5 = DdyF is fin4 with the Hurkx coefficients of round 30). Stand-in hole charge sized to the bars of Fig.8(a) in all three.
+# Losses of the storage node from its charged value [mV]: first BL-low phase / later (200 ns; Case 4: after two BL-low phases, where the paper's curve ends).
+# Made by tools/make_eliu_report_full.py (fbe_case) on 2026-10-08. Paper: values read off Fig.8(b), (c) (tools/paper_targets.py).
+case  holes(dl) bar(dl)  first/later(dl)   | holes(dm) bar(dm)  first/later(dm)   | holes(dy) bar(dy)  first/later(dy)   | paper bar, first/later
+1       1597      554    60.91 / 112.88  |   1597      557    81.61 / 163.83  |   1601      557    82.76 / 165.06  |  555, 55 / 100
+2       1366      447    18.62 /  49.07  |   1366      447    21.48 /  62.85  |   1371      448    22.20 /  63.90  |  445, 29 / 50
+3       1302      366     4.36 /  12.92  |   1302      366     4.72 /  14.95  |   1307      367     4.92 /  15.53  |  365, 7.1 / 14.6
+4       1126      322     3.37 /   5.01  |   1126      322     3.66 /   5.58  |   1130      323     3.82 /   5.81  |  320, 3.5 / 5.0
+5       1344      371     0.14 /   1.58  |   1344      371     0.14 /   1.58  |   1349      372     0.14 /   1.58  |  368, 0 / 0.5 or less
+# scores fin3n (axis contact): Id-Vg 0.73, write 1.11, bars 0.06, first-phase loss 0.45, later loss 1.42
+# scores fin4 (end contact): Id-Vg 0.73, write 1.12, bars 0.07, first-phase loss 0.43, later loss 1.46
+# scores fin5 (end contact, Hurkx A 1.2e20 / B 2.0e7): Id-Vg 0.72, write 1.12, bars 0.10, first-phase loss 0.42, later loss 1.46

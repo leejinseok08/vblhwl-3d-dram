@@ -93,13 +93,24 @@ Run names must differ by more than letter case (the PC's file system is case-bli
   `-w` write phase, `-k` sizing of the hole supply), `gt_fig5c.py` (Id-Vg against Fig.5(c)), `gt_fig4a.py` (write curve), `gt_tran.py` (transients: loss, probes,
   generation), `gt_fbe_tab.py` (five FBE cases against Fig.8 in one table), `gt_avg_tab.py` (the same with the reading of `fin3`), row-hammer
   pairs: `gt_rh_hist.py` (node per cycle per configuration), `gt_rh_pairs.py` (pairs and holes per cycle, holes through each contact),
-  `gt_rh_body.py`, `gt_rh_wave.py` (inside the cycles), `gt_write_tab.py` (write runs against Fig.4(a)), `gt_fbe_pairs.py` (pairs and body holes per BL period of an FBE run), `gt_fbe_leak.py` (what the loss is made of: electrons, pairs, rate with the BL low / high), `plot_ef_refit.py` (picture of rounds 21 - 28), `_rh_tab.sh` + `plot_rh_transfer.py` (table and picture of rounds 16 - 19), `gt_hold.py`, `gt_iv_at.py`, `gt_steps.py` (how a
+  `gt_rh_body.py`, `gt_rh_wave.py` (inside the cycles), `gt_write_tab.py` (write runs against Fig.4(a)), `gt_fbe_pairs.py` (pairs and body holes per BL period of an FBE run), `gt_fbe_leak.py` (what the loss is made of: electrons, pairs, rate with the BL low / high), `gt_rh_ripple.py` (reversible swing of the victim node inside the aggressor cycles, against Fig.6(e)), `codex_rank_snapshot.py` (ranking of Codex's factorial from a copy of its result files), `make_eliu_report_full.py` + `eliu_full_text.py` (the complete report of 2026-10-08), `plot_ef_refit.py` (picture of rounds 21 - 28), `_rh_tab.sh` + `plot_rh_transfer.py` (table and picture of rounds 16 - 19), `gt_hold.py`, `gt_iv_at.py`, `gt_steps.py` (how a
   run stepped), `gt_map.sh` (peak field / generation in a window of a saved plot), `man_grep.sh` (search the installed
   Sentaurus manual), `gt_log.sh`, `plot_gt.py`, `plot_gt3.py`. `tools/_q.sh` = scratch script for one-off server queries that
   need quotes or loops (the remote shell is tcsh).
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
-## State (2026-10-07; details NOTES (ax) .. (br))
+## State (2026-10-08; details NOTES (ax) .. (bs))
+**Complete report for the user (2026-10-08, NOTES (bs)):** `results_vbl_hwl_1t1c_3ddram\GT_IRPS2026_전체보고_eliU_2026-10-08.html` (`tools/make_eliu_report_full.py`
++ `tools/eliu_full_text.py`): where every figure stands, remaining problems P1 - P8, measures M1 - M7 with their explanation, six decisions waiting for
+the user (order of the measures; avalanche model in the write as a trial for M3; when to do the 3D pairs; keep decision B; merge `claude` into `main`;
+move old runs to the PC). Found while writing it, all without a new run (the server was Codex's): (1) Fig.6(e) read from the image for the first time
+(`tools/gt_rh_ripple.py`): the X-X' curve is a reversible swing of +0.70 mV while the aggressor WL is high, the Y-Y' curve has no swing and drifts as
+the text says; the model has Y-Y' 0, Z-Z' +0.47 mV, 3D X-X' +0.12 mV (4.2 fF): its coupling to the node is 2.6 - 6 times weaker than the paper's.
+(2) The contact position moves Case 1: axis contact (fin3n) 60.9 / 112.9 mV, end contact (fin4, fin5) 82 / 165 mV, paper 55 / 100; group scores equal.
+`fin5` stays until the contact is settled on a pillar of several layers. (3) Codex's 720-run factorial ended 04:49: 10 of 144 groups pass by its
+scoring and 10 by mine (its late-reset scores are counted from the node before the reset); the body state at t_A decides Fig.8, whatever made it.
+(4) One common hold time does not give the five cases (best 17.5 us, worst item 1.94): a GIDL history is not the origin of the hole charge.
+The 3D X-X' row hammer HAS run (2026-10-06, 0.00066 mV per cycle); the rebuilt pair with today's device has not.
 **User, 2026-10-07: the authors cannot be asked. What the paper leaves open is back-calculated from its figures and labelled as such.**
 **The device since 2026-10-07 night is `fin5`** (user's decisions A, B, C, D; NOTES (br)): single cells with the BL contact at the pillar end
 (gr_c1hb .. gr_c4hb; pairs gr_yy, gr_zzb, gr_zzbg), NO avalanche model in Fig.4(a) / 5(c) / 8 (it belongs to Fig.7, where the paper names

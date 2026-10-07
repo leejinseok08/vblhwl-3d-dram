@@ -3,6 +3,83 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-08 (bs) user: "all of it as an eliU report once everything, Codex's experiment included, has finished; with the remaining problems, the improvement measures and their explanation" - the complete report; found while writing it: Fig.6(e) read for the first time (reversible swing), the contact position decides Case 1's losses, Codex's late-reset scores are counted from the node before the reset, one common hold time does not give the five cases
+- Report: `Desktop\서강대\반엘프\results_vbl_hwl_1t1c_3ddram\GT_IRPS2026_전체보고_eliU_2026-10-08.html`, built by `tools/make_eliu_report_full.py` (text in
+  `tools/eliu_full_text.py`; page builder and text checks of `tools/make_eliu_report.py`): 557 sentences, 6.6 units per sentence, no analogy word,
+  69 numbers of the text asserted against the run files of the shared copy or by arithmetic; pictures `gt2d_full_01 .. 07` new (scoreboard, Id-Vg,
+  write, FBE, Codex, Fig.6(e) swing and loss, common hold time), eight earlier ones reused; no crop of the paper. Sections: where the work stands |
+  concepts | goal and rules | structure with the kind of every value | Fig.5(c) and 5(d) | the Hsu check | Fig.4(a) | Fig.8 | origin of the holes |
+  Fig.6(e) | Fig.7 candidate (two sections) | ElectricField everywhere | decisions A - D with the contact table | 3D | Codex | my ten errors |
+  remaining problems P1 - P8 | measures M1 - M7, each with its explanation | six decisions for the user. No new simulation: the server was Codex's.
+- Held against the sources while writing (my summary / first draft was wrong or loose here):
+  * the 3D X-X' row hammer HAS run (2026-10-06, (aw): X3p, 0.00066 mV per cycle, swing +0.116 mV, text Cs 4.2 fF); what has not run is the rebuilt pair
+    with today's device (E3X decks).
+  * the paper's own words (text re-read): the storage node is "geometrically defined" (captions of Fig.2 and Fig.4); the text's Cs (3.6 / 4.2 / 5.1 fF)
+    is "calculated using the dimensions" of Fig.5(a) (EOT 3.8 A, L_CAP 100 nm) for the sense margin, the capacitance of the TCAD structure is not
+    given; S/D 1e20 stands in Sec.III; row hammer 0.05 / 0.01 / 0.006 mV per cycle with thresholds 11.3k / 60.5k / 100.8k.
+  * grounded body with the candidate mechanism of Fig.7: 0.008 (g7) / 0.010 (g3) / 0.013 (g4) mV per cycle over the last five cycles (0.010 - 0.013 was written).
+  * what the write leaves: default driving force 103 / 35 / 9 / 2 / 1 holes (ohmic contacts), 213 / 151 / 114 / 161 / 205 with both contacts closed (o3);
+    pairs made during the write 620 - 902 with the text's capacitors (b0) and 132 - 224 with the fitted ones (fin): about the same in all five cases, as
+    the charge the bars need is (1130 - 1601 holes), and 1.3 - 2.2 times short with the text's capacitors.
+- Fig.6(e) read from the embedded image for the first time (`tools/gt_rh_ripple.py`; scratch scripts fig6e_px*.py; the crop stays in the scratch folder).
+  Frame rows 771.5 .. 1084.5 = 1.120 .. 1.080 V (the two lower axis labels are misprinted "1.109", "1.108"): 0.128 mV per pixel row, 1.100 V = row 928.
+  Blue = Case 3, X-X', drawn on top: a square wave on rows 928 - 929 while the aggressor WL is HIGH and on row 934 while it is low (the waveform of
+  Fig.6(c) starts high at the left frame; the twenty transitions of the node sit on its edges within 2 px): a reversible swing of +0.70 mV (+-0.13),
+  no drift within a row over the ten cycles (text: 0.006 mV per cycle = half a row). Magenta = Case 1, Y-Y': no swing in the first two pulses (it stays
+  on 928 - 929 while blue is down), then rows 929 - 932: a drift of 0.3 - 0.4 mV by the seventh pulse (text: 0.05 mV per cycle). Red = Case 2, Z-Z':
+  hidden under the other two. (My first reading had the sign wrong: I took the waveform of (c) to start low.)
+  The model: swing Y-Y' 0.000 mV (as the paper), Z-Z' +0.47 mV (fin5, 1.8 fF; +0.20 at 4.2 fF), 3D X-X' +0.116 mV (4.2 fF); with the WL resistor it
+  grows (+0.66 mV at 2e5 Ohm, +3.3 mV at 1e7, victim gate +35 .. +239 mV). As a capacitive divider (swing = 1.8 V x C_c / C_s) the paper's X-X' has
+  C_c = 0.70 aF (1.8 fF) .. 1.6 aF (4.2 fF), our transistor-only 3D pair 0.27 aF: 2.6 - 6 times less. And the paper's Y-Y' loses most with no swing at
+  all: its loss is not coupling to the node. Both go into the measures (M1: storage node as a structure; M4: 3D pairs with it, swing first).
+- Contact position and Case 1 ((bn) gave the group scores only). No avalanche model, same stand-in rates:
+    first-phase / later loss [mV]   paper        axis contact (fin3n = dl)   end contact (fin4 = dm; fin5 within 5 %)
+    Case 1                          55 / 100     60.9 / 112.9                81.6 / 163.8
+    Case 2                          29 / 50      18.6 / 49.1                 21.5 / 62.8
+    Case 3                          7.1 / 14.6   4.4 / 12.9                  4.7 / 14.9
+    Case 4 (after two low phases)   3.5 / 5.0    3.4 / 5.01                  3.7 / 5.58
+  Group scores the same (0.45 / 1.42 against 0.43 / 1.46: Case 5 rules L2), but per case the axis contact has every later loss within 13 % and the end
+  contact has Case 1 64 % high; the first-phase losses of Cases 2, 3 are a little closer with the end contact. P6 ("Case 1 loses 1.5 - 1.65 times the
+  paper's") moves with decision B. Not changed: fin5 stays (the candidate of Fig.7 needs the end contact); where the contact sits is to be settled on a
+  pillar of several layers (M4). Put to the user as a decision.
+- Other things looked up for the measures, existing runs only: spacer material against the hold leak (Case 2: Si3N4 11.6, SiO2 11.2, HfO2 13.1 pA): no
+  lever for Case 5. Avalanche models of the installed release (manual): vanOverstraeten (default), Okuto, Lackner, UniBo, UniBo2; only the default has
+  been used; driving forces: three tried. No Auger recombination in the decks (noted, not changed). Fig.5(d) (sense margin, (al)) is in the report as
+  reproduced by the formula.
+- Codex's factorial (fin3 base: 720 runs = 5 cases x 12 preparations x 3 storage-node protocols x avalanche on / off x 2 capacitors) ended on 2026-10-08
+  04:49 (its logs: QUEUE COMPLETE, NIGHT CONTROLLER EXIT complete=True; 720 valid results). Its result files were copied from the server (read only)
+  and ranked with the rule of its own rank.py: `tools/codex_rank_snapshot.py` -> `claude/data/tables/codex_fin3_ranking_as_read.json` (origin/main
+  still held its state of 21:42). By Codex's scoring 10 of the 144 groups pass all five cases (groups 13, 15, 29, 31, 49, 53, 63, 67, 85, 89).
+  * A point about that scoring, to be told to Codex (its files are untouched): the losses are counted from the node just before the first BL fall
+    (`SN_prefall_V`, read before the late reset, which acts in the last 10 ps). In the late-reset groups with natural generation the node has drooped
+    36 - 146 mV by then, so their losses come out negative and their scores are 45 - 146. Counted from the reset node (loss + droop) the group natural
+    x 1.2, late reset, avalanche off passes: bars 548 / 444 / 378 / 334 / 395 mV, first-phase loss 52.0 / 17.4 / 6.0 / 4.6 mV, 200 ns 102.5 / 47.1 / 15.2 mV.
+  * Re-scored my way (`rescore` / `mine` in the builder: targets of tools/paper_targets.py, late reset counted from the reset node, the later loss of
+    Case 5 left out because it is the 1.6 mV hold leak in every group, a pass only with the node at 1.1 V at t_A): 10 groups pass (13, 15, 35, 49, 57,
+    63, 71, 85, 89, 93). Natural generation 3 of 36, pairs put into the whole body 4, into the BL-side 25 nm 3, into the storage-node-side 25 nm 0;
+    factor 0.8: 0 of 48, 1.0: 7, 1.2: 3; node clamped 5 of 48, late reset 4, released early 1; avalanche off 4 of 72, on 6; text capacitors 0 of 72,
+    write-fit capacitors 10. So: the same body state gives the same Fig.8 whatever made it (stand-in pairs or the model's own GIDL over 14.6 -
+    24.7 us); 20 % of charge is the whole tolerance; the text's capacitors never pass; pairs put in at the storage-node side never pass.
+  * Best group (worst item 0.58): pairs in the whole body x 1.2, avalanche model off (g63 clamped, g71 late reset): Case 1 loses 54.3 / 105.0 mV
+    (paper 55 / 100), Case 2 19.3 / 49.8, Case 3 6.3 / 15.6, on the fin3 structure, i.e. with the AXIS contact: the direction of the contact table above.
+- Measure M2 (one common hold time for the five cases) carried out on Codex's natural-generation runs, no new run (`common_time` in the builder;
+  picture gt2d_full_07): the bar and the losses of each case interpolated in log t between its three hold times (0.8 / 1.0 / 1.2 of its own time);
+  all five cases are covered from 16.5 to 17.5 us only. Best common time 17.5 us (node clamped, avalanche on): worst item 1.94 (Case 3 first-phase
+  loss 1.86 against 7.1 mV; bars Case 5 +55 mV, Case 1 -36 mV); the other three combinations 2.13 / 2.95 / 3.18. Bars grow with the hold time, so
+  no common time mends Case 1 and Case 5 together. The model's GIDL charges the five cases at different speeds (own times 20.6 / 16.2 / 19.6 / 18.7 /
+  14.6 us, ratio 1.41) while the bars ask for about one hole charge: a GIDL history with ONE hold time is not the origin of the charge of Fig.8.
+  M2 is closed. (What does scale alike in the five cases is the charge through the channel during the write: that is why M3 looks at what the write
+  leaves once the avalanche model is chosen by Fig.7.)
+- Remaining problems as the report lists them: P1 origin of the hole charge | P2 Fig.6(e) (loss per cycle 0.0014 / 0.0014 / 0.00066 against 0.0535 /
+  0.0100 / 0.0060; swing X-X' 0.12 against 0.70 mV) | P3 Fig.7 (size, Y-Y') | P4 storage capacitor of the transient (1.8 fF fitted, 4.2 fF calculated
+  in the text; two faces of the drawn storage-node block at EOT 3.8 A are 1.82 fF) | P5 Case 5 at 200 ns | P6 Case 1 and the tail of the write |
+  P7 3D pairs with today's device, ElectricField numerics | P8 what the figures do not let one read. Measures: M1 storage node as a structure (AC
+  capacitance, write curve, swing) | M2 one common hold time (done, see above) | M3 kind and driving force of the avalanche model against Fig.7(e), and
+  what the same setting leaves after the write | M4 3D pairs with the structural node | M5 position of the storage-node junction inside the reading
+  error of Fig.2 | M6 numerics | M7 way of working (kind and source curve of every read value, reading scripts kept, old runs to the PC).
+- Shared: branch `claude` (tools, report, pictures gt2d_full_*, tables `fig6e_reversible_swing.txt`, `contact_position_case_losses.txt`,
+  `codex_fin3_ranking_as_read.json`, status / analysis 11 / register note). Nothing of mine ran on the server.
+
 ## 2026-10-07 (br) user: "A, B, C as they are; start D" - the device is now `fin5`: BL contact of the single cells at the pillar end, no avalanche model in Fig.4(a) / 5(c) / 8, Hurkx A 1.2e20 and B 2.0e7 back-calculated from the GIDL branch of Hsu's silicon transistor. Case 5 does not move with A and B: its hold leak is not set by the tunnelling rate
 - Decisions (user, 21:40): A = no avalanche model in Fig.4(a) / Fig.8 (it stays for Fig.7, where the paper names it); B = BL contact of the
   single cells at the pillar end (gr_c1hb .. gr_c4hb; the pairs gr_yy, gr_zzb, gr_zzbg have it there already); C = the blue stretch of the
