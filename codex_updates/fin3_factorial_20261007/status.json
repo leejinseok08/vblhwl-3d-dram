@@ -1,0 +1,52 @@
+{
+  "checked_at": "2026-10-07T10:14:00.253555+09:00",
+  "total": 720,
+  "new_solver_planned": 710,
+  "references_planned": 10,
+  "results": 6,
+  "valid": 6,
+  "invalid": [],
+  "active": [
+    {
+      "pid": 91400,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C017_c3",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C017_c3_des.cmd ",
+      "last_time_ns": 11.265
+    },
+    {
+      "pid": 91411,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C017_c1",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C017_c1_des.cmd ",
+      "last_time_ns": 0.12812500000000002
+    },
+    {
+      "pid": 91471,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C017_c2",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C017_c2_des.cmd ",
+      "last_time_ns": 0.265
+    },
+    {
+      "pid": 91927,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C017_c4",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C017_c4_des.cmd ",
+      "last_time_ns": 0.115
+    }
+  ],
+  "natural_active": [
+    {
+      "pid": 78455,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_update_20261007/runs/F3N_c1",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3N_c1_des.cmd ",
+      "last_time_ns": 20747.515
+    },
+    {
+      "pid": 91668,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_update_20261007/runs/F3N_c3",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3N_c3_des.cmd ",
+      "last_time_ns": 3.165
+    }
+  ],
+  "old_active": [],
+  "quota": "Disk quotas for user e20241515 (uid 2453): \n     Filesystem  blocks   quota   limit   grace   files   quota   limit   grace\n/dev/mapper/centos-home 7610880  9437184 10485760           35832       0       0        \n",
+  "queue_log": "2026-10-07T10:09:43.364571+09:00 REFERENCE F3C049_c1 valid=True\n2026-10-07T10:09:43.376245+09:00 REFERENCE F3C049_c3 valid=True\n2026-10-07T10:09:43.394122+09:002026-10-07T10:09:43.399398+09:00  REFERENCE F3C049_c5 valid=TrueREFERENCE F3C049_c2 valid=True\n\n2026-10-07T10:09:43.412195+09:00 REFERENCE F3C049_c4 valid=True\n2026-10-07T10:09:44.473309+09:00 START F3C017_c3\n2026-10-07T10:09:44.491183+09:00 START F3C017_c1\n2026-10-07T10:09:44.517627+09:00 START F3C017_c2\n2026-10-07T10:10:13.148254+09:00 REFERENCE F3C013_c2 valid=True\n2026-10-07T10:10:14.224836+09:00 START F3C017_c4\n"
+}

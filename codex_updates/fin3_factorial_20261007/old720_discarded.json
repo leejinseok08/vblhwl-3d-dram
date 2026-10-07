@@ -1,0 +1,60 @@
+{
+  "stopped_at": "2026-10-07T10:10:20.856001+09:00",
+  "reason": "User requested fin3 replacement; old720 excluded from ranking",
+  "superseded_by": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007",
+  "old_queue": {
+    "pid": 39986,
+    "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006",
+    "cmd": "python3 -u run_queue.py "
+  },
+  "before": [
+    {
+      "pid": 39986,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006",
+      "cmd": "python3 -u run_queue.py "
+    },
+    {
+      "pid": 87654,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/runs/FC012_c1",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice FC012_c1_des.cmd "
+    },
+    {
+      "pid": 87746,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/runs/FC012_c2",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice FC012_c2_des.cmd "
+    },
+    {
+      "pid": 88095,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/runs/FC026_c1",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice FC026_c1_des.cmd "
+    },
+    {
+      "pid": 88480,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/runs/FC026_c2",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice FC026_c2_des.cmd "
+    },
+    {
+      "pid": 88929,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/runs/FC027_c1",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice FC027_c1_des.cmd "
+    },
+    {
+      "pid": 89176,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/runs/FC027_c2",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice FC027_c2_des.cmd "
+    },
+    {
+      "pid": 89285,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/runs/FC028_c1",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice FC028_c1_des.cmd "
+    },
+    {
+      "pid": 89426,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/factorial_conditions_20261006/runs/FC028_c2",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice FC028_c2_des.cmd "
+    }
+  ],
+  "old_results_count": 478,
+  "raw_data_retained": true,
+  "after": []
+}

@@ -1,0 +1,3 @@
+# Preserve simulator check bytes, including its terminal blank CSV record.
+checks/*.csv -text -diff
+input_snapshot.tar.gz -text -diff

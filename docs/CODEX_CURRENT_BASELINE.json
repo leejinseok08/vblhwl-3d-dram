@@ -29,7 +29,7 @@
     1.17,
     1.18
   ],
-  "legacy_720_screen": "original fin2-reading diagnostic; inputs/results unchanged; not ranked as fin3 because gated-window probes were not recorded",
+  "legacy_720_screen": "OBSOLETE; queue stopped; excluded from selection; raw audit retained",
   "new_runs": [
     "F3N_c1",
     "F3N_c2",
@@ -38,5 +38,10 @@
     "F3N_c5"
   ],
   "new_run_condition": "own generation, SN clamp during case-specific long hold, nine BL cycles; diagnostic history",
-  "updated_at": "2026-10-07T09:46:34.655548+09:00"
+  "updated_at": "2026-10-07T10:14:00.253555+09:00",
+  "active_batch": "fin3_factorial_20261007",
+  "new_search_conditions": 720,
+  "new_solver_runs": 710,
+  "reused_fin3_references": 10,
+  "full_waveform_200ns": true
 }
