@@ -26,7 +26,7 @@ from params import P as PDEF
 STRUCTS = dict(
     gr_c1=dict(Tbody=30, Gdi="SiO2"), gr_c2=dict(Gdi="SiO2"), gr_c3=dict(Tbody=10, Gdi="SiO2"), gr_c4=dict(Tbody=10, Nch=1e16, Gdi="SiO2"),
     gr_c1h=dict(Tbody=30), gr_c2h=dict(), gr_c3h=dict(Tbody=10), gr_c4h=dict(Tbody=10, Nch=1e16),
-    gr_yy=dict(Pair="yy"), gr_zz=dict(Pair="zz"), gr_zzg=dict(Pair="zz", Bgc=1),
+    gr_yy=dict(Pair="yy"), gr_zz=dict(Pair="zz"), gr_zzg=dict(Pair="zz", Bgc=1), gr_zzb=dict(Pair="zz", Blc="bot"), gr_zzbg=dict(Pair="zz", Blc="bot", Bgc=1),
     g3_c2h=dict(Tpl="sde_gt3_dvs.cmd", Wbl=50, Dim=3),
     # 3D, Case 2 device, row hammer Case 3 (X-X'): half victim row + wall + half aggressor row, WL cut by 20 nm (and 40 nm: does the gap matter?)
     g3x_c2h=dict(Tpl="sde_gt3_dvs.cmd", Wbl=50, Dim=3, Pair="xx"), g3x40_c2h=dict(Tpl="sde_gt3_dvs.cmd", Wbl=50, Dim=3, Pair="xx", Wcut=40),
@@ -40,7 +40,7 @@ STRUCTS = dict(
     gq025_c2h=dict(Mj=0.25, Mg=0.25), gq2_c2h=dict(Mj=2, Mg=2), gq5_c2h=dict(Mc=5, Mj=5, Mv=2, Mi=0.5, Mg=5),
     gq2_c1h=dict(Tbody=30, Mj=2, Mg=2), gq5_c1h=dict(Tbody=30, Mc=5, Mj=5, Mv=2, Mi=0.5, Mg=5),
 )
-SDE_KEYS = ["Lg", "Tbody", "Tox", "Tgm", "Dvox", "Nsd", "Nch", "Gdi", "Spm", "Pair", "Bgc", "Lsp1", "Lsp2", "Wbl", "Wact", "Dhox", "Mc", "Mj", "Mv", "Mi", "Mg", "Wcut"]
+SDE_KEYS = ["Lg", "Tbody", "Tox", "Tgm", "Dvox", "Nsd", "Nch", "Gdi", "Spm", "Pair", "Bgc", "Blc", "Lsp1", "Lsp2", "Wbl", "Wact", "Dhox", "Mc", "Mj", "Mv", "Mi", "Mg", "Wcut"]
 
 def fill_sde(name, prm):
     src = open(os.path.join(HERE, prm["Tpl"]), encoding="utf-8").read()
@@ -563,8 +563,9 @@ def cfg2d(tag, what, k_cs=1.0, par=None, rh=None, gb=None, cases=None, wst="gr_c
             RUNS.append(R(f"D{tag}F_c{c}", "GT", st, "cho:FBE", WFs=wf, WFd=wf, Cs=CSB[tb] * k_cs,
                           **dict(dict(PC, II=1, Tper=21, Npulse=9, tEdge=0.5, tHold=21.0, ErrH=1e14 if c <= 3 else 1e10, Gb=GB.get(c, 0.0)), **pv, **ov)))
     if "R" in what:
-        for nm_, st, ii in (("Ry_yy", "gr_yy", 0), ("Ryi_yy", "gr_yy", 1), ("Rz_zz", "gr_zz", 0), ("Rzi_zz", "gr_zz", 1), ("Rzg_zz", "gr_zzg", 1)):
-            if rhsel and nm_ not in rhsel: continue
+        for nm_, st, ii in (("Ry_yy", "gr_yy", 0), ("Ryi_yy", "gr_yy", 1), ("Rz_zz", "gr_zz", 0), ("Rzi_zz", "gr_zz", 1), ("Rzg_zz", "gr_zzg", 1),
+                            ("Rzbi_zz", "gr_zzb", 1), ("Rzbg_zz", "gr_zzbg", 1)):      # the last two (BL contact at the bottom end of the pillar) only when named in rhsel
+            if (rhsel and nm_ not in rhsel) or (not rhsel and "zb" in nm_): continue
             RUNS.append(R(f"D{tag}{nm_}", "GT", st, "cho:RH", WFs=4.7, WFd=4.7, II=ii, Cs=CSB[20] * k_cs,
                           **dict(dict(PC, ErrH=1e14, tON=0.094, tOFF=0.094, Ncyc=10), **pv, **ov, **(rh or {}))))
 # Round 1: baseline b0 = the paper's conditions as decided (pre-charge of Fig.4(a): BL 1.168 V, WL high 15 .. 120 ps; t = 0:
@@ -714,6 +715,15 @@ cfg2d("g1", "R", rhsel=("Ryi_yy", "Rzi_zz", "Rzg_zz"), IIdf="ElectricField", Pro
 cfg2d("g2", "R", rhsel=("Ry_yy", "Ryi_yy", "Rz_zz", "Rzi_zz"), BLhv=0.0, ProbeX=1, **B1)
 cfg2d("g3", "R", rhsel=("Ryi_yy", "Rzi_zz", "Rzg_zz"), IIdf="ElectricField", BLhv=0.0, ProbeX=1, **B1)
 cfg2d("g4", "R", rhsel=("Rzi_zz", "Rzg_zz"), IIdf="ElectricField", BLhv=0.0, ProbeX=1, Rwl=2e5, tWr=1.0, rh=dict(tHold=1.0), **B1)
+# Round 18 (2026-10-07, after round 16): with ElectricField and a BL contact that takes no holes the victim's body gains 600 - 1200 holes per
+# aggressor cycle and its node starts to fall while the aggressor is high, in Z-Z' and in Y-Y' alike; the runs stall after 2 - 4 cycles
+# (time steps of 1e-16 s at the storage-node-side gate edge). g5 = g3 with ErrRef(Electron) 1e12 (numerics only: does the node go on to
+# fall?) | g6 = g5 with the text's capacitors (4.2 fF on both cells: the first aggressor pulse moves 2.3 times the charge) | g7 = ElectricField
+# with the BL contact where a pillar has it, at its end: bottom end, below the victim, ohmic (structures gr_zzb / gr_zzbg): is Z-Z' then
+# hit and Y-Y' (g1: contact at the top end, 40 nm from both junctions) not, as in the paper?
+cfg2d("g5", "R", rhsel=("Ryi_yy", "Rzi_zz"), IIdf="ElectricField", BLhv=0.0, ProbeX=1, ErrE=1e12, **B1)
+cfg2d("g6", "R", rhsel=("Rzi_zz",), IIdf="ElectricField", BLhv=0.0, ProbeX=1, ErrE=1e12, k_cs=1.0, par=B1["par"])
+cfg2d("g7", "R", rhsel=("Rzbi_zz", "Rzbg_zz"), IIdf="ElectricField", ProbeX=1, ErrE=1e12, **B1)
 # Round 17 (2026-10-07, back-calculation of the hole charge of Fig.8 after the first look at round 16): with the driving force ElectricField the
 # write of the cell itself makes about 6300 pairs (default 150), and what the contacts do not take stays in a floating body. FBE of the five
 # cases with the paper's waveform, NO stand-in generation: o1 ElectricField + BL contact that takes no holes | o2 the same + storage-node

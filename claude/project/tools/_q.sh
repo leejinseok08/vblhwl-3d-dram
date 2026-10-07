@@ -4,7 +4,7 @@
 #   r3d = rebuild the two 3D structures from today's structure files (old meshes moved aside) and run the 3D checks + top views
 #   st = state of every run of rounds 4-6 (tools/run_state.py) | sa = one line per run that is not complete | live | du = disk | cx = Codex's plot files
 #   rh <runs> = row-hammer table | s <tags> = scorecard | t <tags> = loss after every BL-low phase | wo <tags> = write and WL switch-off
-#   ii = the impact-ionization factor runs | w <runs> = write curves
+#   ii = the impact-ionization factor runs | w <runs> = write curves | steps <runs> = their last time steps
 cd ~/vblhwl_3d_dram
 m=$1; [ -n "$2" ] && sleep $2; shift; shift
 if [ "$m" = r3d ]; then
@@ -33,6 +33,16 @@ if [ "$m" = sz ]; then    # what a share of the 2D completion rounds (runs D*) w
 fi
 if [ "$m" = live ]; then
   for p in $(pgrep -u "$USER" -x sdevice); do echo "$(readlink /proc/$p/cwd | sed "s|$HOME/vblhwl_3d_dram/||; s|^runs/||") $(ps -o etime= -p $p | tr -d ' ')"; done | sort | paste -sd' ' | fold -s -w 190
+  exit 0
+fi
+if [ "$m" = steps ]; then    # how the named runs step in time: their last three time steps (a stalled run shows steps of 1e-15 s and less)
+  for r in "$@"; do f=runs/$r/$r.out; [ -f $f ] || f=$f.gz; echo "=== $r"; zcat -f $f | grep -E 'Computing .*step from' | tail -3 | cut -c1-120; done
+  exit 0
+fi
+if [ "$m" = zb ]; then    # the two pair structures with the BL contact at the bottom end of the pillar: mesh (structure only), check, doping map
+  ( cd runs/_struct; for s in gr_zzb gr_zzbg; do [ -f ${s}_msh.tdr ] || sde -e -l ${s}_dvs.cmd > ${s}_sde.log 2>&1; ls -la --time-style=+%H:%M ${s}_msh.tdr | awk '{print $7, $5, $6}'; done
+    bash ../../tools/export_doping.sh gr_zzb 0.200 | tail -2; wc -l gr_zzb_dopmap.csv )
+  bash tools/gt_precheck.sh gr_zz:20:2 gr_zzb:20:2 gr_zzbg:20:2
   exit 0
 fi
 if [ "$m" = dq ]; then    # what the full disk quota of 2026-10-06 did: runs whose log or stdout names a write failure

@@ -39,6 +39,8 @@ P = dict(
     Pair="one",         # section: "one" cell, "yy" = two cells across the BL (RH Case 1), "zz" = two layers (RH Case 2);
                         # 3D template: "xx" = two rows across the isolation wall (RH Case 3)    [Cho]
     Bgc=0,              # 1 = contact "body_v" in the victim body: the hypothetical grounded body of Fig.7(b)    [Cho]
+    Blc="axis",         # where the 2D section puts the BL contact: "axis" = on the pillar axis over its whole height ("yy": top end of the
+                        # pillar); "bot" = bottom end of the pillar (in "zz" below the victim). The pillar of the array is contacted at its end.   [ASM]
     Mc=2, Mj=0.5, Mv=1, Mi=0.2, Mg=1,   # mesh of the 2D section [nm]: along the channel, at the two junctions, across the body,
                         # at the gate dielectric; Mg = smallest step the doping-gradient refinement may take along the
                         # channel (not physics: the paper gives no mesh)                     [ASM]
