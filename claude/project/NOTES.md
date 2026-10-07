@@ -22,7 +22,8 @@ the ones of that time (structures `gx_*` / `gp_*` are the meshes before the dopi
   5.1 fF 1.28, Case 3 cell with 3.6 fF 2.39. Default driving force, 1.8 fF: 0.93 (axis), 0.94 (end). With ElectricField the write asks for
   1.35 x the text's capacitor (`fin3`: 0.43 x).
 - Fig.5(c): with the ionization off the end contact changes nothing (d0: thresholds, 60.2 - 60.3 mV/dec, GIDL branch as fin, score 0.73).
-  With ElectricField on there is no DC curve: all five gate ramps stop at Vg about 1.06 V, before any drain bias (d1). As a sweep in time
+  With ElectricField on there is no DC curve: the five gate ramps stop at Vg = 1.108 / 1.062 / 1.083 / 1.085 / 1.387 V (Case 5 higher by its
+  work function), all with the BL still at 0 V (d1). As a sweep in time
   (Case 2, BL 1.1 V, 0 -> 1.8 V): 100 us 0.29 / 0.38 / 0.53 V at 1e-10 / 1e-8 / 1e-6 A, 44.2 mV/dec; 10 ms 0.24 / 0.38 / 0.53, 73.1 mV/dec; the
   current x 2.8 at 1 V, x 5.1 at 1.8 V (paper 0.33 / 0.44 / 0.57). Control with the ionization off: the DC curve at both sweep times (0.33 /
   0.45 / 0.58, 60.5 / 60.4 mV/dec). So the shift is the ionization's, and the curve then depends on the sweep time (the on-current charges
