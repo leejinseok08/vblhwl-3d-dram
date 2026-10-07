@@ -778,6 +778,11 @@ FE = {1: 0.75, 2: 0.816, 3: 0.908, 4: 0.936, 5: 0.919}
 cfg2d("dc", "WF", cases=CASEB, wst="gr_c2hb", gb={c: GBQ[c] * GBB[c] for c in GBQ}, ProbeX=1, ProbeT=1, **B1)
 cfg2d("de", "F", cases=CASEB, IIdf="ElectricField", gb={c: GBQ[c] * GBB[c] * FE[c] for c in GBQ}, ProbeX=1, ProbeT=1, k_cs=KE, par=B1["par"])
 cfg2d("dd", "F", cases=CASEB, IIdf="ElectricField", gb={c: GBQ[c] * GBB[c] * FE[c] for c in GBQ}, ProbeX=1, ProbeT=1, **B1)
+# Round 24 (control of d6: a gate sweep in time moves the curve of a floating-body cell by itself, so the 44 mV/dec of d6 are not yet
+# the ionization's). dg = d6 with the ionization off (Cases 1, 2) | dh, di = Case 2 swept 100 times slower (10 ms), ionization off / ElectricField.
+cfg2d("dg", "I", cases=CASEB[:2], iv=dict(SwDown=0, VgMin=0.0, SwT=1e-4, ErrH=1e14), par=B1["par"])
+cfg2d("dh", "I", cases=CASEB[1:2], iv=dict(SwDown=0, VgMin=0.0, SwT=1e-2, ErrH=1e14), par=B1["par"])
+cfg2d("di", "I", cases=CASEB[1:2], iv=dict(II=1, IIdf="ElectricField", SwDown=0, VgMin=0.0, SwT=1e-2, ErrH=1e14), par=B1["par"])
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
