@@ -28,8 +28,8 @@ the ones of that time (structures `gx_*` / `gp_*` are the meshes before the dopi
     junctions): holes +441, then +200 - 250 per cycle; node falls from cycle 3 on: 0.17 / 0.47 / 0.85 / 1.33 / 1.84 / 2.43 mV per cycle.
   * g3, both: holes +874 in cycle 1 (+664 within the first pulse), then +648 / +628 (Z-Z'); +1236, +830 (Y-Y'). Victim's gated-body average
     +208 -> +378 mV in the first pulse (+170 mV; centre +205; paper 665.1), +426 / +566 / +694 / +817 mV after cycles 1 - 4. Node: -0.49 /
-    -4.0 / -7.0 mV per cycle (Z-Z'), -1.96 / -7.8 (Y-Y'); it falls while the aggressor is HIGH (cycle 4: -6.9 mV in the high phase, -0.8 in
-    the low one), as Fig.7(a) draws it. Both stall in cycle 4 / 3 (below).
+    -4.0 / -7.0 mV per cycle (Z-Z'), -1.96 / -7.8 (Y-Y'); it falls mostly while the aggressor is HIGH (70 - 80 % of the loss: g8 cycle 4 -7.2 mV in the high phase,
+    -2.9 in the low one; g9 cycle 7 -6.7 / -1.5), where Fig.7(a) draws flat low phases. Both stall in cycle 4 / 3 (below).
   * g4, both + R = 2e5: the same hole gain (+852 / +584 / +580 / +644), node -1.1 (rise) / +1.9 / +4.6 / +8.1 mV per cycle; gate jump +264 mV.
   * grounded victim body (paper 0.036 mV per cycle, node flat): g3 0.0101 mV per cycle (last five, a steady loss), g4 (R) 0.0133,
     g1 (axis contact) 0.0019, default driving force 0.00145. 4 holes in the body throughout. The grounded body is immune, as in Fig.7(c).
@@ -90,7 +90,13 @@ the ones of that time (structures `gx_*` / `gp_*` are the meshes before the dopi
 - Shared: register, status, analysis 4.9 / 5.4 - 5.7 / 7.2, tables (`row_hammer_history_round15.txt`, `row_hammer_pairs_and_body_round15.txt`,
   `row_hammer_aggressor_holes_rounds16_18.txt`, `fbe_and_write_no_standin_rounds17_20.txt`, `fbe_3d_new_reading_case2.txt`), 72 new run
   folders, pictures `gt2d_rh_history_round15.png`, `gt2d_rh_hole_transfer_rounds16_19.png` (`tools/_rh_tab.sh` on the server, then
-  `tools/plot_rh_transfer.py <table>` on the PC). Report sections 9.13 - 9.16. Not updated: the eliU HTML report, the comparison workbook.
+  `tools/plot_rh_transfer.py <table>` on the PC). Report sections 9.13 - 9.16. Not updated: the comparison workbook.
+- User (after the chat report): "report through eliu". eliU report file `results_vbl_hwl_1t1c_3ddram\GT_IRPS2026_현황보고_eliU_2026-10-07_오후.html`,
+  built by `tools/make_eliu_report_1007.py` (page builder and text checks of `tools/make_eliu_report.py`, whose fixed texts are now in `TXT`;
+  yesterday's report is still reproduced byte for byte): 260 sentences, 5.9 units per sentence, nine pictures `gt2d_eliu1007_01 .. 09`
+  drawn from the run files of the shared copy, 25 numbers of the text asserted against those files. Found while checking and corrected in
+  the analysis / status / register / report: the node falls MOSTLY in the aggressor-high phase (70 - 80 % of the loss), not only there;
+  first-pulse body rise of g1 27 mV (Z-Z'), 120 mV (Y-Y'), g3 Y-Y' 252 mV.
 - Not changed: `fin3` and its scores. ElectricField is not adopted for the device: with it the write is faster (round 20) and Fig.5(c) /
   Fig.8 / the scores have not been redone with it.
 

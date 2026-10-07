@@ -260,6 +260,14 @@ def check_text():
     assert avg <= 10, avg
     return len(body), avg
 
+TXT = dict(   # the fixed texts of the page; a later report sets its own (tools/make_eliu_report_1007.py)
+    title="Cho 외 (IRPS 2026) 소자 2D 재현: 저녁 현황", meta="2026년 10월 6일 20:40 · 2D 단면 모델",
+    res_head="숫자 한눈에: 논문과 최종 2D 구성 fin2",
+    res_note="Case 1~5 순서예요. 점수가 1보다 작으면 그림을 읽는 오차 안이에요. 마지막 열은 모델 값이 어떤 종류인지예요.",
+    res_cols=["논문 그림", "비교한 값", "논문", "최종 2D 구성 fin2", "점수", "모델 값의 종류"],
+    term_note="실험별 내용은 같은 폴더의 <b>GT_IRPS2026_2D_소자완성_보고_2026-10-06.md</b> 9절과\n"
+              "<b>GT_IRPS2026_논문대비_비교표_2026-10-06.xlsx</b>, GitHub <b>claude</b> 브랜치의 <b>claude/ANALYSIS.md</b>에 있어요.")
+
 def html(img):
     b64 = lambda f: "data:image/png;base64," + base64.b64encode(open(f, "rb").read()).decode()
     chip = {"한 줄로": "#1e88e5", "기본부터": "#8e24aa", "조금 더": "#43a047", "그래서?": "#f4511e"}; out = []
@@ -273,7 +281,7 @@ def html(img):
         out.append("</section>")
     return f"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cho 외 (IRPS 2026) 소자 2D 재현: 저녁 현황</title>
+<title>{TXT['title']}</title>
 <style>
  body {{ font-family: "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", sans-serif; background: #fffdf7; color: #263238; margin: 0; }}
  main {{ max-width: 980px; margin: 0 auto; padding: 24px 16px 60px; }}
@@ -287,16 +295,15 @@ def html(img):
  th, td {{ border: 1px solid #cfd8dc; padding: 6px 9px; vertical-align: top; text-align: left; }} th {{ background: #37474f; color: #fff; }}
  td:first-child {{ font-weight: bold; }}
 </style></head><body><main>
-<h1>Cho 외 (IRPS 2026) 소자 2D 재현: 저녁 현황</h1>
-<div class="meta">2026년 10월 6일 20:40 · 2D 단면 모델 · eliU 형식: 문장과 구조는 쉽게, 용어는 실제 용어 그대로, 새 개념은 전공 과목에 연결<br>
+<h1>{TXT['title']}</h1>
+<div class="meta">{TXT['meta']} · eliU 형식: 문장과 구조는 쉽게, 용어는 실제 용어 그대로, 새 개념은 전공 과목에 연결<br>
 대상 논문: "Row Hammer Effect and Floating Body Effect of Monolithic 3D Stackable 1T1C DRAM" (IRPS 2026). 논문 값은 그림에서 읽은 수치예요.</div>
 {"".join(out)}
-<section class="ref"><h2>숫자 한눈에: 논문과 최종 2D 구성 fin2</h2>
-<p>Case 1~5 순서예요. 점수가 1보다 작으면 그림을 읽는 오차 안이에요. 마지막 열은 모델 값이 어떤 종류인지예요.</p>
-<div class="wrap"><table><tr><th>논문 그림</th><th>비교한 값</th><th>논문</th><th>최종 2D 구성 fin2</th><th>점수</th><th>모델 값의 종류</th></tr>{tab(RESULT)}</table></div></section>
+<section class="ref"><h2>{TXT['res_head']}</h2>
+<p>{TXT['res_note']}</p>
+<div class="wrap"><table><tr>{"".join(f"<th>{h}</th>" for h in TXT['res_cols'])}</tr>{tab(RESULT)}</table></div></section>
 <section class="ref"><h2>용어 풀이</h2>
-<p>본문에 나온 용어의 뜻과 이 작업에서의 값·근거예요. 실험별 내용은 같은 폴더의 <b>GT_IRPS2026_2D_소자완성_보고_2026-10-06.md</b> 9절과
-<b>GT_IRPS2026_논문대비_비교표_2026-10-06.xlsx</b>, GitHub <b>claude</b> 브랜치의 <b>claude/ANALYSIS.md</b>에 있어요.</p>
+<p>본문에 나온 용어의 뜻과 이 작업에서의 값·근거예요. {TXT['term_note']}</p>
 <div class="wrap"><table><tr><th>용어</th><th>뜻</th><th>이 작업에서의 값·근거</th></tr>{tab(TERM)}</table></div></section>
 </main></body></html>
 """
