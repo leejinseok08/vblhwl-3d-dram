@@ -22,7 +22,12 @@ elog = lambda s, r: math.log10(max(s, P.FLOOR) / max(r, P.FLOOR)) / P.DEC_TOL
 
 # A configuration whose decks are, line by line, those of runs already made is scored from those runs (checked 2026-10-06:
 # fin2 = storage node 1.8 fF, Hurkx Agen 1.7e21, hole charge of Fig.8(a), ideal WL = DfinI / DfinW / Dh1F / DfinR).
-COMPOSE = {"fin2": dict(I="fin", W="fin", F="h1", R="fin")}
+COMPOSE = {"fin2": dict(I="fin", W="fin", F="h1", R="fin"), "fin3": dict(I="fin", W="fin", F="s2", R="fin")}
+# Reading of Fig.8(a), back-calculated on 2026-10-07 (NOTES (bk); the paper does not say where it reads the body potential): for the FBE
+# runs named here the body rise is the AVERAGE electrostatic potential of the body under the gate (column AveWindow, runs with
+# ProbeX=1), counted from the start of the transient and read at this offset from the middle of the first BL fall [s]:
+# +0.5 ns = 0.25 ns after the fall is complete, -0.3 ns = just before it. Other runs: the body-centre point just before the fall.
+AVGREAD = {"s2": 5e-10, "p1": 5e-10, "p2": 5e-10, "s1": -3e-10}
 part = lambda tag, k: COMPOSE.get(tag, {}).get(k, tag)
 FB = []                                               # filled by first(): True where a baseline run stands in for the configuration's own
 def first(*ids):
@@ -64,7 +69,8 @@ def fbe(tag):
         tw0 = edges(t, wl, 0, 1.8, False); f = edges(t, bl, 0, 1.1, False); r = [x for x in edges(t, bl, 0, 1.1, True) if f and x > f[0]]
         if not (tw0 and f and r): txt.append(f"c{c} not far enough"); continue
         t0 = tw0[0] + 4e-11; tA = f[0] - 3e-10; T = dv["time"]; kv = [k for k in dv if "ElectrostaticPotential" in k][0]
-        rise = (at(T, dv[kv], tA) - dv[kv][0]) * 1e3; v0 = at(t, sn, t0)
+        ka = [k for k in dv if k.startswith("AveWindow((0.075") and "ElectrostaticPotential" in k] if tag in AVGREAD else []
+        rise = (at(T, dv[ka[0]], f[0] + AVGREAD[tag]) - dv[ka[0]][0]) * 1e3 if ka else (at(T, dv[kv], tA) - dv[kv][0]) * 1e3; v0 = at(t, sn, t0)
         l1 = (v0 - at(t, sn, r[0] - 3e-10)) * 1e3; l2 = (v0 - at(t, sn, min(t[-1], t0 + 2e-7))) * 1e3 if t[-1] >= t0 + 1.9e-7 else None
         er.append((rise - P.FBE_RISE[c]) / P.FBE_RISE_TOL)
         e1.append(elog(l1, P.FBE_FIRST[c]) if P.FBE_FIRST[c] > 0 else l1 / 1.0)

@@ -119,6 +119,10 @@ def currentplot(p, indent="  "):
             gated, under = win(x0 + p["Lsp1"], x0 + p["Lsp1"] + p["Lg"]), win(x0, x0 + p["Lsp1"])
             extra += (f'{indent}  ElectrostaticPotential( Average(Region="R.Ch_v") Minimum(Region="R.Ch_v") Maximum(Region="R.Ch_v") Average({gated}) Average({under}) )\n'
                       f'{indent}  hQuasiFermiPotential( Average(Region="R.Ch_v") Average({gated}) )\n')
+    if p["ProbeX"] and p["Tpl"] == "sde_gt3_dvs.cmd" and p["Pair"] == "one":      # 3D unit cell: the average over the body under the gate (the half row of the model)
+        y0 = p["Dvox"] / 2 + p["Tgm"] + p["Tox"]; x0 = p["Wbl"] / 2 + p["Lsp1"]
+        extra += (f"{indent}  ElectrostaticPotential( Average(Window[({x0 / 1000:.5f} {y0 / 1000:.5f} 0) "
+                  f"({(x0 + p['Lg']) / 1000:.5f} {(y0 + p['Tbody']) / 1000:.5f} {p['Wact'] / 2000:.5f})]) )\n")
     return (f"{indent}CurrentPlot {{\n"
             f"{indent}  ElectrostaticPotential( {pos} )   # V_B probe: victim channel centre at body level\n"
             f"{indent}  hQuasiFermiPotential( {pos} )\n"
@@ -685,6 +689,10 @@ RUNS.append(R("E3H_c2", "GT", "g3_c2h", "cho:FBE", WFs=4.7, WFd=4.7, Cs=1.8e-15,
 RUNS.append(R("E3K_c2", "GT", "g3_c2h", "cho:FBE", WFs=4.7, WFd=4.7, Cs=1.8e-15, **dict(F3, Npulse=0, Gb=GB0[2])))      # sizing of the supply in 3D
 RUNS.append(R("E3F_c2", "GT", "g3_c2h", "cho:FBE", WFs=4.7, WFd=4.7, Cs=1.8e-15, **dict(F3, Npulse=9, Gb=GBQ[2])))      # FBE at the 2D rate (to be replaced by the 3D sizing)
 RUNS.append(R("E3F125_c2", "GT", "g3_c2h", "cho:FBE", WFs=4.7, WFd=4.7, Cs=1.8e-15, **dict(F3, Npulse=9, Gb=GBQ[2] * 1.25)))     # 1.25 x that charge (2D: where the losses fit); user 2026-10-07: the check in 3D
+# 2026-10-07, after round 14: the back-calculated reading of Fig.8(a) (average potential of the body under the gate at the first BL
+# edge) in 3D. Two charges around the one that puts that reading on the bar in 2D (x 1.31 of the old bar charge for Case 2).
+for nm_, f_ in (("E3S1_c2", 1.31), ("E3S2_c2", 1.45)):
+    RUNS.append(R(nm_, "GT", "g3_c2h", "cho:FBE", WFs=4.7, WFd=4.7, Cs=1.8e-15, **dict(F3, Npulse=9, Gb=GBQ[2] * f_, ProbeX=1)))
 for nm_, ii in (("E3X_xx", 0), ("E3Xi_xx", 1)):
     RUNS.append(R(nm_, "GT", "g3x_c2h", "cho:RH", WFs=4.7, WFd=4.7, II=ii, Cs=1.8e-15, **dict(P3, ErrH=1e14, tON=0.094, tOFF=0.094, Ncyc=10)))
 
