@@ -1,4 +1,4 @@
-$ErrorActionPreference='Stop'
+﻿$ErrorActionPreference='Stop'
 $taskDir=Split-Path -Parent $MyInvocation.MyCommand.Path
 $remoteDir='/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007'
 $destination='C:\Users\LEEJINSEOK\Desktop\서강대\반엘프\results_vbl_hwl_1t1c_3ddram\Codex_독립검증_2026-10-07\fin3_720_개선실험\raw'

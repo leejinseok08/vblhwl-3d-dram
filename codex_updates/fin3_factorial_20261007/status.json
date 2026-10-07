@@ -1,52 +1,63 @@
 {
-  "checked_at": "2026-10-07T10:14:00.253555+09:00",
+  "checked_at": "2026-10-07T13:27:47.433509+09:00",
   "total": 720,
   "new_solver_planned": 710,
   "references_planned": 10,
-  "results": 6,
-  "valid": 6,
+  "results": 74,
+  "valid": 74,
   "invalid": [],
   "active": [
     {
-      "pid": 91400,
-      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C017_c3",
-      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C017_c3_des.cmd ",
-      "last_time_ns": 11.265
+      "pid": 83931,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C003_c5",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C003_c5_des.cmd ",
+      "last_time_ns": 11806.4525
     },
     {
-      "pid": 91411,
-      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C017_c1",
-      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C017_c1_des.cmd ",
-      "last_time_ns": 0.12812500000000002
+      "pid": 84831,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C004_c1",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C004_c1_des.cmd ",
+      "last_time_ns": 16483.84
     },
     {
-      "pid": 91471,
-      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C017_c2",
-      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C017_c2_des.cmd ",
-      "last_time_ns": 0.265
+      "pid": 86156,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C004_c2",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C004_c2_des.cmd ",
+      "last_time_ns": 12963.34
     },
     {
-      "pid": 91927,
-      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C017_c4",
-      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C017_c4_des.cmd ",
-      "last_time_ns": 0.115
+      "pid": 86770,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C004_c3",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C004_c3_des.cmd ",
+      "last_time_ns": 15702.687368421099
+    },
+    {
+      "pid": 87379,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C004_c4",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C004_c4_des.cmd ",
+      "last_time_ns": 14962.44
+    },
+    {
+      "pid": 90265,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C004_c5",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C004_c5_des.cmd ",
+      "last_time_ns": 0.12062500000000001
+    },
+    {
+      "pid": 90729,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C005_c1",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C005_c1_des.cmd ",
+      "last_time_ns": 0.12125
+    },
+    {
+      "pid": 92107,
+      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_factorial_20261007/runs/F3C005_c2",
+      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3C005_c2_des.cmd ",
+      "last_time_ns": 0.005
     }
   ],
-  "natural_active": [
-    {
-      "pid": 78455,
-      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_update_20261007/runs/F3N_c1",
-      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3N_c1_des.cmd ",
-      "last_time_ns": 20747.515
-    },
-    {
-      "pid": 91668,
-      "cwd": "/home/e20241515/vblhwl_3d_dram/codex_validation/fin3_update_20261007/runs/F3N_c3",
-      "cmd": "/TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice F3N_c3_des.cmd ",
-      "last_time_ns": 3.165
-    }
-  ],
+  "natural_active": [],
   "old_active": [],
-  "quota": "Disk quotas for user e20241515 (uid 2453): \n     Filesystem  blocks   quota   limit   grace   files   quota   limit   grace\n/dev/mapper/centos-home 7610880  9437184 10485760           35832       0       0        \n",
-  "queue_log": "2026-10-07T10:09:43.364571+09:00 REFERENCE F3C049_c1 valid=True\n2026-10-07T10:09:43.376245+09:00 REFERENCE F3C049_c3 valid=True\n2026-10-07T10:09:43.394122+09:002026-10-07T10:09:43.399398+09:00  REFERENCE F3C049_c5 valid=TrueREFERENCE F3C049_c2 valid=True\n\n2026-10-07T10:09:43.412195+09:00 REFERENCE F3C049_c4 valid=True\n2026-10-07T10:09:44.473309+09:00 START F3C017_c3\n2026-10-07T10:09:44.491183+09:00 START F3C017_c1\n2026-10-07T10:09:44.517627+09:00 START F3C017_c2\n2026-10-07T10:10:13.148254+09:00 REFERENCE F3C013_c2 valid=True\n2026-10-07T10:10:14.224836+09:00 START F3C017_c4\n"
+  "quota": "Disk quotas for user e20241515 (uid 2453): \n     Filesystem  blocks   quota   limit   grace   files   quota   limit   grace\n/dev/mapper/centos-home 8271920  9437184 10485760           37048       0       0        \n",
+  "queue_log": "057_c1 rc=0 valid=True\n2026-10-07T11:36:56.637348+09:00 START F3C089_c3\n2026-10-07T11:39:15.747398+09:00 END F3C085_c3 rc=0 valid=True\n2026-10-07T11:39:16.565693+09:00 START F3C089_c4\n2026-10-07T11:41:57.561854+09:00 END F3C085_c2 rc=0 valid=True\n2026-10-07T11:41:58.351150+09:00 START F3C089_c5\n2026-10-07T11:42:17.532078+09:00 END F3C085_c1 rc=0 valid=True\n2026-10-07T11:42:18.426706+09:00 START F3C093_c1\n2026-10-07T11:44:42.221517+09:00 END F3C085_c4 rc=0 valid=True\n2026-10-07T11:44:43.013499+09:00 START F3C093_c2\n2026-10-07T11:49:38.907875+09:00 END F3C085_c5 rc=0 valid=True\n2026-10-07T11:49:39.701001+09:00 START F3C093_c3\n2026-10-07T11:50:55.722276+09:00 END F3C089_c3 rc=0 valid=True\n2026-10-07T11:50:56.497810+09:00 START F3C093_c4\n2026-10-07T11:53:55.526262+09:00 END F3C089_c2 rc=0 valid=True\n2026-10-07T11:53:56.400789+09:00 START F3C093_c5\n2026-10-07T11:55:37.234777+09:00 END F3C089_c4 rc=0 valid=True\n2026-10-07T11:55:38.057104+09:00 START F3C121_c1\n2026-10-07T11:58:07.781033+09:00 END F3C089_c1 rc=0 valid=True\n2026-10-07T11:58:08.593033+09:00 START F3C121_c2\n2026-10-07T11:59:08.951955+09:00 END F3C089_c5 rc=0 valid=True\n2026-10-07T11:59:09.749502+09:00 START F3C121_c3\n2026-10-07T12:03:13.464358+09:00 END F3C093_c3 rc=0 valid=True\n2026-10-07T12:03:14.278483+09:00 START F3C121_c4\n2026-10-07T12:03:47.500106+09:00 END F3C093_c2 rc=0 valid=True\n2026-10-07T12:03:48.314566+09:00 START F3C121_c5\n2026-10-07T12:06:05.830399+09:00 END F3C093_c1 rc=0 valid=True\n2026-10-07T12:06:06.626348+09:00 START F3C125_c1\n2026-10-07T12:07:23.474000+09:00 END F3C093_c4 rc=0 valid=True\n2026-10-07T12:07:24.268383+09:00 START F3C125_c2\n2026-10-07T12:10:51.643781+09:00 END F3C093_c5 rc=0 valid=True\n2026-10-07T12:10:52.414365+09:00 START F3C125_c3\n2026-10-07T12:12:20.997113+09:00 END F3C121_c3 rc=0 valid=True\n2026-10-07T12:12:21.798944+09:00 START F3C125_c4\n2026-10-07T12:16:23.907916+09:00 END F3C121_c2 rc=0 valid=True\n2026-10-07T12:16:24.683260+09:00 START F3C125_c5\n2026-10-07T12:18:10.097857+09:00 END F3C121_c5 rc=0 valid=True\n2026-10-07T12:18:10.875304+09:00 START F3C129_c1\n2026-10-07T12:18:30.039125+09:00 END F3C121_c1 rc=0 valid=True\n2026-10-07T12:18:30.875210+09:00 START F3C129_c2\n2026-10-07T12:18:57.657833+09:00 END F3C121_c4 rc=0 valid=True\n2026-10-07T12:18:58.429858+09:00 START F3C129_c3\n2026-10-07T12:23:54.034949+09:00 END F3C125_c3 rc=0 valid=True\n2026-10-07T12:23:54.807501+09:00 START F3C129_c4\n2026-10-07T12:25:47.709744+09:00 END F3C125_c2 rc=0 valid=True\n2026-10-07T12:25:48.474637+09:00 START F3C129_c5\n2026-10-07T12:27:55.173162+09:00 END F3C125_c4 rc=0 valid=True\n2026-10-07T12:27:55.979496+09:00 START F3C001_c1\n2026-10-07T12:28:59.373064+09:00 END F3C125_c1 rc=0 valid=True\n2026-10-07T12:29:00.224771+09:00 START F3C001_c2\n2026-10-07T12:31:13.165550+09:00 END F3C125_c5 rc=0 valid=True\n2026-10-07T12:31:13.969505+09:00 START F3C001_c3\n2026-10-07T12:33:26.442946+09:00 END F3C129_c3 rc=0 valid=True\n2026-10-07T12:33:27.263194+09:00 START F3C001_c4\n2026-10-07T12:38:30.715173+09:00 END F3C129_c2 rc=0 valid=True\n2026-10-07T12:38:31.574829+09:00 START F3C001_c5\n2026-10-07T12:42:35.866488+09:00 END F3C129_c4 rc=0 valid=True\n2026-10-07T12:42:36.726302+09:00 START F3C002_c1\n2026-10-07T12:43:01.122252+09:00 END F3C129_c5 rc=0 valid=True\n2026-10-07T12:43:01.923557+09:00 START F3C002_c2\n2026-10-07T12:43:25.459399+09:00 END F3C129_c1 rc=0 valid=True\n2026-10-07T12:43:26.277629+09:00 START F3C002_c3\n2026-10-07T12:48:21.474233+09:00 END F3C001_c3 rc=0 valid=True\n2026-10-07T12:48:22.292327+09:00 START F3C002_c4\n2026-10-07T12:53:07.408932+09:00 END F3C001_c2 rc=0 valid=True\n2026-10-07T12:53:08.472055+09:00 START F3C002_c5\n2026-10-07T12:54:34.978372+09:00 END F3C001_c4 rc=0 valid=True\n2026-10-07T12:54:36.151872+09:00 START F3C003_c1\n2026-10-07T12:58:32.196181+09:00 END F3C001_c1 rc=0 valid=True\n2026-10-07T12:58:33.162344+09:00 START F3C003_c2\n2026-10-07T12:59:23.675642+09:00 END F3C001_c5 rc=0 valid=True\n2026-10-07T12:59:24.666366+09:00 START F3C003_c3\n2026-10-07T13:03:05.593199+09:00 END F3C002_c3 rc=0 valid=True\n2026-10-07T13:03:06.538890+09:00 START F3C003_c4\n2026-10-07T13:10:39.208000+09:00 END F3C002_c2 rc=0 valid=True\n2026-10-07T13:10:40.198981+09:00 START F3C003_c5\n2026-10-07T13:12:47.294735+09:00 END F3C002_c4 rc=0 valid=True\n2026-10-07T13:12:48.367926+09:00 START F3C004_c1\n2026-10-07T13:15:40.043774+09:00 END F3C002_c5 rc=0 valid=True\n2026-10-07T13:15:41.139322+09:00 START F3C004_c2\n2026-10-07T13:17:01.396862+09:00 END F3C002_c1 rc=0 valid=True\n2026-10-07T13:17:02.365043+09:00 START F3C004_c3\n2026-10-07T13:18:07.548808+09:00 END F3C003_c3 rc=0 valid=True\n2026-10-07T13:18:08.514141+09:00 START F3C004_c4\n2026-10-07T13:24:13.941809+09:00 END F3C003_c4 rc=0 valid=True\n2026-10-07T13:24:14.871662+09:00 START F3C004_c5\n2026-10-07T13:25:01.140258+09:00 END F3C003_c2 rc=0 valid=True\n2026-10-07T13:25:02.063188+09:00 START F3C005_c1\n2026-10-07T13:27:21.624072+09:00 END F3C003_c1 rc=0 valid=True\n2026-10-07T13:27:22.571677+09:00 START F3C005_c2\n"
 }
