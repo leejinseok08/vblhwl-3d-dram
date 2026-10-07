@@ -783,6 +783,12 @@ cfg2d("dd", "F", cases=CASEB, IIdf="ElectricField", gb={c: GBQ[c] * GBB[c] * FE[
 cfg2d("dg", "I", cases=CASEB[:2], iv=dict(SwDown=0, VgMin=0.0, SwT=1e-4, ErrH=1e14), par=B1["par"])
 cfg2d("dh", "I", cases=CASEB[1:2], iv=dict(SwDown=0, VgMin=0.0, SwT=1e-2, ErrH=1e14), par=B1["par"])
 cfg2d("di", "I", cases=CASEB[1:2], iv=dict(II=1, IIdf="ElectricField", SwDown=0, VgMin=0.0, SwT=1e-2, ErrH=1e14), par=B1["par"])
+# Round 25 (by-product of rounds 22 / 23: with the default driving force, too, the ionization of the BL-low phases feeds the body (Case 1 on
+# the end-contact cell: 257 pairs in the first low phase while the body loses 124 holes), and the paper names its avalanche model for Fig.7
+# only). dj = fin3's FBE with the avalanche model off (diagnostic; the user's condition for Fig.8 is "on") | dk = the same on the cells
+# with the BL contact at the pillar end.
+cfg2d("dj", "F", gb={c: GBQ[c] * GBB[c] for c in GBQ}, ProbeX=1, ProbeT=1, II=0, **B1)
+cfg2d("dk", "F", cases=CASEB, gb={c: GBQ[c] * GBB[c] for c in GBQ}, ProbeX=1, ProbeT=1, II=0, **B1)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
