@@ -1,0 +1,55 @@
+{
+  "checked_at": "2026-10-07T09:45:42.894186+09:00",
+  "baseline": "fin3",
+  "planned": 5,
+  "finished": 0,
+  "running": 2,
+  "pending": 3,
+  "runs": [
+    {
+      "id": "F3N_c1",
+      "case": 1,
+      "hold_us": 20.6,
+      "status": "running",
+      "pid": 78455,
+      "started_at": "2026-10-07T09:45:13.938202+09:00",
+      "saved_ns": 0.011000000000000001,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "F3N_c2",
+      "case": 2,
+      "hold_us": 16.2,
+      "status": "running",
+      "pid": 78479,
+      "started_at": "2026-10-07T09:45:13.952704+09:00",
+      "saved_ns": 0.013000000000000001,
+      "partial_output_well_formed": true
+    },
+    {
+      "id": "F3N_c3",
+      "case": 3,
+      "hold_us": 19.6,
+      "status": "pending"
+    },
+    {
+      "id": "F3N_c4",
+      "case": 4,
+      "hold_us": 18.7,
+      "status": "pending"
+    },
+    {
+      "id": "F3N_c5",
+      "case": 5,
+      "hold_us": 14.6,
+      "status": "pending"
+    }
+  ],
+  "quota": {
+    "used_KB": 7351492,
+    "soft_KB": 9437184,
+    "hard_KB": 10485760,
+    "reserve_ok": true
+  },
+  "summary": "fin3 후속 계산 2개 실행 중 / 3개 대기 / 0개 종료; 기존 fin3 원시결과5개 독립검증완료"
+}
