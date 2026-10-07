@@ -3,6 +3,43 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-07 (bp) user: "you are confusing Fig.8(c) with the index of the chart" - Fig.8(c) taken apart element by element: nothing was read from the inset or the legend, but two of my "paper values" are not on the figure as values (Case 4 at 200 ns, Case 5), and the zoom's scale was 4 % off in (bo)
+- The user's description, which is right: left graph = storage node of all three 10 nm cases on the full scale (0 .. 1.1 V), all at 1.1 V
+  and a little lower with time; right graph = the on-current bars as an inset, and outside the inset the fall of the storage node with
+  the BL pulses for N_A 1e16 and 1e18. No new runs.
+- What every element is (embedded image img08, 1029 x 737):
+  * left graph: 0 V = rows 672 - 673, 5.6 mV per row. A blue line on rows 478 - 479 over the whole time (no slope at this resolution;
+    1.1 V = row 477.8), red (and magenta) two rows under it from 30 ns on; red box rows 468 .. 493 = the range of the zoom. The legend
+    (thick samples: black dashed "BL Pulse", red = N_A 1e18 WF 4.7 = case 3, magenta = N_A 1e16 WF 4.7 = case 4, blue = N_A 1e16 WF 5.0 =
+    case 5) sits inside this graph. The three cases cannot be told apart in millivolts here.
+  * right graph (zoom): plot area rows 441 .. 674 (1.1101 .. 1.0 V), a 2-row line on the 1.1 V level (rows 462 - 463), 0.4726 mV per
+    row ((bo) had taken row 683, the row of the tick labels, as 1.0 V: 0.452). Red curve complete: 6 / 16 / 20.5 / 22.5 / 24.5 .. 30.6
+    rows = 7.6 mV after the first low phase, 14.5 mV at 200 ns (target 7.1 / 14.6: stays). Magenta curve: 8.0 rows = 3.8 mV after the
+    first low phase, 10.6 rows = 5.0 mV after the second, and it ENDS at x = 571 = 67 ns; nothing magenta after that, although the
+    annotation text over that area is transparent (the dashed BL lines show through it). The line on the 1.1 V level is BLACK from
+    19 ns to 120 ns and BLUE from 121 ns to 200 ns, on the same two rows; why it is black first cannot be told from the picture (it is
+    not the frame: the plot goes on above it; not the zoom arrow: that ends outside the graph; not the BL pulse: it is unbroken through
+    the BL-low phases).
+  * inset: on-current of cases 3 / 4 / 5 in arbitrary units (1.0 / 1.2 / 1.04, "3.9 %"). Legend of the right graph: three coloured
+    squares. NOT used for any storage-node number. The "0 -> 1.0" of my tables was a loss in mV, not the inset's axis and not a voltage.
+- So, of the numbers I had called "paper, Fig.8(c)":
+    case 3: 7.1 mV / 14.6 mV          read off the red curve                                          a reading
+    case 4: 3.5 mV, 5.0 mV at 63 ns   read off the magenta curve (it is drawn up to 67 ns)            a reading
+    case 4: 7.0 mV at 200 ns          NOT on the figure: my extrapolation ((au): "then hidden; about 7")   not a reading
+    case 5: 0 / 0.5 mV or less        the blue stretch of the 1.1 V line (121 - 200 ns) read as curve 5; left graph: blue at 1.1 V
+                                      within one row = 5.6 mV                                         a reading that rests on that identification
+  If the blue stretch is not curve 5, the paper shows case 5 only on the left graph, "1.1 V within 5.6 mV", and the model's 1.58 mV at
+  200 ns could not be called a mismatch. Grounds for reading it as curve 5: blue is used for case 5 alone in the figure's data, the
+  left graph has the blue curve on that level over the whole time, and the note on cases 4 and 5 (V_th0 larger with WF 5.0 eV) only
+  says something if curve 5 is in the graph and does not fall. Asked the user to check on the PDF.
+- Scoring: `paper_targets.FBE_LAST = {4: (2, 5.0)}`: Case 4 is scored at its last readable plateau (after the second BL-low phase,
+  5.0 mV) in place of 200 ns (`score2d.py`, `gt_avg_tab.py`). L1 / L2 now: fin2 2.97 / 2.09, fin 0.85 / 1.44, `fin3` 0.48 / 1.48, fin3b
+  0.69 / 1.66, fin3n 0.45 / 1.42, fin3bn 0.43 / 1.46 ((bo): 1.50 / 1.69 / 1.43 / 1.48). Case 4 after two low phases: `fin3` 5.24 mV,
+  fin3n 5.01, fin3bn 5.58 (paper 5.0). The model's 200 ns values of Case 4 (10.1 / 9.5 / 11.0 mV) have nothing on the figure to be held
+  against.
+- Lesson: a target is a number that can be pointed at on the figure. Bounds and extrapolations get their own names in `paper_targets`
+  (FBE_FLAT, FBE_LAST) and are said as such in every table.
+
 ## 2026-10-07 (bo) user: "why is the paper's Case 5 at 0 at the start, what differs from ours?" - in the model, too, Case 5 loses nothing to the floating body; its 0.13 -> 1.58 mV is tunnelling at the storage-node junction (13.6 pA). The paper's curve stays on the 1.1 V line: the 1.58 mV at 200 ns are NOT inside. Score target corrected
 - No new runs. Tool: `gt_fbe_leak.py` (loss as electrons, pairs by tunnelling / impact ionization, holes in the body, rate of the loss inside
   the BL-low and inside the BL-high phases).
@@ -21,14 +58,14 @@ the ones of that time (structures `gx_*` / `gp_*` are the meshes before the dopi
   The floating-body part of Case 5 is zero because its threshold is 0.30 V higher (Fig.5(c): 0.57 / 0.69 / 0.81 V against 0.27 / 0.39 /
   0.51 V of Case 4; paper 0.53 / 0.65 / 0.78 against 0.26 / 0.39 / 0.51). The paper's own label in Fig.8(c) says the same (V_th0 larger
   with WF 5.0 eV).
-- Paper, zoom of Fig.8(c) read again from the embedded image (frame rows 462 .. 683 = 1.1 .. 1.0 V, 0.452 mV per row; check of the scale:
-  Case 3 ends 14.0 mV down, Case 4 goes 2.8 -> 5.0 mV before the inset hides it): the blue-tinted pixels of Case 5 sit ON the top frame
+- Paper, zoom of Fig.8(c) read again from the embedded image (1.1 V = rows 462 - 463, 1.0 V = row 674: 0.47 mV per row; corrected in (bp), first written with
+  0.452; check of the scale: Case 3 ends 14.5 mV down, Case 4 reaches 5.0 mV where its curve ends): the blue-tinted pixels of Case 5 sit ON the top frame
   row from 124 ns to 196 ns (their centre -0.12 .. +0.17 mV from that row in six bands of 20 columns; before 124 ns the tint cannot be
-  told from the frame). So the paper's Case 5 is "on the 1.1 V line within one pixel row (0.45 mV)" over the whole 200 ns, not "0 -> 1.0
+  told from the frame). So the paper's Case 5 is "on the 1.1 V line within one pixel row (0.47 mV)" over the whole 200 ns, not "0 -> 1.0
   mV": the 1.0 of `paper_targets.FBE_200[5]` was the upper bound of the first reading ((au): "within 1 mV").
 - What follows: the 0.13 mV of the first low phase are below a pixel, there is no difference to explain. At 200 ns the model's 1.58 mV
-  would lie 3.5 rows under the frame: NOT what the paper shows. With the text's 3.6 fF the same 15 - 17 electrons are 0.68 - 0.74 mV
-  (Db0F_c5: 0.738 mV), 1.6 rows. Bound from the figure: I <= C x 0.45 mV / 179 ns = 3.9 pA (1.54 fF) or 9.1 pA (3.6 fF); the model has
+  would lie 3.3 rows under that line: NOT what the paper shows. With the text's 3.6 fF the same 15 - 17 electrons are 0.68 - 0.74 mV
+  (Db0F_c5: 0.738 mV), 1.6 rows. Bound from the figure: I <= C x 0.47 mV / 179 ns = 4.1 pA (1.54 fF) or 9.5 pA (3.6 fF); the model has
   13.6 pA. Two things the paper leaves open decide it: the storage capacitor of the transient (1.54 fF for the 10 nm bodies from the fit
   of the write curve, 3.6 fF in the text) and the size of the tunnelling leak in the hold state. The Hurkx A was fitted at Vg = -1 V of
   Fig.5(c), where the field is 0.91 MV/cm ((au)); the hold corner has 3.44 MV/cm, so the hold leak is an extrapolation and goes as

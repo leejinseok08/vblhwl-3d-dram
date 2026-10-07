@@ -99,7 +99,7 @@ Run names must differ by more than letter case (the PC's file system is case-bli
   need quotes or loops (the remote shell is tcsh).
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
-## State (2026-10-07; details NOTES (ax) .. (bo))
+## State (2026-10-07; details NOTES (ax) .. (bp))
 **User, 2026-10-07: the authors cannot be asked. What the paper leaves open is back-calculated from its figures and labelled as such.**
 Back-calculated so far (NOTES (bk)): Fig.8(a) reads the body potential as the AVERAGE electrostatic potential of the body under the gate,
 counted from the start of the transient, at the first BL edge (not the body-centre point before the fall: with that reading bars and
@@ -137,11 +137,16 @@ Rounds 15 - 20 of 2026-10-07 (NOTES (bl), (bm)); `fin3` is unchanged by them:
   is the user's condition of 2026-10-06 and stands until the user changes it.
 - Case 5 looked at again (NOTES (bo), `tools/gt_fbe_leak.py`): in the model it loses nothing to the floating body (same loss rate with the
   BL low and high, the holes stay); its 0.13 -> 1.58 mV is band-to-band tunnelling at the storage-node junction, 13.6 pA. In the zoom
-  of Fig.8(c) the paper's curve stays on the 1.1 V line within one pixel row (0.45 mV) up to 196 ns, so the 1.58 mV at 200 ns are NOT
+  of Fig.8(c) the paper's curve stays on the 1.1 V line within one pixel row (0.47 mV) up to 200 ns, so the 1.58 mV at 200 ns are NOT
   inside. The scorer now counts a case on the 1.1 V line linearly (loss / 0.5 mV, `paper_targets.FBE_FLAT`). Scores first-phase / 200 ns
-  with that: `fin3` 0.48 / 1.50, fin3b 0.69 / 1.69, fin3n 0.45 / 1.43, fin3bn 0.43 / 1.48 (the values 0.47 / 0.58 etc. above were made
+  with that: `fin3` 0.48 / 1.48, fin3b 0.69 / 1.66, fin3n 0.45 / 1.42, fin3bn 0.43 / 1.46 (the values 0.47 / 0.58 etc. above were made
   with 1.0 mV as Case 5's value; Cases 1 - 4 are unchanged). Open: storage capacitor of the transient (1.54 fF fitted, 3.6 fF in the
   text) or the hold-state tunnelling leak (Hurkx B is not fixed by the one point of Fig.5(c) that A was fitted to).
+- Fig.8(c) element by element (NOTES (bp), after the user's remark that I mixed it up with the inset / legend): the right graph is
+  the zoom (0.47 mV per pixel row) with the on-current bars as an inset. Read off curves: Case 3 (red, to 200 ns) and Case 4 (magenta,
+  drawn only to 67 ns: 3.5 mV, 5.0 mV after the second low phase). NOT on the figure: Case 4 at 200 ns (the 7.0 was my extrapolation;
+  the scorer now uses the 5.0 mV point, `paper_targets.FBE_LAST`). Case 5 rests on reading the blue stretch (121 - 200 ns) of the line
+  on the 1.1 V level as curve 5 (it is black before); if that is not the curve, Case 5 is known only to 5.6 mV (left graph).
 What follows describes `fin2`, the configuration before this step.
 The 2D device is configuration `fin2` = the runs DfinI_c1..5, DfinW_c2, Dh1F_c1..5, DfinR* (`COMPOSE` in tools/score2d.py; the
 user's decisions of the afternoon of 2026-10-06 are in it):

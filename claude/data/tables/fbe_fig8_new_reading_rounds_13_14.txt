@@ -3,46 +3,46 @@
    1     1431 |   560   528 [555]                                  |   643               | 1.1000   |  18.67  28.30 [43 at +5] |   46.98   70.41   85.93   97.53   131.79 [55 67 76 83] |  131.64 [100]
    2     1365 |   472   447 [445]                                  |   523               | 1.1000   |   9.85  14.87 [23 at +5] |   24.56   36.80   44.99   51.16    69.94 [29] |   69.85 [50]
    3     1337 |   391   373 [365]                                  |   424               | 1.1000   |   2.41   3.58 [3.3 at +3] |    5.76    8.43   10.20   11.54    15.69 [7.1] |   15.66 [14.6]
-   4     1089 |   330   315 [320]                                  |   352               | 1.1000   |   1.13   1.73 [1.4 at +3] |    2.92    4.53    5.64    6.50     9.23 [3.5] |    9.20 [7.0]
+   4     1089 |   330   315 [320]                                  |   352               | 1.1000   |   1.13   1.73 [1.4 at +3] |    2.92    4.53    5.64    6.50     9.23 [3.5] |    9.20 [not drawn]
    5     1134 |   336   324 [368]                                  |   367               | 1.1000   |   0.06   0.08 |    0.13    0.31    0.50    0.69     1.62 [0.0] |    1.60 [on the 1.1 V line]
    bars, read just before the fall: deviation +5 / +27 / +26 / +10 / -32 mV (tolerance 30): 4 of 5 inside
    bars, read 0.25 ns after the fall: deviation -27 / +2 / +8 / -5 / -44 mV (tolerance 30): 4 of 5 inside
    first low phase: deviation -0.07 / -0.07 / -0.09 / -0.08 decades (tolerance 0.3), Case 5 0.13 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 5 of 5 inside
-   200 ns: deviation +0.12 / +0.15 / +0.03 / +0.12 decades, Case 5 1.60 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 4 of 5 inside;   3 or 5 ns after the fall: -0.18 / -0.19 / -0.14 / -0.09 decades: 4 of 4 inside
-   Case 1 after low phases 2 - 4: 70 / 86 / 98 mV (paper 67 / 76 / 83); Case 4 after two phases: 4.5 mV (paper 5.2 at 63 ns)
+   200 ns: deviation +0.12 / +0.15 / +0.03 decades (Cases 1 - 3), Case 4 after 2 low phases 4.53 mV (paper 5.0; its curve ends at 67 ns): -0.04, Case 5 1.60 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 4 of 5 inside;   3 or 5 ns after the fall: -0.18 / -0.19 / -0.14 / -0.09 decades: 4 of 4 inside
+   Case 1 after low phases 2 - 4: 70 / 86 / 98 mV (paper 67 / 76 / 83)
 == Dp2F   (paper in brackets)
    case holes | body under the gate, average [mV]: before the fall, 0.25 ns after | centre point before | node [V] | +3 ns  +5 ns | low phase 1 .. 4                 phase 9 | 200 ns
    1     1523 |   580   545 [555]                                  |   665               | 1.1000   |  34.31  48.81 [43 at +5] |   73.62  100.99  117.80  129.91   164.29 [55 67 76 83] |  164.14 [100]
    2     1464 |   494   466 [445]                                  |   547               | 1.1000   |  19.02  26.85 [23 at +5] |   40.17   55.00   64.21   70.92    90.55 [29] |   90.46 [50]
    3     1443 |   415   394 [365]                                  |   449               | 1.1000   |   4.72   6.52 [3.3 at +3] |    9.44   12.63   14.60   16.04    20.37 [7.1] |   20.33 [14.6]
-   4     1184 |   351   334 [320]                                  |   376               | 1.1000   |   2.26   3.27 [1.4 at +3] |    5.03    7.07    8.37    9.34    12.25 [3.5] |   12.22 [7.0]
+   4     1184 |   351   334 [320]                                  |   376               | 1.1000   |   2.26   3.27 [1.4 at +3] |    5.03    7.07    8.37    9.34    12.25 [3.5] |   12.22 [not drawn]
    5     1302 |   374   361 [368]                                  |   409               | 1.1000   |   0.07   0.09 |    0.13    0.32    0.50    0.69     1.61 [0.0] |    1.58 [on the 1.1 V line]
    bars, read just before the fall: deviation +25 / +49 / +50 / +31 / +6 mV (tolerance 30): 2 of 5 inside
    bars, read 0.25 ns after the fall: deviation -10 / +21 / +29 / +14 / -7 mV (tolerance 30): 5 of 5 inside
    first low phase: deviation +0.13 / +0.14 / +0.12 / +0.16 decades (tolerance 0.3), Case 5 0.13 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 5 of 5 inside
-   200 ns: deviation +0.22 / +0.26 / +0.14 / +0.24 decades, Case 5 1.58 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 4 of 5 inside;   3 or 5 ns after the fall: +0.06 / +0.07 / +0.16 / +0.21 decades: 4 of 4 inside
-   Case 1 after low phases 2 - 4: 101 / 118 / 130 mV (paper 67 / 76 / 83); Case 4 after two phases: 7.1 mV (paper 5.2 at 63 ns)
+   200 ns: deviation +0.22 / +0.26 / +0.14 decades (Cases 1 - 3), Case 4 after 2 low phases 7.07 mV (paper 5.0; its curve ends at 67 ns): +0.15, Case 5 1.58 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 4 of 5 inside;   3 or 5 ns after the fall: +0.06 / +0.07 / +0.16 / +0.21 decades: 4 of 4 inside
+   Case 1 after low phases 2 - 4: 101 / 118 / 130 mV (paper 67 / 76 / 83)
 == Ds1F   (paper in brackets)
    case holes | body under the gate, average [mV]: before the fall, 0.25 ns after | centre point before | node [V] | +3 ns  +5 ns | low phase 1 .. 4                 phase 9 | 200 ns
    1     1403 |   554   522 [555]                                  |   636               | 1.1000   |  15.23  23.47 [43 at +5] |   40.07   61.82   76.67   87.93   121.86 [55 67 76 83] |  121.71 [100]
    2     1245 |   445   422 [445]                                  |   493               | 1.1000   |   3.86   6.15 [23 at +5] |   11.26   19.02   24.98   29.82    46.00 [29] |   45.91 [50]
    3     1219 |   365   349 [365]                                  |   395               | 1.1000   |   1.00   1.57 [3.3 at +3] |    2.80    4.63    5.99    7.10    10.80 [7.1] |   10.76 [14.6]
-   4     1051 |   321   306 [320]                                  |   343               | 1.1000   |   0.83   1.30 [1.4 at +3] |    2.26    3.66    4.67    5.47     8.07 [3.5] |    8.05 [7.0]
+   4     1051 |   321   306 [320]                                  |   343               | 1.1000   |   0.83   1.30 [1.4 at +3] |    2.26    3.66    4.67    5.47     8.07 [3.5] |    8.05 [not drawn]
    5     1279 |   369   356 [368]                                  |   403               | 1.1000   |   0.07   0.08 |    0.13    0.32    0.50    0.69     1.61 [0.0] |    1.58 [on the 1.1 V line]
    bars, read just before the fall: deviation -1 / +0 / -0 / +1 / +1 mV (tolerance 30): 5 of 5 inside
    bars, read 0.25 ns after the fall: deviation -33 / -23 / -16 / -14 / -12 mV (tolerance 30): 4 of 5 inside
    first low phase: deviation -0.14 / -0.41 / -0.40 / -0.19 decades (tolerance 0.3), Case 5 0.13 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 3 of 5 inside
-   200 ns: deviation +0.09 / -0.04 / -0.13 / +0.06 decades, Case 5 1.58 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 4 of 5 inside;   3 or 5 ns after the fall: -0.26 / -0.57 / -0.52 / -0.22 decades: 2 of 4 inside
-   Case 1 after low phases 2 - 4: 62 / 77 / 88 mV (paper 67 / 76 / 83); Case 4 after two phases: 3.7 mV (paper 5.2 at 63 ns)
+   200 ns: deviation +0.09 / -0.04 / -0.13 decades (Cases 1 - 3), Case 4 after 2 low phases 3.66 mV (paper 5.0; its curve ends at 67 ns): -0.14, Case 5 1.58 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 4 of 5 inside;   3 or 5 ns after the fall: -0.26 / -0.57 / -0.52 / -0.22 decades: 2 of 4 inside
+   Case 1 after low phases 2 - 4: 62 / 77 / 88 mV (paper 67 / 76 / 83)
 == Ds2F   (paper in brackets)
    case holes | body under the gate, average [mV]: before the fall, 0.25 ns after | centre point before | node [V] | +3 ns  +5 ns | low phase 1 .. 4                 phase 9 | 200 ns
    1     1579 |   592   554 [555]                                  |   678               | 1.1000   |  46.71  63.87 [43 at +5] |   91.34  119.93  136.99  149.12   183.09 [55 67 76 83] |  182.94 [100]
    2     1354 |   470   445 [445]                                  |   521               | 1.1000   |   9.15  13.89 [23 at +5] |   23.18   35.07   43.12   49.21    67.85 [29] |   67.76 [50]
    3     1294 |   382   364 [365]                                  |   413               | 1.1000   |   1.78   2.71 [3.3 at +3] |    4.53    6.92    8.57    9.84    13.87 [7.1] |   13.83 [14.6]
-   4     1118 |   336   321 [320]                                  |   359               | 1.1000   |   1.41   2.12 [1.4 at +3] |    3.49    5.24    6.43    7.32    10.12 [3.5] |   10.09 [7.0]
+   4     1118 |   336   321 [320]                                  |   359               | 1.1000   |   1.41   2.12 [1.4 at +3] |    3.49    5.24    6.43    7.32    10.12 [3.5] |   10.09 [not drawn]
    5     1335 |   381   369 [368]                                  |   417               | 1.1000   |   0.07   0.09 |    0.13    0.32    0.50    0.69     1.61 [0.0] |    1.58 [on the 1.1 V line]
    bars, read just before the fall: deviation +37 / +25 / +17 / +16 / +13 mV (tolerance 30): 4 of 5 inside
    bars, read 0.25 ns after the fall: deviation -1 / +0 / -1 / +1 / +1 mV (tolerance 30): 5 of 5 inside
    first low phase: deviation +0.22 / -0.10 / -0.20 / -0.00 decades (tolerance 0.3), Case 5 0.13 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 5 of 5 inside
-   200 ns: deviation +0.26 / +0.13 / -0.02 / +0.16 decades, Case 5 1.58 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 4 of 5 inside;   3 or 5 ns after the fall: +0.17 / -0.22 / -0.27 / +0.00 decades: 4 of 4 inside
-   Case 1 after low phases 2 - 4: 120 / 137 / 149 mV (paper 67 / 76 / 83); Case 4 after two phases: 5.2 mV (paper 5.2 at 63 ns)
+   200 ns: deviation +0.26 / +0.13 / -0.02 decades (Cases 1 - 3), Case 4 after 2 low phases 5.24 mV (paper 5.0; its curve ends at 67 ns): +0.02, Case 5 1.58 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 4 of 5 inside;   3 or 5 ns after the fall: +0.17 / -0.22 / -0.27 / +0.00 decades: 4 of 4 inside
+   Case 1 after low phases 2 - 4: 120 / 137 / 149 mV (paper 67 / 76 / 83)
