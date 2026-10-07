@@ -3,6 +3,53 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-07 (br) user: "A, B, C as they are; start D" - the device is now `fin5`: BL contact of the single cells at the pillar end, no avalanche model in Fig.4(a) / 5(c) / 8, Hurkx A 1.2e20 and B 2.0e7 back-calculated from the GIDL branch of Hsu's silicon transistor. Case 5 does not move with A and B: its hold leak is not set by the tunnelling rate
+- Decisions (user, 21:40): A = no avalanche model in Fig.4(a) / Fig.8 (it stays for Fig.7, where the paper names it); B = BL contact of the
+  single cells at the pillar end (gr_c1hb .. gr_c4hb; the pairs gr_yy, gr_zzb, gr_zzbg have it there already); C = the blue stretch of the
+  1.1 V line of Fig.8(c) is curve 5 (Case 5 scored as loss / 0.5 mV); D = back-calculate the Hurkx field coefficient B. With A and B alone
+  the device is `fin4` (the runs of fin3bn: Dd0I, DdoW, DdmF): IV 0.73, W 1.12, BR 0.07, L1 0.43, L2 1.46.
+- Round 30 (`run_d30.sh`, 21:27 - 21:41, 22 runs, gr_c1hb .. gr_c4hb; Codex's state fetched, registered and pushed, decks and parameter
+  files md5-equal PC / server, gate ALL PASS with the four lines read; conditions re-read: Cho Fig.5(c), Fig.8(b),(c), Hsu Fig.2(c)): B =
+  2.25e7 / 2.1e7 / 2.0e7 / 1.9e7 V/cm with A = 1.7e21 / 3.3e20 / 1.1e20 / 3.6e19 (A scaled so that the rate at the 0.91 MV/cm of the Id-Vg
+  branch stays; the branch goes with A, so one run per B fixes A afterwards). Tool `gt_hurkx_scan.py`.
+    B [V/cm]  A run  | Cho Fig.5(c) at -1 V, model - paper, Cases 1 - 5 (mean) | A fitted | Hsu Fig.2(c) branch as run, -0.7 .. -1.75 V | tilt  | Case 5 at 200 ns, leak
+    2.25e7    1.7e21 | +0.01 -0.04 -0.07 -0.23 +0.02 (-0.06)                   | 1.96e21  | -0.30 -0.24 -0.20 -0.17 -0.01 +0.09 +0.09  | +0.39 | 1.577 mV, 13.54 pA
+    2.1e7     3.3e20 | +0.03 -0.04 -0.09 -0.22 -0.01 (-0.07)                   | 3.84e20  | -0.10 -0.06 -0.06 -0.06 +0.03 +0.09 +0.06  | +0.15 | 1.576 mV, 13.54 pA
+    2.0e7     1.1e20 | +0.05 -0.04 -0.10 -0.22 -0.04 (-0.07)                   | 1.30e20  | +0.05 +0.06 +0.03 +0.01 +0.06 +0.08 +0.03  | -0.01 | 1.575 mV, 13.53 pA
+    1.9e7     3.6e19 | +0.05 -0.05 -0.12 -0.23 -0.07 (-0.08)                   | 4.37e19  | +0.19 +0.18 +0.12 +0.08 +0.08 +0.07 +0.00  | -0.18 | 1.573 mV, 13.52 pA
+  (Hsu's conditions with the work function 4.27 eV on the end-contact Case 3 cell: thresholds +0.003 / +0.003 / -0.006 V, 60.2 mV/dec,
+  on-current within 0.01 decade.)
+  * B: the shape of Hsu's GIDL branch (tilt = residual at -1.75 V minus at -0.7 V) is the model's at B = 2.0e7 V/cm. The tilt moves 0.17
+    decade per 0.1e7 and the branch is read to about 0.1 decade: B = 2.0 (+-0.1) e7. At 2.0e7 the seven residuals are +0.01 .. +0.08.
+  * A: Cho's five points at -1 V ask for 1.3e20, the level of Hsu's branch for about 1.0e20: A = 1.2e20, both within 0.1 decade.
+  * Case 5: the loss at 200 ns does NOT move (1.577 -> 1.573 mV) while A changes 47-fold and B by 16 %; leak 13.5 pA, 15.7 tunnelling
+    pairs throughout. My forecast in (bo) and in the report before it ("B 2.1e7 cuts the hold leak by about 3") was WRONG. It took the
+    leak of the storage-node corner to go with A exp(-B / F) like the Id-Vg branch. At that corner (3.4 MV/cm, the gate edge on the
+    junction) the rate of the formula is microamperes, and what the model lets through is fixed by its density factor, i.e. by how fast
+    the carriers leave the spot, not by A or B. ((as) of 2026-10-05 had seen it: "the default Hurkx setting damps exactly that"; I did
+    not connect it with Case 5.)
+- Round 31 (`run_d31.sh`, 21:45, 17 runs, 12 at a time because Codex had gone to 16 workers; gr_c1hb .. gr_c4hb, gr_yy, gr_zzb, gr_zzbg,
+  gate ALL PASS with the seven lines read): the device with A 1.2e20, B 2.0e7 = `fin5` (tag dy; Hsu's conditions hy).
+    Fig.5(c): thresholds as before; GIDL at -1 V -13.42 / -13.21 / -13.16 / -13.39 / -12.86 (paper -13.5 / -13.2 / -13.1 / -13.2 / -12.85);
+              minimum -16.9 .. -17.0 (was -17.1 .. -17.3; paper -16.4 .. -16.9). IV 0.72.
+    Hsu Fig.2(c): branch +0.08 +0.10 +0.07 +0.05 +0.10 +0.12 +0.07, tilt -0.01 (old coefficients: -0.30 .. +0.09, tilt +0.39).
+    Fig.4(a): 0.736 / 0.912 / 1.015 / 1.083 V. W 1.12 (as fin4: the write has no avalanche model now).
+    Fig.8: holes 1601 / 1371 / 1307 / 1130 / 1349; bars 557 / 448 / 367 / 323 / 372; first low phase 82.8 / 22.2 / 4.92 / 3.82 / 0.13 mV;
+           200 ns 165.1 / 63.9 / 15.5 mV (Cases 1 - 3), Case 4 after two low phases 5.81 (paper 5.0), Case 5 1.58. BR 0.10, L1 0.42, L2 1.46
+           (Case 5 alone carries L2 above 1).
+    Row hammer on the end-contact pairs (Fig.6(e): model off; Fig.7: on, default driving force): Y-Y' 0.00138 mV per cycle (paper
+           0.0535), Z-Z' 0.0014 in the last five cycles (0.0100); with the model Y-Y' 0.0002, Z-Z' node 0.035 mV HIGHER after ten cycles
+           with the body +40 mV / +46 holes; grounded body 0.0014 (0.036). RH 4.42, RI 11.88: as with the axis contact, the steady leak only.
+  `fin5` = 0.72 / 1.12 / 0.10 / 0.42 / 1.46 / 4.42 / 11.88 (`fin3`: 0.73 / 0.93 / 0.02 / 0.48 / 1.48 / 4.39 / 11.88).
+- Open after D: Case 5 at 200 ns (1.58 mV against "on the 1.1 V line") is not a matter of A and B. Left: the storage capacitor of the
+  transient (the same 15 electrons are 0.68 mV on the text's 3.6 fF) or the way the tunnelling model treats the carrier densities at the
+  storage-node corner (the paper says "Hurkx" and no more).
+- Codex meanwhile (commits a93cfc6 21:34, 28a07b3 21:42): superseded outputs taken off the server (account 8100 -> 6956 MB), its fin3
+  factorial (720 runs, at condition 50 of 144 at 21:40) at 16 workers, more between 00:00 and 07:00 through a queue that counts my runs.
+- User, 23:2x: a complete eliU report once everything, Codex's experiment included, has finished; with the remaining problems, the
+  improvement measures and their explanation.
+- Picture `pic_vbl_hwl_1t1c_3ddram\gt2d_hurkx_ab_rounds30_31.png` (`tools/plot_hurkx_scan.py`); table `hurkx_ab_and_fin5_rounds30_31.txt`.
+
 ## 2026-10-07 (bq) user: "isn't the device of the authors' oxide-channel papers ours?" (Hsu .. Cho .. Yu, IMW 2025 = A02; TED 73(9) 2026 = A08) - the papers' own device is not (IWO channel, L 25 nm), but the cell frame is the same and the SILICON reference transistor of their Fig.2(c) IS our cell: round 29 reproduces its Id-Vg with nothing changed but the gate work function
 - Read: both PDFs whole (A02 four pages, A08 seven; the user's copies in 저자의 논문). They propose an oxide-semiconductor (W-doped In2O3,
   IWO) access transistor in the horizontal 1T1C / vertical-BL cell; A08 adds dual-deck stacking and a multilevel cell. No floating-body

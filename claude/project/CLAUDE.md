@@ -99,8 +99,16 @@ Run names must differ by more than letter case (the PC's file system is case-bli
   need quotes or loops (the remote shell is tcsh).
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
-## State (2026-10-07; details NOTES (ax) .. (bq))
+## State (2026-10-07; details NOTES (ax) .. (br))
 **User, 2026-10-07: the authors cannot be asked. What the paper leaves open is back-calculated from its figures and labelled as such.**
+**The device since 2026-10-07 night is `fin5`** (user's decisions A, B, C, D; NOTES (br)): single cells with the BL contact at the pillar end
+(gr_c1hb .. gr_c4hb; pairs gr_yy, gr_zzb, gr_zzbg), NO avalanche model in Fig.4(a) / 5(c) / 8 (it belongs to Fig.7, where the paper names
+it), stand-in hole charge at the rates of `dm` (GBQ x GBB x FN), storage node 1.8 fF scale, Hurkx A 1.2e20 and B 2.0e7 V/cm
+(`sdevice_cal_a1.2e20_b2e07.par`; B from the shape of the GIDL branch of Hsu's silicon transistor, A from that and Cho's points at -1 V).
+Runs: tag dy (DdyI, DdyW, DdyF, DdyR*), `COMPOSE["fin5"]`. Scores IV 0.72, W 1.12, BR 0.10, L1 0.42, L2 1.46 (Case 5 alone above 1), RH
+4.42, RI 11.88. Case 5's loss does not move with A, B (its hold leak is fixed by the density factor of the Hurkx model, 13.5 pA).
+The paragraphs below tell how the device got there (`fin3` = the same with the axis contact, the default-force avalanche model and the
+old Hurkx A 1.7e21 / B 2.25e7).
 Back-calculated so far (NOTES (bk)): Fig.8(a) reads the body potential as the AVERAGE electrostatic potential of the body under the gate,
 counted from the start of the transient, at the first BL edge (not the body-centre point before the fall: with that reading bars and
 losses lie 43 - 98 mV apart). With the hole charge sized to the bars through that reading (`fin3` = DfinI, DfinW, Ds2F, DfinR*; charge

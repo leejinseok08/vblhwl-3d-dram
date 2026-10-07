@@ -1,0 +1,124 @@
+paper: Cho Fig.5(c) log10 I [A] at -1 V -13.50 / -13.20 / -13.10 / -13.20 / -12.85; minimum -16.9 at -0.11 V / -16.4 at -0.07 V / -16.4 at -0.15 V / -16.4 at -0.13 V / -16.5 at +0.09 V
+       Hsu Fig.2(c) log10 I [A/um] at -0.70 / -0.80 / -0.90 / -1.00 / -1.25 / -1.50 / -1.75 V: -15.84 / -15.18 / -14.56 / -14.04 / -13.17 / -12.56 / -12.05; Cho Fig.8(c) Case 5: on the 1.1 V line (0.5 mV)
+== u: A 1.7e+21, B 2.25e+07 V/cm
+   Cho, -1 V, model minus paper [decades]: +0.01 / -0.04 / -0.07 / -0.23 / +0.02   mean -0.061 -> A fitted 1.96e+21;   minimum: -17.11 at -0.10 / -17.11 at -0.11 / -17.15 at -0.13 / -17.30 at -0.20 / -17.17 at +0.13
+   Hsu branch, model minus paper after that correction: -0.24 / -0.18 / -0.14 / -0.11 / +0.05 / +0.15 / +0.15   rms 0.155, tilt +0.39;   as run: -0.30 / -0.24 / -0.20 / -0.17 / -0.01 / +0.09 / +0.09;   minimum -16.64 at -0.60 V
+   Case 5: loss at 200 ns 1.577 mV, leak 13.54 pA, tunnelling pairs 15.7   -> with A fitted: 1.814 mV, 15.58 pA   (DdmF_c5, Cs 1.54 fF)
+== v: A 3.3e+20, B 2.1e+07 V/cm
+   Cho, -1 V, model minus paper [decades]: +0.03 / -0.04 / -0.09 / -0.22 / -0.01   mean -0.066 -> A fitted 3.84e+20;   minimum: -17.00 at -0.10 / -16.97 at -0.11 / -17.02 at -0.13 / -17.09 at -0.20 / -17.08 at +0.09
+   Hsu branch, model minus paper after that correction: -0.03 / +0.01 / +0.01 / +0.01 / +0.10 / +0.15 / +0.12   rms 0.084, tilt +0.15;   as run: -0.10 / -0.06 / -0.06 / -0.06 / +0.03 / +0.09 / +0.06;   minimum -16.52 at -0.60 V
+   Case 5: loss at 200 ns 1.576 mV, leak 13.54 pA, tunnelling pairs 15.7   -> with A fitted: 1.835 mV, 15.77 pA   (DdvF_c5, Cs 1.54 fF)
+== w: A 1.1e+20, B 2e+07 V/cm
+   Cho, -1 V, model minus paper [decades]: +0.05 / -0.04 / -0.10 / -0.22 / -0.04   mean -0.071 -> A fitted 1.3e+20;   minimum: -16.99 at -0.07 / -16.88 at -0.08 / -16.92 at -0.13 / -16.99 at -0.17 / -16.99 at +0.13
+   Hsu branch, model minus paper after that correction: +0.12 / +0.13 / +0.11 / +0.08 / +0.13 / +0.15 / +0.11   rms 0.121, tilt -0.01;   as run: +0.05 / +0.06 / +0.03 / +0.01 / +0.06 / +0.08 / +0.03;   minimum -16.41 at -0.60 V
+   Case 5: loss at 200 ns 1.575 mV, leak 13.53 pA, tunnelling pairs 15.7   -> with A fitted: 1.857 mV, 15.95 pA   (DdwF_c5, Cs 1.54 fF)
+== x: A 3.6e+19, B 1.9e+07 V/cm
+   Cho, -1 V, model minus paper [decades]: +0.05 / -0.05 / -0.12 / -0.23 / -0.07   mean -0.084 -> A fitted 4.37e+19;   minimum: -16.84 at -0.07 / -16.79 at -0.08 / -16.82 at -0.13 / -16.89 at -0.17 / -16.88 at +0.13
+   Hsu branch, model minus paper after that correction: +0.27 / +0.26 / +0.20 / +0.16 / +0.16 / +0.16 / +0.09   rms 0.195, tilt -0.18;   as run: +0.19 / +0.18 / +0.12 / +0.08 / +0.08 / +0.07 / +0.00;   minimum -16.28 at -0.60 V
+   Case 5: loss at 200 ns 1.573 mV, leak 13.52 pA, tunnelling pairs 15.7   -> with A fitted: 1.908 mV, 16.39 pA   (DdxF_c5, Cs 1.54 fF)
+== y: A 1.2e+20, B 2e+07 V/cm
+   Cho, -1 V, model minus paper [decades]: +0.08 / -0.01 / -0.06 / -0.19 / -0.01   mean -0.036 -> A fitted 1.3e+20;   minimum: -16.93 at -0.07 / -16.86 at -0.08 / -16.90 at -0.13 / -16.98 at -0.17 / -16.97 at +0.13
+   Hsu branch, model minus paper after that correction: +0.12 / +0.14 / +0.11 / +0.09 / +0.13 / +0.16 / +0.10   rms 0.123, tilt -0.01;   as run: +0.08 / +0.10 / +0.07 / +0.05 / +0.10 / +0.12 / +0.07;   minimum -16.38 at -0.60 V
+   Case 5: loss at 200 ns 1.575 mV, leak 13.53 pA, tunnelling pairs 15.7   -> with A fitted: 1.712 mV, 14.70 pA   (DdyF_c5, Cs 1.54 fF)
+Vg [V]           -1.75  -1.50  -1.25  -1.00  -0.90  -0.80  -0.70  -0.50  -0.40  -0.30  -0.20  -0.10  +0.00  +0.10  +0.20  +0.30  +0.50  +1.00  +1.50  +2.00  +2.40
+Hsu Fig.2(c)    -12.05 -12.56 -13.17 -14.04 -14.56 -15.18 -15.84 -15.20 -13.56 -11.93 -10.19  -8.56  -6.89  -5.36  -4.34  -3.80  -3.26  -2.83  -2.71  -2.65  -2.60   | Vg at 1e-9 / 1e-7 / 1e-5 A/um: -0.127 / -0.007 / +0.135 V, 60.2 mV/dec; minimum under 1e-16 near -0.6 V
+DhuI_c3         -11.96 -12.47 -13.18 -14.21 -14.76 -15.42 -16.14 -15.45 -13.79 -12.11 -10.31  -8.60  -6.94  -5.39  -4.35  -3.81  -3.26  -2.84  -2.71  -2.64  -2.59   | -0.124 / -0.004 / +0.130 V, 60.2 mV/dec; minimum -16.64 at -0.60 V; Vg -2.00 .. +2.49
+  minus Hsu      +0.09  +0.09  -0.01  -0.17  -0.20  -0.24  -0.30  -0.25  -0.23  -0.18  -0.12  -0.04  -0.05  -0.03  -0.01  -0.01  +0.00  -0.01  -0.00  +0.01  +0.01   | +0.003 / +0.003 / -0.006 V
+DhvI_c3         -11.99 -12.47 -13.14 -14.10 -14.62 -15.24 -15.94 -15.44 -13.79 -12.11 -10.31  -8.60  -6.94  -5.39  -4.35  -3.81  -3.26  -2.84  -2.71  -2.64  -2.59   | -0.124 / -0.004 / +0.130 V, 60.2 mV/dec; minimum -16.52 at -0.60 V; Vg -2.00 .. +2.49
+  minus Hsu      +0.06  +0.09  +0.03  -0.06  -0.06  -0.06  -0.10  -0.24  -0.23  -0.18  -0.12  -0.04  -0.05  -0.03  -0.01  -0.01  +0.00  -0.01  -0.00  +0.01  +0.01   | +0.003 / +0.003 / -0.006 V
+DhwI_c3         -12.02 -12.48 -13.11 -14.03 -14.53 -15.12 -15.79 -15.44 -13.79 -12.11 -10.31  -8.60  -6.94  -5.39  -4.35  -3.81  -3.26  -2.84  -2.71  -2.64  -2.59   | -0.124 / -0.004 / +0.130 V, 60.2 mV/dec; minimum -16.41 at -0.60 V; Vg -2.00 .. +2.49
+  minus Hsu      +0.03  +0.08  +0.06  +0.01  +0.03  +0.06  +0.05  -0.24  -0.23  -0.18  -0.12  -0.04  -0.05  -0.03  -0.01  -0.01  +0.00  -0.01  -0.00  +0.01  +0.01   | +0.003 / +0.003 / -0.006 V
+DhxI_c3         -12.05 -12.49 -13.09 -13.96 -14.44 -15.00 -15.65 -15.43 -13.79 -12.11 -10.31  -8.60  -6.94  -5.39  -4.35  -3.81  -3.26  -2.84  -2.71  -2.64  -2.59   | -0.124 / -0.004 / +0.130 V, 60.2 mV/dec; minimum -16.28 at -0.60 V; Vg -2.00 .. +2.49
+  minus Hsu      +0.00  +0.07  +0.08  +0.08  +0.12  +0.18  +0.19  -0.23  -0.23  -0.18  -0.12  -0.04  -0.05  -0.03  -0.01  -0.01  +0.00  -0.01  -0.00  +0.01  +0.01   | +0.003 / +0.003 / -0.006 V
+DhyI_c3         -11.98 -12.44 -13.07 -13.99 -14.49 -15.08 -15.76 -15.43 -13.79 -12.11 -10.31  -8.60  -6.94  -5.39  -4.35  -3.81  -3.26  -2.84  -2.71  -2.64  -2.59   | -0.124 / -0.004 / +0.130 V, 60.2 mV/dec; minimum -16.38 at -0.60 V; Vg -2.00 .. +2.49
+  minus Hsu      +0.07  +0.12  +0.10  +0.05  +0.07  +0.10  +0.08  -0.23  -0.23  -0.18  -0.12  -0.04  -0.05  -0.03  -0.01  -0.01  +0.00  -0.01  -0.00  +0.01  +0.01   | +0.003 / +0.003 / -0.006 V
+config      IV      W       BR      L1      L2      RH      RI    | total   (rms of deviation / tolerance, < 1 = within reading error; * = taken from the baseline, - = not there yet)
+fin3       0.73    0.93    0.02    0.48    1.48    4.39   11.88  |   4.84
+      IV: c1 0.36/0.48/0.61 gidl -13.49; c2 0.33/0.45/0.59 gidl -13.24; c3 0.31/0.43/0.56 gidl -13.17; c4 0.27/0.39/0.51 gidl -13.43; c5 0.57/0.69/0.81 gidl -12.83
+      W: 0.74 / 0.92 / 1.02 / 1.09 V (DfinW_c2)
+      BR: c1 rise +554 first 91.34 200ns 182.94 (SN0 1.100); c2 rise +445 first 23.18 200ns 67.76 (SN0 1.100); c3 rise +364 first 4.53 200ns 13.83 (SN0 1.100); c4 rise +321 first 3.49 after 2 low phases 5.25 (SN0 1.100); c5 rise +369 first 0.14 200ns 1.58 (SN0 1.100)
+      RH: yy off +0.0014 (last 5: +0.0014); zz off -0.0016 (last 5: +0.0014); yy on +0.0003; zz on -0.0173 mV total; zz gnd on -0.0016
+fin4       0.73    1.12    0.07    0.43    1.46    4.39   11.88  |   4.85
+      IV: c1 0.36/0.48/0.61 gidl -13.49; c2 0.33/0.45/0.59 gidl -13.24; c3 0.31/0.43/0.56 gidl -13.17; c4 0.27/0.39/0.51 gidl -13.43; c5 0.57/0.69/0.81 gidl -12.83
+      W: 0.74 / 0.91 / 1.02 / 1.08 V (DdoW_c2)
+      BR: c1 rise +557 first 81.61 200ns 163.83 (SN0 1.100); c2 rise +447 first 21.48 200ns 62.85 (SN0 1.100); c3 rise +366 first 4.72 200ns 14.95 (SN0 1.100); c4 rise +322 first 3.66 after 2 low phases 5.58 (SN0 1.100); c5 rise +371 first 0.14 200ns 1.58 (SN0 1.100)
+      RH: yy off +0.0014 (last 5: +0.0014); zz off -0.0016 (last 5: +0.0014); yy on +0.0003; zz on -0.0173 mV total; zz gnd on -0.0016
+fin5       0.72    1.12    0.10    0.42    1.46    4.42   11.88  |   4.85
+      IV: c1 0.36/0.48/0.61 gidl -13.42; c2 0.33/0.45/0.59 gidl -13.21; c3 0.31/0.43/0.56 gidl -13.16; c4 0.27/0.39/0.51 gidl -13.39; c5 0.57/0.69/0.81 gidl -12.86
+      W: 0.74 / 0.91 / 1.02 / 1.08 V (DdyW_c2)
+      BR: c1 rise +557 first 82.76 200ns 165.06 (SN0 1.100); c2 rise +448 first 22.20 200ns 63.90 (SN0 1.100); c3 rise +367 first 4.92 200ns 15.53 (SN0 1.100); c4 rise +323 first 3.82 after 2 low phases 5.81 (SN0 1.100); c5 rise +372 first 0.14 200ns 1.58 (SN0 1.100)
+      RH: yy off +0.0014 (last 5: +0.0014); zz off -0.0016 (last 5: +0.0014); yy on +0.0002; zz on -0.0351 mV total; zz gnd on -0.0016
+== DdmF   (paper in brackets)
+   case holes | body under the gate, average [mV]: before the fall, 0.25 ns after | centre point before | node [V] | +3 ns  +5 ns | low phase 1 .. 4                 phase 9 | 200 ns
+   1     1597 |   595   557 [555]                                  |   682               | 1.1000   |  42.88  57.85 [43 at +5] |   81.61  106.59  121.73  132.63   163.98 [55 67 76 83] |  163.83 [100]
+   2     1366 |   472   447 [445]                                  |   523               | 1.1000   |   8.54  12.92 [23 at +5] |   21.48   32.44   39.88   45.54    62.94 [29] |   62.84 [50]
+   3     1302 |   383   366 [365]                                  |   415               | 1.1000   |   1.83   2.79 [3.3 at +3] |    4.72    7.32    9.13   10.53    14.98 [7.1] |   14.94 [14.6]
+   4     1126 |   338   322 [320]                                  |   362               | 1.1000   |   1.46   2.20 [1.4 at +3] |    3.66    5.58    6.89    7.89    11.02 [3.5] |   10.99 [not drawn]
+   5     1344 |   383   371 [368]                                  |   419               | 1.1000   |   0.07   0.09 |    0.13    0.32    0.50    0.69     1.61 [0.0] |    1.58 [on the 1.1 V line]
+   bars, read just before the fall: deviation +40 / +27 / +18 / +18 / +15 mV (tolerance 30): 4 of 5 inside
+   bars, read 0.25 ns after the fall: deviation +2 / +2 / +1 / +2 / +3 mV (tolerance 30): 5 of 5 inside
+   first low phase: deviation +0.17 / -0.13 / -0.18 / +0.02 decades (tolerance 0.3), Case 5 0.13 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 5 of 5 inside
+   200 ns: deviation +0.21 / +0.10 / +0.01 decades (Cases 1 - 3), Case 4 after 2 low phases 5.58 mV (paper 5.0; its curve ends at 67 ns): +0.05, Case 5 1.58 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 4 of 5 inside;   3 or 5 ns after the fall: +0.13 / -0.25 / -0.26 / +0.02 decades: 4 of 4 inside
+   Case 1 after low phases 2 - 4: 107 / 122 / 133 mV (paper 67 / 76 / 83)
+== DdyF   (paper in brackets)
+   case holes | body under the gate, average [mV]: before the fall, 0.25 ns after | centre point before | node [V] | +3 ns  +5 ns | low phase 1 .. 4                 phase 9 | 200 ns
+   1     1601 |   596   557 [555]                                  |   683               | 1.1000   |  43.73  58.85 [43 at +5] |   82.76  107.82  122.98  133.88   165.22 [55 67 76 83] |  165.06 [100]
+   2     1371 |   474   448 [445]                                  |   525               | 1.1000   |   8.90  13.43 [23 at +5] |   22.19   33.32   40.84   46.54    63.99 [29] |   63.90 [50]
+   3     1307 |   384   367 [365]                                  |   416               | 1.1000   |   1.91   2.91 [3.3 at +3] |    4.92    7.62    9.50   10.95    15.57 [7.1] |   15.53 [14.6]
+   4     1130 |   339   323 [320]                                  |   363               | 1.1000   |   1.52   2.30 [1.4 at +3] |    3.81    5.81    7.16    8.20    11.43 [3.5] |   11.40 [not drawn]
+   5     1349 |   384   372 [368]                                  |   420               | 1.1000   |   0.07   0.09 |    0.13    0.32    0.50    0.69     1.61 [0.0] |    1.58 [on the 1.1 V line]
+   bars, read just before the fall: deviation +41 / +29 / +19 / +19 / +16 mV (tolerance 30): 4 of 5 inside
+   bars, read 0.25 ns after the fall: deviation +2 / +3 / +2 / +3 / +4 mV (tolerance 30): 5 of 5 inside
+   first low phase: deviation +0.18 / -0.12 / -0.16 / +0.04 decades (tolerance 0.3), Case 5 0.13 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 5 of 5 inside
+   200 ns: deviation +0.22 / +0.11 / +0.03 decades (Cases 1 - 3), Case 4 after 2 low phases 5.81 mV (paper 5.0; its curve ends at 67 ns): +0.06, Case 5 1.58 mV (paper: on the 1.1 V line, tolerance 0.5 mV): 4 of 5 inside;   3 or 5 ns after the fall: +0.14 / -0.23 / -0.24 / +0.04 decades: 4 of 4 inside
+   Case 1 after low phases 2 - 4: 108 / 123 / 134 mV (paper 67 / 76 / 83)
+run        Cs[fF] | loss t_A -> 200 ns [mV] = electrons | pairs: tunnelling, impact ion. | holes at t_A -> 200 ns | loss rate [uV/ns]: BL low, BL high | = current [pA]: low, high | last 10 ns of the hold
+DdyF_c1     2.19  |  165.062 =  2252.0            |       8.0       0.0       |   1601 ->   1142      |  1731.15    3.19                 |   3783.8    7.0        |   0.21 uV/ns
+DdyF_c2     1.80  |   63.895 =   717.9            |       9.8       0.0       |   1371 ->   1078      |   689.38    5.36                 |   1240.9    9.7        |   0.29 uV/ns
+DdyF_c3     1.54  |   15.533 =   149.6            |       3.3       0.0       |   1307 ->   1033      |   163.19    6.18                 |    251.8    9.5        |   0.31 uV/ns
+DdyF_c4     1.54  |   11.402 =   109.8            |       4.0       0.0       |   1130 ->    853      |   118.50    5.67                 |    182.8    8.7        |   0.28 uV/ns
+DdyF_c5     1.54  |    1.575 =    15.2            |      15.7       0.0       |   1349 ->   1364      |     8.80    8.77                 |     13.6   13.5        |   0.44 uV/ns
+DdvF_c5     1.54  |    1.576 =    15.2            |      15.7       0.0       |   1347 ->   1363      |     8.81    8.77                 |     13.6   13.5        |   0.44 uV/ns
+DdwF_c5     1.54  |    1.575 =    15.2            |      15.7       0.0       |   1349 ->   1365      |     8.80    8.77                 |     13.6   13.5        |   0.44 uV/ns
+DdxF_c5     1.54  |    1.573 =    15.2            |      15.7       0.0       |   1352 ->   1367      |     8.79    8.76                 |     13.6   13.5        |   0.44 uV/ns
+run          Cs [fF]  driving force   | node at 12 / 24 / 39 / 60 ps [V]    | deviation [mV]              | rms / tolerance (30 mV)
+paper Fig.4(a)                        | 0.720 / 0.920 / 1.060 / 1.130
+DdoW_c2        1.80   ionization off | 0.736 / 0.912 / 1.015 / 1.083       |   +16 /    -8 /   -45 /   -47   | 1.12
+DdyW_c2        1.80   ionization off | 0.736 / 0.912 / 1.015 / 1.083       |   +16 /    -8 /   -45 /   -47   | 1.12
+== Y-Y', impact ionization off   (paper per cycle: 0.0535)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |     0       +3 mV  1.1000 V     |  +0.00144   +0.00144             |   +0.0144  |    +0.2 mV     +0          |     -     | complete
+   dy                                 |     0       +3 mV  1.1000 V     |  +0.00138   +0.00138             |   +0.0138  |    +0.2 mV     +0          |     -     | complete
+   fin: node below its start after cycle 1 .. 10 [mV]: +0.0014 +0.0029 +0.0043 +0.0058 +0.0072 +0.0086 +0.0101 +0.0115 +0.0130 +0.0144
+   dy: node below its start after cycle 1 .. 10 [mV]: +0.0014 +0.0028 +0.0041 +0.0055 +0.0069 +0.0083 +0.0097 +0.0110 +0.0124 +0.0138
+== Y-Y', impact ionization on   (paper per cycle: 0.0535)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |    37      +46 mV  1.1000 V     |  +0.00034   +0.00006             |   +0.0034  |   +25.1 mV    +28          |     -     | complete
+   dy                                 |    35      +45 mV  1.1000 V     |  +0.00015   -0.00010             |   +0.0015  |   +28.0 mV    +31          |     -     | complete
+   fin: node below its start after cycle 1 .. 10 [mV]: +0.0014 +0.0023 +0.0027 +0.0030 +0.0031 +0.0032 +0.0033 +0.0034 +0.0034 +0.0034
+   dy: node below its start after cycle 1 .. 10 [mV]: +0.0014 +0.0019 +0.0020 +0.0020 +0.0020 +0.0020 +0.0019 +0.0018 +0.0017 +0.0015
+== Z-Z', impact ionization off   (paper per cycle: 0.0100)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |     0       +3 mV  1.1000 V     |  -0.00157   +0.00144             |   -0.0157  |    +0.2 mV     +0          |     -     | complete
+   dy                                 | no data
+   fin: node below its start after cycle 1 .. 10 [mV]: -0.0287 -0.0273 -0.0258 -0.0244 -0.0229 -0.0215 -0.0201 -0.0186 -0.0172 -0.0157
+== Z-Z', impact ionization on   (paper per cycle: node 1.1 -> 0.58 V)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |    35      +44 mV  1.1000 V     |  -0.00173   +0.00126             |   -0.0173  |    +4.5 mV     +5          |     -     | complete
+   dy                                 | no data
+   fin: node below its start after cycle 1 .. 10 [mV]: -0.0286 -0.0274 -0.0261 -0.0249 -0.0236 -0.0223 -0.0210 -0.0198 -0.0186 -0.0173
+== Z-Z', BL contact at the bottom end of the pillar, impact ionization on   (paper per cycle: node 1.1 -> 0.58 V)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 | no data
+   dy                                 |    35      +45 mV  1.1000 V     |  -0.00351   -0.00105             |   -0.0351  |   +39.9 mV    +46          |     -     | complete
+   dy: node below its start after cycle 1 .. 10 [mV]: -0.0285 -0.0281 -0.0284 -0.0291 -0.0299 -0.0308 -0.0318 -0.0329 -0.0340 -0.0351
+== Z-Z', grounded body, impact ionization on   (paper per cycle: 0.036)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 |     4       +3 mV  1.1000 V     |  -0.00155   +0.00145             |   -0.0155  |    +0.0 mV     -0          |     -     | complete
+   dy                                 | no data
+   fin: node below its start after cycle 1 .. 10 [mV]: -0.0286 -0.0272 -0.0257 -0.0243 -0.0228 -0.0213 -0.0199 -0.0184 -0.0170 -0.0155
+== Z-Z', BL contact at the bottom end, grounded body, impact ionization on   (paper per cycle: 0.036)
+   config  history                    | holes  body rise  node at start | loss per cycle [mV]: all, last five | total [mV] | body over the hammer: rise, holes | gate jump | state
+   fin     no history                 | no data
+   dy                                 |     4       +3 mV  1.1000 V     |  -0.00159   +0.00142             |   -0.0159  |    +0.0 mV     +0          |     -     | complete
+   dy: node below its start after cycle 1 .. 10 [mV]: -0.0285 -0.0272 -0.0258 -0.0244 -0.0230 -0.0215 -0.0201 -0.0187 -0.0173 -0.0159

@@ -55,18 +55,3 @@ C. every recorded reading of a body potential at the states of B [mV], against t
    rms   383 mV      805    799    798    780   deviation  +250  +354  +433  +460   x = 0.0625 um hQuasiFermiPotential | since the start
    rms   383 mV      805    799    798    780   deviation  +250  +354  +433  +460   x = 0.165 um hQuasiFermiPotential | since the start
    rms   439 mV        8    -22    -35     15   deviation  -547  -467  -400  -305   x = 0.0625 um hQuasiFermiPotential | since t = 0
-
-D. charged by the model's own generation (Codex's runs) against the stand-in curve at the same body rise; first low phase [mV]
-   hold 15.2 us, node clamped    | rise   592   503   345   308   429 | node before the fall 1.100 1.100 1.100 1.100 1.100
-        loss, Codex's run        |   11.49   14.95    0.59    0.77    0.13
-        stand-in curve, same rise|   11.22   14.73    0.64*    0.82*    0.13
-   hold 15.2 us, node early      | rise   569   469   325   289   404 | node before the fall 1.027 1.004 1.006 1.015 0.971
-        loss, Codex's run        |    5.19    5.27    0.32    0.40    0.12
-        stand-in curve, same rise|    5.21    5.10    0.38*    0.50*    0.13
-   hold 15.2 us, node late_reset | rise   571   471   326   290   405 | node before the fall 1.100 1.100 1.100 1.100 1.100
-        loss, Codex's run        |    5.59    5.59    0.33    0.41    0.13
-        stand-in curve, same rise|    5.48    5.34    0.39*    0.51*    0.13
-   hold 21 us, node early      | rise   646   544   401   358   501 | node before the fall 1.005 0.979 0.976 0.988 0.930
-        loss, Codex's run        |   48.28   36.47    3.27    3.39    0.13
-        stand-in curve, same rise|   47.37   34.78    2.98    3.11    0.15
-   paper: rise   555   445   365   320   368 | loss  55.0  29.0   7.1   3.5   0.0

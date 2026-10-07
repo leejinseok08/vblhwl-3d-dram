@@ -56,6 +56,12 @@ G=$(cd runs; echo $(ls -d Dg[0-9]R* 2>/dev/null))
   python3 tools/score2d.py -v fin3 fin3b fin3n fin3bn dj dk; } > $T/electricfield_contact_avalanche_rounds21_28.txt 2>&1
 # round 29: our 10 nm cells at the conditions of the silicon reference transistor of Hsu .. Yu, IMW 2025 / TED 2026, Fig.2(c); NOTES (bq)
 python3 tools/gt_hsu_fig2c.py runs/DdrI_c3 runs/DdsI_c3 runs/DdrI_c4 runs/DdsI_c4 runs/DdtI_c4 > $T/hsu_fig2c_si_reference_round29.txt 2>&1
+# rounds 30, 31: back-calculation of the Hurkx coefficients and the device after the user's decisions (fin5); NOTES (br)
+{ python3 tools/gt_hurkx_scan.py; python3 tools/gt_hurkx_scan.py y=DdyI,DhyI_c3,DdyF_c5 | tail -4
+  python3 tools/gt_hsu_fig2c.py runs/DhuI_c3 runs/DhvI_c3 runs/DhwI_c3 runs/DhxI_c3 runs/DhyI_c3
+  python3 tools/score2d.py -v fin3 fin4 fin5; python3 tools/gt_avg_tab.py DdmF DdyF
+  python3 tools/gt_fbe_leak.py DdyF_c1 DdyF_c2 DdyF_c3 DdyF_c4 DdyF_c5 DdvF_c5 DdwF_c5 DdxF_c5
+  python3 tools/gt_write_tab.py DdoW_c2 DdyW_c2; python3 tools/gt_rh_hist.py -c fin dy; } > $T/hurkx_ab_and_fin5_rounds30_31.txt 2>&1
 # what the loss is made of (Case 5 = tunnelling at the storage-node junction, not the floating body); NOTES (bo)
 python3 tools/gt_fbe_leak.py Ds2F_c1 Ds2F_c2 Ds2F_c3 Ds2F_c4 Ds2F_c5 DdlF_c1 DdlF_c2 DdlF_c3 DdlF_c4 DdlF_c5 Dh1F_c5 DfinF_c5 DcsF_c5 Db0F_c5 > $T/fbe_leak_split_case5.txt 2>&1
 ( cd runs; for r in $ids $q $part; do ls $r/${r}_des.cmd $r/run.json $r/*.plt 2>/dev/null; done; ls _struct/*_dvs.cmd ) > $O/files.txt

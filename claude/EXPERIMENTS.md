@@ -1,6 +1,6 @@
 # 실험 등록부 — 겹치지 않게 쓰는 표
 
-갱신: 2026-10-07 21:50 KST (Claude). **새 실행을 만들기 전에 이 파일과 Codex의 `docs/`, `snapshot_status.json`, 서버에서 돌고 있는 실행을 먼저 봐요.**
+갱신: 2026-10-07 23:40 KST (Claude). **새 실행을 만들기 전에 이 파일과 Codex의 `docs/`, `snapshot_status.json`, 서버에서 돌고 있는 실행을 먼저 봐요.**
 
 ## 규칙 (Claude가 지키는 것)
 
@@ -235,14 +235,22 @@ Hsu, Cho, Sharda, Park, Datta, Yu, IMW 2025 Fig. 2(c) (TED 73(9), 2026에 같은
 - Cho 논문에 맞춰 정한 HfO2 5 nm, Hurkx A 1.7×10²¹, 폭 0.1 µm, V_DS 1.1 V가 독립된 곡선으로 확인됐어요.
 표 `data/tables/hsu_fig2c_si_reference_round29.txt`, 그림 `reports/pictures/gt2d_hsu_fig2c_si_reference_round29.png`, 분석 ANALYSIS.md 9절.
 
+### 라운드 30, 31 (2026-10-07 21:27~23:00): 사용자 결정 A·B·C와 D (Hurkx 계수 B의 역산), 새 기준 구성 `fin5`
+
+| 라운드 | 구성 | 바꾼 것 | 실행 | 결과 |
+|---|---|---|---|---|
+| 30 | `dv`, `dw`, `dx`, `hu`~`hx` | Hurkx B = 2.25 / 2.1 / 2.0 / 1.9 × 10⁷ V/cm, A = 1.7×10²¹ / 3.3×10²⁰ / 1.1×10²⁰ / 3.6×10¹⁹. Cho 조건의 Id–Vg 다섯 Case, Hsu 조건의 Id–Vg (일함수 4.27 eV), Case 5의 FBE. 기둥 끝 접촉, avalanche 모델 없음 | 22개 (완료) | Hsu 곡선 GIDL 가지의 기울기 차이 +0.39 / +0.15 / −0.01 / −0.18 decade → B = 2.0×10⁷. Cho의 −1 V 값이 요구하는 A: 1.96×10²¹ / 3.84×10²⁰ / 1.30×10²⁰ / 4.37×10¹⁹. Case 5의 200 ns 손실 1.577 / 1.576 / 1.575 / 1.573 mV: 반응 없음 |
+| 31 | `dy`, `hy` | 새 기준 구성: 기둥 끝 접촉, avalanche 모델 없음, Hurkx A 1.2×10²⁰ / B 2.0×10⁷. Id–Vg, 쓰기, FBE, 로우 해머(기둥 끝 접촉 쌍 `gr_yy`, `gr_zzb`, `gr_zzbg`), Hsu 조건 | 17개 (완료) | 점수 Id–Vg 0.72, 쓰기 1.12, 막대 0.10, 첫 구간 0.42, 나중 손실 1.46, 로우 해머 4.42 / 11.88. FBE 첫 구간 82.8 / 22.2 / 4.92 / 3.82 / 0.13 mV, 200 ns 165.1 / 63.9 / 15.5 mV, Case 4 둘째 구간 뒤 5.81 mV, Case 5 1.58 mV. 로우 해머 Y–Y' 0.00138, Z–Z' 0.0014 mV/사이클 |
+
+- B는 GIDL 가지의 기울기로 정해졌어요. Case 5의 손실로는 정해지지 않아요 (저장 노드 모서리의 누설이 A, B에 반응하지 않음).
+- 새 기준 구성은 `fin5`예요 (`project/tools/score2d.py`의 COMPOSE, 실행 태그 `dy`).
+표 `data/tables/hurkx_ab_and_fin5_rounds30_31.txt`, 그림 `reports/pictures/gt2d_hurkx_ab_rounds30_31.png`, 분석 ANALYSIS.md 10절.
+
 ## 3. 진행 중
 
 사용자 결정 (2026-10-07 21:40): A = Fig. 4(a)·8에서 avalanche 모델을 끔, B = 단일 셀의 BL 접촉을 기둥 끝에, C = Fig. 8(c)의 1.1 V 파란 선을 ⑤의 곡선으로 읽음, D = Hurkx 계수 B의 역산을 시작.
 
-| 배치 | 구성 | 바꾼 것 | 실행 | 시작 |
-|---|---|---|---|---|
-| 라운드 30 `run_d30.sh` (2D) | `dv`, `dw`, `dx`, `hu`~`hx` | D: Hurkx 계수 B 역산. 조건 셋: Cho Fig. 5(c)의 GIDL 값(Vg −1 V, 다섯 Case, V_DS 1.1 V), Hsu 외 Fig. 2(c) 실리콘 비교 트랜지스터의 GIDL 가지(−0.7 ~ −1.75 V, V_DS 1.0 V, 일함수 4.27 eV), Fig. 8(c)의 Case 5가 1.1 V 선 위에 있다는 것(유지 상태의 GIDL 누설). B = 2.25 / 2.1 / 2.0 / 1.9 × 10⁷ V/cm를 훑고, A는 Id–Vg 가지의 전기장(0.91 MV/cm)에서 생성률이 같도록 1.7×10²¹ / 3.3×10²⁰ / 1.1×10²⁰ / 3.6×10¹⁹로 둠 (전류가 A에 비례하므로 B마다 한 번 돌리면 A를 다시 정할 수 있음). 구조는 기둥 끝 접촉 셀, avalanche 모델 없음 | `DdvI_c1~5`, `DdwI_c1~5`, `DdxI_c1~5`, `DdvF_c5`, `DdwF_c5`, `DdxF_c5`, `DhuI_c3`, `DhvI_c3`, `DhwI_c3`, `DhxI_c3` (22개) | 2026-10-07 21:27 (21:41 완료) |
-| 라운드 31 `run_d31.sh` (2D) | `dy`, `hy` | 라운드 30의 결과: Hsu 외 실리콘 곡선의 GIDL 가지 모양은 B = 2.0×10⁷ V/cm에서 맞아요 (기울기 차이 +0.39 / +0.15 / −0.01 / −0.18 decade, B = 2.25 / 2.1 / 2.0 / 1.9 × 10⁷). Cho의 −1 V 값은 A 1.3×10²⁰, Hsu 곡선의 높이는 1.0×10²⁰을 요구해요. Case 5의 손실은 A, B에 전혀 반응하지 않아요 (1.577 / 1.576 / 1.575 / 1.573 mV). `dy` = 사용자 결정 A, B를 넣은 소자에 Hurkx A 1.2×10²⁰, B 2.0×10⁷: 기둥 끝 접촉 셀에서 avalanche 모델 없이 Id–Vg, 쓰기, FBE, 그리고 기둥 끝 접촉 쌍 구조에서 로우 해머 (Fig. 6(e): 모델 끔, Fig. 7: 켬, 기본 구동력). `hy` = Hsu 조건 | `DdyI_c1~5`, `DdyW_c2`, `DdyF_c1~5`, `DdyRy_yy`, `DdyRyi_yy`, `DdyRzb_zz`, `DdyRzbi_zz`, `DdyRzbg_zz`, `DhyI_c3` (17개) | 2026-10-07 21:50 |
+Claude가 돌리고 있는 배치는 없어요 (2026-10-07 23:40).
 
 라운드 21~28은 2절로 옮겼어요. 아래는 앞선 배치들을 등록할 때 적어 둔 메모예요.
 

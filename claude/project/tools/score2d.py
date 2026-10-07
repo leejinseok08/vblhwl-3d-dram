@@ -28,12 +28,15 @@ COMPOSE = {"fin2": dict(I="fin", W="fin", F="h1", R="fin"), "fin3": dict(I="fin"
            # fin4 = the device after the user's decisions of 2026-10-07 night (NOTES (br)): BL contact of the single cells at the pillar end,
            # no avalanche model in Fig.4(a) / Fig.5(c) / Fig.8 (the same runs as fin3bn)
            "fin4": dict(I="d0", W="do", F="dm", R="fin"),
+           # fin5 = fin4 with the Hurkx coefficients back-calculated in round 30 (A 1.2e20, B 2.0e7 V/cm) and the row hammer on the pairs
+           # with the BL contact at the pillar end: all runs of round 31 (tag dy)
+           "fin5": dict(I="dy", W="dy", F="dy", R="dy"),
            "fin3b": dict(I="d0", W="dc", F="dc", R="fin"), "fin3n": dict(I="fin", W="dn", F="dl", R="fin"), "fin3bn": dict(I="d0", W="do", F="dm", R="fin")}
 # Reading of Fig.8(a), back-calculated on 2026-10-07 (NOTES (bk); the paper does not say where it reads the body potential): for the FBE
 # runs named here the body rise is the AVERAGE electrostatic potential of the body under the gate (column AveWindow, runs with
 # ProbeX=1), counted from the start of the transient and read at this offset from the middle of the first BL fall [s]:
 # +0.5 ns = 0.25 ns after the fall is complete, -0.3 ns = just before it. Other runs: the body-centre point just before the fall.
-AVGREAD = {"s2": 5e-10, "p1": 5e-10, "p2": 5e-10, "s1": -3e-10, "dc": 5e-10, "dd": 5e-10, "de": 5e-10, "dj": 5e-10, "dk": 5e-10, "dl": 5e-10, "dm": 5e-10}
+AVGREAD = {"s2": 5e-10, "p1": 5e-10, "p2": 5e-10, "s1": -3e-10, "dc": 5e-10, "dd": 5e-10, "de": 5e-10, "dj": 5e-10, "dk": 5e-10, "dl": 5e-10, "dm": 5e-10, "dy": 5e-10}
 part = lambda tag, k: COMPOSE.get(tag, {}).get(k, tag)
 FB = []                                               # filled by first(): True where a baseline run stands in for the configuration's own
 def first(*ids):

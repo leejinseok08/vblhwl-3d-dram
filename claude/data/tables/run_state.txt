@@ -122,6 +122,40 @@ DdrI_c4      complete
 DdsI_c3      complete                     
 DdsI_c4      complete                     
 DdtI_c4      complete                     
+DdvF_c5      complete                     210.1 ns of 210.1 ns
+DdvI_c1      complete                     
+DdvI_c2      complete                     
+DdvI_c3      complete                     
+DdvI_c4      complete                     
+DdvI_c5      complete                     
+DdwF_c5      complete                     210.1 ns of 210.1 ns
+DdwI_c1      complete                     
+DdwI_c2      complete                     
+DdwI_c3      complete                     
+DdwI_c4      complete                     
+DdwI_c5      complete                     
+DdxF_c5      complete                     210.1 ns of 210.1 ns
+DdxI_c1      complete                     
+DdxI_c2      complete                     
+DdxI_c3      complete                     
+DdxI_c4      complete                     
+DdxI_c5      complete                     
+DdyF_c1      complete                     210.1 ns of 210.1 ns
+DdyF_c2      complete                     210.1 ns of 210.1 ns
+DdyF_c3      complete                     210.1 ns of 210.1 ns
+DdyF_c4      complete                     210.1 ns of 210.1 ns
+DdyF_c5      complete                     210.1 ns of 210.1 ns
+DdyI_c1      complete                     
+DdyI_c2      complete                     
+DdyI_c3      complete                     
+DdyI_c4      complete                     
+DdyI_c5      complete                     
+DdyRyi_yy    complete                     2.125 ns of 2.125 ns
+DdyRy_yy     complete                     2.125 ns of 2.125 ns
+DdyRzbg_zz   complete                     2.125 ns of 2.125 ns
+DdyRzbi_zz   complete                     2.125 ns of 2.125 ns
+DdyRzb_zz    complete                     2.125 ns of 2.125 ns
+DdyW_c2      complete                     0.18 ns of 0.18 ns
 De1F_c1      complete                     210.1 ns of 210.1 ns
 De1F_c2      complete                     210.1 ns of 210.1 ns
 De1F_c3      complete                     210.1 ns of 210.1 ns
@@ -221,6 +255,11 @@ DhcRyi_yy    complete                     8.025 ns of 8.025 ns
 DhcRzi_zz    complete                     8.025 ns of 8.025 ns
 DhdRyi_yy    complete, PLOT FILE DAMAGED  1.1e+09 ns of 8.025 ns
 DhdRzi_zz    complete, PLOT FILE DAMAGED  1.1e+09 ns of 8.025 ns
+DhuI_c3      complete                     
+DhvI_c3      complete                     
+DhwI_c3      complete                     
+DhxI_c3      complete                     
+DhyI_c3      complete                     
 Di1F_c1      stopped early (exit=143)     0.124 ns of 21.14 ns
 Di1F_c2      complete                     21.14 ns of 21.14 ns
 Di1F_c3      complete                     21.14 ns of 21.14 ns
