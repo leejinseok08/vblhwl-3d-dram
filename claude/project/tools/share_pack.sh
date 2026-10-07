@@ -11,7 +11,7 @@ python3 tools/run_state.py -a $B | grep '^[A-Z]' | sort -u > $T/run_state.txt
 ids=$(for r in $(python3 tools/run_state.py -c $B); do [ $r = DtcRz_zz ] || echo -n "$r "; done)
 q=$(cd runs; ls -d QS*_zz QR*_zz QY*_yy QSid_zz YE_c[1-5] E3I_c2 E3W_c2 E3H_c2 E3K_c2 E3F_c2 E3F125_c2 E3S1_c2 E3S2_c2 2>/dev/null | sort -u)    # the WL-resistor scan of the morning and the confirmed Id-Vg runs
 # stopped by hand on 2026-10-06 once their question was settled; kept as evidence (whole up to the stop, the last row may be cut)
-part=$(cd runs; ls -d Dw5Rzg_zz Dw7Rzg_zz Du7Rzg_zz Du9Rzg_zz Dw5Rzi_zz Dw7Rzi_zz Dk7F_c1 Dk7F_c2 Dv4F_c1 Dv4F_c2 Dv5F_c1 Dv5F_c2 2>/dev/null)
+part=$(cd runs; ls -d Dw5Rzg_zz Dw7Rzg_zz Du7Rzg_zz Du9Rzg_zz Dw5Rzi_zz Dw7Rzi_zz Dk7F_c1 Dk7F_c2 Dv4F_c1 Dv4F_c2 Dv5F_c1 Dv5F_c2 Dg3Rzi_zz Dg3Ryi_yy Dg4Rzi_zz Do2F_c1 Do2F_c2 Do2F_c3 Do2F_c4 Do2F_c5 2>/dev/null)
 have() { for r in "$@"; do echo " $ids $q " | grep -q " $r " && echo $r; done; }    # only complete runs
 python3 tools/score2d.py -v b0 cs ep e1 e2 w3 a5 ab r2 q0 q1 qn q3 f1 f2 f3 h1 h2 h3 h4 fin fin2 fin3 s1 p1 p2 ra sx sh bw m1 k6 k7 > $T/scorecard.txt 2>&1
 python3 tools/gt_fbe_tab.py Db0F Dq0F Dq1F DqnF Dq3F Df1F Df2F Df3F Dh1F Dh2F Dh3F Dh4F DfinF DraF DsxF DshF DbwF Dk6F Dk7F > $T/fbe_fig8_tables.txt 2>&1
@@ -41,8 +41,11 @@ python3 tools/gt3_fbe.py E3S1_c2 E3S2_c2 E3F_c2 E3F125_c2 Ds1F_c2 Ds2F_c2 Dp1F_c
 python3 tools/gt_rh_hist.py -c > $T/row_hammer_history_round15.txt 2>&1
 { python3 tools/gt_rh_pairs.py DfinRzi_zz DfinRyi_yy Dx2Rzi_zz Dx2Ryi_yy Dx4Rzi_zz Dx7Rzi_zz Dx7Ryi_yy
   python3 tools/gt_rh_body.py DfinRz_zz DfinRzi_zz DfinRzg_zz DfinRy_yy DfinRyi_yy Dx2Rzi_zz Dx4Rz_zz Dx4Rzi_zz Dx7Rzi_zz Dx7Ryi_yy; } > $T/row_hammer_pairs_and_body_round15.txt 2>&1
-g=$(have $(cd runs; ls -d Dg[1-4]R* 2>/dev/null))            # round 16: only what is complete
-[ -n "$g" ] && { python3 tools/gt_rh_hist.py -c fin g1 g2 g3 g4; python3 tools/gt_rh_pairs.py $g; python3 tools/gt_rh_body.py $g; } > $T/row_hammer_aggressor_holes_round16.txt 2>&1
+# rounds 16 - 18 (aggressor's impact-ionization holes reaching the victim) and round 17 (FBE without stand-in): complete runs and the ones stopped by hand
+G=$(cd runs; echo $(ls -d Dg[1-7]R* 2>/dev/null))
+{ python3 tools/gt_rh_hist.py -c fin g1 g2 g3 g4 g5 g6 g7; python3 tools/gt_rh_pairs.py $G; python3 tools/gt_rh_body.py $G
+  for r in Dg1Rzi_zz Dg1Ryi_yy Dg3Rzi_zz Dg3Ryi_yy Dg4Rzi_zz Dg5Rzi_zz Dg5Ryi_yy Dg6Rzi_zz Dg7Rzbi_zz Dg7Rzbg_zz Dg3Rzg_zz; do [ -d runs/$r ] && python3 tools/gt_rh_wave.py $r; done; } > $T/row_hammer_aggressor_holes_rounds16_18.txt 2>&1
+{ python3 tools/gt_avg_tab.py Do1F Do3F; python3 tools/gt3_fbe.py Do2F_c1 Do2F_c2 Do2F_c3 Do2F_c4 Do2F_c5; } > $T/fbe_no_standin_round17.txt 2>&1
 ( cd runs; for r in $ids $q $part; do ls $r/${r}_des.cmd $r/run.json $r/*.plt 2>/dev/null; done; ls _struct/*_dvs.cmd ) > $O/files.txt
 tar czf /tmp/share_vblhwl.tgz -C $O tables -C ~/vblhwl_3d_dram/runs -T $O/files.txt
 echo "complete runs packed: $(echo $ids | wc -w) + scan and Id-Vg runs $(echo $q | wc -w) + partial runs kept as evidence $(echo $part | wc -w); files $(wc -l < $O/files.txt); $(ls -la /tmp/share_vblhwl.tgz | awk '{printf "%.1f MB", $5 / 1e6}')"

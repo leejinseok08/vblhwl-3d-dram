@@ -724,6 +724,13 @@ cfg2d("g4", "R", rhsel=("Rzi_zz", "Rzg_zz"), IIdf="ElectricField", BLhv=0.0, Pro
 cfg2d("g5", "R", rhsel=("Ryi_yy", "Rzi_zz"), IIdf="ElectricField", BLhv=0.0, ProbeX=1, ErrE=1e12, **B1)
 cfg2d("g6", "R", rhsel=("Rzi_zz",), IIdf="ElectricField", BLhv=0.0, ProbeX=1, ErrE=1e12, k_cs=1.0, par=B1["par"])
 cfg2d("g7", "R", rhsel=("Rzbi_zz", "Rzbg_zz"), IIdf="ElectricField", ProbeX=1, ErrE=1e12, **B1)
+# Round 19 (2026-10-07): g5 stalls where g3 did (victim body about 3000 holes; Newton oscillates on the electron density, 3e12 cm^-3, in
+# the hole accumulation layer at the gate oxide, 1.5e20 cm^-3, 10 nm inside the gate from the storage-node side). Numerics only:
+# ErrRef(Electron) 1e17 takes that density out of the convergence test (the electrons that carry the node's loss are far denser).
+# g8 = g3 | g9 = g7 (BL contact at the bottom end, ohmic) | g0 = g9 with the text's capacitors (4.2 fF).
+cfg2d("g8", "R", rhsel=("Rzi_zz",), IIdf="ElectricField", BLhv=0.0, ProbeX=1, ErrE=1e17, **B1)
+cfg2d("g9", "R", rhsel=("Rzbi_zz",), IIdf="ElectricField", ProbeX=1, ErrE=1e17, **B1)
+cfg2d("g0", "R", rhsel=("Rzbi_zz",), IIdf="ElectricField", ProbeX=1, ErrE=1e17, k_cs=1.0, par=B1["par"])
 # Round 17 (2026-10-07, back-calculation of the hole charge of Fig.8 after the first look at round 16): with the driving force ElectricField the
 # write of the cell itself makes about 6300 pairs (default 150), and what the contacts do not take stays in a floating body. FBE of the five
 # cases with the paper's waveform, NO stand-in generation: o1 ElectricField + BL contact that takes no holes | o2 the same + storage-node
