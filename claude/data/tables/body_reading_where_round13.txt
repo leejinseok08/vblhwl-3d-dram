@@ -1,0 +1,90 @@
+runs: charge (x bar charge), holes at t_A, loss +3 / +5 ns, first low phase, 200 ns [mV] (paper first phase / 200 ns in brackets)
+   Case 1 x1.40:  1431 holes |  18.67  28.30 |   46.98 (55) |  131.64 (100) | saddle at x = 117.5 nm before the fall, 97.5 nm with the BL low
+   Case 1 x1.50:  1523 holes |  34.31  48.81 |   73.62 (55) |  164.14 (100) | saddle at x = 117.5 nm before the fall, 97.5 nm with the BL low
+   Case 2 x1.32:  1365 holes |   9.85  14.87 |   24.56 (29) |   69.85 (50) | saddle at x = 117.5 nm before the fall, 97.5 nm with the BL low
+   Case 2 x1.42:  1464 holes |  19.02  26.85 |   40.17 (29) |   90.46 (50) | saddle at x = 117.5 nm before the fall, 97.5 nm with the BL low
+   Case 3 x1.23:  1337 holes |   2.41   3.58 |    5.76 (7.1) |   15.66 (14.6) | saddle at x = 112.5 nm before the fall, 97.5 nm with the BL low
+   Case 3 x1.33:  1443 holes |   4.72   6.52 |    9.44 (7.1) |   20.33 (14.6) | saddle at x = 112.5 nm before the fall, 97.5 nm with the BL low
+   Case 4 x1.14:  1089 holes |   1.13   1.73 |    2.92 (3.5) |    9.20 (7.0) | saddle at x = 117.5 nm before the fall, 102.5 nm with the BL low
+   Case 4 x1.24:  1184 holes |   2.26   3.27 |    5.03 (3.5) |   12.22 (7.0) | saddle at x = 112.5 nm before the fall, 97.5 nm with the BL low
+   Case 5 x1.00:  1134 holes |   0.06   0.08 |    0.13 (0.0) |    1.60 (1.0) | saddle at x = 112.5 nm before the fall, 112.5 nm with the BL low
+   Case 5 x1.15:  1302 holes |   0.07   0.09 |    0.13 (0.0) |    1.58 (1.0) | saddle at x = 112.5 nm before the fall, 112.5 nm with the BL low
+state with the paper's first-phase loss: charge x 1.44 / 1.35 / 1.27 / 1.17, holes 1463 / 1398 / 1382 / 1121; 200 ns loss there 142.2 / 76.2 / 17.5 / 10.1 (paper 100 / 50 / 14.6 / 7)
+
+readings at that state [mV] against the bars 555 / 445 / 365 / 320 (tolerance 30 mV); Case 5: reading at x 1.00 / x 1.15, and the charge at which it shows 368
+   worst   10 |   545   453   374   312 ( -10   +8   +9   -8) | Case 5:  343 /  383 -> x 1.09 | x =  87.5 nm, mid-depth, psi | from the start, BL low +10 ns
+   worst   18 |   537   451   378   313 ( -18   +6  +13   -7) | Case 5:  332 /  373 -> x 1.13 | x =  85.0 nm, mid-depth, psi | from the start, BL low +5 ns
+   worst   18 |   552   460   383   319 (  -3  +15  +18   -1) | Case 5:  341 /  382 -> x 1.10 | x =  87.5 nm, mid-depth, psi | from the start, BL low +5 ns
+   worst   18 |   537   431   375   312 ( -18  -14  +10   -8) | Case 5:  323 /  364 -> x 1.17 | x = 157.5 nm, mid-depth, psi | from the start, BL low +3 ns
+   worst   20 |   545   438   385   318 ( -10   -7  +20   -2) | Case 5:  323 /  364 -> x 1.17 | x = 157.5 nm, mid-depth, psi | from the start, BL low +1 ns
+   worst   20 |   555   465   381   320 (  -0  +20  +16   +0) | Case 5:  355 /  396 -> x 1.05 | x = 142.5 nm, mid-depth, psi | from the start, BL low +10 ns
+   worst   20 |   543   457   385   319 ( -12  +12  +20   -1) | Case 5:  332 /  373 -> x 1.13 | x =  85.0 nm, mid-depth, psi | from the start, BL low +3 ns
+   worst   21 |   567   466   379   318 ( +12  +21  +14   -2) | Case 5:  352 /  392 -> x 1.06 | x =  92.5 nm, mid-depth, psi | from the start, BL low +10 ns
+   worst   21 |   534   454   382   321 ( -21   +9  +17   +1) | Case 5:  324 /  361 -> x 1.18 | average over the gated body, psi | from the start, BL low +0.25 ns
+   worst   22 |   533   452   387   316 ( -22   +7  +22   -4) | Case 5:  319 /  359 -> x 1.18 | x =  82.5 nm, mid-depth, psi | from the start, BL low +1 ns
+   worst   23 |   532   453   378   318 ( -23   +8  +13   -2) | Case 5:  352 /  393 -> x 1.06 | x = 147.5 nm, mid-depth, psi | from the start, BL low +10 ns
+   worst   23 |   539   460   388   326 ( -16  +15  +23   +6) | Case 5:  351 /  391 -> x 1.06 | x = 147.5 nm, mid-depth, psi | from the start, BL low +5 ns
+   worst   24 |   531   443   368   306 ( -24   -2   +3  -14) | Case 5:  334 /  375 -> x 1.13 | x =  85.0 nm, mid-depth, psi | from the start, BL low +10 ns
+   worst   25 |   530   425   368   307 ( -25  -20   +3  -13) | Case 5:  323 /  364 -> x 1.17 | x = 157.5 nm, mid-depth, psi | from the start, BL low +5 ns
+   worst   25 |   549   442   390   322 (  -6   -3  +25   +2) | Case 5:  323 /  364 -> x 1.17 | x = 157.5 nm, mid-depth, psi | from the start, BL low +0.25 ns
+   worst   25 |   530   450   377   318 ( -25   +5  +12   -2) | Case 5:  324 /  361 -> x 1.18 | average over the gated body, psi | from the start, BL low +1 ns
+   worst   26 |   558   467   391   325 (  +3  +22  +26   +5) | Case 5:  341 /  382 -> x 1.10 | x =  87.5 nm, mid-depth, psi | from the start, BL low +3 ns
+   worst   28 |   572   473   382   321 ( +17  +28  +17   +1) | Case 5:  357 /  397 -> x 1.04 | x = 137.5 nm, mid-depth, psi | from the start, BL low +10 ns
+   worst   28 |   581   473   381   320 ( +26  +28  +16   +0) | Case 5:  355 /  396 -> x 1.05 | x =  97.5 nm, mid-depth, psi | from the start, BL low +10 ns
+   worst   28 |   537   456   393   319 ( -18  +11  +28   -1) | Case 5:  319 /  359 -> x 1.18 | x =  82.5 nm, mid-depth, psi | from the start, BL low +0.25 ns
+   worst   28 |   561   473   390   328 (  +6  +28  +25   +8) | Case 5:  354 /  394 -> x 1.05 | x = 142.5 nm, mid-depth, psi | from the start, BL low +5 ns
+   worst   28 |   527   447   389   325 ( -28   +2  +24   +5) | Case 5:  343 /  383 -> x 1.09 | x = 152.5 nm, mid-depth, psi | from the start, BL low +3 ns
+   worst   28 |   573   473   389   326 ( +18  +28  +24   +6) | Case 5:  350 /  391 -> x 1.07 | x =  92.5 nm, mid-depth, psi | from the start, BL low +5 ns
+   worst   30 |   525   444   378   310 ( -30   -1  +13  -10) | Case 5:  319 /  359 -> x 1.18 | x =  82.5 nm, mid-depth, psi | from the start, BL low +3 ns
+   worst   30 |   545   466   395   331 ( -10  +21  +30  +11) | Case 5:  351 /  391 -> x 1.06 | x = 147.5 nm, mid-depth, psi | from the start, BL low +3 ns
+   24 of 948 readings are within 30 mV in Cases 1 - 4
+
+named readings:
+   worst   39 |   594   479   382   322 ( +39  +34  +17   +2) | Case 5:  357 /  398 -> x 1.04 | x = 125.0 nm, mid-depth, psi | from the start, BL low +10 ns
+   worst   45 |   600   487   392   329 ( +45  +42  +27   +9) | Case 5:  356 /  396 -> x 1.05 | x = 125.0 nm, mid-depth, psi | from the start, BL low +5 ns
+   worst   59 |   614   501   409   341 ( +59  +56  +44  +21) | Case 5:  356 /  396 -> x 1.05 | x = 125.0 nm, mid-depth, psi | from the start, BL low +1 ns
+   worst   95 |   650   531   435   360 ( +95  +86  +70  +40) | Case 5:  367 /  409 -> x 1.00 | x = 125.0 nm, mid-depth, psi | from the start, before the fall
+   worst   25 |   530   450   377   318 ( -25   +5  +12   -2) | Case 5:  324 /  361 -> x 1.18 | average over the gated body, psi | from the start, BL low +1 ns
+   worst   36 |   567   479   401   337 ( +12  +34  +36  +17) | Case 5:  336 /  374 -> x 1.13 | average over the gated body, psi | from the start, before the fall
+   worst   39 |   516   436   361   307 ( -39   -9   -4  -13) | Case 5:  324 /  361 -> x 1.18 | average over the gated body, psi | from the start, BL low +5 ns
+   worst   46 |   509   429   352   300 ( -46  -16  -13  -20) | Case 5:  326 /  363 -> x 1.17 | average over the gated body, psi | from the start, BL low +10 ns
+   worst   87 |   468   398   333   277 ( -87  -47  -32  -43) | Case 5:  277 /  310 -> x 1.41 | average over the body region, psi | from the start, BL low +1 ns
+   worst   90 |   607   528   455   399 ( +52  +83  +90  +79) | Case 5:  397 /  429 -> x 0.86 | average over the body region, psi | from the start, before the fall
+   worst   97 |   458   388   319   271 ( -97  -57  -46  -49) | Case 5:  289 /  322 -> x 1.36 | average over the body region, psi | from the start, BL low +10 ns
+   worst  100 |   455   386   318   267 (-100  -59  -47  -53) | Case 5:  277 /  310 -> x 1.41 | average over the body region, psi | from the start, BL low +5 ns
+   worst  308 |   247   214   181   144 (-308 -231 -184 -176) | Case 5:  136 /  152 -> x 3.12 | average under the BL-side spacer, psi | from the start, BL low +10 ns
+   worst  313 |   756   705   655   633 (+201 +260 +290 +313) | Case 5:  626 /  636 -> x -2.82 | average under the BL-side spacer, psi | from the start, before the fall
+   worst  339 |   216   183   153   106 (-339 -262 -212 -214) | Case 5:   83 /  101 -> x 3.43 | average under the BL-side spacer, psi | from the start, BL low +1 ns
+   worst  348 |   207   175   143   100 (-348 -270 -222 -220) | Case 5:   83 /  101 -> x 3.43 | average under the BL-side spacer, psi | from the start, BL low +5 ns
+   worst   58 |   526   412   336   262 ( -29  -33  -29  -58) | Case 5:  269 /  305 -> x 1.42 | minimum in the body region, psi | from the start, before the fall
+   worst   74 |   495   386   314   246 ( -60  -59  -51  -74) | Case 5:  259 /  294 -> x 1.47 | minimum in the body region, psi | from the start, BL low +1 ns
+   worst   84 |   483   374   299   236 ( -72  -71  -66  -84) | Case 5:  259 /  294 -> x 1.47 | minimum in the body region, psi | from the start, BL low +5 ns
+   worst   90 |   478   368   291   230 ( -77  -77  -74  -90) | Case 5:  260 /  295 -> x 1.46 | minimum in the body region, psi | from the start, BL low +10 ns
+   worst  422 |   763   755   748   742 (+208 +310 +383 +422) | Case 5:  483 /  524 -> x 0.57 | average over the gated body, phi_p | from the start, BL low +10 ns
+   worst  430 |   776   766   758   750 (+221 +321 +393 +430) | Case 5:  482 /  522 -> x 0.58 | average over the gated body, phi_p | from the start, BL low +5 ns
+   worst  442 |   791   780   775   762 (+236 +335 +410 +442) | Case 5:  482 /  522 -> x 0.58 | average over the gated body, phi_p | from the start, BL low +1 ns
+   worst  461 |   811   804   801   781 (+256 +359 +436 +461) | Case 5:  493 /  534 -> x 0.54 | average over the gated body, phi_p | from the start, before the fall
+   worst   42 |   597   480   382   322 ( +42  +35  +17   +2) | Case 5:  357 /  398 -> x 1.04 | saddle (lowest mid-depth potential between the junctions), psi | from the start, BL low +10 ns
+   worst   48 |   603   487   392   329 ( +48  +42  +27   +9) | Case 5:  356 /  396 -> x 1.05 | saddle (lowest mid-depth potential between the junctions), psi | from the start, BL low +5 ns
+   worst   62 |   617   501   409   341 ( +62  +56  +44  +21) | Case 5:  356 /  396 -> x 1.05 | saddle (lowest mid-depth potential between the junctions), psi | from the start, BL low +1 ns
+   worst   99 |   654   532   435   360 ( +99  +87  +70  +40) | Case 5:  367 /  409 -> x 1.00 | saddle (lowest mid-depth potential between the junctions), psi | from the start, before the fall
+
+charge sized to the bars with the reading 'average over the gated body': predicted losses [mV] (paper in brackets, deviation in decades)
+   read before the fall:
+      Case 1: x1.37*  1407 holes, first  41.94 (55, -0.12), 200 ns  124.5 (100, +0.10)
+      Case 2: x1.20*  1242 holes, first  13.34 (29, -0.34), 200 ns   50.7 (50, +0.01)
+      Case 3: x1.12*  1219 holes, first   3.34 (7.1, -0.33), 200 ns   11.7 (14.6, -0.09)
+      Case 4: x1.10*  1047 holes, first   2.30 (3.5, -0.18), 200 ns    8.1 (7.0, +0.06)
+      Case 5: x1.13  1276 holes, first   0.13 (0.0,   -  ), 200 ns    1.6 (1.0, +0.20)
+   read BL low +0.25 ns:
+      Case 1: x1.56*  1578 holes, first  95.89 (55, +0.24), 200 ns  186.9 (100, +0.27)
+      Case 2: x1.31*  1354 holes, first  23.25 (29, -0.10), 200 ns   67.9 (50, +0.13)
+      Case 3: x1.19*  1295 holes, first   4.74 (7.1, -0.18), 200 ns   14.1 (14.6, -0.01)
+      Case 4: x1.17  1116 holes, first   3.40 (3.5, -0.01), 200 ns   10.0 (7.0, +0.15)
+      Case 5: x1.18*  1332 holes, first   0.13 (0.0,   -  ), 200 ns    1.6 (1.0, +0.20)
+   read BL low +1 ns:
+      Case 1: x1.61*  1623 holes, first 119.77 (55, +0.34), 200 ns  208.5 (100, +0.32)
+      Case 2: x1.32  1369 holes, first  25.05 (29, -0.06), 200 ns   70.6 (50, +0.15)
+      Case 3: x1.20*  1307 holes, first   5.01 (7.1, -0.15), 200 ns   14.5 (14.6, -0.00)
+      Case 4: x1.18  1131 holes, first   3.71 (3.5, +0.02), 200 ns   10.4 (7.0, +0.17)
+      Case 5: x1.18*  1332 holes, first   0.13 (0.0,   -  ), 200 ns    1.6 (1.0, +0.20)

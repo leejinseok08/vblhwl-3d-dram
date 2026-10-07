@@ -194,6 +194,16 @@ Dn4F_c2      complete                     2.219e+04 ns of 2.219e+04 ns
 Dn4F_c3      complete                     2.219e+04 ns of 2.219e+04 ns
 Dn4F_c4      complete                     2.219e+04 ns of 2.219e+04 ns
 Dn4F_c5      complete                     2.219e+04 ns of 2.219e+04 ns
+Dp1F_c1      complete                     210.1 ns of 210.1 ns
+Dp1F_c2      complete                     210.1 ns of 210.1 ns
+Dp1F_c3      complete                     210.1 ns of 210.1 ns
+Dp1F_c4      complete                     210.1 ns of 210.1 ns
+Dp1F_c5      complete                     210.1 ns of 210.1 ns
+Dp2F_c1      complete                     210.1 ns of 210.1 ns
+Dp2F_c2      complete                     210.1 ns of 210.1 ns
+Dp2F_c3      complete                     210.1 ns of 210.1 ns
+Dp2F_c4      complete                     210.1 ns of 210.1 ns
+Dp2F_c5      complete                     210.1 ns of 210.1 ns
 Dq0F_c1      complete                     210.1 ns of 210.1 ns
 Dq0F_c2      complete                     210.1 ns of 210.1 ns
 Dq0F_c3      complete                     210.1 ns of 210.1 ns
@@ -246,6 +256,16 @@ DrcRz_zz     stopped early (exit=143), PLOT FILE DAMAGED 1.576 ns of 2.125 ns
 DrdRz_zz     stopped early (exit=143), PLOT FILE DAMAGED -2.043e+08 ns of 2.125 ns
 DreRz_zz     stopped early (exit=143), PLOT FILE DAMAGED 1.576 ns of 2.125 ns
 DrfRz_zz     complete, PLOT FILE DAMAGED  1.05e+09 ns of 5.885 ns
+Ds1F_c1      complete                     210.1 ns of 210.1 ns
+Ds1F_c2      complete                     210.1 ns of 210.1 ns
+Ds1F_c3      complete                     210.1 ns of 210.1 ns
+Ds1F_c4      complete                     210.1 ns of 210.1 ns
+Ds1F_c5      complete                     210.1 ns of 210.1 ns
+Ds2F_c1      complete                     210.1 ns of 210.1 ns
+Ds2F_c2      complete                     210.1 ns of 210.1 ns
+Ds2F_c3      complete                     210.1 ns of 210.1 ns
+Ds2F_c4      complete                     210.1 ns of 210.1 ns
+Ds2F_c5      complete                     210.1 ns of 210.1 ns
 DshF_c2      complete                     210.1 ns of 210.1 ns
 DshI_c2      complete                     
 DshI_c2      ended, exit=1                

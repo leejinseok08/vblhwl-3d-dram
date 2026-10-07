@@ -73,6 +73,9 @@ Run names must differ by more than letter case (the PC's file system is case-bli
   folders: live process, last time against the deck's end, plot files whole), not the batch log. One run id never in two
   live batches (the runner's folder lock refuses the second process, exit=99).
 
+- 2026-10-07: my part of the dropped project `~/bcvfet_tcad` (1.9 GB) was moved to the PC (`C:\Users\LEEJINSEOK\bcvfet_tcad_server_archive`,
+  archive + md5 list, checked file by file; `tools/arch_manifest.sh`, `tools/arch_remove.sh`); Codex's two folders stay on the server.
+
 ## Layout
 - `params.py` = single source of every value, with source tags. `make_runs.py` = structures (`STRUCTS`), run table (`RUNS`),
   deck builders (`deck_idvg`, `deck_cho`: write, then FBE / RH / hold), parameter files (`par_text`). Never hand-edit `runs/`.
@@ -93,7 +96,15 @@ Run names must differ by more than letter case (the PC's file system is case-bli
   need quotes or loops (the remote shell is tcsh).
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
-## State (2026-10-07; details NOTES (ax) .. (bg))
+## State (2026-10-07; details NOTES (ax) .. (bk))
+**User, 2026-10-07: the authors cannot be asked. What the paper leaves open is back-calculated from its figures and labelled as such.**
+Back-calculated so far (NOTES (bk)): Fig.8(a) reads the body potential as the AVERAGE electrostatic potential of the body under the gate,
+counted from the start of the transient, at the first BL edge (not the body-centre point before the fall: with that reading bars and
+losses lie 43 - 98 mV apart). With the hole charge sized to the bars through that reading (`fin3` = DfinI, DfinW, Ds2F, DfinR*; charge
+x 1.56 / 1.31 / 1.19 / 1.17 / 1.18 of the old bar charge, 1118 - 1579 holes) every number of Fig.8 is inside its tolerance: scores Id-Vg 0.73,
+write 0.93, body rise 0.02, first-phase loss 0.47, loss at 200 ns 0.58 (row hammer 4.39 / 11.88 unchanged). Tools: `tools/gt_where.py`,
+`tools/gt_avg_tab.py`, `tools/score2d.py` (AVGREAD), probes `ProbeX`. The hole charge stays a condition; where it comes from and the row
+hammer are the next things to back-calculate. What follows describes `fin2`, the configuration before this step.
 The 2D device is configuration `fin2` = the runs DfinI_c1..5, DfinW_c2, Dh1F_c1..5, DfinR* (`COMPOSE` in tools/score2d.py; the
 user's decisions of the afternoon of 2026-10-06 are in it):
 - from the paper: Fig.2 section, Fig.5(a)/(b) dimensions, doping, work functions, Vdd 1.1, Vpp 1.8, write as Fig.4(a) (BL 1.168 V),

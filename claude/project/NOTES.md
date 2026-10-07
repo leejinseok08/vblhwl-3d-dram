@@ -3,6 +3,63 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-07 (bk) back-calculation, step 1: where and when Fig.8(a) reads the body potential (rounds 13, 14); fin3; bcvfet_tcad moved
+- User (08:30): move bcvfet_tcad off the server; the authors cannot be asked, the open values have to be back-calculated; go on.
+- bcvfet_tcad: my part (runs 4354 files, tools, preview, files at the top: 4484 files, 1919 MB) packed (`tools/arch_manifest.sh`, tar in /tmp),
+  downloaded (C:\Users\LEEJINSEOK\bcvfet_tcad_server_archive\bcvfet_tcad_claude_part_2026-10-07.tgz, 1668285425 bytes, sha256 a59d0bb5..0f23),
+  held against the server's md5 list file by file (4484 of 4484 equal, the archive's sha256 equal on both machines), then taken off the
+  server with `tools/arch_remove.sh` (only the files of the list). Codex's two folders in it (codex_validation 1009 MB,
+  codex_hurkx_fig1_20261004_014926 77 MB) were left; a note MOVED_2026-10-07.txt lies in the folder; a second copy of the archive is in /tmp
+  on the server. Account 8719 -> 6880 MB. Codex's screen had been deferring runs for lack of quota (queue.log: DEFER quota); it went on by
+  itself at 08:36.
+- What the paper's own numbers say (no run): the current that the first-phase losses mean, I = Cs dV/dt over the first 5 ns (Cases 1, 2) or
+  3 ns (Cases 3, 4), is 18.8 / 8.3 / 1.7 / 0.72 nA with the capacitors of the write curve (43.9 / 19.3 / 4.0 / 1.7 nA with the text's). The gate
+  voltage at which Fig.5(c) carries that current: 0.488 / 0.436 / 0.374 / 0.316 V (0.512 / 0.459 / 0.396 / 0.340 V). The bars: 0.555 / 0.445 / 0.365 /
+  0.320 V. For Cases 2 - 4 the two agree within 10 mV (write-curve capacitors): in the paper's data the body rise acts on the leak like the
+  same rise of the gate voltage. Case 5: Fig.5(c) at 0.368 V carries 2e-13 A, no loss, as in Fig.8(c). In my runs the bar state of Case 2
+  leaks 0.40 nA, the current of Fig.5(c) at 0.366 V: 76 mV short. The gap of (bg) again, now from the paper's figures alone.
+- Fig.8(b) looked at again: the dot "t = t_A" sits on the first BL edge (centre at about 19 ns, radius 5 ns): before or after the fall
+  cannot be told from the picture.
+- `tools/gt_ta_scan.py` (existing runs Dh1F .. Dh4F): at the states with the paper's first-phase loss the potential under the gate read WITH
+  THE BL LOW comes close to the bars (x = 85 nm, 5 ns after the fall: 536 / 449 / 378 / 313 mV); the centre point before the fall is 98 / 90 / 70 /
+  43 mV high.
+- Round 13 (`run_d13.sh`, 10 runs Dp1F / Dp2F_c1..5, gate 08:41 ALL PASS, complete 08:57): charge around the value that gives the first-phase
+  loss (x 1.40, 1.50 / 1.32, 1.42 / 1.23, 1.33 / 1.14, 1.24 of the old bar charge; Case 5 x 1.00, 1.15); new probes `ProbeX` (the channel
+  every 5 nm at mid-depth and 1 nm under a gate oxide; average, minimum, maximum of the potential over the body region; average over the
+  body under the gate and under the BL-side spacer; manual p.176: Average(Region=..), Average(Window[..])). `tools/gt_where.py`: 912
+  readings (place x quantity x instant x reference) held against the bars at the states with the paper's loss (x 1.44 / 1.35 / 1.27 / 1.17,
+  1463 / 1398 / 1382 / 1121 holes). 22 are within 30 mV in Cases 1 - 4, all of them potentials under the gate read with the BL low. Of the
+  readings one would write down as a definition [mV, deviation from the bars in brackets]:
+    body-centre point, before the fall             650 / 531 / 435 / 360   (+95 / +86 / +70 / +40)      the reading used until now
+    body-centre point, BL low + 5 ns               600 / 487 / 392 / 329   (+45 / +42 / +27 / +9)
+    top of the barrier (lowest mid-depth potential between the junctions; at x = 97.5 nm with the BL low), + 5 ns   603 / 487 / 392 / 329
+    average over the whole body region, before     607 / 528 / 455 / 399   (+52 / +83 / +90 / +79);   BL low + 5 ns   (-100 / -59 / -47 / -53)
+    minimum in the body region, before             526 / 412 / 336 / 262   (-29 / -33 / -29 / -58)
+    AVERAGE OVER THE BODY UNDER THE GATE, before   567 / 479 / 401 / 337   (+12 / +34 / +36 / +17)
+                                  1 ns after       530 / 450 / 377 / 318   (-25 / +5 / +12 / -2)
+    hole quasi-Fermi potential, any place          200 - 460 mV off
+  One definition fits: the average electrostatic potential of the body under the gate, counted from the start of the transient (the
+  body without holes), read at the first BL edge. Between "just before" and "just after" the fall it passes through the bars.
+- Round 14 (`run_d14.sh`, 10 runs Ds1F / Ds2F_c1..5, gate 09:00 ALL PASS, complete 09:17): the charge sized to the bars with that reading,
+  the losses left as predictions (`tools/gt_avg_tab.py`):
+    s2 = read 0.25 ns after the fall: charge x 1.56 / 1.31 / 1.19 / 1.17 / 1.18 (1579 / 1354 / 1294 / 1118 / 1335 holes); bars -1 / 0 / -1 / +1 / +1 mV;
+         first low phase 91.3 / 23.2 / 4.53 / 3.49 / 0.13 mV (+0.22 / -0.10 / -0.20 / 0.00 decades); 200 ns 182.9 / 67.8 / 13.8 / 10.1 / 1.58 mV (+0.26 / +0.13 /
+         -0.02 / +0.16 / +0.20); 5 or 3 ns after the fall 63.9 / 13.9 / 2.71 / 2.12 mV (+0.17 / -0.22 / -0.27 / 0.00); Case 1 after phases 2 - 4 120 / 137 /
+         149 (67 / 76 / 83); Case 4 after two phases 5.2 (5.2). Every number inside its tolerance (30 mV, 0.3 decades).
+    s1 = read just before the fall: x 1.37 / 1.20 / 1.12 / 1.10 / 1.13 (1403 / 1245 / 1219 / 1051 / 1279 holes); first low phase 40.1 / 11.3 / 2.80 / 2.26 /
+         0.13 mV (-0.14 / -0.41 / -0.40 / -0.19: Cases 2, 3 outside); 200 ns 121.7 / 45.9 / 10.8 / 8.05 / 1.58 mV (+0.09 / -0.04 / -0.13 / +0.06 / +0.20); Case 1
+         after phases 2 - 4 62 / 77 / 88 (67 / 76 / 83).
+  The first phase wants the later instant, the tail of Case 1 the earlier one: the reading belongs on the edge itself.
+- `fin3` (tools/score2d.py: COMPOSE and AVGREAD) = DfinI, DfinW, Ds2F, DfinR*: Id-Vg 0.73, write 0.93, body rise 0.02, first-phase loss 0.47,
+  loss at 200 ns 0.58, row hammer 4.39, row hammer with impact ionization 11.88 (fin2: 0.12 / 2.97 / 1.44; fin: 2.03 / 0.84 / 0.51).
+  Fig.4(a), 5(c) and all of Fig.8 inside the reading error together for the first time. What it rests on: the definition of the body
+  potential is back-calculated (about ten definitions tried, the paper names none), and the hole charge is still a condition (1100 - 1600
+  holes, 0.18 - 0.25 fC, put in by the stand-in supply with the node held), now sized to Fig.8(a) with that definition. Picture
+  `tools/plot_body_reading.py` -> `gt2d_body_reading_fin3.png`.
+- Open after this step: where the charge comes from (own generation with the node held would need 20.6 / 16.2 / 19.6 / 18.7 / 14.6 us for
+  these charges: no common time, Case 5 too fast); the row hammer (Fig.6(e), 7). 3D: E3S1_c2 / E3S2_c2 (x 1.31 / x 1.45, the average over
+  the gated body recorded) started 09:19 after gt3_check (the same lines as at 01:29; mesh unchanged since 2026-10-06 17:28).
+
 ## 2026-10-07 (bj) the check in 3D (unit cell g3_c2h, Case 2): the gap between the bars and the losses is not a matter of the 2D section
 - Six runs, started 01:30 after the structure check of (bi), all exit 0: E3I_c2 21 min, E3K_c2 59 min, E3F_c2 / E3F125_c2 2 h 20 min each
   (a BL period of 21 ns in about 10 min; the 5 - 6 h told before were too many), E3W_c2, E3H_c2. 16 - 26 MB a run folder.

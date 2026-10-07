@@ -13,7 +13,7 @@ q=$(cd runs; ls -d QS*_zz QR*_zz QY*_yy QSid_zz YE_c[1-5] E3I_c2 E3W_c2 E3H_c2 E
 # stopped by hand on 2026-10-06 once their question was settled; kept as evidence (whole up to the stop, the last row may be cut)
 part=$(cd runs; ls -d Dw5Rzg_zz Dw7Rzg_zz Du7Rzg_zz Du9Rzg_zz Dw5Rzi_zz Dw7Rzi_zz Dk7F_c1 Dk7F_c2 Dv4F_c1 Dv4F_c2 Dv5F_c1 Dv5F_c2 2>/dev/null)
 have() { for r in "$@"; do echo " $ids $q " | grep -q " $r " && echo $r; done; }    # only complete runs
-python3 tools/score2d.py -v b0 cs ep e1 e2 w3 a5 ab r2 q0 q1 qn q3 f1 f2 f3 h1 h2 h3 h4 fin fin2 ra sx sh bw m1 k6 k7 > $T/scorecard.txt 2>&1
+python3 tools/score2d.py -v b0 cs ep e1 e2 w3 a5 ab r2 q0 q1 qn q3 f1 f2 f3 h1 h2 h3 h4 fin fin2 fin3 s1 p1 p2 ra sx sh bw m1 k6 k7 > $T/scorecard.txt 2>&1
 python3 tools/gt_fbe_tab.py Db0F Dq0F Dq1F DqnF Dq3F Df1F Df2F Df3F Dh1F Dh2F Dh3F Dh4F DfinF DraF DsxF DshF DbwF Dk6F Dk7F > $T/fbe_fig8_tables.txt 2>&1
 for t in h1 fin ra k6 k7; do for c in 1 2 3 4 5; do [ -n "$(have D${t}F_c$c)" ] || continue; echo "D${t}F_c$c"; python3 tools/gt_tran.py runs/D${t}F_c$c 2>&1 | grep -E "FBE|paper Fig.8" | cut -c1-220; done; done > $T/fbe_loss_per_phase.txt
 python3 tools/rh_tab.py $(have $(cd runs; ls -d Db0R* DcsR* DepR* Dr2R* DfinR* DtcR* DhaR* DhcR* DybR* DydR* Q[SRY]*_[yz][yz] 2>/dev/null)) > $T/row_hammer_table.txt 2>&1
@@ -33,6 +33,9 @@ python3 tools/gt_fbe_tab.py Dk6F Dk7F Dv4F Dv5F > $T/fbe_ii_factor_rounds_7_9.tx
 python3 tools/gt_long_split.py > $T/fbe_long_hold_split_round11.txt 2>&1
 python3 tools/gt_charged_t0.py > $T/charged_t0_check.txt 2>&1
 python3 tools/gt_held.py > $T/held_node_round12.txt 2>&1
+python3 tools/gt_ta_scan.py > $T/body_reading_instants_round13.txt 2>&1
+python3 tools/gt_where.py > $T/body_reading_where_round13.txt 2>&1
+python3 tools/gt_avg_tab.py Dp1F Dp2F Ds1F Ds2F > $T/fbe_fig8_new_reading_rounds_13_14.txt 2>&1
 { python3 tools/gt3_fbe.py E3H_c2 E3K_c2 E3F_c2 E3F125_c2 Dh1F_c2 Dh2F_c2; python3 tools/gt_probes.py -k E3K_c2; env GT_W=2 python3 tools/gt_fig5c.py runs/E3I_c2; env GT_W=0.1 python3 tools/gt_fig5c.py runs/DfinI_c2; } > $T/fbe_3d_unit_cell_case2.txt 2>&1
 ( cd runs; for r in $ids $q $part; do ls $r/${r}_des.cmd $r/run.json $r/*.plt 2>/dev/null; done; ls _struct/*_dvs.cmd ) > $O/files.txt
 tar czf /tmp/share_vblhwl.tgz -C $O tables -C ~/vblhwl_3d_dram/runs -T $O/files.txt

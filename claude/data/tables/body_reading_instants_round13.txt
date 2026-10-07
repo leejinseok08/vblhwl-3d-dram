@@ -1,0 +1,38 @@
+rise of the body-centre potential above the start of the transient [mV]: before the first BL fall | with the BL low, after 0.25 / 1 / 3 / 5 / 10 ns
+  Case 1 x1.0   first-phase loss    2.62 mV |   548 |   521   521   521   520   524   (drop at the fall -27 mV)
+  Case 1 x1.25  first-phase loss   18.93 mV |   608 |   579   578   576   574   574   (drop at the fall -30 mV)
+  Case 1 x1.5   first-phase loss   73.62 mV |   665 |   630   624   614   606   597   (drop at the fall -35 mV)
+  Case 1 x2.0   first-phase loss  215.28 mV |   771 |   691   659   631   617   601   (drop at the fall -80 mV)
+  Case 2 x1.0   first-phase loss    2.16 mV |   442 |   421   420   420   420   422   (drop at the fall -21 mV)
+  Case 2 x1.25  first-phase loss   15.97 mV |   506 |   482   480   476   473   469   (drop at the fall -24 mV)
+  Case 2 x1.5   first-phase loss   54.69 mV |   566 |   534   524   509   499   487   (drop at the fall -33 mV)
+  Case 2 x2.0   first-phase loss  148.68 mV |   680 |   584   548   520   506   490   (drop at the fall -95 mV)
+  Case 3 x1.0   first-phase loss    1.06 mV |   363 |   348   347   346   345   345   (drop at the fall -15 mV)
+  Case 3 x1.25  first-phase loss    6.43 mV |   429 |   410   405   397   390   381   (drop at the fall -19 mV)
+  Case 3 x1.5   first-phase loss   16.93 mV |   492 |   456   438   417   405   390   (drop at the fall -36 mV)
+  Case 3 x2.0   first-phase loss   41.30 mV |   612 |   495   451   422   408   391   (drop at the fall -117 mV)
+  Case 4 x1.0   first-phase loss    1.09 mV |   319 |   305   305   303   301   299   (drop at the fall -13 mV)
+  Case 4 x1.25  first-phase loss    5.27 mV |   378 |   361   355   346   338   328   (drop at the fall -18 mV)
+  Case 4 x1.5   first-phase loss   12.33 mV |   435 |   402   383   362   350   335   (drop at the fall -33 mV)
+  Case 4 x2.0   first-phase loss   28.35 mV |   543 |   438   395   367   353   336   (drop at the fall -105 mV)
+  Case 5 x1.0   first-phase loss    0.13 mV |   367 |   356   356   356   356   357   (drop at the fall -12 mV)
+  Case 5 x1.25  first-phase loss    0.14 mV |   436 |   423   423   423   423   425   (drop at the fall -13 mV)
+  Case 5 x1.5   first-phase loss    0.15 mV |   501 |   487   487   487   487   489   (drop at the fall -14 mV)
+  Case 5 x2.0   first-phase loss    0.48 mV |   624 |   607   606   603   601   598   (drop at the fall -17 mV)
+
+at the state that gives the paper's first-phase loss (Cases 1 - 4): reading [mV] at each instant, deviation from the bars in brackets
+   largest deviation   19 mV     536   449   378   313   ( -19   +4  +13   -7)   x = 0.085 um psi, BL low, +5 ns
+   largest deviation   20 mV     543   456   385   318   ( -12  +11  +20   -2)   x = 0.085 um psi, BL low, +3 ns
+   largest deviation   25 mV     530   442   368   304   ( -25   -3   +3  -16)   x = 0.085 um psi, BL low, +10 ns
+   largest deviation   30 mV     551   465   395   326   (  -4  +20  +30   +6)   x = 0.085 um psi, BL low, +1 ns
+   largest deviation   36 mV     556   471   401   330   (  +1  +26  +36  +10)   x = 0.085 um psi, BL low, +0.25 ns
+   largest deviation   37 mV     592   478   382   320   ( +37  +33  +17   +0)   x = 0.125 um psi, BL low, +10 ns
+   largest deviation   44 mV     599   485   392   329   ( +44  +40  +27   +9)   x = 0.125 um psi, BL low, +5 ns
+   largest deviation   51 mV     606   492   399   334   ( +51  +47  +34  +14)   x = 0.125 um psi, BL low, +3 ns
+   largest deviation   57 mV     598   502   422   347   ( +43  +57  +57  +27)   x = 0.085 um psi, before the fall
+   largest deviation   59 mV     614   501   409   342   ( +59  +56  +44  +22)   x = 0.125 um psi, BL low, +1 ns
+   largest deviation   64 mV     619   507   414   346   ( +64  +62  +49  +26)   x = 0.125 um psi, BL low, +0.25 ns
+   largest deviation   76 mV     631   487   323   280   ( +76  +42  -42  -40)   x = 0.165 um psi, BL low, +10 ns
+   largest deviation   87 mV     642   494   331   287   ( +87  +49  -34  -33)   x = 0.165 um psi, BL low, +5 ns
+   largest deviation   95 mV     650   500   337   291   ( +95  +55  -28  -29)   x = 0.165 um psi, BL low, +3 ns
+   bars:                          555   445   365   320   tolerance 30 mV
