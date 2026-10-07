@@ -798,6 +798,10 @@ cfg2d("dm", "F", cases=CASEB, gb={c: GBQ[c] * GBB[c] * FN[c] for c in GBQ}, Prob
 # Round 27: dn = fin3's write with the avalanche model off (with dl: the device without an avalanche model in Fig.4(a), 5(c) and 8, as the
 # paper names the model for Fig.7 only).
 cfg2d("dn", "W", II=0, **B1)
+# Round 28 (dn: without the avalanche model the write scores 1.11, with it 0.93). do = dn on the cell with the BL contact at the pillar end |
+# dp, dq = dn with 1.7 / 1.6 fF (does a slightly smaller capacitor bring the write back inside the tolerance?).
+cfg2d("do", "W", wst="gr_c2hb", II=0, **B1)
+for k_, c_ in (("dp", 1.7), ("dq", 1.6)): cfg2d(k_, "W", II=0, k_cs=c_ / 4.2, par=B1["par"])
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the

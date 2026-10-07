@@ -25,7 +25,7 @@ elog = lambda s, r: math.log10(max(s, P.FLOOR) / max(r, P.FLOOR)) / P.DEC_TOL
 COMPOSE = {"fin2": dict(I="fin", W="fin", F="h1", R="fin"), "fin3": dict(I="fin", W="fin", F="s2", R="fin"),
            # 2026-10-07 evening (NOTES (bn)): fin3 on the cells with the BL contact at the pillar end (b), fin3 with the avalanche model off
            # in the FBE and the stand-in rate raised so that the charge is back on the bars (n), both (bn). Their row hammer is fin's (axis contact), not redone.
-           "fin3b": dict(I="d0", W="dc", F="dc", R="fin"), "fin3n": dict(I="fin", W="fin", F="dl", R="fin"), "fin3bn": dict(I="d0", W="dc", F="dm", R="fin")}
+           "fin3b": dict(I="d0", W="dc", F="dc", R="fin"), "fin3n": dict(I="fin", W="dn", F="dl", R="fin"), "fin3bn": dict(I="d0", W="do", F="dm", R="fin")}
 # Reading of Fig.8(a), back-calculated on 2026-10-07 (NOTES (bk); the paper does not say where it reads the body potential): for the FBE
 # runs named here the body rise is the AVERAGE electrostatic potential of the body under the gate (column AveWindow, runs with
 # ProbeX=1), counted from the start of the transient and read at this offset from the middle of the first BL fall [s]:
