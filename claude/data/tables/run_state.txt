@@ -44,6 +44,79 @@ DcsRzg_zz    complete                     2.125 ns of 2.125 ns
 DcsRzi_zz    complete                     2.125 ns of 2.125 ns
 DcsRz_zz     complete                     2.125 ns of 2.125 ns
 DcsW_c2      complete                     0.18 ns of 0.18 ns
+Dd0I_c1      complete                     
+Dd0I_c2      complete                     
+Dd0I_c3      complete                     
+Dd0I_c4      complete                     
+Dd0I_c5      complete                     
+Dd1I_c1      ended, exit=2                
+Dd1I_c2      ended, exit=2                
+Dd1I_c3      ended, exit=2                
+Dd1I_c4      ended, exit=2                
+Dd1I_c5      ended, exit=2                
+Dd2W_c2      complete                     0.18 ns of 0.18 ns
+Dd3W_c2      complete                     0.18 ns of 0.18 ns
+Dd4W_c2      complete                     0.18 ns of 0.18 ns
+Dd5W_c2      complete                     0.18 ns of 0.18 ns
+Dd6I_c1      stopped early (exit=2)        of 1e+05 ns
+Dd6I_c2      stopped early (exit=0)        of 1e+05 ns
+Dd7W_c2      complete                     0.18 ns of 0.18 ns
+Dd8F_c1      stopped early (exit=143)     42.64 ns of 210.1 ns
+Dd8F_c2      complete                     210.1 ns of 210.1 ns
+Dd8F_c3      complete                     210.1 ns of 210.1 ns
+Dd8F_c4      complete                     210.1 ns of 210.1 ns
+Dd8F_c5      complete                     210.1 ns of 210.1 ns
+Dd9F_c1      stopped early (exit=143)     126.2 ns of 210.1 ns
+Dd9F_c2      complete                     210.1 ns of 210.1 ns
+Dd9F_c3      complete                     210.1 ns of 210.1 ns
+Dd9F_c4      complete                     210.1 ns of 210.1 ns
+Dd9F_c5      complete                     210.1 ns of 210.1 ns
+DdaW_c1      complete                     0.18 ns of 0.18 ns
+DdbW_c3      complete                     0.18 ns of 0.18 ns
+DdcF_c1      complete                     210.1 ns of 210.1 ns
+DdcF_c2      complete                     210.1 ns of 210.1 ns
+DdcF_c3      complete                     210.1 ns of 210.1 ns
+DdcF_c4      complete                     210.1 ns of 210.1 ns
+DdcF_c5      complete                     210.1 ns of 210.1 ns
+DdcW_c2      complete                     0.18 ns of 0.18 ns
+DddF_c1      stopped early (exit=143)     31.64 ns of 210.1 ns
+DddF_c2      complete                     210.1 ns of 210.1 ns
+DddF_c3      complete                     210.1 ns of 210.1 ns
+DddF_c4      complete                     210.1 ns of 210.1 ns
+DddF_c5      complete                     210.1 ns of 210.1 ns
+DdeF_c1      stopped early (exit=143)     50.53 ns of 210.1 ns
+DdeF_c2      complete                     210.1 ns of 210.1 ns
+DdeF_c3      complete                     210.1 ns of 210.1 ns
+DdeF_c4      complete                     210.1 ns of 210.1 ns
+DdeF_c5      complete                     210.1 ns of 210.1 ns
+DdgI_c1      stopped early (exit=0)        of 1e+05 ns
+DdgI_c2      stopped early (exit=0)        of 1e+05 ns
+DdhI_c2      stopped early (exit=0)        of 1e+07 ns
+DdiI_c2      stopped early (exit=0)        of 1e+07 ns
+DdjF_c1      complete                     210.1 ns of 210.1 ns
+DdjF_c2      complete                     210.1 ns of 210.1 ns
+DdjF_c3      complete                     210.1 ns of 210.1 ns
+DdjF_c4      complete                     210.1 ns of 210.1 ns
+DdjF_c5      complete                     210.1 ns of 210.1 ns
+DdkF_c1      complete                     210.1 ns of 210.1 ns
+DdkF_c2      complete                     210.1 ns of 210.1 ns
+DdkF_c3      complete                     210.1 ns of 210.1 ns
+DdkF_c4      complete                     210.1 ns of 210.1 ns
+DdkF_c5      complete                     210.1 ns of 210.1 ns
+DdlF_c1      complete                     210.1 ns of 210.1 ns
+DdlF_c2      complete                     210.1 ns of 210.1 ns
+DdlF_c3      complete                     210.1 ns of 210.1 ns
+DdlF_c4      complete                     210.1 ns of 210.1 ns
+DdlF_c5      complete                     210.1 ns of 210.1 ns
+DdmF_c1      complete                     210.1 ns of 210.1 ns
+DdmF_c2      complete                     210.1 ns of 210.1 ns
+DdmF_c3      complete                     210.1 ns of 210.1 ns
+DdmF_c4      complete                     210.1 ns of 210.1 ns
+DdmF_c5      complete                     210.1 ns of 210.1 ns
+DdnW_c2      complete                     0.18 ns of 0.18 ns
+DdoW_c2      complete                     0.18 ns of 0.18 ns
+DdpW_c2      complete                     0.18 ns of 0.18 ns
+DdqW_c2      complete                     0.18 ns of 0.18 ns
 De1F_c1      complete                     210.1 ns of 210.1 ns
 De1F_c2      complete                     210.1 ns of 210.1 ns
 De1F_c3      complete                     210.1 ns of 210.1 ns

@@ -3,6 +3,66 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-07 (bn) user: "run (가)" - the device set up with the driving force ElectricField and the BL contact at the pillar end (rounds 21 - 28): it does not carry Fig.5(c) and Fig.8. By-products: the contact position sets the gain of the parasitic BJT; without any avalanche model Fig.8 fits better
+- Why: (bm) left the driving force coupled to the write curve (with ElectricField the text's 4.2 fF nearly fits Fig.4(a)) and the Fig.7
+  candidate needing a BL contact at the pillar end, while `fin3` has the default driving force and the contact on the pillar axis. The user
+  chose option (가) of the afternoon report: set the device up anew with both and see whether Fig.5(c), Fig.4(a) and Fig.8 come out.
+- Code: structures gr_c1hb .. gr_c4hb (single cells with `Blc="bot"`; gr_c2hb drawn next to Fig.2 before use, scratch folder, has a crop
+  of the paper figure), `CASEB`, cfg2d `wcase=` (write on another case), the write's `II=1` moved into the overridable dict. Older decks
+  byte-identical (checked before each of the eight batches). Tools: `gt_write_tab.py` (write runs against Fig.4(a)), `gt_fbe_pairs.py`
+  (pairs and body holes per BL period), `plot_ef_refit.py`, `score2d.py` (`COMPOSE` fin3b / fin3n / fin3bn, `AVGREAD` for the d-tags,
+  run folder from GT_RUNS), `_q.sh why / cb`, share_pack.sh (table `electricfield_contact_avalanche_rounds21_28.txt`).
+- Batches (each: Codex's state fetched first (its last commit 73e8c4c of 13:29; live: its fin3 factorial, nothing with ElectricField or the
+  contact), registered and pushed, decks md5-equal PC / server, gate ALL PASS with every line read): run_d21.sh 16:45 (14 runs) |
+  run_d22.sh 16:52 (15) | run_d23.sh 17:21 (16) | run_d24.sh 18:12 (4) | run_d25.sh 18:15 (10) | run_d26.sh 18:25 (10) | run_d27.sh
+  18:35 (1) | run_d28.sh 18:45 (3): 73 runs. Paper re-read for them: Fig.2 (the BL is a pillar through the whole stack, no core drawn),
+  Sec.III / Fig.4(a), Fig.5, Sec.VI / Fig.8.
+- Fig.4(a) with ElectricField (Case 2 cell, end contact; node at 12 / 24 / 39 / 60 ps, paper 0.72 / 0.92 / 1.06 / 1.13 V): 4.2 fF 0.781 / 1.017 /
+  1.103 / 1.138 (score 2.04), 5.04 fF 1.03, 5.67 fF 0.701 / 0.951 / 1.055 / 1.106 (0.72), 5.88 fF 0.79, 6.72 fF 1.58; Case 1 cell with its
+  5.1 fF 1.28, Case 3 cell with 3.6 fF 2.39. Default driving force, 1.8 fF: 0.93 (axis), 0.94 (end). With ElectricField the write asks for
+  1.35 x the text's capacitor (`fin3`: 0.43 x).
+- Fig.5(c): with the ionization off the end contact changes nothing (d0: thresholds, 60.2 - 60.3 mV/dec, GIDL branch as fin, score 0.73).
+  With ElectricField on there is no DC curve: all five gate ramps stop at Vg about 1.06 V, before any drain bias (d1). As a sweep in time
+  (Case 2, BL 1.1 V, 0 -> 1.8 V): 100 us 0.29 / 0.38 / 0.53 V at 1e-10 / 1e-8 / 1e-6 A, 44.2 mV/dec; 10 ms 0.24 / 0.38 / 0.53, 73.1 mV/dec; the
+  current x 2.8 at 1 V, x 5.1 at 1.8 V (paper 0.33 / 0.44 / 0.57). Control with the ionization off: the DC curve at both sweep times (0.33 /
+  0.45 / 0.58, 60.5 / 60.4 mV/dec). So the shift is the ionization's, and the curve then depends on the sweep time (the on-current charges
+  the floating body). Case 1 with the model on does not reach its drain bias at all.
+- Fig.8 with ElectricField (end contact; stand-in rate re-sized to the bars, x 0.75 / 0.816 / 0.908 / 0.936 / 0.919 of `fin3`'s: 1539 / 1339 /
+  1290 / 1105 / 1321 holes, bars 558 / 446 / 366 / 320 / 368 against 555 / 445 / 365 / 320 / 368):
+  * capacitors x 1.35 (de): Case 1 loses 404 mV in the first low phase (paper 55), then the run stalls; Case 2 12.0 - 12.7 mV in EVERY low
+    phase, 113.5 mV at 200 ns (paper 29 -> 50); Case 3 2.07 -> 9.93 (7.1 -> 14.6); Case 4 1.49 -> 6.56 (3.5 -> 7.0); Case 5 0.18 -> 3.95 (0 -> 1.0).
+  * capacitors of `fin3` (dd): Case 1 339 mV 5 ns after the fall; Case 2 44.2 -> 311.6; Case 3 6.2 -> 30.2; Case 4 4.65 -> 20.3; Case 5 0.56 -> 12.5.
+  * why (`gt_fbe_pairs.py`, Case 2): default driving force: a BL-low phase makes 42, 21, 14 .. 5 pairs, the body goes 1355 -> 1070 holes over
+    the nine phases, the loss per phase 23.0 -> 2.75 mV. ElectricField: every low phase makes 155 - 143 pairs (and 19 in each high phase), the body
+    stays at 1347 -> 1341 holes and every phase costs the same. Case 1: 3557 pairs in the first low phase, body 1551 -> 1762 holes. The
+    leakage current makes its own body charge again; a capacitor only scales the millivolts.
+  VERDICT on (가): ElectricField cannot be the avalanche model of Fig.5(c) and Fig.8; it fits Fig.4(a) alone. It stays what (bm) left it:
+  a candidate for Fig.7, the one figure for which the paper names an avalanche model.
+- By-product 1, the contact position with `fin3`'s own models (dc = `fin3` on gr_c*hb, Id-Vg d0; `fin3b`): scores IV 0.73, W 0.94, BR 0.03,
+  L1 0.68, L2 0.98 (`fin3`: 0.73 / 0.93 / 0.02 / 0.47 / 0.58). Case 1 91 -> 147 mV in the first low phase and 183 -> 326 mV at 200 ns, Case 2
+  23.2 -> 27.7 and 67.8 -> 95.7; same charge (1578 against 1579 holes), same bars. My reading (no run isolates it): while the BL is low it
+  is the emitter of the parasitic n-p-n; a contact 50 nm from the junction over the whole height takes the injected holes (short
+  emitter), one at the pillar end does not, so the gain and with it the loss for the same body charge are larger. What the runs show:
+  Case 1 loses about 1240 electrons from the node in the first low phase with the axis contact (91.1 mV x 2.19 fF) and about 2000 with
+  the end contact (146.5 mV), for 382 / 381 holes that leave the body (net loss of the body + pairs made in the phase).
+- By-product 2, the avalanche model itself (default driving force) in the FBE. With it off and the same stand-in rate the charge at t_A
+  is 1298 / 1142 / 1142 / 992 / 1139 holes (with it 1579 / 1354 / 1294 / 1118 / 1335): the model had multiplied the stand-in's pairs during
+  the hold by 1.13 - 1.22, and it makes 169 (Case 1) / 42 (Case 2) pairs in the first low phase. With it off and the rate raised x 1.23 /
+  1.195 / 1.14 / 1.135 / 1.18 (1597 / 1366 / 1302 / 1126 / 1344 holes, bars 554 / 447 / 366 / 322 / 371):
+  * axis contact (dl, `fin3n`): first low phase 60.9 / 18.6 / 4.36 / 3.37 / 0.13 mV, 200 ns 112.9 / 49.1 / 12.9 / 9.49 / 1.58 (paper 55 / 29 / 7.1 /
+    3.5 / 0 and 100 / 50 / 14.6 / 7 / 1), Case 1 after phases 2 - 4 77 / 86 / 93 (paper 67 / 76 / 83): BR 0.06, L1 0.44, L2 0.37.
+  * end contact (dm, `fin3bn`): 81.6 / 21.5 / 4.72 / 3.66 / 0.13 and 163.8 / 62.8 / 14.9 / 11.0 / 1.58: BR 0.07, L1 0.42, L2 0.55.
+  * write with the model off: 1.8 fF 0.737 / 0.913 / 1.016 / 1.084 V, score 1.11 (end contact 1.12); 1.7 fF 1.05; 1.6 fF 1.12 (with the model 0.93).
+  A device WITHOUT an avalanche model in Fig.4(a), 5(c), 8 therefore scores 0.73 / 1.11 / 0.06 / 0.44 / 0.37 (axis) or 0.73 / 1.12 / 0.07 / 0.42 /
+  0.55 (pillar end) against `fin3`'s 0.73 / 0.93 / 0.02 / 0.47 / 0.58, and the driving force chosen for Fig.7 then touches no other figure:
+  that is the paper's wording (avalanche model named for Fig.7 only). NOT adopted: "impact ionization on in the FBE" is a condition the
+  user set on 2026-10-06. Both by-products go to the user as decisions; `fin3` is unchanged.
+- Numerics: Dd8F_c1, Dd9F_c1, DdeF_c1, DddF_c1 stopped by hand (`gt_kill.sh -`, files kept) after the node had collapsed and the steps
+  had gone to 1e-14 .. 1e-16 s; Dd1I_c1 .. c5 and Dd6I_c1 ended by themselves (exit 2). `run_state.py` calls the transient Id-Vg runs
+  "stopped early (exit=0)" although they reach 1.8 V.
+- Picture: `pic_vbl_hwl_1t1c_3ddram\gt2d_electricfield_contact_avalanche_rounds21_28.png` (six panels, `tools/plot_ef_refit.py`). Report:
+  results folder, section 9.17. Shared repository: ANALYSIS 4.10, table above, 73 run folders.
+
 ## 2026-10-07 (bm) back-calculation of Fig.7, rounds 16 - 19: the holes of the victim come from the AGGRESSOR through the BL pillar (driving force ElectricField, BL contact at the end of the pillar); round 17: Fig.8 without stand-in
 - Why: (bl) left one candidate for the 665.1 mV that Fig.7(e) shows after ONE aggressor pulse with the node still at 1.1 V: holes made by
   impact ionization in the aggressor that reach the victim. With the default driving force the aggressor makes 60 - 71 pairs per cycle and the

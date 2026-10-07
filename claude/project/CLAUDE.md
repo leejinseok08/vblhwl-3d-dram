@@ -84,7 +84,7 @@ Run names must differ by more than letter case (the PC's file system is case-bli
   `sde_gt3_dvs.cmd` = 3D unit cell, transistor only. Doping is set per region. `tools/sde_dryrun.py` checks an SDE file
   without Sentaurus.
 - Structures in use: `gr_c1h .. gr_c4h` (Fig.5(b) Cases 1-5 with HfO2), `gr_yy`, `gr_zz`, `gr_zzg` (grounded victim body), `gr_zzb` /
-  `gr_zzbg` (zz with the BL contact at the bottom end of the pillar, 2026-10-07), `gq*` (mesh variants), 3D `g3_c2h`
+  `gr_zzbg` (zz with the BL contact at the bottom end of the pillar, 2026-10-07), `gr_c1hb .. gr_c4hb` (single cells with that contact), `gq*` (mesh variants), 3D `g3_c2h`
   (unit cell), `g3x_c2h` / `g3x40_c2h` (X-X' pair). Runs: `YE_c<n>` Id-Vg; `CFk` FBE with the timing of Fig.8(b) (`FB2`; the
   older `RF` runs use 16 ns / 20 ns); `CF<x>`, `FW`, `FB_`, `FR` FBE variants; `RQ` / `QR` row hammer in 2D (`QR` with the WL
   resistor); `CH`, `CI`, `CT`, `CFd` tunnelling calibration (closed); `MQ` mesh; `V3*`, `X3*` 3D. Older run folders in `runs/`
@@ -93,13 +93,13 @@ Run names must differ by more than letter case (the PC's file system is case-bli
   `-w` write phase, `-k` sizing of the hole supply), `gt_fig5c.py` (Id-Vg against Fig.5(c)), `gt_fig4a.py` (write curve), `gt_tran.py` (transients: loss, probes,
   generation), `gt_fbe_tab.py` (five FBE cases against Fig.8 in one table), `gt_avg_tab.py` (the same with the reading of `fin3`), row-hammer
   pairs: `gt_rh_hist.py` (node per cycle per configuration), `gt_rh_pairs.py` (pairs and holes per cycle, holes through each contact),
-  `gt_rh_body.py`, `gt_rh_wave.py` (inside the cycles), `_rh_tab.sh` + `plot_rh_transfer.py` (table and picture of rounds 16 - 19), `gt_hold.py`, `gt_iv_at.py`, `gt_steps.py` (how a
+  `gt_rh_body.py`, `gt_rh_wave.py` (inside the cycles), `gt_write_tab.py` (write runs against Fig.4(a)), `gt_fbe_pairs.py` (pairs and body holes per BL period of an FBE run), `plot_ef_refit.py` (picture of rounds 21 - 28), `_rh_tab.sh` + `plot_rh_transfer.py` (table and picture of rounds 16 - 19), `gt_hold.py`, `gt_iv_at.py`, `gt_steps.py` (how a
   run stepped), `gt_map.sh` (peak field / generation in a window of a saved plot), `man_grep.sh` (search the installed
   Sentaurus manual), `gt_log.sh`, `plot_gt.py`, `plot_gt3.py`. `tools/_q.sh` = scratch script for one-off server queries that
   need quotes or loops (the remote shell is tcsh).
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
-## State (2026-10-07; details NOTES (ax) .. (bm))
+## State (2026-10-07; details NOTES (ax) .. (bn))
 **User, 2026-10-07: the authors cannot be asked. What the paper leaves open is back-calculated from its figures and labelled as such.**
 Back-calculated so far (NOTES (bk)): Fig.8(a) reads the body potential as the AVERAGE electrostatic potential of the body under the gate,
 counted from the start of the transient, at the first BL edge (not the body-centre point before the fall: with that reading bars and
@@ -124,7 +124,17 @@ Rounds 15 - 20 of 2026-10-07 (NOTES (bl), (bm)); `fin3` is unchanged by them:
   default driving force with 4.2 fF 0.51 / 0.72 / 0.86 / 0.97). The 1.8 fF of `fin3` and the driving force are therefore coupled; not decided.
 - Fig.8 without stand-in (rounds 17, 20): the write's own ionization leaves 5 - 704 holes (needed 1118 - 1579) when the BL contact takes
   none, 2300 - 5300 when the storage-node contact takes none either: the origin of the charge of Fig.8 is still open.
-- ElectricField is NOT adopted into the device: Fig.5(c) / Fig.8 / the scores have not been redone with it.
+- ElectricField is NOT adopted into the device, and rounds 21 - 28 (NOTES (bn); user: "run (가)" = set the device up with it and with the
+  BL contact at the pillar end) show that it cannot be: on single cells with that contact (gr_c1hb .. gr_c4hb) it fits Fig.4(a) with
+  5.67 fF (score 0.72), but it has no DC Id-Vg (as a sweep in time the thresholds lie 0.04 - 0.09 V low and the slope depends on the sweep
+  time; the control with the ionization off gives the DC curve), and in the FBE the leakage makes its own body charge again (Case 2:
+  12 mV in every low phase, 113 mV at 200 ns, paper 29 -> 50; Case 1 loses 404 mV in the first low phase). It stays a candidate for Fig.7.
+- By-products of rounds 21 - 28, both waiting for the user's decision (`fin3` is unchanged): (1) BL contact at the pillar end instead of
+  the pillar axis, with `fin3`'s models: scores 0.73 / 0.94 / 0.03 / 0.68 / 0.98 (`fin3b`; Case 1 loses 147 / 326 mV instead of 91 / 183: the
+  contact position sets the gain of the parasitic BJT). (2) NO avalanche model in the FBE and the write (the paper names one for Fig.7
+  only), stand-in rate x 1.23 / 1.195 / 1.14 / 1.135 / 1.18: 0.73 / 1.11 / 0.06 / 0.44 / 0.37 with the axis contact (`fin3n`), 0.73 / 1.12 / 0.07 /
+  0.42 / 0.55 with the end contact (`fin3bn`); the driving force of Fig.7 then touches no other figure. "Impact ionization on in the FBE"
+  is the user's condition of 2026-10-06 and stands until the user changes it.
 What follows describes `fin2`, the configuration before this step.
 The 2D device is configuration `fin2` = the runs DfinI_c1..5, DfinW_c2, Dh1F_c1..5, DfinR* (`COMPOSE` in tools/score2d.py; the
 user's decisions of the afternoon of 2026-10-06 are in it):

@@ -1,4 +1,4 @@
-# plot_ef_refit.py [out.png] - rounds 21 - 26 in one picture: what the avalanche driving force ElectricField, the place of the BL contact
+# plot_ef_refit.py [out.png] - rounds 21 - 28 in one picture: what the avalanche driving force ElectricField, the place of the BL contact
 # and the avalanche model itself do to Fig.4(a), Fig.5(c) and Fig.8 of the paper (Cho et al., IRPS 2026). Six panels: write curve,
 # Id-Vg of Case 2, loss and body holes of Case 2 in the FBE test, loss of Case 1, and the Fig.8 scores of four configurations.
 # Run on the PC. Run files from GT_RUNS (default: the shared repository's claude/data/runs). The paper's values are the numbers of
@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from gt_tran import load, at, edges
 import gt_fig5c as G, paper_targets as P, score2d as S
 RUNS = os.environ["GT_RUNS"]
-OUT = sys.argv[1] if len(sys.argv) > 1 else r"C:\Users\LEEJINSEOK\Desktop\서강대\반엘프\pic_vbl_hwl_1t1c_3ddram\gt2d_electricfield_end_contact_rounds21_26.png"
+OUT = sys.argv[1] if len(sys.argv) > 1 else r"C:\Users\LEEJINSEOK\Desktop\서강대\반엘프\pic_vbl_hwl_1t1c_3ddram\gt2d_electricfield_contact_avalanche_rounds21_28.png"
 plt.rcParams["font.family"] = ["Malgun Gothic", "DejaVu Sans"]; plt.rcParams["axes.unicode_minus"] = False
 INK = "#263238"; PAP = "#c62828"
 FIN, END, EF1, EF2, OFF, OFE = "#455a64", "#8d6e63", "#1565c0", "#6a1b9a", "#2e7d32", "#9e9d24"     # one colour per configuration, the same in every panel
@@ -46,6 +46,7 @@ for rid, cl, lab, ls, lw in (("Dd0I_c2", FIN, "충돌 이온화 끔, DC", "-", 3
     p = [q for q in G.curve(os.path.join(RUNS, rid)) if q[1] > 0 and q[0] >= 0]; b.plot([v for v, i in p], [i for v, i in p], color=cl, lw=lw, ls=ls, label=lab)
 pp = G.PAPER[2]; b.errorbar([pp["v10"], pp["v8"], pp["v6"]], [1e-10, 1e-8, 1e-6], xerr=P.IV_TOL["v10"], fmt="D", color=PAP, ms=9, mec=INK, capsize=4, zorder=6, label="논문 Fig. 5(c) (허용 ±0.02 V)")
 b.set_yscale("log"); b.set(xlim=(0, 1.0), ylim=(1e-13, 1e-3), xlabel="게이트 전압 [V]  (BL 1.1 V)", ylabel="드레인 전류 [A]  (폭 0.1 µm)"); b.legend(fontsize=9.5, loc="lower right")
+tk = range(-13, -2, 2); b.set_yticks([10.0 ** k for k in tk]); b.set_yticklabels([f"1e{k}" for k in tk]); b.minorticks_off()
 b.set_title("② Id–Vg (Case 2)", fontsize=13.5, fontweight="bold", color=INK)
 # (c), (d) FBE of Case 2: loss and holes; (e) loss of Case 1
 SETS = (("Ds2F", FIN, "기본 구동력, 접촉은 기둥 축 (fin3)", "-"), ("DdcF", END, "기본 구동력, 접촉은 기둥 끝", "-"), ("DdlF", OFF, "avalanche 끔, 접촉은 기둥 축", "-"),
@@ -73,12 +74,12 @@ for i, (tag, lab, cl) in enumerate(CF):
     for j, (x, al) in enumerate(zip(v, (0.45, 0.72, 1.0))):
         g.bar(i + (j - 1) * 0.26, x, 0.24, color=cl, alpha=al, ec=INK, lw=0.8); g.text(i + (j - 1) * 0.26, x + 0.02, f"{x:.2f}", ha="center", va="bottom", fontsize=9.5, color=INK)
 g.axhline(1.0, color=PAP, lw=1.4, ls="--"); g.text(3.45, 1.02, "허용 한계 (1.0)", color=PAP, fontsize=9.5, ha="right", va="bottom")
-g.set_xticks(range(len(CF))); g.set_xticklabels([q[1] for q in CF], fontsize=10); g.set_ylabel("점수 = (모델 − 논문) / 허용 오차의 rms", fontsize=11); g.set_ylim(0, 1.25)
+g.set_xticks(range(len(CF))); g.set_xticklabels([q[1] for q in CF], fontsize=10); g.set_ylabel("점수 = (모델 - 논문) / 허용 오차의 rms", fontsize=11); g.set_ylim(0, 1.25)
 g.text(0.02, 0.97, "막대 셋: 몸체 전위 막대 (Fig. 8(a)) · 첫 구간 손실 · 200 ns 손실\nElectricField는 Case 1이 무너져서 점수를 낼 수 없어요", transform=g.transAxes, fontsize=9.8, va="top", color=INK)
 g.set_title("⑥ Fig. 8 점수 (작을수록 좋음)", fontsize=13.5, fontweight="bold", color=INK)
 for q in (a, b, c, d, e, g):
     q.grid(alpha=0.25)
     for sp in ("top", "right"): q.spines[sp].set_visible(False)
     q.xaxis.label.set_size(11); q.yaxis.label.set_size(11)
-fig.suptitle("라운드 21~26: avalanche 구동력 ElectricField와 BL 접촉 위치를 소자 전체에 넣으면 Fig. 4(a)·5(c)·8이 나오는가 (2D)", fontsize=16, fontweight="bold", color=INK)
+fig.suptitle("라운드 21~28: avalanche 구동력 ElectricField와 BL 접촉 위치를 소자 전체에 넣으면 Fig. 4(a)·5(c)·8이 나오는가 (2D)", fontsize=16, fontweight="bold", color=INK)
 fig.tight_layout(); fig.savefig(OUT, dpi=110, bbox_inches="tight", facecolor="white"); print(OUT)
