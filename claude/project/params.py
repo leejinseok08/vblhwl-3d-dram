@@ -29,6 +29,7 @@ P = dict(
     Spm="Si3N4",        # spacer material: its own colour in Fig.2; the group's models hold SiO2 and Si3N4 (k 7.0, Lee .. Yu,
                         # IMW 2026) and the gate-level layer of its VBL flow is Si3N4 (Wu .. Yu, Wong, TED 2025)   [ChoF + Grp]
     Lsp1=25,            # BL-side spacer; p body under it (Fig.2: 0.25 Lg)                 [ChoF]
+                        # user, 2026-10-08: the body under it has the channel's doping and the junction is abrupt at the pillar face - correct as it is
     Lsp2=25,            # storage-node-side spacer; the N+ source lies under it            [ChoF]
     Wbl=100,            # bit-line pillar along the channel. 100 = the cross-section drawing; 50 keeps the table's WL pitch of
                         # 275 nm and is used for the 3D cell (user 2026-10-05; back to 100 if it makes trouble)   [ChoF]

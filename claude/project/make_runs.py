@@ -960,6 +960,15 @@ for c_, st_, wf_, tb_ in CASEX[:3]: RUNS.append(R(f"DpL_c{c_}", "GT", st_, "load
 # i.e. how far the gate's fringe field reaches into it (HfO2 22, Si3N4 7.0 = the device, SiO2 3.9; the paper names no spacer material).
 for c_, st_, wf_, tb_ in CASEX[3:]: RUNS.append(R(f"DpL_c{c_}", "GT", st_, "load", WFs=wf_, WFd=wf_, **dict(IV, Nthr=4, Par=PN, Vwr=1.168, ProbeE=1)))
 for k_, st_ in (("h", "gbh_c2hb"), ("o", "gbo_c2hb")): RUNS.append(R(f"DpL{k_}_c2", "GT", st_, "load", WFs=4.7, WFd=4.7, **dict(IV, Nthr=4, Par=PN, Vwr=1.168, ProbeE=1)))
+# Round 38 (user, 2026-10-08 18:50: "the shape and position of the BL pillar junction and the doping of the body under the spacer are right as they
+# are"; Fig.4(a) is Case 2). Of what the paper leaves open about the ungated stretch two things remain: the spacer material and whether the
+# pre-charge ran with an avalanche model. Round 37: the spacer alone moves the current by 20 % (35 / 38 / 46 uA for SiO2 / Si3N4 / HfO2 where 70
+# are needed). Round 33 (on the drawn node, one-layer pillar): only the driving force ElectricField makes the write fast, a little too fast.
+# Here on the device (fin7's Case 2 cell, lumped 4.2 fF, BL at the pillar end): the write with ElectricField for three models, with the
+# device's Si3N4 spacers (wn*) and with SiO2 spacers (wo*), which slow it. A trial: fin7 keeps no avalanche model in the write (decision A).
+for sp_, st_ in (("n", "gb2_c2hb"), ("o", "gbo_c2hb")):
+    for m_, mod_ in (("v", "vanOverstraeten"), ("l", "Lackner"), ("u", "UniBo")):
+        cfg2d(f"w{sp_}{m_}", "W", wst=st_, II=1, IImod=mod_, IIdf="ElectricField", k_cs=1.0, par=PN)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the

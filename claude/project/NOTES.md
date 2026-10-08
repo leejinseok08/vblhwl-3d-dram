@@ -3,6 +3,42 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-08 (cd) user: "the shape and position of the BL pillar junction and the doping of the body under the spacer are right as they are" - two assumptions left (spacer material, avalanche model in the pre-charge); round 38: with ElectricField in the pre-charge the Case 2 cell writes the text's 4.2 fF within +5 / +59 / +22 / -3 mV of Fig.4(a). Row hammer of fin6 / fin7 as attack minus idle: nothing
+- Fixed by the user (18:30; noted in params.py at `Lsp1`): abrupt junction on the pillar face; the body under the BL-side spacer has the channel's doping
+  (1e18 in Case 2). With (cb) (Fig.4(a) = Case 2) the shortfall of (ca) has to come from what is left: the spacer material and the physics of the
+  pre-charge. Not to be reopened.
+- Round 38 (`run_d38.sh`, 18:38 - 18:50, 6 write runs on fin7's Case 2 cell, lumped 4.2 fF, BL at the pillar end; registered and pushed before the
+  start, Codex nothing live, gate ALL PASS with two lines read; decks = fin7's write + the Avalanche line, and the mesh for SiO2 spacers). A trial:
+    spacers   avalanche model, ElectricField   node at 12 / 24 / 39 / 60 ps [V]   deviation [mV]         W      node before -> after the WL goes off   pairs in the write   holes left
+    Si3N4     none (fin7)                      0.479 / 0.675 / 0.823 / 0.941      -241 / -245 / -237 / -189   7.64   1.057 -> 1.022 V                         0                0
+    Si3N4     vanOverstraeten                  0.756 / 1.000 / 1.093 / 1.133      +36 / +80 / +33 / +3    1.56   1.158 -> 1.125                       14 640              250
+    Si3N4     Lackner                          0.742 / 0.988 / 1.086 / 1.129      +22 / +68 / +26 / -1    1.27   1.156 -> 1.123                       14 203              234
+    Si3N4     UniBo                            0.742 / 0.988 / 1.085 / 1.129      +22 / +68 / +25 / -1    1.26   1.156 -> 1.128                       14 391              214
+    SiO2      vanOverstraeten                  0.743 / 0.993 / 1.090 / 1.132      +23 / +73 / +30 / +2    1.37   1.157 -> 1.127                       14 513              249
+    SiO2      Lackner                          0.725 / 0.980 / 1.082 / 1.127       +5 / +60 / +22 / -3    1.07   1.155 -> 1.125                       14 271              235
+    SiO2      UniBo                            0.725 / 0.979 / 1.082 / 1.127       +5 / +59 / +22 / -3    1.05   1.155 -> 1.125                       14 969              232
+    paper Fig.4(a)                             0.72 / 0.92 / 1.06 / 1.13                                         every later curve starts at 1.1 V
+  * With an avalanche model driven by ElectricField the pre-charge of the Case 2 cell on the paper's own capacitor is on the paper's curve at
+    three of the four points; the 24 ps point is 59 - 80 mV high. From 7.64 to 1.05 - 1.56. The models differ by 15 mV, the two spacer materials
+    by 15 mV (SiO2 nearer); both are inside what one point of the curve can tell.
+  * Why it works where the current was short: three quarters of the BL-to-node voltage lie across the 25 nm ungated stretch ((ca)), so the field
+    is highest there; the pairs are made there (14 000 - 15 000 in the write), the holes stay in the floating body, its potential rises and the
+    barrier of that stretch falls. The body charge is gone again soon: 214 - 250 holes are left when the WL is off (the bars of Fig.8(a) ask 1371).
+  * End state: the node stands at 1.123 - 1.128 V after the WL is off, 23 - 28 mV above the 1.1 V the later figures start from (without the model
+    1.022 V, 78 mV below).
+  * It is the candidate of rounds 16 - 28 again, now reached from the write: ElectricField. What was against it then holds: with it on everywhere
+    the DC Id-Vg does not exist as a DC sweep and the FBE regenerates its own body charge (Case 1 collapses). What is new: the user has closed the
+    structural ways out, and the write is a place where the paper's own curve asks for it.
+- Row hammer at the BL pillar end, attack minus idle (rounds 35, 37; `IDLE` in score2d.py; 10 cycles; mV per cycle, Z-Z' "on" in mV over the window):
+                          paper     fin6 (1.8 fF): net | with the cell's own leak      fin7 (4.2 fF): net | with its own leak
+    Fig.6(e) Y-Y'         0.0535    -0.0000 | +0.0014                                   (attack run still going at 18:47)
+    Fig.6(e) Z-Z'         0.0100    -0.0030 (last five cycles -0.0000) | -0.0016        (attack run still going)
+    Fig.7 Y-Y'            0.0535    -0.0029 | -0.0016                                   -0.0016 | -0.0010
+    Fig.7 Z-Z' collapse   520       -0.05 (node higher than idle)                       -0.03
+    Fig.7 grounded body   0.036     -0.0030 | -0.0016                                   -0.0017 | -0.0011
+  The attack does nothing to the victim's node in the model: all five items outside (RH 4.71, RI 11.88 for fin6). The 0.0014 mV per cycle quoted
+  since 2026-10-06 was the cell's own leak, as the criteria said it would be. fin6 complete: 36 / 52, predictions 6 / 15.
+
 ## 2026-10-08 (cc) user: "isn't the spacer between the layers SiGe? The cited paper (Choi et al., VLSI 2024, the IRPS paper's [2]) builds on alternately stacked Si / SiGe" - no: SiGe is the sacrificial layer of that stack; it is etched away and its place is taken by the gate stack and by deposited SiO2 and Si3N4
 - Sources (the group's own papers; Choi's two pages themselves are not in `저자의 논문`, so its wording was not read):
   * Wu, Upton, Hsu, Chen, Yu, Wong, TED 2025 (A12), Sec. II, on exactly that paper (its ref. [3] = K. S. Choi et al., VLSI 2024): "Alternatively, Si

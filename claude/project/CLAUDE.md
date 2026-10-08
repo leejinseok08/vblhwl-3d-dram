@@ -119,6 +119,14 @@ spacer material (SiO2 / Si3N4 / HfO2 35 / 38 / 46 uA at node 0.82 V), not to the
 (0.61 / 0.85 / 1.00 / 1.11 V with its 3.6 fF, node on the BL level before the WL goes off). **Fig.4(a) is read as Case 2** (user, NOTES (cb): the
 paper calls it the pre-charge before the RHE / FBE simulation, and the RHE cell is Case 2), so the shortfall is our Case 2 cell's; as a pre-charge
 its end state is the 1.1 V every later curve starts from, which our write does not reach (1.022 V after the WL is off; the decks set 1.1 V by hand).
+**Fixed by the user (NOTES (cd)): the BL pillar junction (abrupt, on the pillar face) and the doping of the body under the BL-side spacer (the
+channel's) are right as they are.** Left open about that stretch: the spacer material and whether the pre-charge ran with an avalanche model.
+Round 38 (trial, fin7 unchanged): with an avalanche model driven by ElectricField the Case 2 write on 4.2 fF is 0.725 / 0.979 / 1.082 / 1.127 V (UniBo,
+SiO2 spacers; W 1.05) or 0.742 / 0.988 / 1.085 / 1.129 V (UniBo, Si3N4; 1.26) against 0.72 / 0.92 / 1.06 / 1.13, node 1.123 - 1.128 V after the WL is off;
+without a model W 7.64. Whether the pre-charge of the device gets that model is the user's decision (it reverses decision A for the write; a
+pre-charge with the model followed by a model-free FBE needs two sdevice stages).
+**Row hammer as attack minus idle (rounds 35, 37):** nothing. fin6: Y-Y' -0.0000, Z-Z' -0.0000 mV per cycle (last five), with the model no
+collapse; fin7 likewise as far as its runs are in. The 0.0014 mV per cycle quoted since 2026-10-06 was the cell's own leak.
 **Before that, since 16:00, `fin6`** (user: "pb2로 바꿔줘"; NOTES (bw), (bx), `MEASURE.md` 4.6): fin5 measured where the paper's device has its BL
 terminal, at the end of the BL pillar, two Z pitches from the cell (`Blc="bot"`, `Blx` = 2 pitches; single cells gb2_c1hb .. gb2_c4hb, pairs gb2_yy,
 gb2_zz, gb2_zzg; runs with tag pb2, idle controls of the row hammer pbi; `COMPOSE["fin6"]`). Everything else as fin5: no avalanche model in
