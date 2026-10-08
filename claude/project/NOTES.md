@@ -3,6 +3,22 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-08 (cc) user: "isn't the spacer between the layers SiGe? The cited paper (Choi et al., VLSI 2024, the IRPS paper's [2]) builds on alternately stacked Si / SiGe" - no: SiGe is the sacrificial layer of that stack; it is etched away and its place is taken by the gate stack and by deposited SiO2 and Si3N4
+- Sources (the group's own papers; Choi's two pages themselves are not in `저자의 논문`, so its wording was not read):
+  * Wu, Upton, Hsu, Chen, Yu, Wong, TED 2025 (A12), Sec. II, on exactly that paper (its ref. [3] = K. S. Choi et al., VLSI 2024): "Alternatively, Si
+    (sacrificial layer)/SiGe (sacrificial layer)/Si (channel)/SiGe (sacrificial layer) superlattice could be used for VBL [3]. The Si and SiGe
+    sacrificial layers are etched away and replaced with deposited SiO2 and Si3N4. ... the final structures have similar dielectric materials and
+    geometric dimension (z-pitch ~110 nm for Si/SiGe/Si/SiGe [3])". Its own VBL flow: Si3N4 = sacrificial layer for gate dielectric and WL, SiO2 =
+    isolation between transistors on different layers.
+  * Lee .. Yu, survey, TED 2026 (A01), Sec. on the process: Si-channel sequence = "(1) channel isolation through HAR etching of the Si-SiGe mold,
+    followed by (2) channel Si release after defining the BL and plate HAR trenches. The subsequent (3) WL formation step realizes a GAA WL
+    structure"; "selective lateral etching of SiGe". It calls the stack a mold.
+  * Cho (IRPS 2026) itself: "These prototypes employ Si/SiGe epitaxial growth to fabricate multi-tier horizontal nanosheet access transistors";
+    its captions call the layer between two cells "horizontal oxide isolation layer" and the wall "oxide vertical sidewall isolation".
+- So the model stands as it is: SiO2 between the layers (dVOX 30 nm), Si3N4 spacers (the choice of 2026-10-05, from the same sentence of A12),
+  no SiGe anywhere. SiGe is a semiconductor: left between gate and BL it would join the bodies of stacked cells and leave no room for the WL.
+- Not settled by this: what the spacer of Cho's TCAD model is made of (Si3N4 is the group's process statement, not a line of the IRPS paper).
+
 ## 2026-10-08 (cb) user: "Fig.4(a) is the pre-charge of the cell by a transient simulation before the RHE simulation" - so it is the Case 2 cell; my "the case is not stated, perhaps Case 4" is withdrawn
 - The paper, Sec. III: "Prior to RHE/FBE simulation, the cell was pre-charged through transient simulation (Fig. 4(a)) and the following simulation
   bias conditions are illustrated in Fig. 4(b) and (c)"; and "For the RHE simulation across three adjacent cases, the device parameters are set to
