@@ -41,6 +41,9 @@ Only this device is run from now on (user, 2026-10-05). The Chen 2026 BCVFET wor
    before scoring or reporting. In short: definition -> conditions -> extraction -> comparison; every number with its kind (stated / read / bound /
    fitted / condition / result); calibration targets, conditions and predictions counted apart (`tools/repro_rate.py`); the capacitance always as
    text / drawn / fitted; row hammer as attack minus idle, so every row-hammer batch carries an idle run; no average without the worst item.
+   **Sentence check first** (user, 2026-10-08, principle 8): to verify a figure, find every sentence of the paper that describes it (text,
+   caption, lettering in the figure) and check conditions and result against each, before any score. Table of 35 sentences (18 agree, 8
+   conditional, 7 not, 2 not run): results folder `GT_IRPS2026_논문문장_대조_figure별_2026-10-08.md`; keep it current. NOTES (cf).
    Codex's two documents of that day (`Codex_독립검증_2026-10-08`) are its sources.
 
 ## 2D completion process (user, 2026-10-06: finish the device at the 2D level first; 3D is paused)
@@ -108,7 +111,9 @@ Run names must differ by more than letter case (the PC's file system is case-bli
 ## State (2026-10-08; details NOTES (ax) .. (bx))
 **The device since 2026-10-08 17:30 is `fin7`** (user: "커패시터는 본문 용량으로 설정"; NOTES (bz), (ca)): fin6 (next paragraph) with the lumped storage
 capacitors of the paper's text, 5.1 / 4.2 / 3.6 fF for bodies of 30 / 20 / 10 nm, in place of the fitted 1.8 fF scale. Runs: Id-Vg tag pb2, write and FBE
-tag pt, row hammer tag pt with idle controls pti (`run_d37r.sh`, started 17:44, hours: read with `python3 tools/score2d.py -v fin7`); `COMPOSE["fin7"]`.
+tag pt, row hammer tag pt with idle controls pti (`run_d37r.sh`, all ten complete 19:32: RH 4.71, RI 11.88, total 5.65; attack minus idle Y-Y' off -0.0000,
+Z-Z' off -0.0018, Y-Y' on -0.0016, Z-Z' on -0.03 mV in ten cycles, grounded -0.0017 mV per cycle; Fig.7(e) body change at t_A 0.0 / 0.0 / 0.0 mV against
+2.4 / 665.1 / 1.8: Fig.7 is NOT reproduced on fin7, NOTES (cf)); `COMPOSE["fin7"]`.
 Nothing is fitted to Fig.4(a) any more. Scores IV 0.73, W 7.64 (0.479 / 0.675 / 0.823 / 0.941 V), BR 0.14, L1 0.91 (58.5 / 12.7 / 2.63 / 2.08 / 0.10 mV), L2 0.73
 (139.7 / 48.2 / 10.6 / 3.45 / 0.70 mV); 35 / 52 items with the row hammer still out.
 **Why the current is low (round 37, NOTES (ca); deck "load", `tools/gt_loadline.py`):** in the write 54 - 80 % of the BL-to-node voltage falls in the

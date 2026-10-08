@@ -3,6 +3,34 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-08 (cf) user: "does what we have agree with the paper's sentence that with the avalanche model Case 2 shows a large voltage drop from the floating body?"; "when verifying each figure, find the parts of the paper that describe it and review whether it is reproduced exactly"
+- No new run. The whole text read again (scratch `cho\text.txt`), Fig.7 looked at again (image of the PDF, not kept in the project).
+- Rule (MEASURE.md principle 8): a figure is checked sentence by sentence against the text, the caption and the lettering of the figure before
+  any score. Table: results folder `GT_IRPS2026_논문문장_대조_figure별_2026-10-08.md`, 35 sentences: 18 agree, 8 conditional, 7 not, 2 not run.
+- The paper's own sentence (Sec.V): "Case 2 shows exacerbated row hammer coupling (60.5k -> N/A) with impact ionization model, and the effect
+  is mitigated (N/A -> 16.8k) when the body is hypothetically grounded." Fig.7(d): 6F2 1.12k | Case 1 11.3k off, 11.3k on | Case 2 60.5k off,
+  N/A on, 16.8k grounded + on | Case 3 100.8k off, 86.4k on. 16.8k (0.036 mV per cycle) is still below the 60.5k without the model.
+  Fig.7(b) circuit: V_gate1 - C - V_gate2 - C - V_body, V_gate2 through R to the 0 V source; "Ground Access" = a contact in the victim's body.
+  Mechanism in the paper's words: "due to WL coupling effect" (caption), "capacitive coupling between vertically stacked cells" (abstract),
+  "negative threshold voltage shift, triggered by hole accumulation in the body" (conclusion). Where the holes come from is not said.
+- fin7's row hammer complete (all ten runs; attack minus idle, mV per cycle): Y-Y' off -0.0000, Z-Z' off -0.0018 (last five +0.0000), Y-Y' on
+  -0.0016, Z-Z' on -0.03 mV in ten cycles, grounded on -0.0017. RH 4.71, RI 11.88, total 5.65.
+- Fig.7(e) on fin7, never scored before (`bash tools/_q.sh m9`, gt_rh_body.py / gt_rh_pairs.py): change of the victim's body-centre potential
+  from the start of the hammer to the end of the first pulse 0.0 / 0.0 / 0.0 mV (off floating / on floating / on grounded; paper 2.4 / 665.1 /
+  1.8); after ten cycles +0.2 / +51.1 / 0.0 mV, Y-Y' on +62.7 mV. Holes in the victim's body: attack 40 -> 103 (Z-Z'), 40 -> 120 (Y-Y'), idle 40 -> 40,
+  grounded 4, model off 0; the aggressor makes 67 pairs per cycle (its node starts at 0 V and is charged to 0.456 V); the 40 holes before the
+  hammer are left by the write (591 pairs). So with the default driving force the floating body is charged only under attack with the model on,
+  7 holes per cycle, in both directions: the direction of the paper's statement, 1/200 of its rate, and not specific to Z-Z'.
+- VERDICT on the sentence: on fin7 (default driving force) NOT reproduced (rows 25, 27, 28 of the table). With ElectricField on the older
+  one-layer-pillar pair (rounds 16 - 19, (bm)) four qualitative signs agree (large with the model, nothing without, nothing when grounded, the
+  node falls while the aggressor is high); the size is 1/10 - 1/40, no collapse, and Y-Y' is hit as well, against Fig.7(a), (d). The hole path
+  of that model (aggressor body - N+ BL pillar - victim body) is shared by Y-Y' and Z-Z', so it cannot be the direction-specific "WL coupling"
+  of the paper's words. ElectricField has not been run on fin7's pairs (gb2_zz, gb2_zzg, gb2_yy); not started: it belongs to a whole
+  ElectricField configuration (principle 7), which waits for the user.
+- Found by the sentence check, not in the scorer: Fig.7(e); the R of Fig.7(b) (0 Ohm in fin7); the pre-charge ends at 1.022 V and is set to
+  1.1 V where the paper charges to "1" by the transient; on-current Case 3 -> 5 +12 % at Vg 1.8 V (log10 I -3.73 -> -3.68; Case 4 -3.62) where
+  the text has +3.9 % (inset bars 1.0 / 1.2 / 1.04), gate voltage of the paper's reading not given.
+
 ## 2026-10-08 (ce) user: "switching ElectricField on in the pre-charge only is unreasonable - the conditions have to stay the same through the whole experiment; if it is switched on, the other device parameters have to be improved too. Fill the problem parts of the structure from Hsu .. Yu, TED 2026 (A08), read in detail, and report what is still missing"
 - My recommendation of (cd) ("the model in the pre-charge only") is withdrawn. Rule now in `MEASURE.md` (principle 7): one configuration = one set
   of physics models for every measurement; a phenomenon is not switched on where it helps. The paper itself divides only once: Fig.6(e) without

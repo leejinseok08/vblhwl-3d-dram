@@ -18,7 +18,13 @@ if [ "$1" = m1s ]; then    # round 32: meshes of the cells with the drawn storag
   bash tools/gt_precheck.sh gs_c1hb:30 gs_c2hb:20 gs_c3hb:10 gs18_c2hb:20 gs0_c2hb:20
   exit 0
 fi
-if [ "$1" = m8 ]; then    # round 38: m8 <seconds to wait>: state, the write table (fin7 without a model first) and the node before / after the WL goes off
+if [ "$1" = m9 ]; then    # the paper's sentences on Fig.7 / Fig.8(c) against fin7: body of the victim at t_A (Fig.7(e): 2.4 / 665.1 / 1.8 mV), pairs and holes per cycle, on-current of Cases 3 - 5 (text: +3.9 % from Case 3 to 5)
+  python3 tools/gt_rh_body.py DptRzb_zz DptRzbi_zz DptRzbg_zz DptRyi_yy 2>&1 | cut -c1-210
+  python3 tools/gt_rh_pairs.py DptRzbi_zz DptiRzbi_zz 2>&1 | cut -c1-210
+  env GT_W=0.1 python3 tools/gt_fig5c.py runs/Dpb2I_c3 runs/Dpb2I_c4 runs/Dpb2I_c5 | cut -c1-200
+  exit 0
+fi
+if [ "$1" = m8 ]; then   # round 38: m8 <seconds to wait>: state, the write table (fin7 without a model first) and the node before / after the WL goes off
   sleep $2; date +%H:%M:%S; python3 tools/run_state.py run_d38.sh | cut -c1-300
   R="DptW_c2 DwnvW_c2 DwnlW_c2 DwnuW_c2 DwovW_c2 DwolW_c2 DwouW_c2"; python3 tools/gt_write_tab.py $R; python3 tools/gt_wl_off.py $R | cut -c1-120
   exit 0
