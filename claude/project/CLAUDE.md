@@ -123,8 +123,13 @@ its end state is the 1.1 V every later curve starts from, which our write does n
 channel's) are right as they are.** Left open about that stretch: the spacer material and whether the pre-charge ran with an avalanche model.
 Round 38 (trial, fin7 unchanged): with an avalanche model driven by ElectricField the Case 2 write on 4.2 fF is 0.725 / 0.979 / 1.082 / 1.127 V (UniBo,
 SiO2 spacers; W 1.05) or 0.742 / 0.988 / 1.085 / 1.129 V (UniBo, Si3N4; 1.26) against 0.72 / 0.92 / 1.06 / 1.13, node 1.123 - 1.128 V after the WL is off;
-without a model W 7.64. Whether the pre-charge of the device gets that model is the user's decision (it reverses decision A for the write; a
-pre-charge with the model followed by a model-free FBE needs two sdevice stages).
+without a model W 7.64. **The user rejected a model in the pre-charge only (NOTES (ce)): one configuration = one set of physics models for every
+measurement (`MEASURE.md`, principle 7); if ElectricField is on it is on everywhere and what was fixed without it (gate stack against the
+thresholds, Hurkx coefficients, stand-in hole charge, the definition of the Id-Vg sweep) has to be fixed again.** Not started; fin7 stays.
+Structure information from Hsu .. Yu, TED 2026 (A08), read whole: `results_vbl_hwl_1t1c_3ddram\GT_IRPS2026_구조정보_대조_Hsu_TED2026_2026-10-08.md`
+(filled: BL-to-WL spacing 25 nm and that it is an underlap by design, SiN spacer, HKMG, BL / capacitor pillar radius 50 nm, capacitor dielectric
+4 nm ZrOx, V_DS 1 V of its silicon curve; missing: avalanche model and where it is on, hole charge, C_S formula, position of the BL electrode,
+V_DS of Cho's Fig.5(c)). To do from it: the 3D templates carry a 50 nm BL pillar, the table says 100 nm.
 **Row hammer as attack minus idle (rounds 35, 37):** nothing. fin6: Y-Y' -0.0000, Z-Z' -0.0000 mV per cycle (last five), with the model no
 collapse; fin7 likewise as far as its runs are in. The 0.0014 mV per cycle quoted since 2026-10-06 was the cell's own leak.
 **Before that, since 16:00, `fin6`** (user: "pb2로 바꿔줘"; NOTES (bw), (bx), `MEASURE.md` 4.6): fin5 measured where the paper's device has its BL

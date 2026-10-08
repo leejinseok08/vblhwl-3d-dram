@@ -3,6 +3,38 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-08 (ce) user: "switching ElectricField on in the pre-charge only is unreasonable - the conditions have to stay the same through the whole experiment; if it is switched on, the other device parameters have to be improved too. Fill the problem parts of the structure from Hsu .. Yu, TED 2026 (A08), read in detail, and report what is still missing"
+- My recommendation of (cd) ("the model in the pre-charge only") is withdrawn. Rule now in `MEASURE.md` (principle 7): one configuration = one set
+  of physics models for every measurement; a phenomenon is not switched on where it helps. The paper itself divides only once: Fig.6(e) without
+  the impact-ionization model, Fig.7 with it. So there can be two whole configurations (without / with), not one with a model in one phase.
+- What would have to be redone with ElectricField on everywhere (nothing run on this entry; fin7 stays): everything that was fixed without it -
+  the gate stack against the thresholds of Fig.5(c) (rounds 21 - 24 on the device of that time: no DC sweep exists for the floating body with the
+  model on; as a sweep in time the thresholds lie 0.04 - 0.09 V low and the slope depends on the sweep time: the measurement definition of the Id-Vg
+  has to be fixed first, MEASURE.md 4.1), the Hurkx coefficients (GIDL branch), the stand-in hole charge (the model makes its own holes: in the
+  FBE Case 1 lost 404 mV in the first low phase, Case 2 113 mV at 200 ns, rounds 22 / 23), and the choice of model (UniBo / Lackner nearest in the
+  write, round 38). Capacitors (text), BL contact (pillar end), junction and doping under the spacer (user) stay. That device was different
+  (one-layer pillar, 1.8 / 5.67 fF), so those numbers are a warning, not the answer for fin7.
+- A08 read whole (text, Tables I, II, Fig.1, 2, 6, 7; scratch scripts pdf_text.py, crop.py, a08_fig1.py). Its device is the IWO cell (L 25 nm); silicon
+  appears in Fig.2(c) (TCAD reference transistor) and Fig.1 (cell drawing after Wu et al., its [6]). Filled or confirmed:
+  * BL-to-WL spacing 25 nm: Table II, baseline row ("BL-to-WL Spacing 25"; BL-to-BL 0.0247, BL-to-WL 0.1769, per layer 0.2016 fF; 32 / 64 / 128 / 256 WL 6.45 /
+    12.90 / 25.80 / 51.60 fF), and Fig.7(c) "2WLtBL (175 nm)", "2WLtC (375 nm)". Sec. III-B: "extending the spacing between the BL and WL, which is the
+    gate-to-source spacing ... we assume the lateral extension on the drain-side metal to maintain the electrical underlap while increasing the
+    physical metal spacing": the stretch between gate and BL is an underlap by design. Our 25 nm (read off Cho's Fig.2) is that number.
+  * Spacer = SiN: legend of Fig.1 (Si, SiGe, SiN, SiOx, HKMG, BLC, ZrOx, TiN, Metal) and the cell inset, where the SiN colour flanks the HKMG gate at
+    the gate level (by eye on the 4 x enlargement; the nearest-colour script fails there because the inset is shaded darker than the legend).
+  * Gate: "Two Gate_Ox (5nm x2)", "Two Gate (20nm x2)", "Isolation Ox 30", Z pitch 90 = 10 + 10 + 40 + 30 (Table I); HKMG (Fig.1); the group's DG FET is
+    HfO2 / channel / HfO2 (Fig.2(a), (b)). No material name for the silicon TCAD cell.
+  * "BL / Cap Radius 50" (Table I): BL pillar 100 nm across (2D model right; the 3D templates carry 50 nm: to be changed), ground pillar 100 nm.
+  * Capacitor: dielectric 4 nm at EOT 3 A, ZrOx; "TiN / W Thickness 6" (not said of what; TiN is the capacitor electrode in the legend); the node
+    electrode is a bracket on the end of the channel in Fig.1 and Fig.7(b), as in Cho's Fig.2; "we assume C_S = 4 fF", no formula.
+  * Fig.2(c): silicon DG FET, L 100 / 25, W 100, t_Si 10, W_eff 200 nm, V_DS = 1 V; inset: DRAIN block, body under the drain-side spacer and the gate,
+    N+ under the source-side spacer (Cho's drawing). Eq. (1): sense margin with a leakage term and thermal noise; T = 300 K.
+  * BL = "vertical bitline contact (BLC)" through the stack, "formed along the array edges"; nothing on where the TCAD electrode sits.
+  Not in A08: any avalanche / impact-ionization setting, the floating body, the hole charge, the C_S formula, the drain bias of Cho's Fig.5(c),
+  doping profiles, lifetimes, mobility model, the R of Fig.7(b), the WL cut. In Fig.1's inset the ends of the channel layer under the spacers
+  are dark grey; whether that is the legend's Si, SiGe or BLC grey cannot be told from the shaded image.
+- Report for the user: `results_vbl_hwl_1t1c_3ddram\GT_IRPS2026_구조정보_대조_Hsu_TED2026_2026-10-08.md` (filled / still missing / new tasks).
+
 ## 2026-10-08 (cd) user: "the shape and position of the BL pillar junction and the doping of the body under the spacer are right as they are" - two assumptions left (spacer material, avalanche model in the pre-charge); round 38: with ElectricField in the pre-charge the Case 2 cell writes the text's 4.2 fF within +5 / +59 / +22 / -3 mV of Fig.4(a). Row hammer of fin6 / fin7 as attack minus idle: nothing
 - Fixed by the user (18:30; noted in params.py at `Lsp1`): abrupt junction on the pillar face; the body under the BL-side spacer has the channel's doping
   (1e18 in Case 2). With (cb) (Fig.4(a) = Case 2) the shortfall of (ca) has to come from what is left: the spacer material and the physics of the
