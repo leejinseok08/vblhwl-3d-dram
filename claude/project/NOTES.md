@@ -3,6 +3,21 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-08 (cb) user: "Fig.4(a) is the pre-charge of the cell by a transient simulation before the RHE simulation" - so it is the Case 2 cell; my "the case is not stated, perhaps Case 4" is withdrawn
+- The paper, Sec. III: "Prior to RHE/FBE simulation, the cell was pre-charged through transient simulation (Fig. 4(a)) and the following simulation
+  bias conditions are illustrated in Fig. 4(b) and (c)"; and "For the RHE simulation across three adjacent cases, the device parameters are set to
+  ... Case 2". Fig.4(a) carries no case label, but it is the pre-charge that precedes the RHE run, and the RHE cell is Case 2 (the FBE cases
+  were pre-charged the same way). I had put "which case Fig.4(a) shows" to the user as open and recommended to leave it so, on the ground that
+  only the Case 4 cell writes near the curve: that turned a result of the model into a doubt about the paper. Read as Case 2 from now on
+  (`MEASURE.md` 4.3); the Case 4 finding stays a diagnosis of what the ungated stretch answers to.
+- What follows: the shortfall of (ca) is a shortfall of our Case 2 cell against the paper's Case 2 cell (2.0 / 1.9 / 2.8 / 3.4 times in the four
+  intervals of the write). And because Fig.4(a) is a pre-charge, its end state is the start of Fig.6(e), 7 and 8, where every curve begins at
+  1.1 V: the paper's cell gets there by the write itself, ours does not - with 4.2 fF the node stands at 1.057 V when the WL goes off and at
+  1.022 V after it (DptF_c2), and the decks then set it to 1.1 V by hand (`SNset`). The same missing current, seen at the end of the write.
+- Open for Case 2, in the stretch of body under the BL-side spacer: the spacer material, whether the junction at the pillar is abrupt and where it
+  sits, whether that stretch has the channel's doping, and whether the pre-charge ran with the avalanche model (ElectricField: 0.78 / 1.02 / 1.10 /
+  1.14 V on the drawn 4.15 fF, round 33). None is fixed by the paper; nothing run on this entry.
+
 ## 2026-10-08 (ca) user: "set the capacitor to the text's capacitance; analyse why the device's current is low" - the device is `fin7` (fin6 with 5.1 / 4.2 / 3.6 fF); round 37: in the write 54 - 80 % of the BL-to-node voltage falls in the 25 nm of body under the BL-side spacer, which no gate covers. With the 1e16 body (Case 4) the current is nearly the paper's; the paper does not say which case Fig.4(a) shows
 - `fin7` = `COMPOSE["fin7"]` = Id-Vg of tag pb2, write and FBE of tag pt (round 36), row hammer of tag pt with idle controls pti (round 37, `run_d37r.sh`,
   17:44 - , hours). Nothing in it is fitted to Fig.4(a) any more: the write counts as a prediction (`tools/repro_rate.py`, W_PRED). Counted: Fig.5(c)

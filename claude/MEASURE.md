@@ -73,7 +73,8 @@
 - 조건: BL 1.168 V (판독), WL 0 → 1.8 V (15 ps 부근), 105 ps 동안 켜짐. Case 2.
 - 논문 값: 0.72 / 0.92 / 1.06 / 1.13 V (판독). 허용 오차 0.03 V.
 - 같이 적는 것: 구간별 평균 충전 전류 I = C_S · ΔV / Δt [µA]와 그때의 C_S. 본문 용량 4.2 fF로 읽으면 논문 곡선은 252 / 70 / 39 / 14 µA예요.
-- 어느 Case의 곡선인지 논문에 없어요. 지금까지 Case 2로 봤어요. 표에는 "Case 2로 가정"이라고 적어요 (NOTES (ca): 모델에서는 Case 4의 셀만 논문 곡선에 가까워요).
+- **Fig. 4(a)는 Case 2로 읽어요** (사용자, 2026-10-08). 근거는 본문이에요: "Prior to RHE/FBE simulation, the cell was pre-charged through transient simulation (Fig. 4(a))", 그리고 RHE 시뮬레이션의 셀은 Case 2예요. 그림에 Case 표시는 없지만 이 읽기를 써요. Case 4의 셀이 곡선에 더 가깝다는 것(NOTES (ca))은 진단 결과로만 남겨요.
+- Fig. 4(a)는 precharge라서, 끝난 뒤의 노드 전압이 RHE·FBE 곡선의 시작값(1.1 V)이어야 해요. 쓰기를 채점할 때 WL이 꺼진 뒤의 노드 전압도 같이 적어요 (`fin7` Case 2: 1.022 V. 그래서 지금은 노드를 1.1 V로 직접 맞춰 주고 있어요).
 - 쓰기 전류의 진단은 DC 충전 전류로 해요 (`tools/gt_loadline.py`): 게이트 1.8 V, BL 1.168 V에서 노드 전압을 0 → 1.168 V로 올리며 노드로 들어가는 전류. 전자 quasi-Fermi 전위로 BL–노드 전압이 어디에 걸리는지 같이 적어요.
 
 ### 4.4 FBE (Fig. 8)

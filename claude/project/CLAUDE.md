@@ -116,7 +116,9 @@ Nothing is fitted to Fig.4(a) any more. Scores IV 0.73, W 7.64 (0.479 / 0.675 / 
 quasi-static (the DC current gives the transient curve), so the shortfall against Fig.4(a) (2.0 - 3.4 times in Case 2) is a DC property at small
 BL-to-node voltage, which Fig.5(c) does not hold. That stretch answers to the body doping (1e16: 1.3 - 2.2 times the current) and a little to the
 spacer material (SiO2 / Si3N4 / HfO2 35 / 38 / 46 uA at node 0.82 V), not to the body thickness. Only the Case 4 cell writes near the paper
-(0.61 / 0.85 / 1.00 / 1.11 V with its 3.6 fF, node on the BL level before the WL goes off); the paper does not say which case Fig.4(a) shows.
+(0.61 / 0.85 / 1.00 / 1.11 V with its 3.6 fF, node on the BL level before the WL goes off). **Fig.4(a) is read as Case 2** (user, NOTES (cb): the
+paper calls it the pre-charge before the RHE / FBE simulation, and the RHE cell is Case 2), so the shortfall is our Case 2 cell's; as a pre-charge
+its end state is the 1.1 V every later curve starts from, which our write does not reach (1.022 V after the WL is off; the decks set 1.1 V by hand).
 **Before that, since 16:00, `fin6`** (user: "pb2로 바꿔줘"; NOTES (bw), (bx), `MEASURE.md` 4.6): fin5 measured where the paper's device has its BL
 terminal, at the end of the BL pillar, two Z pitches from the cell (`Blc="bot"`, `Blx` = 2 pitches; single cells gb2_c1hb .. gb2_c4hb, pairs gb2_yy,
 gb2_zz, gb2_zzg; runs with tag pb2, idle controls of the row hammer pbi; `COMPOSE["fin6"]`). Everything else as fin5: no avalanche model in
