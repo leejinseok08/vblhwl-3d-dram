@@ -18,6 +18,24 @@ if [ "$1" = m1s ]; then    # round 32: meshes of the cells with the drawn storag
   bash tools/gt_precheck.sh gs_c1hb:30 gs_c2hb:20 gs_c3hb:10 gs18_c2hb:20 gs0_c2hb:20
   exit 0
 fi
+if [ "$1" = m4s ]; then    # round 34: meshes of the cells with the BL pillar continued to its contact (structure only, no device run), check, doping map
+  S="gb1_c1hb gb2_c1hb gb4_c1hb gb1_c2hb gb2_c2hb gb4_c2hb"
+  ( cd runs/_struct; for s in $S; do [ -f ${s}_msh.tdr ] || sde -e -l ${s}_dvs.cmd > ${s}_sde.log 2>&1; ls -la --time-style=+%H:%M ${s}_msh.tdr | awk '{print $7, $5, $6}'
+      grep -i -E 'error|fail' ${s}_sde.log | head -3; grep -h -E 'Optimizing elements' ${s}_msh.log 2>/dev/null | head -1; done
+    bash ../../tools/export_doping.sh gb2_c2hb 0.200 | tail -1 )
+  bash tools/gt_precheck.sh gb1_c1hb:30 gb2_c1hb:30 gb4_c1hb:30 gb1_c2hb:20 gb2_c2hb:20 gb4_c2hb:20 gr_c1hb:30 gr_c2hb:20
+  exit 0
+fi
+if [ "$1" = m4 ]; then    # round 34: m4 <seconds to wait>: state, then bars and losses of fin5 (dy) and of the pillar variants, Cases 1 and 2
+  sleep $2; date +%H:%M:%S; python3 tools/run_state.py run_d34.sh run_d34b.sh | cut -c1-500
+  python3 tools/score2d.py -v dy pb1 pb2 pb4 pbn | awk '/^[a-z]/ {t=$1; print} /BR:/ {n=split($0, a, ";"); for (i = 1; i <= (t == "pb2" || t == "dy" ? n : 2); i++) print t, "|", a[i]} /IV:/ && t == "pb2" {split($0, a, ";"); print t, "|", a[2]} /W:/ && t == "pb2" {print t, "|", $0}' | cut -c1-200
+  exit 0
+fi
+if [ "$1" = m4b ]; then    # round 34b: meshes of the 10 nm cells with the pillar continued by 2 pitches (structure only), check, start
+  ( cd runs/_struct; for s in gb2_c3hb gb2_c4hb; do [ -f ${s}_msh.tdr ] || sde -e -l ${s}_dvs.cmd > ${s}_sde.log 2>&1; grep -i -E 'error|fail' ${s}_sde.log | head -3; done )
+  bash tools/gt_start.sh run_d34b.sh 3 gb2_c3hb:10 gb2_c4hb:10
+  exit 0
+fi
 if [ "$1" = pk ]; then    # rounds 32 / 33 for the shared repository: tables -> /tmp/tables_r3233.txt; deck, run description and plot files of the complete runs -> /tmp/share_r3233.tgz
   { echo "Rounds 32, 33 (2026-10-08): the storage node drawn as a structure after the Fig.2 cross-section; an avalanche model in the write on it. NOTES (bu), (bv)."
     echo; echo "== capacitance at 0 V, AC 1 MHz (tools/gt_cap.py)"; python3 tools/gt_cap.py DsaC_c1 DsaC_c2 DsaC_c3 DsbC_c2 DscC_c2
@@ -26,10 +44,14 @@ if [ "$1" = pk ]; then    # rounds 32 / 33 for the shared repository: tables -> 
     python3 tools/gt_write_tab.py DdyW_c2 DsaW_c2 DsbW_c2 DscW_c2 $(cd runs; ls -d Dm[volu][012]W_c2)
     echo; echo "== write + 21 ns hold, no stand-in, no BL pulses (tools/gt_wl_off.py); Fig.8(a) asks for 1371 holes and +445 mV in Case 2"
     python3 tools/gt_wl_off.py DmnF_c2 $(cd runs; ls -d Dm[volu][012]F_c2)
-    echo; echo "== state of the runs at $(date '+%H:%M')"; python3 tools/run_state.py run_d32.sh run_d33.sh
-    echo; echo "== structure checks before the two batches"; cat runs/run_d32.check runs/run_d33.check; } > /tmp/tables_r3233.txt 2>&1
-  ids=$(python3 tools/run_state.py -c run_d32.sh run_d33.sh)
-  ( cd runs; for r in $ids; do ls $r/${r}_des.cmd $r/run.json $r/*.plt 2>/dev/null; done; ls _struct/gs*_dvs.cmd ) > /tmp/share_r3233.lst
+    echo; echo "== round 34: where the BL is measured. dy = fin5 (contact on the end face of a pillar one layer long); pb1 / pb2 / pb4 = pillar continued by 1 / 2 / 4 Z pitches"
+    echo "   to its contact; pbn = contact that takes no holes. BR line: per case the bar (rise), the first-phase loss and the later loss [mV]. NOTES (bw), MEASURE.md 4.6"
+    python3 tools/score2d.py -v dy pb1 pb2 pb4 pbn | grep -v -E 'RH:|IV: c1' | cut -c1-420; python3 tools/gt_write_tab.py DdyW_c2 Dpb2W_c2
+    env GT_W=0.1 python3 tools/gt_fig5c.py runs/DdyI_c2 runs/Dpb2I_c2
+    echo; echo "== state of the runs at $(date '+%H:%M')"; python3 tools/run_state.py run_d32.sh run_d33.sh run_d34.sh run_d34b.sh
+    echo; echo "== structure checks before the batches"; cat runs/run_d32.check runs/run_d33.check runs/run_d34.check runs/run_d34b.check; } > /tmp/tables_r3233.txt 2>&1
+  ids=$(python3 tools/run_state.py -c run_d32.sh run_d33.sh run_d34.sh run_d34b.sh)
+  ( cd runs; for r in $ids; do ls $r/${r}_des.cmd $r/run.json $r/*.plt 2>/dev/null; done; ls _struct/gs*_dvs.cmd _struct/gb*_dvs.cmd ) > /tmp/share_r3233.lst
   tar czf /tmp/share_r3233.tgz -C runs -T /tmp/share_r3233.lst; echo "$(echo $ids | wc -w) complete runs packed, $(ls -la /tmp/share_r3233.tgz | awk '{printf "%.1f MB", $5 / 1e6}'); tables $(wc -l < /tmp/tables_r3233.txt) lines"
   exit 0
 fi

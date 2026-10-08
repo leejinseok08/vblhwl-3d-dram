@@ -3,6 +3,50 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-08 (bw) user: "what is the initial TCAD capacitor derived from Fig.5(a)?" and "the measurement criteria were meant for deciding WHERE on the BL you measure" - round 34: the BL contact moved along the pillar. FBE losses depend on it by up to 2.2 times and settle from two Z pitches on; Id-Vg and the write do not react
+- The capacitor: the paper's text has 3.6 / 4.2 / 5.1 fF "calculated using the dimensions defined in Fig.5(a)" (EOT 3.8 A, L_CAP 100 nm, Z pitch 90 / 100 /
+  110). Our decks started with exactly those as lumped capacitors (`params.py` Cs = 4.2e-15, `CSB` in make_runs.py; baseline b0). EOT 3.8 A alone is
+  90.9 fF/um2 = 0.909 fF per face of 100 nm x 100 nm; the area is not in Fig.5(a) (4.2 fF = 4.6 such faces). The drawn node of round 32: 4.09 fF
+  by the plate sum, 4.15 fF by AC. The 1.8 fF came on 2026-10-06 from the write curve.
+- I had read "set up the measurement criteria" as a general document (`MEASURE.md`). The user's point: use the criteria to decide where on the BL
+  the electrical characteristics are measured, i.e. where the BL terminal sits. That was decision B (axis or pillar end), which I had kept
+  putting to the user as a question of scores. By the criteria it is not a matter of scores: a terminal quantity is taken at the terminal the
+  original has, the contact geometry is stated, the sensitivity to it is given in the unit of the metric.
+- The paper's BL (Fig.2 cross-section, pixels, scan.py): the red pillar runs from row 731 (top of the stack) to row 1037 (the green base layer starts
+  at 1039), through all five layers. Its terminal can only be a pillar end; a cell is 0 - 4 Z pitches from it. Our contacts so far: the pillar
+  axis (the symmetry plane of the half pillar: no terminal of the paper's structure; the 3D templates use the axis plane too) and the end face of a
+  pillar one layer long (fin5), both 40 - 50 nm from the junction.
+- Structure: `Blx` = BL pillar continued below the cell (N+ silicon in oxide, no further cells) with the contact at its end; gb1 / gb2 / gb4 for
+  Cases 1, 2 (1 / 2 / 4 pitches), gb2_c3hb / gb2_c4hb. Picture `gt_cell_bl_pillar200_vs_cho_fig2.png`. `plot_gt.py` now draws below y = 0.
+- Round 34 (`run_d34.sh` 15:04 - 15:36, 10 runs; `run_d34b.sh` 15:18 - 15:38, 3 runs, registered two minutes after its start; Codex nothing live;
+  gate ALL PASS with 8 + 2 lines read; decks = fin5's except the mesh (pbn: except the hole velocity of the BL contact)):
+    BL contact                         to the junction   bars C1 / C2    Case 1 first / 200 ns   Case 2 first / 200 ns   [mV]
+    pillar axis (fin3n, old Hurkx)     50 nm             on the bars     60.9 / 112.9            18.6 / 49.1
+    end of a one-layer pillar (fin5)   40 nm             +557 / +448     82.8 / 165.1            22.2 / 63.9
+    end, 1 pitch on (pb1)              140 - 150 nm      +560 / +449     119.3 / 273.5           27.3 / 96.6
+    end, 2 pitches on (pb2)            240 - 260 nm      +560 / +450     131.3 / 312.2           29.1 / 109.2
+    end, 4 pitches on (pb4)            440 - 480 nm      +560 / +450     134.4 / 327.4           29.3 / 114.3
+    contact takes no holes (pbn)       -                 +561 / +450     178.0 / 517.5           33.4 / 171.6
+    paper                                                555 / 445       55 / 100                29 / 50
+  pb2, five cases: bars +560 / +450 / +367 / +323 / +371; first phase 131.3 / 29.1 / 6.03 / 4.78 / 0.24; later 312 / 109 / 24.3 / 7.90 (Case 4 after two
+  low phases) / 1.59. Scores W 1.23, BR 0.13, L1 0.64, L2 1.74 (fin5 1.12 / 0.10 / 0.42 / 1.46). Items inside: L1 4 of 5 (Case 1 +1.26), L2 2 of 5 (Cases 1,
+  2, 5); fin5 had 5 and 4. Controls with 2 pitches: Id-Vg of Case 2 0.33 / 0.45 / 0.59 V, -13.22 (fin5 -13.21); write 0.73 / 0.90 / 1.01 / 1.08 (0.74 / 0.91 /
+  1.02 / 1.08).
+  * The same stand-in rate gives the same bars at every position: the comparison is at one body state.
+  * The losses grow with the distance of the contact and settle: 2 -> 4 pitches +2 % / +1 % in the first phase, +5 % at 200 ns. From there the
+    holes that the body pushes into the pillar die by recombination in the N+ silicon, not at the contact (doping-dependent SRH lifetime of the
+    default model, 0.3 ns at 1e20, a diffusion length of about 190 nm; no Auger term in the decks): that assumption now carries the number.
+  * Read with the criteria: measure at the pillar end, two pitches or more away (gb2_*). The axis contact took holes where the paper's device
+    has no terminal; the agreement of the later losses in fin3 / fin5 (Case 2: 49 - 64 against 50 mV) owed to that. At the settled position the
+    first-phase losses of Cases 2, 3 are nearer (29.1 against 29, fin5 22.2; 6.0 against 7.1, fin5 4.9), those of Case 4 (4.8 against 3.5, fin5 3.8)
+    and Case 1 (131 against 55) and every later loss (x 1.6 - 3.1) are further off: the body discharges too slowly once nothing near takes its
+    holes. (Lifetime and diffusion length above are my estimate from the default parameters, not read from a run.)
+  * In charge (criteria, principle 5): Case 2 at 200 ns loses 109 mV x 1.8 fF = 0.20 fC = 1230 electrons with 1371 holes in the body; the paper's
+    50 mV on its 4.2 fF are 0.21 fC. First phase: 29 mV x 1.8 fF = 0.052 fC against 29 mV x 4.2 fF = 0.12 fC.
+- Counted: with the BL at the settled position and everything else as fin5 the rate is 36 / 52 (69.2 %), predictions 6 / 15 (fin5 39 / 52, 9 / 15).
+  Not adopted on my own: decision B is the user's; put to the user with the recommendation to take the pillar end at two pitches (`MEASURE.md` 4.6).
+  Not redone at that position: Id-Vg of Cases 1, 3 - 5, row hammer, the drawn-capacitor runs.
+
 ## 2026-10-08 (bv) round 33 (measure M3 as a trial: an avalanche model in the write on the drawn node) | user: review Codex's two documents of today and set up the measurement criteria -> `MEASURE.md`
 - Round 33 (`run_d33.sh`, 13:51 - , 25 runs on gs_c2hb; registered and pushed, gate ALL PASS read, decks = round 32's write + the Avalanche line;
   fin5 keeps no avalanche model, decision A). Four models of the release x three driving forces; W = write, F = write + 21 ns hold, no stand-in.

@@ -115,6 +115,12 @@ any of four models; ElectricField brings the write to +50 / +90 / +40 / 0 mV (Un
 needed). Not adopted. Open decisions for the user: which capacitor the device carries (fitted 1.8 fF or drawn 4.15 fF), merge into `main`,
 old runs to the PC. Next by the accepted order: M3's Fig.7 half, then M4 starting with the AC capacitance matrix of the pairs.
 Measurement criteria: `MEASURE.md` (rule 7). fin5 = 39 / 52 items, predictions 9 / 15.
+**Where the BL is measured (round 34, NOTES (bw); the user's actual point with the criteria):** the paper's BL pillar runs through the five layers, so
+its terminal is a pillar end. With the pillar continued to its contact (`Blx`; structures gb1 / gb2 / gb4) the bars stay and the FBE losses grow
+and settle from two Z pitches on: Case 1 61 (axis) / 83 (fin5) / 119 / 131 / 134 mV in the first phase, Case 2 18.6 / 22.2 / 27.3 / 29.1 / 29.3
+(paper 55, 29); at 200 ns Case 2 49 / 64 / 97 / 109 / 114 (paper 50). Id-Vg and the write do not react. Configuration `pb2` (fin5 with two pitches)
+has L1 0.64, L2 1.74 and 36 / 52 items (predictions 6 / 15). Recommended to the user as the measuring position (`MEASURE.md` 4.6); fin5 stays
+until the user decides. Every table of losses names the BL contact position.
 **Complete report for the user (2026-10-08, NOTES (bs)):** `results_vbl_hwl_1t1c_3ddram\GT_IRPS2026_전체보고_eliU_2026-10-08.html` (`tools/make_eliu_report_full.py`
 + `tools/eliu_full_text.py`): where every figure stands, remaining problems P1 - P8, measures M1 - M7 with their explanation, six decisions waiting for
 the user (order of the measures; avalanche model in the write as a trial for M3; when to do the 3D pairs; keep decision B; merge `claude` into `main`;

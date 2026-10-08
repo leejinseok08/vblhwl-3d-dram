@@ -24,6 +24,7 @@ for a in "$@"; do
   want="Lg=100 Tbody=$tb Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20"
   case "$card" in "$want Nch=1e+18"|"$want Nch=1e+16") c1=1;; *) c1=0;; esac
   mat="gate dielectric $(val $s Gdi), spacer $(val $s Spm), half pillar $(val $s Hb)"
+  blx=$(val $s Blx); [ -n "$blx" ] && [ "$blx" != 0 ] && mat="$mat, BL pillar continued by $blx nm to its contact (Fig.2: the pillar runs through all layers)"
   # storage node drawn as a structure (2026-10-08): Fig.5(a) gives L_CAP 100 nm and EOT 3.8 A; shape and thicknesses are read off Fig.2
   cap=$(val $s Cap)
   if [ -n "$cap" ] && [ "$cap" != lump ]; then

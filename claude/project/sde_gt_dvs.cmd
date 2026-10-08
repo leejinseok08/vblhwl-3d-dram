@@ -40,6 +40,7 @@
 (define Pair "@Pair@")           ; one / yy / zz (see the header)
 (define Bgc  @Bgc@)              ; 1 = body contact in the victim
 (define Blc  "@Blc@")            ; BL contact: "axis" = on the pillar axis ("yy": top end of the pillar), "bot" = bottom end of the pillar
+(define Blx  (* @Blx@ nm))       ; BL pillar continued below the cell by this length, BL contact at its end (Blc "bot")
 (define Cap  "@Cap@")            ; storage node: lump (capacitor in the deck) / u / blk (a structure, see below)
 (define Lcap (* @Lcap@ nm))      ; storage capacitance length L_CAP: 100 (Fig.5a)
 (define Ceot @Ceot@)             ; EOT of the capacitor dielectric [A]: 3.8 (Fig.5a); the permittivity in the parameter file follows from it
@@ -69,7 +70,11 @@
 (sdedr:define-constant-profile "CP.Ch" "BoronActiveConcentration" Nch)
 (sdedr:define-constant-profile "CP.Nsd" "PhosphorusActiveConcentration" Nsd)
 (sdedr:define-constant-profile-region "PL.BL" "CP.Nsd" "R.BL")
-(win "RW.Glob" 0 0 xmax ymax)
+(if (> Blx 0) (begin                      ; the pillar on its way to the contact: N+ silicon through the isolation oxide (the array has further cells there)
+  (box 0   (- Blx) xmax 0 "SiO2"    "R.OxX")
+  (box xb0 (- Blx) xb1  0 "Silicon" "R.BLx")
+  (sdedr:define-constant-profile-region "PL.BLx" "CP.Nsd" "R.BLx")))
+(win "RW.Glob" 0 (- Blx) xmax ymax)
 (sdedr:define-refinement-size "RS.Glob" (* 10 nm) (* 5 nm) (* @Mg@ nm) (* 0.5 nm))
 (sdedr:define-refinement-placement "RP.Glob" "RS.Glob" "RW.Glob")
 (sdedr:define-refinement-function "RS.Glob" "DopingConcentration" "MaxTransDiff" 1)
@@ -135,7 +140,7 @@
 (cell xb1 1 0 (if yy? "a" "v"))           ; the cell right of the pillar: the victim, in "yy" the aggressor
 (if yy? (cell xb0 -1 0 "v"))              ; victim left of the pillar
 (if zz? (cell xb1 1 Zp "a"))              ; aggressor one layer up
-(if (string=? Blc "bot") (edge-contact "bl" (position (* 0.5 (+ xb0 xb1)) 0 0))   ; bottom end of the pillar (below the victim in "zz")
+(if (string=? Blc "bot") (edge-contact "bl" (position (* 0.5 (+ xb0 xb1)) (- Blx) 0))   ; bottom end of the pillar (below the victim in "zz"), Blx further down
     (if yy? (edge-contact "bl" (position (+ xb0 Hb) ymax 0))      ; top end of the pillar
             (edge-contact "bl" (position 0 (* 0.5 Zp) 0))))       ; pillar axis
 

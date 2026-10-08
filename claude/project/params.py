@@ -41,6 +41,9 @@ P = dict(
     Bgc=0,              # 1 = contact "body_v" in the victim body: the hypothetical grounded body of Fig.7(b)    [Cho]
     Blc="axis",         # where the 2D section puts the BL contact: "axis" = on the pillar axis over its whole height ("yy": top end of the
                         # pillar); "bot" = bottom end of the pillar (in "zz" below the victim). The pillar of the array is contacted at its end.   [ASM]
+    Blx=0,              # with Blc="bot": the BL pillar continued below the cell by this length [nm] (N+ silicon in oxide, no other cells) and the
+                        # contact at its end. Fig.2: the pillar runs through the five layers, top of the stack to the base layer, so the BL
+                        # terminal of the paper's model sits at a pillar end, up to four Z pitches from a cell                 [ChoF]
     Cap="lump",         # storage node: "lump" = lumped capacitor Cs in the decks (the section ends at the source contact). "u" = the capacitor of
                         # the Fig.2 cross-section as a structure: U-shaped node on the end face of the source, as high as the gate stack, open
                         # towards the ground pillar; ground = plates at the isolation level above and below, a finger inside the U, the pillar;

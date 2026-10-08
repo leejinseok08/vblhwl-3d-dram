@@ -46,9 +46,13 @@ STRUCTS = dict(
     # drawing counted to the node (walls 18 nm) | gs0 = solid node, no finger (control)
     gs_c1hb=dict(Tbody=30, Blc="bot", Cap="u"), gs_c2hb=dict(Blc="bot", Cap="u"), gs_c3hb=dict(Tbody=10, Blc="bot", Cap="u"),
     gs18_c2hb=dict(Blc="bot", Cap="u", Tcw=18), gs0_c2hb=dict(Blc="bot", Cap="blk"),
+    # where the BL is measured (2026-10-08): the end-contact cells with the pillar continued by 1 / 2 / 4 Z pitches to its contact (Cases 1, 2)
+    gb1_c1hb=dict(Tbody=30, Blc="bot", Blx=110), gb2_c1hb=dict(Tbody=30, Blc="bot", Blx=220), gb4_c1hb=dict(Tbody=30, Blc="bot", Blx=440),
+    gb1_c2hb=dict(Blc="bot", Blx=100), gb2_c2hb=dict(Blc="bot", Blx=200), gb4_c2hb=dict(Blc="bot", Blx=400),
+    gb2_c3hb=dict(Tbody=10, Blc="bot", Blx=180), gb2_c4hb=dict(Tbody=10, Nch=1e16, Blc="bot", Blx=180),      # 2 pitches, the 10 nm bodies (Cases 3 - 5)
 )
 SDE_KEYS = ["Lg", "Tbody", "Tox", "Tgm", "Dvox", "Nsd", "Nch", "Gdi", "Spm", "Pair", "Bgc", "Blc", "Lsp1", "Lsp2", "Wbl", "Wact", "Dhox", "Mc", "Mj", "Mv", "Mi", "Mg", "Wcut",
-            "Cap", "Lcap", "Ceot", "Tcd", "Tcw"]
+            "Cap", "Lcap", "Ceot", "Tcd", "Tcw", "Blx"]
 
 def fill_sde(name, prm):
     src = open(os.path.join(HERE, prm["Tpl"]), encoding="utf-8").read()
@@ -887,6 +891,20 @@ for m_, mod_ in (("v", "vanOverstraeten"), ("o", "Okuto"), ("l", "Lackner"), ("u
         cfg2d(f"m{m_}{f_}", "W", wst="gs_c2hb", II=1, IImod=mod_, IIdf=df_, **KS)
         cfg2d(f"m{m_}{f_}", "F", cases=C2S, II=1, IImod=mod_, IIdf=df_, Npulse=0, ProbeX=1, **KS)
 cfg2d("mn", "F", cases=C2S, II=0, Npulse=0, ProbeX=1, **KS)
+# Round 34 (user, 2026-10-08: the measurement criteria were meant for deciding WHERE on the BL the device is measured). A terminal quantity
+# is taken at the terminal the original has. Fig.2: the BL pillar runs from the top of the five-layer stack to the base layer, so the BL
+# terminal of the paper's model is a pillar end, up to four Z pitches from a cell; a contact on the pillar axis (our first choice: the
+# symmetry plane of the half pillar) or on the end face of a pillar one layer long takes holes 40 - 50 nm from the junction, which the
+# paper's cannot. Known: Id-Vg and the write do not react to the position, Case 1's FBE loss does (axis 61 / 113 mV, end 82 / 164, paper
+# 55 / 100). So: fin5 unchanged except the pillar continued by 1 / 2 / 4 Z pitches to its contact (pb1 / pb2 / pb4; FBE of Cases 1, 2 with
+# fin5's stand-in rates) and the limit of a contact that takes no holes (pbn); Id-Vg and the write with 2 pitches as controls.
+GF5 = {c: GBQ[c] * GBB[c] * FN[c] for c in GBQ}
+for n_ in (1, 2, 4): cfg2d(f"pb{n_}", "F", cases=((1, f"gb{n_}_c1hb", 4.7, 30), (2, f"gb{n_}_c2hb", 4.7, 20)), gb=GF5, ProbeX=1, ProbeT=1, II=0, **B2)
+cfg2d("pbn", "F", cases=CASEB[:2], gb=GF5, ProbeX=1, ProbeT=1, II=0, BLhv=0.0, **B2)
+cfg2d("pb2", "I", cases=((2, "gb2_c2hb", 4.7, 20),), par=PN); cfg2d("pb2", "W", wst="gb2_c2hb", II=0, **B2)
+# after the first losses (15:16: Case 1 82.8 / 119.3 / 131.3 / 134.4 mV and Case 2 22.2 / 27.3 / 29.1 / 29.3 mV for 0 / 1 / 2 / 4 pitches, bars unchanged:
+# the reading settles from 2 pitches on): the 10 nm bodies with 2 pitches, so that the five cases exist at the settled position
+cfg2d("pb2", "F", cases=((3, "gb2_c3hb", 4.7, 10), (4, "gb2_c4hb", 4.7, 10), (5, "gb2_c4hb", 5.0, 10)), gb=GF5, ProbeX=1, ProbeT=1, II=0, **B2)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the

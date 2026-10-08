@@ -36,7 +36,8 @@ COMPOSE = {"fin2": dict(I="fin", W="fin", F="h1", R="fin"), "fin3": dict(I="fin"
 # runs named here the body rise is the AVERAGE electrostatic potential of the body under the gate (column AveWindow, runs with
 # ProbeX=1), counted from the start of the transient and read at this offset from the middle of the first BL fall [s]:
 # +0.5 ns = 0.25 ns after the fall is complete, -0.3 ns = just before it. Other runs: the body-centre point just before the fall.
-AVGREAD = {"s2": 5e-10, "p1": 5e-10, "p2": 5e-10, "s1": -3e-10, "dc": 5e-10, "dd": 5e-10, "de": 5e-10, "dj": 5e-10, "dk": 5e-10, "dl": 5e-10, "dm": 5e-10, "dy": 5e-10}
+AVGREAD = {"s2": 5e-10, "p1": 5e-10, "p2": 5e-10, "s1": -3e-10, "dc": 5e-10, "dd": 5e-10, "de": 5e-10, "dj": 5e-10, "dk": 5e-10, "dl": 5e-10, "dm": 5e-10, "dy": 5e-10,
+           "pb1": 5e-10, "pb2": 5e-10, "pb4": 5e-10, "pbn": 5e-10}
 part = lambda tag, k: COMPOSE.get(tag, {}).get(k, tag)
 FB = []                                               # filled by first(): True where a baseline run stands in for the configuration's own
 def first(*ids):
