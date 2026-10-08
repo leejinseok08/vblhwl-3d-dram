@@ -113,7 +113,11 @@ Fig.4(a) / 5(c) / 8, Hurkx A 1.2e20 / B 2.0e7, lumped node on the 1.8 fF scale, 
 contact position). Row hammer is scored as attack minus idle. Scores IV 0.73, W 1.23, BR 0.13, L1 0.64 (Case 1 out: 131 against 55 mV), L2 1.74 (Cases 1, 2, 5 out);
 36 of the 47 items that are in; the five row-hammer items were still running when this was written (round 35, started 15:52: read them with
 `bash tools/_q.sh m5 0`, enter them in NOTES (bx) and here; the Y-Y' attack runs need hours). Open with fin6: Case 1 and the later losses (the
-body keeps its charge too long), next to P1 - P3 as before. fin5 (contact on the end face of a pillar one layer
+body keeps its charge too long), next to P1 - P3 as before.
+**`fin6t` (round 36, NOTES (bz); user: "simulate with the text's capacitances alone"):** fin6 with the lumped capacitors of the paper's text
+(5.1 / 4.2 / 3.6 fF; tag pt). Scores W 7.64, BR 0.14, L1 0.91, L2 0.73; later losses 139.7 / 48.2 / 10.6 / 3.45 / 0.70 mV (paper 100 / 50 / 14.6 / 5.0 /
+below 0.5), first phase 58.5 / 12.7 / 2.63 / 2.08 / 0.10 (paper 55 / 29 / 7.1 / 3.5); write 0.479 / 0.675 / 0.823 / 0.941 V. 35 / 52 items, predictions
+7 / 15. Which capacitor the device carries (fitted 1.8 fF scale = fin6, or the text's = fin6t) is the user's to say; until then fin6. fin5 (contact on the end face of a pillar one layer
 long) is the earlier state and the description of how the device got there follows below.
 **Rounds 32, 33 (2026-10-08 afternoon, NOTES (bu), (bv); user: "run it" = M1, then M3 as a trial; fin5 unchanged):** the storage node drawn as a
 structure after the Fig.2 cross-section (`Cap="u"`: U-shaped node, ground finger inside, plates above and below; structures gs_*; deck "ac",

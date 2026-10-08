@@ -54,7 +54,7 @@ dy         0.72    1.12    0.10    0.42    1.46    4.42   11.88  |   4.85
 pb1        0.79*   6.49*   8.97*   3.72*   3.27*   4.71*  11.88* |   6.67
       W: 0.51 / 0.72 / 0.86 / 0.97 V (Db0W_c2)
       BR: c1 rise +560 first 119.31 200ns 273.52 (SN0 1.100); c2 rise +449 first 27.31 200ns 96.58 (SN0 1.100); c3 rise +9 first 0.09 200ns 0.60 (SN0 1.100); c4 rise +3 first 0.09 after 2 low phases 0.14 (SN0 1.100); c5 rise +0 first 0.13 200ns 0.82 (SN0 1.100)
-pb2        0.77*   1.23    0.13    0.64    1.74    4.71*  11.88* |   4.91
+pb2        0.73    1.23    0.13    0.64    1.74     -     19.05  |   7.84
       W: 0.73 / 0.90 / 1.01 / 1.08 V (Dpb2W_c2)
       BR: c1 rise +560 first 131.27 200ns 312.15 (SN0 1.100); c2 rise +450 first 29.07 200ns 109.17 (SN0 1.100); c3 rise +367 first 6.03 200ns 24.27 (SN0 1.100); c4 rise +323 first 4.78 after 2 low phases 7.90 (SN0 1.100); c5 rise +371 first 0.24 200ns 1.59 (SN0 1.100)
 pb4        0.79*   6.49*   8.97*   3.73*   3.32*   4.71*  11.88* |   6.67
@@ -73,8 +73,60 @@ DdyI_c2        +0.33 +0.45 +0.59 | +60.3 | -0.08 -16.86 | -13.21 -4.15 -3.67   V
 Dpb2I_c2       +0.33 +0.45 +0.59 | +60.3 | -0.12 -16.86 | -13.22 -4.15 -3.69   Vg -1.00..+1.79 (103 pts)
   paper Case 2  +0.33 +0.44 +0.57 | +55.0 | -0.07 -16.40 | -13.20   -     -
 
-== state of the runs at 15:40
-complete [46]: DsaC_c1 DsaC_c2 DsaC_c3 DsaW_c2 DsbC_c2 DsbW_c2 DscC_c2 DscW_c2 Dmv0W_c2 Dmv0F_c2 Dmv1W_c2 Dmv1F_c2 Dmv2W_c2 Dmv2F_c2 Dmo0W_c2 Dmo0F_c2 Dmo1W_c2 Dmo1F_c2 Dmo2W_c2 Dmo2F_c2 Dml0W_c2 Dml0F_c2 Dml1W_c2 Dml1F_c2 Dml2W_c2 Dml2F_c2 Dmu0W_c2 Dmu0F_c2 Dmu1W_c2 Dmu1F_c2 Dmu2W_c2 Dmu2F_c2 DmnF_c2 Dpb1F_c1 Dpb1F_c2 Dpb2F_c1 Dpb2F_c2 Dpb4F_c1 Dpb4F_c2 DpbnF_c1 DpbnF_c2 Dpb2I_c2 Dpb2W_c2 Dpb2F_c3 Dpb2F_c4 Dpb2F_c5
+== rounds 35, 36: fin6 = fin5 measured at the BL pillar end two Z pitches away (tag pb2); fin6t = fin6 with the capacitors of the paper's text,
+   5.1 / 4.2 / 3.6 fF (tag pt). NOTES (bx), (bz). Row hammer of fin6: attack minus idle where both runs are complete.
+config      IV      W       BR      L1      L2      RH      RI    | total   (rms of deviation / tolerance, < 1 = within reading error; * = taken from the baseline, - = not there yet)
+fin5       0.72    1.12    0.10    0.42    1.46    4.42   11.88  |   4.85
+      IV: c1 0.36/0.48/0.61 gidl -13.42; c2 0.33/0.45/0.59 gidl -13.21; c3 0.31/0.43/0.56 gidl -13.16; c4 0.27/0.39/0.51 gidl -13.39; c5 0.57/0.69/0.81 gidl -12.86
+      W: 0.74 / 0.91 / 1.02 / 1.08 V (DdyW_c2)
+      BR: c1 rise +557 first 82.76 200ns 165.06 (SN0 1.100); c2 rise +448 first 22.20 200ns 63.90 (SN0 1.100); c3 rise +367 first 4.92 200ns 15.53 (SN0 1.100); c4 rise +323 first 3.82 after 2 low phases 5.81 (SN0 1.100); c5 rise +372 first 0.14 200ns 1.58 (SN0 1.100)
+      RH: yy off +0.0014 (last 5: +0.0014); zz off -0.0016 (last 5: +0.0014); yy on +0.0002; zz on -0.0351 mV total; zz gnd on -0.0016
+fin6       0.73    1.23    0.13    0.64    1.74     -     19.05  |   7.84
+      IV: c1 0.36/0.48/0.61 gidl -13.43; c2 0.33/0.45/0.59 gidl -13.22; c3 0.31/0.43/0.56 gidl -13.17; c4 0.27/0.39/0.51 gidl -13.39; c5 0.57/0.69/0.81 gidl -12.86
+      W: 0.73 / 0.90 / 1.01 / 1.08 V (Dpb2W_c2)
+      BR: c1 rise +560 first 131.27 200ns 312.15 (SN0 1.100); c2 rise +450 first 29.07 200ns 109.17 (SN0 1.100); c3 rise +367 first 6.03 200ns 24.27 (SN0 1.100); c4 rise +323 first 4.78 after 2 low phases 7.90 (SN0 1.100); c5 rise +371 first 0.24 200ns 1.59 (SN0 1.100)
+      RH: yy off: not complete; zz off: not complete; yy on: not complete; zz on -0.0497 mV total [attack - idle; with the cell's own leak -0.0036]; zz gnd on: not complete
+fin6t      0.73    7.64    0.14    0.91    0.73    4.71*  11.88* |   5.65
+      IV: c1 0.36/0.48/0.61 gidl -13.43; c2 0.33/0.45/0.59 gidl -13.22; c3 0.31/0.43/0.56 gidl -13.17; c4 0.27/0.39/0.51 gidl -13.39; c5 0.57/0.69/0.81 gidl -12.86
+      W: 0.48 / 0.67 / 0.82 / 0.94 V (DptW_c2)
+      BR: c1 rise +561 first 58.45 200ns 141.50 (SN0 1.100); c2 rise +450 first 12.74 200ns 48.24 (SN0 1.100); c3 rise +367 first 2.63 200ns 10.61 (SN0 1.100); c4 rise +323 first 2.08 after 2 low phases 3.45 (SN0 1.100); c5 rise +371 first 0.10 200ns 0.70 (SN0 1.100)
+      RH: yy off +0.0006 (last 5: +0.0006); zz off -0.0011 (last 5: +0.0006); yy on +0.0001; zz on -0.0120 mV total; zz gnd on -0.0011
+run          Cs [fF]  driving force   | node at 12 / 24 / 39 / 60 ps [V]    | deviation [mV]              | rms / tolerance (30 mV)
+paper Fig.4(a)                        | 0.720 / 0.920 / 1.060 / 1.130
+DdyW_c2        1.80   ionization off | 0.736 / 0.912 / 1.015 / 1.083       |   +16 /    -8 /   -45 /   -47   | 1.12
+Dpb2W_c2       1.80   ionization off | 0.726 / 0.903 / 1.009 / 1.080       |    +6 /   -17 /   -51 /   -50   | 1.23
+DptW_c2        4.20   ionization off | 0.479 / 0.675 / 0.823 / 0.941       |  -241 /  -245 /  -237 /  -189   | 7.64
+fin5
+  IV Fig.5(c) cal  23 / 28 =  82.1 %  worst  +1.86 | +1.02 +0.54 +0.67 +0.28 -1.09 +0.06 +0.05 +0.58 +0.75 -0.02 +0.10 +0.29 +0.31 +0.47 -0.21 +0.05 +0.33 -0.14 +0.17 -0.62 -0.05 +0.09 +1.83 +1.86 +1.67 -0.02 -0.39 +0.09
+  W  Fig.4(a) cal   2 /  4 =  50.0 %  worst  -1.56 | +0.53 -0.27 -1.49 -1.56
+  BR Fig.8(a) cond  5 /  5 = 100.0 %  worst  +0.12 | +0.08 +0.12 +0.07 +0.11 +0.12
+  L1 Fig.8(b) pred  5 /  5 = 100.0 %  worst  +0.59 | +0.59 -0.39 -0.53 +0.13 +0.28
+  L2 Fig.8(c) pred  4 /  5 =  80.0 %  worst  +3.15 | +0.73 +0.36 +0.09 +0.22 +3.15
+  RH Fig.6(e) pred  0 /  2 =   0.0 %  worst  -5.29 | -5.29 -3.33
+  RI Fig.7    pred  0 /  3 =   0.0 %  worst -19.05 | -5.76 -19.05 -5.19
+  all items   39 / 52 = 75.0 %   mean of the seven figure groups 58.9 %   |   cal 25 / 32 = 78.1 %   cond 5 / 5 = 100.0 %   pred 9 / 15 = 60.0 %
+fin6
+  IV Fig.5(c) cal  23 / 28 =  82.1 %  worst  +1.86 | +1.03 +0.54 +0.68 +0.24 -1.11 +0.04 +0.05 +0.58 +0.75 -0.07 +0.09 +0.30 +0.31 +0.47 -0.22 +0.05 +0.33 -0.14 +0.17 -0.63 -0.09 +0.09 +1.83 +1.86 +1.67 -0.02 -0.39 +0.08
+  W  Fig.4(a) cal   2 /  4 =  50.0 %  worst  -1.70 | +0.19 -0.57 -1.70 -1.68
+  BR Fig.8(a) cond  5 /  5 = 100.0 %  worst  +0.18 | +0.18 +0.17 +0.06 +0.11 +0.09
+  L1 Fig.8(b) pred  4 /  5 =  80.0 %  worst  +1.26 | +1.26 +0.00 -0.24 +0.45 +0.47
+  L2 Fig.8(c) pred  2 /  5 =  40.0 %  worst  +3.19 | +1.65 +1.13 +0.74 +0.66 +3.19
+  RH Fig.6(e) pred no item yet (runs not complete)
+  RI Fig.7    pred  0 /  1 =   0.0 %  worst -19.05 | -19.05
+  all items   36 / 48 = 75.0 %   mean of the seven figure groups 58.7 %   |   cal 25 / 32 = 78.1 %   cond 5 / 5 = 100.0 %   pred 6 / 11 = 54.5 %
+fin6t
+  IV Fig.5(c) cal  23 / 28 =  82.1 %  worst  +1.86 | +1.03 +0.54 +0.68 +0.24 -1.11 +0.04 +0.05 +0.58 +0.75 -0.07 +0.09 +0.30 +0.31 +0.47 -0.22 +0.05 +0.33 -0.14 +0.17 -0.63 -0.09 +0.09 +1.83 +1.86 +1.67 -0.02 -0.39 +0.08
+  W  Fig.4(a) cal   0 /  4 =   0.0 %  worst  -8.18 | -8.03 -8.18 -7.90 -6.31
+  BR Fig.8(a) cond  5 /  5 = 100.0 %  worst  +0.19 | +0.19 +0.17 +0.06 +0.11 +0.09
+  L1 Fig.8(b) pred  3 /  5 =  60.0 %  worst  -1.44 | +0.09 -1.19 -1.44 -0.75 +0.21
+  L2 Fig.8(c) pred  4 /  5 =  80.0 %  worst  +1.39 | +0.50 -0.05 -0.46 -0.54 +1.39
+  RH Fig.6(e) pred  0 /  2 =   0.0 %  worst  -5.76 | -5.76 -3.33
+  RI Fig.7    pred  0 /  3 =   0.0 %  worst -19.05 | -5.76 -19.05 -5.19
+  all items   35 / 52 = 67.3 %   mean of the seven figure groups 46.0 %   |   cal 23 / 32 = 71.9 %   cond 5 / 5 = 100.0 %   pred 7 / 15 = 46.7 %
+
+== state of the runs at 17:21
+complete [62]: DsaC_c1 DsaC_c2 DsaC_c3 DsaW_c2 DsbC_c2 DsbW_c2 DscC_c2 DscW_c2 Dmv0W_c2 Dmv0F_c2 Dmv1W_c2 Dmv1F_c2 Dmv2W_c2 Dmv2F_c2 Dmo0W_c2 Dmo0F_c2 Dmo1W_c2 Dmo1F_c2 Dmo2W_c2 Dmo2F_c2 Dml0W_c2 Dml0F_c2 Dml1W_c2 Dml1F_c2 Dml2W_c2 Dml2F_c2 Dmu0W_c2 Dmu0F_c2 Dmu1W_c2 Dmu1F_c2 Dmu2W_c2 Dmu2F_c2 DmnF_c2 Dpb1F_c1 Dpb1F_c2 Dpb2F_c1 Dpb2F_c2 Dpb4F_c1 Dpb4F_c2 DpbnF_c1 DpbnF_c2 Dpb2I_c2 Dpb2W_c2 Dpb2F_c3 Dpb2F_c4 Dpb2F_c5 Dpb2I_c1 Dpb2I_c3 Dpb2I_c4 Dpb2I_c5 Dpb2Rzbi_zz DpbiRy_yy DpbiRyi_yy DpbiRzb_zz DpbiRzbi_zz DpbiRzbg_zz DptW_c2 DptF_c1 DptF_c2 DptF_c3 DptF_c4 DptF_c5
+running [4]: Dpb2Ry_yy Dpb2Ryi_yy Dpb2Rzb_zz Dpb2Rzbg_zz
 
 == structure checks before the batches
 structure match before run_d32.sh, 2026-10-08 13:44:57
@@ -98,6 +150,20 @@ PASS gr_c1hb: Fig.5(a)/(b) Lg=100 Tbody=30 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1
 PASS gr_c2hb: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100
 ALL PASS
 structure match before run_d34b.sh, 2026-10-08 15:17:51
+PASS gb2_c3hb: Fig.5(a)/(b) Lg=100 Tbody=10 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, BL pillar continued by 180 nm to its contact (Fig.2: the pillar runs through all layers)
+PASS gb2_c4hb: Fig.5(a)/(b) Lg=100 Tbody=10 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+16 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+16 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, BL pillar continued by 180 nm to its contact (Fig.2: the pillar runs through all layers)
+ALL PASS
+structure match before run_d35.sh, 2026-10-08 15:52:22
+PASS gb2_c1hb: Fig.5(a)/(b) Lg=100 Tbody=30 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, BL pillar continued by 220 nm to its contact (Fig.2: the pillar runs through all layers)
+PASS gb2_c3hb: Fig.5(a)/(b) Lg=100 Tbody=10 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, BL pillar continued by 180 nm to its contact (Fig.2: the pillar runs through all layers)
+PASS gb2_c4hb: Fig.5(a)/(b) Lg=100 Tbody=10 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+16 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+16 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, BL pillar continued by 180 nm to its contact (Fig.2: the pillar runs through all layers)
+PASS gb2_yy: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 25.00 / 150.00 / 250.00 / 375.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, BL pillar continued by 200 nm to its contact (Fig.2: the pillar runs through all layers)
+PASS gb2_zz: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 6 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, BL pillar continued by 200 nm to its contact (Fig.2: the pillar runs through all layers)
+PASS gb2_zzg: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 6 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, BL pillar continued by 200 nm to its contact (Fig.2: the pillar runs through all layers)
+ALL PASS
+structure match before run_d36.sh, 2026-10-08 16:52:54
+PASS gb2_c1hb: Fig.5(a)/(b) Lg=100 Tbody=30 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, BL pillar continued by 220 nm to its contact (Fig.2: the pillar runs through all layers)
+PASS gb2_c2hb: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, BL pillar continued by 200 nm to its contact (Fig.2: the pillar runs through all layers)
 PASS gb2_c3hb: Fig.5(a)/(b) Lg=100 Tbody=10 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, BL pillar continued by 180 nm to its contact (Fig.2: the pillar runs through all layers)
 PASS gb2_c4hb: Fig.5(a)/(b) Lg=100 Tbody=10 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+16 | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+16 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, BL pillar continued by 180 nm to its contact (Fig.2: the pillar runs through all layers)
 ALL PASS

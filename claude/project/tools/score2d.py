@@ -33,13 +33,15 @@ COMPOSE = {"fin2": dict(I="fin", W="fin", F="h1", R="fin"), "fin3": dict(I="fin"
            "fin5": dict(I="dy", W="dy", F="dy", R="dy"),
            # fin6 = fin5 measured at the BL pillar end two Z pitches from the cell (user, 2026-10-08: "change to pb2"; MEASURE.md 4.6; NOTES (bw), (bx))
            "fin6": dict(I="pb2", W="pb2", F="pb2", R="pb2"),
+           # fin6t = fin6 with the storage capacitors of the paper's text (5.1 / 4.2 / 3.6 fF) in the write and the FBE (round 36, NOTES (bz)); no row hammer of its own
+           "fin6t": dict(I="pb2", W="pt", F="pt", R="pt"),
            "fin3b": dict(I="d0", W="dc", F="dc", R="fin"), "fin3n": dict(I="fin", W="dn", F="dl", R="fin"), "fin3bn": dict(I="d0", W="do", F="dm", R="fin")}
 # Reading of Fig.8(a), back-calculated on 2026-10-07 (NOTES (bk); the paper does not say where it reads the body potential): for the FBE
 # runs named here the body rise is the AVERAGE electrostatic potential of the body under the gate (column AveWindow, runs with
 # ProbeX=1), counted from the start of the transient and read at this offset from the middle of the first BL fall [s]:
 # +0.5 ns = 0.25 ns after the fall is complete, -0.3 ns = just before it. Other runs: the body-centre point just before the fall.
 AVGREAD = {"s2": 5e-10, "p1": 5e-10, "p2": 5e-10, "s1": -3e-10, "dc": 5e-10, "dd": 5e-10, "de": 5e-10, "dj": 5e-10, "dk": 5e-10, "dl": 5e-10, "dm": 5e-10, "dy": 5e-10,
-           "pb1": 5e-10, "pb2": 5e-10, "pb4": 5e-10, "pbn": 5e-10}
+           "pb1": 5e-10, "pb2": 5e-10, "pb4": 5e-10, "pbn": 5e-10, "pt": 5e-10}
 part = lambda tag, k: COMPOSE.get(tag, {}).get(k, tag)
 FB = []                                               # filled by first(): True where a baseline run stands in for the configuration's own
 def first(*ids):

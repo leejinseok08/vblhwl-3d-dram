@@ -917,6 +917,12 @@ cfg2d("pb2", "I", cases=CASEX[:1] + CASEX[2:], par=PN)
 RSX = {"Ry_yy": "gb2_yy", "Ryi_yy": "gb2_yy", "Rzb_zz": "gb2_zz", "Rzbi_zz": "gb2_zz", "Rzbg_zz": "gb2_zzg"}
 cfg2d("pb2", "R", rhsel=tuple(RSX), rst=RSX, **B2)
 cfg2d("pbi", "R", rhsel=tuple(RSX), rst=RSX, rh=dict(Idle=1), **B2)
+# Round 36 (user, 2026-10-08 17:00: "for now not the drawn structure: can the capacitor be simulated with the capacitances of the text alone?").
+# pt = fin6 with the lumped storage capacitors of the paper's text, 5.1 / 4.2 / 3.6 fF for bodies of 30 / 20 / 10 nm (Sec. IV), instead of those
+# x 1.8 / 4.2: the write of Fig.4(a) and the FBE of the five cases. Nothing else changed (the stand-in rate sets the hole charge with the node
+# held, so the bars do not depend on the capacitor). Id-Vg has no capacitor; row hammer not in this round.
+cfg2d("pt", "W", wst="gb2_c2hb", II=0, k_cs=1.0, par=PN)
+cfg2d("pt", "F", cases=CASEX, gb=GF5, ProbeX=1, ProbeT=1, II=0, k_cs=1.0, par=PN)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the

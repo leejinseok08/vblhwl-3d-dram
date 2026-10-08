@@ -3,6 +3,27 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-08 (bz) user: "for now not the drawn structure: can the capacitor be simulated with the capacitances written in the text alone?" - yes, and run (round 36, `fin6t`): the FBE losses come nearer (later losses of Cases 1 - 4 inside, Case 1's first phase 58 against 55 mV), the write is twice too slow, the first-phase losses of Cases 2, 3 are 2.3 - 2.7 times too small
+- Read as a request (the user's "can you ..?"): run it; fin6 stays the device until the user says which capacitor it carries.
+- Round 36 (`run_d36.sh`, 16:53 - 17:22, 6 runs; registered and pushed before the start, Codex nothing live, gate ALL PASS with four lines read; decks
+  = fin6's with one line changed, the lumped capacitor: 5.1 / 4.2 / 3.6 / 3.6 / 3.6 fF in the FBE, 4.2 fF in the write). Tag pt, `COMPOSE["fin6t"]`.
+                                  paper                              fin6 (text x 1.8 / 4.2)              fin6t (text)
+    capacitors, Cases 1 - 5       5.1 / 4.2 / 3.6 / 3.6 / 3.6 fF     2.19 / 1.80 / 1.54 / 1.54 / 1.54     5.1 / 4.2 / 3.6 / 3.6 / 3.6
+    write 12 / 24 / 39 / 60 ps    0.72 / 0.92 / 1.06 / 1.13 V        0.726 / 0.903 / 1.009 / 1.080        0.479 / 0.675 / 0.823 / 0.941
+    bars                          555 / 445 / 365 / 320 / 368 mV     560 / 450 / 367 / 323 / 371          561 / 450 / 367 / 323 / 371
+    first-phase loss              55 / 29 / 7.1 / 3.5 / below 0.5    131.3 / 29.1 / 6.03 / 4.78 / 0.24    58.5 / 12.7 / 2.63 / 2.08 / 0.10
+    later loss (Case 4: 2 phases) 100 / 50 / 14.6 / 5.0 / below 0.5  312 / 109 / 24.3 / 7.90 / 1.59       139.7 / 48.2 / 10.6 / 3.45 / 0.70
+    scores W / BR / L1 / L2                                          1.23 / 0.13 / 0.64 / 1.74            7.64 / 0.14 / 0.91 / 0.73
+    items inside: W, L1, L2                                          2 of 4, 4 of 5, 2 of 5               0 of 4, 3 of 5, 4 of 5
+    all items (row hammer as fin5 / baseline: 0 of 5)                36 / 52, predictions 6 / 15          35 / 52, predictions 7 / 15
+  * The losses go with 1 / C as expected (x 0.43 - 0.45): the same charge leaves the node.
+  * With the text's capacitors the later losses of Cases 1 - 4 are inside the tolerance (139.7 / 48.2 / 10.6 / 3.45 against 100 / 50 / 14.6 / 5.0) and Case
+    1's first phase is the paper's; Case 5 comes to 0.70 mV (bound 0.5). Against that the first-phase losses of Cases 2 and 3 are 2.3 and 2.7
+    times too small, and the write is 190 - 245 mV behind at the four points of Fig.4(a) (the 2.3 times of charging current, (bu)).
+  * So in charge the model with the BL at the pillar end and the paper agree on what the body has transferred after 200 ns, and disagree on how
+    fast it goes in the first phase (Cases 2, 3) and on the write: the same sign in both, too little current early.
+- Not run with the text's capacitors: row hammer (the model's per-cycle number is the cell's own leak; it would be 0.43 of fin6's).
+
 ## 2026-10-08 (by) user: "report the reason for that difference" (text 3.6 / 4.2 / 5.1 fF for bodies of 10 / 20 / 30 nm against 4.05 / 4.15 / 4.25 fF of the drawn structure) - the two are different things: a design value of the sense-margin formula, and the capacitance of the drawn geometry, of which only a tenth depends on the thickness. The authors' formula is not in the paper and no simple one fits
 - The decks do carry a capacitor per case (user asked): b0 5.1 / 4.2 / 3.6 / 3.6 / 3.6 fF (the text's), fin5 / fin6 the same x 1.8 / 4.2 = 2.186 / 1.8 / 1.543 /
   1.543 / 1.543 fF (read from the deck files). Write and row hammer: Case 2 only, 1.8 fF.
