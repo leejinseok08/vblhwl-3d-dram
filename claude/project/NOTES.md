@@ -3,6 +3,36 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-08 (by) user: "report the reason for that difference" (text 3.6 / 4.2 / 5.1 fF for bodies of 10 / 20 / 30 nm against 4.05 / 4.15 / 4.25 fF of the drawn structure) - the two are different things: a design value of the sense-margin formula, and the capacitance of the drawn geometry, of which only a tenth depends on the thickness. The authors' formula is not in the paper and no simple one fits
+- The decks do carry a capacitor per case (user asked): b0 5.1 / 4.2 / 3.6 / 3.6 / 3.6 fF (the text's), fin5 / fin6 the same x 1.8 / 4.2 = 2.186 / 1.8 / 1.543 /
+  1.543 / 1.543 fF (read from the deck files). Write and row hammer: Case 2 only, 1.8 fF.
+- The text's values are what the authors computed with, and for the sense margin: Fig.5(d) held against them (`tools/gt_cs_formula.py`).
+  * Right graph (sense margin): dV = (Vdd / 2) C_S / (C_S + C_BL), no leakage term, C_BL = 11.83 fF at 64 layers (0.185 fF per layer) from the
+    144.14 mV printed for the 20 nm body, gives 128.4 / 144.1 / 165.7 mV at 64 layers, 302.0 / 322.8 / 348.2 at 16 and 72.6 / 82.9 / 97.5 at 128 for 3.6 /
+    4.2 / 5.1 fF; the points read off the graph: 127.5 / 144 / 166.5, 301 / 322 / 347, 71.5 / 82.5 / 97.5 (about 2 px per mV). All nine inside 1.5 mV.
+  * Left graph (C_BL / C_S): its three lines stand as 1.05 (10 nm / 20 nm) and 1.11 (20 nm / 30 nm) at 128 layers; (Z pitch / C_S) with the text's
+    values gives 1.050 and 1.104: C_BL per layer taken proportional to the layer thickness, C_S as in the text. (Its axis reads 0.61 at 128 layers
+    where 23.7 / 4.2 = 5.6 would be expected: a factor of about ten in the axis, not followed up.)
+  So 3.6 / 4.2 / 5.1 fF are no misprint; they are inputs of a circuit-level estimate (text: "calculated using the dimensions defined in Fig. 5(a)",
+  "determined by layer thickness (Z-pitch), lateral capacitance length (L_CAP), and the EOT"). The paper does not say what the TCAD structure carries.
+- Why the drawn structure hardly changes: the U-shaped node is the same across the row (Fig.3: the cut face shows node, finger and plates as a
+  section pushed through; top view of Fig.2: capacitor box 44 px = the row width, pillar circle 37 - 42 px across, node wall 4 px at each end), so the
+  2D section is the structure. Its faces (plate sum, EOT 3.8 A, 100 nm wide): two outer and two inner horizontal faces, 3.45 fF, the same for
+  every body; the arm ends, 0.18 fF, the same; the inside of the wall, 0.36 / 0.45 / 0.55 fF for node heights of 60 / 70 / 80 nm. Only the last
+  grows: 0.09 fF per 10 nm (AC: 0.10). Nine tenths of the capacitance do not change with the body (84 % of it on the flat faces).
+- What the text's values ask for: +0.6 and +0.9 fF per 10 nm = 660 - 990 nm2 per nm, seven to ten times the 100 nm of standing face the drawing
+  has. Between 10 and 20 nm the text's value is proportional to the node height (3.6 / 60 = 4.2 / 70 = 0.060 fF/nm), as if all the area stood
+  upright; at 30 nm it is above that line (5.1 against 4.8). The two descriptions meet at the drawn cell (20 nm: 4.15 against 4.2 fF) and part
+  on both sides: 10 nm +12 % (4.05 / 3.6), 30 nm -17 % (4.25 / 5.1). The agreement at 20 nm is therefore one point, not a confirmed geometry.
+- The formula itself: not found. Searched: area = a L X + b X Y + c L W + d W X with X, Y from Z pitch, node height, 2 Tox + Tbody, Tbody and
+  a .. d from 0, 1 .. 6, 8, pi/4, pi/2, pi, 2 pi, 4 pi: 456 768 formulas, none gives the three values inside their rounding. Linear in the Z pitch
+  or in the node height is excluded by the rounding alone (the step 20 -> 30 nm is at least 0.8 fF where 10 -> 20 nm is at most 0.7). A fit exists
+  with a term in Tbody squared (A = 38 000 + 20 Tbody^2 nm2), for which I have no geometry. Hsu .. Yu (the paper's [9]) only state 4 fF at EOT 3 A.
+- Consequence for our decks (arithmetic, nothing changed): the ratio between the cases is the text's (1.21 : 1 : 0.86). With the drawn structure's
+  ratio (1.02 : 1 : 0.98) Case 1 would carry 1.84 instead of 2.19 fF (losses in mV x 1.19: fin6's 131 -> 156 mV, paper 55) and Cases 3 - 5 1.76
+  instead of 1.54 fF (losses x 0.88: 6.0 -> 5.3 mV, Case 5 1.59 -> 1.40). Which of the two the paper's transient model had is not stated; kept as
+  it is and listed as an assumption.
+
 ## 2026-10-08 (bx) user: "change to pb2" - the device is now `fin6`: fin5 measured at the end of the BL pillar, two Z pitches from the cell. Round 35 fills what was missing at that position (Id-Vg of four cases; row hammer with idle controls, still running at 16:35)
 - `fin6` = `COMPOSE["fin6"]` in tools/score2d.py = the runs with tag pb2: Dpb2I_c1..5, Dpb2W_c2, Dpb2F_c1..5 (rounds 34, 35), Dpb2R* (round 35).
   Structures: single cells gb2_c1hb / gb2_c2hb / gb2_c3hb / gb2_c4hb (`Blc="bot"`, `Blx` = 220 / 200 / 180 / 180 nm = two Z pitches of the case), pairs
