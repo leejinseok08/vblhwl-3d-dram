@@ -3,6 +3,104 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-08 (bv) round 33 (measure M3 as a trial: an avalanche model in the write on the drawn node) | user: review Codex's two documents of today and set up the measurement criteria -> `MEASURE.md`
+- Round 33 (`run_d33.sh`, 13:51 - , 25 runs on gs_c2hb; registered and pushed, gate ALL PASS read, decks = round 32's write + the Avalanche line;
+  fin5 keeps no avalanche model, decision A). Four models of the release x three driving forces; W = write, F = write + 21 ns hold, no stand-in.
+    model            force           write at 12 / 24 / 39 / 60 ps [V]   W      pairs in the write   holes after WL off   at t_A: holes, body rise
+    none (mn, sa)    -               0.50 / 0.69 / 0.84 / 0.95           7.12        0                  0                   2, +6 mV
+    vanOverstraeten  default         0.52 / 0.72 / 0.86 / 0.97           6.38      660                 38                  40, +52
+    vanOverstraeten  Eparallel       0.53 / 0.73 / 0.87 / 0.97           6.19      698                 45                  47, +59
+    vanOverstraeten  ElectricField   0.78 / 1.02 / 1.10 / 1.14           2.12    14915                178                 189, +157
+    Okuto            default         0.53 / 0.73 / 0.87 / 0.97           6.02      893                 41                  43, +55
+    Okuto            Eparallel       0.53 / 0.73 / 0.87 / 0.98           6.00      937                 52                  54, +65
+    Okuto            ElectricField   0.92 / 1.10 / 1.14 / 1.16           4.74    19517                232                 252, +188
+    Lackner          default         0.52 / 0.72 / 0.86 / 0.97           6.43      598                 33                  35, +47
+    Lackner          Eparallel       0.52 / 0.72 / 0.86 / 0.97           6.34      636                 41                  43, +55
+    Lackner          ElectricField   0.77 / 1.01 / 1.10 / 1.13           (1.8)   15341                163                 hold still running at 14:27
+    UniBo            default         0.51 / 0.71 / 0.86 / 0.97           6.57      (F still in the write at 14:27)
+    UniBo            Eparallel       0.51 / 0.72 / 0.86 / 0.97           6.49      (F still in the write at 14:27)
+    UniBo            ElectricField   0.77 / 1.01 / 1.10 / 1.13           1.83    15032                159                 hold still running at 14:27
+    paper Fig.4(a)                   0.72 / 0.92 / 1.06 / 1.13                                                             Fig.8(a) asks for 1371 holes, +445 mV
+  (Lackner + ElectricField: the write-only run crawls at 14 ps with steps of 1e-17 s; the numbers are those of its F run, the same deck up to the
+  hold. UniBo also switches Auger generation on (manual). Body rise here = body-centre point, tools/gt_wl_off.py.)
+  * Two families and nothing between: with the default force or Eparallel every model leaves the write as it is without a model (pairs 600 - 940,
+    +20 mV); with ElectricField every model makes 15 000 - 19 500 pairs and the write is fast. On the paper's own capacitance (4.15 fF) the
+    ElectricField write is the nearest thing so far: +50 / +90 / +40 / 0 mV (UniBo, Lackner; W 1.8), +60 / +100 / +40 / +10 (vanOverstraeten, 2.1);
+    Okuto overshoots (+200 / +180). None is inside 30 mV. fin5 with the fitted 1.8 fF: +16 / -8 / -45 / -47 (1.12).
+  * The charge of Fig.8 does not come out of the write with any of them: 35 - 54 holes at t_A (default, Eparallel), 189 - 252 (ElectricField),
+    1371 needed (Case 2). The node moves 0.07 mV in the 21 ns hold. P1 stands.
+  * For M3's second half (Fig.7(e)): only an ElectricField-type force makes pairs at all; among the models Okuto makes 30 % more than the
+    others. Not run.
+- Codex's `Cho_조사결과_개선방안_eliU_2026-10-08.md` held against the state (its six priorities; its folder is read-only):
+    1 fix the criteria              -> taken over (MEASURE.md). One wording of mine corrected: "10 groups pass all five cases" was without Case 5 at
+                                       200 ns (1.6 mV in every group, criterion 0.5): with it no group passes all items (STATUS 05:10 item amended).
+    2 capacitance and current       -> answered by round 32: the drawn node has 4.15 fF; the gap is charging current (paper-implied 252 / 70 / 39 /
+       together                        14 uA per interval at 4.2 fF; drawn-node run 173 / 66 / 42 / 22). Its "integrate the terminal current" is this.
+    3 Case 5: place and mesh        -> mesh done on 2026-10-06, Case 2: corner generation 14.6 / 14.7 / 14.1 pA for junction meshes 0.25 / 2 / 5 nm (not a
+                                       mesh matter); time step by Codex A1. On the drawn capacitor (4.05 fF) the same leak is 0.67 mV at 200 ns.
+    4 hole history as a charge      -> round 33's table is that budget for the write and the hold (above); stand-in runs carry theirs.
+       budget
+    5 contact position, attack      -> contact table exists ((bs)); idle controls ran in round 15 (attack - idle = 0.0000 mV per cycle): the model's
+       minus idle                      0.0014 mV per cycle is the cell's own leak (13.5 pA x 188 ps / 1.8 fF). From now on stated so, and every
+                                       row-hammer batch gets an idle run per direction (MEASURE.md 4.5).
+    6 3D aimed at the missing       -> M4 changes its first step: the capacitance matrix of the pair with the drawn node by AC (minutes) before any
+       structure                       transient (hours): the paper's X-X' swing of 0.70 mV asks for 1.6 aF between aggressor WL and victim node at 4.15 fF.
+  What it improves among P1 - P8: P4 restated (capacitor known, current open), P5 (0.67 mV with the paper's capacitor; mesh excluded), P2 / P7 (plan),
+  P8 and the reporting (criteria); P1, P3, P6 unchanged.
+- Measurement criteria (user: "refer to this too and set up the criteria"; Codex's `소자특성_측정평가기준_학습기록_2026-10-08.md`): `MEASURE.md` in the
+  project (Korean; copies in the results folder and in the repository). Its points: definition -> conditions -> extraction -> comparison; every
+  number carries its kind; the 52 scored items split into calibration targets (32: Fig.5(c), Fig.4(a)), conditions (5: bars) and predictions (15:
+  losses, row hammer); fin5 = 39 / 52, of which predictions 9 / 15 = 60 % (`tools/repro_rate.py` prints the three and the worst item of each
+  group); capacitance always as text / drawn / fitted; row hammer as attack minus idle; tolerances are the project's, not IEEE's.
+
+## 2026-10-08 (bu) user: "run it", "go on" - measure M1 (round 32): the storage node drawn as a structure after the cross-section of Fig.2 has 4.15 fF, the text's 4.2 fF, and the write on it is as slow as with the lumped 4.2 fF. The capacitor is not the open value of P4; the write current is
+- "Run it" came after the status report with the six decisions and their recommendations. Read as: start M1, order M1 -> M3 -> M4, M3's avalanche model
+  in the write as a trial, fin5 and decision B kept. NOT done on that word: merging `claude` into `main`, moving old runs to the PC (asked again).
+- Fig.2 read for the capacitor (embedded image 2017 x 1173; scratch scripts scan.py = colour runs along a pixel line, crop.py). Scale of the array
+  cross-section: 2.30 nm/px along the channel (gate 44 px = 100 nm), 1.79 nm/px across (Z period 56 - 57 px = 100 nm: the drawn cell is Case 2).
+  * storage node (orange): U-shaped. A wall of 4 - 5 px on the end face of the N+ source, two arms of 5 - 6 px at the level of the two gates (the U
+    is as high as the gate stack), 36 px long, reaching to the dielectric of the ground pillar; open towards the pillar.
+  * ground (the metal blue of the legend): pillar (36 px), plates of 11 - 12 px at the isolation level between the layers, attached to the pillar
+    and as long as the arms, and a finger inside the U (12 px thick, 25 px long).
+  * dielectric (red lines of 2 - 4 px): between arms and plates and around the finger. Between the U and the finger's dielectric lies a band of
+    4 px in the metal colour with a plain boundary line (no red) towards the node: counted to the ground it is structure `sa`, counted to the
+    node structure `sb`. Either way a node has four capacitor faces (two outer, two inner) plus the inside of the wall.
+  * the 3D drawing of the capacitor has the same parts (pillar with dielectric shell, plates, fingers, node blocks; L_CAP = length of the node).
+  * text (Sec. III, IV) re-read: capacitors "geometrically defined" (captions of Fig.2, Fig.4); C_S "calculated using the dimensions defined in
+    Fig. 5(a)", "determined by ... layer thickness (Z-pitch), lateral capacitance length (L_CAP), and the EOT"; 3.6 / 4.2 / 5.1 fF for Z pitch 90 /
+    100 / 110 nm. The authors' other papers give no capacitor geometry beyond "capacitor dielectric 4 nm (EOT 3 A)" and C_S = 4 fF (Hsu).
+- Structure (`sde_gt_dvs.cmd`, parameter `Cap`; single cells only, `make_runs.py` refuses pairs): node on the end face of the source, y from the
+  bottom of the back gate to the top of the main gate, L_CAP 100 nm long [Cho], wall and arms `Tcw` 10 nm [ChoF]; dielectric `Tcd` 4 nm [Grp: Hsu]
+  of material Insulator1 with permittivity 3.9 x 4 / 0.38 = 41.05, i.e. EOT 3.8 A [Cho] (parameter file `sdevice_cal_a1.2e20_b2e07_ce41.05.par`,
+  a file of its own); plates = isolation level minus two dielectric layers (22 nm; drawing 20 - 22); pillar = a 10 nm strip. Node and ground are
+  contacts (`sn_v`, `gp_v`; metal removed). `Cap="u"` as drawn, `"blk"` solid node without finger (control). Structures gs_c1hb / gs_c2hb / gs_c3hb
+  (bodies 30 / 20 / 10), gs18_c2hb (walls 18 nm = reading `sb`), gs0_c2hb (solid). In the decks the lumped Cs is 1e-21 F, `gp_v` at 0 V.
+  New deck "ac" (`deck_ac`): capacitance matrix at 0 V, 1 MHz, mixed mode; table `tools/gt_cap.py`. Gate `gt_precheck.sh` now also holds
+  L_CAP = 100 and EOT = 3.8 A. Pictures next to Fig.2: `pic_vbl_hwl_1t1c_3ddram\gt_cell_cap_{u,u18,blk}_xsec_vs_cho_fig2.png` (not for the repository).
+- Round 32 (`run_d32.sh`, 13:45 - 13:59, 8 runs; Codex: nothing live, origin/main unchanged since 10-07 21:42, no drawn capacitor in its docs;
+  registered and pushed; gate ALL PASS with the five lines read, twice; write deck = fin5's DdyW_c2 except mesh, parameter file, `gp_v`, Cs):
+    structure                        C(SN) at 0 V [fF]: total = to ground + to WL (+ to BL)   plates, no fringe   text    write at 12 / 24 / 39 / 60 ps [V]   W
+    sa  as drawn, body 30 nm         4.250 = 4.181 + 0.070 (+ 0.000)                          4.18                5.1
+    sa  as drawn, body 20 nm         4.154 = 4.088 + 0.065                                    4.09                4.2     0.50 / 0.69 / 0.84 / 0.95           7.12
+    sa  as drawn, body 10 nm         4.053 = 3.995 + 0.058                                    4.00                3.6
+    sb  band counted to the node     4.009 = 3.943 + 0.065                                    3.94                4.2     0.51 / 0.70 / 0.85 / 0.96           6.79
+    sc  solid node, no finger        2.572 = 2.506 + 0.065                                    2.45                4.2     0.64 / 0.83 / 0.95 / 1.04           3.05
+    fin5 (lumped 1.8 fF)             -                                                        -                   4.2     0.74 / 0.91 / 1.02 / 1.08           1.12
+    paper Fig.4(a)                                                                                                        0.72 / 0.92 / 1.06 / 1.13
+  * The capacitor as drawn has the text's value for the drawn cell: 4.15 against 4.2 fF (1 %). AC and the plate sum agree to 0.1 fF, so
+    every face of node and ground is a contact (the finger and the pillar strip are separate, adjacent metal bodies: no gap).
+  * The text's change with the body thickness (3.6 / 4.2 / 5.1) is five times the structure's (4.05 / 4.15 / 4.25: only the inside of the wall
+    grows). Not explained; the paper gives no formula. P4's "two faces = 1.82 fF" is not what the drawing shows: even a solid node has 2.57 fF.
+  * A drawn node behaves as its capacitance: the write on 4.15 fF is the write of `b0` (lumped 4.2 fF: 0.51 / 0.72 / 0.86 / 0.97).
+  * So the storage capacitor of the paper's model is about 4.2 fF, and what the write curve of Fig.4(a) asks for is not a smaller capacitor but
+    2.3 times the charging current. NOTES (az) had the bound already: 4.2 fF x 0.72 V in 12 ps = 252 uA on average, above the largest DC current
+    of Fig.5(c) (229 uA). Fig.4(a) cannot be drawn with the DC currents of the paper's own Fig.5(c): something adds current in the transient.
+  * By arithmetic, no run: on the drawn capacitors (4.25 / 4.15 / 4.05 fF) fin5's first-phase losses would be 43 / 9.6 / 1.9 / 1.5 mV (paper 55 / 29 /
+    7.1 / 3.5), i.e. Cases 2 - 4 a factor 2.4 - 3.8 low, and Case 5's hold leak 0.67 mV at 200 ns (paper below 0.5; fin5 1.58). The 1.8 fF of fin5
+    makes up for the same missing factor in the write and in the FBE.
+- Not adopted: fin5 stays (lumped 1.8 fF). By the rule of the 2D process a change is adopted only if it lowers the score it is meant for; the
+  drawn node raises W from 1.12 to 7.12. It is a finding about where the gap sits, put to the user.
+
 ## 2026-10-08 (bt) user: "status of the simulations and of the device's reproduction rate (%)" - a rate defined and counted: 39 of the 52 scored numbers of the paper are inside their tolerance (75.0 %); single-cell figures 39 of 47, row hammer 0 of 5. No new run
 - Server at 10:55: no Sentaurus process on the account (mine or Codex's), quota 6953 / 9216 MB. Nothing has run since rounds 30, 31 and the end of
   Codex's factorial (04:49); origin/main still at 28a07b3 (10-07 21:42). The six decisions of (bs) are still the user's.

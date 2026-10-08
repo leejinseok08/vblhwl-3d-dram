@@ -41,8 +41,14 @@ STRUCTS = dict(
     # 2 nm across, 0.5 nm at the dielectric (what a 3D array mesh can afford)
     gq025_c2h=dict(Mj=0.25, Mg=0.25), gq2_c2h=dict(Mj=2, Mg=2), gq5_c2h=dict(Mc=5, Mj=5, Mv=2, Mi=0.5, Mg=5),
     gq2_c1h=dict(Tbody=30, Mj=2, Mg=2), gq5_c1h=dict(Tbody=30, Mc=5, Mj=5, Mv=2, Mi=0.5, Mg=5),
+    # the storage node as a structure (2026-10-08, measure M1), on the end-contact cells: gs = the capacitor of the Fig.2 cross-section
+    # (U-shaped node, ground finger inside, plates above and below), bodies of 30 / 20 / 10 nm | gs18 = the 8 nm band inside the U of the
+    # drawing counted to the node (walls 18 nm) | gs0 = solid node, no finger (control)
+    gs_c1hb=dict(Tbody=30, Blc="bot", Cap="u"), gs_c2hb=dict(Blc="bot", Cap="u"), gs_c3hb=dict(Tbody=10, Blc="bot", Cap="u"),
+    gs18_c2hb=dict(Blc="bot", Cap="u", Tcw=18), gs0_c2hb=dict(Blc="bot", Cap="blk"),
 )
-SDE_KEYS = ["Lg", "Tbody", "Tox", "Tgm", "Dvox", "Nsd", "Nch", "Gdi", "Spm", "Pair", "Bgc", "Blc", "Lsp1", "Lsp2", "Wbl", "Wact", "Dhox", "Mc", "Mj", "Mv", "Mi", "Mg", "Wcut"]
+SDE_KEYS = ["Lg", "Tbody", "Tox", "Tgm", "Dvox", "Nsd", "Nch", "Gdi", "Spm", "Pair", "Bgc", "Blc", "Lsp1", "Lsp2", "Wbl", "Wact", "Dhox", "Mc", "Mj", "Mv", "Mi", "Mg", "Wcut",
+            "Cap", "Lcap", "Ceot", "Tcd", "Tcw"]
 
 def fill_sde(name, prm):
     src = open(os.path.join(HERE, prm["Tpl"]), encoding="utf-8").read()
@@ -66,7 +72,7 @@ def physics(p, indent="  "):
         if p["BTBT"] == 2: rec.append("Band2Band( Model=NonlocalPath )   # diagnostic only: tunnelling along the path, default Si parameters")
         elif p["BTBT"] == 3: rec.append("Band2Band( Model=Hurkx DensityCorrection=Local )   # Hurkx, densities in its D factor corrected by the quasi-Fermi gradient (manual eq.495)")
         elif p["BTBT"]: rec.append("Band2Band( Model=Hurkx )")
-        if p["II"]:   rec.append(f"Avalanche( vanOverstraeten{' ' + p['IIdf'] if p['IIdf'] else ''} )")
+        if p["II"]:   rec.append(f"Avalanche( {p['IImod']}{' ' + p['IIdf'] if p['IIdf'] else ''} )")
     rtxt = ""
     if rec:
         rtxt = f"{indent}  Recombination(\n" + "".join(f"{indent}    {r}\n" for r in rec) + f"{indent}  )\n"
@@ -164,6 +170,7 @@ def electrodes_single(p, dc=False):
          f'{{ Name="gs_v"   Voltage={g} WorkFunction={p["WFs"]} }}',
          f'{{ Name="gd_v"   Voltage={g} WorkFunction={p["WFd"]} }}']
     if p["BodyMode"] == "BC": e.append(f'{{ Name="body_v" Voltage={b} }}')
+    if p["Cap"] != "lump": e.append('{ Name="gp_v"   Voltage=0.0 }')      # ground of the drawn capacitor
     return e
 
 # ------------------------------------------------------------------ waveform schedule
@@ -326,6 +333,7 @@ def deck_cho(rid, p, struct, test):
     for c in ("va" if pair else "v"):
         el += [f'{{ Name="sn_{c}" Voltage=0.0{snv} }}', f'{{ Name="gs_{c}" Voltage=0.0 WorkFunction={p["WFs"]} }}', f'{{ Name="gd_{c}" Voltage=0.0 WorkFunction={p["WFd"]} }}']
     if p["Bgc"]: el.append('{ Name="body_v" Voltage=0.0 }')          # grounded body: held at 0 V
+    if p["Cap"] != "lump": el.append('{ Name="gp_v" Voltage=0.0 }')  # ground of the drawn capacitor; the lumped Cs of such a run is set to nothing (1e-21 F)
     ph = physics(p).replace("Physics {\n", f"Physics {{\n    AreaFactor = {2 if p['Dim'] == 3 else p['Wact'] / 1000:g}\n", 1); cp = currentplot(p)
     if tgen:      # constant generation in the body region, on between tgen[0] and tgen[1] with 0.1 ns ramps (manual: "Constant Optical Generation", eq. 699)
         # (the device-wide section must name a source: zero everywhere, the body region sets its own value; Scaling=0 = none in the DC start)
@@ -354,8 +362,23 @@ def deck_cho(rid, p, struct, test):
            "\nSystem {\n" + "".join(f"  {l}\n" for l in sysl) + f'  Plot "{rid}_sys.plt" ( time() {plotn} )\n}}\n\n' + mathblk(p) + solve)
     return txt, dict(kind="cho", test=test, tS=tS, tEnd=tEnd), (BL, WL, WA), S
 
+def deck_ac(rid, p, struct):
+    """Capacitance matrix of the single cell at equilibrium (every node at 0 V), small-signal AC at 1 MHz in mixed mode. Nodes: BL, SN, WL
+    (both gates) and, with a drawn capacitor, its ground GP. In the extraction file <id>_ac_des.plt c(n,n) is the whole capacitance of
+    node n and c(n,m) minus the capacitance between two nodes. Scaled to the cell with AreaFactor = Wact, as the transients are."""
+    nodes = ["nBL", "nSN", "nWL"] + (["nGP"] if p["Cap"] != "lump" else []); src = ["v" + n[1:].lower() for n in nodes]
+    ph = physics(p).replace("Physics {\n", f"Physics {{\n    AreaFactor = {p['Wact'] / 1000:g}\n", 1)
+    inst = 'CELL c1 ( "bl"=nBL "sn_v"=nSN "gs_v"=nWL "gd_v"=nWL' + (' "gp_v"=nGP' if len(nodes) == 4 else "") + " )"
+    txt = (header(rid, "capacitance matrix at 0 V (AC, 1 MHz)", p, struct) + f'File {{ Output = "{rid}_log" ACExtract = "{rid}" }}\n\n'
+           + "Device CELL {\n  Electrode {\n" + "".join(f"    {e}\n" for e in electrodes_single(p, dc=True)) + "  }\n" + dev_file(rid, struct, p) + ph + "}\n"
+           + "\nSystem {\n  " + inst + "\n" + "".join(f"  Vsource_pset {s} ( {n} 0 ) {{ dc = 0 }}\n" for s, n in zip(src, nodes)) + "}\n\n" + mathblk(p)
+           + "Solve {\n  Coupled( Iterations=200 LineSearchDamping=1e-4 ){ Poisson }\n  Coupled{ Poisson Electron Hole }\n"
+           f"  ACCoupled( StartFrequency=1e6 EndFrequency=1e6 NumberOfPoints=1 Decade Node( {' '.join(nodes)} ) Exclude( {' '.join(src)} ) )\n"
+           "    { Poisson Electron Hole }\n}\n")
+    return txt, dict(kind="ac")
+
 # ------------------------------------------------------------------ parameter files
-def par_text(eps=22.0, tau=1.0, agen=None, bgen=None, pgen=None, alpha=None, dpot=None, dcr=None, ii=None):
+def par_text(eps=22.0, tau=1.0, agen=None, bgen=None, pgen=None, alpha=None, dpot=None, dcr=None, ii=None, ceps=None):
     """sdevice parameter file. Everything not listed is the Sentaurus U-2022.12 default (Hurkx: Agen 3.5e21, Bgen 2.25e7 V/cm, P 2,
     alpha 0, dPot 0). Hurkx (manual eq. 496, 497): G = Agen D (F / 1 V/cm)^Pgen exp(-Bgen (Eg/Eg300)^1.5 / F) with
     D = (np - ni^2) / ((n + ni)(p + ni)) (1 - |alpha|) + alpha; alpha = -1 is "only generation" (D = -1: no density factor).
@@ -374,16 +397,18 @@ def par_text(eps=22.0, tau=1.0, agen=None, bgen=None, pgen=None, alpha=None, dpo
             f'Material = "HfO2" {{\n  Epsilon\n  {{\n    epsilon = {eps:g}                * 5 nm gate dielectric; 22 = Sentaurus default\n  }}\n}}\n\n'
             'Material = "Si3N4" {\n  Epsilon\n  {\n    epsilon = 7.0                 * spacers: Lee .. Yu, IMW 2026 (Sentaurus default 7.5)\n  }\n}\n\n'
             'Material = "SiO2" {\n  Epsilon\n  {\n    epsilon = 3.9\n  }\n}\n\n'
+            + (f'Material = "Insulator1" {{\n  Epsilon\n  {{\n    epsilon = {ceps:g}              * dielectric of the drawn storage capacitor: 3.9 x thickness / EOT (Fig.5(a): 3.8 A)\n  }}\n}}\n\n' if ceps else "") +
             'Material = "Silicon" {\n  Scharfetter\n  {\n'
             f"    taumax  = {1e-5 * tau:.4e} ,   {3e-6 * tau:.4e}     # [s] electrons , holes (default x {tau:g})\n  }}\n" + b2b + av + "}\n")
 
 PARS = {"sdevice.par": {}, "sdevice_gt_b10.par": dict(agen=3.5e22), "sdevice_gt_b100.par": dict(agen=3.5e23), "sdevice_gt_tau.par": dict(tau=0.01),
         "sdevice_gt_k10.par": dict(eps=10), "sdevice_gt_k50.par": dict(eps=50), "sdevice_gt_m3.par": dict(agen=3.5e18), "sdevice_gt_m2.par": dict(agen=3.5e19)}
 
-def cal_par(a, b=2.25e7, p=None, alpha=None, dpot=None, dcr=None, ii=None):
-    """Parameter file with Hurkx rate a, field coefficient b, exponent p, alpha and dPot (registered in PARS); returns its name."""
-    name = (f"sdevice_cal_a{a:.2g}_b{b:.3g}" + (f"_p{p:g}" if p else "") + (f"_al{alpha:g}" if alpha is not None else "") + (f"_dp{dpot:g}" if dpot else "") + (f"_dc{dcr:.0e}" if dcr else "") + (f"_ii{ii:g}" if ii else "") + ".par").replace("+", "")
-    PARS[name] = dict(agen=a, bgen=b, pgen=p, alpha=alpha, dpot=dpot, dcr=dcr, ii=ii); return name
+def cal_par(a, b=2.25e7, p=None, alpha=None, dpot=None, dcr=None, ii=None, ceps=None):
+    """Parameter file with Hurkx rate a, field coefficient b, exponent p, alpha and dPot (registered in PARS); returns its name.
+    ceps = permittivity of the dielectric of a drawn storage capacitor (a file of its own: the files of earlier runs stay as they were)."""
+    name = (f"sdevice_cal_a{a:.2g}_b{b:.3g}" + (f"_p{p:g}" if p else "") + (f"_al{alpha:g}" if alpha is not None else "") + (f"_dp{dpot:g}" if dpot else "") + (f"_dc{dcr:.0e}" if dcr else "") + (f"_ii{ii:g}" if ii else "") + (f"_ce{ceps:g}" if ceps else "") + ".par").replace("+", "")
+    PARS[name] = dict(agen=a, bgen=b, pgen=p, alpha=alpha, dpot=dpot, dcr=dcr, ii=ii, ceps=ceps); return name
 
 # ------------------------------------------------------------------ run table
 def R(rid, exp, struct, deck, **ov): return dict(id=rid, exp=exp, struct=struct, deck=deck, ov=ov)
@@ -837,6 +862,31 @@ cfg2d("dy", "W", wst="gr_c2hb", II=0, **B2)
 cfg2d("dy", "F", cases=CASEB, gb={c: GBQ[c] * GBB[c] * FN[c] for c in GBQ}, ProbeX=1, ProbeT=1, II=0, **B2)
 cfg2d("dy", "R", rhsel=("Ry_yy", "Ryi_yy", "Rzb_zz", "Rzbi_zz", "Rzbg_zz"), **B2)
 cfg2d("hy", "I", cases=HS3, iv=IH, par=PN)
+# Round 32 (user, 2026-10-08: "run it" = measure M1 of the complete report): the storage node as a structure. The paper writes "geometrically
+# defined" storage node (captions of Fig.2, Fig.4) and gives EOT 3.8 A and L_CAP 100 nm; its text has 3.6 / 4.2 / 5.1 fF "calculated using the
+# dimensions"; the write curve of Fig.4(a) asks our transistor for 1.8 fF (P4). Cross-section of Fig.2 read on 2026-10-08 (NOTES (bu)): the
+# node is U-shaped (wall on the source end, two arms towards the ground pillar), ground plates at the isolation level above and below, a
+# ground finger inside the U. Capacitance at 0 V by AC analysis (D<tag>C) and the write of Fig.4(a) with the device of fin5 and nothing else
+# on the node (D<tag>W, lumped Cs 1e-21 F):  sa = as drawn, bodies 30 / 20 / 10 nm (text: 5.1 / 4.2 / 3.6 fF)  |  sb = the 8 nm band inside
+# the U counted to the node (walls 18 nm)  |  sc = solid node, no finger (control: outer faces and the pillar-side face).
+CEPS = round(3.9 * PDEF["Tcd"] / (PDEF["Ceot"] / 10), 2); PNC = cal_par(1.2e20, 2.0e7, ceps=CEPS)      # 41.05: EOT 3.8 A at 4 nm
+for k_, sts_ in (("sa", ((1, "gs_c1hb"), (2, "gs_c2hb"), (3, "gs_c3hb"))), ("sb", ((2, "gs18_c2hb"),)), ("sc", ((2, "gs0_c2hb"),))):
+    for c_, st_ in sts_: RUNS.append(R(f"D{k_}C_c{c_}", "GT", st_, "ac", WFs=4.7, WFd=4.7, **dict(IV, Nthr=4, Par=PNC)))
+    cfg2d(k_, "W", wst=dict(sts_)[2], II=0, k_cs=1e-21 / CSB[20], par=PNC)
+# Round 33 (2026-10-08, measure M3 as a trial; the device fin5 keeps no avalanche model in the write, decision A). Round 32: the drawn node
+# has 4.15 fF (text 4.2 fF) and the write on it is as slow as with the lumped 4.2 fF (0.50 / 0.69 / 0.84 / 0.95 V at 12 / 24 / 39 / 60 ps, paper
+# 0.72 / 0.92 / 1.06 / 1.13): the paper's cell writes about twice as fast as its own Fig.5(c) currents allow, which a floating body does when
+# impact ionization fills it during the write. Known: vanOverstraeten with the default driving force changes nothing (b0), with ElectricField
+# it overshoots (4.2 fF: 0.79 / 1.02 / 1.10 / 1.14 V). The paper says "an avalanche model", no name: the four models of the release that need
+# no further input x the three driving forces, on the cell with the drawn node (gs_c2hb). m<model><force>: v / o / l / u = vanOverstraeten /
+# Okuto / Lackner / UniBo, 0 / 1 / 2 = default (GradQuasiFermi) / Eparallel / ElectricField. W = write of Fig.4(a); F = write + 21 ns hold,
+# no stand-in, no BL pulses: holes left in the body at t_A (the bars of Fig.8(a) ask for 1371 in Case 2) and what the node does. mn = no model.
+C2S = ((2, "gs_c2hb", 4.7, 20),); KS = dict(k_cs=1e-21 / CSB[20], par=PNC)
+for m_, mod_ in (("v", "vanOverstraeten"), ("o", "Okuto"), ("l", "Lackner"), ("u", "UniBo")):
+    for f_, df_ in enumerate(("", "Eparallel", "ElectricField")):
+        cfg2d(f"m{m_}{f_}", "W", wst="gs_c2hb", II=1, IImod=mod_, IIdf=df_, **KS)
+        cfg2d(f"m{m_}{f_}", "F", cases=C2S, II=1, IImod=mod_, IIdf=df_, Npulse=0, ProbeX=1, **KS)
+cfg2d("mn", "F", cases=C2S, II=0, Npulse=0, ProbeX=1, **KS)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
@@ -883,7 +933,9 @@ def check_segs(S, tEnd):
 def build(run):
     p = copy.deepcopy(PDEF); p.update(STRUCTS[run["struct"]]); p.update(run["ov"])
     rid = run["id"]; kind = run["deck"]; steps = None
+    if p["Cap"] != "lump" and p["Pair"] != "one": raise SystemExit(f"{rid}: a drawn storage capacitor is set up for single cells only (probe positions, junction check)")
     if kind == "idvg": txt, info = deck_idvg(rid, p, run["struct"])
+    elif kind == "ac": txt, info = deck_ac(rid, p, run["struct"])
     else:
         txt, info, waves, S = deck_cho(rid, p, run["struct"], kind[4:])
         for i, w in enumerate(waves): check_pwl(f"{rid} wave{i}", w)

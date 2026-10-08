@@ -1,0 +1,62 @@
+Rounds 32, 33 (2026-10-08): the storage node drawn as a structure after the Fig.2 cross-section; an avalanche model in the write on it. NOTES (bu), (bv).
+
+== capacitance at 0 V, AC 1 MHz (tools/gt_cap.py)
+run        struct      body | C(SN) total | SN-ground  SN-WL  SN-BL | plates: outer + pillar side + inside = sum | text of the paper   [fF]
+DsaC_c1    gs_c1hb      30  |    4.250    |    4.181  0.070  0.000 | 1.82 + 0.18 + 2.18 = 4.18 | 5.1
+DsaC_c2    gs_c2hb      20  |    4.154    |    4.088  0.065  0.000 | 1.82 + 0.18 + 2.09 = 4.09 | 4.2
+DsaC_c3    gs_c3hb      10  |    4.053    |    3.995  0.058  0.000 | 1.82 + 0.18 + 2.00 = 4.00 | 3.6
+DsbC_c2    gs18_c2hb    20  |    4.009    |    3.943  0.065  0.000 | 1.82 + 0.33 + 1.80 = 3.94 | 4.2
+DscC_c2    gs0_c2hb     20  |    2.572    |    2.506  0.065  0.000 | 1.82 + 0.64 + 0.00 = 2.45 | 4.2
+
+== write of Fig.4(a) (tools/gt_write_tab.py; Cs = lumped capacitor of the deck: 0.00 = drawn node). sa / sb / sc = as drawn / walls 18 nm / solid node;
+   m<model><force>: v o l u = vanOverstraeten Okuto Lackner UniBo, 0 1 2 = default Eparallel ElectricField; DdyW_c2 = fin5
+run          Cs [fF]  driving force   | node at 12 / 24 / 39 / 60 ps [V]    | deviation [mV]              | rms / tolerance (30 mV)
+paper Fig.4(a)                        | 0.720 / 0.920 / 1.060 / 1.130
+DdyW_c2        1.80   ionization off | 0.736 / 0.912 / 1.015 / 1.083       |   +16 /    -8 /   -45 /   -47   | 1.12
+DsaW_c2        0.00   ionization off | 0.495 / 0.693 / 0.839 / 0.953       |  -225 /  -227 /  -221 /  -177   | 7.12
+DsbW_c2        0.00   ionization off | 0.506 / 0.704 / 0.849 / 0.961       |  -214 /  -216 /  -211 /  -169   | 6.79
+DscW_c2        0.00   ionization off | 0.639 / 0.831 / 0.954 / 1.040       |   -81 /   -89 /  -106 /   -90   | 3.05
+Dml0W_c2       0.00   default        | 0.517 / 0.718 / 0.860 / 0.968       |  -203 /  -202 /  -200 /  -162   | 6.43
+Dml1W_c2       0.00   Eparallel      | 0.520 / 0.720 / 0.862 / 0.970       |  -200 /  -200 /  -198 /  -160   | 6.34
+Dml2W_c2       0.00   ElectricField  | 0.772 / 1.010 / 1.098 / 1.135       |   +52 /   +90 /   +38 /    +5   | 1.84
+Dmo0W_c2       0.00   default        | 0.533 / 0.733 / 0.870 / 0.974       |  -187 /  -187 /  -190 /  -156   | 6.02
+Dmo1W_c2       0.00   Eparallel      | 0.531 / 0.733 / 0.871 / 0.976       |  -189 /  -187 /  -189 /  -154   | 6.00
+Dmo2W_c2       0.00   ElectricField  | 0.919 / 1.103 / 1.144 / 1.158       |  +199 /  +183 /   +84 /   +28   | 4.74
+Dmu0W_c2       0.00   default        | 0.510 / 0.713 / 0.856 / 0.966       |  -210 /  -207 /  -204 /  -164   | 6.57
+Dmu1W_c2       0.00   Eparallel      | 0.513 / 0.715 / 0.859 / 0.968       |  -207 /  -205 /  -201 /  -162   | 6.49
+Dmu2W_c2       0.00   ElectricField  | 0.774 / 1.009 / 1.096 / 1.133       |   +54 /   +89 /   +36 /    +3   | 1.83
+Dmv0W_c2       0.00   default        | 0.518 / 0.720 / 0.861 / 0.969       |  -202 /  -200 /  -199 /  -161   | 6.38
+Dmv1W_c2       0.00   Eparallel      | 0.526 / 0.726 / 0.866 / 0.973       |  -194 /  -194 /  -194 /  -157   | 6.19
+Dmv2W_c2       0.00   ElectricField  | 0.785 / 1.020 / 1.103 / 1.137       |   +65 /  +100 /   +43 /    +7   | 2.12
+
+== write + 21 ns hold, no stand-in, no BL pulses (tools/gt_wl_off.py); Fig.8(a) asks for 1371 holes and +445 mV in Case 2
+run          SN at 12/24/39/60 ps [V]      | SN before -> after WL off | pairs: write + fall | holes left | at t_A: holes, body rise [mV], SN change in the hold [mV]
+DmnF_c2      0.50 / 0.69 / 0.84 / 0.95   | 1.063 -> 1.028 (  -36 mV) |      0 +     0 |      0 |      2,    +6, -0.07
+Dml0F_c2     0.52 / 0.72 / 0.86 / 0.97   | 1.073 -> 1.037 (  -36 mV) |    598 +     6 |     33 |     35,   +47, -0.07
+Dml1F_c2     0.52 / 0.72 / 0.86 / 0.97   | 1.074 -> 1.039 (  -36 mV) |    636 +     9 |     41 |     43,   +55, -0.07
+Dml2F_c2     0.77 / 1.01 / 1.10 / 1.13   | 1.157 -> 1.124 (  -33 mV) |  15341 +    11 |    169 | hold not reached yet
+Dmo0F_c2     0.53 / 0.73 / 0.87 / 0.97   | 1.076 -> 1.040 (  -36 mV) |    893 +     9 |     41 |     43,   +55, -0.07
+Dmo1F_c2     0.53 / 0.73 / 0.87 / 0.98   | 1.078 -> 1.042 (  -36 mV) |    937 +    15 |     52 |     54,   +65, -0.07
+Dmo2F_c2     0.93 / 1.11 / 1.14 / 1.16   | 1.166 -> 1.132 (  -34 mV) |  19517 +    22 |    232 |    252,  +188, -0.06
+Dmu0F_c2     0.51 / 0.71 / 0.86 / 0.97   | 1.072 -> 1.047 (  -25 mV) |    561 +     3 |     29 | hold not reached yet
+Dmu1F_c2     0.51 / 0.72 / 0.86 / 0.97   | 1.073 -> 1.048 (  -25 mV) |    593 +     5 |     35 | hold not reached yet
+Dmu2F_c2     0.77 / 1.01 / 1.10 / 1.13   | 1.156 -> 1.123 (  -33 mV) |  15032 +    12 |    170 | hold not reached yet
+Dmv0F_c2     0.52 / 0.72 / 0.86 / 0.97   | 1.074 -> 1.038 (  -36 mV) |    660 +     9 |     38 |     40,   +52, -0.07
+Dmv1F_c2     0.53 / 0.73 / 0.87 / 0.97   | 1.076 -> 1.040 (  -36 mV) |    698 +    10 |     45 |     47,   +59, -0.07
+Dmv2F_c2     0.78 / 1.02 / 1.10 / 1.14   | 1.158 -> 1.125 (  -33 mV) |  14915 +    13 |    178 |    189,  +157, -0.07
+
+== state of the runs at 14:29
+complete [26]: DsaC_c1 DsaC_c2 DsaC_c3 DsaW_c2 DsbC_c2 DsbW_c2 DscC_c2 DscW_c2 Dmv0W_c2 Dmv0F_c2 Dmv1W_c2 Dmv1F_c2 Dmv2W_c2 Dmv2F_c2 Dmo0F_c2 Dmo1W_c2 Dmo1F_c2 Dmo2W_c2 Dmo2F_c2 Dml0W_c2 Dml0F_c2 Dml1W_c2 Dml1F_c2 Dmu0W_c2 Dmu2W_c2 DmnF_c2
+running [7]: Dmo0W_c2 Dml2W_c2 Dml2F_c2 Dmu0F_c2 Dmu1W_c2 Dmu1F_c2 Dmu2F_c2
+
+== structure checks before the two batches
+structure match before run_d32.sh, 2026-10-08 13:44:57
+PASS gs_c1hb: Fig.5(a)/(b) Lg=100 Tbody=30 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 Lcap=100 EOT=3.8A | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, storage capacitor 'u' (shape from the Fig.2 cross-section): dielectric 4 nm, node wall 10 nm
+PASS gs_c2hb: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 Lcap=100 EOT=3.8A | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, storage capacitor 'u' (shape from the Fig.2 cross-section): dielectric 4 nm, node wall 10 nm
+PASS gs_c3hb: Fig.5(a)/(b) Lg=100 Tbody=10 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 Lcap=100 EOT=3.8A | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, storage capacitor 'u' (shape from the Fig.2 cross-section): dielectric 4 nm, node wall 10 nm
+PASS gs18_c2hb: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 Lcap=100 EOT=3.8A | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, storage capacitor 'u' (shape from the Fig.2 cross-section): dielectric 4 nm, node wall 18 nm
+PASS gs0_c2hb: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 Lcap=100 EOT=3.8A | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, storage capacitor 'blk' (shape from the Fig.2 cross-section): dielectric 4 nm, node wall 10 nm
+ALL PASS
+structure match before run_d33.sh, 2026-10-08 13:50:43
+PASS gs_c2hb: Fig.5(a)/(b) Lg=100 Tbody=20 Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20 Nch=1e+18 Lcap=100 EOT=3.8A | junctions at 50.00 / 175.00 nm at 3 heights, N+ 1e+20, body -1e+18 | not from the paper: gate dielectric HfO2, spacer Si3N4, half pillar 0.5 100, storage capacitor 'u' (shape from the Fig.2 cross-section): dielectric 4 nm, node wall 10 nm
+ALL PASS

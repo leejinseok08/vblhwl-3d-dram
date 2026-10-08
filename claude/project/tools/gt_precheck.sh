@@ -24,6 +24,13 @@ for a in "$@"; do
   want="Lg=100 Tbody=$tb Tox=5 Tg=20 dVOX=30 S1=25 S2=25 Nsd=1e+20"
   case "$card" in "$want Nch=1e+18"|"$want Nch=1e+16") c1=1;; *) c1=0;; esac
   mat="gate dielectric $(val $s Gdi), spacer $(val $s Spm), half pillar $(val $s Hb)"
+  # storage node drawn as a structure (2026-10-08): Fig.5(a) gives L_CAP 100 nm and EOT 3.8 A; shape and thicknesses are read off Fig.2
+  cap=$(val $s Cap)
+  if [ -n "$cap" ] && [ "$cap" != lump ]; then
+    cc="Lcap=$(val $s Lcap) EOT=$(val $s Ceot)A"; [ "$cc" = "Lcap=100 EOT=3.8A" ] || c1=0
+    card="$card $cc"; want="$want Lcap=100 EOT=3.8A"
+    mat="$mat, storage capacitor '$cap' (shape from the Fig.2 cross-section): dielectric $(val $s Tcd) nm, node wall $(val $s Tcw) nm"
+  fi
   [ -f runs/_struct/${s}_msh.tdr ] || { echo "FAIL $s: no mesh"; ok=0; continue; }
   out=$(bash tools/gt_mesh_check.sh $s $nl $tb)
   n=$(echo "$out" | grep -c .)

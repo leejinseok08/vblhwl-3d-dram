@@ -17,8 +17,10 @@
 ;; Pair = "one": this cell alone. "yy": two cells across the bit line (row hammer Case 1, Y-Y'), victim left, aggressor
 ;; right. "zz": two layers on one side of the bit line (Case 2, Z-Z'), victim below, aggressor above.
 ;; Bgc = 1: contact "body_v" in the middle of the victim body (the hypothetical grounded body of Fig.7(b)).
-;; Not in this section: storage capacitor (lumped in the decks), the third dimension (Case 3, X-X').
-;; Electrodes: bl, sn_v, gs_v (main gate), gd_v (back gate) of the victim; sn_a, gs_a, gd_a of the aggressor.
+;; Storage capacitor: lumped in the decks (Cap = "lump") or drawn as in the cross-section of Fig.2 (Cap = "u" / "blk", single cells only).
+;; Not in this section: the third dimension (Case 3, X-X').
+;; Electrodes: bl, sn_v, gs_v (main gate), gd_v (back gate) of the victim; sn_a, gs_a, gd_a of the aggressor; gp_v = ground of the
+;; drawn capacitor (plates, finger, pillar).
 ;; =====================================================================
 (sde:clear)
 (sdegeo:set-default-boolean "ABA")
@@ -38,12 +40,18 @@
 (define Pair "@Pair@")           ; one / yy / zz (see the header)
 (define Bgc  @Bgc@)              ; 1 = body contact in the victim
 (define Blc  "@Blc@")            ; BL contact: "axis" = on the pillar axis ("yy": top end of the pillar), "bot" = bottom end of the pillar
-(define yy? (string=? Pair "yy")) (define zz? (string=? Pair "zz"))
+(define Cap  "@Cap@")            ; storage node: lump (capacitor in the deck) / u / blk (a structure, see below)
+(define Lcap (* @Lcap@ nm))      ; storage capacitance length L_CAP: 100 (Fig.5a)
+(define Ceot @Ceot@)             ; EOT of the capacitor dielectric [A]: 3.8 (Fig.5a); the permittivity in the parameter file follows from it
+(define Tcd  (* @Tcd@ nm))       ; capacitor dielectric thickness (Hsu .. Yu: 4)
+(define Tcw  (* @Tcw@ nm))       ; wall and arms of the U-shaped storage node (Fig.2 drawing)
+(define yy? (string=? Pair "yy")) (define zz? (string=? Pair "zz")) (define lump? (string=? Cap "lump"))
 (define Lc (+ S1 Lg S2))                          ; cell length from the pillar face
+(define Lx (+ Lc (if lump? 0 (+ Lcap Tcd (* 10 nm)))))      ; the same with the capacitor and a 10 nm strip of the ground pillar
 (define Zp (+ (* 2 Tox) Tb (* 2 Tg) Dv))          ; Z pitch = 2 Tox + Tbody + 2 Tg + Dvox
-(define xb0 (if yy? Lc 0))                        ; pillar: the whole of it between two cells, else its right half
+(define xb0 (if yy? Lx 0))                        ; pillar: the whole of it between two cells, else its right half
 (define xb1 (+ xb0 (if yy? (* 2 Hb) Hb)))
-(define xmax (+ xb1 Lc)) (define ymax (if zz? (* 2 Zp) Zp))
+(define xmax (+ xb1 Lx)) (define ymax (if zz? (* 2 Zp) Zp))
 (define (box xa ya xb yb mat name) (sdegeo:create-rectangle (position xa ya 0) (position xb yb 0) mat name))
 (define (win name xa ya xb yb) (sdedr:define-refeval-window name "Rectangle" (position xa ya 0) (position xb yb 0)))
 (define (cset name r g b) (sdegeo:define-contact-set name 4.0 (color:rgb r g b) "##"))
@@ -71,6 +79,7 @@
 (sdedr:define-refinement-function "RS.Ch" "MaxLenInt" "Silicon" "SiO2" (* @Mi@ nm) 1.4 "DoubleSide")
 (if (string=? Gdi "SiO2") 0 (sdedr:define-refinement-function "RS.Ch" "MaxLenInt" "Silicon" Gdi (* @Mi@ nm) 1.4 "DoubleSide"))
 (sdedr:define-refinement-size "RS.J" (* @Mj@ nm) (* @Mv@ nm) (* (min @Mj@ 0.2) nm) (* @Mi@ nm))
+(sdedr:define-refinement-size "RS.Cap" (* 2 nm) (* 2 nm) (* 1 nm) (* 1 nm))      ; capacitor dielectric: two cells across its thickness
 (cset "bl" 0 0 1)
 
 ;; ---------------- one cell ----------------
@@ -93,7 +102,25 @@
   (bx S1 y5 ug y6 "TiN" "M.GT_")          ; main gate
   (sdedr:define-constant-profile-region (string-append "PL.Ch_" s) "CP.Ch" (string-append "R.Ch_" s))
   (sdedr:define-constant-profile-region (string-append "PL.Src_" s) "CP.Nsd" (string-append "R.Src_" s))
-  (cset (string-append "sn_" s) 1 0 0)     (edge-contact (string-append "sn_" s) (position (X Lc) ym 0))    ; end face of the source
+  (cset (string-append "sn_" s) 1 0 0)
+  ;; Storage node. "lump": contact on the end face of the source, the capacitor is a circuit element of the deck. Otherwise the capacitor of
+  ;; the Fig.2 cross-section: node on the end face of the source, as high as the gate stack (y1 .. y6) and L_CAP long; ground = plates at
+  ;; the isolation level above and below, the pillar (a 10 nm strip of it) and, in "u", a finger inside the node, which is then U-shaped
+  ;; and open towards the pillar; dielectric Tcd between node and ground. Node and ground are contacts (their metal is removed).
+  (if lump? (edge-contact (string-append "sn_" s) (position (X Lc) ym 0))
+    (let* ((a3 (+ Lc Lcap)) (xr (+ a3 Tcd)))                                  ; end of the node, face of the ground pillar
+      (cset (string-append "gp_" s) 0.3 0.3 0.3)
+      (bx Lc yb Lx (+ yb Zp) "TiN" "M.Gp_")                                  ; ground: what the next boxes leave of it = two plates + pillar strip
+      (bx Lc (- y1 Tcd) xr (+ y6 Tcd) "Insulator1" "R.Cd_")                   ; dielectric around the node
+      (bx Lc y1 a3 y6 "TiN" "M.Sn_")                                          ; node
+      (if (string=? Cap "u") (begin
+        (bx (+ Lc Tcw) (+ y1 Tcw) xr (- y6 Tcw) "Insulator1" "R.Cdi_")        ; inside of the U, lined with dielectric
+        (bx (+ Lc Tcw Tcd) (+ y1 Tcw Tcd) xr (- y6 Tcw Tcd) "TiN" "M.Gf_")    ; ground finger
+        (metal-contact (string-append "gp_" s) (position (X (- xr nm)) ym 0))))
+      (metal-contact (string-append "gp_" s) (position (X (- Lx nm)) (+ yb nm) 0))
+      (metal-contact (string-append "sn_" s) (position (X (+ Lc nm)) ym 0))
+      (wn "RW.Cap_" Lc yb Lx (+ yb Zp))
+      (sdedr:define-refinement-placement (string-append "RP.Cap_" s) "RS.Cap" (string-append "RW.Cap_" s))))
   (cset (string-append "gs_" s) 0 0.6 0)   (metal-contact (string-append "gs_" s) (position xg (/ (+ y5 y6) 2.0) 0))
   (cset (string-append "gd_" s) 0 0.9 0.3) (metal-contact (string-append "gd_" s) (position xg (/ (+ y1 y2) 2.0) 0))
   (if (= Bgc 1) (if (string=? s "v") (begin                 ; 20 nm x 2 nm contact slot in the middle of the body, under the gate centre

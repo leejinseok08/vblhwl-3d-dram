@@ -6,6 +6,39 @@
 #   rh <runs> = row-hammer table | s <tags> = scorecard | t <tags> = loss after every BL-low phase | wo <tags> = write and WL switch-off
 #   ii = the impact-ionization factor runs | w <runs> = write curves | steps <runs> = their last time steps
 cd ~/vblhwl_3d_dram
+if [ "$1" = mat ]; then    # mat <pattern>: material names of the installed release (datexcodes.txt)
+  f=$(find $(dirname $(dirname $(dirname $(readlink -f $(which sdevice))))) -path '*/lib/datexcodes.txt' 2>/dev/null | head -1); echo "$f"
+  grep -B2 -E "group *= *$2" "$f" | grep '{' | tr -d ' {' | paste -sd' ' | fold -s -w 180; exit 0     # all materials of that group (Insulator, Conductor, Semiconductor)
+fi
+if [ "$1" = m1s ]; then    # round 32: meshes of the cells with the drawn storage capacitor (structure only, no device run), check, doping maps, contacts
+  S="gs_c1hb gs_c2hb gs_c3hb gs18_c2hb gs0_c2hb"
+  ( cd runs/_struct; for s in $S; do [ -f ${s}_msh.tdr ] || sde -e -l ${s}_dvs.cmd > ${s}_sde.log 2>&1; ls -la --time-style=+%H:%M ${s}_msh.tdr | awk '{print $7, $5, $6}'
+      grep -i -E 'error|warn|fail' ${s}_sde.log | head -3; grep -h -i -E 'contact|vertices|elements' ${s}_msh.log 2>/dev/null | head -12 | cut -c1-150; done
+    for s in gs_c2hb gs18_c2hb gs0_c2hb; do bash ../../tools/export_doping.sh $s 0.200 | tail -1; done )
+  bash tools/gt_precheck.sh gs_c1hb:30 gs_c2hb:20 gs_c3hb:10 gs18_c2hb:20 gs0_c2hb:20
+  exit 0
+fi
+if [ "$1" = pk ]; then    # rounds 32 / 33 for the shared repository: tables -> /tmp/tables_r3233.txt; deck, run description and plot files of the complete runs -> /tmp/share_r3233.tgz
+  { echo "Rounds 32, 33 (2026-10-08): the storage node drawn as a structure after the Fig.2 cross-section; an avalanche model in the write on it. NOTES (bu), (bv)."
+    echo; echo "== capacitance at 0 V, AC 1 MHz (tools/gt_cap.py)"; python3 tools/gt_cap.py DsaC_c1 DsaC_c2 DsaC_c3 DsbC_c2 DscC_c2
+    echo; echo "== write of Fig.4(a) (tools/gt_write_tab.py; Cs = lumped capacitor of the deck: 0.00 = drawn node). sa / sb / sc = as drawn / walls 18 nm / solid node;"
+    echo "   m<model><force>: v o l u = vanOverstraeten Okuto Lackner UniBo, 0 1 2 = default Eparallel ElectricField; DdyW_c2 = fin5"
+    python3 tools/gt_write_tab.py DdyW_c2 DsaW_c2 DsbW_c2 DscW_c2 $(cd runs; ls -d Dm[volu][012]W_c2)
+    echo; echo "== write + 21 ns hold, no stand-in, no BL pulses (tools/gt_wl_off.py); Fig.8(a) asks for 1371 holes and +445 mV in Case 2"
+    python3 tools/gt_wl_off.py DmnF_c2 $(cd runs; ls -d Dm[volu][012]F_c2)
+    echo; echo "== state of the runs at $(date '+%H:%M')"; python3 tools/run_state.py run_d32.sh run_d33.sh
+    echo; echo "== structure checks before the two batches"; cat runs/run_d32.check runs/run_d33.check; } > /tmp/tables_r3233.txt 2>&1
+  ids=$(python3 tools/run_state.py -c run_d32.sh run_d33.sh)
+  ( cd runs; for r in $ids; do ls $r/${r}_des.cmd $r/run.json $r/*.plt 2>/dev/null; done; ls _struct/gs*_dvs.cmd ) > /tmp/share_r3233.lst
+  tar czf /tmp/share_r3233.tgz -C runs -T /tmp/share_r3233.lst; echo "$(echo $ids | wc -w) complete runs packed, $(ls -la /tmp/share_r3233.tgz | awk '{printf "%.1f MB", $5 / 1e6}'); tables $(wc -l < /tmp/tables_r3233.txt) lines"
+  exit 0
+fi
+if [ "$1" = m3 ]; then    # rounds 32 / 33: m3 <seconds to wait> <tags>: state of the two batches, then score and the four points of the write of each tag
+  sleep $2; shift; shift; date +%H:%M:%S; python3 tools/run_state.py run_d32.sh run_d33.sh | cut -c1-700
+  python3 tools/score2d.py -v "$@" | awk '/^[a-z]/ {t=$1; w=$3} /W:/ {print t, "| W score", w, "|", $2, $3, $4, $5, $6, $7, $8, $9, $10}'
+  python3 tools/gt_wl_off.py $(for t in "$@"; do [ -d runs/D${t}F_c2 ] && echo D${t}F_c2; done) | cut -c1-230      # write + hold runs: pairs, holes left, state at t_A
+  exit 0
+fi
 m=$1; [ -n "$2" ] && sleep $2; shift; shift
 if [ "$m" = r3d ]; then
   mkdir -p runs/_unused/struct3d_before_rebuild

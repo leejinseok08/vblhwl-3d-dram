@@ -37,6 +37,12 @@ Only this device is run from now on (user, 2026-10-05). The Chen 2026 BCVFET wor
    with `tools/share_pack.sh`, status and analysis updated, push. Never into the repository: the paper's PDF, pictures that
    carry a crop of a paper figure (`gt3_*_vs_cho_fig2*.png`, anything drawn by `plot_gt.py` / `plot_gt3.py`), credentials.
 
+7. **Measurement criteria** (user, 2026-10-08): `MEASURE.md` (Korean) is how every quantity is defined, extracted, labelled and judged; read it
+   before scoring or reporting. In short: definition -> conditions -> extraction -> comparison; every number with its kind (stated / read / bound /
+   fitted / condition / result); calibration targets, conditions and predictions counted apart (`tools/repro_rate.py`); the capacitance always as
+   text / drawn / fitted; row hammer as attack minus idle, so every row-hammer batch carries an idle run; no average without the worst item.
+   Codex's two documents of that day (`Codex_독립검증_2026-10-08`) are its sources.
+
 ## 2D completion process (user, 2026-10-06: finish the device at the 2D level first; 3D is paused)
 Every round, in this order. No step is skipped.
 1. **Structure match against the paper, before any simulation** (user, said again on 2026-10-06): `bash tools/gt_start.sh
@@ -99,7 +105,16 @@ Run names must differ by more than letter case (the PC's file system is case-bli
   need quotes or loops (the remote shell is tcsh).
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
-## State (2026-10-08; details NOTES (ax) .. (bs))
+## State (2026-10-08; details NOTES (ax) .. (bv))
+**Rounds 32, 33 (2026-10-08 afternoon, NOTES (bu), (bv); user: "run it" = M1, then M3 as a trial; fin5 unchanged):** the storage node drawn as a
+structure after the Fig.2 cross-section (`Cap="u"`: U-shaped node, ground finger inside, plates above and below; structures gs_*; deck "ac",
+`tools/gt_cap.py`) has 4.15 fF at 0 V (bodies 30 / 20 / 10 nm: 4.25 / 4.15 / 4.05; text 5.1 / 4.2 / 3.6; solid node 2.57). The write on it is the
+write of the lumped 4.2 fF (0.50 / 0.69 / 0.84 / 0.95 V, W 7.12). So the paper's capacitor is the text's, and Fig.4(a) asks for 2.3 times the
+charging current, more than the DC currents of Fig.5(c) hold. An avalanche model in the write: default force and Eparallel change nothing with
+any of four models; ElectricField brings the write to +50 / +90 / +40 / 0 mV (UniBo, Lackner; W 1.8) and leaves 160 - 250 holes at t_A (1371
+needed). Not adopted. Open decisions for the user: which capacitor the device carries (fitted 1.8 fF or drawn 4.15 fF), merge into `main`,
+old runs to the PC. Next by the accepted order: M3's Fig.7 half, then M4 starting with the AC capacitance matrix of the pairs.
+Measurement criteria: `MEASURE.md` (rule 7). fin5 = 39 / 52 items, predictions 9 / 15.
 **Complete report for the user (2026-10-08, NOTES (bs)):** `results_vbl_hwl_1t1c_3ddram\GT_IRPS2026_전체보고_eliU_2026-10-08.html` (`tools/make_eliu_report_full.py`
 + `tools/eliu_full_text.py`): where every figure stands, remaining problems P1 - P8, measures M1 - M7 with their explanation, six decisions waiting for
 the user (order of the measures; avalanche model in the write as a trial for M3; when to do the 3D pairs; keep decision B; merge `claude` into `main`;

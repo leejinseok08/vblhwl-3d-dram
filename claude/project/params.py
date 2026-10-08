@@ -41,6 +41,16 @@ P = dict(
     Bgc=0,              # 1 = contact "body_v" in the victim body: the hypothetical grounded body of Fig.7(b)    [Cho]
     Blc="axis",         # where the 2D section puts the BL contact: "axis" = on the pillar axis over its whole height ("yy": top end of the
                         # pillar); "bot" = bottom end of the pillar (in "zz" below the victim). The pillar of the array is contacted at its end.   [ASM]
+    Cap="lump",         # storage node: "lump" = lumped capacitor Cs in the decks (the section ends at the source contact). "u" = the capacitor of
+                        # the Fig.2 cross-section as a structure: U-shaped node on the end face of the source, as high as the gate stack, open
+                        # towards the ground pillar; ground = plates at the isolation level above and below, a finger inside the U, the pillar;
+                        # dielectric between. "blk" = solid node without the finger (a control, not what the drawing shows)     [ChoF]
+    Lcap=100,           # storage capacitance length L_CAP: source end to the dielectric of the ground pillar                  [Cho]
+    Ceot=3.8,           # EOT of the storage-node dielectric [A]; sets its permittivity (make_runs.py: 3.9 x Tcd / EOT)         [Cho]
+    Tcd=4,              # its physical thickness: "capacitor dielectric 4 nm" of the same cell frame in Hsu .. Yu (IMW 2025 Fig.6(d), TED
+                        # 2026 Table I); 2 - 4 px lines in the drawing. With the EOT fixed it only moves the fringe fields         [Grp]
+    Tcw=10,             # wall and arms of the U-shaped node: 4 - 6 px in the Fig.2 cross-section (2.3 nm/px along the channel,
+                        # 1.8 nm/px across). 18 = the 8 nm band inside the U of the drawing counted as part of the node           [ChoF]
     Mc=2, Mj=0.5, Mv=1, Mi=0.2, Mg=1,   # mesh of the 2D section [nm]: along the channel, at the two junctions, across the body,
                         # at the gate dielectric; Mg = smallest step the doping-gradient refinement may take along the
                         # channel (not physics: the paper gives no mesh)                     [ASM]
@@ -109,6 +119,7 @@ P = dict(
                         # densities in its D factor corrected by the quasi-Fermi gradient: not "D off"; diagnostic only,
                         # NOTES (au)); 2 = non-local path model                              [Cho] / [ASM]
     II=0,               # impact ionization (the paper: off in Fig.5(c) / 6(e), on in Fig.7)   [Cho]
+    IImod="vanOverstraeten",   # its model: vanOverstraeten (Sentaurus default), Okuto, Lackner, UniBo (the paper: "an avalanche model")   [ASM]
     IIdf="",            # its driving force: "" = Sentaurus default (GradQuasiFermi), "Eparallel", "ElectricField"   [ASM]
     BLhv=-1.0,          # hole recombination velocity at the BL contact [cm/s]; -1 = ohmic. The 2D section puts the contact
                         # on the symmetry plane of the pillar, 50 nm from the junction; in the 3D array it sits at the
