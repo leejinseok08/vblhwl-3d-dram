@@ -50,6 +50,8 @@ STRUCTS = dict(
     gb1_c1hb=dict(Tbody=30, Blc="bot", Blx=110), gb2_c1hb=dict(Tbody=30, Blc="bot", Blx=220), gb4_c1hb=dict(Tbody=30, Blc="bot", Blx=440),
     gb1_c2hb=dict(Blc="bot", Blx=100), gb2_c2hb=dict(Blc="bot", Blx=200), gb4_c2hb=dict(Blc="bot", Blx=400),
     gb2_c3hb=dict(Tbody=10, Blc="bot", Blx=180), gb2_c4hb=dict(Tbody=10, Nch=1e16, Blc="bot", Blx=180),      # 2 pitches, the 10 nm bodies (Cases 3 - 5)
+    # the row-hammer pairs of the device since 2026-10-08 (fin6): BL contact at the pillar end, two Z pitches below the pair
+    gb2_yy=dict(Pair="yy", Blc="bot", Blx=200), gb2_zz=dict(Pair="zz", Blc="bot", Blx=200), gb2_zzg=dict(Pair="zz", Blc="bot", Blx=200, Bgc=1),
 )
 SDE_KEYS = ["Lg", "Tbody", "Tox", "Tgm", "Dvox", "Nsd", "Nch", "Gdi", "Spm", "Pair", "Bgc", "Blc", "Lsp1", "Lsp2", "Wbl", "Wact", "Dhox", "Mc", "Mj", "Mv", "Mi", "Mg", "Wcut",
             "Cap", "Lcap", "Ceot", "Tcd", "Tcw", "Blx"]
@@ -582,9 +584,10 @@ PC = dict(TR, tWr=0.105, SNset=1.1, Vwr=1.168, Nthr=4)
 # tools/paper_targets.py)  4. adopt a change only if it lowers the score of the group it is meant for and leaves Fig.5(c)
 # inside its tolerance  5. next round from the new baseline. A configuration <tag> = runs D<tag>I_c<n> (Id-Vg), D<tag>W_c2
 # (write), D<tag>F_c<n> (FBE, impact ionization on), D<tag>Ry_yy / Ryi_yy / Rz_zz / Rzi_zz / Rzg_zz (row hammer).
-def cfg2d(tag, what, k_cs=1.0, par=None, rh=None, gb=None, cases=None, wst="gr_c2h", rhsel=None, iv=None, wcase=None, **ov):
+def cfg2d(tag, what, k_cs=1.0, par=None, rh=None, gb=None, cases=None, wst="gr_c2h", rhsel=None, iv=None, wcase=None, rst=None, **ov):
     """cases / wst: other structures for the cases and for the write run; rhsel: only these row-hammer runs; iv: overrides of the Id-Vg runs;
-    wcase: the write run on another case than Case 2 (an entry of CASES / CASEB: its structure, work function and text capacitor)."""
+    wcase: the write run on another case than Case 2 (an entry of CASES / CASEB: its structure, work function and text capacitor);
+    rst: other pair structures for the row-hammer runs, by run name."""
     pv = dict(Par=par) if par else {}; GB = gb or {}; CS = cases or CASES
     if "I" in what:
         for c, st, wf, tb in CS: RUNS.append(R(f"D{tag}I_c{c}", "GT", st, "idvg", WFs=wf, WFd=wf, **dict(IV, Nthr=4, **pv, **(iv or {}))))
@@ -599,7 +602,7 @@ def cfg2d(tag, what, k_cs=1.0, par=None, rh=None, gb=None, cases=None, wst="gr_c
         for nm_, st, ii in (("Ry_yy", "gr_yy", 0), ("Ryi_yy", "gr_yy", 1), ("Rz_zz", "gr_zz", 0), ("Rzi_zz", "gr_zz", 1), ("Rzg_zz", "gr_zzg", 1),
                             ("Rzb_zz", "gr_zzb", 0), ("Rzbi_zz", "gr_zzb", 1), ("Rzbg_zz", "gr_zzbg", 1)):      # the last three (BL contact at the bottom end of the pillar) only when named in rhsel
             if (rhsel and nm_ not in rhsel) or (not rhsel and "zb" in nm_): continue
-            RUNS.append(R(f"D{tag}{nm_}", "GT", st, "cho:RH", WFs=4.7, WFd=4.7, II=ii, Cs=CSB[20] * k_cs,
+            RUNS.append(R(f"D{tag}{nm_}", "GT", (rst or {}).get(nm_, st), "cho:RH", WFs=4.7, WFd=4.7, II=ii, Cs=CSB[20] * k_cs,
                           **dict(dict(PC, ErrH=1e14, tON=0.094, tOFF=0.094, Ncyc=10), **pv, **ov, **(rh or {}))))
 # Round 1: baseline b0 = the paper's conditions as decided (pre-charge of Fig.4(a): BL 1.168 V, WL high 15 .. 120 ps; t = 0:
 # storage node 1.1 V, WL 0, BL Vdd; FBE timing of Fig.8(b); impact ionization on in FBE, row hammer both ways; text Cs; default
@@ -905,6 +908,15 @@ cfg2d("pb2", "I", cases=((2, "gb2_c2hb", 4.7, 20),), par=PN); cfg2d("pb2", "W", 
 # after the first losses (15:16: Case 1 82.8 / 119.3 / 131.3 / 134.4 mV and Case 2 22.2 / 27.3 / 29.1 / 29.3 mV for 0 / 1 / 2 / 4 pitches, bars unchanged:
 # the reading settles from 2 pitches on): the 10 nm bodies with 2 pitches, so that the five cases exist at the settled position
 cfg2d("pb2", "F", cases=((3, "gb2_c3hb", 4.7, 10), (4, "gb2_c4hb", 4.7, 10), (5, "gb2_c4hb", 5.0, 10)), gb=GF5, ProbeX=1, ProbeT=1, II=0, **B2)
+# Round 35 (user, 2026-10-08 16:00: "change to pb2"): the device is now `fin6` = fin5 measured at the BL pillar end two Z pitches from the cell
+# (tag pb2; `COMPOSE["fin6"]` in tools/score2d.py). What it still lacks at that position: the Id-Vg of Cases 1, 3, 4, 5 and the row hammer on
+# pairs with the continued pillar (gb2_yy, gb2_zz, gb2_zzg; Fig.6(e): avalanche model off, Fig.7: on, default driving force, as in fin5).
+# pbi = the same five row-hammer decks with the aggressor WL kept at 0 V: the idle controls MEASURE.md 4.5 asks for (attack minus idle).
+CASEX = ((1, "gb2_c1hb", 4.7, 30), (2, "gb2_c2hb", 4.7, 20), (3, "gb2_c3hb", 4.7, 10), (4, "gb2_c4hb", 4.7, 10), (5, "gb2_c4hb", 5.0, 10))
+cfg2d("pb2", "I", cases=CASEX[:1] + CASEX[2:], par=PN)
+RSX = {"Ry_yy": "gb2_yy", "Ryi_yy": "gb2_yy", "Rzb_zz": "gb2_zz", "Rzbi_zz": "gb2_zz", "Rzbg_zz": "gb2_zzg"}
+cfg2d("pb2", "R", rhsel=tuple(RSX), rst=RSX, **B2)
+cfg2d("pbi", "R", rhsel=tuple(RSX), rst=RSX, rh=dict(Idle=1), **B2)
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the

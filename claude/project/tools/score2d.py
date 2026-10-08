@@ -31,6 +31,8 @@ COMPOSE = {"fin2": dict(I="fin", W="fin", F="h1", R="fin"), "fin3": dict(I="fin"
            # fin5 = fin4 with the Hurkx coefficients back-calculated in round 30 (A 1.2e20, B 2.0e7 V/cm) and the row hammer on the pairs
            # with the BL contact at the pillar end: all runs of round 31 (tag dy)
            "fin5": dict(I="dy", W="dy", F="dy", R="dy"),
+           # fin6 = fin5 measured at the BL pillar end two Z pitches from the cell (user, 2026-10-08: "change to pb2"; MEASURE.md 4.6; NOTES (bw), (bx))
+           "fin6": dict(I="pb2", W="pb2", F="pb2", R="pb2"),
            "fin3b": dict(I="d0", W="dc", F="dc", R="fin"), "fin3n": dict(I="fin", W="dn", F="dl", R="fin"), "fin3bn": dict(I="d0", W="do", F="dm", R="fin")}
 # Reading of Fig.8(a), back-calculated on 2026-10-07 (NOTES (bk); the paper does not say where it reads the body potential): for the FBE
 # runs named here the body rise is the AVERAGE electrostatic potential of the body under the gate (column AveWindow, runs with
@@ -91,28 +93,40 @@ def fbe(tag):
         txt.append(f"c{c} rise {rise:+.0f} first {l1:.2f} {f'after {last[0]} low phases' if last else '200ns'} {'-' if l2 is None else format(l2, '.2f')} (SN0 {v0:.3f})")
     return (rms(er), rms(e1), rms(e2)), "; ".join(txt)
 
-def rh_run(rid):
-    s = load(os.path.join(rd(rid), rid + "_sys.plt")); t = s["time"]; sn = s[[k for k in s if "nSN)" in k][0]]; wa = s[[k for k in s if "nWLa" in k][0]]
-    r = edges(t, wa, 0, 1.8, True)
+# Row-hammer runs of a configuration -> tag of their idle controls (the same decks with the aggressor WL kept at 0 V). Where the control of a
+# run exists the scored number is attack minus idle, the net effect of the attack (MEASURE.md 4.5); the raw value is printed next to it.
+IDLE = {"pb2": "pbi"}
+
+def rh_run(rid, r=None):
+    s = load(os.path.join(rd(rid), rid + "_sys.plt")); t = s["time"]; sn = s[[k for k in s if "nSN)" in k][0]]
+    if r is None: r = edges(t, s[[k for k in s if "nWLa" in k][0]], 0, 1.8, True)       # an idle control is read at the instants of its attack run
     if len(r) < 2: return None
     per = r[1] - r[0]; v = [at(t, sn, x - 2e-11) for x in r] + ([at(t, sn, r[-1] + per - 2e-11)] if t[-1] >= r[-1] + per - 2e-11 else [])
     n = len(v) - 1
-    return dict(n=n, tot=(v[0] - v[-1]) * 1e3, per=(v[0] - v[-1]) / n * 1e3, last=(v[-6] - v[-1]) / 5 * 1e3 if n >= 6 else None)
+    return dict(n=n, tot=(v[0] - v[-1]) * 1e3, per=(v[0] - v[-1]) / n * 1e3, last=(v[-6] - v[-1]) / 5 * 1e3 if n >= 6 else None, r=r)
 
 def rh(tag):
     tag = part(tag, "R"); e, ei, txt = [], [], []
     # a configuration that has the Z-Z' pair with the BL contact at the pillar end (run names Rzb.._zz) is scored from that pair
     own = lambda n: next((x for x in (f"D{tag}{n.replace('Rz', 'Rzb', 1)}", f"D{tag}{n}") if os.path.isdir(rd(x))), f"D{tag}{n}")
+    def measure(rid):       # the run; with an idle control of the configuration (IDLE) the same minus that control
+        m = rh_run(rid) if rid else None
+        iid = rid.replace("D" + tag, "D" + IDLE[tag], 1) if m and tag in IDLE and rid.startswith("D" + tag) else None
+        mi = rh_run(iid, m["r"]) if iid and glob.glob(os.path.join(rd(iid), "*_sys.plt")) else None
+        if mi and mi["n"] == m["n"]:
+            m = dict(m, raw=m["per"], per=m["per"] - mi["per"], tot=m["tot"] - mi["tot"], last=m["last"] - mi["last"] if None not in (m["last"], mi["last"]) else None)
+        return m
+    net = lambda m: f" [attack - idle; with the cell's own leak {m['raw']:+.4f}]" if m and "raw" in m else ""
     for k, n, ref in (("yy", "Ry_yy", P.RH["yy"]), ("zz", "Rz_zz", P.RH["zz"])):
         rid = first(own(n), "Db0" + n)
-        m = rh_run(rid) if rid else None
+        m = measure(rid)
         if not m or m["n"] < 10: txt.append(f"{k} off: not complete"); continue
-        e.append(elog(m["per"], ref)); txt.append(f"{k} off {m['per']:+.4f} (last 5: {m['last']:+.4f})")
+        e.append(elog(m["per"], ref)); txt.append(f"{k} off {m['per']:+.4f} (last 5: {m['last']:+.4f}){net(m)}")
     for k, n, ref, kind in (("yy", "Ryi_yy", P.RH_II["yy"], "per"), ("zz", "Rzi_zz", P.RH_II["zz_drop"], "tot"), ("zz gnd", "Rzg_zz", P.RH_II["zz_gnd"], "per")):
         rid = first(own(n), "Db0" + n)
-        m = rh_run(rid) if rid else None
+        m = measure(rid)
         if not m or m["n"] < 10: txt.append(f"{k} on: not complete"); continue
-        ei.append(elog(m[kind], ref)); txt.append(f"{k} on {m[kind]:+.4f}{' mV total' if kind == 'tot' else ''}")
+        ei.append(elog(m[kind], ref)); txt.append(f"{k} on {m[kind]:+.4f}{' mV total' if kind == 'tot' else ''}{net(m)}")
     return (rms(e), rms(ei)), "; ".join(txt)
 
 if __name__ == "__main__":

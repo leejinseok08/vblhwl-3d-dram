@@ -18,6 +18,18 @@ if [ "$1" = m1s ]; then    # round 32: meshes of the cells with the drawn storag
   bash tools/gt_precheck.sh gs_c1hb:30 gs_c2hb:20 gs_c3hb:10 gs18_c2hb:20 gs0_c2hb:20
   exit 0
 fi
+if [ "$1" = m5s ]; then    # round 35: meshes of the pairs with the BL pillar continued by two pitches (structure only, no device run), check, doping maps
+  ( cd runs/_struct; for s in gb2_yy gb2_zz gb2_zzg; do [ -f ${s}_msh.tdr ] || sde -e -l ${s}_dvs.cmd > ${s}_sde.log 2>&1; ls -la --time-style=+%H:%M ${s}_msh.tdr | awk '{print $7, $5, $6}'
+      grep -i -E 'error|fail' ${s}_sde.log | head -3; grep -h -E 'Optimizing elements' ${s}_msh.log 2>/dev/null | head -1; done
+    bash ../../tools/export_doping.sh gb2_zz 0.200 | tail -1; bash ../../tools/export_doping.sh gb2_yy 0.400 300 | tail -1 )
+  bash tools/gt_precheck.sh gb2_c1hb:30 gb2_c3hb:10 gb2_c4hb:10 gb2_yy:20:1:yy gb2_zz:20:2 gb2_zzg:20:2
+  exit 0
+fi
+if [ "$1" = m5 ]; then    # round 35: m5 <seconds to wait>: state, then the scorecard of fin5 and fin6 and the share of items inside the tolerance
+  sleep $2; date +%H:%M:%S; python3 tools/run_state.py run_d35.sh | cut -c1-500
+  python3 tools/score2d.py -v fin5 fin6 | cut -c1-520; python3 tools/repro_rate.py fin5 fin6 | cut -c1-330
+  exit 0
+fi
 if [ "$1" = m4s ]; then    # round 34: meshes of the cells with the BL pillar continued to its contact (structure only, no device run), check, doping map
   S="gb1_c1hb gb2_c1hb gb4_c1hb gb1_c2hb gb2_c2hb gb4_c2hb"
   ( cd runs/_struct; for s in $S; do [ -f ${s}_msh.tdr ] || sde -e -l ${s}_dvs.cmd > ${s}_sde.log 2>&1; ls -la --time-style=+%H:%M ${s}_msh.tdr | awk '{print $7, $5, $6}'

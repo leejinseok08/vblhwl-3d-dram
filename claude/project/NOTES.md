@@ -3,6 +3,39 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-08 (bx) user: "change to pb2" - the device is now `fin6`: fin5 measured at the end of the BL pillar, two Z pitches from the cell. Round 35 fills what was missing at that position (Id-Vg of four cases; row hammer with idle controls, still running at 16:35)
+- `fin6` = `COMPOSE["fin6"]` in tools/score2d.py = the runs with tag pb2: Dpb2I_c1..5, Dpb2W_c2, Dpb2F_c1..5 (rounds 34, 35), Dpb2R* (round 35).
+  Structures: single cells gb2_c1hb / gb2_c2hb / gb2_c3hb / gb2_c4hb (`Blc="bot"`, `Blx` = 220 / 200 / 180 / 180 nm = two Z pitches of the case), pairs
+  gb2_yy, gb2_zz, gb2_zzg (`Blx` 200). Everything else is fin5: HfO2 5 nm, Hurkx A 1.2e20 / B 2.0e7, no avalanche model in Fig.4(a) / 5(c) / 8, lumped
+  node on the 1.8 fF scale (2.19 / 1.8 / 1.54 fF), stand-in hole charge at fin5's rates (GBQ x GBB x FN: the bars do not move with the contact).
+- Round 35 (`run_d35.sh`, 15:52 - ; 14 runs; registered and pushed before the start, Codex nothing live, gate ALL PASS with six lines read twice;
+  decks = fin5's except the mesh, the idle controls except the aggressor WL; pictures `gt_pair_{yy,zz}_bl_pillar200_vs_cho_fig2.png`):
+  * Id-Vg of Cases 1, 3, 4, 5 (16:13): as fin5 to the last digit of the scorer but the on-current, which the 200 nm of pillar lower by 0.02 - 0.03
+    decade at 1.8 V (Case 1 -3.68 against -3.65, Case 4 -3.62 against -3.60). Gate voltages 0.36 / 0.48 / 0.61, 0.33 / 0.45 / 0.59, 0.31 / 0.43 / 0.56,
+    0.27 / 0.39 / 0.51, 0.57 / 0.69 / 0.81 V; GIDL at -1 V -13.43 / -13.22 / -13.17 / -13.39 / -12.86.
+  * Row hammer: five attack runs (Y-Y', Z-Z', avalanche model off / on, grounded body) and their five idle controls (`pbi`: aggressor WL at 0 V).
+    The scorer now takes attack minus idle where the control exists (`IDLE` in score2d.py) and prints the raw value next to it. At 16:30 the idle
+    controls were done but one; the Z-Z' attack runs stood at cycle 4 of 10 (about 40 minutes to go), the Y-Y' attack runs at the first aggressor
+    pulse with steps of 0.4 - 0.8 ps (hours). NOT IN YET: to be read with `bash tools/_q.sh m5 0` and entered here.
+- fin6 against fin5 (rms of deviation / tolerance; items inside):
+    group                 fin5            fin6            what moved
+    IV  Fig.5(c)          0.72  23 / 28   0.73  23 / 28   nothing (on-current -0.02 decade)
+    W   Fig.4(a)          1.12   2 /  4   1.23   2 /  4   0.726 / 0.903 / 1.009 / 1.080 V: 10 mV slower through the pillar
+    BR  Fig.8(a)          0.10   5 /  5   0.13   5 /  5   bars +560 / +450 / +367 / +323 / +371 mV
+    L1  first phase       0.42   5 /  5   0.64   4 /  5   131.3 / 29.1 / 6.03 / 4.78 / 0.24 mV (paper 55 / 29 / 7.1 / 3.5 / below 0.5): Case 1 out
+    L2  later             1.46   4 /  5   1.74   2 /  5   312 / 109 / 24.3 / 7.90 / 1.59 mV (paper 100 / 50 / 14.6 / 5.0 / below 0.5): Cases 1, 2, 5 out
+    RH  Fig.6(e)          4.42   0 /  2   running
+    RI  Fig.7            11.88   0 /  3   running
+    all                         39 / 52   36 / 47 so far; 36 / 52 if the five row-hammer items stay outside (cal 25 / 32, cond 5 / 5, pred 6 / 15)
+- What the change does and does not do: it puts the BL terminal where the paper's structure has one, and it takes away an agreement that came
+  from the wrong place (the later losses). It adds no agreement of its own except Case 2's and Case 3's first-phase loss. Open with it: Case 1
+  (2.4 times the paper's first-phase loss, 3.1 times the later one) and the later losses in general: the body keeps its charge too long once no
+  contact near the junction takes its holes. Candidates not yet looked at: the other cells along the pillar (their bodies and junctions take
+  holes too; our continued pillar stands in oxide), Auger recombination in the N+ pillar (none in the decks), and the capacitor (1.8 fF fitted
+  against 4.15 fF drawn: in charge the later loss of Case 2 is the paper's, 0.20 against 0.21 fC, and the first-phase loss is 2.3 times short).
+- Not moved to the new position: the drawn-capacitor structures gs_* (contact on the end face of a one-layer pillar), the 3D templates (contact on
+  the axis plane), the Hsu check (Id-Vg only: does not react). The 3D ones matter for M4.
+
 ## 2026-10-08 (bw) user: "what is the initial TCAD capacitor derived from Fig.5(a)?" and "the measurement criteria were meant for deciding WHERE on the BL you measure" - round 34: the BL contact moved along the pillar. FBE losses depend on it by up to 2.2 times and settle from two Z pitches on; Id-Vg and the write do not react
 - The capacitor: the paper's text has 3.6 / 4.2 / 5.1 fF "calculated using the dimensions defined in Fig.5(a)" (EOT 3.8 A, L_CAP 100 nm, Z pitch 90 / 100 /
   110). Our decks started with exactly those as lumped capacitors (`params.py` Cs = 4.2e-15, `CSB` in make_runs.py; baseline b0). EOT 3.8 A alone is

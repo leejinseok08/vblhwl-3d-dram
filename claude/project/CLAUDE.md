@@ -105,7 +105,16 @@ Run names must differ by more than letter case (the PC's file system is case-bli
   need quotes or loops (the remote shell is tcsh).
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
-## State (2026-10-08; details NOTES (ax) .. (bv))
+## State (2026-10-08; details NOTES (ax) .. (bx))
+**The device since 2026-10-08 16:00 is `fin6`** (user: "pb2로 바꿔줘"; NOTES (bw), (bx), `MEASURE.md` 4.6): fin5 measured where the paper's device has its BL
+terminal, at the end of the BL pillar, two Z pitches from the cell (`Blc="bot"`, `Blx` = 2 pitches; single cells gb2_c1hb .. gb2_c4hb, pairs gb2_yy,
+gb2_zz, gb2_zzg; runs with tag pb2, idle controls of the row hammer pbi; `COMPOSE["fin6"]`). Everything else as fin5: no avalanche model in
+Fig.4(a) / 5(c) / 8, Hurkx A 1.2e20 / B 2.0e7, lumped node on the 1.8 fF scale, stand-in hole charge at fin5's rates (the bars do not move with the
+contact position). Row hammer is scored as attack minus idle. Scores IV 0.73, W 1.23, BR 0.13, L1 0.64 (Case 1 out: 131 against 55 mV), L2 1.74 (Cases 1, 2, 5 out);
+36 of the 47 items that are in; the five row-hammer items were still running when this was written (round 35, started 15:52: read them with
+`bash tools/_q.sh m5 0`, enter them in NOTES (bx) and here; the Y-Y' attack runs need hours). Open with fin6: Case 1 and the later losses (the
+body keeps its charge too long), next to P1 - P3 as before. fin5 (contact on the end face of a pillar one layer
+long) is the earlier state and the description of how the device got there follows below.
 **Rounds 32, 33 (2026-10-08 afternoon, NOTES (bu), (bv); user: "run it" = M1, then M3 as a trial; fin5 unchanged):** the storage node drawn as a
 structure after the Fig.2 cross-section (`Cap="u"`: U-shaped node, ground finger inside, plates above and below; structures gs_*; deck "ac",
 `tools/gt_cap.py`) has 4.15 fF at 0 V (bodies 30 / 20 / 10 nm: 4.25 / 4.15 / 4.05; text 5.1 / 4.2 / 3.6; solid node 2.57). The write on it is the

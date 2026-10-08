@@ -18,6 +18,7 @@ for tag in sys.argv[1:]:
     print(tag)
     n = {}; shares = []
     for (name, kind), e in zip(NAMES, got):
+        if not e: print(f"  {name} {kind:4s} no item yet (runs not complete)"); continue
         k = sum(abs(x) <= 1 for x in e); a, b = n.get(kind, (0, 0)); n[kind] = (a + k, b + len(e)); shares.append(k / len(e))
         print(f"  {name} {kind:4s} {k:2d} / {len(e):2d} = {100 * k / len(e):5.1f} %  worst {max(e, key=abs):+6.2f} | " + " ".join(f"{x:+.2f}" for x in e))
     ok, tot = sum(a for a, b in n.values()), sum(b for a, b in n.values())
