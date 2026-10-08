@@ -106,6 +106,8 @@ P = dict(
                         # 1: probes along the whole channel every 5 nm (pillar face to the end of the source) at mid-depth and 1 nm
                         # under one gate oxide, and average / minimum / maximum of the potential over the body region, its gated
                         # part and the part under the BL-side spacer: to back-calculate where and when Fig.8(a) reads the body
+    ProbeE=0,           # 1 (single cell): electron quasi-Fermi potential, potential and electron density every 5 nm along the channel at mid-depth, pillar
+                        # axis to the source end, and the quasi-Fermi potential down the pillar to its contact: where the BL-to-node voltage drops
     tHold=0.05,         # wait after the write / before the first edge. Fig.8(b) from the pixels (2026-10-06): first BL fall
                         # at 21.0 ns (FB2 in make_runs.py: 20.7 after the write); read by eye before: about 16 ns (FB)   [ChoF]
     tEdge=0.1,          # BL edge of the FBE pulses (not given; FB2: 0.5 ns, 10 + 0.5 + 10 + 0.5 = 21)   [ASM]

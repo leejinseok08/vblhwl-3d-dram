@@ -8,6 +8,7 @@
 import sys
 import score2d as S
 NAMES = [("IV Fig.5(c)", "cal"), ("W  Fig.4(a)", "cal"), ("BR Fig.8(a)", "cond"), ("L1 Fig.8(b)", "pred"), ("L2 Fig.8(c)", "pred"), ("RH Fig.6(e)", "pred"), ("RI Fig.7   ", "pred")]
+W_PRED = ("fin7", "fin6t", "pt")       # configurations whose capacitor is the paper's text value: nothing is fitted to Fig.4(a), the write is a prediction
 got = []
 _rms = S.rms
 S.rms = lambda e: (got.append(list(e)), _rms(e))[1]
@@ -18,6 +19,7 @@ for tag in sys.argv[1:]:
     print(tag)
     n = {}; shares = []
     for (name, kind), e in zip(NAMES, got):
+        if name.startswith("W ") and tag in W_PRED: kind = "pred"
         if not e: print(f"  {name} {kind:4s} no item yet (runs not complete)"); continue
         k = sum(abs(x) <= 1 for x in e); a, b = n.get(kind, (0, 0)); n[kind] = (a + k, b + len(e)); shares.append(k / len(e))
         print(f"  {name} {kind:4s} {k:2d} / {len(e):2d} = {100 * k / len(e):5.1f} %  worst {max(e, key=abs):+6.2f} | " + " ".join(f"{x:+.2f}" for x in e))

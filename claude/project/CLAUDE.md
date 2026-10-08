@@ -106,7 +106,18 @@ Run names must differ by more than letter case (the PC's file system is case-bli
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
 ## State (2026-10-08; details NOTES (ax) .. (bx))
-**The device since 2026-10-08 16:00 is `fin6`** (user: "pb2로 바꿔줘"; NOTES (bw), (bx), `MEASURE.md` 4.6): fin5 measured where the paper's device has its BL
+**The device since 2026-10-08 17:30 is `fin7`** (user: "커패시터는 본문 용량으로 설정"; NOTES (bz), (ca)): fin6 (next paragraph) with the lumped storage
+capacitors of the paper's text, 5.1 / 4.2 / 3.6 fF for bodies of 30 / 20 / 10 nm, in place of the fitted 1.8 fF scale. Runs: Id-Vg tag pb2, write and FBE
+tag pt, row hammer tag pt with idle controls pti (`run_d37r.sh`, started 17:44, hours: read with `python3 tools/score2d.py -v fin7`); `COMPOSE["fin7"]`.
+Nothing is fitted to Fig.4(a) any more. Scores IV 0.73, W 7.64 (0.479 / 0.675 / 0.823 / 0.941 V), BR 0.14, L1 0.91 (58.5 / 12.7 / 2.63 / 2.08 / 0.10 mV), L2 0.73
+(139.7 / 48.2 / 10.6 / 3.45 / 0.70 mV); 35 / 52 items with the row hammer still out.
+**Why the current is low (round 37, NOTES (ca); deck "load", `tools/gt_loadline.py`):** in the write 54 - 80 % of the BL-to-node voltage falls in the
+25 nm of p body under the BL-side spacer, which no gate covers; the gated channel takes 4 - 44 %, pillar and source the rest. The write is
+quasi-static (the DC current gives the transient curve), so the shortfall against Fig.4(a) (2.0 - 3.4 times in Case 2) is a DC property at small
+BL-to-node voltage, which Fig.5(c) does not hold. That stretch answers to the body doping (1e16: 1.3 - 2.2 times the current) and a little to the
+spacer material (SiO2 / Si3N4 / HfO2 35 / 38 / 46 uA at node 0.82 V), not to the body thickness. Only the Case 4 cell writes near the paper
+(0.61 / 0.85 / 1.00 / 1.11 V with its 3.6 fF, node on the BL level before the WL goes off); the paper does not say which case Fig.4(a) shows.
+**Before that, since 16:00, `fin6`** (user: "pb2로 바꿔줘"; NOTES (bw), (bx), `MEASURE.md` 4.6): fin5 measured where the paper's device has its BL
 terminal, at the end of the BL pillar, two Z pitches from the cell (`Blc="bot"`, `Blx` = 2 pitches; single cells gb2_c1hb .. gb2_c4hb, pairs gb2_yy,
 gb2_zz, gb2_zzg; runs with tag pb2, idle controls of the row hammer pbi; `COMPOSE["fin6"]`). Everything else as fin5: no avalanche model in
 Fig.4(a) / 5(c) / 8, Hurkx A 1.2e20 / B 2.0e7, lumped node on the 1.8 fF scale, stand-in hole charge at fin5's rates (the bars do not move with the

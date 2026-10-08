@@ -35,6 +35,8 @@ COMPOSE = {"fin2": dict(I="fin", W="fin", F="h1", R="fin"), "fin3": dict(I="fin"
            "fin6": dict(I="pb2", W="pb2", F="pb2", R="pb2"),
            # fin6t = fin6 with the storage capacitors of the paper's text (5.1 / 4.2 / 3.6 fF) in the write and the FBE (round 36, NOTES (bz)); no row hammer of its own
            "fin6t": dict(I="pb2", W="pt", F="pt", R="pt"),
+           # fin7 = the device since 2026-10-08 17:30 (user: "set the capacitor to the text's capacitance"): the same runs as fin6t, with its own row hammer (round 37)
+           "fin7": dict(I="pb2", W="pt", F="pt", R="pt"),
            "fin3b": dict(I="d0", W="dc", F="dc", R="fin"), "fin3n": dict(I="fin", W="dn", F="dl", R="fin"), "fin3bn": dict(I="d0", W="do", F="dm", R="fin")}
 # Reading of Fig.8(a), back-calculated on 2026-10-07 (NOTES (bk); the paper does not say where it reads the body potential): for the FBE
 # runs named here the body rise is the AVERAGE electrostatic potential of the body under the gate (column AveWindow, runs with
@@ -97,7 +99,7 @@ def fbe(tag):
 
 # Row-hammer runs of a configuration -> tag of their idle controls (the same decks with the aggressor WL kept at 0 V). Where the control of a
 # run exists the scored number is attack minus idle, the net effect of the attack (MEASURE.md 4.5); the raw value is printed next to it.
-IDLE = {"pb2": "pbi"}
+IDLE = {"pb2": "pbi", "pt": "pti"}
 
 def rh_run(rid, r=None):
     s = load(os.path.join(rd(rid), rid + "_sys.plt")); t = s["time"]; sn = s[[k for k in s if "nSN)" in k][0]]

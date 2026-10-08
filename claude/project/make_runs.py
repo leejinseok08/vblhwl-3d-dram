@@ -52,6 +52,8 @@ STRUCTS = dict(
     gb2_c3hb=dict(Tbody=10, Blc="bot", Blx=180), gb2_c4hb=dict(Tbody=10, Nch=1e16, Blc="bot", Blx=180),      # 2 pitches, the 10 nm bodies (Cases 3 - 5)
     # the row-hammer pairs of the device since 2026-10-08 (fin6): BL contact at the pillar end, two Z pitches below the pair
     gb2_yy=dict(Pair="yy", Blc="bot", Blx=200), gb2_zz=dict(Pair="zz", Blc="bot", Blx=200), gb2_zzg=dict(Pair="zz", Blc="bot", Blx=200, Bgc=1),
+    # diagnostics of the write current (round 37): the Case 2 cell of fin7 with HfO2 / SiO2 spacers (the paper names no spacer material)
+    gbh_c2hb=dict(Blc="bot", Blx=200, Spm="HfO2"), gbo_c2hb=dict(Blc="bot", Blx=200, Spm="SiO2"),
 )
 SDE_KEYS = ["Lg", "Tbody", "Tox", "Tgm", "Dvox", "Nsd", "Nch", "Gdi", "Spm", "Pair", "Bgc", "Blc", "Lsp1", "Lsp2", "Wbl", "Wact", "Dhox", "Mc", "Mj", "Mv", "Mi", "Mg", "Wcut",
             "Cap", "Lcap", "Ceot", "Tcd", "Tcw", "Blx"]
@@ -124,6 +126,13 @@ def currentplot(p, indent="  "):
             for d in (1.0, p["Tbody"] / 4, 3 * p["Tbody"] / 4, p["Tbody"] - 1.0):
                 q = f"({xq} {(y0 + d) / 1000:.5f})"
                 extra += f"{indent}  ElectrostaticPotential( {q} )\n{indent}  hQuasiFermiPotential( {q} )\n"
+        if p["ProbeE"]:      # where the drain-source voltage drops: along the channel at mid-depth from the pillar axis to the source end, and down the pillar
+            L = p["Wbl"] / 2 + p["Lsp1"] + p["Lg"] + p["Lsp2"]
+            for i in range(int(L / 5)):      # x = 2, 7, 12 .. nm: no point shared with the probes above
+                q = f"({(2 + 5 * i) / 1000:.5f} {yb:.5f})"
+                extra += f"{indent}  eQuasiFermiPotential( {q} )\n{indent}  ElectrostaticPotential( {q} )\n{indent}  eDensity( {q} )\n"
+            for yy in sorted({0.0, -p["Blx"] / 2, -p["Blx"] + 1.0}):
+                extra += f"{indent}  eQuasiFermiPotential( ({p['Wbl'] / 4000:.5f} {yy / 1000:.5f}) )\n"
         if p["ProbeX"]:      # the whole channel every 5 nm at mid-depth and 1 nm under one gate oxide; statistics over the body region and its two parts
             y0 = p["Dvox"] / 2 + p["Tgm"] + p["Tox"]; x0 = p["Wbl"] / 2; L = p["Lsp1"] + p["Lg"] + p["Lsp2"]
             for yy in (y0 + p["Tbody"] / 2, y0 + 1.0):
@@ -367,6 +376,20 @@ def deck_cho(rid, p, struct, test):
     txt = (header(rid, f"Cho cell, mixed mode, test={test}, section={p['Pair']}", p, struct) + f'File {{ Output = "{rid}_log" }}\n\n' + dev +
            "\nSystem {\n" + "".join(f"  {l}\n" for l in sysl) + f'  Plot "{rid}_sys.plt" ( time() {plotn} )\n}}\n\n' + mathblk(p) + solve)
     return txt, dict(kind="cho", test=test, tS=tS, tEnd=tEnd), (BL, WL, WA), S
+
+def deck_load(rid, p, struct):
+    """DC charging current along the write of Fig.4(a): both gates at Vpp, the BL at the write level, the storage-node contact swept from 0 V up to
+    the BL level. The current into the node at each node voltage is what charges the capacitor (quasi-static); with ProbeE the electron
+    quasi-Fermi potential along the channel and down the pillar shows where the BL-to-node voltage drops. Currents per um of width (single device)."""
+    el = "\n".join("  " + e for e in electrodes_single(p, dc=True)); Vw = p["Vwr"] or p["Vdd"]
+    q = lambda goals, a, b: (f"  Quasistationary( InitialStep={a} MaxStep={b} MinStep=1e-7 " + " ".join(f'Goal{{ Name="{n}" Voltage={v} }}' for n, v in goals)
+                             + " )\n    { Coupled{ Poisson Electron Hole } }\n")
+    return (header(rid, f"DC charging current of the write: gates {p['Vpp']} V, BL {Vw} V, node 0 -> {Vw} V", p, struct) +
+            f'File {{\n  Grid      = "../_struct/{struct}_msh.tdr"\n  Plot      = "{rid}_dev.tdr"\n  Current   = "{rid}_dev.plt"\n'
+            f'  Output    = "{rid}_log"\n  Parameter = "../../{p["Par"]}"\n}}\n'
+            f"Electrode {{\n{el}\n}}\n" + physics(p, "") + plotblk("") + currentplot(p, "") + mathblk(p) +
+            "Solve {\n  Coupled( Iterations=200 LineSearchDamping=1e-4 ){ Poisson }\n  Coupled{ Poisson Electron Hole }\n"
+            + q((("gs_v", p["Vpp"]), ("gd_v", p["Vpp"])), 0.02, 0.1) + q((("bl", Vw),), 0.02, 0.1) + '  NewCurrentFile="LL_"\n' + q((("sn_v", Vw),), 5e-3, 0.02) + "}\n"), dict(kind="load")
 
 def deck_ac(rid, p, struct):
     """Capacitance matrix of the single cell at equilibrium (every node at 0 V), small-signal AC at 1 MHz in mixed mode. Nodes: BL, SN, WL
@@ -923,6 +946,20 @@ cfg2d("pbi", "R", rhsel=tuple(RSX), rst=RSX, rh=dict(Idle=1), **B2)
 # held, so the bars do not depend on the capacitor). Id-Vg has no capacitor; row hammer not in this round.
 cfg2d("pt", "W", wst="gb2_c2hb", II=0, k_cs=1.0, par=PN)
 cfg2d("pt", "F", cases=CASEX, gb=GF5, ProbeX=1, ProbeT=1, II=0, k_cs=1.0, par=PN)
+# Round 37 (user, 2026-10-08 17:30: "set the capacitor to the text's capacitance; analyse why the device's current is low"). The device is `fin7` =
+# fin6 with the text's capacitors (tag pt; Id-Vg of tag pb2). Its row hammer with 4.2 fF and the idle controls (pt, pti).
+cfg2d("pt", "R", rhsel=tuple(RSX), rst=RSX, k_cs=1.0, par=PN)
+cfg2d("pti", "R", rhsel=tuple(RSX), rst=RSX, rh=dict(Idle=1), k_cs=1.0, par=PN)
+# The current: with 4.2 fF the write of Fig.4(a) asks for 252 / 70 / 39 / 14 uA on average in its four intervals; the model has 168 / 69 / 41 /
+# 24 uA at node voltages 240 - 190 mV lower. DpL = the DC charging current along the write (gates 1.8 V, BL 1.168 V, node swept 0 -> 1.168 V) with
+# the electron quasi-Fermi potential along the channel and down the pillar: at which node voltage the current is short, and where the
+# BL-to-node voltage drops (pillar, the 25 nm of body under the BL-side spacer, the gated channel, the source). Cases 1 - 3; nothing changed in the device.
+for c_, st_, wf_, tb_ in CASEX[:3]: RUNS.append(R(f"DpL_c{c_}", "GT", st_, "load", WFs=wf_, WFd=wf_, **dict(IV, Nthr=4, Par=PN, Vwr=1.168, ProbeE=1)))
+# Result (17:50): 54 - 76 % of the BL-to-node voltage falls in the 25 nm of p body under the BL-side spacer, which no gate covers. What that
+# stretch answers to, without touching a dimension of the paper: the body doping (Cases 4, 5: 1e16 instead of 1e18) and the spacer material,
+# i.e. how far the gate's fringe field reaches into it (HfO2 22, Si3N4 7.0 = the device, SiO2 3.9; the paper names no spacer material).
+for c_, st_, wf_, tb_ in CASEX[3:]: RUNS.append(R(f"DpL_c{c_}", "GT", st_, "load", WFs=wf_, WFd=wf_, **dict(IV, Nthr=4, Par=PN, Vwr=1.168, ProbeE=1)))
+for k_, st_ in (("h", "gbh_c2hb"), ("o", "gbo_c2hb")): RUNS.append(R(f"DpL{k_}_c2", "GT", st_, "load", WFs=4.7, WFd=4.7, **dict(IV, Nthr=4, Par=PN, Vwr=1.168, ProbeE=1)))
 # ---- 3D with what the 2D rounds fixed (user 2026-10-06: rebuild 3D from the improvements, then the picture check against the
 # paper). The structures are the checked ones (g3_c2h unit cell, g3x_c2h X-X' pair); what changes is in the decks: storage node
 # 1.8 fF, Hurkx Agen 1.7e21, the paper conditions (PC), the hole charge of Fig.8(a) as a condition. Not started without the
@@ -972,6 +1009,7 @@ def build(run):
     if p["Cap"] != "lump" and p["Pair"] != "one": raise SystemExit(f"{rid}: a drawn storage capacitor is set up for single cells only (probe positions, junction check)")
     if kind == "idvg": txt, info = deck_idvg(rid, p, run["struct"])
     elif kind == "ac": txt, info = deck_ac(rid, p, run["struct"])
+    elif kind == "load": txt, info = deck_load(rid, p, run["struct"])
     else:
         txt, info, waves, S = deck_cho(rid, p, run["struct"], kind[4:])
         for i, w in enumerate(waves): check_pwl(f"{rid} wave{i}", w)

@@ -18,6 +18,11 @@ if [ "$1" = m1s ]; then    # round 32: meshes of the cells with the drawn storag
   bash tools/gt_precheck.sh gs_c1hb:30 gs_c2hb:20 gs_c3hb:10 gs18_c2hb:20 gs0_c2hb:20
   exit 0
 fi
+if [ "$1" = m7 ]; then    # round 37, second part: meshes of the two spacer variants (structure only), check, start of the four DC runs
+  ( cd runs/_struct; for s in gbh_c2hb gbo_c2hb; do [ -f ${s}_msh.tdr ] || sde -e -l ${s}_dvs.cmd > ${s}_sde.log 2>&1; grep -i -E 'error|fail' ${s}_sde.log | head -3; done )
+  bash tools/gt_start.sh run_d37b.sh 4 gb2_c4hb:10 gbh_c2hb:20 gbo_c2hb:20
+  exit 0
+fi
 if [ "$1" = m6 ]; then    # round 36: m6 <seconds to wait>: state, then fin6 and fin6t (text capacitors) side by side, and the write table
   sleep $2; date +%H:%M:%S; python3 tools/run_state.py run_d35.sh run_d36.sh | cut -c1-400
   python3 tools/score2d.py -v fin6 fin6t | grep -v -E 'IV:|RH:' | cut -c1-520; python3 tools/gt_write_tab.py Dpb2W_c2 DptW_c2; python3 tools/repro_rate.py fin6t | cut -c1-200
@@ -68,9 +73,14 @@ if [ "$1" = pk ]; then    # rounds 32 / 33 for the shared repository: tables -> 
     echo; echo "== rounds 35, 36: fin6 = fin5 measured at the BL pillar end two Z pitches away (tag pb2); fin6t = fin6 with the capacitors of the paper's text,"
     echo "   5.1 / 4.2 / 3.6 fF (tag pt). NOTES (bx), (bz). Row hammer of fin6: attack minus idle where both runs are complete."
     python3 tools/score2d.py -v fin5 fin6 fin6t | cut -c1-520; python3 tools/gt_write_tab.py DdyW_c2 Dpb2W_c2 DptW_c2; python3 tools/repro_rate.py fin5 fin6 fin6t | cut -c1-330
-    echo; echo "== state of the runs at $(date '+%H:%M')"; python3 tools/run_state.py run_d32.sh run_d33.sh run_d34.sh run_d34b.sh run_d35.sh run_d36.sh
-    echo; echo "== structure checks before the batches"; cat runs/run_d32.check runs/run_d33.check runs/run_d34.check runs/run_d34b.check runs/run_d35.check runs/run_d36.check; } > /tmp/tables_r3233.txt 2>&1
-  ids=$(python3 tools/run_state.py -c run_d32.sh run_d33.sh run_d34.sh run_d34b.sh run_d35.sh run_d36.sh)
+    echo; echo "== round 37: fin7 = fin6 with the text's capacitors (the device since 17:30), and why the current is low: DC charging current along the write"
+    echo "   (gates 1.8 V, BL 1.168 V, node swept) and where the BL-to-node voltage falls. DpL_c<n> = Case n; DpLh / DpLo = Case 2 with HfO2 / SiO2 spacers. NOTES (ca)"
+    python3 tools/gt_loadline.py DpL_c1 DpL_c2 DpL_c3 DpL_c4 DpL_c5 DpLh_c2 DpLo_c2
+    echo "-- the write of each case with its own text capacitor (first 105 ps of the FBE runs of round 36)"; python3 tools/gt_wl_off.py DptF_c1 DptF_c2 DptF_c3 DptF_c4 DptF_c5 | cut -c1-80
+    python3 tools/score2d.py -v fin7 | cut -c1-520; python3 tools/repro_rate.py fin7 | cut -c1-330
+    echo; echo "== state of the runs at $(date '+%H:%M')"; python3 tools/run_state.py run_d32.sh run_d33.sh run_d34.sh run_d34b.sh run_d35.sh run_d36.sh run_d37.sh run_d37b.sh run_d37r.sh
+    echo; echo "== structure checks before the batches"; cat runs/run_d32.check runs/run_d33.check runs/run_d34.check runs/run_d34b.check runs/run_d35.check runs/run_d36.check runs/run_d37.check runs/run_d37b.check runs/run_d37r.check; } > /tmp/tables_r3233.txt 2>&1
+  ids=$(python3 tools/run_state.py -c run_d32.sh run_d33.sh run_d34.sh run_d34b.sh run_d35.sh run_d36.sh run_d37.sh run_d37b.sh run_d37r.sh)
   ( cd runs; for r in $ids; do ls $r/${r}_des.cmd $r/run.json $r/*.plt 2>/dev/null; done; ls _struct/gs*_dvs.cmd _struct/gb*_dvs.cmd ) > /tmp/share_r3233.lst
   tar czf /tmp/share_r3233.tgz -C runs -T /tmp/share_r3233.lst; echo "$(echo $ids | wc -w) complete runs packed, $(ls -la /tmp/share_r3233.tgz | awk '{printf "%.1f MB", $5 / 1e6}'); tables $(wc -l < /tmp/tables_r3233.txt) lines"
   exit 0

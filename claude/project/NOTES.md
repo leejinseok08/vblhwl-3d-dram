@@ -3,6 +3,52 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-08 (ca) user: "set the capacitor to the text's capacitance; analyse why the device's current is low" - the device is `fin7` (fin6 with 5.1 / 4.2 / 3.6 fF); round 37: in the write 54 - 80 % of the BL-to-node voltage falls in the 25 nm of body under the BL-side spacer, which no gate covers. With the 1e16 body (Case 4) the current is nearly the paper's; the paper does not say which case Fig.4(a) shows
+- `fin7` = `COMPOSE["fin7"]` = Id-Vg of tag pb2, write and FBE of tag pt (round 36), row hammer of tag pt with idle controls pti (round 37, `run_d37r.sh`,
+  17:44 - , hours). Nothing in it is fitted to Fig.4(a) any more: the write counts as a prediction (`tools/repro_rate.py`, W_PRED). Counted: Fig.5(c)
+  23 / 28 (calibration), bars 5 / 5 (condition), predictions write 0 / 4, first phase 3 / 5, later 4 / 5, row hammer 0 / 5 while its own runs are out:
+  35 / 52, predictions 7 / 19.
+- The question in numbers (Case 2, 4.2 fF): Fig.4(a) asks for C dV / dt = 252 / 70 / 39 / 14 uA on average in its four intervals (0 -> 0.72 -> 0.92 -> 1.06 ->
+  1.13 V at 12 / 24 / 39 / 60 ps).
+- Round 37 (`run_d37.sh` 17:44, `run_d37b.sh` 17:48, 7 DC runs; new deck "load" = `deck_load`: gates 1.8 V, BL 1.168 V, node contact swept 0 -> 1.168 V;
+  `ProbeE` = electron quasi-Fermi potential, potential and electron density every 5 nm along the channel at mid-depth and three points down the
+  pillar; table `tools/gt_loadline.py`. Structures of fin7 and, for two runs, the Case 2 cell with HfO2 / SiO2 spacers (gbh_c2hb, gbo_c2hb: dimensions
+  as the paper, material a diagnosis). Registered: the first part before, the second two minutes after its start. Gate ALL PASS, 3 + 3 lines read.)
+    DC current into the node [uA] at node voltage     0.20    0.40    0.60    0.72    0.82    0.92    0.99    1.06   1.095 V   write from that current, 12 / 24 / 39 / 60 ps
+    Case 1 (30 nm, 1e18)                              168     121      77      53      35      20      11     4.9     2.7      0.392 / 0.617 / 0.780 / 0.905 V (5.1 fF)
+    Case 2 (20 nm, 1e18)   = the device               166     121      78      55      38      23      14     6.8     4.1      0.447 / 0.685 / 0.848 / 0.966 (4.2 fF)
+    Case 3 (10 nm, 1e18)                              154     114      76      55      39      25      16     8.6     5.4      0.476 / 0.724 / 0.890 / 1.008 (3.6 fF)
+    Case 4 (10 nm, 1e16)                              205     160     116      90      69      49      35     (not read)             0.590 / 0.871 / 1.038 / 1.132 (3.6 fF)
+    Case 5 (10 nm, 1e16, 5.0 eV)                      174     127      78      47      22      (still running at 18:00, at 1.08 V)   0.513 / 0.737 / 0.847 / 0.907
+    Case 2, HfO2 spacers                              207     149      96      67      46      27      17     8.1     4.9      0.518 / 0.757 / 0.906 / 1.008
+    Case 2, SiO2 spacers                              151     110      72      51      35      21      13     6.2     -        0.418 / 0.652 / 0.820 / 0.944
+    paper needs, Case 2's capacitor: 252 uA (0 -> 0.72 V), 70 (-> 0.92), 39 (-> 1.06), 14 (-> 1.13)                              0.72 / 0.92 / 1.06 / 1.13
+  Where the voltage falls (electron quasi-Fermi potential: BL contact -> x = 47 nm | 47 -> 77 | 77 -> 172 | 172 -> node; pillar face 50, gate 75 .. 175 nm):
+    Case 2 at node 0.36 / 0.60 / 0.82 / 0.99 / 1.095 V:   pillar and contact 9 / 7 / 6 / 4 / 3 %  |  body under the BL-side spacer 75 / 73 / 70 / 65 / 54 %  |
+                                                           gated channel 15 / 18 / 23 / 30 / 42 %  |  source 2 / 2 / 1 / 1 / 1 %
+    the stretch under the spacer in the other runs: Case 1 73 .. 59 %, Case 3 76 .. 49 %, Case 4 79 .. 66 %, Case 5 80 .. 70 %, HfO2 spacers 67 .. 43 %, SiO2 77 .. 68 %.
+  * The write is quasi-static: the DC current gives 0.447 / 0.685 / 0.848 / 0.966 V, the transient (DptW_c2) 0.479 / 0.675 / 0.823 / 0.941. No hidden transient
+    effect; the shortfall is a DC property of the cell at node voltages where the BL-to-node voltage is small. Fig.5(c) is taken at 1.1 V of drain
+    bias and does not hold it (the paper has no output curves).
+  * Against the paper, Case 2: 129 / 38 / 14 / 4 uA at the middle of the four intervals for 252 / 70 / 39 / 14: short by 2.0 / 1.9 / 2.8 / 3.4.
+  * The place: the 25 nm of p body between the gate edge and the BL pillar. No gate lies over it (the spacer does), so no inversion layer forms
+    there; it conducts by what the gate's fringe field and the drain junction let through. It takes three quarters of the voltage at large
+    BL-to-node voltage and half at 73 mV, where it is 9.8 kOhm against 7.6 kOhm of the 100 nm gated channel (Case 2). Pillar (200 nm more since
+    fin6) and source together take 4 - 11 % in Case 2 and up to 17 % in Case 4.
+  * What that stretch answers to (dimensions of the paper kept): its doping - 1e16 instead of 1e18 (Case 4 against Case 3) raises the current
+    1.3 times at 0.2 V, 1.8 times at 0.82 V, 2.2 times at 0.99 V; the spacer material - SiO2 / Si3N4 / HfO2 35 / 38 / 46 uA at 0.82 V; the body
+    thickness - nothing (35 / 38 / 39 uA for 30 / 20 / 10 nm). Its length (25 nm = 0.25 Lg read off Fig.2) was not varied: a dimension of the paper.
+  * The write of every case with its own text capacitor exists in the FBE runs of round 36 (their first 105 ps): 0.42 / 0.61 / 0.76 / 0.88 (Case 1), 0.48 /
+    0.67 / 0.82 / 0.94 (Case 2), 0.51 / 0.71 / 0.86 / 0.98 (Case 3), 0.61 / 0.85 / 1.00 / 1.11 (Case 4), 0.51 / 0.71 / 0.83 / 0.89 V (Case 5); node before the WL goes
+    off 1.008 / 1.057 / 1.093 / 1.165 / 0.950 V. Paper Fig.4(a): 0.72 / 0.92 / 1.06 / 1.13 V and the node on the BL level before 100 ps. Only the Case 4 cell
+    comes near (-110 / -70 / -60 / -20 mV, rms / tolerance 2.4; Case 2: 7.6) and only it reaches the BL level. The paper does not say which case Fig.4(a)
+    shows (its row hammer uses Case 2; we had taken Case 2).
+- Cause, as far as it goes: the device's charging current is low because the ungated body under the BL-side spacer is in series with the channel
+  and, with the 1e18 body of Cases 1 - 3, stays a barrier. Not decided by the paper: which case Fig.4(a) is; the spacer material; whether the
+  junction at the pillar is abrupt (ours is; a graded one shortens the stretch); whether the body under the spacer has the channel's doping.
+- Not the same thing: the first-phase FBE losses of Cases 2, 3 (2.3 and 2.7 times small with the text's capacitors). There the BL is the source and
+  the gated body is the barrier ((az)); a factor 2.3 - 2.7 is 22 - 26 mV of body potential (kT/q ln). Not analysed further here.
+
 ## 2026-10-08 (bz) user: "for now not the drawn structure: can the capacitor be simulated with the capacitances written in the text alone?" - yes, and run (round 36, `fin6t`): the FBE losses come nearer (later losses of Cases 1 - 4 inside, Case 1's first phase 58 against 55 mV), the write is twice too slow, the first-phase losses of Cases 2, 3 are 2.3 - 2.7 times too small
 - Read as a request (the user's "can you ..?"): run it; fin6 stays the device until the user says which capacitor it carries.
 - Round 36 (`run_d36.sh`, 16:53 - 17:22, 6 runs; registered and pushed before the start, Codex nothing live, gate ALL PASS with four lines read; decks
