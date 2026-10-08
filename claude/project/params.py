@@ -55,6 +55,13 @@ P = dict(
                         # 2026 Table I); 2 - 4 px lines in the drawing. With the EOT fixed it only moves the fringe fields         [Grp]
     Tcw=10,             # wall and arms of the U-shaped node: 4 - 6 px in the Fig.2 cross-section (2.3 nm/px along the channel,
                         # 1.8 nm/px across). 18 = the 8 nm band inside the U of the drawing counted as part of the node           [ChoF]
+    # 3D mini array (sde_gt3a_dvs.cmd; user 2026-10-08: "build the 3D mini array that matches the paper")
+    Nrow=3, Nlay=5,     # rows along the word line, layers: "3x2x5-layer mini array" (two cells per row and layer share the BL pillar)   [Cho]
+    WLp=275,            # WL pitch: BL centre to capacitor pillar centre (the period along the channel is 2 WLp)             [Cho Fig.5(a)]
+    Rcp=55,             # capacitor pillar radius incl. its dielectric: the circle of the Fig.2 top view is 1.16 x the row width [ASM, read]
+    Xout=240,           # unpatterned stack beyond the far half of the node box: the Fig.2 views end 616 nm from the BL centre  [read]
+    Zmar=50,            # margin outside the two outer walls: the top view is 800 nm high along the word line                  [read]
+    Tsub=30, Ttop=30,   # bottom layer (drawn green, material not given: nitride) and top oxide                                 [ASM, read]
     Mc=2, Mj=0.5, Mv=1, Mi=0.2, Mg=1,   # mesh of the 2D section [nm]: along the channel, at the two junctions, across the body,
                         # at the gate dielectric; Mg = smallest step the doping-gradient refinement may take along the
                         # channel (not physics: the paper gives no mesh)                     [ASM]

@@ -3,6 +3,47 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-08 (cg) user: "review when the paper has the model on"; "check against the row hammer counts of Fig.7(d) as well"; "let us build the 3D mini array that matches the paper"; "when it is complete, compare its sections with the paper's image and report"
+- When the paper has the impact-ionization model on (text and the lettering of every figure, images looked at again):
+  ON, stated: Fig.7(a) and (c) ("Impact ionization model On"), the "On" bars of Fig.7(d), bars 2 and 3 of Fig.7(e). OFF, stated: Fig.6(e) ("Impact
+  ionization model Off", caption "Initial 3D DRAM row hammer simulation result"), the "Off" bars of Fig.7(d), bar 1 of Fig.7(e). Not stated: Fig.4(a)
+  (pre-charge), Fig.5(c), Fig.5(d), Fig.6(d) (6F2; Fig.7(d) prints "-" for it), Fig.8 (no lettering, no sentence). Sec.III names the Hurkx model
+  only. Text order: Sec.V first without, then "when an avalanche model for impact ionization is incorporated"; Sec.VI (FBE) says nothing. Each
+  row-hammer simulation charges the node "through transient simulation, after which WL toggling is applied": one run, so in a model-on run the
+  model is on from the pre-charge on (my reading: a Physics section cannot change inside one run). So the paper has two configurations of the
+  row hammer (off / on) and says nothing for the rest; "ElectricField in every measurement" is not something the paper asks for.
+- Fig.7(d) as counts (`tools/gt_rh_count.py <tag> [idle tag]`: 0.605 V / loss per cycle, last five cycles, the paper's way = the cell's own leak
+  included; "none" = the node does not fall). fin7: Case 1 off 1024k (paper 11.3k), Case 1 on none (11.3k), Case 2 off 1005k (60.5k), Case 2 on
+  none (N/A), Case 2 grounded on 973k (16.8k). Minus idle: no count anywhere. So fin7 has one number, about 1000k = its own leak of 0.0006 mV
+  per cycle, for every bar; the paper's pattern (11.3k = 11.3k; 60.5k -> N/A -> 16.8k) is not there. 0 of 5 bars (Case 3 and 6F2 not run).
+  fin6: 447k / none / 438k / none / 426k. ElectricField runs of rounds 16 - 19 (older device): Case 2 on 2.7 mV per cycle in five cycles, levelling
+  at 3.1 - 3.3 = 0.18k - 0.22k cycles (paper N/A = collapse inside ten); grounded 76k (g7), 60k (g3) against 16.8k; Case 1 on 4.9 mV per cycle
+  in two cycles = 0.12k against 11.3k.
+- Mini array `ga_c2` (template `sde_gt3a_dvs.cmd`, test `ga1_c2` = one row, one layer; structure only, no device run). Fig.2 read again at 3 x,
+  scaled with the dimensioned 2 WL pitch = 550 nm (top view 1.516 px/nm): BL centre -> capacitor pillar centre 275.0 nm; source end 174 nm from
+  the BL centre; node box 202 nm long, centred on the capacitor pillar; drawn gate 84 nm, drawn BL pillar 84 nm, spacers 20 / 28 nm; pillar
+  circle 1.16 x the row width; the views end 616 nm from the BL centre and are 800 nm high along the word line; a third WL strip 447 nm right of
+  the BL in the top view only (the cross-section has no gates there: not built). The drawing has BL centre -> pillar centre = 3.26 x its gate
+  length, the table 2.75: the drawing is not to the table's scale. Built from the table (Lg 100, BL pitch 200, WL pitch 275, dHOX 100, L_CAP
+  100, Z pitch 100): 175 nm to the source end + L_CAP 100 = 275 holds with spacers 25 / 25 only for a BL pillar of 50 nm (fin7's 2D section
+  has 100; `Wbl` is the parameter). Capacitor: node box from gate bottom to gate top, L_CAP on either side of the pillar centre (far half =
+  the mirrored neighbour's, contact snx), walls Tcw 10, dielectric Tcd 4 (EOT 3.8 A by its permittivity), ground finger inside, ground fins in
+  the dVOX levels, pillar radius 55 nm incl. dielectric (wider than the row, so it parts the two halves). Contacts bl_<r>, wl_<k><s>,
+  sn_<r><k><s>, gp, snx. Tools: `tools/grd_cut.py` (server: cuts of the mesh by material from `tdx -dd` text; the TDR of this release is not
+  HDF5), `tools/plot_ga.py` (PC: pictures, alone and next to Fig.2), `_q.sh ga / gab / gas / gac`.
+- Built (structure only, no device run): `ga_c2`, 327 951 points, 1 626 233 elements, 93 silicon regions (30 bodies, 30 sources, 30 pieces of the
+  outer stack, 3 BL pillars), 45 contacts (3 bl, 10 wl, 30 sn, gp, snx), box x -615 .. 615, y -30 .. 530, z 0 .. 800 nm; sde took 10 944 s, almost
+  all of it marking the contacts (one call per body: 30 - 85 s each, stopped after 62 of 208; one call per contact name: 45 calls, the build
+  that finished, 20:34 - 23:36). The mesh is coarse (silicon 12.5 / 5 / 25 nm at most): good for the picture and for capacitances, not for a
+  transistor. Cut at z = 400 (middle row), y = 450 / 475 / 400, x = 275 / 100 nm and drawn next to the cross-section and the top view of Fig.2:
+  results pictures `gt3_miniarray_3x2x5_vs_cho_fig2_xsec.png`, `.._top.png` (with crops of the paper: not for the repository) and
+  `gt3_miniarray_3x2x5_cuts.png`. Same as the paper's views: five layers, three rows, two cells on one BL pillar, gates above and below the
+  body between spacers, N+ source under the node-side spacer, U-shaped node with a ground finger on either side of the capacitor pillar,
+  ground fins in the dVOX levels, word lines across the walls, the outer stack. Different: BL pillar 50 nm along the channel where the drawing
+  has it as wide as its gate (84 nm at the drawing's scale); capacitor pillar 110 nm wide where the drawing has 76 - 93 nm (kept wider than the
+  100 nm row, as drawn); no third word-line strip; pillars end on the bottom layer where the drawn capacitor pillars reach into it; the margins
+  outside the outer walls are oxide where the top view has the stack's colour; bottom layer nitride (material not given).
+
 ## 2026-10-08 (cf) user: "does what we have agree with the paper's sentence that with the avalanche model Case 2 shows a large voltage drop from the floating body?"; "when verifying each figure, find the parts of the paper that describe it and review whether it is reproduced exactly"
 - No new run. The whole text read again (scratch `cho\text.txt`), Fig.7 looked at again (image of the PDF, not kept in the project).
 - Rule (MEASURE.md principle 8): a figure is checked sentence by sentence against the text, the caption and the lettering of the figure before

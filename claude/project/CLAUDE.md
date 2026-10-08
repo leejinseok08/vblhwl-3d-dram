@@ -109,6 +109,14 @@ Run names must differ by more than letter case (the PC's file system is case-bli
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
 ## State (2026-10-08; details NOTES (ax) .. (bx))
+**3D mini array `ga_c2` (user, 2026-10-08 evening: "build the 3D mini array that matches the paper"; NOTES (cg)):** template `sde_gt3a_dvs.cmd`,
+3 rows x 2 cells x 5 layers with drawn capacitors, built from Fig.5(a) (Lg 100, WL pitch 275, L_CAP 100; that needs a 50 nm BL pillar with 25 nm
+spacers - the Fig.2 drawing is not to the table's scale; `Wbl` is the parameter, fin7's 2D section has 100). Mesh on the server
+(`runs/_struct/ga_c2_msh.tdr`, 327 951 points, 45 contacts: bl_<r>, wl_<k><s>, sn_<r><k><s>, gp, snx; coarse: picture and capacitances only). A build
+takes 3 h (contact marking). Checked against Fig.2 by cuts (`_q.sh gac`, `tools/grd_cut.py`, `tools/plot_ga.py`). NO device run on it yet: next would
+be the AC capacitance matrix, then a mesh refined in the cells under test. Row-hammer counts of Fig.7(d): `tools/gt_rh_count.py` (fin7: 0 of 5 bars).
+The paper has the impact-ionization model on in Fig.7 only (stated), off in Fig.6(e) (stated); Fig.4(a), 5(c), 8 are not stated.
+
 **The device since 2026-10-08 17:30 is `fin7`** (user: "커패시터는 본문 용량으로 설정"; NOTES (bz), (ca)): fin6 (next paragraph) with the lumped storage
 capacitors of the paper's text, 5.1 / 4.2 / 3.6 fF for bodies of 30 / 20 / 10 nm, in place of the fitted 1.8 fF scale. Runs: Id-Vg tag pb2, write and FBE
 tag pt, row hammer tag pt with idle controls pti (`run_d37r.sh`, all ten complete 19:32: RH 4.71, RI 11.88, total 5.65; attack minus idle Y-Y' off -0.0000,

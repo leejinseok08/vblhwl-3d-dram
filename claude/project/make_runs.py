@@ -34,6 +34,9 @@ STRUCTS = dict(
     g3x_c2h=dict(Tpl="sde_gt3_dvs.cmd", Wbl=50, Dim=3, Pair="xx"), g3x40_c2h=dict(Tpl="sde_gt3_dvs.cmd", Wbl=50, Dim=3, Pair="xx", Wcut=40),
     # candidates for the WL cut (user 2026-10-06: "pick the candidates"): 10 nm (closest to an uncut WL the mesh carries), 20 nm
     # (= gate thickness), 40 nm, 100 nm (= the whole wall: each WL only over its own row)
+    # ga_c2 = the 3 x 2 x 5 mini array of Fig.2 with drawn capacitors (sde_gt3a_dvs.cmd), 50 nm pillar: with it every number of Fig.5(a) holds
+    # (25 + 25 + 100 + 25 = 175 nm to the source end, + L_CAP 100 = WL pitch 275); ga1_c2 = one row, one layer (a test of the template)
+    ga_c2=dict(Tpl="sde_gt3a_dvs.cmd", Wbl=50, Dim=3), ga1_c2=dict(Tpl="sde_gt3a_dvs.cmd", Wbl=50, Dim=3, Nrow=1, Nlay=1),
     g3x10_c2h=dict(Tpl="sde_gt3_dvs.cmd", Wbl=50, Dim=3, Pair="xx", Wcut=10), g3x100_c2h=dict(Tpl="sde_gt3_dvs.cmd", Wbl=50, Dim=3, Pair="xx", Wcut=100),
     gm_spox=dict(Spm="SiO2"), gm_sphk=dict(Spm="HfO2"),
     gw_c2h=dict(Wbl=50),      # Case 2 with the 50 nm pillar that the WL pitch of 275 nm in Fig.5(a) implies (the drawing shows 100)
@@ -56,7 +59,7 @@ STRUCTS = dict(
     gbh_c2hb=dict(Blc="bot", Blx=200, Spm="HfO2"), gbo_c2hb=dict(Blc="bot", Blx=200, Spm="SiO2"),
 )
 SDE_KEYS = ["Lg", "Tbody", "Tox", "Tgm", "Dvox", "Nsd", "Nch", "Gdi", "Spm", "Pair", "Bgc", "Blc", "Lsp1", "Lsp2", "Wbl", "Wact", "Dhox", "Mc", "Mj", "Mv", "Mi", "Mg", "Wcut",
-            "Cap", "Lcap", "Ceot", "Tcd", "Tcw", "Blx"]
+            "Cap", "Lcap", "Ceot", "Tcd", "Tcw", "Blx", "Nrow", "Nlay", "WLp", "Rcp", "Xout", "Zmar", "Tsub", "Ttop"]
 
 def fill_sde(name, prm):
     src = open(os.path.join(HERE, prm["Tpl"]), encoding="utf-8").read()

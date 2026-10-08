@@ -18,7 +18,37 @@ if [ "$1" = m1s ]; then    # round 32: meshes of the cells with the drawn storag
   bash tools/gt_precheck.sh gs_c1hb:30 gs_c2hb:20 gs_c3hb:10 gs18_c2hb:20 gs0_c2hb:20
   exit 0
 fi
-if [ "$1" = m9 ]; then    # the paper's sentences on Fig.7 / Fig.8(c) against fin7: body of the victim at t_A (Fig.7(e): 2.4 / 665.1 / 1.8 mV), pairs and holes per cycle, on-current of Cases 3 - 5 (text: +3.9 % from Case 3 to 5)
+if [ "$1" = ga ]; then    # ga <struct>: build a mini-array structure (sde_gt3a_dvs.cmd; structure only, no device run): mesh size, errors, regions, contacts
+  cd runs/_struct; s=$2; rm -f ${s}_msh.tdr ${s}_bnd.tdr; t0=$(date +%s); sde -e -l ${s}_dvs.cmd > ${s}_sde.log 2>&1; echo "$s: sde took $(( $(date +%s) - t0 )) s"
+  grep -i -E 'error|fail|cannot|unbound|invalid' ${s}_sde.log | sort | uniq -c | head -12; grep -E 'points\.|elements\.' ${s}_sde.log | tr -s ' \n' ' '; echo
+  ls -la --time-style=+%H:%M ${s}_msh.tdr ${s}_bnd.tdr 2>&1 | awk '{print $7, $5, $6}'; tail -4 ${s}_sde.log | cut -c1-200
+  exit 0
+fi
+if [ "$1" = gab ]; then    # gab <struct>: the same build detached (structure only); gas <struct>: how far it is
+  cd runs/_struct; rm -f $2_msh.tdr $2_bnd.tdr; nohup sde -e -l $2_dvs.cmd > $2_sde.log 2>&1 < /dev/null & echo "sde of $2 started $(date +%H:%M:%S)"; exit 0
+fi
+if [ "$1" = gas ]; then
+  cd runs/_struct; s=$2; n=0; while [ $n -lt ${3:-0} ] && pgrep -u "$USER" -f "sde -e -l ${s}_dvs" > /dev/null; do sleep 10; n=$((n + 10)); done; date +%H:%M:%S; pgrep -u "$USER" -a -f "sde|snmesh" | cut -c1-80; grep -i -E 'error|fail|cannot|unbound|invalid' ${s}_sde.log | sort | uniq -c | head -8
+  grep -E 'points\.|elements\.' ${s}_sde.log | tr -s ' \n' ' '; echo; ls -la --time-style=+%H:%M ${s}_msh.tdr ${s}_bnd.tdr 2>&1 | awk '{print $7, $5, $6}'; tail -3 ${s}_sde.log | cut -c1-160; exit 0
+fi
+if [ "$1" = gad ]; then    # gad <struct>: the mesh as DF-ISE text (tdx), its head and section sizes
+  cd runs/_struct; s=$2; python3 -c 'import numpy; print("numpy", numpy.__version__)'; rm -f ${s}_msh.grd ${s}_msh.dat; tdx -dd ${s}_msh.tdr > ${s}_tdx.log 2>&1; tail -2 ${s}_tdx.log; ls -la ${s}_msh.grd* | awk '{print $5, $9}'
+  zcat -f ${s}_msh.grd* | head -40 | cut -c1-200; zcat -f ${s}_msh.grd* | grep -n -E '^ *(Vertices|Edges|Faces|Locations|Elements|Region)' | head -20 | cut -c1-120; exit 0
+fi
+if [ "$1" = gac ]; then    # gac <struct>: cuts of a mini-array mesh for the pictures next to Fig.2 (tools/grd_cut.py -> runs/_struct/<struct>_cut_*.json, packed into /tmp/<struct>_cuts.tgz)
+  cd runs/_struct; s=$2; [ -f ${s}_msh.grd ] || tdx -dd ${s}_msh.tdr > ${s}_tdx.log 2>&1
+  python3 ../../tools/grd_cut.py ${s}_msh.grd --info z $3 ${s}_cut_xsec.json y $4 ${s}_cut_body.json y $5 ${s}_cut_gate.json y $6 ${s}_cut_fin.json x $7 ${s}_cut_cap.json x $8 ${s}_cut_wl.json
+  tar czf /tmp/${s}_cuts.tgz ${s}_cut_*.json; ls -la /tmp/${s}_cuts.tgz | awk '{print $5, $9}'; rm -f ${s}_msh.grd ${s}_msh.dat; exit 0
+fi
+if [ "$1" = gat ]; then    # gat <struct>: what the running build logs within 60 s (which contact step, how many per minute)
+  cd runs/_struct; f=$2_sde.log; for i in 1 2; do date +%H:%M:%S; wc -l < $f; grep -c 'sdegeo:set-contact' $f; grep -c 'delete-region' $f; tail -c 300 $f | tr -s '
+' ' ' | cut -c1-200; echo; [ $i = 1 ] && sleep 60; done
+  grep -o 'sdegeo:set-contact (list.*' $f | tail -1 | grep -o 'find-face-id' | wc -l; exit 0
+fi
+if [ "$1" = gak ]; then    # gak <struct>: stop the structure build of <struct>
+  pkill -u "$USER" -f "sde -e -l $2_dvs"; sleep 1; pgrep -u "$USER" -a -f "sde -e -l" | cut -c1-60; nproc; exit 0
+fi
+if [ "$1" = m9 ]; then # the paper's sentences on Fig.7 / Fig.8(c) against fin7: body of the victim at t_A (Fig.7(e): 2.4 / 665.1 / 1.8 mV), pairs and holes per cycle, on-current of Cases 3 - 5 (text: +3.9 % from Case 3 to 5)
   python3 tools/gt_rh_body.py DptRzb_zz DptRzbi_zz DptRzbg_zz DptRyi_yy 2>&1 | cut -c1-210
   python3 tools/gt_rh_pairs.py DptRzbi_zz DptiRzbi_zz 2>&1 | cut -c1-210
   env GT_W=0.1 python3 tools/gt_fig5c.py runs/Dpb2I_c3 runs/Dpb2I_c4 runs/Dpb2I_c5 | cut -c1-200
