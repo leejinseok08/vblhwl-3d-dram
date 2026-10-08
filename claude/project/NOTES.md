@@ -43,6 +43,10 @@ the ones of that time (structures `gx_*` / `gp_*` are the meshes before the dopi
     off 1.008 / 1.057 / 1.093 / 1.165 / 0.950 V. Paper Fig.4(a): 0.72 / 0.92 / 1.06 / 1.13 V and the node on the BL level before 100 ps. Only the Case 4 cell
     comes near (-110 / -70 / -60 / -20 mV, rms / tolerance 2.4; Case 2: 7.6) and only it reaches the BL level. The paper does not say which case Fig.4(a)
     shows (its row hammer uses Case 2; we had taken Case 2).
+- Picture (user: "show a cross-section with the BL-side body that the gate does not cover"): `tools/plot_underlap.py` = the section of the built cell
+  with that stretch marked and, under it on the same x axis, the electron quasi-Fermi potential along the channel at node 0.36 / 0.82 / 1.095 V (run
+  DpL_c2). `pic_vbl_hwl_1t1c_3ddram\gt_cell_ungated_body_bl_side_vs_cho_fig2.png` (with the paper's single-cell drawing and array section next to
+  it: not for the repository) and `gt2d_ungated_body_bl_side.png` (without; shared).
 - Cause, as far as it goes: the device's charging current is low because the ungated body under the BL-side spacer is in series with the channel
   and, with the 1e18 body of Cases 1 - 3, stays a barrier. Not decided by the paper: which case Fig.4(a) is; the spacer material; whether the
   junction at the pillar is abrupt (ours is; a graded one shortens the stretch); whether the body under the spacer has the channel's doping.
