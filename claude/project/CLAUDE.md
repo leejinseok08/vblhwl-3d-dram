@@ -89,7 +89,7 @@ Run names must differ by more than letter case (the PC's file system is case-bli
   older `RF` runs use 16 ns / 20 ns); `CF<x>`, `FW`, `FB_`, `FR` FBE variants; `RQ` / `QR` row hammer in 2D (`QR` with the WL
   resistor); `CH`, `CI`, `CT`, `CFd` tunnelling calibration (closed); `MQ` mesh; `V3*`, `X3*` 3D. Older run folders in `runs/`
   (`X*`, `T*`, `G*` on `gt_` / `gx_` / `gp_` meshes) are history: their definitions are not in the run table any more.
-- Tools: `score2d.py` + `paper_targets.py` (scorecard of a configuration), `gt_probes.py` (potential probes at the four instants;
+- Tools: `score2d.py` + `paper_targets.py` (scorecard of a configuration), `repro_rate.py` (reproduction rate in %: items of that scorecard inside their tolerance; fin5 39 / 52 = 75.0 %, NOTES (bt)), `gt_probes.py` (potential probes at the four instants;
   `-w` write phase, `-k` sizing of the hole supply), `gt_fig5c.py` (Id-Vg against Fig.5(c)), `gt_fig4a.py` (write curve), `gt_tran.py` (transients: loss, probes,
   generation), `gt_fbe_tab.py` (five FBE cases against Fig.8 in one table), `gt_avg_tab.py` (the same with the reading of `fin3`), row-hammer
   pairs: `gt_rh_hist.py` (node per cycle per configuration), `gt_rh_pairs.py` (pairs and holes per cycle, holes through each contact),

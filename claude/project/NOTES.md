@@ -3,6 +3,20 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-08 (bt) user: "status of the simulations and of the device's reproduction rate (%)" - a rate defined and counted: 39 of the 52 scored numbers of the paper are inside their tolerance (75.0 %); single-cell figures 39 of 47, row hammer 0 of 5. No new run
+- Server at 10:55: no Sentaurus process on the account (mine or Codex's), quota 6953 / 9216 MB. Nothing has run since rounds 30, 31 and the end of
+  Codex's factorial (04:49); origin/main still at 28a07b3 (10-07 21:42). The six decisions of (bs) are still the user's.
+- Definition (`tools/repro_rate.py <config> ...`, reads the item lists `score2d.py` makes its rms from): an item = one number read from the paper
+  (`paper_targets.py`); reproduced if |simulated - paper| / tolerance <= 1. Table `results_vbl_hwl_1t1c_3ddram\GT_IRPS2026_재현율_2026-10-08.txt`.
+    fin5:  Fig.5(c) 23 / 28 | Fig.4(a) 2 / 4 | Fig.8(a) 5 / 5 | Fig.8(b) 5 / 5 | Fig.8(c) 4 / 5 | Fig.6(e) 0 / 2 | Fig.7 0 / 3 | all 39 / 52 = 75.0 %,
+           mean of the seven figure groups 58.9 %; without the five bars (a condition sized to them, not a result) 34 / 47 = 72.3 %.
+    b0 23 / 52 = 44.2 % (14.1 %) -> fin2 31 / 52 = 59.6 % (36.0 %) -> fin3 39 / 52 = 75.0 % (58.9 %) -> fin5 the same counts.
+  Outside: Case 5's three gate voltages (0.033 - 0.037 V high; tolerance 0.02 V, though the legend covers that curve: +-0.04 V in gt_fig5c.py),
+  Case 1's Vg at 1e-10 A (+0.0204 V, on the edge) and on-current (-0.11 decade), the write at 39 / 60 ps (-45 / -47 mV), Case 5 at 200 ns, all
+  five row-hammer numbers. Not among the 52: structure (an input), Fig.5(d) (formula), 3D X-X' (0.00066 / 0.0060 mV per cycle: 39 / 53 = 73.6 % with
+  it), the 665 mV of Fig.7(e).
+- To say with the number every time: the item count leans on Fig.5(c) (28 of 52), hence the mean over figures next to it; the bars are fitted.
+
 ## 2026-10-08 (bs) user: "all of it as an eliU report once everything, Codex's experiment included, has finished; with the remaining problems, the improvement measures and their explanation" - the complete report; found while writing it: Fig.6(e) read for the first time (reversible swing), the contact position decides Case 1's losses, Codex's late-reset scores are counted from the node before the reset, one common hold time does not give the five cases
 - Report: `Desktop\서강대\반엘프\results_vbl_hwl_1t1c_3ddram\GT_IRPS2026_전체보고_eliU_2026-10-08.html`, built by `tools/make_eliu_report_full.py` (text in
   `tools/eliu_full_text.py`; page builder and text checks of `tools/make_eliu_report.py`): 557 sentences, 6.6 units per sentence, no analogy word,
