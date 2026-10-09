@@ -46,7 +46,8 @@ if [ "$1" = gab ]; then    # gab <struct>: the same build detached (structure on
 fi
 if [ "$1" = gas ]; then
   cd runs/_struct; s=$2; n=0; while [ $n -lt ${3:-0} ] && pgrep -u "$USER" -f "sde -e -l ${s}_dvs" > /dev/null; do sleep 10; n=$((n + 10)); done; date +%H:%M:%S; pgrep -u "$USER" -a -f "sde|snmesh" | cut -c1-80; grep -i -E 'error|fail|cannot|unbound|invalid' ${s}_sde.log | sort | uniq -c | head -8
-  grep -E 'points\.|elements\.' ${s}_sde.log | tr -s ' \n' ' '; echo; ls -la --time-style=+%H:%M ${s}_msh.tdr ${s}_bnd.tdr 2>&1 | awk '{print $7, $5, $6}'; tail -3 ${s}_sde.log | cut -c1-160; exit 0
+  echo "set-contact lines: $(grep -c 'sdegeo:set-contact' ${s}_sde.log) (ga_c2, 45 contacts: 89)"
+  grep -E 'points\.|elements\.' ${s}_sde.log | tr -s ' \n' ' '; echo; ls -la --time-style=+%H:%M ${s}_msh.tdr ${s}_bnd.tdr 2>&1 | awk '{print $7, $5, $6}'; tail -3 ${s}_sde.log | cut -c1-100; exit 0
 fi
 if [ "$1" = gad ]; then    # gad <struct>: the mesh as DF-ISE text (tdx), its head and section sizes
   cd runs/_struct; s=$2; python3 -c 'import numpy; print("numpy", numpy.__version__)'; rm -f ${s}_msh.grd ${s}_msh.dat; tdx -dd ${s}_msh.tdr > ${s}_tdx.log 2>&1; tail -2 ${s}_tdx.log; ls -la ${s}_msh.grd* | awk '{print $5, $9}'
@@ -153,6 +154,47 @@ if [ "$1" = m3 ]; then    # rounds 32 / 33: m3 <seconds to wait> <tags>: state o
   exit 0
 fi
 m=$1; [ -n "$2" ] && sleep $2; shift; shift
+if [ "$m" = ion ]; then    # model Id (cell current, A) of Id-Vg runs at high gate voltage, next to Fig.5(c) read at Vg 1.60 - 1.75 V (Case 2: log10 I -3.639)
+  GT_W=0.1 python3 - "$@" <<'EOF'
+import sys; sys.path.insert(0, "tools"); import gt_fig5c as G
+for r in sys.argv[1:]:
+    pts = G.curve("runs/" + r); f = lambda v: "-" if G.at(pts, v) is None else f"log10 I {G.at(pts, v):.3f} = {10 ** G.at(pts, v) * 1e6:.1f} uA"
+    print(r, "Vg range", min(p[0] for p in pts), "..", max(p[0] for p in pts), "|", "  ".join(f"Vg {v}: {f(v)}" for v in (1.0, 1.5, 1.7, 1.75, 1.79)))
+EOF
+  exit 0
+fi
+if [ "$m" = eta ]; then    # read-only: progress of Codex's P1 runs (numerics_20261009_01) and the wall time of fin7's original Z-pair runs
+  C=codex_validation/numerics_20261009_01; date '+now %H:%M:%S'
+  for r in CxN1Atk CxN1Idle CxN2Atk CxN2Idle CxN4Atk CxN4Idle; do f=$C/runs/$r/${r}_sys.plt; [ -f $f ] || continue
+    echo "$r started $(cat $C/runs/$r/started_at.txt 2>/dev/null) finished $(cat $C/runs/$r/finished_at.txt 2>/dev/null) plt written $(date -r $f +%H:%M:%S)"; python3 tools/run_state.py -f $f; done
+  for r in DptRzbi_zz DptiRzbi_zz DptRzb_zz DptRzbg_zz; do echo "$r: $(ls -la --time-style=+%m-%d_%H:%M runs/$r/${r}_des.cmd runs/$r/${r}_sys.plt | awk '{print $6}' | tr '\n' ' ') | $(zcat -f runs/$r/$r.out* 2>/dev/null | grep -iE 'wallclock|cpu.?time' | tail -2 | tr '\n' ' ')"; done
+  exit 0
+fi
+if [ "$m" = mb ]; then    # build the meshes of the named structures in the background (structure only, no device run); log runs/_struct/<st>_sde.log
+  cd runs/_struct || exit 1
+  for s in "$@"; do [ -f ${s}_msh.tdr ] && { echo "$s: mesh exists, not rebuilt"; continue; }; [ -f ${s}_dvs.cmd ] || { echo "$s: no ${s}_dvs.cmd"; continue; }
+    nohup sde -e -l ${s}_dvs.cmd > ${s}_sde.log 2>&1 < /dev/null & echo "$s: sde started $(date +%H:%M:%S), pid $!"; done
+  exit 0
+fi
+if [ "$m" = mc ]; then    # contact names in the named 2D meshes (whole-word occurrences in the TDR file), to compare mesh variants of one structure
+  for s in "$@"; do echo "$s: $(grep -a -o -w -E 'bl|sn_v|sn_a|gs_v|gs_a|gd_v|gd_a|body_v|gp_v' runs/_struct/${s}_msh.tdr | sort | uniq -c | awk '{printf "%s x%s  ", $2, $1}')"; done
+  exit 0
+fi
+if [ "$m" = mcx ]; then   # the bytes around every whole-word "bl" in the named meshes: a contact name sits among text, a chance match among numbers
+  python3 - "$@" <<'EOF'
+import sys, re
+for s in sys.argv[1:]:
+    b = open(f"runs/_struct/{s}_msh.tdr", "rb").read()
+    for m in re.finditer(rb"(?<![A-Za-z0-9_])bl(?![A-Za-z0-9_])", b):
+        ctx = b[max(0, m.start() - 24):m.start() + 24]; txt = sum(32 <= c < 127 for c in ctx) / len(ctx)
+        print(f"{s} at {m.start()}: printable share {txt:.2f} | {ctx!r}")
+EOF
+  exit 0
+fi
+if [ "$m" = ms ]; then    # state of those builds: mesh files, last log line, vertex count
+  for s in "$@"; do f=runs/_struct/${s}_msh.tdr; echo "$s: $( [ -f $f ] && echo "mesh $(date -r $f +%H:%M:%S) $(stat -c %s $f) B" || echo 'no mesh yet') | $(grep -a -o -E '[0-9]+ (vertices|points)[^.]*' runs/_struct/${s}_sde.log | tail -1) | $(grep -a -E 'Total Execution Time' runs/_struct/${s}_sde.log | tail -1)"; done
+  exit 0
+fi
 if [ "$m" = r3d ]; then
   mkdir -p runs/_unused/struct3d_before_rebuild
   for s in g3_c2h g3x_c2h; do for e in msh.tdr bnd.tdr sde.log top.csv cutx.csv cutz.csv cutg.csv; do f=runs/_struct/${s}_$e; [ -f $f ] && mv $f runs/_unused/struct3d_before_rebuild/; done; done

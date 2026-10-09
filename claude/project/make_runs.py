@@ -58,6 +58,11 @@ STRUCTS = dict(
     gb2_c3hb=dict(Tbody=10, Blc="bot", Blx=180), gb2_c4hb=dict(Tbody=10, Nch=1e16, Blc="bot", Blx=180),      # 2 pitches, the 10 nm bodies (Cases 3 - 5)
     # the row-hammer pairs of the device since 2026-10-08 (fin6): BL contact at the pillar end, two Z pitches below the pair
     gb2_yy=dict(Pair="yy", Blc="bot", Blx=200), gb2_zz=dict(Pair="zz", Blc="bot", Blx=200), gb2_zzg=dict(Pair="zz", Blc="bot", Blx=200, Bgc=1),
+    # mesh candidates of gb2_zz for the mesh step of plan P1 (Codex runs it; 2026-10-09), same structure, doping and contacts:
+    # j = junction windows, body cross-section and the smallest doping-gradient step halved (Mj 0.25, Mv 0.5, Mg 0.5);
+    # a = every size of the channel and junction windows halved (also Mc 1 along the channel, Mi 0.1 at the gate dielectric); the global
+    # maximum of 10 x 5 nm outside them (pillar, oxides, gates) stays
+    gb2j_zz=dict(Pair="zz", Blc="bot", Blx=200, Mj=0.25, Mv=0.5, Mg=0.5), gb2a_zz=dict(Pair="zz", Blc="bot", Blx=200, Mc=1, Mj=0.25, Mv=0.5, Mi=0.1, Mg=0.5),
     # diagnostics of the write current (round 37): the Case 2 cell of fin7 with HfO2 / SiO2 spacers (the paper names no spacer material)
     gbh_c2hb=dict(Blc="bot", Blx=200, Spm="HfO2"), gbo_c2hb=dict(Blc="bot", Blx=200, Spm="SiO2"),
 )
@@ -1082,7 +1087,13 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--only", nargs="*"); ap.add_argument("--list", action="store_true")
     ap.add_argument("--out", default=os.path.join(HERE, "runs")); ap.add_argument("--jobs", type=int, default=2)
     ap.add_argument("--sh", default="run_all.sh")     # name of the batch script (a second batch next to a running one)
+    ap.add_argument("--structs", nargs="*")            # only the SDE files of these structures, no runs (meshes for another agent's runs)
     a = ap.parse_args()
+    if a.structs:
+        os.makedirs(os.path.join(a.out, "_struct"), exist_ok=True)
+        for st in a.structs:
+            p = copy.deepcopy(PDEF); p.update(STRUCTS[st]); wtext(os.path.join(a.out, "_struct", f"{st}_dvs.cmd"), fill_sde(st, p))
+        print(f"wrote {len(a.structs)} structure files -> {os.path.join(a.out, '_struct')}"); return
     seen = {}
     for x in [r["id"] for r in RUNS] + list(STRUCTS):       # the PC's file system is case-blind: X3P_xx would land in the folder of X3p_xx
         if seen.setdefault(x.lower(), x) != x: raise SystemExit(f"names differ only by case: {seen[x.lower()]} / {x}")

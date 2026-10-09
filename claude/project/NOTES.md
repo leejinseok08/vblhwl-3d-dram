@@ -3,6 +3,30 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-09 (cj) user: "1, 2 go" - while P1 runs: (1) P2 analysis tool tried on the existing reset runs, (2) two mesh candidates for P1's mesh step. No device run
+- (2) `gb2j_zz` (Mj 0.25, Mv 0.5, Mg 0.5: junction windows, body cross-section, smallest doping-gradient step halved; 42 745 points, x 1.90) and
+  `gb2a_zz` (also Mc 1, Mi 0.1: every size of the channel and junction windows halved; 61 261 points, x 2.73); the global maximum 10 x 5 nm outside
+  stays. `make_runs.py --structs` (new: structure files only). sde 9 / 10 s (gb2_zz: 5 s). gt_precheck ALL PASS for all three; the SDE files differ
+  from gb2_zz only in the refinement lines; contacts: the same seven names, each name's length-prefixed entry once (other "bl" byte matches in the
+  binary are chance, `_q.sh mcx`). Mesh SHA-256 dd3a25979430... / 7b977e065cb5.... For Codex to confirm (results folder
+  `GT_IRPS2026_P1메시후보_P2예비분석_Codex전달_2026-10-09.md`).
+- (1) `tools/gt_precharge.py [--dc <load-line run>] <runs>` (table `runs/precharge_p2_reset_runs.txt`): instants of the pre-charge, charge balance per
+  interval, DC load line at the same node voltage, voltage split with ProbeE. Every deck has `Transient = BE`: with the right-end-point rule the
+  balance Cs dV = integral I_sn is exact (0.0000 fC in 25 - 73 ps) - the trapezoid's -3 .. -8 % was the quadrature; what is left sits at the WL edges
+  where the solver steps finer than the plotted points (Codex's CurrentPlot finding). BE is first order: N1 / N2 / N4 differences should halve.
+- Results on the reset runs (their 0 - 130 ps is the natural write): the deficit is the first 12 ps (mean charging current 148.9 / 157.2 / 136.4 uA
+  for floating off / floating on / grounded on, paper 252 with 4.2 fF); afterwards the floating cell gives the paper's current or more (68 / 42 / 24
+  against 70 / 39 / 14) and never catches up. Paper's own numbers: Fig.5(c) Case 2 at Vg 1.60 - 1.75 V reads log10 I -3.639 = 230 uA (12 pixels on one
+  row; +-0.066 dec per pixel; V_DS not stated) - below the 252 uA mean that Fig.4(a) needs in its first 12 ps with 4.2 fF, while a quasi-static
+  transistor can only lose current as the node rises: Fig.4(a) with 4.2 fF needs a transient boost, another effective capacitance, or another V_DS.
+  Model Id at Vg 1.75 V 198 uA (-0.064 dec; not a legacy52 item). Transient current below the DC load line at the same node voltage (floating off
+  -13 / -14 / -8 / -5 %; on -2 / -7 / -10 / -9 %): no holes in the body in picoseconds (off: 0); the default avalanche adds 448 pairs in 12 ps, +5.6 %
+  of charge. Grounded body: current collapses as the node rises (6 uA at 0.68 V against 65 uA floating DC), node 0.689 V before WL off - the body
+  contact acts as a back gate; the paper's grounded curve starts at 1.1 V (open how). WL switch-off costs 16.3 mV in every run: a natural 1.1 V
+  needs about 1.116 V before WL off (model 1.0375 / 1.0476 / 0.689). After the reset nothing moves in the hold (+-0.0001 fC).
+- `_q.sh`: modes eta / ion / mb / ms / mc / mcx moved before the common status block (line ~227 ran for every later mode). A remote `grep -E "a|b"`
+  from PowerShell lost its quotes and ran the alternatives as commands (one of them `reset`) - again: nothing with quotes or pipes in an ssh line.
+
 ## 2026-10-09 (ci) user: "read Codex's joint plan (2D first) and its brief for Claude, and start" - P0 bookkeeping done, P2 decks prepared, no TCAD run
 - The plan (results folder `Codex_독립검증_2026-10-09\재현실험_통합계획\`): measures -> numerical convergence (Codex, P1) -> natural pre-charge (Claude,
   P2) -> Id-Vg / write -> five-case FBE -> 2D Y / Z row hammer -> 3D. It replaces my order of the morning (3D AC first). Three mistakes of my handoff
@@ -27,6 +51,14 @@ the ones of that time (structures `gx_*` / `gp_*` are the meshes before the dopi
   name, the two Set / Unset lines, segments and aggressor pulses after 245 ps, probes. Batch `runs/run_p2nw.sh` on the server; `gt_precheck.sh
   gb2_zz:20:2 gb2_zzg:20:2` ALL PASS; deck hashes in claude/EXPERIMENTS.md. Check after the run: up to 130 ps the node must repeat the originals.
 - `DgxC_c2` (X-X' AC) moved to plan P6.
+- 22:15 (user: "does Codex's P1 have to finish first?" - yes, by the plan; G1 = time steps AND mesh): Codex started P1 at 22:05:30
+  (`codex_validation/numerics_20261009_01`: CxN1Atk / Idle = DptRzbi_zz / DptiRzbi_zz with every MaxStep x 1, then x 1/2 (CxN2), x 1/4 (CxN4),
+  sequential; then two refined meshes; h/8 and Newton tolerance if needed). Its finding (report `Codex_독립검증_2026-10-09\P0_P1_수치검증\`, user guide
+  pp.171-173): a CurrentPlot with a time list makes the solver step to those times - CxS4 / CxS8 changed the hammer's largest step 9.4 -> 2.47 -> 1.24 ps,
+  not only the output - so the next decks use a bare CurrentPlot and vary MaxStep only. Consequence for P2: the DnwR* decks (original time lists) must
+  be regenerated with G1's settings, and their reset controls rerun with the same settings up to 245 ps (the existing DptRz* runs have the old
+  discretization), so that "one change" still holds. Wall times of the originals (for the estimate): DptRzbi 48 min, DptiRzbi 20, DptRzb 63, DptRzbg 49;
+  CxN1Atk at 0.342 of 2.125 ns after 12 min. `_q.sh eta` reads that progress (read-only).
 
 ## 2026-10-09 (ch) user: "read the repository and the project and continue" - round 39: capacitance matrix of the mini array ga_c2; mini array with one WL per row (gax_c2) building
 - Checks before the run: git pull (Codex's last push 2026-10-07 21:42, nothing new), no sdevice of the account live, quota 7454 / 9216 MB; structure
