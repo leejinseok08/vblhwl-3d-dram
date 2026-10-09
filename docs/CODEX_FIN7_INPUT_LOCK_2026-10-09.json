@@ -1,0 +1,125 @@
+{
+  "active_baseline": "fin7",
+  "scope": "Codex snapshot, does not edit production source",
+  "source_note": "CLAUDE fin7 2026-10-08 decision supersedes old fin3 CURRENT_BASELINE.json",
+  "composition": {
+    "I": "pb2",
+    "W": "pt",
+    "F": "pt",
+    "R": "pt",
+    "R_idle": "pti"
+  },
+  "P1_actual_inputs": {
+    "owner": "Codex",
+    "batch": "numerics_20261009_01",
+    "purpose": "P1 numerical convergence before physical refit",
+    "authorization": "User: 너가 할일 시작해",
+    "runs": [
+      {
+        "id": "CxN1Atk",
+        "source": "DptRzbi_zz",
+        "factor": 1,
+        "attack": true,
+        "deck_sha256": "4a17852fa6abda2e5d14206891f4a32c0bf9a1d88860ba5b6eb6fc8197ac0e31",
+        "max_hammer_plateau_ps": 9.4
+      },
+      {
+        "id": "CxN1Idle",
+        "source": "DptiRzbi_zz",
+        "factor": 1,
+        "attack": false,
+        "deck_sha256": "d1e5ae110aeb623550208b312d71a5dc2af0d0be613d5010e436a3c8c46a4383",
+        "max_hammer_plateau_ps": 9.4
+      },
+      {
+        "id": "CxN2Atk",
+        "source": "DptRzbi_zz",
+        "factor": 2,
+        "attack": true,
+        "deck_sha256": "e44337764a6eeb13e975b5e2c47696491f7bac7a44cfa85a1d775c1e2064985e",
+        "max_hammer_plateau_ps": 4.7
+      },
+      {
+        "id": "CxN2Idle",
+        "source": "DptiRzbi_zz",
+        "factor": 2,
+        "attack": false,
+        "deck_sha256": "18461c2861ac62409bceca0d91b3697653b983286ba7f71c34428ff910fe5af6",
+        "max_hammer_plateau_ps": 4.7
+      },
+      {
+        "id": "CxN4Atk",
+        "source": "DptRzbi_zz",
+        "factor": 4,
+        "attack": true,
+        "deck_sha256": "b65d45a4ed907bd99a9b46bcb57c9e49dec0199107c7ab970243abd374063eaa",
+        "max_hammer_plateau_ps": 2.35
+      },
+      {
+        "id": "CxN4Idle",
+        "source": "DptiRzbi_zz",
+        "factor": 4,
+        "attack": false,
+        "deck_sha256": "f59e8c38e56dc84490f2f05644328b0baf8c269496a674972837e9331e5d9cd0",
+        "max_hammer_plateau_ps": 2.35
+      }
+    ],
+    "jobs": 2,
+    "threads_per_run": 4,
+    "structure": "fin7 gb2_zz",
+    "mesh_sha256": "aa0f32997e339c589882542dee7ead8919a2003459f94da75d86bc6d5606d0b2",
+    "physics_unchanged": true,
+    "SN_reset_preserved_as_diagnostic": true,
+    "model_assumptions": [
+      "HfO2",
+      "Si3N4",
+      "300K",
+      "SRH lifetime defaults",
+      "Hurkx coefficients",
+      "vanOverstraeten default driving force"
+    ],
+    "paper_checks": [
+      "Cho Sec.III: C2 Tbody20 Nch1e18 WF4.7",
+      "Sec.V and Fig.6/7: victim WL0, BL VDD/2, aggressor 0..VPP, II ON comparison"
+    ],
+    "non_reproduction_conditions": [
+      "2D pair rather than 3D miniarray",
+      "lumped Cs4.2fF",
+      "SN forced to 1.1V at130ps until140ps"
+    ],
+    "no_new_physical_values": true
+  },
+  "geometry_checked": {
+    "Lg_nm": 100,
+    "Tbody_nm": 20,
+    "Tox_nm": 5,
+    "Tgate_nm": 20,
+    "Dvox_nm": 30,
+    "spacers_nm": [
+      25,
+      25
+    ],
+    "junctions_nm": [
+      50,
+      175
+    ],
+    "Nsd_cm3": 1e+20,
+    "Nbody_cm3": 1e+18,
+    "Wbl_nm": 100,
+    "Wphysical_nm": 100,
+    "BL_contact_extension_nm": 200,
+    "layers": 2,
+    "vertices": 22459,
+    "contacts": 7
+  },
+  "source_sha256": {
+    "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\CLAUDE.md": "bbffd87f8200c77c24d88c7ea34aab10375b669aecbf4f551d19ed0185852cd7",
+    "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\MEASURE.md": "7a8411d7c4fe10e3fcb64c12fca9c635f5e38cdeafb766aa137519d45321445d",
+    "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\tools\\gt_fig5c.py": "6b7c4f505756c50f2e510e2c1bda76fe96023c79312f3fb3383bd9b7114ad88d",
+    "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\tools\\paper_targets.py": "03243b65708fbc87e85a0031926b04482b5b18ef865f29d141fa1b324781baa9",
+    "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\tools\\score2d.py": "c34736618f4284d8e326527665d6debd2846c1ebf3338d451410e615a50b9b1d",
+    "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\tools\\repro_rate.py": "edf1302f51c9350ca4008577fa855f256da110b9a6d96f80d309fc3ddca7901c",
+    "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\numerics_20261009_01\\manifest.json": "4b0abc77d8aa9e0e8198e9349324a6779bc1536e5f08ac600974ebd8b17e032e",
+    "C:\\Users\\LEEJINSEOK\\vblhwl_3d_dram\\codex_validation\\numerics_20261009_01\\review_gate.json": "aa39520b3c58f1fdcb9b35beab654eda96e510d5ad84e9db9fcbf97e00dab7ea"
+  }
+}
