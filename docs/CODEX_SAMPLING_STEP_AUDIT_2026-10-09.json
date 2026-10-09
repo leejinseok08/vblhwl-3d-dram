@@ -1,0 +1,101 @@
+{
+  "DptRzbi_zz": {
+    "attempts": 884,
+    "accepted": 845,
+    "hammer_accepted": 651,
+    "hammer_max_dt_ps": 9.4,
+    "hammer_median_dt_ps": 0.9400000000000001,
+    "first_step_lines": [
+      "Computing BE-step from 0.0000e+00 s to 5.0000e-13 s (Stepsize: 5.0000e-13",
+      "Computing BE-step from 5.0000e-13 s to 1.2500e-12 s (Stepsize: 7.5000e-13",
+      "Computing BE-step from 1.2500e-12 s to 2.3750e-12 s (Stepsize: 1.1250e-12"
+    ],
+    "finished": true,
+    "wall_seconds": [
+      "2899.20"
+    ]
+  },
+  "DptiRzbi_zz": {
+    "attempts": 824,
+    "accepted": 814,
+    "hammer_accepted": 620,
+    "hammer_max_dt_ps": 9.4,
+    "hammer_median_dt_ps": 1.0,
+    "first_step_lines": [
+      "Computing BE-step from 0.0000e+00 s to 5.0000e-13 s (Stepsize: 5.0000e-13",
+      "Computing BE-step from 5.0000e-13 s to 1.2500e-12 s (Stepsize: 7.5000e-13",
+      "Computing BE-step from 1.2500e-12 s to 2.3750e-12 s (Stepsize: 1.1250e-12"
+    ],
+    "finished": true,
+    "wall_seconds": [
+      "1199.24"
+    ]
+  },
+  "CxS4Atk": {
+    "attempts": 1910,
+    "accepted": 1853,
+    "hammer_accepted": 1293,
+    "hammer_max_dt_ps": 2.4722,
+    "hammer_median_dt_ps": 2.4722,
+    "first_step_lines": [
+      "Computing BE-step from 0.0000e+00 s to 3.1250e-13 s (Stepsize: 3.1250e-13",
+      "Computing BE-step from 3.1250e-13 s to 6.2500e-13 s (Stepsize: 3.1250e-13",
+      "Computing BE-step from 6.2500e-13 s to 9.3750e-13 s (Stepsize: 3.1250e-13"
+    ],
+    "finished": true,
+    "wall_seconds": [
+      "4080.43"
+    ]
+  },
+  "CxS4Idle": {
+    "attempts": 1788,
+    "accepted": 1780,
+    "hammer_accepted": 1220,
+    "hammer_max_dt_ps": 2.4722,
+    "hammer_median_dt_ps": 2.4722,
+    "first_step_lines": [
+      "Computing BE-step from 0.0000e+00 s to 3.1250e-13 s (Stepsize: 3.1250e-13",
+      "Computing BE-step from 3.1250e-13 s to 6.2500e-13 s (Stepsize: 3.1250e-13",
+      "Computing BE-step from 6.2500e-13 s to 9.3750e-13 s (Stepsize: 3.1250e-13"
+    ],
+    "finished": true,
+    "wall_seconds": [
+      "1502.71"
+    ]
+  },
+  "CxS8Atk": {
+    "attempts": 3542,
+    "accepted": 3455,
+    "hammer_accepted": 2376,
+    "hammer_max_dt_ps": 1.2361,
+    "hammer_median_dt_ps": 1.2361,
+    "first_step_lines": [
+      "Computing BE-step from 0.0000e+00 s to 1.5625e-13 s (Stepsize: 1.5625e-13",
+      "Computing BE-step from 1.5625e-13 s to 3.1250e-13 s (Stepsize: 1.5625e-13",
+      "Computing BE-step from 3.1250e-13 s to 4.6875e-13 s (Stepsize: 1.5625e-13"
+    ],
+    "finished": true,
+    "wall_seconds": [
+      "6681.26"
+    ]
+  },
+  "CxS8Idle": {
+    "attempts": 3366,
+    "accepted": 3359,
+    "hammer_accepted": 2280,
+    "hammer_max_dt_ps": 1.2361,
+    "hammer_median_dt_ps": 1.2361,
+    "first_step_lines": [
+      "Computing BE-step from 0.0000e+00 s to 1.5625e-13 s (Stepsize: 1.5625e-13",
+      "Computing BE-step from 1.5625e-13 s to 3.1250e-13 s (Stepsize: 1.5625e-13",
+      "Computing BE-step from 3.1250e-13 s to 4.6875e-13 s (Stepsize: 1.5625e-13"
+    ],
+    "finished": true,
+    "wall_seconds": [
+      "3014.81"
+    ]
+  },
+  "mesh_sha256": "aa0f32997e339c589882542dee7ead8919a2003459f94da75d86bc6d5606d0b2",
+  "manual_version": "Sentaurus Device User Guide U-2022.12",
+  "manual_behavior_note": "p171: explicit CurrentPlot selects recorded points; intermediate computed points may be omitted. p172: free Range writes all time points. Actual step changes are assessed from logs."
+}
