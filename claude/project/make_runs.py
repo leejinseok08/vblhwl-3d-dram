@@ -148,6 +148,11 @@ def currentplot(p, indent="  "):
             gated, under = win(x0 + p["Lsp1"], x0 + p["Lsp1"] + p["Lg"]), win(x0, x0 + p["Lsp1"])
             extra += (f'{indent}  ElectrostaticPotential( Average(Region="R.Ch_v") Minimum(Region="R.Ch_v") Maximum(Region="R.Ch_v") Average({gated}) Average({under}) )\n'
                       f'{indent}  hQuasiFermiPotential( Average(Region="R.Ch_v") Average({gated}) )\n')
+    if p["ProbeE"] and p["Tpl"] == "sde_gt_dvs.cmd" and p["Pair"] == "zz":        # Z pair: the same line along the victim's channel (the victim is the lower cell, at the single cell's place)
+        yb = (p["Dvox"] / 2 + p["Tgm"] + p["Tox"] + p["Tbody"] / 2) / 1000
+        for i in range(int((p["Wbl"] / 2 + p["Lsp1"] + p["Lg"] + p["Lsp2"]) / 5)):
+            q = f"({(2 + 5 * i) / 1000:.5f} {yb:.5f})"
+            extra += f"{indent}  eQuasiFermiPotential( {q} )\n{indent}  ElectrostaticPotential( {q} )\n{indent}  eDensity( {q} )\n"
     if p["ProbeX"] and p["Tpl"] == "sde_gt_dvs.cmd" and p["Pair"] != "one":       # 2D pair: average over the victim's body under its gate, holes in the aggressor's body
         y0 = p["Dvox"] / 2 + p["Tgm"] + p["Tox"]; xa = p["Lsp2"] if p["Pair"] == "yy" else p["Wbl"] / 2 + p["Lsp1"]
         extra += (f"{indent}  ElectrostaticPotential( Average(Window[({xa / 1000:.5f} {y0 / 1000:.5f}) ({(xa + p['Lg']) / 1000:.5f} {(y0 + p['Tbody']) / 1000:.5f})]) )\n"
@@ -374,7 +379,7 @@ def deck_cho(rid, p, struct, test):
         sysl += [f"Capacitor_pset Csa ( nSNa 0 ) {{ capacitance = {p['Cs']:g} }}", f"Vsource_pset vwla ( nWLa 0 ) {{ pwl = ( {pwl(WA)} ) }}"]; plotn += " v(nSNa) v(nWLa)"
     sns = [] if test == "H" else ["nSN", "nSNa"] if pair else ["nSN"]; sysl += [f"Set( {n} = 0 )" for n in sns]      # DC start: a node that sees only its capacitor and a 1e-21 A contact is singular
     solve = solve_transient(S).replace("Contact Circuit }\n", "Contact Circuit }\n" + "".join(f"  Unset( {n} )\n" for n in sns), 1)
-    if tset:
+    if tset and not p["SNfree"]:
         a, b = (f"  Transient( InitialTime={ft(x)} " for x in tset)
         if solve.count(a) != 1 or solve.count(b) != 1: raise ValueError(f"{rid}: cannot place Set / Unset of the storage node")
         sa, ua = (f"  Set( nSNa = {p['SNa0']:g} )\n", "  Unset( nSNa )\n") if p["SNa0"] and pair else ("", "")       # the aggressor's node with the victim's
@@ -978,6 +983,13 @@ cfg2d("pt", "F", cases=CASEX, gb=GF5, ProbeX=1, ProbeT=1, II=0, k_cs=1.0, par=PN
 # fin6 with the text's capacitors (tag pt; Id-Vg of tag pb2). Its row hammer with 4.2 fF and the idle controls (pt, pti).
 cfg2d("pt", "R", rhsel=tuple(RSX), rst=RSX, k_cs=1.0, par=PN)
 cfg2d("pti", "R", rhsel=tuple(RSX), rst=RSX, rh=dict(Idle=1), k_cs=1.0, par=PN)
+# Plan P2 of 2026-10-09 (Codex / Claude, "2D first"): natural pre-charge. fin7's Z-Z' row-hammer decks (floating / avalanche off, floating / default
+# avalanche on, grounded body / on) with ONE change, the storage node not set to 1.1 V at 130 - 140 ps (SNfree: same time schedule), run to the
+# start of the hammer (Ncyc=0; tEnd = the first aggressor edge at 245 ps). Output only added: the victim's body average and the aggressor's holes
+# (ProbeX) and quasi-Fermi potential / potential / electron density along the victim's channel (ProbeE); the CurrentPlot times are those of the
+# originals, so up to 130 ps the runs must repeat the originals' write (a check that the added output changes nothing). The reset runs DptRzb_zz,
+# DptRzbi_zz, DptRzbg_zz are the controls (before the reset: SN 1.021 / 1.031 / 0.673 V, Codex). Not to start before Codex's G1 (time / mesh).
+cfg2d("nw", "R", rhsel=("Rzb_zz", "Rzbi_zz", "Rzbg_zz"), rst=RSX, k_cs=1.0, par=PN, rh=dict(Ncyc=0, SNfree=1, ProbeX=1, ProbeE=1))
 # The current: with 4.2 fF the write of Fig.4(a) asks for 252 / 70 / 39 / 14 uA on average in its four intervals; the model has 168 / 69 / 41 /
 # 24 uA at node voltages 240 - 190 mV lower. DpL = the DC charging current along the write (gates 1.8 V, BL 1.168 V, node swept 0 -> 1.168 V) with
 # the electron quasi-Fermi potential along the channel and down the pillar: at which node voltage the current is short, and where the

@@ -1,0 +1,9 @@
+bar of Fig.7(d)      | loss per cycle [mV]: all, last five | count 605 / 550 mV | minus idle: all, last five | count 605 / 550 mV | paper
+RH-Case 1 Y off      | +0.00059 +0.00059 (10 cycles) |  1024.2k / 931.1k | -0.00000 -0.00000 | no fall / no fall | 11.3k
+RH-Case 1 Y on       | -0.00098 -0.00130 (10 cycles) | no fall / no fall | -0.00157 -0.00189 | no fall / no fall | 11.3k
+RH-Case 2 Z off      | -0.00115 +0.00060 (10 cycles) | unsteady / unsteady | -0.00175 +0.00000 | unsteady / unsteady | 60.5k
+RH-Case 2 Z on       | -0.00234 -0.00085 (10 cycles) | no fall / no fall | -0.00295 -0.00145 | no fall / no fall | N/A (collapse)
+RH-Case 2 Z gnd on   | -0.00113 +0.00062 (10 cycles) | unsteady / unsteady | -0.00174 +0.00001 | unsteady / unsteady | 16.8k
+RH-Case 3 X off      | not run: X-X' is a 3D quantity (next row): not in the 2D section | paper 100.8k
+RH-Case 3 X on       | not run: X-X' is a 3D quantity (next row): not in the 2D section | paper 86.4k
+6F2 reference        | not run: the planar 6F2 cell of the paper: outside this reproduction | paper 1.12k

@@ -1,0 +1,26 @@
+Dpb2I_c1       ok   gb2_c1hb   mesh 6f6391540723 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=30 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=0 Bgc=0 SNset=0.0 Idle=0
+Dpb2I_c2       ok   gb2_c2hb   mesh 686b99f15881 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=20 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=0 Bgc=0 SNset=0.0 Idle=0
+Dpb2I_c3       ok   gb2_c3hb   mesh c6468b1ae8f2 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=10 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=0 Bgc=0 SNset=0.0 Idle=0
+Dpb2I_c4       ok   gb2_c4hb   mesh ffc282429130 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=10 Nch=1e+16 WFs=4.7 Cs=4.2e-15 II=0 Bgc=0 SNset=0.0 Idle=0
+Dpb2I_c5       ok   gb2_c4hb   mesh ffc282429130 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=10 Nch=1e+16 WFs=5.0 Cs=4.2e-15 II=0 Bgc=0 SNset=0.0 Idle=0
+DptW_c2        ok   gb2_c2hb   mesh 686b99f15881 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=20 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=0 Bgc=0 SNset=1.1 Idle=0
+DptF_c1        ok   gb2_c1hb   mesh 6f6391540723 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=30 Nch=1e+18 WFs=4.7 Cs=5.1e-15 II=0 Bgc=0 SNset=1.1 Idle=0
+DptF_c2        ok   gb2_c2hb   mesh 686b99f15881 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=20 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=0 Bgc=0 SNset=1.1 Idle=0
+DptF_c3        ok   gb2_c3hb   mesh c6468b1ae8f2 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=10 Nch=1e+18 WFs=4.7 Cs=3.6e-15 II=0 Bgc=0 SNset=1.1 Idle=0
+DptF_c4        ok   gb2_c4hb   mesh ffc282429130 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=10 Nch=1e+16 WFs=4.7 Cs=3.6e-15 II=0 Bgc=0 SNset=1.1 Idle=0
+DptF_c5        ok   gb2_c4hb   mesh ffc282429130 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=10 Nch=1e+16 WFs=5.0 Cs=3.6e-15 II=0 Bgc=0 SNset=1.1 Idle=0
+DptRy_yy       ok   gb2_yy     mesh 9809ef3bf16c par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=20 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=0 Bgc=0 SNset=1.1 Idle=0
+DptRyi_yy      ok   gb2_yy     mesh 9809ef3bf16c par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 9e54d651a7edf47c | Tbody=20 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=1 Bgc=0 SNset=1.1 Idle=0
+DptRzb_zz      ok   gb2_zz     mesh aa0f32997e33 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=20 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=0 Bgc=0 SNset=1.1 Idle=0
+DptRzbg_zz     ok   gb2_zzg    mesh da87d0f54771 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 9e54d651a7edf47c | Tbody=20 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=1 Bgc=1 SNset=1.1 Idle=0
+DptRzbi_zz     ok   gb2_zz     mesh aa0f32997e33 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 9e54d651a7edf47c | Tbody=20 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=1 Bgc=0 SNset=1.1 Idle=0
+DptiRy_yy      ok   gb2_yy     mesh 9809ef3bf16c par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=20 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=0 Bgc=0 SNset=1.1 Idle=1
+DptiRyi_yy     ok   gb2_yy     mesh 9809ef3bf16c par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 9e54d651a7edf47c | Tbody=20 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=1 Bgc=0 SNset=1.1 Idle=1
+DptiRzb_zz     ok   gb2_zz     mesh aa0f32997e33 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 5b741448cdaad145 | Tbody=20 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=0 Bgc=0 SNset=1.1 Idle=1
+DptiRzbg_zz    ok   gb2_zzg    mesh da87d0f54771 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 9e54d651a7edf47c | Tbody=20 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=1 Bgc=1 SNset=1.1 Idle=1
+DptiRzbi_zz    ok   gb2_zz     mesh aa0f32997e33 par sdevice_cal_a1.2e20_b2e07.par 436b6934cce5 phys 9e54d651a7edf47c | Tbody=20 Nch=1e+18 WFs=4.7 Cs=4.2e-15 II=1 Bgc=0 SNset=1.1 Idle=1
+
+model sets (Physics sections + parameter file): 2
+  phys 5b741448cdaad145 par 436b6934cce508a8: Dpb2I_c1 Dpb2I_c2 Dpb2I_c3 Dpb2I_c4 Dpb2I_c5 DptW_c2 DptF_c1 DptF_c2 DptF_c3 DptF_c4 DptF_c5 DptRy_yy DptRzb_zz DptiRy_yy DptiRzb_zz
+  phys 9e54d651a7edf47c par 436b6934cce508a8: DptRyi_yy DptRzbg_zz DptRzbi_zz DptiRyi_yy DptiRzbg_zz DptiRzbi_zz
+-> runs/baseline_fin7.json

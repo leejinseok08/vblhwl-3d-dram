@@ -3,6 +3,31 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-09 (ci) user: "read Codex's joint plan (2D first) and its brief for Claude, and start" - P0 bookkeeping done, P2 decks prepared, no TCAD run
+- The plan (results folder `Codex_독립검증_2026-10-09\재현실험_통합계획\`): measures -> numerical convergence (Codex, P1) -> natural pre-charge (Claude,
+  P2) -> Id-Vg / write -> five-case FBE -> 2D Y / Z row hammer -> 3D. It replaces my order of the morning (3D AC first). Three mistakes of my handoff
+  of the afternoon that it corrects, accepted: Cho's Fig.5(c) is "Drain Current [A]" (cell current; our scorer multiplies by 0.1 um), so dividing the
+  write current of Fig.4(a) by it gives no width - the A/um question belongs to Hsu's Fig.2(c) only; the write goes first because it sets the initial
+  state, not because of its score (RI 11.88 > W 7.64); "the victim's gate at 0 V shields its body in 2D" is a hypothesis to test, not a premise.
+  A correction header was put on my handoff file. R of Fig.7(b) stays out (user's reading).
+- P0 done: `tools/baseline_manifest.py fin7` (server `runs/baseline_fin7.json`, `.txt`): 21 runs, all complete; SHA-256 of decks, meshes, parameter
+  file; hash of the Physics sections without AreaFactor and the stand-in Optics lines: exactly two model sets, OFF (Id-Vg, write, FBE, RH off and
+  idle: 15 runs) and ON (RH on and idle: 6), one parameter file `sdevice_cal_a1.2e20_b2e07.par` (436b6934...). `repro_rate.py`: fixed denominator
+  legacy52, missing items stay in it, a stand-in group is not a pass; fin7 35 / 52 = 67.3 %, missing 0, stand-in 0 (cal 23 / 28, cond 5 / 5, pred
+  7 / 19). `gt_rh_count.py`: "no fall" vs the paper's "N/A" (collapse), a count only for a positive slope over all cycles and over the last five
+  ("unsteady" otherwise), margins 605 mV (back-calculated from the counts) and 550 mV (upper bound of the text's formula), RH-Case 1 / 2 / 3 named
+  as directions Y / Z / X. `gt_cap_array.py`: reads 45 and 65 contacts (synthetic self-check, DgaC_c2 regression unchanged); [9] = IMW 2025 0.1997,
+  TED 2026 0.2016 and the back-calculated 0.185 kept apart. Sentence table: rows 26, 32 split by measured quantity (37 sentences: 18 / 9 / 6 / 4);
+  the old sum row (18 / 8 / 7 / 2) had missed the change of row 1. Target registry (definitions, tolerances, time origins, extended list):
+  results folder `GT_IRPS2026_목표항목_등록표_2026-10-09.md`. Noted there: `gt_tran.edges` returns the first output sample past the mid level (no
+  interpolation), `gt_tran.at` returns the value before a reset at a duplicated time; no scored instant lies in the reset window 130 - 140 ps.
+- P2 prepared, NOT started (waits for Codex's G1): `SNfree` (params.py; deck_cho keeps the schedule and leaves out Set / Unset of the node) and ProbeE on
+  the Z pair (victim channel line). Runs `DnwRzb_zz`, `DnwRzbi_zz`, `DnwRzbg_zz` = fin7's DptRzb / DptRzbi / DptRzbg with SNfree, Ncyc=0 (end at the
+  first aggressor edge, 245 ps), ProbeX, ProbeE. Diff against the originals (regenerated originals are byte-identical to the decks that ran): run
+  name, the two Set / Unset lines, segments and aggressor pulses after 245 ps, probes. Batch `runs/run_p2nw.sh` on the server; `gt_precheck.sh
+  gb2_zz:20:2 gb2_zzg:20:2` ALL PASS; deck hashes in claude/EXPERIMENTS.md. Check after the run: up to 130 ps the node must repeat the originals.
+- `DgxC_c2` (X-X' AC) moved to plan P6.
+
 ## 2026-10-09 (ch) user: "read the repository and the project and continue" - round 39: capacitance matrix of the mini array ga_c2; mini array with one WL per row (gax_c2) building
 - Checks before the run: git pull (Codex's last push 2026-10-07 21:42, nothing new), no sdevice of the account live, quota 7454 / 9216 MB; structure
   unchanged since its Fig.2 check of (cg) (mesh 2026-10-08 23:36); 45 contact names of the mesh = 45 electrodes of the deck (`_q.sh d39`); paragraphs
@@ -29,6 +54,8 @@ the ones of that time (structures `gx_*` / `gp_*` are the meshes before the dopi
 - Next (started): `gax_c2` = ga_c2 with one WL per row (contacts wl_<r><k><s>, 65 in all), cut by Wcut = 20 nm in the middle of each wall as in the
   3D X-X' pair ((av), (aw)); template `sde_gt3a_dvs.cmd` switched by Pair "xx". Test gax2_c2 (2 rows, 1 layer): 144 s, contacts wl_00p / wl_10p ..
   as intended. Full build detached 12:48 (`_q.sh gab gax_c2`, read with `_q.sh gas gax_c2`); then `DgxC_c2` (run_d39x.sh) for the X-X' coupling.
+- 20:15 check: `gax_c2_msh.tdr` done 17:02 (15 241 s, 330 596 points, 1 640 821 elements). `DgxC_c2` NOT started (deck only; run_d39x.sh not
+  written). Before reading it: `gt_cap_array.py` looks for `wl_<k><s>`, the new mesh has `wl_<r><k><s>` (Codex, GitHub_개선점검 2026-10-09: KeyError).
 
 ## 2026-10-08 (cg) user: "review when the paper has the model on"; "check against the row hammer counts of Fig.7(d) as well"; "let us build the 3D mini array that matches the paper"; "when it is complete, compare its sections with the paper's image and report"
 - When the paper has the impact-ionization model on (text and the lettering of every figure, images looked at again):

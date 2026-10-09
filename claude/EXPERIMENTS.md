@@ -1,6 +1,6 @@
 # 실험 등록부 — 겹치지 않게 쓰는 표
 
-갱신: 2026-10-08 14:35 KST (Claude). 채점과 표의 기준은 [MEASURE.md](MEASURE.md)예요. **새 실행을 만들기 전에 이 파일과 Codex의 `docs/`, `snapshot_status.json`, 서버에서 돌고 있는 실행을 먼저 봐요.**
+갱신: 2026-10-09 밤 (Claude; 공동 계획 2D 우선, P0 정리와 P2 준비). 채점과 표의 기준은 [MEASURE.md](MEASURE.md)예요. **새 실행을 만들기 전에 이 파일과 Codex의 `docs/`, `snapshot_status.json`, 서버에서 돌고 있는 실행을 먼저 봐요.**
 
 ## 규칙 (Claude가 지키는 것)
 
@@ -345,12 +345,44 @@ Hsu, Cho, Sharda, Park, Datta, Yu, IMW 2025 Fig. 2(c) (TED 73(9), 2026에 같은
 
 라운드 37의 결과 (DC 7개, 17:55에 끝남): BL–노드 전압의 54~80 %가 BL 쪽 스페이서 아래 몸체 25 nm에 걸려요. 노드 0.82 V의 전류 [µA]: Case 1~4 35 / 38 / 39 / 69, HfO2 스페이서 46, SiO2 35 (논문 70). DC 전류로 계산한 쓰기는 과도 해석과 같아요 (Case 2: 0.447 / 0.685 / 0.848 / 0.966 V). Case 4는 0.590 / 0.871 / 1.038 / 1.132 V. Case 5의 DC 실행 하나는 18:00에 아직 돌고 있었어요 (노드 1.08 V까지). 자세한 것은 STATUS 18:00 항목.
 
+### 2026-10-09 밤: 공동 계획(2D 우선)의 P0 정리와 P2 준비 — 새 TCAD 실행 없음
+
+사용자 지시: "Cho_2D우선_TCAD복제재현_실험계획_역할분담_2026-10-09.md와 Claude_전달용_2D우선_착수지침_2026-10-09.md를 읽고 할일 시작해". 계획의 A단계(즉시 준비)를 했어요. 첫 계산은 Codex의 P1(시간과 메시 수렴)이에요. Claude는 그동안 계산을 돌리지 않아요.
+
+| 한 것 | 내용 |
+|---|---|
+| fin7 입력 동결 | `project/tools/baseline_manifest.py fin7` → `data/tables/baseline_fin7.json` / `.txt`. run 21개(전부 완료), 덱·메시·파라미터의 SHA-256, 물리 블록 해시. 모델 세트는 2개(OFF 계열 15 run / ON 계열 6 run) |
+| `repro_rate.py` | 고정 분모 legacy52. run이 없는 항목은 missing으로 분모에 남고, baseline으로 채운 그룹(stand-in)은 통과로 세지 않아요. fin7은 35 / 52 = 67.3 %, missing 0, stand-in 0 (예전 값과 같음) |
+| `gt_rh_count.py` | "no fall"(노드가 안 떨어짐)과 논문의 N/A(붕괴)를 구분. 기울기가 전체·마지막 5회 모두 양수일 때만 count를 내고, 둘의 부호가 다르면 "unsteady". margin은 605 mV(count에서 역산)와 550 mV(본문 식의 상한)를 둘 다 출력. RH-Case 1 / 2 / 3 = 방향 Y / Z / X(소자 Case와 다름), X 막대는 "3D 미실행" 행 |
+| `gt_cap_array.py` | 공유 WL(접촉 45개)과 행별 WL(65개)을 모두 읽음. 합성 행렬 self-check 통과, `DgaC_c2` 회귀 확인(라운드 39 값 그대로). [9]는 IMW 2025 0.1997, TED 2026 0.2016, 역산 0.185로 따로 표기. `DgxC_c2` 실행은 계획 P6로 미룸 |
+| 문장 대조표 | 26번과 32번을 측정량별로 나눔(35 → 37문장: ○ 18, △ 9, ✕ 6, – 4). 합계 행의 잘못(1번 변경 미반영)을 고침 |
+| 목표 항목 등록표 | 결과 폴더 `GT_IRPS2026_목표항목_등록표_2026-10-09.md`: legacy52의 값·허용오차·추출 정의·시간 원점, 확장 목록(별도 분모) |
+
+**P2 자연 precharge — 덱 준비 완료, 시작하지 않음 (Codex의 G1 통과 뒤 시작)**
+
+| 필드 | 내용 |
+|---|---|
+| 소유자 / 배치 | Claude / `run_p2nw.sh`: `DnwRzb_zz`, `DnwRzbi_zz`, `DnwRzbg_zz` |
+| 질문 | 강제 설정(`SNset`) 없이 write → WL off → hold를 거치면 해머 직전(245 ps)의 SN, 몸체 전위, 정공은 어떤가. 충전이 모자란 구간과 전류, 몸체 상태는 무엇인가 |
+| 바뀌는 변수 | 하나: 130 – 140 ps의 `Set(nSN=1.1)` / `Unset` 제거(`SNfree=1`, 시간표는 그대로). 공격 펄스 전에 끝냄(`Ncyc=0`, tEnd 245 ps). 출력만 추가: 피해 몸체 평균·공격 몸체 정공(`ProbeX`), 피해 채널을 따라 5 nm마다 준페르미 전위·전위·전자 밀도(`ProbeE`). CurrentPlot 시각 목록은 원본과 같음 |
+| 고정 변수 | 나머지 전부 원본과 같음: 구조, 모델, 파형, 4.2 fF, 시간 구간, 파라미터 파일. diff로 확인함(차이는 run 이름, Set/Unset 두 줄, 245 ps 이후 구간과 공격 펄스, 탐침) |
+| 원본(대조군, 재사용) | `DptRzb_zz`(부유, II OFF), `DptRzbi_zz`(부유, 기본 II ON), `DptRzbg_zz`(접지, 기본 II ON). reset 직전 SN 1.021 / 1.031 / 0.673 V (Codex 판독) |
+| 근거 | Cho III절 "Prior to RHE/FBE simulation, the cell was pre-charged through transient simulation (Fig. 4(a))", V절 "the storage node is first charged to '1' through transient simulation, after which WL toggling is applied" |
+| device Case / topology | C2 / Z (부유, 부유, 접지 몸체) |
+| 모델 계열 | OFF(`DnwRzb`) / 기본 avalanche ON(`DnwRzbi`, `DnwRzbg`). 각 run 안에서 처음부터 끝까지 같은 모델 |
+| 구조 점검 | `gt_precheck.sh gb2_zz:20:2 gb2_zzg:20:2` ALL PASS (2026-10-09 밤): Lg 100, Tbody 20, Tox 5, Tg 20, dVOX 30, 스페이서 25 / 25, 접합 50.00 / 175.00 nm(6개 높이), N+ 1e20, 몸체 1e18 |
+| 해시 (SHA-256 앞 12자리) | 덱 `DnwRzb` 100b774e53ad, `DnwRzbi` 79413ec3cb40, `DnwRzbg` 742d1e8fa17f; 메시 gb2_zz aa0f32997e33, gb2_zzg da87d0f54771(fin7과 같음); 파라미터 436b6934cce5 |
+| 수치 설정 | 원본과 같음. **G1(Codex)이 통과시킨 시간·메시 설정이 다르면 그 설정으로 덱을 다시 만들고 해시를 다시 등록해요** |
+| 예상 규모 | 2D 쌍, 245 ps 과도 3개(원본 2.125 ns 실행의 앞부분), 각 수 분, 저장 각 10 MB 이하 |
+| 판정 / 중단 기준 | (1) 130 ps 전의 SN이 원본과 수치 예산(write 6 mV) 안에서 같아야 해요. 아니면 출력 추가가 해를 바꾼 것이니 분석 전에 원인부터 찾아요. (2) 산출: 245 ps의 SN, 몸체 중심·평균 전위, 정공 수, 단자 e / h / 변위 전류, Cs·dV/dt와 SN 단자 전류의 전하 수지, write 동안 채널 / underlap / 접촉의 전압 분배. (3) 부족을 설명한 것을 쓰기 재현 성공이라고 하지 않아요 |
+| 시작 / 종료 | 시작 안 함 |
+
 ### 라운드 39 (2026-10-09 12:38 시작): 3D 미니 어레이 `ga_c2`의 AC 용량 행렬 (사용자: "작업 이어서 진행"; 미니 어레이 보고서의 다음 단계)
 
 | 실행 | 구조 | 내용 | 상태 |
 |---|---|---|---|
 | `DgaC_c2` | `ga_c2` (3×2×5, 커패시터를 구조로, BL 기둥 50 nm) | 접촉 45개 전부 0 V, AC 1 MHz, 45×45 용량 행렬. 물리 모델은 `fin7`, 커패시터 유전막은 라운드 32와 같음 (4 nm, EOT 3.8 Å) | 완료 (291 s) |
-| `DgxC_c2` | `gax_c2` = `ga_c2`에서 WL을 행마다 끊음 (벽 가운데 20 nm 틈, 접촉 65개) | 같은 AC. X–X'에서 aggressor 자신의 WL과 victim 노드 사이의 용량 | 구조 만드는 중 (12:48~) |
+| `DgxC_c2` | `gax_c2` = `ga_c2`에서 WL을 행마다 끊음 (벽 가운데 20 nm 틈, 접촉 65개) | 같은 AC. X–X'에서 aggressor 자신의 WL과 victim 노드 사이의 용량 | 메시 완성 17:02. 실행은 공동 계획 P6로 미룸 (2D 우선) |
 
 - 논문과 대조할 것: C_S (본문 4.2 fF, "Fig. 5(a)의 치수로 계산"), 층당 C_BL ([9] = Hsu 외 TED 2026 Table II: 층당 0.2016 fF, BL 반지름 50 nm; 우리 기둥은 반지름 25 nm), 세 방향(Y–Y', Z–Z', X–X')의 노드–이웃 결합 용량 (Fig. 6(e) X–X' 흔들림 0.70 mV ↔ 약 1.6 aF).
 - 구조는 2026-10-08 밤 Fig. 2와 단면 대조를 마친 것 그대로 (메시 23:36 이후 바뀌지 않음), 메시 접촉 45개 = 덱 전극 45개 확인. Codex의 실행과 겹치지 않음 (서버에 진행 중인 실행 없음, 3D 미니 어레이 용량은 Codex가 다룬 적 없음).
@@ -391,6 +423,8 @@ Claude가 돌리고 있는 배치: `run_d37r.sh`의 남은 2개 (`DptRy_yy`, `Dp
 
 | 배치 | 내용 |
 |---|---|
+| `run_p2nw.sh` | P2 자연 precharge 3개(위 표). Codex의 G1(시간·메시 수렴) 통과 뒤 시작 |
+| `DgxC_c2` | 행별 WL 미니 어레이 `gax_c2`(메시 완성 2026-10-09 17:02)의 AC 용량 행렬. 공동 계획 P6(3D)로 미룸 |
 | `run_3d_E3.sh` | 3D 단위 셀 `g3_c2h`: Id–Vg, 쓰기, 쓰기 + 21 ns 유지, 대리 생성률 정하기, FBE. X–X' 쌍 `g3x_c2h`: 로우 해머 2개. 2D 값(1.8 fF, A 1.7×10²¹, 막대 전하)을 그대로 넣은 덱 |
 
 사용자 결정 (2026-10-07 01:10): 3D에서 같은 점검을 해요. 시작 조건은 Codex의 720개 실험이 끝나고 디스크 여유를 확인한 뒤예요.

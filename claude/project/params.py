@@ -106,6 +106,8 @@ P = dict(
                         # (RH: 2 = also through the hold at Vdd/2, released 0.5 ns before the hammer)
                         # released 0.5 ns before the first BL fall: the body charges by the model's own generation while the
                         # node does not pay for it ("charged at t = 0" as a state that was prepared; a diagnosis)      [ASM]
+    SNfree=0,           # 1 (with SNset): the same time schedule, but the storage node is NOT set: the natural state after the
+                        # write (plan P2 of 2026-10-09: natural pre-charge; the decks stay those of the reset runs otherwise)
     ProbeT=0,           # 1: CurrentPlot probes across the body thickness at the probe's x (1 nm inside both gate-oxide
                         # interfaces, 1/4 and 3/4 of the thickness): the paper does not say where it reads the body potential
     tHold2=0.0,         # row hammer: hold with the BL at Vdd/2 before the hammer [ns]; 0 = as long as tHold (the hold at Vdd)
