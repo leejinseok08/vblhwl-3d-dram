@@ -37,6 +37,9 @@ STRUCTS = dict(
     # ga_c2 = the 3 x 2 x 5 mini array of Fig.2 with drawn capacitors (sde_gt3a_dvs.cmd), 50 nm pillar: with it every number of Fig.5(a) holds
     # (25 + 25 + 100 + 25 = 175 nm to the source end, + L_CAP 100 = WL pitch 275); ga1_c2 = one row, one layer (a test of the template)
     ga_c2=dict(Tpl="sde_gt3a_dvs.cmd", Wbl=50, Dim=3), ga1_c2=dict(Tpl="sde_gt3a_dvs.cmd", Wbl=50, Dim=3, Nrow=1, Nlay=1),
+    # gax_c2 = ga_c2 with one word line per row, cut by Wcut = 20 nm in the middle of each wall (the paper decouples the WL "hypothetically"
+    # for X-X'; 20 nm = the cut of the 3D X-X' pair, NOTES (av), (aw)); gax2_c2 = two rows, one layer (a test of the template)
+    gax_c2=dict(Tpl="sde_gt3a_dvs.cmd", Wbl=50, Dim=3, Pair="xx"), gax2_c2=dict(Tpl="sde_gt3a_dvs.cmd", Wbl=50, Dim=3, Pair="xx", Nrow=2, Nlay=1),
     g3x10_c2h=dict(Tpl="sde_gt3_dvs.cmd", Wbl=50, Dim=3, Pair="xx", Wcut=10), g3x100_c2h=dict(Tpl="sde_gt3_dvs.cmd", Wbl=50, Dim=3, Pair="xx", Wcut=100),
     gm_spox=dict(Spm="SiO2"), gm_sphk=dict(Spm="HfO2"),
     gw_c2h=dict(Wbl=50),      # Case 2 with the 50 nm pillar that the WL pitch of 275 nm in Fig.5(a) implies (the drawing shows 100)
@@ -403,6 +406,28 @@ def deck_ac(rid, p, struct):
     inst = 'CELL c1 ( "bl"=nBL "sn_v"=nSN "gs_v"=nWL "gd_v"=nWL' + (' "gp_v"=nGP' if len(nodes) == 4 else "") + " )"
     txt = (header(rid, "capacitance matrix at 0 V (AC, 1 MHz)", p, struct) + f'File {{ Output = "{rid}_log" ACExtract = "{rid}" }}\n\n'
            + "Device CELL {\n  Electrode {\n" + "".join(f"    {e}\n" for e in electrodes_single(p, dc=True)) + "  }\n" + dev_file(rid, struct, p) + ph + "}\n"
+           + "\nSystem {\n  " + inst + "\n" + "".join(f"  Vsource_pset {s} ( {n} 0 ) {{ dc = 0 }}\n" for s, n in zip(src, nodes)) + "}\n\n" + mathblk(p)
+           + "Solve {\n  Coupled( Iterations=200 LineSearchDamping=1e-4 ){ Poisson }\n  Coupled{ Poisson Electron Hole }\n"
+           f"  ACCoupled( StartFrequency=1e6 EndFrequency=1e6 NumberOfPoints=1 Decade Node( {' '.join(nodes)} ) Exclude( {' '.join(src)} ) )\n"
+           "    { Poisson Electron Hole }\n}\n")
+    return txt, dict(kind="ac")
+
+def array_contacts(p):
+    """Contact names of the mini array (sde_gt3a_dvs.cmd): bl_<r>, wl_<k><s> (Pair "xx": wl_<r><k><s>), sn_<r><k><s>, gp, snx."""
+    R_, K_ = range(p["Nrow"]), range(p["Nlay"])
+    wl = [f"wl_{r}{k}{s}" for s in "pm" for r in R_ for k in K_] if p["Pair"] == "xx" else [f"wl_{k}{s}" for s in "pm" for k in K_]
+    return ([f"bl_{r}" for r in R_] + wl
+            + [f"sn_{r}{k}{s}" for s in "pm" for r in R_ for k in K_] + ["gp", "snx"])
+
+def deck_aca(rid, p, struct):
+    """Capacitance matrix of the 3D mini array at equilibrium (every contact at 0 V), AC at 1 MHz, one circuit node per contact. Word lines
+    carry the gate work function of the case (both plates of a layer and side are one contact). c(n,n) = whole capacitance of node n,
+    -c(n,m) = capacitance between two nodes, in F (3D: no AreaFactor)."""
+    cs = array_contacts(p); nodes = ["n" + c for c in cs]; src = ["v" + c for c in cs]
+    el = [f'{{ Name="{c}" Voltage=0.0' + (f' WorkFunction={p["WFs"]}' if c.startswith("wl_") else "") + " }" for c in cs]
+    inst = "CELL c1 ( " + " ".join(f'"{c}"={n}' for c, n in zip(cs, nodes)) + " )"
+    txt = (header(rid, "capacitance matrix of the mini array at 0 V (AC, 1 MHz)", p, struct) + f'File {{ Output = "{rid}_log" ACExtract = "{rid}" }}\n\n'
+           + "Device CELL {\n  Electrode {\n" + "".join(f"    {e}\n" for e in el) + "  }\n" + dev_file(rid, struct, p) + physics(p) + "}\n"
            + "\nSystem {\n  " + inst + "\n" + "".join(f"  Vsource_pset {s} ( {n} 0 ) {{ dc = 0 }}\n" for s, n in zip(src, nodes)) + "}\n\n" + mathblk(p)
            + "Solve {\n  Coupled( Iterations=200 LineSearchDamping=1e-4 ){ Poisson }\n  Coupled{ Poisson Electron Hole }\n"
            f"  ACCoupled( StartFrequency=1e6 EndFrequency=1e6 NumberOfPoints=1 Decade Node( {' '.join(nodes)} ) Exclude( {' '.join(src)} ) )\n"
@@ -1002,6 +1027,13 @@ for tag, ov in (("k", {}), ("i", dict(II=1)), ("p", dict(II=1, IIdf="Eparallel")
     for c, st, wf, tb in CASES:
         RUNS.append(R(f"CF{tag}_c{c}", "GT", st, "cho:FBE", WFs=wf, WFd=wf, Cs=CSB[tb], **dict(dict(FB2, ErrH=1e14 if c <= 3 else 1e10, II=0), **ov)))
 
+# Round 39 (2026-10-09, NOTES (ch)): capacitance matrix of the mini array ga_c2 (Case 2), fin7's models and the capacitor dielectric of round 32
+# (EOT 3.8 A at 4 nm). Against the paper: C_S 4.2 fF "calculated using the dimensions" (Sec.IV), C_BL per layer from the AC analysis of [9]
+# (Hsu .. Yu TED 2026, Table II: 0.2016 fF per layer at BL radius 50 nm; ours 25 nm), node-to-neighbour couplings of the three RH directions.
+RUNS.append(R("DgaC_c2", "GT", "ga_c2", "ac", WFs=4.7, WFd=4.7, **dict(IV, Nthr=8, Par=PNC, Lin3="Pardiso")))
+# the same on gax_c2 (word line per row): the X-X' coupling from the aggressor's own WL to the victim node (Fig.6(e): +0.70 mV)
+RUNS.append(R("DgxC_c2", "GT", "gax_c2", "ac", WFs=4.7, WFd=4.7, **dict(IV, Nthr=8, Par=PNC, Lin3="Pardiso")))
+
 # ------------------------------------------------------------------ checks
 def check_pwl(name, pts):
     ts = [t for t, _ in pts]
@@ -1020,7 +1052,7 @@ def build(run):
     rid = run["id"]; kind = run["deck"]; steps = None
     if p["Cap"] != "lump" and p["Pair"] != "one": raise SystemExit(f"{rid}: a drawn storage capacitor is set up for single cells only (probe positions, junction check)")
     if kind == "idvg": txt, info = deck_idvg(rid, p, run["struct"])
-    elif kind == "ac": txt, info = deck_ac(rid, p, run["struct"])
+    elif kind == "ac": txt, info = (deck_aca if p["Tpl"] == "sde_gt3a_dvs.cmd" else deck_ac)(rid, p, run["struct"])
     elif kind == "load": txt, info = deck_load(rid, p, run["struct"])
     else:
         txt, info, waves, S = deck_cho(rid, p, run["struct"], kind[4:])

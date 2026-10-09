@@ -6,6 +6,23 @@
 #   rh <runs> = row-hammer table | s <tags> = scorecard | t <tags> = loss after every BL-low phase | wo <tags> = write and WL switch-off
 #   ii = the impact-ionization factor runs | w <runs> = write curves | steps <runs> = their last time steps
 cd ~/vblhwl_3d_dram
+if [ "$1" = d39 ]; then    # round 39 pre-check: contacts of the ga_c2 mesh against the deck, parameter file, mesh unchanged since the Fig.2 check
+  g=runs/_struct/ga_c2_msh.grd; ls -la --time-style=+%m-%d_%H:%M runs/_struct/ga_c2_msh.tdr $g* | awk '{print $6, $5, $7}'
+  grep -a -o -E 'bl_[0-9]|wl_[0-9][pm]|sn_[0-9][0-9][pm]|snx|gp' runs/_struct/ga_c2_msh.tdr | sort | uniq -c > /tmp/d39_cnt.txt; awk '{print $2}' /tmp/d39_cnt.txt > /tmp/d39_mesh.txt; head -3 /tmp/d39_cnt.txt
+  grep -o -E 'Name="[^"]+"' runs/DgaC_c2/DgaC_c2_des.cmd | cut -d'"' -f2 | sort -u > /tmp/d39_deck.txt
+  echo "mesh $(wc -l < /tmp/d39_mesh.txt) contacts, deck $(wc -l < /tmp/d39_deck.txt) electrodes; differences:"; diff /tmp/d39_mesh.txt /tmp/d39_deck.txt && echo "none"
+  ls -la sdevice_cal_a1.2e20_b2e07_ce41.05.par | awk '{print $5, $9}'; grep -A3 -i insulator1 sdevice_cal_a1.2e20_b2e07_ce41.05.par | head -5
+  exit 0
+fi
+if [ "$1" = cn ]; then    # cn <struct>: contact names in a mesh (TDR read as text) and how often each name occurs
+  grep -a -o -E 'bl_[0-9]|wl_[0-9]+[pm]|sn_[0-9][0-9][pm]|snx|gp' runs/_struct/$2_msh.tdr | sort | uniq -c | awk '{printf "%s(%s) ", $2, $1} END{print ""}'; exit 0
+fi
+if [ "$1" = w39 ]; then    # w39 [seconds]: wait while DgaC_c2 runs (at most that long), then its memory, elapsed time and last output lines
+  n=0; while [ $n -lt ${2:-0} ] && pgrep -u "$USER" -f "sdevice DgaC_c2" > /dev/null; do sleep 15; n=$((n + 15)); done
+  date +%H:%M:%S; ps -o rss=,etime=,args= -u "$USER" | grep 'DgaC_c2_des' | grep -v grep | cut -c1-80
+  f=runs/DgaC_c2/DgaC_c2.out; [ -f $f ] || f=$f.gz; zcat -f $f | grep -v '^ *$' | tail -${3:-12} | cut -c1-170; ls runs/DgaC_c2/
+  exit 0
+fi
 if [ "$1" = mat ]; then    # mat <pattern>: material names of the installed release (datexcodes.txt)
   f=$(find $(dirname $(dirname $(dirname $(readlink -f $(which sdevice))))) -path '*/lib/datexcodes.txt' 2>/dev/null | head -1); echo "$f"
   grep -B2 -E "group *= *$2" "$f" | grep '{' | tr -d ' {' | paste -sd' ' | fold -s -w 180; exit 0     # all materials of that group (Insulator, Conductor, Semiconductor)

@@ -42,8 +42,8 @@ Only this device is run from now on (user, 2026-10-05). The Chen 2026 BCVFET wor
    fitted / condition / result); calibration targets, conditions and predictions counted apart (`tools/repro_rate.py`); the capacitance always as
    text / drawn / fitted; row hammer as attack minus idle, so every row-hammer batch carries an idle run; no average without the worst item.
    **Sentence check first** (user, 2026-10-08, principle 8): to verify a figure, find every sentence of the paper that describes it (text,
-   caption, lettering in the figure) and check conditions and result against each, before any score. Table of 35 sentences (18 agree, 8
-   conditional, 7 not, 2 not run): results folder `GT_IRPS2026_논문문장_대조_figure별_2026-10-08.md`; keep it current. NOTES (cf).
+   caption, lettering in the figure) and check conditions and result against each, before any score. Table of 35 sentences (18 agree, 9
+   conditional, 6 not, 2 not run; 2026-10-09): results folder `GT_IRPS2026_논문문장_대조_figure별_2026-10-08.md`; keep it current. NOTES (cf).
    Codex's two documents of that day (`Codex_독립검증_2026-10-08`) are its sources.
 
 ## 2D completion process (user, 2026-10-06: finish the device at the 2D level first; 3D is paused)
@@ -109,6 +109,9 @@ Run names must differ by more than letter case (the PC's file system is case-bli
 - `NOTES.md`: decisions, checks and results, newest first. Keep it current.
 
 ## State (2026-10-08; details NOTES (ax) .. (bx))
+**Round 39 (2026-10-09, NOTES (ch)):** capacitance matrix of the mini array `ga_c2` (`DgaC_c2`, deck `deck_aca`, `tools/gt_cap_array.py`): C_S 3.0 fF per
+node (text 4.2; the pillar takes half of the L_CAP faces in 3D), Y-Y' coupling 0 (the BL pillar screens; Fig.6(e) agrees), Z-Z' 0.53 aF to the aggressor
+WL = 0.32 mV swing, C_BL 0.075 fF per layer ([9]: 0.2016). X-X' needs the WL cut per row: `gax_c2` (Pair "xx", Wcut 20) building since 12:48, then `DgxC_c2`.
 **3D mini array `ga_c2` (user, 2026-10-08 evening: "build the 3D mini array that matches the paper"; NOTES (cg)):** template `sde_gt3a_dvs.cmd`,
 3 rows x 2 cells x 5 layers with drawn capacitors, built from Fig.5(a) (Lg 100, WL pitch 275, L_CAP 100; that needs a 50 nm BL pillar with 25 nm
 spacers - the Fig.2 drawing is not to the table's scale; `Wbl` is the parameter, fin7's 2D section has 100). Mesh on the server

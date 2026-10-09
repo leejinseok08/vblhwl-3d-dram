@@ -3,6 +3,33 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-09 (ch) user: "read the repository and the project and continue" - round 39: capacitance matrix of the mini array ga_c2; mini array with one WL per row (gax_c2) building
+- Checks before the run: git pull (Codex's last push 2026-10-07 21:42, nothing new), no sdevice of the account live, quota 7454 / 9216 MB; structure
+  unchanged since its Fig.2 check of (cg) (mesh 2026-10-08 23:36); 45 contact names of the mesh = 45 electrodes of the deck (`_q.sh d39`); paragraphs
+  re-read: Sec.III (C_S "calculated using the dimensions defined in Fig. 5(a)", C_BL "extracted from AC analysis in [9]", X-X' WL "hypothetically
+  decoupled"), Sec.IV (C_S 3.6 / 4.2 / 5.1 fF with Z pitch). Registered and pushed (EXPERIMENTS round 39) before the start.
+- `DgaC_c2` (deck `deck_aca`, make_runs.py: every contact a circuit node at 0 V, AC 1 MHz; fin7's models, capacitor dielectric eps 41.05 = EOT 3.8 A at
+  4 nm as round 32): 291 s, 20.3 GB peak, 2025 entries. Table `tools/gt_cap_array.py DgaC_c2`:
+    C(SN) of the 30 nodes 2.98 - 3.05 fF, inner cells (row 1, layers 1 - 3) 3.013 fF, of it 2.93 to the capacitor ground gp; text 4.2 fF; the 2D
+      section of the same drawing (gs_c2hb, round 32) 4.15 fF. Why less in 3D: the node box half of a cell runs from the source end (175 nm) to the
+      pillar centre (275 nm), and the pillar (radius 55 nm, wider than the 100 nm row as drawn) takes 46 nm of that on average across the row
+      (55 at the row centre, 23 at its edges), so the faces that scale with L_CAP are about 54 nm long instead of 100; the curved pillar face gives
+      part of it back. Rcp, Tcw, Tcd are assumed (template header), L_CAP and the node box from the drawing ((cg)). So the text's 4.2 fF is the
+      2D count of L_CAP (all 100 nm facing ground), not this 3D drawing.
+    Y-Y' (other side of the BL, same row and layer): victim node to the aggressor's WL 0.000 aF, to its node 0.000 aF: the N+ BL pillar between them
+      (held at 0 V by bl_r) screens completely. Fig.6(e): the Y-Y' curve has no swing - agrees (as the 2D pair, (bs)).
+    Z-Z' (layer above / below, same side): to the aggressor's WL 0.53 aF (0.47 - 0.80 by layer and row), to its node 0.29 aF; swing at Vpp 1.8 V =
+      0.32 mV with the node's 3.0 fF, 0.23 mV if the node carried 4.2 fF (2D pair with 4.2 fF: 0.20 mV). Fig.6(e) has no Z-Z' curve.
+    X-X' (next row): node to node 0.66 aF. The WL of this mesh runs across the three rows (one contact per layer and side), so the coupling from the
+      aggressor's own WL - the one the paper decouples - is not in this run: 0.70 mV of Fig.6(e) would need 1.17 aF at 3.0 fF (1.6 at 4.2).
+    Own WL: 0.069 - 0.095 fF, two levels that do not follow side or position (mesh: silicon 5 - 25 nm; read +-15 % on the small terms).
+    BL pillar: 0.375 - 0.381 fF over five layers = 0.075 fF per layer, 99 % of it to the word lines; [9] Table II 0.2016 per layer (BL-WL 0.1769,
+      BL radius 50 nm, its IWO cell) and the 0.185 fF per layer that reproduces Fig.5(d) ((by)). The paper takes C_BL from [9], not from its own
+      mini array, so this is a comparison with another structure; our pillar is 50 x 100 nm (the open Wbl question of (cg)).
+- Next (started): `gax_c2` = ga_c2 with one WL per row (contacts wl_<r><k><s>, 65 in all), cut by Wcut = 20 nm in the middle of each wall as in the
+  3D X-X' pair ((av), (aw)); template `sde_gt3a_dvs.cmd` switched by Pair "xx". Test gax2_c2 (2 rows, 1 layer): 144 s, contacts wl_00p / wl_10p ..
+  as intended. Full build detached 12:48 (`_q.sh gab gax_c2`, read with `_q.sh gas gax_c2`); then `DgxC_c2` (run_d39x.sh) for the X-X' coupling.
+
 ## 2026-10-08 (cg) user: "review when the paper has the model on"; "check against the row hammer counts of Fig.7(d) as well"; "let us build the 3D mini array that matches the paper"; "when it is complete, compare its sections with the paper's image and report"
 - When the paper has the impact-ionization model on (text and the lettering of every figure, images looked at again):
   ON, stated: Fig.7(a) and (c) ("Impact ionization model On"), the "On" bars of Fig.7(d), bars 2 and 3 of Fig.7(e). OFF, stated: Fig.6(e) ("Impact

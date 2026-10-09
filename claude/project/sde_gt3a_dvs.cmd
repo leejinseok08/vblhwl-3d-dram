@@ -14,7 +14,7 @@
 ;; so it parts the two halves of the box; word lines run on across the walls; BL pillars are square and fill the row.
 ;; Not in the paper (assumed, each a parameter): capacitor pillar radius Rcp, node wall Tcw, dielectric thickness Tcd,
 ;; outer stack length Xout, margins Zmar, bottom layer Tsub (nitride) and top oxide Ttop.
-;; Contacts: bl_<r> (top end of each pillar), wl_<k><s> (both gate plates of layer k on side s = p / m), sn_<r><k><s>
+;; Contacts: bl_<r> (top end of each pillar), wl_<k><s> (both gate plates of layer k on side s = p / m; Pair "xx": wl_<r><k><s>), sn_<r><k><s>
 ;; (storage node of the cell), gp (capacitor ground: pillars, fins, fingers), snx (the far half boxes of the neighbours).
 ;; =====================================================================
 (sde:clear)
@@ -26,6 +26,7 @@
 (define WLp  (* @WLp@ nm))    (define Lcap (* @Lcap@ nm)) (define Tcd (* @Tcd@ nm)) (define Tcw (* @Tcw@ nm)) (define Rcp (* @Rcp@ nm))
 (define Xout (* @Xout@ nm))   (define Zmar (* @Zmar@ nm)) (define Tsub (* @Tsub@ nm)) (define Ttop (* @Ttop@ nm))
 (define Nrow @Nrow@) (define Nlay @Nlay@)
+(define xx? (string=? "@Pair@" "xx")) (define Gc (* 0.5 @Wcut@ nm))   ; per-row word lines and half their gap (Pair "xx" only; not in the paper)
 (define Nsd  @Nsd@) (define Nch @Nch@) (define Gdi "@Gdi@") (define Spm "@Spm@")
 (define Zp (+ Dv (* 2 Tg) (* 2 Tox) Tb)) (define H (* Nlay Zp))
 (define x1 Hb) (define x2 (+ x1 S1)) (define x3 (+ x2 Lg)) (define x4 (+ x3 S2))
@@ -88,10 +89,16 @@
     (sdegeo:create-cylinder (position (* sg xc) 0 zc) (position (* sg xc) (+ H Ttop) zc) Rcp "Insulator1" (string-append "R.CpD_" rs))
     (sdegeo:create-cylinder (position (* sg xc) 0 zc) (position (* sg xc) (+ H Ttop) zc) (- Rcp Tcd) "TiN" (string-append "M.Gc_" rs))))
   ;; word lines: the two gate plates of every layer, across all rows and walls
+  ;; Pair "xx": one word line per row, cut by a gap Wcut in the middle of each wall (the paper decouples the WL for X-X' "hypothetically")
   (loop 0 Nlay (lambda (k)
-    (define yo (* k Zp)) (define ks (string-append (num k) s))
-    (cub (* sg x2) (+ yo y1) 0 (* sg x3) (+ yo y2) Zt "TiN" (string-append "M.WlB_" ks))
-    (cub (* sg x2) (+ yo y5) 0 (* sg x3) (+ yo y6) Zt "TiN" (string-append "M.WlT_" ks)))))
+    (define yo (* k Zp))
+    (define (wl za zb ks)
+      (cub (* sg x2) (+ yo y1) za (* sg x3) (+ yo y2) zb "TiN" (string-append "M.WlB_" ks))
+      (cub (* sg x2) (+ yo y5) za (* sg x3) (+ yo y6) zb "TiN" (string-append "M.WlT_" ks)))
+    (if xx?
+      (loop 0 Nrow (lambda (r) (wl (if (= r 0) 0 (+ (zrow r) (* -0.5 Dh) Gc)) (if (= r (- Nrow 1)) Zt (- (+ (zrow r) Wa (* 0.5 Dh)) Gc))
+                                   (string-append (num r) (num k) s))))
+      (wl 0 Zt (string-append (num k) s))))))
 (side 1 "p") (side -1 "m")
 
 ;; bit-line pillars: square, the width of the row, from the bottom layer to the top surface
@@ -110,9 +117,11 @@
 (define (contacts sg s)
   (define xg (* sg 0.5 (+ x2 x3)))
   (loop 0 Nlay (lambda (k)
-    (define yo (* k Zp)) (define wl (string-append "wl_" (num k) s))
-    (cset wl 0 0.6 0.2)
-    (metal-contacts wl (list (position xg (+ yo (* 0.5 (+ y1 y2))) (* 0.5 Zt)) (position xg (+ yo (* 0.5 (+ y5 y6))) (* 0.5 Zt))))))
+    (define yo (* k Zp))
+    (define (wlc wl z) (cset wl 0 0.6 0.2)
+      (metal-contacts wl (list (position xg (+ yo (* 0.5 (+ y1 y2))) z) (position xg (+ yo (* 0.5 (+ y5 y6))) z))))
+    (if xx? (loop 0 Nrow (lambda (r) (wlc (string-append "wl_" (num r) (num k) s) (+ (zrow r) (* 0.5 Wa)))))
+            (wlc (string-append "wl_" (num k) s) (* 0.5 Zt)))))
   (loop 0 Nrow (lambda (r)
     (define zc (+ (zrow r) (* 0.5 Wa)))
     (loop 0 Nlay (lambda (k)
