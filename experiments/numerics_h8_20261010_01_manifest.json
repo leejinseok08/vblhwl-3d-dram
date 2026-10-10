@@ -1,0 +1,50 @@
+{
+  "owner": "Codex",
+  "batch": "numerics_h8_20261010_01",
+  "purpose": "P1 h/8 attack+idle before mesh convergence and Claude P2",
+  "authorization": "2026-10-10 user: 다음 검증 실행해; 어제 작성한 계획서대로 진행해",
+  "runs": [
+    {
+      "id": "CxN8Atk",
+      "source": "CxN4Atk",
+      "factor": 8,
+      "attack": true,
+      "deck_sha256": "1119369c6ede8ee638ad456222449d370d76156b894ca8a10826a71ebb67d0a8",
+      "max_hammer_plateau_ps": 1.175
+    },
+    {
+      "id": "CxN8Idle",
+      "source": "CxN4Idle",
+      "factor": 8,
+      "attack": false,
+      "deck_sha256": "babd5953f993ed2830534f44a4e332dd4042b10f63354bde086d960fe14143e5",
+      "max_hammer_plateau_ps": 1.175
+    }
+  ],
+  "jobs": 2,
+  "threads_per_run": 4,
+  "structure": "fin7 gb2_zz",
+  "mesh_sha256": "aa0f32997e339c589882542dee7ead8919a2003459f94da75d86bc6d5606d0b2",
+  "physics_unchanged": true,
+  "SN_reset_preserved_as_diagnostic": true,
+  "model_assumptions": [
+    "HfO2",
+    "Si3N4",
+    "300K",
+    "SRH lifetime defaults",
+    "Hurkx coefficients",
+    "vanOverstraeten default driving force"
+  ],
+  "paper_checks": [
+    "Cho Sec.III: C2 Tbody20 Nch1e18 WF4.7",
+    "Sec.V and Fig.6/7: victim WL0, BL VDD/2, aggressor 0..VPP, II ON comparison"
+  ],
+  "non_reproduction_conditions": [
+    "2D pair rather than 3D miniarray",
+    "lumped Cs4.2fF",
+    "SN forced to 1.1V at130ps until140ps"
+  ],
+  "no_new_physical_values": true,
+  "prior_batch": "numerics_20261009_01",
+  "launch_scope": "exactly two h/8 device runs; no physics refit or P2/P6 launch"
+}
