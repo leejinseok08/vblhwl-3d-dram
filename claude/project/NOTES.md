@@ -3,6 +3,31 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-10 (cl) user forwarded Codex's P2 prompt (`docs/CLAUDE_P2_HANDOFF_AFTER_P1_2026-10-10.md`): prepare P2 while G1 waits (Codex's h/8 running since 12:50). No device run
+- Report: results folder `GT_IRPS2026_P2준비_자연precharge_2026-10-10.md` (copy in the repository's `claude/reports/`); tables
+  `claude/data/tables/precharge_p2_existing_raw_2026-10-10.txt`, `precharge_p2_first30ps_split_grounded_2026-10-10.txt`, `p2_deck_diff_2026-10-10.txt`.
+- Extraction bug fixed at its root: `gt_tran.edges()` returned the first plotted point after a crossing (old decks: WL origin 13.0 ps for the 12.5 ps
+  crossing of MEASURE.md 4.3); now the interpolated crossing, for every caller. My write now equals Codex's `write_sample_V` (CxN1 / CxN4). fin7:
+  W 0.479 / 0.675 / 0.823 / 0.941 -> 0.468 / 0.668 / 0.819 / 0.939 V, score 7.64 -> 7.84; L1 c1 / c2 58.45 / 12.74 -> 58.29 / 12.69 mV; legacy52 35 / 52 unchanged.
+- `gt_precharge.py`: instantaneous I_sn (e / h / displacement / total) at every instant (t = 0, WL crossing, +12 .. +60, write peak, WL off -1 / crossing /
+  +5 ps, 130 / 140 ps, BL at Vdd/2, 245 ps), body average under the gate (ProbeX key `AveWindow((0.075,..`), +-30 mV against Fig.4(a) with the worst,
+  record kind (bare CurrentPlot = all steps) from the deck, every duplicated time with what differs (first copy = before the circuit changed it,
+  last = after; the clamp interval of a reset listed apart), voltage split from the TERMINAL voltages V(nBL) - V(nSN) with the points of
+  gt_loadline.py (x 2 / 47 / 77 / 172 nm; both tools give 75 / 73 / 70 / 64 % junction + under-spacer on DpL_c2), DC run scaled by its own Wact
+  unless its deck has AreaFactor. `gt_loadline.py` printed the paper's interval mean next to a DC point: now interval means on both sides
+  (paper 252 / 70 / 39 / 14 | quasi-static DC 156 / 83 / 46 / 24 uA).
+- Existing raw (old grid h, timed; CxN4 h/4 all steps): the write shortfall of the floating cells arises entirely in the first 12 ps after the WL
+  crossing (interval means 152 - 161 uA against 252; later intervals equal or faster than the paper's). CxN4Atk step by step: I_sn peaks at 377.8 uA
+  at 15.0 ps (WL reaches 1.8 V) and falls to 150 uA within 2 ps; DC at the same terminal voltages 166 uA -> the DC current is no bound.
+  WITHDRAWN: my 2026-10-09 line "Fig.5(c) ~230 uA is below the 252 uA mean, so 4.2 fF cannot give Fig.4(a) quasi-statically" (a DC point against
+  an interval mean). BE balance closes to 0.0000 fC in every interval of the bare runs; the timed runs leave +4.4 / +1.6 % in the first interval.
+- Grounded body (DptRzbg_zz): stalls at 0.72 V (write peak), -450 mV at +60 ps. Not a wiring / doping / contact error (SDE files differ only in
+  Bgc; decks only in body_v and the probe x 105 nm; body_v carries no electron current, holes -0.1 .. -9.3 uA, displacement -10 .. -19 uA at the WL
+  edge). Its size rests on OUR assumption: a 20 x 2 nm TiN slot at mid-body under the gate centre, 9 nm from each channel face (a 0 V third gate)
+  + body effect. Paper: "hypothetical grounded body", geometry and pre-charge not given. Candidate first item of P3: DC load line of the grounded cell.
+- P2 acceptance: DnwRzbi_zz up to 130 ps = Codex's attack run of the G1 grid (same deck); 130 ps held once in value (no reset); BE residual 0.
+  Rzb / Rzbg have no same-grid reset control: old-grid Dpt* are reference only, never in the pass table.
+
 ## 2026-10-10 (ck) user: "if the simulation is done, analyse and report"; then "Codex and Claude have their tasks divided: do only Claude's". Codex's P1 time step is done; P2 decks put on its settings. No device run
 - Codex's `numerics_20261009_01` (CxN1 / 2 / 4 Atk + Idle = fin7 Z pair, avalanche on, floating, SN reset kept; every MaxStep / 1, 2, 4, bare
   CurrentPlot) ended 2026-10-10 01:27, all six exit 0. Its file `completed_analysis.json` (Codex's numbers, read only; the G1 verdict is Codex's):

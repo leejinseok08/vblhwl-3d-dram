@@ -6,6 +6,73 @@
 #   rh <runs> = row-hammer table | s <tags> = scorecard | t <tags> = loss after every BL-low phase | wo <tags> = write and WL switch-off
 #   ii = the impact-ionization factor runs | w <runs> = write curves | steps <runs> = their last time steps
 cd ~/vblhwl_3d_dram
+if [ "$1" = p2o ]; then    # P2 wait, 2026-10-10: scores of fin7 with the tools as they are on the server (before the WL-crossing fix of gt_tran.edges)
+  python3 tools/score2d.py -v fin7 2>&1 | cut -c1-400; python3 tools/repro_rate.py fin7 2>&1 | cut -c1-300; exit 0
+fi
+if [ "$1" = p2k ]; then    # P2 wait: key names of averaged body potentials in a run with ProbeX (DptF_c2), and Codex's h/8 batch state (read only)
+  python3 -c 'import sys, glob; sys.path.insert(0, "tools"); from gt_tran import load; print([k for k in load(glob.glob("runs/DptF_c2/*_dev.plt")[0]) if "Window" in k or "Ave" in k or "Region" in k])' | cut -c1-900
+  date +%H:%M:%S; pgrep -u "$USER" -a sdevice | cut -c1-90; cat codex_validation/numerics_h8_20261010_01/live_status.json 2>/dev/null | head -40; exit 0
+fi
+if [ "$1" = p2g ]; then    # P2 wait: the grounded-body write (DptRzbg_zz): currents of the body contact body_v (electron / hole) next to the storage node's, and the ProbeX key names
+  python3 - <<'EOF'
+import sys, glob; sys.path.insert(0, "tools")
+from gt_tran import load, at, edges
+d = "runs/DptRzbg_zz/"; s = load(d + "DptRzbg_zz_sys.plt"); v = load(glob.glob(d + "*_dev.plt")[0])
+print("body_v columns:", [k for k in v if k.startswith("body_v")])
+t, T = s["time"], v["time"]; wl = s[[k for k in s if "nWL)" in k][0]]; sn = s[[k for k in s if "nSN)" in k][0]]; tw = edges(t, wl, 0, 1.8, True)[0]
+print("t [ps]   SN [V] | I [uA], + = out of the device at the contact: sn_v e / h / total | body_v e / h / total | bl total")
+for x in [tw + k * 1e-12 for k in (-2, 0, 2.5, 6, 12, 24, 39, 60, 100)] + [128e-12, 200e-12]:
+    g = lambda n: at(T, v[n], x) * 1e6
+    print(f"{x*1e12:7.2f}  {at(t, sn, x):.4f} | {g('sn_v eCurrent'):8.2f} {g('sn_v hCurrent'):7.2f} {g('sn_v TotalCurrent'):8.2f} | {g('body_v eCurrent'):8.2f} {g('body_v hCurrent'):7.2f} {g('body_v TotalCurrent'):8.2f} | {g('bl TotalCurrent'):8.2f}")
+for r in ("DptRzbi_zz", "DnwRzbi_zz"):
+    print(r, "deck ProbeX lines:", sum("Window[" in l for l in open(f"runs/{r}/{r}_des.cmd")))
+f = sorted(glob.glob("runs/Dp*R*zz/*_dev.plt")); import re
+for p in f:
+    ks = [k for k in load(p) if "Window" in k or "Ave" in k]
+    if ks: print(p, ks[:3]); break
+EOF
+  exit 0
+fi
+if [ "$1" = p2w ]; then    # P2 wait: (1) the first 30 ps of Codex's CxN4Atk step by step (every accepted step; read only); (2) voltage_split of gt_precharge on the DC load line DpL_c2
+  python3 - <<'EOF'
+import sys, glob; sys.path.insert(0, "tools")
+from gt_tran import load, edges
+d = "codex_validation/numerics_20261009_01/runs/CxN4Atk/"; s = load(d + "CxN4Atk_sys.plt"); v = load(glob.glob(d + "*_dev.plt")[0])
+t, sn, wl, bl = s["time"], s["v(nSN)"] if "v(nSN)" in s else s[[k for k in s if "nSN)" in k][0]], s[[k for k in s if "nWL)" in k][0]], s[[k for k in s if "nBL" in k][0]]
+T, I = v["time"], [-x for x in v["sn_v TotalCurrent"]]; hv = v[[k for k in v if "hDensity" in k and "Ch_a" not in k][0]]
+tw = edges(t, wl, 0, 1.8, True)[0]; print(f"WL crossing {tw*1e12:.3f} ps; t [ps]  WL  BL  SN [V]  I_sn [uA] (+ = charging)  holes")
+for i in range(len(t)):
+    if t[i] <= 30e-12 and (i % 2 == 0 or 9e-12 < t[i] < 17e-12): print(f"{t[i]*1e12:8.3f} {wl[i]:.3f} {bl[i]:.3f} {sn[i]:.4f} {I[i]*1e6:8.2f} {hv[i]*1e-13:6.0f}")
+cq = lambda a, b: sum(I[i] * (T[i] - T[i - 1]) for i in range(1, len(T)) if a < T[i] <= b + 1e-18) * 1e15
+k = max((i for i in range(len(T)) if T[i] < 30e-12), key=lambda i: I[i])
+print(f"peak I_sn {I[k]*1e6:.1f} uA at {T[k]*1e12:.2f} ps; charge [fC] (BE): 0 - crossing {cq(0, tw):.4f}, crossing - 15 ps {cq(tw, 15e-12):.4f}, 15 - +12 ps {cq(15e-12, tw + 12e-12):.4f}; paper to +12 ps from 0 V: {4.2 * 0.72:.4f}")
+EOF
+  python3 - <<'EOF'
+import sys, json, glob; sys.path.insert(0, "tools")
+from gt_tran import load
+import gt_precharge as G
+d = "runs/DpL_c2/"; p = json.load(open(d + "run.json"))["params"]; L = load(glob.glob(d + "LL_*.plt")[0]); vs = L["sn_v OuterVoltage"]
+dv = dict(L); dv["time"] = list(range(len(vs)))
+idx = [min(range(len(vs)), key=lambda i: abs(vs[i] - x)) for x in (0.36, 0.60, 0.82, 0.99)]
+for i, (x, tot, sh, xs) in zip(idx, G.voltage_split(dv, p, idx, [p.get("Vwr") or 1.168] * 4, [vs[i] for i in idx])):
+    print(f"DpL_c2 node {vs[i]:.3f} V: V(BL) - V(SN) {tot*1e3:.0f} mV, probes at {xs} nm: " + " | ".join(f"{100*q:.0f} %" for q in sh))
+EOF
+  python3 tools/gt_loadline.py DpL_c2 2>&1 | head -40 | cut -c1-220; exit 0
+fi
+if [ "$1" = p2a ]; then    # P2 wait: gt_precharge.py on the existing raw (reset runs, the single-cell write, Codex's CxN1 / CxN4 read only), runs with ProbeE, scores again
+  date +%H:%M:%S; pgrep -u "$USER" -a sdevice | cut -c1-90; quota -s | tail -1
+  python3 tools/gt_precharge.py --dc DpL_c2 DptRzb_zz DptRzbi_zz DptRzbg_zz DptW_c2 2>&1 | cut -c1-260
+  GT_RUNS=codex_validation/numerics_20261009_01/runs python3 tools/gt_precharge.py --dc ../../../runs/DpL_c2 CxN1Atk CxN4Atk 2>&1 | cut -c1-260
+  python3 - <<'EOF'
+import json, glob, os
+for f in sorted(glob.glob("runs/*/run.json")):
+    try: j = json.load(open(f))
+    except Exception: continue
+    p = j.get("params", {}); r = os.path.basename(os.path.dirname(f))
+    if p.get("ProbeE") and str(j.get("deck", "")).startswith("cho") and glob.glob(os.path.dirname(f) + "/*_dev.plt"): print("ProbeE transient:", r, j.get("deck"), p.get("Pair"))
+EOF
+  python3 tools/score2d.py -v fin7 2>&1 | cut -c1-400; python3 tools/repro_rate.py fin7 2>&1 | cut -c1-300; exit 0
+fi
 if [ "$1" = d39 ]; then    # round 39 pre-check: contacts of the ga_c2 mesh against the deck, parameter file, mesh unchanged since the Fig.2 check
   g=runs/_struct/ga_c2_msh.grd; ls -la --time-style=+%m-%d_%H:%M runs/_struct/ga_c2_msh.tdr $g* | awk '{print $6, $5, $7}'
   grep -a -o -E 'bl_[0-9]|wl_[0-9][pm]|sn_[0-9][0-9][pm]|snx|gp' runs/_struct/ga_c2_msh.tdr | sort | uniq -c > /tmp/d39_cnt.txt; awk '{print $2}' /tmp/d39_cnt.txt > /tmp/d39_mesh.txt; head -3 /tmp/d39_cnt.txt

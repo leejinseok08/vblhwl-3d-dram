@@ -1,0 +1,262 @@
+# P2 natural pre-charge: deck differences (2026-10-10, Claude). Compared up to the first Transient that starts at 245 ps (the start of the
+# hammer); the originals' segments after it are only counted. Probe lines (CurrentPlot entries of ProbeX / ProbeE) are counted, not listed.
+# Hashes: SHA-256 (first 16 hex) of the files on the server (md5 checked against the PC copies).
+sha256 73ccf36c5c241799  runs/DnwRzb_zz/DnwRzb_zz_des.cmd
+sha256 ba3dae9aff3e94ae  runs/DnwRzbi_zz/DnwRzbi_zz_des.cmd
+sha256 a7a04c698cedc26e  runs/DnwRzbg_zz/DnwRzbg_zz_des.cmd
+sha256 a89fab6de67fca62  runs/DptRzb_zz/DptRzb_zz_des.cmd
+sha256 9552e21716855c91  runs/DptRzbi_zz/DptRzbi_zz_des.cmd
+sha256 5792cd54d00738b5  runs/DptRzbg_zz/DptRzbg_zz_des.cmd
+sha256 f3429201ad583150  runs/_struct/gb2_zz_dvs.cmd
+sha256 ad55f71a7952da8e  runs/_struct/gb2_zzg_dvs.cmd
+sha256 28fac12167423431  sdevice_cal_a1.2e20_b2e07_ce41.05.par
+sha256 b65d45a4ed907bd9  codex_validation/numerics_20261009_01/runs/CxN4Atk/CxN4Atk_des.cmd (Codex, read only)
+mesh SHA-256 (Codex P1 record): gb2_zz aa0f32997e33...; gb2_zzg da87d0f54771... (EXPERIMENTS, 2026-10-09)
+
+== DptRzb_zz -> DnwRzb_zz   (segments from 245 ps on: 40 -> 0)
+   probe lines added: 122
+43a44,165
+53,54c175,176
+<   Vsource_pset vbl ( nBL 0 ) { pwl = ( 0.000000e+00 0 5.000000e-12 0 1.000000e-11 1.168 1.250000e-10 1.168 1.300000e-10 1.1 1.900000e-10 1.1 1.950000 ...)
+<   Vsource_pset vwl ( nWL 0 ) { pwl = ( 0.000000e+00 0 1.000000e-11 0 1.500000e-11 1.8 1.200000e-10 1.8 1.250000e-10 0 2.125000e-09 0 ) }
+>   Vsource_pset vbl ( nBL 0 ) { pwl = ( 0.000000e+00 0 5.000000e-12 0 1.000000e-11 1.168 1.250000e-10 1.168 1.300000e-10 1.1 1.900000e-10 1.1 1.950000 ...)
+>   Vsource_pset vwl ( nWL 0 ) { pwl = ( 0.000000e+00 0 1.000000e-11 0 1.500000e-11 1.8 1.200000e-10 1.8 1.250000e-10 0 2.450000e-10 0 ) }
+56c178
+<   Vsource_pset vwla ( nWLa 0 ) { pwl = ( 0.000000e+00 0 2.450000e-10 0 2.500000e-10 1.8 3.390000e-10 1.8 3.440000e-10 0 4.330000e-10 0 4.380000e-10 1.8 ...)
+>   Vsource_pset vwla ( nWLa 0 ) { pwl = ( 0.000000e+00 0 2.450000e-10 0 ) }
+86c208
+<   Transient( InitialTime=0.000000e+00 FinalTime=5.000000e-12 InitialStep=5.000e-13 MaxStep=5.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>   Transient( InitialTime=0.000000e+00 FinalTime=5.000000e-12 InitialStep=5.000e-13 MaxStep=1.250e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+88,89c210,211
+<       CurrentPlot( Time=( Range=(0.000000e+00 5.000000e-12) Intervals=4 ) ) }
+<   Transient( InitialTime=5.000000e-12 FinalTime=1.500000e-11 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=5.000000e-12 FinalTime=1.500000e-11 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+91,92c213,214
+<       CurrentPlot( Time=( Range=(5.000000e-12 1.500000e-11) Intervals=10 ) ) }
+<   Transient( InitialTime=1.500000e-11 FinalTime=1.150000e-10 InitialStep=2.000e-13 MaxStep=2.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.500000e-11 FinalTime=1.150000e-10 InitialStep=2.000e-13 MaxStep=5.000e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+94,95c216,217
+<       CurrentPlot( Time=( Range=(1.500000e-11 1.150000e-10) Intervals=50 ) ) }
+<   Transient( InitialTime=1.150000e-10 FinalTime=1.200000e-10 InitialStep=1.000e-12 MaxStep=1.000e-11 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.150000e-10 FinalTime=1.200000e-10 InitialStep=1.000e-12 MaxStep=2.500e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+97,98c219,220
+<       CurrentPlot( Time=( Range=(1.150000e-10 1.200000e-10) Intervals=4 ) ) }
+<   Transient( InitialTime=1.200000e-10 FinalTime=1.250000e-10 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.200000e-10 FinalTime=1.250000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+100,101c222,223
+<       CurrentPlot( Time=( Range=(1.200000e-10 1.250000e-10) Intervals=5 ) ) }
+<   Transient( InitialTime=1.250000e-10 FinalTime=1.300000e-10 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.250000e-10 FinalTime=1.300000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+103,105c225,226
+<       CurrentPlot( Time=( Range=(1.250000e-10 1.300000e-10) Intervals=5 ) ) }
+<   Set( nSN = 1.1 )
+<   Transient( InitialTime=1.300000e-10 FinalTime=1.400000e-10 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.300000e-10 FinalTime=1.400000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+107,109c228,229
+<       CurrentPlot( Time=( Range=(1.300000e-10 1.400000e-10) Intervals=10 ) ) }
+<   Unset( nSN )
+<   Transient( InitialTime=1.400000e-10 FinalTime=1.900000e-10 InitialStep=2.500e-13 MaxStep=2.500e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.400000e-10 FinalTime=1.900000e-10 InitialStep=2.500e-13 MaxStep=6.250e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+111,112c231,232
+<       CurrentPlot( Time=( Range=(1.400000e-10 1.900000e-10) Intervals=20 ) ) }
+<   Transient( InitialTime=1.900000e-10 FinalTime=1.950000e-10 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.900000e-10 FinalTime=1.950000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+114,115c234,235
+<       CurrentPlot( Time=( Range=(1.900000e-10 1.950000e-10) Intervals=5 ) ) }
+<   Transient( InitialTime=1.950000e-10 FinalTime=2.450000e-10 InitialStep=2.500e-13 MaxStep=2.500e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.950000e-10 FinalTime=2.450000e-10 InitialStep=2.500e-13 MaxStep=6.250e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+117c237,239
+<       CurrentPlot( Time=( Range=(1.950000e-10 2.450000e-10) Intervals=20 ) ) }
+>       CurrentPlot }
+>   Plot( FilePrefix="end" )
+> }
+
+== DptRzbi_zz -> DnwRzbi_zz   (segments from 245 ps on: 40 -> 0)
+   probe lines added: 122
+44a45,166
+54,55c176,177
+<   Vsource_pset vbl ( nBL 0 ) { pwl = ( 0.000000e+00 0 5.000000e-12 0 1.000000e-11 1.168 1.250000e-10 1.168 1.300000e-10 1.1 1.900000e-10 1.1 1.950000 ...)
+<   Vsource_pset vwl ( nWL 0 ) { pwl = ( 0.000000e+00 0 1.000000e-11 0 1.500000e-11 1.8 1.200000e-10 1.8 1.250000e-10 0 2.125000e-09 0 ) }
+>   Vsource_pset vbl ( nBL 0 ) { pwl = ( 0.000000e+00 0 5.000000e-12 0 1.000000e-11 1.168 1.250000e-10 1.168 1.300000e-10 1.1 1.900000e-10 1.1 1.950000 ...)
+>   Vsource_pset vwl ( nWL 0 ) { pwl = ( 0.000000e+00 0 1.000000e-11 0 1.500000e-11 1.8 1.200000e-10 1.8 1.250000e-10 0 2.450000e-10 0 ) }
+57c179
+<   Vsource_pset vwla ( nWLa 0 ) { pwl = ( 0.000000e+00 0 2.450000e-10 0 2.500000e-10 1.8 3.390000e-10 1.8 3.440000e-10 0 4.330000e-10 0 4.380000e-10 1.8 ...)
+>   Vsource_pset vwla ( nWLa 0 ) { pwl = ( 0.000000e+00 0 2.450000e-10 0 ) }
+87c209
+<   Transient( InitialTime=0.000000e+00 FinalTime=5.000000e-12 InitialStep=5.000e-13 MaxStep=5.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>   Transient( InitialTime=0.000000e+00 FinalTime=5.000000e-12 InitialStep=5.000e-13 MaxStep=1.250e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+89,90c211,212
+<       CurrentPlot( Time=( Range=(0.000000e+00 5.000000e-12) Intervals=4 ) ) }
+<   Transient( InitialTime=5.000000e-12 FinalTime=1.500000e-11 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=5.000000e-12 FinalTime=1.500000e-11 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+92,93c214,215
+<       CurrentPlot( Time=( Range=(5.000000e-12 1.500000e-11) Intervals=10 ) ) }
+<   Transient( InitialTime=1.500000e-11 FinalTime=1.150000e-10 InitialStep=2.000e-13 MaxStep=2.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.500000e-11 FinalTime=1.150000e-10 InitialStep=2.000e-13 MaxStep=5.000e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+95,96c217,218
+<       CurrentPlot( Time=( Range=(1.500000e-11 1.150000e-10) Intervals=50 ) ) }
+<   Transient( InitialTime=1.150000e-10 FinalTime=1.200000e-10 InitialStep=1.000e-12 MaxStep=1.000e-11 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.150000e-10 FinalTime=1.200000e-10 InitialStep=1.000e-12 MaxStep=2.500e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+98,99c220,221
+<       CurrentPlot( Time=( Range=(1.150000e-10 1.200000e-10) Intervals=4 ) ) }
+<   Transient( InitialTime=1.200000e-10 FinalTime=1.250000e-10 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.200000e-10 FinalTime=1.250000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+101,102c223,224
+<       CurrentPlot( Time=( Range=(1.200000e-10 1.250000e-10) Intervals=5 ) ) }
+<   Transient( InitialTime=1.250000e-10 FinalTime=1.300000e-10 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.250000e-10 FinalTime=1.300000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+104,106c226,227
+<       CurrentPlot( Time=( Range=(1.250000e-10 1.300000e-10) Intervals=5 ) ) }
+<   Set( nSN = 1.1 )
+<   Transient( InitialTime=1.300000e-10 FinalTime=1.400000e-10 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.300000e-10 FinalTime=1.400000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+108,110c229,230
+<       CurrentPlot( Time=( Range=(1.300000e-10 1.400000e-10) Intervals=10 ) ) }
+<   Unset( nSN )
+<   Transient( InitialTime=1.400000e-10 FinalTime=1.900000e-10 InitialStep=2.500e-13 MaxStep=2.500e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.400000e-10 FinalTime=1.900000e-10 InitialStep=2.500e-13 MaxStep=6.250e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+112,113c232,233
+<       CurrentPlot( Time=( Range=(1.400000e-10 1.900000e-10) Intervals=20 ) ) }
+<   Transient( InitialTime=1.900000e-10 FinalTime=1.950000e-10 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.900000e-10 FinalTime=1.950000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+115,116c235,236
+<       CurrentPlot( Time=( Range=(1.900000e-10 1.950000e-10) Intervals=5 ) ) }
+<   Transient( InitialTime=1.950000e-10 FinalTime=2.450000e-10 InitialStep=2.500e-13 MaxStep=2.500e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.950000e-10 FinalTime=2.450000e-10 InitialStep=2.500e-13 MaxStep=6.250e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+118c238,240
+<       CurrentPlot( Time=( Range=(1.950000e-10 2.450000e-10) Intervals=20 ) ) }
+>       CurrentPlot }
+>   Plot( FilePrefix="end" )
+> }
+
+== DptRzbg_zz -> DnwRzbg_zz   (segments from 245 ps on: 40 -> 0)
+   probe lines added: 122
+45a46,167
+55,56c177,178
+<   Vsource_pset vbl ( nBL 0 ) { pwl = ( 0.000000e+00 0 5.000000e-12 0 1.000000e-11 1.168 1.250000e-10 1.168 1.300000e-10 1.1 1.900000e-10 1.1 1.950000 ...)
+<   Vsource_pset vwl ( nWL 0 ) { pwl = ( 0.000000e+00 0 1.000000e-11 0 1.500000e-11 1.8 1.200000e-10 1.8 1.250000e-10 0 2.125000e-09 0 ) }
+>   Vsource_pset vbl ( nBL 0 ) { pwl = ( 0.000000e+00 0 5.000000e-12 0 1.000000e-11 1.168 1.250000e-10 1.168 1.300000e-10 1.1 1.900000e-10 1.1 1.950000 ...)
+>   Vsource_pset vwl ( nWL 0 ) { pwl = ( 0.000000e+00 0 1.000000e-11 0 1.500000e-11 1.8 1.200000e-10 1.8 1.250000e-10 0 2.450000e-10 0 ) }
+58c180
+<   Vsource_pset vwla ( nWLa 0 ) { pwl = ( 0.000000e+00 0 2.450000e-10 0 2.500000e-10 1.8 3.390000e-10 1.8 3.440000e-10 0 4.330000e-10 0 4.380000e-10 1.8 ...)
+>   Vsource_pset vwla ( nWLa 0 ) { pwl = ( 0.000000e+00 0 2.450000e-10 0 ) }
+88c210
+<   Transient( InitialTime=0.000000e+00 FinalTime=5.000000e-12 InitialStep=5.000e-13 MaxStep=5.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>   Transient( InitialTime=0.000000e+00 FinalTime=5.000000e-12 InitialStep=5.000e-13 MaxStep=1.250e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+90,91c212,213
+<       CurrentPlot( Time=( Range=(0.000000e+00 5.000000e-12) Intervals=4 ) ) }
+<   Transient( InitialTime=5.000000e-12 FinalTime=1.500000e-11 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=5.000000e-12 FinalTime=1.500000e-11 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+93,94c215,216
+<       CurrentPlot( Time=( Range=(5.000000e-12 1.500000e-11) Intervals=10 ) ) }
+<   Transient( InitialTime=1.500000e-11 FinalTime=1.150000e-10 InitialStep=2.000e-13 MaxStep=2.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.500000e-11 FinalTime=1.150000e-10 InitialStep=2.000e-13 MaxStep=5.000e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+96,97c218,219
+<       CurrentPlot( Time=( Range=(1.500000e-11 1.150000e-10) Intervals=50 ) ) }
+<   Transient( InitialTime=1.150000e-10 FinalTime=1.200000e-10 InitialStep=1.000e-12 MaxStep=1.000e-11 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.150000e-10 FinalTime=1.200000e-10 InitialStep=1.000e-12 MaxStep=2.500e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+99,100c221,222
+<       CurrentPlot( Time=( Range=(1.150000e-10 1.200000e-10) Intervals=4 ) ) }
+<   Transient( InitialTime=1.200000e-10 FinalTime=1.250000e-10 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.200000e-10 FinalTime=1.250000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+102,103c224,225
+<       CurrentPlot( Time=( Range=(1.200000e-10 1.250000e-10) Intervals=5 ) ) }
+<   Transient( InitialTime=1.250000e-10 FinalTime=1.300000e-10 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.250000e-10 FinalTime=1.300000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+105,107c227,228
+<       CurrentPlot( Time=( Range=(1.250000e-10 1.300000e-10) Intervals=5 ) ) }
+<   Set( nSN = 1.1 )
+<   Transient( InitialTime=1.300000e-10 FinalTime=1.400000e-10 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.300000e-10 FinalTime=1.400000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+109,111c230,231
+<       CurrentPlot( Time=( Range=(1.300000e-10 1.400000e-10) Intervals=10 ) ) }
+<   Unset( nSN )
+<   Transient( InitialTime=1.400000e-10 FinalTime=1.900000e-10 InitialStep=2.500e-13 MaxStep=2.500e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.400000e-10 FinalTime=1.900000e-10 InitialStep=2.500e-13 MaxStep=6.250e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+113,114c233,234
+<       CurrentPlot( Time=( Range=(1.400000e-10 1.900000e-10) Intervals=20 ) ) }
+<   Transient( InitialTime=1.900000e-10 FinalTime=1.950000e-10 InitialStep=1.000e-13 MaxStep=1.000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.900000e-10 FinalTime=1.950000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+116,117c236,237
+<       CurrentPlot( Time=( Range=(1.900000e-10 1.950000e-10) Intervals=5 ) ) }
+<   Transient( InitialTime=1.950000e-10 FinalTime=2.450000e-10 InitialStep=2.500e-13 MaxStep=2.500e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>       CurrentPlot }
+>   Transient( InitialTime=1.950000e-10 FinalTime=2.450000e-10 InitialStep=2.500e-13 MaxStep=6.250e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+119c239,241
+<       CurrentPlot( Time=( Range=(1.950000e-10 2.450000e-10) Intervals=20 ) ) }
+>       CurrentPlot }
+>   Plot( FilePrefix="end" )
+> }
+
+== CxN4Atk -> DnwRzbi_zz   (segments from 245 ps on: 40 -> 0)
+   probe lines added: 122
+44a45,166
+54,55c176,177
+<   Vsource_pset vbl ( nBL 0 ) { pwl = ( 0.000000e+00 0 5.000000e-12 0 1.000000e-11 1.168 1.250000e-10 1.168 1.300000e-10 1.1 1.900000e-10 1.1 1.950000 ...)
+<   Vsource_pset vwl ( nWL 0 ) { pwl = ( 0.000000e+00 0 1.000000e-11 0 1.500000e-11 1.8 1.200000e-10 1.8 1.250000e-10 0 2.125000e-09 0 ) }
+>   Vsource_pset vbl ( nBL 0 ) { pwl = ( 0.000000e+00 0 5.000000e-12 0 1.000000e-11 1.168 1.250000e-10 1.168 1.300000e-10 1.1 1.900000e-10 1.1 1.950000 ...)
+>   Vsource_pset vwl ( nWL 0 ) { pwl = ( 0.000000e+00 0 1.000000e-11 0 1.500000e-11 1.8 1.200000e-10 1.8 1.250000e-10 0 2.450000e-10 0 ) }
+57c179
+<   Vsource_pset vwla ( nWLa 0 ) { pwl = ( 0.000000e+00 0 2.450000e-10 0 2.500000e-10 1.8 3.390000e-10 1.8 3.440000e-10 0 4.330000e-10 0 4.380000e-10 1.8 ...)
+>   Vsource_pset vwla ( nWLa 0 ) { pwl = ( 0.000000e+00 0 2.450000e-10 0 ) }
+87c209
+<   Transient( InitialTime=0.000000e+00 FinalTime=5.000000e-12 InitialStep=5.000e-13 MaxStep=1.250000000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>   Transient( InitialTime=0.000000e+00 FinalTime=5.000000e-12 InitialStep=5.000e-13 MaxStep=1.250e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+90c212
+<   Transient( InitialTime=5.000000e-12 FinalTime=1.500000e-11 InitialStep=1.000e-13 MaxStep=2.500000000e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>   Transient( InitialTime=5.000000e-12 FinalTime=1.500000e-11 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+93c215
+<   Transient( InitialTime=1.500000e-11 FinalTime=1.150000e-10 InitialStep=2.000e-13 MaxStep=5.000000000e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>   Transient( InitialTime=1.500000e-11 FinalTime=1.150000e-10 InitialStep=2.000e-13 MaxStep=5.000e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+96c218
+<   Transient( InitialTime=1.150000e-10 FinalTime=1.200000e-10 InitialStep=1.000e-12 MaxStep=2.500000000e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>   Transient( InitialTime=1.150000e-10 FinalTime=1.200000e-10 InitialStep=1.000e-12 MaxStep=2.500e-12 MinStep=1e-18 Increment=1.5 Decrement=2 )
+99c221
+<   Transient( InitialTime=1.200000e-10 FinalTime=1.250000e-10 InitialStep=1.000e-13 MaxStep=2.500000000e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>   Transient( InitialTime=1.200000e-10 FinalTime=1.250000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+102c224
+<   Transient( InitialTime=1.250000e-10 FinalTime=1.300000e-10 InitialStep=1.000e-13 MaxStep=2.500000000e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>   Transient( InitialTime=1.250000e-10 FinalTime=1.300000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+105,106c227
+<   Set( nSN = 1.1 )
+<   Transient( InitialTime=1.300000e-10 FinalTime=1.400000e-10 InitialStep=1.000e-13 MaxStep=2.500000000e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>   Transient( InitialTime=1.300000e-10 FinalTime=1.400000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+109,110c230
+<   Unset( nSN )
+<   Transient( InitialTime=1.400000e-10 FinalTime=1.900000e-10 InitialStep=2.500e-13 MaxStep=6.250000000e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>   Transient( InitialTime=1.400000e-10 FinalTime=1.900000e-10 InitialStep=2.500e-13 MaxStep=6.250e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+113c233
+<   Transient( InitialTime=1.900000e-10 FinalTime=1.950000e-10 InitialStep=1.000e-13 MaxStep=2.500000000e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>   Transient( InitialTime=1.900000e-10 FinalTime=1.950000e-10 InitialStep=1.000e-13 MaxStep=2.500e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+116c236
+<   Transient( InitialTime=1.950000e-10 FinalTime=2.450000e-10 InitialStep=2.500e-13 MaxStep=6.250000000e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+>   Transient( InitialTime=1.950000e-10 FinalTime=2.450000e-10 InitialStep=2.500e-13 MaxStep=6.250e-13 MinStep=1e-18 Increment=1.5 Decrement=2 )
+118a239,240
+>   Plot( FilePrefix="end" )
+> }

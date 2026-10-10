@@ -22,10 +22,10 @@ def at(t, v, x):
     return v[-1]
 
 
-def edges(t, v, lo, hi, rising):          # times where v passes the middle of lo..hi
-    m = (lo + hi) / 2; out = []
+def edges(t, v, lo, hi, rising):          # times where v passes the middle of lo..hi, linear between the two points that bracket it
+    m = (lo + hi) / 2; out = []           # (before 2026-10-10: the later point itself, up to one plotted step late; MEASURE.md 4.3 = the crossing)
     for i in range(1, len(t)):
-        if (v[i - 1] < m <= v[i]) if rising else (v[i - 1] > m >= v[i]): out.append(t[i])
+        if (v[i - 1] < m <= v[i]) if rising else (v[i - 1] > m >= v[i]): out.append(t[i - 1] + (t[i] - t[i - 1]) * (m - v[i - 1]) / (v[i] - v[i - 1]))
     return out
 
 

@@ -1,6 +1,6 @@
 # 실험 등록부 — 겹치지 않게 쓰는 표
 
-갱신: 2026-10-10 12:30 (Claude; Codex P1 시간 단계 종료에 맞춰 P2 덱의 시간·출력 설정 갱신, 실행 없음). 채점과 표의 기준은 [MEASURE.md](MEASURE.md)예요. **새 실행을 만들기 전에 이 파일과 Codex의 `docs/`, `snapshot_status.json`, 서버에서 돌고 있는 실행을 먼저 봐요.**
+갱신: 2026-10-10 13:40 (Claude; G1 대기 중 P2 준비: 추출 정의 수정과 기존 원시 자료 점검, 실행 없음). 채점과 표의 기준은 [MEASURE.md](MEASURE.md)예요. **새 실행을 만들기 전에 이 파일과 Codex의 `docs/`, `snapshot_status.json`, 서버에서 돌고 있는 실행을 먼저 봐요.**
 
 ## 규칙 (Claude가 지키는 것)
 
@@ -374,8 +374,19 @@ Hsu, Cho, Sharda, Park, Datta, Yu, IMW 2025 Fig. 2(c) (TED 73(9), 2026에 같은
 | 해시 (SHA-256 앞 12자리) | 덱 (2026-10-10) `DnwRzb` 73ccf36c5c24, `DnwRzbi` ba3dae9aff3e, `DnwRzbg` a7a04c698ced (2026-10-09의 100b774e53ad / 79413ec3cb40 / 742d1e8fa17f는 폐기); 메시 gb2_zz aa0f32997e33, gb2_zzg da87d0f54771(fin7과 같음); 파라미터 436b6934cce5 |
 | 수치 설정 | 2026-10-10: Codex P1의 가장 촘촘한 단계와 같게 함. 모든 MaxStep ÷ 4 (`Hk=4`; InitialStep·MinStep 그대로), 지정 시각 없는 CurrentPlot (`CPbare=1`: 모든 계산점 기록). 130 ps까지의 Transient 구간은 `CxN4Atk`와 수치로 같음(대조함), 소자·물리·Math 블록도 같음; 차이는 탐침, reset 없음, 245 ps 종료뿐. 메시는 G1의 메시 단계 결과가 다르면 다시 만들고 해시를 다시 등록해요. 옛 격자의 `DptRzb_zz` / `DptRzbg_zz`는 계획대로 대조군으로 재사용하고, 시간 격자 차이(Codex `CxN1→2→4`: write 최대 5.4 → 2.3 mV, 공격 전 몸체 0.7 mV)를 오차로 같이 적어요 |
 | 예상 규모 | 2D 쌍, 245 ps 과도 3개(원본 2.125 ns 실행의 앞부분), 각 수 분, 저장 각 10 MB 이하 |
-| 판정 / 중단 기준 | (1) 130 ps 전의 SN: `DnwRzbi_zz`는 `CxN4Atk`와 같아야 하고(같은 덱이라 차이는 출력 추가 탓), 나머지 둘은 원본과 수치 예산(write 6 mV) 안이어야 해요. 아니면 분석 전에 원인부터 찾아요. (2) 산출: 245 ps의 SN, 몸체 중심·평균 전위, 정공 수, 단자 e / h / 변위 전류, Cs·dV/dt와 SN 단자 전류의 전하 수지, write 동안 채널 / underlap / 접촉의 전압 분배. (3) 부족을 설명한 것을 쓰기 재현 성공이라고 하지 않아요 |
+| 판정 / 중단 기준 | (1) 130 ps 전의 SN: `DnwRzbi_zz`는 G1 격자의 Codex attack 실행과 같아야 해요(같은 덱이라 차이는 출력 추가 탓). 130 ps 값이 한 가지(reset 없음), BE 잔차 0. 아니면 분석 전에 원인부터 찾아요. `DnwRzb` / `DnwRzbg`는 같은 격자의 reset 대조가 없어서 옛 격자 `Dpt*`는 참고로만 적고 통과 표에 넣지 않아요 (2026-10-10, Codex 지침: 다른 설정의 raw를 한 통과 표에 섞지 않음). (2) 산출: 245 ps의 SN, 몸체 중심·평균 전위, 정공 수, 단자 e / h / 변위 전류, Cs·dV/dt와 SN 단자 전류의 전하 수지, write 동안 채널 / underlap / 접촉의 전압 분배. (3) 부족을 설명한 것을 쓰기 재현 성공이라고 하지 않아요 |
 | 시작 / 종료 | 시작 안 함 |
+
+**2026-10-10 13:40: P2 준비 — G1 대기 중 기존 원시 자료 점검 (새 TCAD 실행 없음; Codex 전달 프롬프트 `docs/CLAUDE_P2_HANDOFF_AFTER_P1_2026-10-10.md`)**
+
+| 필드 | 내용 |
+|---|---|
+| 실행 | 소자 실행 0건. 분석 스크립트만 (`tools/_q.sh p2o / p2a / p2w / p2g / p2k`) |
+| 추출 정의 수정 | `gt_tran.edges()`가 교차 뒤 첫 저장점을 주던 것을 보간한 교차 시각으로 (MEASURE.md 4.3). 제 쓰기 값이 Codex `write_sample_V`와 같아짐(CxN1 / CxN4). fin7 W 7.64 → 7.84, L1 c1 / c2 58.45 / 12.74 → 58.29 / 12.69 mV, legacy52 35 / 52 그대로 |
+| 도구 | `gt_precharge.py`: 순간 I_sn(e / h / 변위 / 합), 게이트 아래 평균 전위, ±30 mV 판정과 최악 오차, 기록 방식(모든 스텝 여부), 중복 시각 구분(첫 값 = 바뀌기 전, 마지막 값 = 바뀐 뒤), clamp 구간 분리, 단자 기준 전압 분배(`gt_loadline.py`와 같은 점, 같은 몫 확인). `gt_loadline.py`: 구간 평균끼리만 비교하도록 줄 교체 |
+| 결과 | 부유 셀의 write 부족은 WL 교차 뒤 첫 12 ps에서만 생김 (구간 평균 152 – 161 µA 대 252 µA; 뒤 구간은 논문 이상). CxN4Atk의 I_sn 첨두 377.8 µA(15 ps) > 같은 단자 전압의 DC 166 µA. 접지 셀 0.72 V 정지: 오류 아님, 우리 접촉 슬롯 가정 + body effect |
+| 철회 | 2026-10-09 전달안의 "Fig.5(c) 약 230 µA < 252 µA 평균이라 4.2 fF로는 준정적으로 안 나옴" (DC 한 점과 구간 평균을 비교함) |
+| 산출 | 결과 폴더·`reports/GT_IRPS2026_P2준비_자연precharge_2026-10-10.md`, `data/tables/precharge_p2_existing_raw_2026-10-10.txt`, `precharge_p2_first30ps_split_grounded_2026-10-10.txt`, `p2_deck_diff_2026-10-10.txt` |
 
 **P1 메시 단계 지원 — 메시 후보 2종 (device 실행 없음; 2026-10-09 22:40, 사용자: "1, 2 진행")**
 

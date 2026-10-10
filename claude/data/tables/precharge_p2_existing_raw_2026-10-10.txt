@@ -1,0 +1,362 @@
+13:25:53
+84130 /TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice CxN8Atk_
+84131 /TOOLS/SYNOPSYS/sentaurus/U-2022.12/bin/../tcad/current/linux64/bin/sdevice CxN8Idle
+                  7738M   9216M  10240M           37603       0       0        
+== DptRzb_zz: zz pair, body floating, avalanche off, Cs 4.20 fF, BL write 1.168 V, node SET to 1.1 V at 130-140 ps; file to 2125 ps; contact current sign: + = into the device at sn_v
+   record: timed CurrentPlot (0 of 50 Transients bare): steps between the plotted points are NOT in the file; 465 / 465 points (system / device); time integration BE: charge = step x current at its end (right-end rule)
+   system file: 39 more times held twice after the pre-charge, 39 of them the same state
+   system file holds    0.000 ps twice (segment boundary): same state
+   system file holds    5.000 ps twice (segment boundary): same state
+   system file holds   15.000 ps twice (segment boundary): same state
+   system file holds  115.000 ps twice (segment boundary): same state
+   system file holds  120.000 ps twice (segment boundary): same state
+   system file holds  125.000 ps twice (segment boundary): same state
+   system file holds  130.000 ps twice (reset: Set of the node): SN 1.02123 -> 1.1, BL 1.1 -> 1.1, WL 0 -> 0
+   system file holds  140.000 ps twice (end of the reset window): same state
+   system file holds  190.000 ps twice (segment boundary): same state
+   system file holds  195.000 ps twice (segment boundary): same state
+   system file holds  245.000 ps twice (segment boundary): same state
+   device file: 39 more times held twice after the pre-charge, 39 of them the same state
+   device file holds    0.000 ps twice (segment boundary): I_sn -5.14852e-20 -> 6.08416e-18, holes 2.9333e+10 -> 2.9333e+10
+   device file holds    5.000 ps twice (segment boundary): same state
+   device file holds   15.000 ps twice (segment boundary): same state
+   device file holds  115.000 ps twice (segment boundary): same state
+   device file holds  120.000 ps twice (segment boundary): same state
+   device file holds  125.000 ps twice (segment boundary): same state
+   device file holds  130.000 ps twice (segment boundary): same state
+   device file holds  140.000 ps twice (end of the reset window): same state
+   device file holds  190.000 ps twice (segment boundary): same state
+   device file holds  195.000 ps twice (segment boundary): same state
+   device file holds  245.000 ps twice (segment boundary): same state
+   instant                      t [ps] |  SN [V]   BL [V]   WL [V] | body: centre  under gate  h-QF [V] | holes |  I_sn [uA]: electron    hole  displ.   total
+   t = 0 (DC start)               0.00 | 0.0000  0.0000  0.0000 |  -0.1905     -     +0.0000   |     0 |     0.00     0.00    -0.00     0.00
+   WL crosses 0.9 V              12.50 | 0.0350  1.1680  0.9000 |  +0.5711     -     +0.7445   |     0 |   100.13     0.00     0.30   100.43
+   +12 ps (paper 0.72)           24.50 | 0.4682  1.1680  1.8000 |  +0.9399     -     +1.0204   |     0 |    91.69     0.00    -0.02    91.67
+   +24 ps (paper 0.92)           36.50 | 0.6676  1.1680  1.8000 |  +1.1271     -     +1.1576   |     0 |    56.90     0.00    -0.01    56.88
+   +39 ps (paper 1.06)           51.50 | 0.8187  1.1680  1.8000 |  +1.2667     -     +1.2839   |     0 |    33.45     0.00    -0.01    33.44
+   +60 ps (paper 1.13)           72.50 | 0.9379  1.1680  1.8000 |  +1.3743     -     +1.3828   |     0 |    17.86     0.00    -0.00    17.85
+   write peak                   120.00 | 1.0565  1.1680  1.8000 |  +1.4764     -     +1.4702   |     0 |     6.33     0.00    -0.00     6.33
+   WL off - 1 ps                121.50 | 1.0414  1.1680  1.2600 |  +1.0212     -     +1.0278   |     0 |   -34.75     0.00    -0.20   -34.95
+   WL off (0.9 V)               122.50 | 1.0345  1.1680  0.9000 |  +0.6920     -     +0.7012   |     0 |   -26.45     0.00    -0.22   -26.67
+   WL off + 5 ps                127.50 | 1.0212  1.1340  0.0000 |  -0.1872     -     -0.0937   |     0 |    -0.01     0.00    -0.00    -0.01
+   BL step done                 130.00 | 1.0212  1.1000  0.0000 |  -0.1872     -     -0.0655   |     0 |    -0.00     0.00    -0.00    -0.00
+   before reset window          130.00 | 1.0212  1.1000  0.0000 |  -0.1872     -     -0.0655   |     0 |    -0.00     0.00    -0.00    -0.00
+   after reset window           140.00 | 1.1000  1.1000  0.0000 |  -0.1870     -     -0.0199   |     0 |    -0.00    -0.00     0.00    -0.00
+   end of hold at Vdd           190.00 | 1.1000  1.1000  0.0000 |  -0.1870     -     +0.0250   |     0 |    -0.00    -0.00     0.00    -0.00
+   BL at Vdd/2                  195.00 | 1.1000  0.5500  0.0000 |  -0.1873     -     +0.0249   |     0 |    -0.01    -0.00    -0.00    -0.02
+   start of hammer / test       245.00 | 1.1000  0.5500  0.0000 |  -0.1873     -     +0.0393   |     0 |    -0.00    -0.00     0.00    -0.00
+   write vs Fig.4(a) (read, +-30 mV): 0.468 (-252 mV OUT) / 0.668 (-252 mV OUT) / 0.819 (-241 mV OUT) / 0.938 (-192 mV OUT); worst -252 mV at +24 ps
+   interval [ps]          | Cs dV [fC]  integral I_sn [fC] (e / h / displacement)   residual BE | trapezoid: residual | interval mean Cs dV/dt [uA]: model  paper | BL charge [fC]
+     12.50 -   24.50      |  +1.8194    +1.7391 (+1.7386 / +0.0000 / +0.0005)   +0.0802 (  +4.4 %) |  -0.0556 (  -3.1 %) |                    151.6    252 |  -1.4045
+     24.50 -   36.50      |  +0.8372    +0.8372 (+0.8374 / +0.0000 / -0.0002)   +0.0000 (  +0.0 %) |  -0.0348 (  -4.2 %) |                     69.8     70 |  -0.9839
+     36.50 -   51.50      |  +0.6349    +0.6349 (+0.6350 / +0.0000 / -0.0001)   +0.0000 (  +0.0 %) |  -0.0234 (  -3.7 %) |                     42.3     39 |  -0.7408
+     51.50 -   72.50      |  +0.5007    +0.5007 (+0.5008 / +0.0000 / -0.0001)   +0.0000 (  +0.0 %) |  -0.0156 (  -3.1 %) |                     23.8     14 |  -0.5786
+     72.50 -  122.50      |  +0.4055    +0.4160 (+0.4166 / +0.0000 / -0.0006)   -0.0106 (  -2.6 %) |  -0.0384 (  -9.5 %) |                      8.1      - |  -0.6172
+    122.50 -  130.00      |  -0.0557    -0.0544 (-0.0538 / +0.0000 / -0.0006)   -0.0013 (  +2.3 %) |  +0.0121 ( -21.7 %) |                     -7.4      - |  -0.0266
+    130.00 -  140.00 clamp|  +0.3308    -0.0000 (-0.0000 / +0.0000 / +0.0000)   +0.3308 (+100.0 %) |  +0.3308 (+100.0 %) |                     33.1      - |  -0.0000
+    140.00 -  190.00      |  -0.0000    -0.0000 (-0.0000 / -0.0000 / +0.0000)   -0.0000 (     - ) |  +0.0000 (     - ) |                     -0.0      - |  +0.0000
+    190.00 -  245.00      |  -0.0001    -0.0001 (-0.0001 / -0.0000 / -0.0000)   -0.0000 (     - ) |  +0.0000 (     - ) |                     -0.0      - |  +0.0319
+   reset (clamp): node 1.0212 V (first copy at 130 ps) -> 1.1000 V (last copy); the circuit adds Cs x +0.0788 V = +0.3308 fC (2065 electrons' worth)
+   DC load line DpL_c2 (gates 1.8 V, BL 1.168 V; A/um x 0.1 um): instantaneous current at the same node voltage [uA]:
+      +12 ps   node 0.468 V: transient    91.7   DC   107.7
+      +24 ps   node 0.668 V: transient    56.9   DC    64.8
+      +39 ps   node 0.819 V: transient    33.4   DC    39.5
+      +60 ps   node 0.938 V: transient    17.9   DC    21.6
+== DptRzbi_zz: zz pair, body floating, avalanche on (vanOverstraeten), Cs 4.20 fF, BL write 1.168 V, node SET to 1.1 V at 130-140 ps; file to 2125 ps; contact current sign: + = into the device at sn_v
+   record: timed CurrentPlot (0 of 50 Transients bare): steps between the plotted points are NOT in the file; 465 / 465 points (system / device); time integration BE: charge = step x current at its end (right-end rule)
+   system file: 39 more times held twice after the pre-charge, 39 of them the same state
+   system file holds    0.000 ps twice (segment boundary): same state
+   system file holds    5.000 ps twice (segment boundary): same state
+   system file holds   15.000 ps twice (segment boundary): same state
+   system file holds  115.000 ps twice (segment boundary): same state
+   system file holds  120.000 ps twice (segment boundary): same state
+   system file holds  125.000 ps twice (segment boundary): same state
+   system file holds  130.000 ps twice (reset: Set of the node): SN 1.03117 -> 1.1, BL 1.1 -> 1.1, WL 0 -> 0
+   system file holds  140.000 ps twice (end of the reset window): same state
+   system file holds  190.000 ps twice (segment boundary): same state
+   system file holds  195.000 ps twice (segment boundary): same state
+   system file holds  245.000 ps twice (segment boundary): same state
+   device file: 39 more times held twice after the pre-charge, 39 of them the same state
+   device file holds    0.000 ps twice (segment boundary): I_sn -5.14852e-20 -> 6.08416e-18, holes 2.9333e+10 -> 2.9333e+10
+   device file holds    5.000 ps twice (segment boundary): same state
+   device file holds   15.000 ps twice (segment boundary): same state
+   device file holds  115.000 ps twice (segment boundary): same state
+   device file holds  120.000 ps twice (segment boundary): same state
+   device file holds  125.000 ps twice (segment boundary): same state
+   device file holds  130.000 ps twice (segment boundary): same state
+   device file holds  140.000 ps twice (end of the reset window): same state
+   device file holds  190.000 ps twice (segment boundary): same state
+   device file holds  195.000 ps twice (segment boundary): same state
+   device file holds  245.000 ps twice (segment boundary): same state
+   instant                      t [ps] |  SN [V]   BL [V]   WL [V] | body: centre  under gate  h-QF [V] | holes |  I_sn [uA]: electron    hole  displ.   total
+   t = 0 (DC start)               0.00 | 0.0000  0.0000  0.0000 |  -0.1905     -     +0.0000   |     0 |     0.00     0.00    -0.00     0.00
+   WL crosses 0.9 V              12.50 | 0.0316  1.1680  0.9000 |  +0.5814     -     +0.9141   |     2 |   105.02     0.00     0.31   105.33
+   +12 ps (paper 0.72)           24.50 | 0.4842  1.1680  1.8000 |  +0.9949     -     +1.4603   |   284 |    95.43     3.01    -0.02    98.42
+   +24 ps (paper 0.92)           36.50 | 0.6899  1.1680  1.8000 |  +1.1795     -     +1.6383   |   202 |    55.00     2.12    -0.01    57.11
+   +39 ps (paper 1.06)           51.50 | 0.8385  1.1680  1.8000 |  +1.3075     -     +1.7547   |   117 |    31.65     0.80    -0.01    32.45
+   +60 ps (paper 1.13)           72.50 | 0.9532  1.1680  1.8000 |  +1.4036     -     +1.8382   |    67 |    16.85     0.27    -0.00    17.11
+   write peak                   120.00 | 1.0667  1.1680  1.8000 |  +1.4945     -     +1.9108   |    32 |     5.99     0.06    -0.00     6.04
+   WL off - 1 ps                121.50 | 1.0515  1.1680  1.2600 |  +1.0499     -     +1.4754   |    34 |   -34.79     0.02    -0.20   -34.97
+   WL off (0.9 V)               122.50 | 1.0445  1.1680  0.9000 |  +0.7280     -     +1.1553   |    35 |   -26.15     0.00    -0.23   -26.38
+   WL off + 5 ps                127.50 | 1.0312  1.1340  0.0000 |  -0.1384     -     +0.2926   |    40 |    -0.02     0.00    -0.00    -0.02
+   BL step done                 130.00 | 1.0312  1.1000  0.0000 |  -0.1384     -     +0.2926   |    40 |    -0.00     0.00    -0.00    -0.00
+   before reset window          130.00 | 1.0312  1.1000  0.0000 |  -0.1384     -     +0.2926   |    40 |    -0.00     0.00    -0.00    -0.00
+   after reset window           140.00 | 1.1000  1.1000  0.0000 |  -0.1381     -     +0.2929   |    40 |    -0.00     0.00     0.00    -0.00
+   end of hold at Vdd           190.00 | 1.1000  1.1000  0.0000 |  -0.1380     -     +0.2930   |    40 |    -0.00     0.00     0.00    -0.00
+   BL at Vdd/2                  195.00 | 1.1000  0.5500  0.0000 |  -0.1405     -     +0.2896   |    40 |    -0.02     0.00    -0.00    -0.02
+   start of hammer / test       245.00 | 1.1000  0.5500  0.0000 |  -0.1407     -     +0.2893   |    40 |    -0.00     0.00     0.00    -0.00
+   write vs Fig.4(a) (read, +-30 mV): 0.484 (-236 mV OUT) / 0.690 (-230 mV OUT) / 0.838 (-222 mV OUT) / 0.953 (-177 mV OUT); worst -236 mV at +12 ps
+   interval [ps]          | Cs dV [fC]  integral I_sn [fC] (e / h / displacement)   residual BE | trapezoid: residual | interval mean Cs dV/dt [uA]: model  paper | BL charge [fC]
+     12.50 -   24.50      |  +1.9011    +1.8701 (+1.8516 / +0.0180 / +0.0005)   +0.0311 (  +1.6 %) |  -0.1064 (  -5.6 %) |                    158.4    252 |  -1.5134
+     24.50 -   36.50      |  +0.8637    +0.8637 (+0.8313 / +0.0326 / -0.0002)   -0.0000 (  -0.0 %) |  -0.0413 (  -4.8 %) |                     72.0     70 |  -1.0137
+     36.50 -   51.50      |  +0.6241    +0.6241 (+0.6052 / +0.0190 / -0.0001)   -0.0000 (  -0.0 %) |  -0.0247 (  -4.0 %) |                     41.6     39 |  -0.7284
+     51.50 -   72.50      |  +0.4821    +0.4821 (+0.4728 / +0.0094 / -0.0001)   -0.0000 (  -0.0 %) |  -0.0153 (  -3.2 %) |                     23.0     14 |  -0.5571
+     72.50 -  122.50      |  +0.3834    +0.3947 (+0.3893 / +0.0059 / -0.0006)   -0.0113 (  -2.9 %) |  -0.0383 ( -10.0 %) |                      7.7      - |  -0.5910
+    122.50 -  130.00      |  -0.0561    -0.0546 (-0.0539 / +0.0000 / -0.0006)   -0.0015 (  +2.8 %) |  +0.0116 ( -20.8 %) |                     -7.5      - |  -0.0267
+    130.00 -  140.00 clamp|  +0.2891    -0.0000 (-0.0000 / +0.0000 / +0.0000)   +0.2891 (+100.0 %) |  +0.2891 (+100.0 %) |                     28.9      - |  -0.0000
+    140.00 -  190.00      |  -0.0000    -0.0000 (-0.0000 / +0.0000 / +0.0000)   +0.0000 (     - ) |  -0.0000 (     - ) |                     -0.0      - |  -0.0000
+    190.00 -  245.00      |  -0.0001    -0.0001 (-0.0001 / +0.0000 / -0.0000)   -0.0000 (     - ) |  +0.0000 (     - ) |                     -0.0      - |  +0.0319
+   reset (clamp): node 1.0312 V (first copy at 130 ps) -> 1.1000 V (last copy); the circuit adds Cs x +0.0688 V = +0.2891 fC (1805 electrons' worth)
+   DC load line DpL_c2 (gates 1.8 V, BL 1.168 V; A/um x 0.1 um): instantaneous current at the same node voltage [uA]:
+      +12 ps   node 0.484 V: transient    98.4   DC   102.7
+      +24 ps   node 0.690 V: transient    57.1   DC    60.3
+      +39 ps   node 0.838 V: transient    32.4   DC    35.6
+      +60 ps   node 0.953 V: transient    17.1   DC    18.5
+== DptRzbg_zz: zz pair, body grounded, avalanche on (vanOverstraeten), Cs 4.20 fF, BL write 1.168 V, node SET to 1.1 V at 130-140 ps; file to 2125 ps; contact current sign: + = into the device at sn_v
+   record: timed CurrentPlot (0 of 50 Transients bare): steps between the plotted points are NOT in the file; 465 / 465 points (system / device); time integration BE: charge = step x current at its end (right-end rule)
+   system file: 39 more times held twice after the pre-charge, 39 of them the same state
+   system file holds    0.000 ps twice (segment boundary): same state
+   system file holds    5.000 ps twice (segment boundary): same state
+   system file holds   15.000 ps twice (segment boundary): same state
+   system file holds  115.000 ps twice (segment boundary): same state
+   system file holds  120.000 ps twice (segment boundary): same state
+   system file holds  125.000 ps twice (segment boundary): same state
+   system file holds  130.000 ps twice (reset: Set of the node): SN 0.672859 -> 1.1, BL 1.1 -> 1.1, WL 0 -> 0
+   system file holds  140.000 ps twice (end of the reset window): same state
+   system file holds  190.000 ps twice (segment boundary): same state
+   system file holds  195.000 ps twice (segment boundary): same state
+   system file holds  245.000 ps twice (segment boundary): same state
+   device file: 39 more times held twice after the pre-charge, 39 of them the same state
+   device file holds    0.000 ps twice (segment boundary): I_sn 2.85777e-20 -> -3.07222e-18, holes 4.29199e+13 -> 4.29199e+13
+   device file holds    5.000 ps twice (segment boundary): same state
+   device file holds   15.000 ps twice (segment boundary): same state
+   device file holds  115.000 ps twice (segment boundary): same state
+   device file holds  120.000 ps twice (segment boundary): same state
+   device file holds  125.000 ps twice (segment boundary): same state
+   device file holds  130.000 ps twice (segment boundary): same state
+   device file holds  140.000 ps twice (end of the reset window): same state
+   device file holds  190.000 ps twice (segment boundary): same state
+   device file holds  195.000 ps twice (segment boundary): same state
+   device file holds  245.000 ps twice (segment boundary): same state
+   instant                      t [ps] |  SN [V]   BL [V]   WL [V] | body: centre  under gate  h-QF [V] | holes |  I_sn [uA]: electron    hole  displ.   total
+   t = 0 (DC start)               0.00 | 0.0000  0.0000  0.0000 |  -0.2470     -     +0.0000   |     4 |    -0.00     0.00    -0.00    -0.00
+   WL crosses 0.9 V              12.50 | 0.0260  1.1680  0.9000 |  +0.4406     -     +0.6412   |     2 |    67.75     0.00     0.27    68.02
+   +12 ps (paper 0.72)           24.50 | 0.4181  1.1680  1.8000 |  +0.8010     -     +1.1724   |    14 |    82.64     0.00    -0.02    82.62
+   +24 ps (paper 0.92)           36.50 | 0.5627  1.1680  1.8000 |  +1.0031     -     +1.2840   |     2 |    33.78     0.00    -0.01    33.77
+   +39 ps (paper 1.06)           51.50 | 0.6360  1.1680  1.8000 |  +1.0854     -     +1.2442   |     1 |    13.86     0.00    -0.00    13.86
+   +60 ps (paper 1.13)           72.50 | 0.6798  1.1680  1.8000 |  +1.1147     -     +1.2409   |     1 |     6.07     0.00    -0.00     6.07
+   write peak                   120.00 | 0.7195  1.1680  1.8000 |  +1.1277     -     +1.2191   |     1 |     2.20     0.00    -0.00     2.20
+   WL off - 1 ps                121.50 | 0.6946  1.1680  1.2600 |  +0.7237     -     +0.9137   |     2 |   -56.40     0.00    -0.15   -56.56
+   WL off (0.9 V)               122.50 | 0.6862  1.1680  0.9000 |  +0.4491     -     +0.6554   |     2 |   -29.17     0.00    -0.19   -29.36
+   WL off + 5 ps                127.50 | 0.6729  1.1340  0.0000 |  -0.2398     -     +0.0002   |     4 |    -0.00     0.00    -0.00    -0.00
+   BL step done                 130.00 | 0.6729  1.1000  0.0000 |  -0.2400     -     +0.0002   |     4 |    -0.00     0.00    -0.00    -0.00
+   before reset window          130.00 | 0.6729  1.1000  0.0000 |  -0.2400     -     +0.0002   |     4 |    -0.00     0.00    -0.00    -0.00
+   after reset window           140.00 | 1.1000  1.1000  0.0000 |  -0.2400     -     +0.0002   |     4 |    -0.00     0.00     0.00    -0.00
+   end of hold at Vdd           190.00 | 1.1000  1.1000  0.0000 |  -0.2400     -     +0.0000   |     4 |    -0.00     0.00     0.00    -0.00
+   BL at Vdd/2                  195.00 | 1.1000  0.5500  0.0000 |  -0.2435     -     -0.0000   |     4 |    -0.01     0.00    -0.00    -0.02
+   start of hammer / test       245.00 | 1.1000  0.5500  0.0000 |  -0.2435     -     +0.0000   |     4 |    -0.00     0.00     0.00    -0.00
+   write vs Fig.4(a) (read, +-30 mV): 0.418 (-302 mV OUT) / 0.563 (-357 mV OUT) / 0.636 (-424 mV OUT) / 0.680 (-450 mV OUT); worst -450 mV at +60 ps
+   interval [ps]          | Cs dV [fC]  integral I_sn [fC] (e / h / displacement)   residual BE | trapezoid: residual | interval mean Cs dV/dt [uA]: model  paper | BL charge [fC]
+     12.50 -   24.50      |  +1.6467    +1.5755 (+1.5750 / +0.0000 / +0.0005)   +0.0712 (  +4.3 %) |  -0.0328 (  -2.0 %) |                    137.2    252 |  -1.3797
+     24.50 -   36.50      |  +0.6074    +0.6074 (+0.6076 / +0.0000 / -0.0002)   +0.0000 (  +0.0 %) |  -0.0489 (  -8.0 %) |                     50.6     70 |  -0.7661
+     36.50 -   51.50      |  +0.3075    +0.3075 (+0.3076 / +0.0000 / -0.0001)   +0.0000 (  +0.0 %) |  -0.0199 (  -6.5 %) |                     20.5     39 |  -0.3729
+     51.50 -   72.50      |  +0.1843    +0.1843 (+0.1844 / +0.0000 / -0.0000)   -0.0000 (  -0.0 %) |  -0.0078 (  -4.2 %) |                      8.8     14 |  -0.2154
+     72.50 -  122.50      |  +0.0267    +0.0416 (+0.0421 / +0.0000 / -0.0004)   -0.0149 ( -56.0 %) |  -0.0345 (-129.4 %) |                      0.5      - |  -0.2222
+    122.50 -  130.00      |  -0.0560    -0.0542 (-0.0536 / +0.0000 / -0.0006)   -0.0018 (  +3.3 %) |  +0.0128 ( -22.9 %) |                     -7.5      - |  -0.0240
+    130.00 -  140.00 clamp|  +1.7940    -0.0000 (-0.0000 / +0.0000 / +0.0000)   +1.7940 (+100.0 %) |  +1.7940 (+100.0 %) |                    179.4      - |  -0.0000
+    140.00 -  190.00      |  -0.0000    -0.0000 (-0.0000 / +0.0000 / +0.0000)   -0.0000 (     - ) |  +0.0000 (     - ) |                     -0.0      - |  -0.0000
+    190.00 -  245.00      |  -0.0001    -0.0001 (-0.0001 / +0.0000 / -0.0000)   -0.0000 (     - ) |  +0.0000 (     - ) |                     -0.0      - |  +0.0319
+   reset (clamp): node 0.6729 V (first copy at 130 ps) -> 1.1000 V (last copy); the circuit adds Cs x +0.4271 V = +1.7940 fC (11198 electrons' worth)
+   DC load line DpL_c2 (gates 1.8 V, BL 1.168 V; A/um x 0.1 um): instantaneous current at the same node voltage [uA]:
+      +12 ps   node 0.418 V: transient    82.6   DC   117.8
+      +24 ps   node 0.563 V: transient    33.8   DC    88.1
+      +39 ps   node 0.636 V: transient    13.9   DC    69.3
+      +60 ps   node 0.680 V: transient     6.1   DC    64.8
+== DptW_c2: single cell, body floating, avalanche off, Cs 4.20 fF, BL write 1.168 V, node NOT set (natural); file to 180 ps; contact current sign: + = into the device at sn_v
+   record: timed CurrentPlot (0 of 7 Transients bare): steps between the plotted points are NOT in the file; 107 / 107 points (system / device); time integration BE: charge = step x current at its end (right-end rule)
+   system file holds    0.000 ps twice (segment boundary): same state
+   system file holds    5.000 ps twice (segment boundary): same state
+   system file holds   15.000 ps twice (segment boundary): same state
+   system file holds  115.000 ps twice (segment boundary): same state
+   system file holds  120.000 ps twice (segment boundary): same state
+   system file holds  125.000 ps twice (segment boundary): same state
+   system file holds  130.000 ps twice (segment boundary): same state
+   device file holds    0.000 ps twice (segment boundary): I_sn -5.64155e-20 -> -1.39207e-18, holes 2.93392e+10 -> 2.93392e+10
+   device file holds    5.000 ps twice (segment boundary): same state
+   device file holds   15.000 ps twice (segment boundary): same state
+   device file holds  115.000 ps twice (segment boundary): same state
+   device file holds  120.000 ps twice (segment boundary): same state
+   device file holds  125.000 ps twice (segment boundary): same state
+   device file holds  130.000 ps twice (segment boundary): same state
+   instant                      t [ps] |  SN [V]   BL [V]   WL [V] | body: centre  under gate  h-QF [V] | holes |  I_sn [uA]: electron    hole  displ.   total
+   t = 0 (DC start)               0.00 | 0.0000  0.0000  0.0000 |  -0.1904     -     +0.0000   |     0 |     0.00     0.00    -0.00     0.00
+   WL crosses 0.9 V              12.50 | 0.0350  1.1680  0.9000 |  +0.5712     -     +0.7445   |     0 |    99.91     0.00     0.32   100.23
+   +12 ps (paper 0.72)           24.50 | 0.4683  1.1680  1.8000 |  +0.9403     -     +1.0200   |     0 |    91.82     0.00    -0.02    91.80
+   +24 ps (paper 0.92)           36.50 | 0.6680  1.1680  1.8000 |  +1.1278     -     +1.1680   |     0 |    56.98     0.00    -0.01    56.97
+   +39 ps (paper 1.06)           51.50 | 0.8193  1.1680  1.8000 |  +1.2676     -     +1.2970   |     0 |    33.49     0.00    -0.01    33.49
+   +60 ps (paper 1.13)           72.50 | 0.9387  1.1680  1.8000 |  +1.3753     -     +1.3960   |     0 |    17.87     0.00    -0.00    17.87
+   write peak                   120.00 | 1.0573  1.1680  1.8000 |  +1.4773     -     +1.4833   |     0 |     6.32     0.00    -0.00     6.32
+   WL off - 1 ps                121.50 | 1.0422  1.1680  1.2600 |  +1.0221     -     +1.0408   |     0 |   -34.71     0.00    -0.21   -34.92
+   WL off (0.9 V)               122.50 | 1.0353  1.1680  0.9000 |  +0.6931     -     +0.7146   |     0 |   -26.11     0.00    -0.24   -26.35
+   WL off + 5 ps                127.50 | 1.0221  1.1340  0.0000 |  -0.1871     -     -0.0918   |     0 |    -0.01     0.00    -0.00    -0.01
+   BL step done                 130.00 | 1.0221  1.1000  0.0000 |  -0.1871     -     -0.0638   |     0 |    -0.00     0.00    -0.00    -0.00
+   end of hold at Vdd           180.00 | 1.0221  1.1000  0.0000 |  -0.1871     -     +0.0158   |     0 |    -0.00    -0.00     0.00    -0.00
+   write vs Fig.4(a) (read, +-30 mV): 0.468 (-252 mV OUT) / 0.668 (-252 mV OUT) / 0.819 (-241 mV OUT) / 0.939 (-191 mV OUT); worst -252 mV at +24 ps
+   interval [ps]          | Cs dV [fC]  integral I_sn [fC] (e / h / displacement)   residual BE | trapezoid: residual | interval mean Cs dV/dt [uA]: model  paper | BL charge [fC]
+     12.50 -   24.50      |  +1.8201    +1.7397 (+1.7392 / +0.0000 / +0.0006)   +0.0803 (  +4.4 %) |  -0.0552 (  -3.0 %) |                    151.7    252 |  -1.4067
+     24.50 -   36.50      |  +0.8385    +0.8385 (+0.8387 / +0.0000 / -0.0002)   +0.0000 (  +0.0 %) |  -0.0348 (  -4.2 %) |                     69.9     70 |  -0.9845
+     36.50 -   51.50      |  +0.6358    +0.6358 (+0.6359 / +0.0000 / -0.0001)   +0.0000 (  +0.0 %) |  -0.0235 (  -3.7 %) |                     42.4     39 |  -0.7411
+     51.50 -   72.50      |  +0.5013    +0.5013 (+0.5014 / +0.0000 / -0.0001)   +0.0000 (  +0.0 %) |  -0.0156 (  -3.1 %) |                     23.9     14 |  -0.5786
+     72.50 -  122.50      |  +0.4058    +0.4164 (+0.4171 / +0.0000 / -0.0006)   -0.0106 (  -2.6 %) |  -0.0383 (  -9.4 %) |                      8.1      - |  -0.6160
+    122.50 -  130.00      |  -0.0556    -0.0538 (-0.0531 / +0.0000 / -0.0007)   -0.0018 (  +3.2 %) |  +0.0114 ( -20.5 %) |                     -7.4      - |  -0.0280
+    130.00 -  180.00      |  -0.0000    -0.0000 (-0.0000 / -0.0000 / +0.0000)   -0.0000 (     - ) |  +0.0000 (     - ) |                     -0.0      - |  -0.0000
+   DC load line DpL_c2 (gates 1.8 V, BL 1.168 V; A/um x 0.1 um): instantaneous current at the same node voltage [uA]:
+      +12 ps   node 0.468 V: transient    91.8   DC   107.7
+      +24 ps   node 0.668 V: transient    57.0   DC    64.8
+      +39 ps   node 0.819 V: transient    33.5   DC    39.5
+      +60 ps   node 0.939 V: transient    17.9   DC    18.5
+== CxN1Atk: zz pair, body floating, avalanche on (vanOverstraeten), Cs 4.20 fF, BL write 1.168 V, node SET to 1.1 V at 130-140 ps; file to 2125 ps; contact current sign: + = into the device at sn_v
+   record: bare CurrentPlot in all 50 Transients = every accepted step written; 708 / 708 points (system / device); time integration BE: charge = step x current at its end (right-end rule)
+   system file: 39 more times held twice after the pre-charge, 39 of them the same state
+   system file holds    0.000 ps twice (segment boundary): same state
+   system file holds    5.000 ps twice (segment boundary): same state
+   system file holds   15.000 ps twice (segment boundary): same state
+   system file holds  115.000 ps twice (segment boundary): same state
+   system file holds  120.000 ps twice (segment boundary): same state
+   system file holds  125.000 ps twice (segment boundary): same state
+   system file holds  130.000 ps twice (reset: Set of the node): SN 1.031 -> 1.1, BL 1.1 -> 1.1, WL 0 -> 0
+   system file holds  140.000 ps twice (end of the reset window): same state
+   system file holds  190.000 ps twice (segment boundary): same state
+   system file holds  195.000 ps twice (segment boundary): same state
+   system file holds  245.000 ps twice (segment boundary): same state
+   device file: 39 more times held twice after the pre-charge, 39 of them the same state
+   device file holds    0.000 ps twice (segment boundary): I_sn -5.14852e-20 -> 6.08416e-18, holes 2.9333e+10 -> 2.9333e+10
+   device file holds    5.000 ps twice (segment boundary): same state
+   device file holds   15.000 ps twice (segment boundary): same state
+   device file holds  115.000 ps twice (segment boundary): same state
+   device file holds  120.000 ps twice (segment boundary): same state
+   device file holds  125.000 ps twice (segment boundary): same state
+   device file holds  130.000 ps twice (segment boundary): same state
+   device file holds  140.000 ps twice (end of the reset window): same state
+   device file holds  190.000 ps twice (segment boundary): same state
+   device file holds  195.000 ps twice (segment boundary): same state
+   device file holds  245.000 ps twice (segment boundary): same state
+   instant                      t [ps] |  SN [V]   BL [V]   WL [V] | body: centre  under gate  h-QF [V] | holes |  I_sn [uA]: electron    hole  displ.   total
+   t = 0 (DC start)               0.00 | 0.0000  0.0000  0.0000 |  -0.1905     -     +0.0000   |     0 |     0.00     0.00    -0.00     0.00
+   WL crosses 0.9 V              12.50 | 0.0288  1.1680  0.9000 |  +0.5974     -     +0.9324   |     1 |   101.81     0.00     0.37   102.18
+   +12 ps (paper 0.72)           24.50 | 0.4826  1.1680  1.8000 |  +0.9932     -     +1.4584   |   282 |    95.78     2.96    -0.02    98.71
+   +24 ps (paper 0.92)           36.50 | 0.6889  1.1680  1.8000 |  +1.1786     -     +1.6374   |   202 |    55.17     2.12    -0.01    57.27
+   +39 ps (paper 1.06)           51.50 | 0.8379  1.1680  1.8000 |  +1.3069     -     +1.7542   |   117 |    31.73     0.80    -0.01    32.52
+   +60 ps (paper 1.13)           72.50 | 0.9529  1.1680  1.8000 |  +1.4033     -     +1.8378   |    67 |    16.88     0.27    -0.00    17.15
+   write peak                   120.00 | 1.0666  1.1680  1.8000 |  +1.4944     -     +1.9107   |    32 |     6.00     0.06    -0.00     6.06
+   WL off - 1 ps                121.50 | 1.0512  1.1680  1.2600 |  +1.0507     -     +1.4767   |    34 |   -34.95     0.01    -0.20   -35.14
+   WL off (0.9 V)               122.50 | 1.0443  1.1680  0.9000 |  +0.7295     -     +1.1573   |    36 |   -25.97     0.00    -0.23   -26.19
+   WL off + 5 ps                127.50 | 1.0310  1.1340  0.0000 |  -0.1375     -     +0.2938   |    41 |    -0.03     0.00    -0.00    -0.03
+   BL step done                 130.00 | 1.0310  1.1000  0.0000 |  -0.1375     -     +0.2938   |    41 |    -0.00     0.00    -0.00    -0.00
+   before reset window          130.00 | 1.0310  1.1000  0.0000 |  -0.1375     -     +0.2938   |    41 |    -0.00     0.00    -0.00    -0.00
+   after reset window           140.00 | 1.1000  1.1000  0.0000 |  -0.1372     -     +0.2942   |    41 |    -0.00     0.00     0.00    -0.00
+   end of hold at Vdd           190.00 | 1.1000  1.1000  0.0000 |  -0.1372     -     +0.2942   |    41 |    -0.00     0.00     0.00    -0.00
+   BL at Vdd/2                  195.00 | 1.1000  0.5500  0.0000 |  -0.1396     -     +0.2908   |    41 |    -0.02     0.00    -0.00    -0.02
+   start of hammer / test       245.00 | 1.1000  0.5500  0.0000 |  -0.1398     -     +0.2905   |    41 |    -0.00     0.00     0.00    -0.00
+   write vs Fig.4(a) (read, +-30 mV): 0.483 (-237 mV OUT) / 0.689 (-231 mV OUT) / 0.838 (-222 mV OUT) / 0.953 (-177 mV OUT); worst -237 mV at +12 ps
+   interval [ps]          | Cs dV [fC]  integral I_sn [fC] (e / h / displacement)   residual BE | trapezoid: residual | interval mean Cs dV/dt [uA]: model  paper | BL charge [fC]
+     12.50 -   24.50      |  +1.9062    +1.9062 (+1.8888 / +0.0171 / +0.0002)   -0.0000 (  -0.0 %) |  -0.0138 (  -0.7 %) |                    158.9    252 |  -1.4890
+     24.50 -   36.50      |  +0.8663    +0.8663 (+0.8341 / +0.0324 / -0.0002)   -0.0000 (  -0.0 %) |  -0.0414 (  -4.8 %) |                     72.2     70 |  -1.0167
+     36.50 -   51.50      |  +0.6259    +0.6259 (+0.6071 / +0.0190 / -0.0001)   -0.0000 (  -0.0 %) |  -0.0248 (  -4.0 %) |                     41.7     39 |  -0.7305
+     51.50 -   72.50      |  +0.4830    +0.4830 (+0.4737 / +0.0094 / -0.0001)   -0.0000 (  -0.0 %) |  -0.0154 (  -3.2 %) |                     23.0     14 |  -0.5581
+     72.50 -  122.50      |  +0.3837    +0.3837 (+0.3785 / +0.0059 / -0.0007)   -0.0000 (  -0.0 %) |  -0.0094 (  -2.5 %) |                      7.7      - |  -0.5948
+    122.50 -  130.00      |  -0.0558    -0.0558 (-0.0552 / +0.0000 / -0.0006)   -0.0000 (  +0.0 %) |  +0.0024 (  -4.2 %) |                     -7.4      - |  -0.0278
+    130.00 -  140.00 clamp|  +0.2898    -0.0039 (-0.0038 / +0.0000 / -0.0001)   +0.2937 (+101.3 %) |  +0.2947 (+101.7 %) |                     29.0      - |  +0.0000
+    140.00 -  190.00      |  -0.0000    -0.0000 (-0.0000 / +0.0000 / +0.0000)   -0.0000 (     - ) |  -0.0000 (     - ) |                     -0.0      - |  -0.0000
+    190.00 -  245.00      |  -0.0001    -0.0001 (-0.0001 / +0.0000 / -0.0000)   +0.0000 (     - ) |  +0.0000 (     - ) |                     -0.0      - |  +0.0319
+   reset (clamp): node 1.0310 V (first copy at 130 ps) -> 1.1000 V (last copy); the circuit adds Cs x +0.0690 V = +0.2898 fC (1809 electrons' worth)
+   DC load line ../../../runs/DpL_c2 (gates 1.8 V, BL 1.168 V; A/um x 0.1 um): instantaneous current at the same node voltage [uA]:
+      +12 ps   node 0.483 V: transient    98.7   DC   102.7
+      +24 ps   node 0.689 V: transient    57.3   DC    60.3
+      +39 ps   node 0.838 V: transient    32.5   DC    35.6
+      +60 ps   node 0.953 V: transient    17.1   DC    18.5
+== CxN4Atk: zz pair, body floating, avalanche on (vanOverstraeten), Cs 4.20 fF, BL write 1.168 V, node SET to 1.1 V at 130-140 ps; file to 2125 ps; contact current sign: + = into the device at sn_v
+   record: bare CurrentPlot in all 50 Transients = every accepted step written; 1831 / 1831 points (system / device); time integration BE: charge = step x current at its end (right-end rule)
+   system file: 39 more times held twice after the pre-charge, 39 of them the same state
+   system file holds    0.000 ps twice (segment boundary): same state
+   system file holds    5.000 ps twice (segment boundary): same state
+   system file holds   15.000 ps twice (segment boundary): same state
+   system file holds  115.000 ps twice (segment boundary): same state
+   system file holds  120.000 ps twice (segment boundary): same state
+   system file holds  125.000 ps twice (segment boundary): same state
+   system file holds  130.000 ps twice (reset: Set of the node): SN 1.03445 -> 1.1, BL 1.1 -> 1.1, WL 0 -> 0
+   system file holds  140.000 ps twice (end of the reset window): same state
+   system file holds  190.000 ps twice (segment boundary): same state
+   system file holds  195.000 ps twice (segment boundary): same state
+   system file holds  245.000 ps twice (segment boundary): same state
+   device file: 39 more times held twice after the pre-charge, 39 of them the same state
+   device file holds    0.000 ps twice (segment boundary): I_sn -5.14852e-20 -> 6.08416e-18, holes 2.9333e+10 -> 2.9333e+10
+   device file holds    5.000 ps twice (segment boundary): same state
+   device file holds   15.000 ps twice (segment boundary): same state
+   device file holds  115.000 ps twice (segment boundary): same state
+   device file holds  120.000 ps twice (segment boundary): same state
+   device file holds  125.000 ps twice (segment boundary): same state
+   device file holds  130.000 ps twice (segment boundary): same state
+   device file holds  140.000 ps twice (end of the reset window): same state
+   device file holds  190.000 ps twice (segment boundary): same state
+   device file holds  195.000 ps twice (segment boundary): same state
+   device file holds  245.000 ps twice (segment boundary): same state
+   instant                      t [ps] |  SN [V]   BL [V]   WL [V] | body: centre  under gate  h-QF [V] | holes |  I_sn [uA]: electron    hole  displ.   total
+   t = 0 (DC start)               0.00 | 0.0000  0.0000  0.0000 |  -0.1905     -     +0.0000   |     0 |     0.00     0.00    -0.00     0.00
+   WL crosses 0.9 V              12.50 | 0.0254  1.1680  0.9000 |  +0.6212     -     +0.8742   |     0 |   107.40     0.00     0.37   107.77
+   +12 ps (paper 0.72)           24.50 | 0.4848  1.1680  1.8000 |  +0.9969     -     +1.4638   |   305 |    95.20     3.47    -0.02    98.65
+   +24 ps (paper 0.92)           36.50 | 0.6961  1.1680  1.8000 |  +1.1861     -     +1.6457   |   210 |    53.93     2.25    -0.01    56.17
+   +39 ps (paper 1.06)           51.50 | 0.8455  1.1680  1.8000 |  +1.3140     -     +1.7614   |   118 |    30.70     0.80    -0.01    31.49
+   +60 ps (paper 1.13)           72.50 | 0.9590  1.1680  1.8000 |  +1.4087     -     +1.8430   |    66 |    16.22     0.26    -0.00    16.48
+   write peak                   120.00 | 1.0698  1.1680  1.8000 |  +1.4970     -     +1.9131   |    32 |     5.76     0.06    -0.00     5.82
+   WL off - 1 ps                121.50 | 1.0545  1.1680  1.2600 |  +1.0540     -     +1.4797   |    33 |   -33.47     0.01    -0.21   -33.67
+   WL off (0.9 V)               122.50 | 1.0476  1.1680  0.9000 |  +0.7304     -     +1.1575   |    35 |   -25.64     0.00    -0.23   -25.86
+   WL off + 5 ps                127.50 | 1.0345  1.1340  0.0000 |  -0.1390     -     +0.2918   |    39 |    -0.01     0.00    -0.00    -0.01
+   BL step done                 130.00 | 1.0344  1.1000  0.0000 |  -0.1390     -     +0.2916   |    39 |    -0.00     0.00    -0.00    -0.00
+   before reset window          130.00 | 1.0344  1.1000  0.0000 |  -0.1390     -     +0.2916   |    39 |    -0.00     0.00    -0.00    -0.00
+   after reset window           140.00 | 1.1000  1.1000  0.0000 |  -0.1388     -     +0.2920   |    39 |    -0.00     0.00     0.00    -0.00
+   end of hold at Vdd           190.00 | 1.1000  1.1000  0.0000 |  -0.1387     -     +0.2921   |    40 |    -0.00     0.00     0.00    -0.00
+   BL at Vdd/2                  195.00 | 1.1000  0.5500  0.0000 |  -0.1411     -     +0.2887   |    40 |    -0.02     0.00    -0.00    -0.02
+   start of hammer / test       245.00 | 1.1000  0.5500  0.0000 |  -0.1413     -     +0.2884   |    40 |    -0.00     0.00     0.00    -0.00
+   write vs Fig.4(a) (read, +-30 mV): 0.485 (-235 mV OUT) / 0.696 (-224 mV OUT) / 0.845 (-215 mV OUT) / 0.959 (-171 mV OUT); worst -235 mV at +12 ps
+   interval [ps]          | Cs dV [fC]  integral I_sn [fC] (e / h / displacement)   residual BE | trapezoid: residual | interval mean Cs dV/dt [uA]: model  paper | BL charge [fC]
+     12.50 -   24.50      |  +1.9295    +1.9295 (+1.9131 / +0.0162 / +0.0002)   +0.0000 (  +0.0 %) |  -0.0162 (  -0.8 %) |                    160.8    252 |  -1.5044
+     24.50 -   36.50      |  +0.8874    +0.8874 (+0.8505 / +0.0371 / -0.0002)   +0.0000 (  +0.0 %) |  -0.0106 (  -1.2 %) |                     73.9     70 |  -1.0416
+     36.50 -   51.50      |  +0.6272    +0.6272 (+0.6069 / +0.0205 / -0.0001)   +0.0000 (  +0.0 %) |  -0.0062 (  -1.0 %) |                     41.8     39 |  -0.7318
+     51.50 -   72.50      |  +0.4768    +0.4768 (+0.4673 / +0.0096 / -0.0001)   +0.0000 (  +0.0 %) |  -0.0038 (  -0.8 %) |                     22.7     14 |  -0.5506
+     72.50 -  122.50      |  +0.3724    +0.3724 (+0.3672 / +0.0059 / -0.0007)   +0.0000 (  +0.0 %) |  -0.0036 (  -1.0 %) |                      7.4      - |  -0.5804
+    122.50 -  130.00      |  -0.0554    -0.0554 (-0.0549 / +0.0000 / -0.0006)   -0.0000 (  +0.0 %) |  +0.0017 (  -3.1 %) |                     -7.4      - |  -0.0275
+    130.00 -  140.00 clamp|  +0.2753    -0.0037 (-0.0036 / +0.0000 / -0.0001)   +0.2790 (+101.3 %) |  +0.2799 (+101.7 %) |                     27.5      - |  +0.0000
+    140.00 -  190.00      |  -0.0000    -0.0000 (-0.0000 / +0.0000 / +0.0000)   +0.0000 (     - ) |  -0.0000 (     - ) |                     -0.0      - |  -0.0000
+    190.00 -  245.00      |  -0.0001    -0.0001 (-0.0001 / +0.0000 / -0.0000)   +0.0000 (     - ) |  +0.0000 (     - ) |                     -0.0      - |  +0.0319
+   reset (clamp): node 1.0344 V (first copy at 130 ps) -> 1.1000 V (last copy); the circuit adds Cs x +0.0656 V = +0.2753 fC (1719 electrons' worth)
+   DC load line ../../../runs/DpL_c2 (gates 1.8 V, BL 1.168 V; A/um x 0.1 um): instantaneous current at the same node voltage [uA]:
+      +12 ps   node 0.485 V: transient    98.7   DC   102.7
+      +24 ps   node 0.696 V: transient    56.2   DC    60.3
+      +39 ps   node 0.845 V: transient    31.5   DC    31.9
+      +60 ps   node 0.959 V: transient    16.5   DC    18.5
+config      IV      W       BR      L1      L2      RH      RI    | total   (rms of deviation / tolerance, < 1 = within reading error; * = taken from the baseline, - = not there yet)
+fin7       0.73    7.84    0.14    0.91    0.73    4.71   11.88  |   5.69
+      IV: c1 0.36/0.48/0.61 gidl -13.43; c2 0.33/0.45/0.59 gidl -13.22; c3 0.31/0.43/0.56 gidl -13.17; c4 0.27/0.39/0.51 gidl -13.39; c5 0.57/0.69/0.81 gidl -12.86
+      W: 0.47 / 0.67 / 0.82 / 0.94 V (DptW_c2)
+      BR: c1 rise +561 first 58.29 200ns 141.50 (SN0 1.100); c2 rise +450 first 12.69 200ns 48.24 (SN0 1.100); c3 rise +367 first 2.62 200ns 10.61 (SN0 1.100); c4 rise +323 first 2.08 after 2 low phases 3.44 (SN0 1.100); c5 rise +371 first 0.10 200ns 0.70 (SN0 1.100)
+      RH: yy off -0.0000 (last 5: -0.0000) [attack - idle; with the cell's own leak +0.0006]; zz off -0.0018 (last 5: +0.0000) [attack - idle; with the cell's own leak -0.0011]; yy on -0.0016 [attack - idle; with the cell's own leak -0.0010]; zz on -0.0295 mV total [attack - idle; with the cell's own leak -0.0023]; zz gnd on -0.0017 [attack - idle; with the cell's own leak -0.0011]
+fin7
+  IV Fig.5(c) cal  23 / 28  (23 pass  5 fail)  worst  +1.86 | +1.03 +0.54 +0.68 +0.24 -1.11 +0.04 +0.05 +0.58 +0.75 -0.07 +0.09 +0.30 +0.31 +0.47 -0.22 +0.05 +0.33 -0.14 +0.17 -0.63 -0.09 +0.09 +1.83 +1.86 +1.67 -0.02 -0.39 +0.08
+  W  Fig.4(a) pred  0 /  4  ( 0 pass  4 fail)  worst  -8.40 | -8.39 -8.40 -8.02 -6.38
+  BR Fig.8(a) cond  5 /  5  ( 5 pass  0 fail)  worst  +0.20 | +0.20 +0.18 +0.06 +0.11 +0.09
+  L1 Fig.8(b) pred  3 /  5  ( 3 pass  2 fail)  worst  -1.44 | +0.08 -1.20 -1.44 -0.76 +0.21
+  L2 Fig.8(c) pred  4 /  5  ( 4 pass  1 fail)  worst  +1.39 | +0.50 -0.05 -0.46 -0.54 +1.39
+  RH Fig.6(e) pred  0 /  2  ( 0 pass  2 fail)  worst  -5.76 | -5.76 -3.33
+  RI Fig.7    pred  0 /  3  ( 0 pass  3 fail)  worst -19.05 | -5.76 -19.05 -5.19
+  legacy52: 35 / 52 = 67.3 %   (own items scored 52: 35 / 52 = 67.3 %; missing 0, stand-in 0)   |   cal 23 / 28   pred 7 / 19   cond 5 / 5

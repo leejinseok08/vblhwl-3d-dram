@@ -32,12 +32,15 @@ if __name__ == "__main__":
         print(f"== {rid}: body {p['Tbody']} nm, gates {p['Vpp']} V, BL {vbl} V, {len(v)} points up to node {v[-1]:.3f} V; capacitor of the text {c * 1e15:.1f} fF")
         print("   1. node voltage [V]:            " + "  ".join(f"{x:6.2f}" for x in (0.0, 0.2, 0.4, 0.6, 0.72, 0.82, 0.92, 0.99, 1.06, 1.095, 1.13)))
         print("      DC current into the node [uA]: " + "  ".join(f"{interp(v, cur, x) * 1e6:6.1f}" for x in (0.0, 0.2, 0.4, 0.6, 0.72, 0.82, 0.92, 0.99, 1.06, 1.095, 1.13)))
-        print("      the paper's curve with that capacitor needs on average: " + "; ".join(
-            f"{a[1]:.2f} -> {b[1]:.2f} V: {c * (b[1] - a[1]) / (b[0] - a[0]) * 1e6:.0f} uA (model at the middle, {(a[1] + b[1]) / 2:.3f} V: {interp(v, cur, (a[1] + b[1]) / 2) * 1e6:.0f})" for a, b in zip(PTS, PTS[1:])))
         t = [0.0]                                      # 2. quasi-static write: dt = C dV / I
         for i in range(1, len(v)): t.append(t[-1] + c * (v[i] - v[i - 1]) / (0.5 * (cur[i] + cur[i - 1]) or 1e-30))
         print("   2. write from the DC current, node at 12 / 24 / 39 / 60 ps: " + " / ".join(f"{interp(t, v, ps * 1e-12):.3f}" for ps in P.WRITE)
               + " V   (paper " + " / ".join(f"{x:.2f}" for x in P.WRITE.values()) + ")")
+        # interval means C dV / dt on the same intervals, paper and quasi-static model (one definition for both; a DC current at one node voltage
+        # is neither an interval mean nor a bound on the transient current, which can exceed it at the WL edge: 2026-10-10, Codex's review)
+        qs = lambda x: interp(t, v, x) if x > 0 else 0.0
+        print("      interval means C dV/dt [uA], paper | quasi-static DC write: " + "; ".join(
+            f"{a[0] * 1e12:.0f} - {b[0] * 1e12:.0f} ps: {c * (b[1] - a[1]) / (b[0] - a[0]) * 1e6:.0f} | {c * (qs(b[0]) - qs(a[0])) / (b[0] - a[0]) * 1e6:.0f}" for a, b in zip(PTS, PTS[1:])))
         qf = {}                                        # 3. electron quasi-Fermi potential probes: (x nm, y nm) -> column
         for k in s:
             m = re.search(r"\(?\s*(-?[\d.eE+-]+)[ ,]+(-?[\d.eE+-]+)\s*\)?", k) if "eQuasiFermiPotential" in k else None
