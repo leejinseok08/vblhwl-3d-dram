@@ -58,6 +58,11 @@ STRUCTS = dict(
     gb2_c3hb=dict(Tbody=10, Blc="bot", Blx=180), gb2_c4hb=dict(Tbody=10, Nch=1e16, Blc="bot", Blx=180),      # 2 pitches, the 10 nm bodies (Cases 3 - 5)
     # the row-hammer pairs of the device since 2026-10-08 (fin6): BL contact at the pillar end, two Z pitches below the pair
     gb2_yy=dict(Pair="yy", Blc="bot", Blx=200), gb2_zz=dict(Pair="zz", Blc="bot", Blx=200), gb2_zzg=dict(Pair="zz", Blc="bot", Blx=200, Bgc=1),
+    # grounded body as drawn in Fig.7(b) (2026-10-10, NOTES (cm)): a ground access in both bodies (A); single Case 2 cells for the diagnosis of
+    # the grounded write (B1 - B3): body slot 20 / 10 / 5 nm with a contact, 20 nm as SiO2 without a contact
+    gb2_zzg2=dict(Pair="zz", Blc="bot", Blx=200, Bgc=2),
+    gb2g_c2hb=dict(Blc="bot", Blx=200, Bgc=1), gb2g10_c2hb=dict(Blc="bot", Blx=200, Bgc=1, Bgl=10), gb2g5_c2hb=dict(Blc="bot", Blx=200, Bgc=1, Bgl=5),
+    gb2gi_c2hb=dict(Blc="bot", Blx=200, Bgc=1, Bgi=1),
     # mesh candidates of gb2_zz for the mesh step of plan P1 (Codex runs it; 2026-10-09), same structure, doping and contacts:
     # j = junction windows, body cross-section and the smallest doping-gradient step halved (Mj 0.25, Mv 0.5, Mg 0.5);
     # a = every size of the channel and junction windows halved (also Mc 1 along the channel, Mi 0.1 at the gate dielectric); the global
@@ -66,7 +71,7 @@ STRUCTS = dict(
     # diagnostics of the write current (round 37): the Case 2 cell of fin7 with HfO2 / SiO2 spacers (the paper names no spacer material)
     gbh_c2hb=dict(Blc="bot", Blx=200, Spm="HfO2"), gbo_c2hb=dict(Blc="bot", Blx=200, Spm="SiO2"),
 )
-SDE_KEYS = ["Lg", "Tbody", "Tox", "Tgm", "Dvox", "Nsd", "Nch", "Gdi", "Spm", "Pair", "Bgc", "Blc", "Lsp1", "Lsp2", "Wbl", "Wact", "Dhox", "Mc", "Mj", "Mv", "Mi", "Mg", "Wcut",
+SDE_KEYS = ["Lg", "Tbody", "Tox", "Tgm", "Dvox", "Nsd", "Nch", "Gdi", "Spm", "Pair", "Bgc", "Bgl", "Bgi", "Blc", "Lsp1", "Lsp2", "Wbl", "Wact", "Dhox", "Mc", "Mj", "Mv", "Mi", "Mg", "Wcut",
             "Cap", "Lcap", "Ceot", "Tcd", "Tcw", "Blx", "Nrow", "Nlay", "WLp", "Rcp", "Xout", "Zmar", "Tsub", "Ttop"]
 
 def fill_sde(name, prm):
@@ -124,6 +129,10 @@ def probe_xyz(p):
     if p["Tpl"] == "sde_gt3_dvs.cmd": return f"({(p['Wbl'] / 2 + p['Lsp1'] + p['Lg'] / 2) / 1000:.5f} {y / 1000:.5f} {p['Wact'] / 4000:.5f})"
     return f"({(Lc - u if p['Pair'] == 'yy' else p['Wbl'] / 2 + u) / 1000:.5f} {y / 1000:.5f})"
 
+def inslot(p, x):
+    """x [nm from the pillar axis] at mid-depth lies in the body slot (Bgc): no mesh there (a contact) or oxide, so no probe."""
+    return bool(p["Bgc"]) and abs(x - (p["Wbl"] / 2 + p["Lsp1"] + p["Lg"] / 2)) <= p["Bgl"] / 2 + 0.5
+
 def currentplot(p, indent="  "):
     pos = probe_xyz(p); extra = ""
     if p["Tpl"] == "sde_gt_dvs.cmd" and p["Pair"] == "one":
@@ -140,6 +149,7 @@ def currentplot(p, indent="  "):
         if p["ProbeE"]:      # where the drain-source voltage drops: along the channel at mid-depth from the pillar axis to the source end, and down the pillar
             L = p["Wbl"] / 2 + p["Lsp1"] + p["Lg"] + p["Lsp2"]
             for i in range(int(L / 5)):      # x = 2, 7, 12 .. nm: no point shared with the probes above
+                if inslot(p, 2 + 5 * i): continue
                 q = f"({(2 + 5 * i) / 1000:.5f} {yb:.5f})"
                 extra += f"{indent}  eQuasiFermiPotential( {q} )\n{indent}  ElectrostaticPotential( {q} )\n{indent}  eDensity( {q} )\n"
             for yy in sorted({0.0, -p["Blx"] / 2, -p["Blx"] + 1.0}):
@@ -148,6 +158,7 @@ def currentplot(p, indent="  "):
             y0 = p["Dvox"] / 2 + p["Tgm"] + p["Tox"]; x0 = p["Wbl"] / 2; L = p["Lsp1"] + p["Lg"] + p["Lsp2"]
             for yy in (y0 + p["Tbody"] / 2, y0 + 1.0):
                 for i in range(int(L / 5)):
+                    if yy == y0 + p["Tbody"] / 2 and inslot(p, x0 + 2.5 + 5 * i): continue
                     extra += f"{indent}  ElectrostaticPotential( ({(x0 + 2.5 + 5 * i) / 1000:.5f} {yy / 1000:.5f}) )\n"
             win = lambda a, b: f"Window[({a / 1000:.5f} {y0 / 1000:.5f}) ({b / 1000:.5f} {(y0 + p['Tbody']) / 1000:.5f})]"
             gated, under = win(x0 + p["Lsp1"], x0 + p["Lsp1"] + p["Lg"]), win(x0, x0 + p["Lsp1"])
@@ -156,6 +167,7 @@ def currentplot(p, indent="  "):
     if p["ProbeE"] and p["Tpl"] == "sde_gt_dvs.cmd" and p["Pair"] == "zz":        # Z pair: the same line along the victim's channel (the victim is the lower cell, at the single cell's place)
         yb = (p["Dvox"] / 2 + p["Tgm"] + p["Tox"] + p["Tbody"] / 2) / 1000
         for i in range(int((p["Wbl"] / 2 + p["Lsp1"] + p["Lg"] + p["Lsp2"]) / 5)):
+            if inslot(p, 2 + 5 * i): continue
             q = f"({(2 + 5 * i) / 1000:.5f} {yb:.5f})"
             extra += f"{indent}  eQuasiFermiPotential( {q} )\n{indent}  ElectrostaticPotential( {q} )\n{indent}  eDensity( {q} )\n"
     if p["ProbeX"] and p["Tpl"] == "sde_gt_dvs.cmd" and p["Pair"] != "one":       # 2D pair: average over the victim's body under its gate, holes in the aggressor's body
@@ -200,7 +212,7 @@ def electrodes_single(p, dc=False):
     e = ['{ Name="bl"     Voltage=0.0 }', '{ Name="sn_v"   Voltage=0.0 }',
          f'{{ Name="gs_v"   Voltage={g} WorkFunction={p["WFs"]} }}',
          f'{{ Name="gd_v"   Voltage={g} WorkFunction={p["WFd"]} }}']
-    if p["BodyMode"] == "BC": e.append(f'{{ Name="body_v" Voltage={b} }}')
+    if p["BodyMode"] == "BC" or (p["Bgc"] and not p["Bgi"]): e.append(f'{{ Name="body_v" Voltage={b} }}')
     if p["Cap"] != "lump": e.append('{ Name="gp_v"   Voltage=0.0 }')      # ground of the drawn capacitor
     return e
 
@@ -363,7 +375,8 @@ def deck_cho(rid, p, struct, test):
     snv = "" if p["SNhv"] < 0 else f' eRecVelocity=1e7 hRecVelocity={p["SNhv"]:g}'
     for c in ("va" if pair else "v"):
         el += [f'{{ Name="sn_{c}" Voltage=0.0{snv} }}', f'{{ Name="gs_{c}" Voltage=0.0 WorkFunction={p["WFs"]} }}', f'{{ Name="gd_{c}" Voltage=0.0 WorkFunction={p["WFd"]} }}']
-    if p["Bgc"]: el.append('{ Name="body_v" Voltage=0.0 }')          # grounded body: held at 0 V
+    if p["Bgc"] and not p["Bgi"]: el.append('{ Name="body_v" Voltage=0.0 }')          # grounded body: held at 0 V
+    if p["Bgc"] == 2 and not p["Bgi"] and pair: el.append('{ Name="body_a" Voltage=0.0 }')      # the aggressor's too (Fig.7(b))
     if p["Cap"] != "lump": el.append('{ Name="gp_v" Voltage=0.0 }')  # ground of the drawn capacitor; the lumped Cs of such a run is set to nothing (1e-21 F)
     ph = physics(p).replace("Physics {\n", f"Physics {{\n    AreaFactor = {2 if p['Dim'] == 3 else p['Wact'] / 1000:g}\n", 1); cp = currentplot(p)
     if tgen:      # constant generation in the body region, on between tgen[0] and tgen[1] with 0.1 ns ramps (manual: "Constant Optical Generation", eq. 699)
@@ -995,7 +1008,16 @@ cfg2d("pti", "R", rhsel=tuple(RSX), rst=RSX, rh=dict(Idle=1), k_cs=1.0, par=PN)
 # DptRzbi_zz, DptRzbg_zz are the controls (before the reset: SN 1.021 / 1.031 / 0.673 V, Codex). Not to start before Codex's G1 (time / mesh).
 # 2026-10-10: time and output as Codex's finest P1 step (CxN4: every MaxStep / 4, bare CurrentPlot), so up to 130 ps DnwRzbi_zz must repeat
 # CxN4Atk's write (the check that the added output changes nothing); the write there moved 2.3 mV at most from h/2 to h/4 (Codex's file).
-cfg2d("nw", "R", rhsel=("Rzb_zz", "Rzbi_zz", "Rzbg_zz"), rst=RSX, k_cs=1.0, par=PN, rh=dict(Ncyc=0, SNfree=1, ProbeX=1, ProbeE=1, Hk=4, CPbare=1))
+# 2026-10-10 (A, NOTES (cm)): the grounded pair carries the ground access of Fig.7(b) in both bodies (gb2_zzg2); probes inside the body slot dropped.
+cfg2d("nw", "R", rhsel=("Rzb_zz", "Rzbi_zz", "Rzbg_zz"), rst=dict(RSX, Rzbg_zz="gb2_zzg2"), k_cs=1.0, par=PN, rh=dict(Ncyc=0, SNfree=1, ProbeX=1, ProbeE=1, Hk=4, CPbare=1))
+# Grounded-body diagnosis (user, 2026-10-10: "A랑 B1~B3 진행해"; NOTES (cm)): why the grounded cell cannot be written above 0.72 V. Case 2 single
+# cells, one change each against gb2_c2hb: B1 DC load line as DpL_c2 (Dgb*L_c2), B2 the 20 nm slot as SiO2 without a contact (gbi), B3 contact
+# 20 / 10 / 5 nm (gb20 / gb10 / gb05). Writes (deck cho:W, Fig.4(a) waveform, 4.2 fF, to 180 ps) with the default avalanche model as in the grounded
+# row hammer, every MaxStep / 4 and bare CurrentPlot (Codex P1 h/4; provisional until G1), and the floating cell on the same settings (gbf).
+for k_, st_ in (("gb20", "gb2g_c2hb"), ("gb10", "gb2g10_c2hb"), ("gb05", "gb2g5_c2hb"), ("gbi", "gb2gi_c2hb")):
+    RUNS.append(R(f"D{k_}L_c2", "GT", st_, "load", WFs=4.7, WFd=4.7, **dict(IV, Nthr=4, Par=PN, Vwr=1.168, ProbeE=1)))
+for k_, st_ in (("gbf", "gb2_c2hb"), ("gb20", "gb2g_c2hb"), ("gb10", "gb2g10_c2hb"), ("gb05", "gb2g5_c2hb"), ("gbi", "gb2gi_c2hb")):
+    cfg2d(k_, "W", wst=st_, II=1, k_cs=1.0, par=PN, Hk=4, CPbare=1, ProbeE=1)
 # The current: with 4.2 fF the write of Fig.4(a) asks for 252 / 70 / 39 / 14 uA on average in its four intervals; the model has 168 / 69 / 41 /
 # 24 uA at node voltages 240 - 190 mV lower. DpL = the DC charging current along the write (gates 1.8 V, BL 1.168 V, node swept 0 -> 1.168 V) with
 # the electron quasi-Fermi potential along the channel and down the pillar: at which node voltage the current is short, and where the

@@ -40,6 +40,10 @@ P = dict(
     Pair="one",         # section: "one" cell, "yy" = two cells across the BL (RH Case 1), "zz" = two layers (RH Case 2);
                         # 3D template: "xx" = two rows across the isolation wall (RH Case 3)    [Cho]
     Bgc=0,              # 1 = contact "body_v" in the victim body: the hypothetical grounded body of Fig.7(b)    [Cho]
+                        # 2 = also "body_a" in the aggressor body (Fig.7(b), 3D picture: a ground access in both bodies)   [ChoF]
+    Bgl=20,             # length of that slot along the channel [nm], 2 nm thick at mid-depth, centred under the gate; Fig.7(b)
+                        # draws it as about 1/4 - 1/3 of the body (read); thickness and extent across the width not given   [ASM]
+    Bgi=0,              # 1 = the slot is SiO2 without a contact (diagnosis: the slot as an obstacle, no 0 V)   [ASM]
     Blc="axis",         # where the 2D section puts the BL contact: "axis" = on the pillar axis over its whole height ("yy": top end of the
                         # pillar); "bot" = bottom end of the pillar (in "zz" below the victim). The pillar of the array is contacted at its end.   [ASM]
     Blx=0,              # with Blc="bot": the BL pillar continued below the cell by this length [nm] (N+ silicon in oxide, no other cells) and the

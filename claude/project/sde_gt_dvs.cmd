@@ -16,7 +16,9 @@
 ;; Abrupt junctions (the paper gives no profile).
 ;; Pair = "one": this cell alone. "yy": two cells across the bit line (row hammer Case 1, Y-Y'), victim left, aggressor
 ;; right. "zz": two layers on one side of the bit line (Case 2, Z-Z'), victim below, aggressor above.
-;; Bgc = 1: contact "body_v" in the middle of the victim body (the hypothetical grounded body of Fig.7(b)).
+;; Bgc = 1: contact "body_v" in the middle of the victim body (the hypothetical grounded body of Fig.7(b)); 2: also "body_a" in the
+;; aggressor body (Fig.7(b), 3D picture: a ground access in both bodies). Bgl = slot length [nm] (2 nm thick, centred under the gate);
+;; Bgi = 1: the slot is SiO2 and no contact (diagnosis of the slot itself).
 ;; Storage capacitor: lumped in the decks (Cap = "lump") or drawn as in the cross-section of Fig.2 (Cap = "u" / "blk", single cells only).
 ;; Not in this section: the third dimension (Case 3, X-X').
 ;; Electrodes: bl, sn_v, gs_v (main gate), gd_v (back gate) of the victim; sn_a, gs_a, gd_a of the aggressor; gp_v = ground of the
@@ -38,7 +40,9 @@
 (define Gdi  "@Gdi@")            ; gate dielectric material ("gate oxide" in Fig.5a): SiO2 or HfO2
 (define Spm  "@Spm@")            ; spacer material (its own colour in Fig.2)
 (define Pair "@Pair@")           ; one / yy / zz (see the header)
-(define Bgc  @Bgc@)              ; 1 = body contact in the victim
+(define Bgc  @Bgc@)              ; 1 = body contact in the victim, 2 = in both bodies
+(define Bgl  (* @Bgl@ nm))       ; length of the body slot along the channel
+(define Bgi  @Bgi@)              ; 1 = the slot is an insulator without contact
 (define Blc  "@Blc@")            ; BL contact: "axis" = on the pillar axis ("yy": top end of the pillar), "bot" = bottom end of the pillar
 (define Blx  (* @Blx@ nm))       ; BL pillar continued below the cell by this length, BL contact at its end (Blc "bot")
 (define Cap  "@Cap@")            ; storage node: lump (capacitor in the deck) / u / blk (a structure, see below)
@@ -128,9 +132,9 @@
       (sdedr:define-refinement-placement (string-append "RP.Cap_" s) "RS.Cap" (string-append "RW.Cap_" s))))
   (cset (string-append "gs_" s) 0 0.6 0)   (metal-contact (string-append "gs_" s) (position xg (/ (+ y5 y6) 2.0) 0))
   (cset (string-append "gd_" s) 0 0.9 0.3) (metal-contact (string-append "gd_" s) (position xg (/ (+ y1 y2) 2.0) 0))
-  (if (= Bgc 1) (if (string=? s "v") (begin                 ; 20 nm x 2 nm contact slot in the middle of the body, under the gate centre
-    (bx (+ S1 (* 0.4 Lg)) (- ym nm) (+ S1 (* 0.6 Lg)) (+ ym nm) "TiN" "M.Bg_")
-    (cset "body_v" 0.5 0 0.5) (metal-contact "body_v" (position xg ym 0)))))
+  (if (if (string=? s "v") (> Bgc 0) (= Bgc 2)) (begin   ; Bgl x 2 nm slot at mid-depth, centred under the gate
+    (bx (- (+ S1 (/ Lg 2.0)) (/ Bgl 2.0)) (- ym nm) (+ (+ S1 (/ Lg 2.0)) (/ Bgl 2.0)) (+ ym nm) (if (= Bgi 1) "SiO2" "TiN") (if (= Bgi 1) "I.Bg_" "M.Bg_"))
+    (if (= Bgi 0) (begin (cset (string-append "body_" s) 0.5 0 0.5) (metal-contact (string-append "body_" s) (position xg ym 0))))))
   (wn "RW.Ch_" (* -10 nm) (- y3 Tox) Lc (+ y4 Tox))
   (sdedr:define-refinement-placement (string-append "RP.Ch_" s) "RS.Ch" (string-append "RW.Ch_" s))
   (wn "RW.Jd_" (* -6 nm) y3 (* 10 nm) y4) (wn "RW.Js_" (- ug (* 10 nm)) y3 (+ ug (* 6 nm)) y4)
