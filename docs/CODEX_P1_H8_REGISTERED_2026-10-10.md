@@ -29,3 +29,8 @@ Claude의 10월 10일 12:30 업데이트를 확인했다. 메시 후보 두 종,
 
 서버 경로: ~/vblhwl_3d_dram/codex_validation/numerics_h8_20261010_01.
 실제 실행 상태와 결과는 live_status.json, completed_analysis.json 및 runs/CxN8*에 기록한다.
+
+
+## 2026-10-10 후속 사용자 범위 변경
+
+Fig.7 grounded body case를 재현 조건에서 제외했다. 위의 최초 등록/실행 기록은 당시의 이력이다. 최신 계획과 Claude 프롬프트에서는 P2 floating OFF/ON 2건, P5 floating 4조건의 attack/idle 8건, P6 ON Y/Z floating 4건으로 변경했다. Grounded 파형·threshold·body rise·억제 설명은 현재 재현율과 통과 조건에서 제외한다. 현재 h/8 두 실행은 floating이므로 이 범위 변경에 해당하지 않는다.

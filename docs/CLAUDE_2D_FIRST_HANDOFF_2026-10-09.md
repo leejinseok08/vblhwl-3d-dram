@@ -2,6 +2,10 @@
 
 작성: Codex, 2026-10-09. 이 문서는 실험 계획이며 새 실행 명령이 아니다. 상세 기준은 [2D 우선 통합 계획](CODEX_2D_FIRST_REPRODUCTION_PLAN_2026-10-09.md)을 따른다. Codex의 현재 실행은 [P0/P1 착수 보고](CODEX_P0_P1_STARTED_2026-10-09.md)에서 확인한다.
 
+## 2026-10-10 변경 — Fig.7 grounded body 제외
+
+사용자 지시로 grounded body의 SN 파형·RH threshold·body rise·접지 억제 설명을 재현율/RMS/통과 조건과 필수 실행에서 제외한다. 기존 결과는 진단 이력으로 보존한다. 기존 목표 목록의 현재 재현 분모는 scope51, legacy52는 이력용이다. 확장 목록도 grounded 항목을 제외하고 분모를 명시한다. 최신 실행 지침은 GitHub docs/CLAUDE_P2_HANDOFF_AFTER_P1_2026-10-10.md를 따른다.
+
 ## 요청의 핵심
 
 사용자는 2D 소자 완성을 우선하고, 이미 제작한 3D mini-array는 이후 확장에 활용하는 계획을 요청했다. 기존 라운드39 이후 전달안의 3D AC→3D transient 우선 순서를 다음으로 변경한다.
@@ -12,10 +16,10 @@
 
 1. 현행 fin7의 실제 입력을 동결하고, 공식 생성기·tools·NOTES·claude/의 기록을 정리한다. 소자 설계 Case와 RH 방향 Case를 별도 필드로 둔다.
 2. Codex의 수치 검증에 필요한 메시를 지원하고, 통과한 시간·메시·출력 기준을 공식 생성기에 반영한다.
-3. 자연 write 진단 3건을 준비한다: 기존 Z pair의 floating/II OFF, floating/기본 II ON, grounded/기본 II ON. 각 원본에서 SN reset만 제거하고 공격 전까지 기록한다. 기존 reset 결과를 대조로 쓴다.
+3. 자연 write 진단 2건을 준비한다: 기존 Z pair의 floating/II OFF, floating/기본 II ON. 각 원본에서 SN reset만 제거하고 공격 전까지 기록한다. 기존 reset 결과를 대조로 쓴다.
 4. 부족한 충전의 원인을 전류·준페르미 전위·body charge·접촉/underlap 전압 분배로 분석한다. 개선 후보는 C2에서 IV/load-line/natural write를 함께 검증한 뒤 5 Case로 넓힌다.
 5. 기존 물리 후보를 한 변수씩 비교한다: OFF → 기본 ON → 같은 모델의 ElectricField → 필요 시 UniBo. 각 구성은 precharge부터 모든 측정까지 같은 모델을 쓴다. DC sweep이 불안정하면 시간 스윕을 골라 맞추지 않는다.
-6. 자연 FBE의 pulse/hold 5쌍과 RH Y/Z의 OFF/ON/grounded attack/idle 5쌍을 수행하고, 생성·이동·장벽·누설의 연결을 분석한다.
+6. 자연 FBE의 pulse/hold 5쌍과 RH Y/Z floating의 OFF/ON attack/idle 4쌍을 수행하고, 생성·이동·장벽·누설의 연결을 분석한다.
 7. 단일 셀 검증과 2D 한계 판정 뒤 3D를 확장한다. 현재 gax_c2는 보존하며 AC 분석기 수정·좌표표 작성까지 준비할 수 있다.
 
 ## Codex가 주관할 일
@@ -41,7 +45,7 @@
 
 실행 요청을 받으면 각 배치를 EXPERIMENTS에 등록하고, 상대 최신 기록·live run·quota·실제 mesh·원문 조건을 확인한 뒤 실행한다. 입력 해시가 같은 기존 결과는 재사용한다. 한 실행 ID는 한 소유자만 가진다.
 
-첫 실행은 Codex 수치 검증이다. 그동안 Claude는 공식 지표 정리와 자연 write 덱을 준비한다. 수치 기준이 정해지면 Claude의 자연 write 3건으로 이어 간다. 이후 단계는 상세 계획의 G0–G4를 따른다.
+첫 실행은 Codex 수치 검증이다. 그동안 Claude는 공식 지표 정리와 자연 write 덱을 준비한다. 수치 기준이 정해지면 Claude의 자연 write 2건으로 이어 간다. 이후 단계는 상세 계획의 G0–G4를 따른다.
 
 2D 단일 셀을 검증한 뒤에 X 방향 및 mini-array 재현으로 진행한다. 2D 단일 셀에 미해결 차이가 남으면 이를 숨기지 않고, 동일 단면·동일 lumped Cs의 최소 3D 단일 셀 진단으로 차원 영향을 가른다. 이 경우에도 ‘2D 완성’ 또는 ‘전체 소자 재현 완료’로 보고하지 않는다.
 

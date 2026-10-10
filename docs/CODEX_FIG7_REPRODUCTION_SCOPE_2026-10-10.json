@@ -1,0 +1,23 @@
+{
+  "scope_version": "fig7_floating_only_20261010",
+  "authority": "User 2026-10-10: figure 7에서 ground body case는 재현조건에서 제외해",
+  "excluded": {
+    "figure7c": "grounded body SN loss curve",
+    "figure7d": "grounded RH threshold 16.8k",
+    "figure7e": "grounded body rise 1.8mV",
+    "sentence": "grounded body suppression"
+  },
+  "rating": "Exclude from reproduction numerator, denominator, RMS, gates and required experiments; not a failure or missing item",
+  "legacy": "legacy52 historical unchanged; active legacy subset scope51",
+  "expanded_registry": "Filter grounded items and publish exact included item IDs and denominator",
+  "required_jobs": {
+    "P2_floating_OFF_ON": 2,
+    "P5_floating_four_attack_idle_pairs": 8,
+    "P6_OFF_XYZ_pairs": 6,
+    "P6_ON_YZ_floating_pairs": 4,
+    "P6_ON_X_floating_pair": 2
+  },
+  "current_h8": "floating attack+idle; continue unchanged",
+  "existing_grounded_raw": "Preserve as historical diagnostics; no new grounded reproduction runs",
+  "implementation": "Claude scoring tools already contain scope51; Codex plan and prompt updated. Claude-owned queue/registry not edited by Codex."
+}
