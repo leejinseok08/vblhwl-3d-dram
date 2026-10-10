@@ -1,0 +1,143 @@
+{
+  "owner": "Codex",
+  "batch": "g1_parallel_20261010_01",
+  "authorization": "User 2026-10-10: 더 빠르게 끝내고 싶어; prior instruction to execute yesterday joint plan",
+  "hypothesis": "time8to16 stability and spatial convergence at h8; use independent parallel computation to reduce walltime",
+  "scheduling_change": "Run time and mesh checks together; mesh results provisional if h8 fails temporal validation",
+  "runs": [
+    {
+      "id": "CxN16Atk",
+      "source": "CxN8Atk",
+      "group": "base16",
+      "mesh": "gb2_zz",
+      "factor": 16,
+      "attack": true,
+      "deck_sha256": "94b24cf0ac8b94a99add4e31e927a116e6ae33ea6f0ea6287c2ec67fc8a77dfb",
+      "source_sha256": "1119369c6ede8ee638ad456222449d370d76156b894ca8a10826a71ebb67d0a8",
+      "physics_unchanged": true,
+      "InitialStep_change": "all50 /2 to preserve InitialStep/MaxStep ratio",
+      "MaxStep_change": "all50 /2 from h8"
+    },
+    {
+      "id": "CxN16Idle",
+      "source": "CxN8Idle",
+      "group": "base16",
+      "mesh": "gb2_zz",
+      "factor": 16,
+      "attack": false,
+      "deck_sha256": "3ddddee88eef4848850ef3adff4dc5705afe6076756f005a61febf474c1dc12c",
+      "source_sha256": "babd5953f993ed2830534f44a4e332dd4042b10f63354bde086d960fe14143e5",
+      "physics_unchanged": true,
+      "InitialStep_change": "all50 /2 to preserve InitialStep/MaxStep ratio",
+      "MaxStep_change": "all50 /2 from h8"
+    },
+    {
+      "id": "CxMJ8Atk",
+      "source": "CxN8Atk",
+      "group": "meshj8",
+      "mesh": "gb2j_zz",
+      "factor": 8,
+      "attack": true,
+      "deck_sha256": "90b8e1b7ed2cdacb36952e166596e7ac51effc4e61f767c5998b253863d7a792",
+      "source_sha256": "1119369c6ede8ee638ad456222449d370d76156b894ca8a10826a71ebb67d0a8",
+      "physics_unchanged": true,
+      "InitialStep_change": "unchanged",
+      "MaxStep_change": "unchanged h8"
+    },
+    {
+      "id": "CxMJ8Idle",
+      "source": "CxN8Idle",
+      "group": "meshj8",
+      "mesh": "gb2j_zz",
+      "factor": 8,
+      "attack": false,
+      "deck_sha256": "9aa3b2f822d9c4493f03a2be57f5c30c3294d91bc78520244d9fbbfbb27eb323",
+      "source_sha256": "babd5953f993ed2830534f44a4e332dd4042b10f63354bde086d960fe14143e5",
+      "physics_unchanged": true,
+      "InitialStep_change": "unchanged",
+      "MaxStep_change": "unchanged h8"
+    },
+    {
+      "id": "CxMA8Atk",
+      "source": "CxN8Atk",
+      "group": "mesha8",
+      "mesh": "gb2a_zz",
+      "factor": 8,
+      "attack": true,
+      "deck_sha256": "b6361febd22fafd7ffc534f7da7c5d718a40275f40f102878c66f7ef1b232c09",
+      "source_sha256": "1119369c6ede8ee638ad456222449d370d76156b894ca8a10826a71ebb67d0a8",
+      "physics_unchanged": true,
+      "InitialStep_change": "unchanged",
+      "MaxStep_change": "unchanged h8"
+    },
+    {
+      "id": "CxMA8Idle",
+      "source": "CxN8Idle",
+      "group": "mesha8",
+      "mesh": "gb2a_zz",
+      "factor": 8,
+      "attack": false,
+      "deck_sha256": "c950171cdc7b4ecbaf85c18a7de1bb7caf7917846b1bbd3c6141a2bde19fcbf1",
+      "source_sha256": "babd5953f993ed2830534f44a4e332dd4042b10f63354bde086d960fe14143e5",
+      "physics_unchanged": true,
+      "InitialStep_change": "unchanged",
+      "MaxStep_change": "unchanged h8"
+    }
+  ],
+  "jobs": 6,
+  "threads_per_run": 4,
+  "cpu_threads_total": 24,
+  "RAM_estimate_GiB": 12,
+  "storage_estimate_MB": 500,
+  "unchanged": "Case2 Z floating, 2D pair, Physics/Newton, bare CurrentPlot, Cs4.2fF AreaFactor0.1 300K, 10cycles/end2.125ns, SN diagnostic reset; no physical new values",
+  "structures": [
+    {
+      "name": "gb2_zz",
+      "vertices": 22459,
+      "mesh_sha256": "aa0f32997e339c589882542dee7ead8919a2003459f94da75d86bc6d5606d0b2",
+      "SDE_sha256": "f3429201ad583150f9c543577ec2f2aeee126641f64428e726802d0f21542c7e"
+    },
+    {
+      "name": "gb2j_zz",
+      "vertices": 42745,
+      "mesh_sha256": "dd3a259794302c8cc8349b71f6428cb67814f41fd2132525ccf2c52a639b7c5c",
+      "SDE_sha256": "381e3c996f13de21a7836d1123058f878fa94877a13f7c2e8607321dd391ca7d"
+    },
+    {
+      "name": "gb2a_zz",
+      "vertices": 61261,
+      "mesh_sha256": "7b977e065cb513e0eb054f3ebf6063da672ac401e67f2475371b7f5ffbe9c753",
+      "SDE_sha256": "e335e6233f535340be60c1311e579e3f485ac56cfe96550ca9c3360a2cebae38"
+    }
+  ],
+  "parameter_sha256": "436b6934cce508a820c61a2444970bea428a745c16d1051fa58ff4933e297bb2",
+  "references": "Completed h4 and h8 pairs; no duplicate baseline runs",
+  "paper": "SecIII/V and Fig2/4/5/6/7 fresh pages2-5 review; grounded excluded",
+  "budgets": {
+    "body_mV": 6,
+    "write_mV": 6,
+    "last5_slope_mV_per_cycle": 0.0012,
+    "charge_residual_equivalent_mV": 0.1
+  },
+  "success": "Two consecutive time comparisons and two mesh comparisons satisfy budgets, all runs exit0 with end2.125ns and accepted endpoint coverage; final independent G1 audit",
+  "failure": "Solver failure/invalid output records failure; independent runs preserved; no automatic physics refit, P2 or P6",
+  "expected_pair_wall_hours": {
+    "base16": [
+      3,
+      5
+    ],
+    "meshj8": [
+      3,
+      6
+    ],
+    "mesha8": [
+      5,
+      9
+    ]
+  },
+  "expected_first_decision_hours": [
+    6,
+    10
+  ],
+  "new_physical_values": false
+}
