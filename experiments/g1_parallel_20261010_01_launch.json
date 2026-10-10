@@ -1,0 +1,19 @@
+{
+  "started_KST": "2026-10-10 15:40:46",
+  "runner_pid": 32536,
+  "device_pids": {
+    "CxN16Atk": 32544,
+    "CxN16Idle": 32545,
+    "CxMJ8Atk": 32549,
+    "CxMJ8Idle": 32552,
+    "CxMA8Atk": 32560,
+    "CxMA8Idle": 32569
+  },
+  "jobs": 6,
+  "threads_per_run": 4,
+  "first_decision_estimate_hours": [
+    6,
+    10
+  ],
+  "G1_confirmed": false
+}

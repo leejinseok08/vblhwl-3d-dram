@@ -1,0 +1,22 @@
+{
+  "paper_and_all_precheck_lines_reviewed": true,
+  "reviewed_UTC": "2026-10-10T06:40:45.045427+00:00",
+  "manifest_sha256": "9258c739bef6e9018b6c64df61fbfe18d6e85f37ea6432deada1e96369748caf",
+  "precheck_sha256": "aff553af8336b09d2c6ee9a1a99101b98164e18cb625ced2371e098434cdcd87",
+  "junction_sha256": "1a65d9c201162f41babaa1e69624940b8c2ff2736e3d6c94f6193ce99f7e65af",
+  "mesh_info_sha256": "eff079f8d9746aa0b75705ce761b3889762a87a90af8d4d39eea91cf2f0eebfb",
+  "registered_commit": "42f7be2d5878919c947455780efcf6f8986f2e06",
+  "paper_review": "Fresh source text and rendered pages2-5: SecIII/V and Fig2/4/5/6/7; C2 Z floating, Nch1e18 Tbody20 WF4.7, Cs4.2fF, VDD1.1,VPP1.8. SN reset/2D/material/temperature/default model assumptions retained as diagnostic; grounded excluded.",
+  "mesh_review": "Read all printed preflight lines: all3 meshes dimension2, vertices22459/42745/61261, seven named contacts, both channel regions, 18 height cuts with junction50/175nm N+1e20 p1e18; all Fig5 geometry PASS. SDE exact diff only refinement declarations incl global minimum x1 to0.5nm; maximum10x5nm and physical geometry/contact/doping unchanged.",
+  "resource_check_KST": "2026-10-10 15:39:40",
+  "live_other_device_or_runner_before_launch": 0,
+  "quota_MB": {
+    "used": 7772,
+    "soft": 9216,
+    "hard": 10240
+  },
+  "cpu_logical": 128,
+  "recent_idle_percent": 71,
+  "available_RAM_MB": 232491,
+  "scope": "six independent device jobs,4threads each; no model refit or P2/P6. Spatial8 provisional if time8to16 fails."
+}

@@ -9,10 +9,13 @@
 2026-10-10 사용자: “figure 7에서 ground body case는 재현조건에서 제외해”. Fig.7(c) grounded 파형, Fig.7(d) grounded 16.8k, Fig.7(e) grounded 1.8 mV와 접지 억제 설명은 재현율·RMS·통과 조건에서 제외한다. legacy52는 이력, 현재 scope51은 grounded 1개를 뺀 포함 목록이다. 확장 목록도 grounded 관련 항목을 제외하고 새 분모를 명시한다. 제외를 실패나 미실행으로 세지 않는다.
 현재 채점 도구의 scope51 반영을 확인했다. 이 변경을 MEASURE.md, 목표 등록표, 본인 실험 등록부와 공식 배치 목록에도 일치시킨다. P2의 DnwRzbg_zz는 보존하되 run_p2nw.sh의 재현 실행 목록에서 제외한다. P2 2건, P5 floating 4조건×attack/idle=8건, P6 ON Y/Z floating×attack/idle=4건이며 grounded 재현 배치를 새로 시작하지 않는다. 기존 grounded 진단과 raw는 이력으로 보존하고 현재 성공/실패 판정에 섞지 않는다.
 
+현재 실행 업데이트 — 2026-10-10 15:40
+Codex h/8은14:46 정상 종료했다. h4→h8 body차이3.748584mV, 기울기차이0.000121120mV/cycle로 예산 안이지만 G1은 아직 미완료다. 사용자 속도 개선 요청에 따라 g1_parallel_20261010_01의 CxN16Atk/Idle, CxMJ8Atk/Idle, CxMA8Atk/Idle 총6건을 동시에 시작했다. 모두4threads, runner32536. h/8→h/16 시간 수렴 통과 후에만 h/8 메시 검증을 확정한다. docs/CODEX_G1_PARALLEL_STARTED_2026-10-10.md를 최신 실행 근거로 사용한다. 동일 조건을 중복 실행하지 않는다. 자동 candidate를 최종 G1 승인으로 간주하지 않는다. 통과까지 P2 두 건은 대기한다.
+
 1. 기준과 현재 상태
 사용자의 최신 지시는 “다음 검증 실행해”와 “어제 작성한 계획서대로 진행해”이다. GitHub leejinseok08/vblhwl-3d-dram의 docs/CODEX_2D_FIRST_REPRODUCTION_PLAN_2026-10-09.md를 기준으로 한다. 프로젝트 CLAUDE.md, MEASURE.md와 본인 최신 NOTES/claude/EXPERIMENTS.md를 읽는다. 오래된 main snapshot을 현재 서버 상태로 간주하지 않는다.
 Codex는 P1 시간·메시·전하 수지 검증을 담당한다. 기존 CxN1/2/4 attack+idle 6건은 2026-10-10 01:27 정상 종료했고, accepted step 저장 시점 및 원시 해시 검증을 마쳤다. h/2→h/4 body 순상승 차이 7.282 mV가 6 mV 예산을 넘었다. h/4 순 body 상승 27.458 mV, SN 순손실 −0.023033 mV, 마지막 5주기 순기울기 −0.000686784 mV/cycle이다. 이 작은 음의 손실은 물리적 이득의 증거가 아니다.
-Codex 후속 numerics_h8_20261010_01의 CxN8Atk / CxN8Idle는 2026-10-10 12:50:44 KST 시작했다. 서버 ~/vblhwl_3d_dram/codex_validation/numerics_h8_20261010_01, runner PID84122, device PID84130/84131이다. 각 4 threads이며 50개 MaxStep만 h/4의 절반, hammer plateau 1.175 ps이다. Physics·Newton·InitialStep·펄스·Cs·메시·SN reset은 동일하다. 등록 commit23811f60d67f1c713ee3e9961e1e7e4a804563b1. 아직 결과와 G1 판정은 없다.
+Codex 후속 numerics_h8_20261010_01의 CxN8Atk / CxN8Idle는 2026-10-10 12:50:44 KST 시작했다. 서버 ~/vblhwl_3d_dram/codex_validation/numerics_h8_20261010_01, runner PID84122, device PID84130/84131이다. 각 4 threads이며 50개 MaxStep만 h/4의 절반, hammer plateau 1.175 ps이다. Physics·Newton·InitialStep·펄스·Cs·메시·SN reset은 동일하다. 등록 commit23811f60d67f1c713ee3e9961e1e7e4a804563b1. 이 문장의 시작 정보는 당시 기록이다. 완료 결과 및 현재 후속 실행은 위의 15:40 업데이트를 따른다.
 Codex 배치를 중복 실행하거나 수정하지 않는다. h/8 한 번 통과만으로 G1을 선언하지 않는다. 연속 refinement 안정성과 메시 검증이 남아 있다.
 
 2. 이미 완료한 본인 작업은 재사용한다
