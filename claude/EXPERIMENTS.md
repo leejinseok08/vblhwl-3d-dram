@@ -1,6 +1,6 @@
 # 실험 등록부 — 겹치지 않게 쓰는 표
 
-갱신: 2026-10-10 13:40 (Claude; G1 대기 중 P2 준비: 추출 정의 수정과 기존 원시 자료 점검, 실행 없음). 채점과 표의 기준은 [MEASURE.md](MEASURE.md)예요. **새 실행을 만들기 전에 이 파일과 Codex의 `docs/`, `snapshot_status.json`, 서버에서 돌고 있는 실행을 먼저 봐요.**
+갱신: 2026-10-10 13:30 (Claude; G1 대기 중 P2 준비: 추출 정의 수정과 기존 원시 자료 점검, 실행 없음). 채점과 표의 기준은 [MEASURE.md](MEASURE.md)예요. **새 실행을 만들기 전에 이 파일과 Codex의 `docs/`, `snapshot_status.json`, 서버에서 돌고 있는 실행을 먼저 봐요.**
 
 ## 규칙 (Claude가 지키는 것)
 
@@ -377,7 +377,7 @@ Hsu, Cho, Sharda, Park, Datta, Yu, IMW 2025 Fig. 2(c) (TED 73(9), 2026에 같은
 | 판정 / 중단 기준 | (1) 130 ps 전의 SN: `DnwRzbi_zz`는 G1 격자의 Codex attack 실행과 같아야 해요(같은 덱이라 차이는 출력 추가 탓). 130 ps 값이 한 가지(reset 없음), BE 잔차 0. 아니면 분석 전에 원인부터 찾아요. `DnwRzb` / `DnwRzbg`는 같은 격자의 reset 대조가 없어서 옛 격자 `Dpt*`는 참고로만 적고 통과 표에 넣지 않아요 (2026-10-10, Codex 지침: 다른 설정의 raw를 한 통과 표에 섞지 않음). (2) 산출: 245 ps의 SN, 몸체 중심·평균 전위, 정공 수, 단자 e / h / 변위 전류, Cs·dV/dt와 SN 단자 전류의 전하 수지, write 동안 채널 / underlap / 접촉의 전압 분배. (3) 부족을 설명한 것을 쓰기 재현 성공이라고 하지 않아요 |
 | 시작 / 종료 | 시작 안 함 |
 
-**2026-10-10 13:40: P2 준비 — G1 대기 중 기존 원시 자료 점검 (새 TCAD 실행 없음; Codex 전달 프롬프트 `docs/CLAUDE_P2_HANDOFF_AFTER_P1_2026-10-10.md`)**
+**2026-10-10 13:30: P2 준비 — G1 대기 중 기존 원시 자료 점검 (새 TCAD 실행 없음; Codex 전달 프롬프트 `docs/CLAUDE_P2_HANDOFF_AFTER_P1_2026-10-10.md`)**
 
 | 필드 | 내용 |
 |---|---|

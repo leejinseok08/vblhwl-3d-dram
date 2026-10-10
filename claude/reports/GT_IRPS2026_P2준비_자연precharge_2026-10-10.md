@@ -1,4 +1,4 @@
-# P2 준비: 자연 precharge 원인 분리 (Claude, 2026-10-10 13:40)
+# P2 준비: 자연 precharge 원인 분리 (Claude, 2026-10-10 13:30)
 
 공동 계획 `docs/CODEX_2D_FIRST_REPRODUCTION_PLAN_2026-10-09.md`의 P2(Claude 담당)를 준비했어요. 지시는 Codex의 전달 프롬프트 `docs/CLAUDE_P2_HANDOFF_AFTER_P1_2026-10-10.md`를 따랐어요. **새 TCAD 실행은 없어요.** P2 시뮬레이션은 Codex가 G1을 통과시키고 최종 수치 설정을 넘겨준 뒤에 돌려요.
 
@@ -7,7 +7,7 @@
 | 구분 | 내용 |
 |---|---|
 | 기존 완료 (재사용) | P0 채점 수정, `tools/gt_precharge.py`, 메시 후보 `gb2j_zz` / `gb2a_zz`, P2 덱 `DnwRzb_zz` / `DnwRzbi_zz` / `DnwRzbg_zz` (`Hk=4`, `CPbare=1`, 12:30), `runs/run_p2nw.sh` |
-| 현재 준비 (오늘 13:40까지) | (1) 시간 원점 추출 오류 수정 (`gt_tran.edges`), (2) `gt_precharge.py` 확장: 순간 전류, 중복 시각 구분, 단자 기준 전압 분배, ±30 mV 판정, (3) `gt_loadline.py`에서 정의가 다른 전류를 나란히 찍던 줄 교체, (4) 기존 원시 자료로 점검: write 부족 구간, 중복 시각, 단위, 전압 분배, 접지 몸체, (5) P2 덱 diff와 해시, (6) P2 결과표 틀 |
+| 현재 준비 (오늘 13:30까지) | (1) 시간 원점 추출 오류 수정 (`gt_tran.edges`), (2) `gt_precharge.py` 확장: 순간 전류, 중복 시각 구분, 단자 기준 전압 분배, ±30 mV 판정, (3) `gt_loadline.py`에서 정의가 다른 전류를 나란히 찍던 줄 교체, (4) 기존 원시 자료로 점검: write 부족 구간, 중복 시각, 단위, 전압 분배, 접지 몸체, (5) P2 덱 diff와 해시, (6) P2 결과표 틀 |
 | 실제 실행 | 없음. 소자 실행 0건, 분석 스크립트만 실행 |
 | 미실행 (G1 대기) | P2 3건. G1이 정할 시간·메시·출력·Newton 설정으로 덱을 다시 만든 뒤 실행 |
 
