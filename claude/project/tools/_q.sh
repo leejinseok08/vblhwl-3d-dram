@@ -6,6 +6,43 @@
 #   rh <runs> = row-hammer table | s <tags> = scorecard | t <tags> = loss after every BL-low phase | wo <tags> = write and WL switch-off
 #   ii = the impact-ionization factor runs | w <runs> = write curves | steps <runs> = their last time steps
 cd ~/vblhwl_3d_dram
+if [ "$1" = gbs ]; then    # grounded-body diagnosis (A + B1 - B3): build the five structures (structure only), errors, regions with Bg, contacts, paper check
+  S="gb2_zzg2 gb2g_c2hb gb2g10_c2hb gb2g5_c2hb gb2gi_c2hb"
+  ( cd runs/_struct; for s in $S; do [ -f ${s}_msh.tdr ] || sde -e -l ${s}_dvs.cmd > ${s}_sde.log 2>&1; ls -la --time-style=+%H:%M ${s}_msh.tdr | awk '{print $7, $5, $6}'
+      grep -i -E 'error|fail|cannot|unbound' ${s}_sde.log | head -3; grep -E 'points\.|elements\.' ${s}_sde.log | tr -s ' \n' ' '; echo
+      echo "  Bg regions: $(grep -a -o -E '[IM]\.Bg_[va]' ${s}_msh.tdr | sort | uniq -c | tr -s ' \n' ' ')"; done )
+  for s in $S; do echo "$s contacts: $(bash tools/_q.sh cn $s)"; done
+  bash tools/gt_precheck.sh gb2_zzg2:20:2 gb2g_c2hb:20 gb2g10_c2hb:20 gb2g5_c2hb:20 gb2gi_c2hb:20
+  exit 0
+fi
+if [ "$1" = gbw ]; then    # state of run_gbd.sh (waits up to $2 s while any of its runs is alive, polling every 30 s)
+  n=0; while [ $n -lt ${2:-0} ] && pgrep -u "$USER" -f "sdevice Dgb" > /dev/null; do sleep 30; n=$((n + 30)); done
+  date +%H:%M:%S; python3 tools/run_state.py run_gbd.sh 2>&1 | cut -c1-200; exit 0
+fi
+if [ "$1" = gba ]; then    # results of run_gbd.sh: DC load lines (floating DpL_c2 against the four slots), the writes with their own DC, body_v currents
+  python3 tools/gt_loadline.py DpL_c2 Dgb20L_c2 Dgb10L_c2 Dgb05L_c2 DgbiL_c2 2>&1 | cut -c1-230
+  python3 tools/gt_precharge.py --dc DpL_c2 DgbfW_c2 DgbiW_c2 2>&1 | grep -v "file holds" | cut -c1-230
+  for k in 20 10 05; do python3 tools/gt_precharge.py --dc Dgb${k}L_c2 Dgb${k}W_c2 2>&1 | grep -v "file holds" | cut -c1-230; done
+  python3 - <<'EOF'
+import sys, glob; sys.path.insert(0, "tools")
+from gt_tran import load, at, edges
+print("body_v currents of the grounded writes [uA], + = out of the device at the contact (e / h / total)")
+for r in ("Dgb20W_c2", "Dgb10W_c2", "Dgb05W_c2"):
+    try: s = load(f"runs/{r}/{r}_sys.plt"); v = load(glob.glob(f"runs/{r}/*_dev.plt")[0])
+    except Exception as e: print(r, "no data", e); continue
+    t, T = s["time"], v["time"]; tw = edges(t, s[[k for k in s if "nWL)" in k][0]], 0, 1.8, True)[0]
+    print(r, " | ".join(f"+{k} ps: {at(T, v['body_v eCurrent'], tw + k * 1e-12) * 1e6:.2f} / {at(T, v['body_v hCurrent'], tw + k * 1e-12) * 1e6:.2f} / {at(T, v['body_v TotalCurrent'], tw + k * 1e-12) * 1e6:.2f}" for k in (0, 2.5, 6, 12, 24, 60)))
+EOF
+  exit 0
+fi
+if [ "$1" = gbc ]; then    # contact names of the 2D meshes (TDR read as text), how often each name occurs; reference gb2_zzg, gb2_c2hb
+  for s in gb2_zzg gb2_zzg2 gb2_c2hb gb2g_c2hb gb2g10_c2hb gb2g5_c2hb gb2gi_c2hb; do
+    echo "$s: $(grep -a -o -E 'body_[va]|sn_[va]|gs_[va]|gd_[va]' runs/_struct/${s}_msh.tdr | sort | uniq -c | awk '{printf "%s(%s) ", $2, $1}')"; done; exit 0
+fi
+if [ "$1" = gbr ]; then    # start run_gbd.sh through the start gate (paper check of the structures, quota), 4 at a time
+  pgrep -u "$USER" -a sdevice | cut -c1-90; quota -s | tail -1
+  bash tools/gt_start.sh run_gbd.sh 4 gb2_c2hb:20 gb2g_c2hb:20 gb2g10_c2hb:20 gb2g5_c2hb:20 gb2gi_c2hb:20; exit 0
+fi
 if [ "$1" = p2o ]; then    # P2 wait, 2026-10-10: scores of fin7 with the tools as they are on the server (before the WL-crossing fix of gt_tran.edges)
   python3 tools/score2d.py -v fin7 2>&1 | cut -c1-400; python3 tools/repro_rate.py fin7 2>&1 | cut -c1-300; exit 0
 fi

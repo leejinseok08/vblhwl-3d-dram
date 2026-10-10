@@ -1,0 +1,234 @@
+﻿== DpL_c2: body 20 nm, gates 1.8 V, BL 1.168 V, 52 points up to node 1.168 V; capacitor of the text 4.2 fF
+   1. node voltage [V]:              0.00    0.20    0.40    0.60    0.72    0.82    0.92    0.99    1.06    1.09    1.13
+      DC current into the node [uA]:    nan   165.5   120.6    78.4    55.3    37.8    22.5    13.7     6.8     4.1     1.9
+   2. write from the DC current, node at 12 / 24 / 39 / 60 ps: 0.447 / 0.685 / 0.848 / 0.966 V   (paper 0.72 / 0.92 / 1.06 / 1.13)
+      interval means C dV/dt [uA], paper | quasi-static DC write: 0 - 12 ps: 252 | 156; 12 - 24 ps: 70 | 83; 24 - 39 ps: 39 | 46; 39 - 60 ps: 14 | 24
+   3. where the BL-to-node voltage falls (electron quasi-Fermi potential at mid-depth; read at x = 47.0, 77.0, 172.0 nm; pillar face 50, gate 75 .. 175):
+      node [V]   current [uA]   whole drop [mV] = pillar and its contact | body under the BL-side spacer (25 nm) | gated channel (100 nm) | source (25 nm)
+       0.360       129.4          808         =    70 (  9 %) |   604 ( 75 %) |   118 ( 15 %) |    16 (  2 %)
+       0.600        78.4          568         =    43 (  7 %) |   414 ( 73 %) |   102 ( 18 %) |    10 (  2 %)
+       0.820        37.8          348         =    20 (  6 %) |   243 ( 70 %) |    79 ( 23 %) |     5 (  1 %)
+       0.990        13.7          178         =     7 (  4 %) |   115 ( 65 %) |    54 ( 30 %) |     2 (  1 %)
+       1.095         4.1           73         =     2 (  3 %) |    40 ( 54 %) |    31 ( 42 %) |     1 (  1 %)
+== Dgb20L_c2: body 20 nm, gates 1.8 V, BL 1.168 V, 55 points up to node 1.168 V; capacitor of the text 4.2 fF
+   1. node voltage [V]:              0.00    0.20    0.40    0.60    0.72    0.82    0.92    0.99    1.06    1.09    1.13
+      DC current into the node [uA]:    nan   156.5    98.6    24.3     2.3     0.1     0.0     0.0     0.0     0.0     0.0
+   2. write from the DC current, node at 12 / 24 / 39 / 60 ps: 0.419 / 0.577 / 0.647 / 0.687 V   (paper 0.72 / 0.92 / 1.06 / 1.13)
+      interval means C dV/dt [uA], paper | quasi-static DC write: 0 - 12 ps: 252 | 147; 12 - 24 ps: 70 | 55; 24 - 39 ps: 39 | 20; 39 - 60 ps: 14 | 8
+   3. where the BL-to-node voltage falls (electron quasi-Fermi potential at mid-depth; read at x = 47.0, 77.0, 172.0 nm; pillar face 50, gate 75 .. 175):
+      node [V]   current [uA]   whole drop [mV] = pillar and its contact | body under the BL-side spacer (25 nm) | gated channel (100 nm) | source (25 nm)
+       0.360       112.2          808         =    61 (  8 %) |   541 ( 67 %) |   192 ( 24 %) |    14 (  2 %)
+       0.600        24.3          568         =    13 (  2 %) |   177 ( 31 %) |   375 ( 66 %) |     3 (  1 %)
+       0.820         0.1          348         =     0 (  0 %) |     1 (  0 %) |   347 (100 %) |     0 (  0 %)
+       0.990         0.0          178         =     0 (  0 %) |     0 (  0 %) |   178 (100 %) |     0 (  0 %)
+       1.095         0.0           73         =     0 (  0 %) |     0 (  0 %) |    73 (100 %) |    -0 ( -0 %)
+== Dgb10L_c2: body 20 nm, gates 1.8 V, BL 1.168 V, 54 points up to node 1.168 V; capacitor of the text 4.2 fF
+   1. node voltage [V]:              0.00    0.20    0.40    0.60    0.72    0.82    0.92    0.99    1.06    1.09    1.13
+      DC current into the node [uA]:    nan   160.2   110.3    43.6    10.1     0.8     0.0     0.0     0.0     0.0     0.0
+   2. write from the DC current, node at 12 / 24 / 39 / 60 ps: 0.432 / 0.618 / 0.700 / 0.745 V   (paper 0.72 / 0.92 / 1.06 / 1.13)
+      interval means C dV/dt [uA], paper | quasi-static DC write: 0 - 12 ps: 252 | 151; 12 - 24 ps: 70 | 65; 24 - 39 ps: 39 | 23; 39 - 60 ps: 14 | 9
+   3. where the BL-to-node voltage falls (electron quasi-Fermi potential at mid-depth; read at x = 47.0, 77.0, 172.0 nm; pillar face 50, gate 75 .. 175):
+      node [V]   current [uA]   whole drop [mV] = pillar and its contact | body under the BL-side spacer (25 nm) | gated channel (100 nm) | source (25 nm)
+       0.360       120.7          808         =    66 (  8 %) |   572 ( 71 %) |   155 ( 19 %) |    15 (  2 %)
+       0.600        43.6          568         =    24 (  4 %) |   269 ( 47 %) |   270 ( 47 %) |     6 (  1 %)
+       0.820         0.8          348         =     0 (  0 %) |     7 (  2 %) |   340 ( 98 %) |     0 (  0 %)
+       0.990         0.0          178         =     0 (  0 %) |     0 (  0 %) |   178 (100 %) |     0 (  0 %)
+       1.095         0.0           73         =     0 (  0 %) |     0 (  0 %) |    73 (100 %) |     0 (  0 %)
+== Dgb05L_c2: body 20 nm, gates 1.8 V, BL 1.168 V, 53 points up to node 1.168 V; capacitor of the text 4.2 fF
+   1. node voltage [V]:              0.00    0.20    0.40    0.60    0.72    0.82    0.92    0.99    1.06    1.09    1.13
+      DC current into the node [uA]:    nan   162.0   114.7    61.9    24.4     4.7     0.2     0.0     0.0     0.0     0.0
+   2. write from the DC current, node at 12 / 24 / 39 / 60 ps: 0.438 / 0.648 / 0.750 / 0.803 V   (paper 0.72 / 0.92 / 1.06 / 1.13)
+      interval means C dV/dt [uA], paper | quasi-static DC write: 0 - 12 ps: 252 | 153; 12 - 24 ps: 70 | 74; 24 - 39 ps: 39 | 28; 39 - 60 ps: 14 | 11
+   3. where the BL-to-node voltage falls (electron quasi-Fermi potential at mid-depth; read at x = 47.0, 77.0, 172.0 nm; pillar face 50, gate 75 .. 175):
+      node [V]   current [uA]   whole drop [mV] = pillar and its contact | body under the BL-side spacer (25 nm) | gated channel (100 nm) | source (25 nm)
+       0.360       124.2          808         =    67 (  8 %) |   585 ( 72 %) |   140 ( 17 %) |    15 (  2 %)
+       0.600        61.9          568         =    34 (  6 %) |   348 ( 61 %) |   179 ( 31 %) |     8 (  1 %)
+       0.820         4.7          348         =     3 (  1 %) |    46 ( 13 %) |   299 ( 86 %) |     1 (  0 %)
+       0.990         0.0          178         =     0 (  0 %) |     0 (  0 %) |   178 (100 %) |     0 (  0 %)
+       1.095         0.0           73         =     0 (  0 %) |     0 (  0 %) |    73 (100 %) |     0 (  0 %)
+== DgbiL_c2: body 20 nm, gates 1.8 V, BL 1.168 V, 52 points up to node 1.168 V; capacitor of the text 4.2 fF
+   1. node voltage [V]:              0.00    0.20    0.40    0.60    0.72    0.82    0.92    0.99    1.06    1.09    1.13
+      DC current into the node [uA]:    nan   165.5   120.6    78.5    55.3    37.8    22.6    13.7     6.8     4.1     1.9
+   2. write from the DC current, node at 12 / 24 / 39 / 60 ps: 0.447 / 0.685 / 0.848 / 0.966 V   (paper 0.72 / 0.92 / 1.06 / 1.13)
+      interval means C dV/dt [uA], paper | quasi-static DC write: 0 - 12 ps: 252 | 156; 12 - 24 ps: 70 | 83; 24 - 39 ps: 39 | 46; 39 - 60 ps: 14 | 24
+   3. where the BL-to-node voltage falls (electron quasi-Fermi potential at mid-depth; read at x = 47.0, 77.0, 172.0 nm; pillar face 50, gate 75 .. 175):
+      node [V]   current [uA]   whole drop [mV] = pillar and its contact | body under the BL-side spacer (25 nm) | gated channel (100 nm) | source (25 nm)
+       0.360       129.4          808         =    70 (  9 %) |   604 ( 75 %) |   118 ( 15 %) |    16 (  2 %)
+       0.600        78.5          568         =    43 (  7 %) |   414 ( 73 %) |   101 ( 18 %) |    10 (  2 %)
+       0.820        37.8          348         =    20 (  6 %) |   243 ( 70 %) |    79 ( 23 %) |     5 (  1 %)
+       0.990        13.7          178         =     7 (  4 %) |   115 ( 65 %) |    53 ( 30 %) |     2 (  1 %)
+       1.095         4.1           73         =     2 (  3 %) |    40 ( 55 %) |    30 ( 42 %) |     1 (  1 %)
+== DgbfW_c2: single cell, body floating, avalanche on (vanOverstraeten), Cs 4.20 fF, BL write 1.168 V, node NOT set (natural); file to 180 ps; contact current sign: + = into the device at sn_v
+   record: bare CurrentPlot in all 7 Transients = every accepted step written; 393 / 393 points (system / device); time integration BE: charge = step x current at its end (right-end rule)
+   instant                      t [ps] |  SN [V]   BL [V]   WL [V] | body: centre  under gate  h-QF [V] | holes |  I_sn [uA]: electron    hole  displ.   total
+   t = 0 (DC start)               0.00 | 0.0000  0.0000  0.0000 |  -0.1904     -     +0.0000   |     0 |     0.00     0.00    -0.00     0.00
+   WL crosses 0.9 V              12.50 | 0.0254  1.1680  0.9000 |  +0.6213     -     +0.8742   |     0 |   107.14     0.00     0.38   107.52
+   +12 ps (paper 0.72)           24.50 | 0.4848  1.1680  1.8000 |  +0.9968     -     +1.4636   |   303 |    95.29     3.46    -0.02    98.73
+   +24 ps (paper 0.92)           36.50 | 0.6963  1.1680  1.8000 |  +1.1863     -     +1.6457   |   208 |    54.03     2.23    -0.01    56.25
+   +39 ps (paper 1.06)           51.50 | 0.8459  1.1680  1.8000 |  +1.3144     -     +1.7616   |   117 |    30.76     0.79    -0.01    31.54
+   +60 ps (paper 1.13)           72.50 | 0.9596  1.1680  1.8000 |  +1.4093     -     +1.8434   |    66 |    16.24     0.26    -0.00    16.50
+   write peak                   120.00 | 1.0705  1.1680  1.8000 |  +1.4977     -     +1.9135   |    32 |     5.76     0.06    -0.00     5.82
+   WL off - 1 ps                121.50 | 1.0552  1.1680  1.2600 |  +1.0544     -     +1.4799   |    33 |   -33.25     0.01    -0.22   -33.46
+   WL off (0.9 V)               122.50 | 1.0484  1.1680  0.9000 |  +0.7301     -     +1.1570   |    35 |   -25.66     0.00    -0.24   -25.90
+   WL off + 5 ps                127.50 | 1.0352  1.1340  0.0000 |  -0.1393     -     +0.2912   |    39 |    -0.01     0.00    -0.00    -0.01
+   BL step done                 130.00 | 1.0352  1.1000  0.0000 |  -0.1394     -     +0.2911   |    39 |    -0.00     0.00    -0.00    -0.00
+   end of hold at Vdd           180.00 | 1.0352  1.1000  0.0000 |  -0.1392     -     +0.2913   |    39 |    -0.00     0.00     0.00    -0.00
+   write vs Fig.4(a) (read, +-30 mV): 0.485 (-235 mV OUT) / 0.696 (-224 mV OUT) / 0.846 (-214 mV OUT) / 0.960 (-170 mV OUT); worst -235 mV at +12 ps
+   interval [ps]          | Cs dV [fC]  integral I_sn [fC] (e / h / displacement)   residual BE | trapezoid: residual | interval mean Cs dV/dt [uA]: model  paper | BL charge [fC]
+     12.50 -   24.50      |  +1.9296    +1.9296 (+1.9131 / +0.0162 / +0.0003)   +0.0000 (  +0.0 %) |  -0.0162 (  -0.8 %) |                    160.8    252 |  -1.5067
+     24.50 -   36.50      |  +0.8883    +0.8883 (+0.8517 / +0.0369 / -0.0002)   +0.0000 (  +0.0 %) |  -0.0106 (  -1.2 %) |                     74.0     70 |  -1.0416
+     36.50 -   51.50      |  +0.6282    +0.6282 (+0.6080 / +0.0203 / -0.0001)   +0.0000 (  +0.0 %) |  -0.0062 (  -1.0 %) |                     41.9     39 |  -0.7322
+     51.50 -   72.50      |  +0.4775    +0.4775 (+0.4681 / +0.0095 / -0.0001)   +0.0000 (  +0.0 %) |  -0.0038 (  -0.8 %) |                     22.7     14 |  -0.5509
+     72.50 -  122.50      |  +0.3732    +0.3732 (+0.3681 / +0.0058 / -0.0007)   +0.0000 (  +0.0 %) |  -0.0034 (  -0.9 %) |                      7.5      - |  -0.5802
+    122.50 -  130.00      |  -0.0556    -0.0556 (-0.0549 / +0.0000 / -0.0006)   +0.0000 (  -0.0 %) |  +0.0017 (  -3.0 %) |                     -7.4      - |  -0.0291
+    130.00 -  180.00      |  -0.0000    -0.0000 (-0.0000 / +0.0000 / +0.0000)   +0.0000 (     - ) |  +0.0000 (     - ) |                     -0.0      - |  -0.0000
+   DC load line DpL_c2 (gates 1.8 V, BL 1.168 V; A/um x 0.1 um): instantaneous current at the same node voltage [uA]:
+      +12 ps   node 0.485 V: transient    98.7   DC   102.7
+      +24 ps   node 0.696 V: transient    56.2   DC    60.3
+      +39 ps   node 0.846 V: transient    31.5   DC    31.9
+      +60 ps   node 0.960 V: transient    16.5   DC    18.5
+   V(nBL) - V(nSN) along the victim channel (electron QF at x = 2 / 47 / 77 / 172 nm): BL terminal -> pillar axis at the cell | pillar to 3 nm before the junction | junction + body under the BL-side spacer | gated channel | source
+        12 ps:    683 mV =    8 % |    1 % |   75 % |   14 % |    2 %
+        24 ps:    472 mV =    7 % |    1 % |   74 % |   17 % |    2 %
+        39 ps:    322 mV =    6 % |    1 % |   71 % |   21 % |    1 %
+        60 ps:    208 mV =    4 % |    0 % |   68 % |   26 % |    1 %
+== DgbiW_c2: single cell, body floating, insulator slot, slot 20 nm, avalanche on (vanOverstraeten), Cs 4.20 fF, BL write 1.168 V, node NOT set (natural); file to 180 ps; contact current sign: + = into the device at sn_v
+   record: bare CurrentPlot in all 7 Transients = every accepted step written; 396 / 396 points (system / device); time integration BE: charge = step x current at its end (right-end rule)
+   instant                      t [ps] |  SN [V]   BL [V]   WL [V] | body: centre  under gate  h-QF [V] | holes |  I_sn [uA]: electron    hole  displ.   total
+   t = 0 (DC start)               0.00 | 0.0000  0.0000  0.0000 |  -0.1869     -     +0.0000   |     0 |     0.00     0.00    -0.00     0.00
+   WL crosses 0.9 V              12.50 | 0.0254  1.1680  0.9000 |  +0.6742     -     +0.9547   |     0 |   107.30     0.00     0.38   107.69
+   +12 ps (paper 0.72)           24.50 | 0.4852  1.1680  1.8000 |  +1.0145     -     +1.4792   |   302 |    95.35     3.51    -0.02    98.84
+   +24 ps (paper 0.92)           36.50 | 0.6968  1.1680  1.8000 |  +1.1979     -     +1.6519   |   204 |    53.97     2.26    -0.01    56.22
+   +39 ps (paper 1.06)           51.50 | 0.8462  1.1680  1.8000 |  +1.3236     -     +1.7639   |   112 |    30.72     0.79    -0.01    31.50
+   +60 ps (paper 1.13)           72.50 | 0.9597  1.1680  1.8000 |  +1.4170     -     +1.8439   |    61 |    16.22     0.25    -0.00    16.47
+   write peak                   120.00 | 1.0705  1.1680  1.8000 |  +1.5030     -     +1.9126   |    29 |     5.76     0.05    -0.00     5.81
+   WL off - 1 ps                121.50 | 1.0551  1.1680  1.2600 |  +1.0548     -     +1.4772   |    30 |   -32.98     0.01    -0.22   -33.19
+   WL off (0.9 V)               122.50 | 1.0484  1.1680  0.9000 |  +0.7312     -     +1.1563   |    32 |   -25.69     0.00    -0.24   -25.93
+   WL off + 5 ps                127.50 | 1.0351  1.1340  0.0000 |  -0.1377     -     +0.2913   |    36 |    -0.01     0.00    -0.00    -0.01
+   BL step done                 130.00 | 1.0351  1.1000  0.0000 |  -0.1378     -     +0.2912   |    36 |    -0.00     0.00    -0.00    -0.00
+   end of hold at Vdd           180.00 | 1.0351  1.1000  0.0000 |  -0.1377     -     +0.2914   |    36 |    -0.00     0.00     0.00    -0.00
+   write vs Fig.4(a) (read, +-30 mV): 0.485 (-235 mV OUT) / 0.697 (-223 mV OUT) / 0.846 (-214 mV OUT) / 0.960 (-170 mV OUT); worst -235 mV at +12 ps
+   interval [ps]          | Cs dV [fC]  integral I_sn [fC] (e / h / displacement)   residual BE | trapezoid: residual | interval mean Cs dV/dt [uA]: model  paper | BL charge [fC]
+     12.50 -   24.50      |  +1.9312    +1.9312 (+1.9146 / +0.0163 / +0.0003)   +0.0000 (  +0.0 %) |  -0.0162 (  -0.8 %) |                    160.9    252 |  -1.5081
+     24.50 -   36.50      |  +0.8886    +0.8886 (+0.8514 / +0.0374 / -0.0002)   +0.0000 (  +0.0 %) |  -0.0107 (  -1.2 %) |                     74.1     70 |  -1.0419
+     36.50 -   51.50      |  +0.6275    +0.6275 (+0.6072 / +0.0204 / -0.0001)   +0.0000 (  +0.0 %) |  -0.0062 (  -1.0 %) |                     41.8     39 |  -0.7314
+     51.50 -   72.50      |  +0.4767    +0.4767 (+0.4675 / +0.0094 / -0.0001)   +0.0000 (  +0.0 %) |  -0.0038 (  -0.8 %) |                     22.7     14 |  -0.5500
+     72.50 -  122.50      |  +0.3724    +0.3724 (+0.3675 / +0.0056 / -0.0007)   -0.0000 (  -0.0 %) |  -0.0041 (  -1.1 %) |                      7.4      - |  -0.5795
+    122.50 -  130.00      |  -0.0555    -0.0555 (-0.0549 / +0.0000 / -0.0006)   -0.0000 (  +0.0 %) |  +0.0018 (  -3.2 %) |                     -7.4      - |  -0.0291
+    130.00 -  180.00      |  -0.0000    -0.0000 (-0.0000 / +0.0000 / +0.0000)   +0.0000 (     - ) |  +0.0000 (     - ) |                     -0.0      - |  -0.0000
+   DC load line DpL_c2 (gates 1.8 V, BL 1.168 V; A/um x 0.1 um): instantaneous current at the same node voltage [uA]:
+      +12 ps   node 0.485 V: transient    98.8   DC   102.7
+      +24 ps   node 0.697 V: transient    56.2   DC    60.3
+      +39 ps   node 0.846 V: transient    31.5   DC    31.9
+      +60 ps   node 0.960 V: transient    16.5   DC    18.5
+   V(nBL) - V(nSN) along the victim channel (electron QF at x = 2 / 47 / 77 / 172 nm): BL terminal -> pillar axis at the cell | pillar to 3 nm before the junction | junction + body under the BL-side spacer | gated channel | source
+        12 ps:    683 mV =    8 % |    1 % |   75 % |   14 % |    2 %
+        24 ps:    471 mV =    7 % |    1 % |   74 % |   17 % |    2 %
+        39 ps:    322 mV =    6 % |    1 % |   71 % |   21 % |    1 %
+        60 ps:    208 mV =    4 % |    0 % |   68 % |   26 % |    1 %
+== Dgb20W_c2: single cell, body grounded, slot 20 nm, avalanche on (vanOverstraeten), Cs 4.20 fF, BL write 1.168 V, node NOT set (natural); file to 180 ps; contact current sign: + = into the device at sn_v
+   record: bare CurrentPlot in all 7 Transients = every accepted step written; 411 / 411 points (system / device); time integration BE: charge = step x current at its end (right-end rule)
+   instant                      t [ps] |  SN [V]   BL [V]   WL [V] | body: centre  under gate  h-QF [V] | holes |  I_sn [uA]: electron    hole  displ.   total
+   t = 0 (DC start)               0.00 | 0.0000  0.0000  0.0000 |  -0.2467     -     +0.0000   |     4 |    -0.00     0.00    -0.00    -0.00
+   WL crosses 0.9 V              12.50 | 0.0223  1.1680  0.9000 |  +0.4501     -     +0.5818   |     1 |    81.57     0.00     0.32    81.88
+   +12 ps (paper 0.72)           24.50 | 0.4152  1.1680  1.8000 |  +0.7987     -     +1.1708   |    14 |    83.51     0.00    -0.02    83.49
+   +24 ps (paper 0.92)           36.50 | 0.5663  1.1680  1.8000 |  +1.0116     -     +1.2850   |     2 |    32.43     0.00    -0.01    32.42
+   +39 ps (paper 1.06)           51.50 | 0.6389  1.1680  1.8000 |  +1.0909     -     +1.2548   |     1 |    13.04     0.00    -0.00    13.04
+   +60 ps (paper 1.13)           72.50 | 0.6815  1.1680  1.8000 |  +1.1180     -     +1.2554   |     1 |     5.74     0.00    -0.00     5.73
+   write peak                   120.00 | 0.7199  1.1680  1.8000 |  +1.1299     -     +1.2310   |     1 |     2.12     0.00    -0.00     2.12
+   WL off - 1 ps                121.50 | 0.6936  1.1680  1.2600 |  +0.7258     -     +0.9209   |     1 |   -50.01     0.00    -0.14   -50.15
+   WL off (0.9 V)               122.50 | 0.6865  1.1680  0.9000 |  +0.4503     -     +0.6367   |     1 |   -24.29     0.00    -0.23   -24.52
+   WL off + 5 ps                127.50 | 0.6734  1.1340  0.0000 |  -0.2395     -     +0.0004   |     4 |    -0.00     0.00    -0.00    -0.00
+   BL step done                 130.00 | 0.6734  1.1000  0.0000 |  -0.2397     -     +0.0003   |     4 |    -0.00     0.00    -0.00    -0.00
+   end of hold at Vdd           180.00 | 0.6734  1.1000  0.0000 |  -0.2397     -     +0.0001   |     4 |    -0.00     0.00     0.00    -0.00
+   write vs Fig.4(a) (read, +-30 mV): 0.415 (-305 mV OUT) / 0.566 (-354 mV OUT) / 0.639 (-421 mV OUT) / 0.682 (-448 mV OUT); worst -448 mV at +60 ps
+   interval [ps]          | Cs dV [fC]  integral I_sn [fC] (e / h / displacement)   residual BE | trapezoid: residual | interval mean Cs dV/dt [uA]: model  paper | BL charge [fC]
+     12.50 -   24.50      |  +1.6501    +1.6501 (+1.6498 / +0.0000 / +0.0003)   +0.0000 (  +0.0 %) |  -0.0144 (  -0.9 %) |                    137.5    252 |  -1.3594
+     24.50 -   36.50      |  +0.6344    +0.6344 (+0.6346 / +0.0000 / -0.0002)   +0.0000 (  +0.0 %) |  -0.0125 (  -2.0 %) |                     52.9     70 |  -0.8008
+     36.50 -   51.50      |  +0.3053    +0.3053 (+0.3054 / +0.0000 / -0.0001)   -0.0000 (  -0.0 %) |  -0.0048 (  -1.6 %) |                     20.4     39 |  -0.3687
+     51.50 -   72.50      |  +0.1789    +0.1789 (+0.1789 / +0.0000 / -0.0000)   -0.0000 (  -0.0 %) |  -0.0018 (  -1.0 %) |                      8.5     14 |  -0.2082
+     72.50 -  122.50      |  +0.0208    +0.0208 (+0.0215 / +0.0000 / -0.0006)   +0.0000 (  +0.0 %) |  +0.0016 (  +7.5 %) |                      0.4      - |  -0.2165
+    122.50 -  130.00      |  -0.0552    -0.0552 (-0.0546 / +0.0000 / -0.0006)   -0.0000 (  +0.0 %) |  +0.0015 (  -2.8 %) |                     -7.4      - |  -0.0259
+    130.00 -  180.00      |  -0.0000    -0.0000 (-0.0000 / +0.0000 / +0.0000)   +0.0000 (     - ) |  +0.0000 (     - ) |                     -0.0      - |  +0.0000
+   DC load line Dgb20L_c2 (gates 1.8 V, BL 1.168 V; A/um x 0.1 um): instantaneous current at the same node voltage [uA]:
+      +12 ps   node 0.415 V: transient    83.5   DC    94.1
+      +24 ps   node 0.566 V: transient    32.4   DC    36.5
+      +39 ps   node 0.639 V: transient    13.0   DC    13.6
+      +60 ps   node 0.682 V: transient     5.7   DC     7.2
+   V(nBL) - V(nSN) along the victim channel (electron QF at x = 2 / 47 / 77 / 172 nm): BL terminal -> pillar axis at the cell | pillar to 3 nm before the junction | junction + body under the BL-side spacer | gated channel | source
+        12 ps:    753 mV =    7 % |    1 % |   66 % |   25 % |    1 %
+        24 ps:    602 mV =    3 % |    0 % |   42 % |   54 % |    1 %
+        39 ps:    529 mV =    1 % |    0 % |   24 % |   74 % |    0 %
+        60 ps:    486 mV =    1 % |    0 % |   13 % |   86 % |    0 %
+== Dgb10W_c2: single cell, body grounded, slot 10 nm, avalanche on (vanOverstraeten), Cs 4.20 fF, BL write 1.168 V, node NOT set (natural); file to 180 ps; contact current sign: + = into the device at sn_v
+   record: bare CurrentPlot in all 7 Transients = every accepted step written; 389 / 389 points (system / device); time integration BE: charge = step x current at its end (right-end rule)
+   instant                      t [ps] |  SN [V]   BL [V]   WL [V] | body: centre  under gate  h-QF [V] | holes |  I_sn [uA]: electron    hole  displ.   total
+   t = 0 (DC start)               0.00 | 0.0000  0.0000  0.0000 |  -0.2196     -     +0.0000   |     2 |    -0.00     0.00    -0.00    -0.00
+   WL crosses 0.9 V              12.50 | 0.0232  1.1680  0.9000 |  +0.5725     -     +0.7346   |     1 |    88.37     0.00     0.33    88.71
+   +12 ps (paper 0.72)           24.50 | 0.4338  1.1680  1.8000 |  +0.9080     -     +1.2984   |    19 |    89.06     0.00    -0.02    89.04
+   +24 ps (paper 0.92)           36.50 | 0.6060  1.1680  1.8000 |  +1.1440     -     +1.4547   |     2 |    38.29     0.00    -0.01    38.28
+   +39 ps (paper 1.06)           51.50 | 0.6909  1.1680  1.8000 |  +1.2717     -     +1.4586   |     1 |    14.95     0.00    -0.00    14.95
+   +60 ps (paper 1.13)           72.50 | 0.7388  1.1680  1.8000 |  +1.3193     -     +1.4710   |     1 |     6.32     0.00    -0.00     6.32
+   write peak                   120.00 | 0.7804  1.1680  1.8000 |  +1.3405     -     +1.4521   |     1 |     2.26     0.00    -0.00     2.26
+   WL off - 1 ps                121.50 | 0.7548  1.1680  1.2600 |  +0.8863     -     +1.1040   |     1 |   -46.77     0.00    -0.15   -46.92
+   WL off (0.9 V)               122.50 | 0.7478  1.1680  0.9000 |  +0.5734     -     +0.7997   |     1 |   -24.25     0.00    -0.23   -24.48
+   WL off + 5 ps                127.50 | 0.7347  1.1340  0.0000 |  -0.2122     -     +0.0017   |     2 |    -0.00     0.00    -0.00    -0.00
+   BL step done                 130.00 | 0.7347  1.1000  0.0000 |  -0.2124     -     +0.0016   |     2 |    -0.00     0.00    -0.00    -0.00
+   end of hold at Vdd           180.00 | 0.7347  1.1000  0.0000 |  -0.2124     -     +0.0005   |     2 |    -0.00     0.00     0.00    -0.00
+   write vs Fig.4(a) (read, +-30 mV): 0.434 (-286 mV OUT) / 0.606 (-314 mV OUT) / 0.691 (-369 mV OUT) / 0.739 (-391 mV OUT); worst -391 mV at +60 ps
+   interval [ps]          | Cs dV [fC]  integral I_sn [fC] (e / h / displacement)   residual BE | trapezoid: residual | interval mean Cs dV/dt [uA]: model  paper | BL charge [fC]
+     12.50 -   24.50      |  +1.7242    +1.7242 (+1.7239 / +0.0000 / +0.0003)   +0.0000 (  +0.0 %) |  -0.0156 (  -0.9 %) |                    143.7    252 |  -1.4120
+     24.50 -   36.50      |  +0.7234    +0.7234 (+0.7236 / +0.0000 / -0.0002)   +0.0000 (  +0.0 %) |  -0.0127 (  -1.8 %) |                     60.3     70 |  -0.9054
+     36.50 -   51.50      |  +0.3567    +0.3567 (+0.3568 / +0.0000 / -0.0001)   +0.0000 (  +0.0 %) |  -0.0058 (  -1.6 %) |                     23.8     39 |  -0.4356
+     51.50 -   72.50      |  +0.2012    +0.2012 (+0.2012 / +0.0000 / -0.0000)   -0.0000 (  -0.0 %) |  -0.0022 (  -1.1 %) |                      9.6     14 |  -0.2366
+     72.50 -  122.50      |  +0.0375    +0.0375 (+0.0382 / +0.0000 / -0.0006)   -0.0000 (  -0.0 %) |  +0.0014 (  +3.7 %) |                      0.8      - |  -0.2347
+    122.50 -  130.00      |  -0.0548    -0.0548 (-0.0542 / +0.0000 / -0.0006)   -0.0000 (  +0.0 %) |  +0.0015 (  -2.8 %) |                     -7.3      - |  -0.0260
+    130.00 -  180.00      |  -0.0000    -0.0000 (-0.0000 / +0.0000 / +0.0000)   +0.0000 (     - ) |  +0.0000 (     - ) |                     -0.0      - |  +0.0000
+   DC load line Dgb10L_c2 (gates 1.8 V, BL 1.168 V; A/um x 0.1 um): instantaneous current at the same node voltage [uA]:
+      +12 ps   node 0.434 V: transient    89.0   DC   100.4
+      +24 ps   node 0.606 V: transient    38.3   DC    44.6
+      +39 ps   node 0.691 V: transient    14.9   DC    16.5
+      +60 ps   node 0.739 V: transient     6.3   DC     7.4
+   V(nBL) - V(nSN) along the victim channel (electron QF at x = 2 / 47 / 77 / 172 nm): BL terminal -> pillar axis at the cell | pillar to 3 nm before the junction | junction + body under the BL-side spacer | gated channel | source
+        12 ps:    734 mV =    8 % |    1 % |   70 % |   20 % |    2 %
+        24 ps:    562 mV =    4 % |    0 % |   51 % |   44 % |    1 %
+        39 ps:    477 mV =    2 % |    0 % |   30 % |   68 % |    0 %
+        60 ps:    429 mV =    1 % |    0 % |   16 % |   83 % |    0 %
+== Dgb05W_c2: single cell, body grounded, slot 5 nm, avalanche on (vanOverstraeten), Cs 4.20 fF, BL write 1.168 V, node NOT set (natural); file to 180 ps; contact current sign: + = into the device at sn_v
+   record: bare CurrentPlot in all 7 Transients = every accepted step written; 389 / 389 points (system / device); time integration BE: charge = step x current at its end (right-end rule)
+   instant                      t [ps] |  SN [V]   BL [V]   WL [V] | body: centre  under gate  h-QF [V] | holes |  I_sn [uA]: electron    hole  displ.   total
+   t = 0 (DC start)               0.00 | 0.0000  0.0000  0.0000 |  -0.2108     -     +0.0000   |     1 |    -0.00     0.00    -0.00    -0.00
+   WL crosses 0.9 V              12.50 | 0.0237  1.1680  0.9000 |  +0.6110     -     +0.8005   |     0 |    92.12     0.00     0.34    92.46
+   +12 ps (paper 0.72)           24.50 | 0.4442  1.1680  1.8000 |  +0.9322     -     +1.3317   |    22 |    91.48     0.00    -0.02    91.46
+   +24 ps (paper 0.92)           36.50 | 0.6347  1.1680  1.8000 |  +1.1454     -     +1.4831   |     3 |    46.14     0.00    -0.01    46.13
+   +39 ps (paper 1.06)           51.50 | 0.7384  1.1680  1.8000 |  +1.3052     -     +1.5204   |     0 |    18.17     0.00    -0.00    18.17
+   +60 ps (paper 1.13)           72.50 | 0.7954  1.1680  1.8000 |  +1.3739     -     +1.5360   |     0 |     7.35     0.00    -0.00     7.35
+   write peak                   120.00 | 0.8424  1.1680  1.8000 |  +1.4051     -     +1.5257   |     0 |     2.47     0.00    -0.00     2.47
+   WL off - 1 ps                121.50 | 0.8189  1.1680  1.2600 |  +0.9378     -     +1.1672   |     0 |   -41.24     0.00    -0.16   -41.40
+   WL off (0.9 V)               122.50 | 0.8123  1.1680  0.9000 |  +0.6135     -     +0.8600   |     0 |   -23.81     0.00    -0.23   -24.05
+   WL off + 5 ps                127.50 | 0.7994  1.1340  0.0000 |  -0.2033     -     +0.0032   |     1 |    -0.00     0.00    -0.00    -0.00
+   BL step done                 130.00 | 0.7994  1.1000  0.0000 |  -0.2035     -     +0.0029   |     1 |    -0.00     0.00    -0.00    -0.00
+   end of hold at Vdd           180.00 | 0.7994  1.1000  0.0000 |  -0.2035     -     +0.0008   |     1 |    -0.00     0.00     0.00    -0.00
+   write vs Fig.4(a) (read, +-30 mV): 0.444 (-276 mV OUT) / 0.635 (-285 mV OUT) / 0.738 (-322 mV OUT) / 0.795 (-335 mV OUT); worst -335 mV at +60 ps
+   interval [ps]          | Cs dV [fC]  integral I_sn [fC] (e / h / displacement)   residual BE | trapezoid: residual | interval mean Cs dV/dt [uA]: model  paper | BL charge [fC]
+     12.50 -   24.50      |  +1.7662    +1.7662 (+1.7659 / +0.0000 / +0.0003)   +0.0000 (  +0.0 %) |  -0.0161 (  -0.9 %) |                    147.2    252 |  -1.4441
+     24.50 -   36.50      |  +0.8000    +0.8000 (+0.8002 / +0.0000 / -0.0002)   +0.0000 (  +0.0 %) |  -0.0113 (  -1.4 %) |                     66.7     70 |  -0.9849
+     36.50 -   51.50      |  +0.4355    +0.4355 (+0.4356 / +0.0000 / -0.0001)   -0.0000 (  -0.0 %) |  -0.0070 (  -1.6 %) |                     29.0     39 |  -0.5320
+     51.50 -   72.50      |  +0.2397    +0.2397 (+0.2398 / +0.0000 / -0.0001)   -0.0000 (  -0.0 %) |  -0.0027 (  -1.1 %) |                     11.4     14 |  -0.2834
+     72.50 -  122.50      |  +0.0708    +0.0708 (+0.0715 / +0.0000 / -0.0006)   +0.0000 (  +0.0 %) |  +0.0009 (  +1.3 %) |                      1.4      - |  -0.2624
+    122.50 -  130.00      |  -0.0543    -0.0543 (-0.0537 / +0.0000 / -0.0006)   -0.0000 (  +0.0 %) |  +0.0015 (  -2.7 %) |                     -7.2      - |  -0.0261
+    130.00 -  180.00      |  -0.0000    -0.0000 (-0.0000 / +0.0000 / +0.0000)   -0.0000 (     - ) |  +0.0000 (     - ) |                     -0.0      - |  +0.0000
+   DC load line Dgb05L_c2 (gates 1.8 V, BL 1.168 V; A/um x 0.1 um): instantaneous current at the same node voltage [uA]:
+      +12 ps   node 0.444 V: transient    91.5   DC   106.1
+      +24 ps   node 0.635 V: transient    46.1   DC    46.8
+      +39 ps   node 0.738 V: transient    18.2   DC    17.3
+      +60 ps   node 0.795 V: transient     7.3   DC     8.1
+   V(nBL) - V(nSN) along the victim channel (electron QF at x = 2 / 47 / 77 / 172 nm): BL terminal -> pillar axis at the cell | pillar to 3 nm before the junction | junction + body under the BL-side spacer | gated channel | source
+        12 ps:    724 mV =    8 % |    1 % |   72 % |   18 % |    2 %
+        24 ps:    533 mV =    5 % |    1 % |   61 % |   32 % |    1 %
+        39 ps:    430 mV =    2 % |    0 % |   38 % |   59 % |    1 %
+        60 ps:    373 mV =    1 % |    0 % |   21 % |   77 % |    0 %
+body_v currents of the grounded writes [uA], + = out of the device at the contact (e / h / total)
+Dgb20W_c2 +0 ps: 0.00 / -0.03 / -18.66 | +2.5 ps: 0.01 / -0.85 / -9.05 | +6 ps: 0.16 / -10.40 / -12.01 | +12 ps: 0.07 / -4.09 / -5.42 | +24 ps: 0.00 / -0.13 / -0.53 | +60 ps: 0.00 / -0.02 / -0.06
+Dgb10W_c2 +0 ps: 0.00 / -0.01 / -12.51 | +2.5 ps: 0.02 / -1.09 / -6.16 | +6 ps: 0.20 / -10.72 / -11.77 | +12 ps: 0.10 / -4.72 / -5.60 | +24 ps: 0.01 / -0.25 / -0.62 | +60 ps: 0.00 / -0.02 / -0.05
+Dgb05W_c2 +0 ps: 0.00 / -0.01 / -9.24 | +2.5 ps: 0.02 / -1.40 / -4.73 | +6 ps: 0.12 / -10.85 / -11.68 | +12 ps: 0.06 / -4.97 / -5.66 | +24 ps: 0.01 / -0.49 / -0.85 | +60 ps: 0.00 / -0.01 / -0.04

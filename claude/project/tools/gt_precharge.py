@@ -117,7 +117,7 @@ def report(rid, dc=None):
     # sign of the device file's contact current: + = into the device or out of it (fixed by the write, where the node charges)
     sg = 1.0 if (at(T, cq["TotalCurrent"], toff) - at(T, cq["TotalCurrent"], tw)) * (at(t, sn, toff) - at(t, sn, tw)) > 0 else -1.0
     kind = f"{p['Pair']} pair" if p["Pair"] != "one" else "single cell"
-    print(f"== {rid}: {kind}, body {'grounded' if p['Bgc'] else 'floating'}, avalanche {'on (' + str(p.get('IImod') or 'default') + (', ' + p['IIdf'] if p.get('IIdf') else '') + ')' if p['II'] else 'off'}, "
+    print(f"== {rid}: {kind}, body {('grounded' if not p.get('Bgi') else 'floating, insulator slot') if p['Bgc'] else 'floating'}{', slot ' + str(p.get('Bgl', 20)) + ' nm' if p['Bgc'] else ''}, avalanche {'on (' + str(p.get('IImod') or 'default') + (', ' + p['IIdf'] if p.get('IIdf') else '') + ')' if p['II'] else 'off'}, "
           f"Cs {cs * 1e15:.2f} fF, BL write {p['Vwr'] or p['Vdd']} V, " + (f"node SET to {p['SNset']} V at {S['tset'][0] * 1e12:.0f}-{S['tset'][1] * 1e12:.0f} ps" if S["reset"] else "node NOT set (natural)")
           + f"; file to {t[-1] * 1e12:.0f} ps; contact current sign: + = {'out of' if sg > 0 else 'into'} the device at sn_v")
     print(f"   record: {'bare CurrentPlot in all ' + str(n_tr) + ' Transients = every accepted step written' if full else f'timed CurrentPlot ({n_bare} of {n_tr} Transients bare): steps between the plotted points are NOT in the file'}; "

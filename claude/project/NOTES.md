@@ -3,6 +3,19 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-10 (cn) user: "A랑 B1~B3 진행해" - grounded-body diagnosis run (`run_gbd.sh`, 9 runs, 13:55:17 - 14:11, all complete)
+- Template `sde_gt_dvs.cmd`: `Bgc` 2 = ground access in both bodies (A), `Bgl` slot length, `Bgi` 1 = SiO2 slot without contact; probes inside the slot
+  are dropped (`inslot` in make_runs.py; the P2 grounded deck had 4 such points). Structures gb2_zzg2 (A), gb2g_c2hb / gb2g10_c2hb / gb2g5_c2hb,
+  gb2gi_c2hb: gt_precheck ALL PASS, contacts as intended (`_q.sh gbc`). P2's DnwRzbg_zz now on gb2_zzg2 (deck 33460c1fcf4e), not started (G1).
+- B2: SiO2 slot = floating cell within 0.1 uA (DC) and 1 mV (write) -> the cause is the 0 V contact, not the slot. B1: grounded DC current 156.5 / 98.6
+  / 24.3 / 2.3 / 0.1 uA at node 0.2 / 0.4 / 0.6 / 0.72 / 0.82 V (floating 165.5 / 120.6 / 78.4 / 55.3 / 37.8); the transient current equals its DC at
+  the same node voltage -> a DC property; the BL-to-node drop moves into the gated channel (66 % at 0.6 V, 86 - 100 % above 0.8 V): threshold rise
+  by the source-body reverse bias (body effect) with the body held at 0 V 9 nm from each channel face. B3: write peak 0.720 / 0.780 / 0.842 V for
+  20 / 10 / 5 nm (writes +60 ps 0.682 / 0.739 / 0.795; floating 0.960); none reaches 1.1 V. body_v: electrons <= 0.2 uA, holes to -10.9 uA,
+  displacement at the WL crossing -18.7 / -12.5 / -9.2 uA (scales with the slot). Single-cell grounded 20 nm = pair DptRzbg_zz; floating = CxN4Atk.
+- Left: C = 3D unit cell with a ground line of limited width (the 2D plate spans the whole 100 nm), plan P6; D = grounded RH (P5) starting from the
+  1.1 V of Fig.7(c) as a labelled condition (recommended; put to the user). Report: results folder `GT_IRPS2026_접지몸체진단_A_B1-B3_2026-10-10.md`.
+
 ## 2026-10-10 (cm) user: "solutions for the grounded-body problem" - Fig.7(b) re-read; no run
 - Paper (p.4 - 5): "a hypothetically grounded body case2 and the floating body case2 (Fig. 7(b)) are compared"; caption "(b) Floating body vs
   hypothetical grounded body configuration"; Fig.1 / p.1: grounded body = bulk access as in 6F2 DRAM. Fig.7(b) 3D picture (page 5 rendered at
