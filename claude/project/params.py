@@ -108,6 +108,9 @@ P = dict(
                         # node does not pay for it ("charged at t = 0" as a state that was prepared; a diagnosis)      [ASM]
     SNfree=0,           # 1 (with SNset): the same time schedule, but the storage node is NOT set: the natural state after the
                         # write (plan P2 of 2026-10-09: natural pre-charge; the decks stay those of the reset runs otherwise)
+    Hk=1,               # mixed-mode transients: every MaxStep divided by this (InitialStep / MinStep kept), Codex's P1 refinement CxN<Hk>   [ASM]
+    CPbare=0,           # 1: bare CurrentPlot in every Transient = every accepted step written; the timed CurrentPlot of 0 also forces
+                        # the solver onto its times (Codex P1, 2026-10-09: CxS4 / CxS8 changed the steps, not only the output)   [ASM]
     ProbeT=0,           # 1: CurrentPlot probes across the body thickness at the probe's x (1 nm inside both gate-oxide
                         # interfaces, 1/4 and 3/4 of the thickness): the paper does not say where it reads the body potential
     tHold2=0.0,         # row hammer: hold with the BL at Vdd/2 before the hammer [ns]; 0 = as long as tHold (the hold at Vdd)

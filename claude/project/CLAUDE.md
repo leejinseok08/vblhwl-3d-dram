@@ -116,7 +116,8 @@ Run names must differ by more than letter case (the PC's file system is case-bli
 "read it and start"; NOTES (ci)): measures -> numerical convergence (Codex P1, G1) -> natural pre-charge (Claude P2) -> Id-Vg / write (P3) -> five-case FBE
 (P4) -> 2D Y / Z row hammer (P5) -> 3D (P6). Claude owns P2 - P6 runs and the official tools; Codex runs P1 and checks. P0 done (baseline manifest,
 legacy52 denominators, RH counts, 65-contact AC reader, sentence table 37 rows, target registry). P2 decks `DnwR*` ready in `runs/run_p2nw.sh`,
-waiting for G1. Cho's Fig.5(c) is in A (cell current), not A/um. R of Fig.7(b) is not a reproduction variable (user).
+waiting for G1. 2026-10-10 (NOTES (ck)): Codex's time step done (write moves 2.3 mV h/2 -> h/4; body of the attack 7.3 mV, over its 6 mV budget);
+P2 decks regenerated on its finest setting (`Hk=4`, `CPbare=1`, new params); mesh step (Codex) not started. User: do only Claude's tasks. Cho's Fig.5(c) is in A (cell current), not A/um. R of Fig.7(b) is not a reproduction variable (user).
 **Round 39 (2026-10-09, NOTES (ch)):** capacitance matrix of the mini array `ga_c2` (`DgaC_c2`, deck `deck_aca`, `tools/gt_cap_array.py`): C_S 3.0 fF per
 node (text 4.2; the pillar takes half of the L_CAP faces in 3D), Y-Y' coupling 0 (the BL pillar screens; Fig.6(e) agrees), Z-Z' 0.53 aF to the aggressor
 WL = 0.32 mV swing, C_BL 0.075 fF per layer ([9]: 0.2016). X-X' needs the WL cut per row: `gax_c2` (Pair "xx", Wcut 20) building since 12:48, then `DgxC_c2`.

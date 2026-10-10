@@ -233,16 +233,16 @@ def ft(t):
 def pwl(pts):
     return " ".join(f"{ft(t)} {v:.6g}" for t, v in pts)
 
-def solve_transient(S):
+def solve_transient(S, hk=1, bare=0):
     lines = ["Solve {",
              "  Coupled( Iterations=200 LineSearchDamping=1e-4 ){ Poisson eQuantumPotential }",
              "  Coupled{ Poisson Electron Hole eQuantumPotential Contact Circuit }"]
     for (t1, t2, dt) in S.seg:
         lines.append(f"  Transient( InitialTime={ft(t1)} FinalTime={ft(t2)} InitialStep={dt/10:.3e} "
-                     f"MaxStep={dt:.3e} MinStep=1e-18 Increment=1.5 Decrement=2 )")
+                     f"MaxStep={dt / hk:.3e} MinStep=1e-18 Increment=1.5 Decrement=2 )")
         lines.append("    { Coupled{ Poisson Electron Hole eQuantumPotential Contact Circuit }")
         nint = max(4, min(50, round((t2 - t1) / dt)))       # the system and current files get a point per maximum step (4 was too coarse for the write curve)
-        lines.append(f"      CurrentPlot( Time=( Range=({ft(t1)} {ft(t2)}) Intervals={nint} ) ) }}")
+        lines.append("      CurrentPlot }" if bare else f"      CurrentPlot( Time=( Range=({ft(t1)} {ft(t2)}) Intervals={nint} ) ) }}")
     lines.append('  Plot( FilePrefix="end" )')
     lines.append("}")
     return "\n".join(lines) + "\n"
@@ -383,7 +383,7 @@ def deck_cho(rid, p, struct, test):
     if pair:
         sysl += [f"Capacitor_pset Csa ( nSNa 0 ) {{ capacitance = {p['Cs']:g} }}", f"Vsource_pset vwla ( nWLa 0 ) {{ pwl = ( {pwl(WA)} ) }}"]; plotn += " v(nSNa) v(nWLa)"
     sns = [] if test == "H" else ["nSN", "nSNa"] if pair else ["nSN"]; sysl += [f"Set( {n} = 0 )" for n in sns]      # DC start: a node that sees only its capacitor and a 1e-21 A contact is singular
-    solve = solve_transient(S).replace("Contact Circuit }\n", "Contact Circuit }\n" + "".join(f"  Unset( {n} )\n" for n in sns), 1)
+    solve = solve_transient(S, p["Hk"], p["CPbare"]).replace("Contact Circuit }\n", "Contact Circuit }\n" + "".join(f"  Unset( {n} )\n" for n in sns), 1)
     if tset and not p["SNfree"]:
         a, b = (f"  Transient( InitialTime={ft(x)} " for x in tset)
         if solve.count(a) != 1 or solve.count(b) != 1: raise ValueError(f"{rid}: cannot place Set / Unset of the storage node")
@@ -991,10 +991,11 @@ cfg2d("pti", "R", rhsel=tuple(RSX), rst=RSX, rh=dict(Idle=1), k_cs=1.0, par=PN)
 # Plan P2 of 2026-10-09 (Codex / Claude, "2D first"): natural pre-charge. fin7's Z-Z' row-hammer decks (floating / avalanche off, floating / default
 # avalanche on, grounded body / on) with ONE change, the storage node not set to 1.1 V at 130 - 140 ps (SNfree: same time schedule), run to the
 # start of the hammer (Ncyc=0; tEnd = the first aggressor edge at 245 ps). Output only added: the victim's body average and the aggressor's holes
-# (ProbeX) and quasi-Fermi potential / potential / electron density along the victim's channel (ProbeE); the CurrentPlot times are those of the
-# originals, so up to 130 ps the runs must repeat the originals' write (a check that the added output changes nothing). The reset runs DptRzb_zz,
+# (ProbeX) and quasi-Fermi potential / potential / electron density along the victim's channel (ProbeE). The reset runs DptRzb_zz,
 # DptRzbi_zz, DptRzbg_zz are the controls (before the reset: SN 1.021 / 1.031 / 0.673 V, Codex). Not to start before Codex's G1 (time / mesh).
-cfg2d("nw", "R", rhsel=("Rzb_zz", "Rzbi_zz", "Rzbg_zz"), rst=RSX, k_cs=1.0, par=PN, rh=dict(Ncyc=0, SNfree=1, ProbeX=1, ProbeE=1))
+# 2026-10-10: time and output as Codex's finest P1 step (CxN4: every MaxStep / 4, bare CurrentPlot), so up to 130 ps DnwRzbi_zz must repeat
+# CxN4Atk's write (the check that the added output changes nothing); the write there moved 2.3 mV at most from h/2 to h/4 (Codex's file).
+cfg2d("nw", "R", rhsel=("Rzb_zz", "Rzbi_zz", "Rzbg_zz"), rst=RSX, k_cs=1.0, par=PN, rh=dict(Ncyc=0, SNfree=1, ProbeX=1, ProbeE=1, Hk=4, CPbare=1))
 # The current: with 4.2 fF the write of Fig.4(a) asks for 252 / 70 / 39 / 14 uA on average in its four intervals; the model has 168 / 69 / 41 /
 # 24 uA at node voltages 240 - 190 mV lower. DpL = the DC charging current along the write (gates 1.8 V, BL 1.168 V, node swept 0 -> 1.168 V) with
 # the electron quasi-Fermi potential along the channel and down the pillar: at which node voltage the current is short, and where the
