@@ -3,6 +3,18 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-10 (cm) user: "solutions for the grounded-body problem" - Fig.7(b) re-read; no run
+- Paper (p.4 - 5): "a hypothetically grounded body case2 and the floating body case2 (Fig. 7(b)) are compared"; caption "(b) Floating body vs
+  hypothetical grounded body configuration"; Fig.1 / p.1: grounded body = bulk access as in 6F2 DRAM. Fig.7(b) 3D picture (page 5 rendered at
+  1200 dpi, read): "Ground Access" = a short magenta segment at mid-thickness near the middle of the body, about 1/4 - 1/3 of the drawn body
+  length - the same kind of mid-body contact as our slot (20 x 2 nm at 0.4 - 0.6 Lg). Read as well: a second magenta segment in the AGGRESSOR body
+  (upper layer) of the grounded picture, none in the floating one; our gb2_zzg grounds the victim only. The circuit of Fig.7(b) shows the victim
+  body only. Not in the paper: contact thickness, extent across the width (a 2D slot spans the whole 100 nm width), contact type, how the
+  grounded cell was pre-charged (Fig.7(c) starts at 1.1 V).
+- Proposed (not registered): A ground access in both bodies (structure vs Fig.7(b)); B1 DC load line of a grounded single cell against DpL_c2,
+  B2 the same slot as an insulator (no contact), B3 contact length 5 / 10 / 20 nm; C the 3D unit cell with a ground line of limited width (P6);
+  D if nothing defensible writes to 1.1 V, the grounded RH keeps the 1.1 V start as a labelled condition, never as natural.
+
 ## 2026-10-10 (cl) user forwarded Codex's P2 prompt (`docs/CLAUDE_P2_HANDOFF_AFTER_P1_2026-10-10.md`): prepare P2 while G1 waits (Codex's h/8 running since 12:50). No device run
 - Report: results folder `GT_IRPS2026_P2준비_자연precharge_2026-10-10.md` (copy in the repository's `claude/reports/`); tables
   `claude/data/tables/precharge_p2_existing_raw_2026-10-10.txt`, `precharge_p2_first30ps_split_grounded_2026-10-10.txt`, `p2_deck_diff_2026-10-10.txt`.
