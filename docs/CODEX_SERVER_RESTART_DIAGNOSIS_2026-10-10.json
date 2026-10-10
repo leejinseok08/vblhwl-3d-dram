@@ -1,0 +1,71 @@
+{
+  "server_UTC": "2026-10-10T10:35:14.173485+00:00",
+  "checks": [
+    {
+      "command": [
+        "journalctl",
+        "--list-boots",
+        "--no-pager"
+      ],
+      "returncode": 1,
+      "stderr": "Hint: You are currently not seeing messages from other users and the system.\n      Users in the 'systemd-journal' group can see all messages. Pass -q to\n      turn off this notice.\nNo journal files were opened due to insufficient permissions.\n",
+      "line_count": 0,
+      "relevant_lines": []
+    },
+    {
+      "command": [
+        "journalctl",
+        "-k",
+        "-b",
+        "-1",
+        "-n",
+        "2000",
+        "--no-pager"
+      ],
+      "returncode": 1,
+      "stderr": "Hint: You are currently not seeing messages from other users and the system.\n      Users in the 'systemd-journal' group can see all messages. Pass -q to\n      turn off this notice.\nNo journal files were opened due to insufficient permissions.\n",
+      "line_count": 0,
+      "relevant_lines": []
+    },
+    {
+      "command": [
+        "journalctl",
+        "-k",
+        "-b",
+        "0",
+        "-n",
+        "1000",
+        "--no-pager"
+      ],
+      "returncode": 1,
+      "stderr": "Hint: You are currently not seeing messages from other users and the system.\n      Users in the 'systemd-journal' group can see all messages. Pass -q to\n      turn off this notice.\nNo journal files were opened due to insufficient permissions.\n",
+      "line_count": 0,
+      "relevant_lines": []
+    },
+    {
+      "command": [
+        "dmesg",
+        "-T"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "line_count": 2141,
+      "relevant_lines": [
+        "[Sat Oct 10 16:50:00 2026] CPU0: Thermal monitoring enabled (TM1)",
+        "[Sat Oct 10 16:50:00 2026] NMI watchdog: enabled on all CPUs, permanently consumes one hw-PMU counter.",
+        "[Sat Oct 10 16:50:13 2026] iTCO_wdt: Intel TCO WatchDog Timer Driver v1.11"
+      ]
+    }
+  ],
+  "boot_inventory_error": "Command '['journalctl', '--list-boots', '--no-pager']' returned non-zero exit status 1.",
+  "/proc/uptime": "9914.01 1135803.95",
+  "/proc/loadavg": "49.58 118.48 105.36 58/2104 52490",
+  "/proc/meminfo": "MemTotal:       263401972 kB\nMemAvailable:   142482424 kB\nSwapTotal:      33554428 kB\nSwapFree:       33554428 kB",
+  "readable_system_logs": {
+    "/var/log/messages": false,
+    "/var/log/secure": false,
+    "/var/log/kern.log": false,
+    "/var/log/syslog": false
+  },
+  "oom_counters_current_boot": []
+}

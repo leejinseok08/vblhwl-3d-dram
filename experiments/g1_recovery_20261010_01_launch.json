@@ -1,0 +1,61 @@
+{
+  "controller_observed_UTC": "2026-10-10T11:00:22+00:00",
+  "server_observed_UTC": "2026-10-10T10:37:56+00:00",
+  "clock_difference_seconds": 1346,
+  "runner_pid": 53432,
+  "registered_commit": "4e484bedcc709193fc63c3a338497396a9c2dfcb",
+  "server_root": "~/vblhwl_3d_dram/codex_validation/g1_recovery_20261010_01",
+  "live_status": {
+    "updated_UTC": "2026-10-10T10:38:09.951168+00:00",
+    "server_boot_id": "b94b5cba-5ed8-4b32-a607-28035cff6b92",
+    "finished": false,
+    "reason": null,
+    "runs": {
+      "CxR16Atk": {
+        "state": "running",
+        "factor": 16,
+        "pid": 53441,
+        "started_UTC": "2026-10-10T10:36:09.795737+00:00",
+        "latest_attempt_ns": 0.0081125
+      },
+      "CxR16Idle": {
+        "state": "running",
+        "factor": 16,
+        "pid": 53442,
+        "started_UTC": "2026-10-10T10:36:09.798364+00:00",
+        "latest_attempt_ns": 0.008425
+      },
+      "CxRJ8Atk": {
+        "state": "running",
+        "factor": 8,
+        "pid": 53446,
+        "started_UTC": "2026-10-10T10:36:09.800631+00:00",
+        "latest_attempt_ns": 0.007350000000000001
+      },
+      "CxRJ8Idle": {
+        "state": "running",
+        "factor": 8,
+        "pid": 53451,
+        "started_UTC": "2026-10-10T10:36:09.802936+00:00",
+        "latest_attempt_ns": 0.007475000000000001
+      },
+      "CxRA8Atk": {
+        "state": "running",
+        "factor": 8,
+        "pid": 53457,
+        "started_UTC": "2026-10-10T10:36:09.806084+00:00",
+        "latest_attempt_ns": 0.0066
+      },
+      "CxRA8Idle": {
+        "state": "running",
+        "factor": 8,
+        "pid": 53469,
+        "started_UTC": "2026-10-10T10:36:09.809158+00:00",
+        "latest_attempt_ns": 0.006475
+      }
+    }
+  },
+  "process_verification": "All six sdevice PIDs present after two minutes, CPU 281-292 percent each. This establishes active computation, not completion.",
+  "G1_confirmed": false,
+  "restart_cause": "Unknown; previous boot journal and system logs inaccessible. Current boot dmesg contains no observed OOM, kernel panic or overheating error. Current resource availability does not exclude past pressure."
+}
