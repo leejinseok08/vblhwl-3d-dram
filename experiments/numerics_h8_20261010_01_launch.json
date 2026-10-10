@@ -1,0 +1,33 @@
+{
+  "owner": "Codex",
+  "batch": "numerics_h8_20261010_01",
+  "started_KST": "2026-10-10 12:50:44",
+  "runner_pid": 84122,
+  "device_pids": {
+    "CxN8Atk": 84130,
+    "CxN8Idle": 84131
+  },
+  "registered_commit": "23811f60d67f1c713ee3e9961e1e7e4a804563b1",
+  "parameter_sha256": "436b6934cce508a820c61a2444970bea428a745c16d1051fa58ff4933e297bb2",
+  "review_gate_sha256": "b04ba351abfcb47eaa9971fa59c26bf2f3358b0da1b74e3e8420eb7a90d1d3f0",
+  "locked_inputs_sha256": "3cce6b400a54538c12a60f6a57c57b1bedb1d6530053fdbade8acf91b6bde018",
+  "jobs": 2,
+  "threads_per_run": 4,
+  "storage_estimate_MB": 100,
+  "RAM": "Observed device RSS about 0.72 GiB each; not peak RAM",
+  "state": "running; no completion or G1 verdict",
+  "prior_raw": "numerics_20261009_01/raw/completed_runs_20261010",
+  "changed": "Only run IDs and 50 MaxStep /2 from h4; all other deck content unchanged",
+  "stop": "Solver failure or invalid extracted output stops batch progression; no automatic P2/P6",
+  "next": "Assess h8 time refinement, then necessary time/Newton and two prepared mesh candidates under joint plan",
+  "observed_KST": "2026-10-10 12:52:30",
+  "RSS_kB_at_observation": {
+    "runner": 11768,
+    "CxN8Atk": 759376,
+    "CxN8Idle": 755744
+  },
+  "latest_attempt_ns_at_observation": {
+    "CxN8Atk": 0.010125,
+    "CxN8Idle": 0.010375
+  }
+}

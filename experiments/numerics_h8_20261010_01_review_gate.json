@@ -1,0 +1,21 @@
+{
+  "paper_and_all_precheck_lines_reviewed": true,
+  "reviewed_UTC": "2026-10-10T03:50:42.658556+00:00",
+  "manifest_sha256": "33cfa50b171aa96fa149e45ad8f5073a2215047d9059748ab3f95a0c4bbc1981",
+  "precheck_sha256": "834e414837e0443789f1bdc0d29c5e4807a5572e7f1498d724fe3eefbf83c820",
+  "junction_sha256": "4e53b9de25b05d52917fc3815524ef4da0ae6b8759443cff1b0d5312489ed0a6",
+  "mesh_info_sha256": "2893c7f67a7b61371914602187feace58ea5487c8a2742853733d1112acc3b97",
+  "registered_commit": "23811f60d67f1c713ee3e9961e1e7e4a804563b1",
+  "paper_review": "Fresh full text and rendered pages 2-5: Sec.III/V, Fig.2/4/5/6/7. C2 Tbody20 Nch1e18 WF4.7, Cs4.2fF, VDD1.1/VPP1.8. Reset and 2D pair retained as diagnostics. Fig7b R not calibration knob. Undisclosed material/temperature/model assumptions preserved.",
+  "mesh_review": "All 7 contacts, both channel regions, dimension2/22459 vertices, six height cuts: junctions50/175nm N+1e20/p1e18, and all Fig5 geometry checks read and pass.",
+  "resource_check_KST": "2026-10-10 12:50:20",
+  "live_device_or_runner_before_launch": 0,
+  "quota_MB": {
+    "used": 7707,
+    "soft": 9216,
+    "hard": 10240
+  },
+  "h4_peak_pair_MB": 40.48,
+  "h8_peak_estimate_MB": 100,
+  "scope": "Exactly two h8 runs, each 4 threads. No P2/P6."
+}
