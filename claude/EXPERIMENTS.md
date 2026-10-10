@@ -362,16 +362,16 @@ Hsu, Cho, Sharda, Park, Datta, Yu, IMW 2025 Fig. 2(c) (TED 73(9), 2026에 같은
 
 | 필드 | 내용 |
 |---|---|
-| 소유자 / 배치 | Claude / `run_p2nw.sh`: `DnwRzb_zz`, `DnwRzbi_zz`, `DnwRzbg_zz` |
+| 소유자 / 배치 | Claude / `run_p2nw.sh`: `DnwRzb_zz`, `DnwRzbi_zz` (2026-10-10 14:24부터). `DnwRzbg_zz`는 덱만 보존(공동 계획 2fccf40: 보존하되 실행 목록에서 제외; 14:24에 지웠다가 같은 생성기로 다시 만듦, 해시 33460c1fcf4e 일치), 배치에 없음 |
 | 질문 | 강제 설정(`SNset`) 없이 write → WL off → hold를 거치면 해머 직전(245 ps)의 SN, 몸체 전위, 정공은 어떤가. 충전이 모자란 구간과 전류, 몸체 상태는 무엇인가 |
 | 바뀌는 변수 | 하나: 130 – 140 ps의 `Set(nSN=1.1)` / `Unset` 제거(`SNfree=1`, 시간표는 그대로). 공격 펄스 전에 끝냄(`Ncyc=0`, tEnd 245 ps). 출력만 추가: 피해 몸체 평균·공격 몸체 정공(`ProbeX`), 피해 채널을 따라 5 nm마다 준페르미 전위·전위·전자 밀도(`ProbeE`). 수치 설정은 아래 줄 |
 | 고정 변수 | 나머지 전부 원본과 같음: 구조, 모델, 파형, 4.2 fF, 시간 구간, 파라미터 파일. diff로 확인함(차이는 run 이름, Set/Unset 두 줄, 245 ps 이후 구간과 공격 펄스, 탐침) |
 | 원본(대조군, 재사용) | `DptRzb_zz`(부유, II OFF), `DptRzbi_zz`(부유, 기본 II ON), `DptRzbg_zz`(접지, 기본 II ON). reset 직전 SN 1.021 / 1.031 / 0.673 V (Codex 판독). `DnwRzbi_zz`는 같은 시간·출력 설정의 Codex `CxN4Atk`도 대조군 (Codex raw, 읽기만) |
 | 근거 | Cho III절 "Prior to RHE/FBE simulation, the cell was pre-charged through transient simulation (Fig. 4(a))", V절 "the storage node is first charged to '1' through transient simulation, after which WL toggling is applied" |
 | device Case / topology | C2 / Z (부유, 부유, 접지 몸체) |
-| 모델 계열 | OFF(`DnwRzb`) / 기본 avalanche ON(`DnwRzbi`, `DnwRzbg`). 각 run 안에서 처음부터 끝까지 같은 모델 |
+| 모델 계열 | OFF(`DnwRzb`) / 기본 avalanche ON(`DnwRzbi`). 각 run 안에서 처음부터 끝까지 같은 모델 |
 | 구조 점검 | `gt_precheck.sh gb2_zz:20:2 gb2_zzg:20:2` ALL PASS (2026-10-09 밤): Lg 100, Tbody 20, Tox 5, Tg 20, dVOX 30, 스페이서 25 / 25, 접합 50.00 / 175.00 nm(6개 높이), N+ 1e20, 몸체 1e18 |
-| 해시 (SHA-256 앞 12자리) | 덱 (2026-10-10) `DnwRzb` 73ccf36c5c24, `DnwRzbi` ba3dae9aff3e, `DnwRzbg` a7a04c698ced (2026-10-09의 100b774e53ad / 79413ec3cb40 / 742d1e8fa17f는 폐기); 메시 gb2_zz aa0f32997e33, gb2_zzg da87d0f54771(fin7과 같음); 파라미터 436b6934cce5 |
+| 해시 (SHA-256 앞 12자리) | 덱 (2026-10-10) `DnwRzb` 73ccf36c5c24, `DnwRzbi` ba3dae9aff3e, `DnwRzbg` a7a04c698ced → 33460c1fcf4e (`gb2_zzg2`, 보존만) (2026-10-09의 100b774e53ad / 79413ec3cb40 / 742d1e8fa17f는 폐기); 메시 gb2_zz aa0f32997e33, gb2_zzg da87d0f54771(fin7과 같음); 파라미터 436b6934cce5 |
 | 수치 설정 | 2026-10-10: Codex P1의 가장 촘촘한 단계와 같게 함. 모든 MaxStep ÷ 4 (`Hk=4`; InitialStep·MinStep 그대로), 지정 시각 없는 CurrentPlot (`CPbare=1`: 모든 계산점 기록). 130 ps까지의 Transient 구간은 `CxN4Atk`와 수치로 같음(대조함), 소자·물리·Math 블록도 같음; 차이는 탐침, reset 없음, 245 ps 종료뿐. 메시는 G1의 메시 단계 결과가 다르면 다시 만들고 해시를 다시 등록해요. 옛 격자의 `DptRzb_zz` / `DptRzbg_zz`는 계획대로 대조군으로 재사용하고, 시간 격자 차이(Codex `CxN1→2→4`: write 최대 5.4 → 2.3 mV, 공격 전 몸체 0.7 mV)를 오차로 같이 적어요 |
 | 예상 규모 | 2D 쌍, 245 ps 과도 3개(원본 2.125 ns 실행의 앞부분), 각 수 분, 저장 각 10 MB 이하 |
 | 판정 / 중단 기준 | (1) 130 ps 전의 SN: `DnwRzbi_zz`는 G1 격자의 Codex attack 실행과 같아야 해요(같은 덱이라 차이는 출력 추가 탓). 130 ps 값이 한 가지(reset 없음), BE 잔차 0. 아니면 분석 전에 원인부터 찾아요. `DnwRzb` / `DnwRzbg`는 같은 격자의 reset 대조가 없어서 옛 격자 `Dpt*`는 참고로만 적고 통과 표에 넣지 않아요 (2026-10-10, Codex 지침: 다른 설정의 raw를 한 통과 표에 섞지 않음). (2) 산출: 245 ps의 SN, 몸체 중심·평균 전위, 정공 수, 단자 e / h / 변위 전류, Cs·dV/dt와 SN 단자 전류의 전하 수지, write 동안 채널 / underlap / 접촉의 전압 분배. (3) 부족을 설명한 것을 쓰기 재현 성공이라고 하지 않아요 |

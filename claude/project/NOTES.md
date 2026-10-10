@@ -3,6 +3,13 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-10 (cp) Codex updated the joint plan and the P2 prompt (main 2fccf40, user relayed): P2 = floating OFF / ON, grounded raw kept as history
+- Differences to my state, fixed: the plan keeps the prepared deck DnwRzbg_zz but out of run_p2nw.sh; I had deleted it (never run) -> regenerated
+  from the same config (gb2_zzg2 back in STRUCTS), hash 33460c1fcf4e as recorded, on the server again; run_p2nw.sh built with
+  `--only DnwRzb_ DnwRzbi_` (2 runs). Target registry: W origin text now the interpolated crossing, "denominator always 52" -> legacy52 history /
+  scope51 current, expanded list ext8 with item IDs E1 - E8 and denominator 8 (fin7 0 / 8: 2 undefined, 5 not run, 1 conditional). Sentence table:
+  row 27 (grounded suppression) excluded -> 36 sentences, 18 / 9 / 5 / 4. Codex's h/8 pair completed 14:46 (its verdict; mesh step next).
+
 ## 2026-10-10 (co) user: "지금 ground body 만드는거야? Ground body case는 재현에서 제외해" - grounded body out of the reproduction
 - Nothing grounded was running (run_gbd.sh ended 14:11; only Codex's CxN8Atk live). Removed from the reproduction: Fig.7(c) grounded curve, Fig.7(d)
   16.8k, Fig.7(e) 1.8 mV, the RI item "zz gnd". `score2d.rh` keeps that item out of RI (in `GND`), `repro_rate.py` prints `scope51` (legacy52 minus
