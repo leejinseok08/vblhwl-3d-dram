@@ -58,9 +58,8 @@ STRUCTS = dict(
     gb2_c3hb=dict(Tbody=10, Blc="bot", Blx=180), gb2_c4hb=dict(Tbody=10, Nch=1e16, Blc="bot", Blx=180),      # 2 pitches, the 10 nm bodies (Cases 3 - 5)
     # the row-hammer pairs of the device since 2026-10-08 (fin6): BL contact at the pillar end, two Z pitches below the pair
     gb2_yy=dict(Pair="yy", Blc="bot", Blx=200), gb2_zz=dict(Pair="zz", Blc="bot", Blx=200), gb2_zzg=dict(Pair="zz", Blc="bot", Blx=200, Bgc=1),
-    # grounded body as drawn in Fig.7(b) (2026-10-10, NOTES (cm)): a ground access in both bodies (A); single Case 2 cells for the diagnosis of
-    # the grounded write (B1 - B3): body slot 20 / 10 / 5 nm with a contact, 20 nm as SiO2 without a contact
-    gb2_zzg2=dict(Pair="zz", Blc="bot", Blx=200, Bgc=2),
+    # single Case 2 cells for the diagnosis of the grounded write (2026-10-10, NOTES (cn); B1 - B3): body slot 20 / 10 / 5 nm with a contact,
+    # 20 nm as SiO2 without a contact. The grounded body was then excluded from the reproduction (user, NOTES (co)): kept as a record only
     gb2g_c2hb=dict(Blc="bot", Blx=200, Bgc=1), gb2g10_c2hb=dict(Blc="bot", Blx=200, Bgc=1, Bgl=10), gb2g5_c2hb=dict(Blc="bot", Blx=200, Bgc=1, Bgl=5),
     gb2gi_c2hb=dict(Blc="bot", Blx=200, Bgc=1, Bgi=1),
     # mesh candidates of gb2_zz for the mesh step of plan P1 (Codex runs it; 2026-10-09), same structure, doping and contacts:
@@ -1008,8 +1007,8 @@ cfg2d("pti", "R", rhsel=tuple(RSX), rst=RSX, rh=dict(Idle=1), k_cs=1.0, par=PN)
 # DptRzbi_zz, DptRzbg_zz are the controls (before the reset: SN 1.021 / 1.031 / 0.673 V, Codex). Not to start before Codex's G1 (time / mesh).
 # 2026-10-10: time and output as Codex's finest P1 step (CxN4: every MaxStep / 4, bare CurrentPlot), so up to 130 ps DnwRzbi_zz must repeat
 # CxN4Atk's write (the check that the added output changes nothing); the write there moved 2.3 mV at most from h/2 to h/4 (Codex's file).
-# 2026-10-10 (A, NOTES (cm)): the grounded pair carries the ground access of Fig.7(b) in both bodies (gb2_zzg2); probes inside the body slot dropped.
-cfg2d("nw", "R", rhsel=("Rzb_zz", "Rzbi_zz", "Rzbg_zz"), rst=dict(RSX, Rzbg_zz="gb2_zzg2"), k_cs=1.0, par=PN, rh=dict(Ncyc=0, SNfree=1, ProbeX=1, ProbeE=1, Hk=4, CPbare=1))
+# 2026-10-10: the grounded body is excluded from the reproduction (user: "Ground body case는 재현에서 제외해", NOTES (co)): P2 = the two floating pairs.
+cfg2d("nw", "R", rhsel=("Rzb_zz", "Rzbi_zz"), rst=RSX, k_cs=1.0, par=PN, rh=dict(Ncyc=0, SNfree=1, ProbeX=1, ProbeE=1, Hk=4, CPbare=1))
 # Grounded-body diagnosis (user, 2026-10-10: "A랑 B1~B3 진행해"; NOTES (cm)): why the grounded cell cannot be written above 0.72 V. Case 2 single
 # cells, one change each against gb2_c2hb: B1 DC load line as DpL_c2 (Dgb*L_c2), B2 the 20 nm slot as SiO2 without a contact (gbi), B3 contact
 # 20 / 10 / 5 nm (gb20 / gb10 / gb05). Writes (deck cho:W, Fig.4(a) waveform, 4.2 fF, to 180 ps) with the default avalanche model as in the grounded

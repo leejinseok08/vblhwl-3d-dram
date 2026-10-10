@@ -123,7 +123,9 @@ write shortfall = first 12 ps after the WL crossing; DC current is no bound (378
 body effect. P2 runs only after G1 and Codex's final settings (`Hk=4` provisional).
 14:15 (NOTES (cm), (cn); user "A랑 B1~B3 진행해"): grounded body diagnosed - the 0 V contact (not the slot) cuts the channel off near node 0.8 V
 in DC (body effect); contact 20 / 10 / 5 nm: write peak 0.72 / 0.78 / 0.84 V. Fig.7(b) has a ground access in both bodies: `gb2_zzg2` (Bgc 2), used by
-P2's DnwRzbg_zz. Open: C (3D, narrow ground line, P6), D (grounded RH from 1.1 V as a labelled condition) - put to the user. Cho's Fig.5(c) is in A (cell current), not A/um. R of Fig.7(b) is not a reproduction variable (user).
+P2's DnwRzbg_zz. Open: C (3D, narrow ground line, P6), D (grounded RH from 1.1 V as a labelled condition) - put to the user.
+**Superseded the same afternoon (NOTES (co)): the user EXCLUDED the grounded body case from the reproduction.** No grounded runs, scores or
+structures from now on; rate = `scope51` (35 / 51 = 68.6 % for fin7; legacy52 printed for history); P2 = DnwRzb_zz + DnwRzbi_zz. Cho's Fig.5(c) is in A (cell current), not A/um. R of Fig.7(b) is not a reproduction variable (user).
 **Round 39 (2026-10-09, NOTES (ch)):** capacitance matrix of the mini array `ga_c2` (`DgaC_c2`, deck `deck_aca`, `tools/gt_cap_array.py`): C_S 3.0 fF per
 node (text 4.2; the pillar takes half of the L_CAP faces in 3D), Y-Y' coupling 0 (the BL pillar screens; Fig.6(e) agrees), Z-Z' 0.53 aF to the aggressor
 WL = 0.32 mV swing, C_BL 0.075 fF per layer ([9]: 0.2016). X-X' needs the WL cut per row: `gax_c2` (Pair "xx", Wcut 20) building since 12:48, then `DgxC_c2`.

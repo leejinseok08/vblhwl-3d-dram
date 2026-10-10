@@ -11,12 +11,15 @@
 #   stand-in         = score2d took a baseline run in place of the configuration's own (score2d.first): not counted as a pass.
 # The rate is passes / 52; passes / (own items scored) is printed next to it. Items added since (Fig.7(e), X-X', the natural initial state,
 # Ion C3 -> C5, sentence checks) are a separate list with its own denominator (results folder: target registry), not mixed into legacy52.
+# scope51 (user, 2026-10-10: "Ground body case는 재현에서 제외해"): legacy52 without the grounded-body item of Fig.7 (16.8k cycles); this is
+# the reproduction rate from then on, legacy52 is printed next to it for the history.
 import sys
 import score2d as S
 NAMES = [("IV Fig.5(c)", "cal"), ("W  Fig.4(a)", "cal"), ("BR Fig.8(a)", "cond"), ("L1 Fig.8(b)", "pred"), ("L2 Fig.8(c)", "pred"), ("RH Fig.6(e)", "pred"), ("RI Fig.7   ", "pred")]
 LEGACY = [28, 4, 5, 5, 5, 2, 3]       # items per group when everything is there: IV 5 cases x (v10 v8 v6 lm1 ss) + l1 of Cases 1, 4, 5
+SCOPE = [28, 4, 5, 5, 5, 2, 2]        # scope51: RI without the grounded body
 W_PRED = ("fin7", "fin6t", "pt")       # configurations whose capacitor is the paper's text value: nothing is fitted to Fig.4(a), the write is a prediction
-assert sum(LEGACY) == 52
+assert sum(LEGACY) == 52 and sum(SCOPE) == 51
 
 
 def groups(tag):
@@ -34,10 +37,10 @@ def groups(tag):
     return out
 
 
-def count(tag, gs):
-    """Per group: (name, kind, pass, fail, missing, stand_in, worst, items); fixed denominator LEGACY."""
+def count(tag, gs, den=SCOPE):
+    """Per group: (name, kind, pass, fail, missing, stand_in, worst, items); fixed denominator den (SCOPE or LEGACY)."""
     rows = []
-    for (name, kind), (e, sub), n in zip(NAMES, gs, LEGACY):
+    for (name, kind), (e, sub), n in zip(NAMES, gs, den):
         if name.startswith("W ") and tag in W_PRED: kind = "pred"
         k = 0 if sub else sum(abs(x) <= 1 for x in e)
         rows.append((name, kind, k, 0 if sub else len(e) - k, n - len(e), len(e) if sub else 0, max(e, key=abs) if e else None, e))
@@ -46,7 +49,8 @@ def count(tag, gs):
 
 def main(tags):
     for tag in tags:
-        rows = count(tag, groups(tag)); print(tag)
+        gs = groups(tag); rows = count(tag, gs); print(tag)
+        lg = count(tag, gs[:-1] + [(gs[-1][0] + list(S.GND), gs[-1][1])], LEGACY); ok52 = sum(r[2] for r in lg)
         for name, kind, ok, bad, mis, sub, worst, e in rows:
             st = f"{ok:2d} pass {bad:2d} fail" + (f" {mis:2d} missing" if mis else "") + (f" {sub:2d} stand-in" if sub else "")
             w = "" if worst is None else f"  worst {worst:+6.2f} | " + " ".join(f"{x:+.2f}" for x in e)
@@ -54,15 +58,17 @@ def main(tags):
         ok = sum(r[2] for r in rows); own = sum(r[2] + r[3] for r in rows); mis = sum(r[4] for r in rows); sub = sum(r[5] for r in rows)
         kinds = {}
         for r in rows: a, b = kinds.get(r[1], (0, 0)); kinds[r[1]] = (a + r[2], b + r[2] + r[3] + r[4] + r[5])
-        print(f"  legacy52: {ok} / 52 = {100 * ok / 52:.1f} %   (own items scored {own}: {ok} / {own} = {100 * ok / own:.1f} %; missing {mis}, stand-in {sub})   |   "
+        print(f"  scope51: {ok} / 51 = {100 * ok / 51:.1f} %   (own items scored {own}: {ok} / {own} = {100 * ok / own:.1f} %; missing {mis}, stand-in {sub})   |   "
               + "   ".join(f"{k} {a} / {b}" for k, (a, b) in kinds.items()))
+        print(f"  legacy52 (history, grounded body item included: {'none' if not S.GND else f'{S.GND[0]:+.2f}'}): {ok52} / 52 = {100 * ok52 / 52:.1f} %")
 
 
 def selfcheck():
     """A missing group stays in the denominator, a stand-in group is not a pass."""
     gs = [([0.5] * 28, False), ([2.0] * 4, False), ([0.1] * 5, True), ([0.5] * 5, False), ([], False), ([0.5, 3.0], False), ([0.5] * 3, False)]
-    rows = count("x", gs); ok = sum(r[2] for r in rows)
+    rows = count("x", gs, LEGACY); ok = sum(r[2] for r in rows)
     assert ok == 28 + 5 + 1 + 3 and rows[2][5] == 5 and rows[4][4] == 5 and sum(r[2] + r[3] + r[4] + r[5] for r in rows) == 52
+    rows = count("x", gs[:-1] + [([0.5] * 2, False)]); assert sum(r[2] + r[3] + r[4] + r[5] for r in rows) == 51
 
 
 if __name__ == "__main__":

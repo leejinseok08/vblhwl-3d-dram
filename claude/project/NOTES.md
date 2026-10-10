@@ -3,6 +3,14 @@
 Newest first. Entries (ai) .. (as) were written while this work still lived in `bcvfet_tcad`; file and run names in them are
 the ones of that time (structures `gx_*` / `gp_*` are the meshes before the doping went per region, `gr_*` the current ones).
 
+## 2026-10-10 (co) user: "지금 ground body 만드는거야? Ground body case는 재현에서 제외해" - grounded body out of the reproduction
+- Nothing grounded was running (run_gbd.sh ended 14:11; only Codex's CxN8Atk live). Removed from the reproduction: Fig.7(c) grounded curve, Fig.7(d)
+  16.8k, Fig.7(e) 1.8 mV, the RI item "zz gnd". `score2d.rh` keeps that item out of RI (in `GND`), `repro_rate.py` prints `scope51` (legacy52 minus
+  it) as the rate and legacy52 for the history: fin7 scope51 35 / 51 = 68.6 %, legacy52 35 / 52 = 67.3 % (RI now 0 / 2, worst -19.05).
+- P2 = the two floating pairs (`DnwRzb_zz`, `DnwRzbi_zz`, decks unchanged 73ccf36c5c24 / ba3dae9aff3e); `DnwRzbg_zz` (never run) deleted here and on
+  the server; structure gb2_zzg2 dropped from STRUCTS (its mesh stays on the server, unused). Proposals C and D of (cn) dropped. The diagnosis runs
+  Dgb* and the template parameters Bgc 2 / Bgl / Bgi stay as the record of (cn). MEASURE.md 4.5, target registry and STATUS say so.
+
 ## 2026-10-10 (cn) user: "A랑 B1~B3 진행해" - grounded-body diagnosis run (`run_gbd.sh`, 9 runs, 13:55:17 - 14:11, all complete)
 - Template `sde_gt_dvs.cmd`: `Bgc` 2 = ground access in both bodies (A), `Bgl` slot length, `Bgi` 1 = SiO2 slot without contact; probes inside the slot
   are dropped (`inslot` in make_runs.py; the P2 grounded deck had 4 such points). Structures gb2_zzg2 (A), gb2g_c2hb / gb2g10_c2hb / gb2g5_c2hb,

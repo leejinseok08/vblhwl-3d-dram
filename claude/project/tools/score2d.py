@@ -46,6 +46,8 @@ AVGREAD = {"s2": 5e-10, "p1": 5e-10, "p2": 5e-10, "s1": -3e-10, "dc": 5e-10, "dd
            "pb1": 5e-10, "pb2": 5e-10, "pb4": 5e-10, "pbn": 5e-10, "pt": 5e-10}
 part = lambda tag, k: COMPOSE.get(tag, {}).get(k, tag)
 FB = []                                               # filled by first(): True where a baseline run stands in for the configuration's own
+GND = []                                              # Fig.7 grounded-body item: kept out of RI (user, 2026-10-10: grounded body excluded from the
+                                                      # reproduction); repro_rate.py adds it back only for the legacy52 history
 def first(*ids):
     if os.path.isdir(rd(ids[0])) and not glob.glob(os.path.join(rd(ids[0]), "*.plt")): return None      # own run planned, nothing written yet: no stand-in
     for i in ids:
@@ -110,7 +112,7 @@ def rh_run(rid, r=None):
     return dict(n=n, tot=(v[0] - v[-1]) * 1e3, per=(v[0] - v[-1]) / n * 1e3, last=(v[-6] - v[-1]) / 5 * 1e3 if n >= 6 else None, r=r)
 
 def rh(tag):
-    tag = part(tag, "R"); e, ei, txt = [], [], []
+    tag = part(tag, "R"); e, ei, txt = [], [], []; GND.clear()
     # a configuration that has the Z-Z' pair with the BL contact at the pillar end (run names Rzb.._zz) is scored from that pair
     own = lambda n: next((x for x in (f"D{tag}{n.replace('Rz', 'Rzb', 1)}", f"D{tag}{n}") if os.path.isdir(rd(x))), f"D{tag}{n}")
     def measure(rid):       # the run; with an idle control of the configuration (IDLE) the same minus that control
@@ -130,6 +132,7 @@ def rh(tag):
         rid = first(own(n), "Db0" + n)
         m = measure(rid)
         if not m or m["n"] < 10: txt.append(f"{k} on: not complete"); continue
+        if k == "zz gnd": GND.append(elog(m[kind], ref)); txt.append(f"{k} on {m[kind]:+.4f}{net(m)} (not scored: grounded body excluded)"); continue
         ei.append(elog(m[kind], ref)); txt.append(f"{k} on {m[kind]:+.4f}{' mV total' if kind == 'tot' else ''}{net(m)}")
     return (rms(e), rms(ei)), "; ".join(txt)
 

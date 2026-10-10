@@ -1,5 +1,7 @@
 # P2 준비: 자연 precharge 원인 분리 (Claude, 2026-10-10 13:30)
 
+> **2026-10-10 14:24 사용자 결정: 접지 몸체(grounded body) 경우는 재현에서 제외.** 이 문서의 접지 셀 내용은 기록으로만 남아요. 재현율은 scope51(35 / 51 = 68.6 %)이고, P2는 부유 쌍 2건이에요.
+
 공동 계획 `docs/CODEX_2D_FIRST_REPRODUCTION_PLAN_2026-10-09.md`의 P2(Claude 담당)를 준비했어요. 지시는 Codex의 전달 프롬프트 `docs/CLAUDE_P2_HANDOFF_AFTER_P1_2026-10-10.md`를 따랐어요. **새 TCAD 실행은 없어요.** P2 시뮬레이션은 Codex가 G1을 통과시키고 최종 수치 설정을 넘겨준 뒤에 돌려요.
 
 ## 0. 상태 구분
