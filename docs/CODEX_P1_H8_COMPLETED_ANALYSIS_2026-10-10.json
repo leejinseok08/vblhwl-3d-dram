@@ -1,0 +1,143 @@
+{
+  "runs": [
+    {
+      "run": "CxN8Atk",
+      "samples": 3484,
+      "end_ns": 2.125,
+      "SN_start_V": 1.0999801326121,
+      "SN_end_V": 1.0999961804767,
+      "SN_loss_mV": -0.016047864600077233,
+      "last5_loss_mV_per_cycle": 3.938099197853262e-05,
+      "cycle_SN_V": [
+        1.0999801326121,
+        1.09999681831706,
+        1.09999668678264,
+        1.09999654235209,
+        1.09999645050903,
+        1.09999637738166,
+        1.09999631630387,
+        1.09999626884918,
+        1.09999623189425,
+        1.09999620186442,
+        1.0999961804767
+      ],
+      "body_start_V": -0.142040474845325,
+      "body_end_rise_mV": 23.872961451707003,
+      "body_first_pulse_rise_mV": -0.007532265243997971,
+      "body_max_rise_mV": 23.872961451707003,
+      "body_holes_start": 38.7757434106935,
+      "body_holes_end": 65.2504280836665,
+      "recorded_max_dt_ps": 1.1750000000010843,
+      "capacitor_deltaQ_fC": 6.740103132032437e-05,
+      "terminal_trap_integral_fC": 0.0002526582914090064,
+      "terminal_right_integral_fC": -6.740103133598211e-05,
+      "trap_residual_fC": 0.00032005932272933076,
+      "right_residual_fC": -1.5657738225495312e-14,
+      "component_max_residual_A": 8.416331122155542e-19,
+      "write_sample_V": [
+        0.4844173300631386,
+        0.6969921566790891,
+        0.8465771011030611,
+        0.9599215236709352
+      ],
+      "right_integral_caveat": "BE consistency check only when all accepted solver points are actually recorded; verify log alignment.",
+      "solver": {
+        "attempts": 3510,
+        "accepted": 3432,
+        "hammer_accepted": 2405,
+        "hammer_max_dt_ps": 1.175,
+        "hammer_median_dt_ps": 1.175,
+        "first_step_lines": [
+          "Computing BE-step from 0.0000e+00 s to 5.0000e-13 s (Stepsize: 5.0000e-13",
+          "Computing BE-step from 5.0000e-13 s to 1.1250e-12 s (Stepsize: 6.2500e-13",
+          "Computing BE-step from 1.1250e-12 s to 1.7500e-12 s (Stepsize: 6.2500e-13"
+        ],
+        "finished": true,
+        "wall_seconds": [
+          "6913.55"
+        ]
+      },
+      "missing_accepted_endpoints": 0
+    },
+    {
+      "run": "CxN8Idle",
+      "samples": 3419,
+      "end_ns": 2.125,
+      "SN_start_V": 1.0999801326121,
+      "SN_end_V": 1.09997408303846,
+      "SN_loss_mV": 0.006049573640032335,
+      "last5_loss_mV_per_cycle": 0.000605045386015135,
+      "cycle_SN_V": [
+        1.0999801326121,
+        1.09997952846016,
+        1.09997892342152,
+        1.099978318368,
+        1.09997771331585,
+        1.09997710826539,
+        1.09997650321663,
+        1.09997589816955,
+        1.09997529312416,
+        1.09997468808047,
+        1.09997408303846
+      ],
+      "body_start_V": -0.142040474845325,
+      "body_end_rise_mV": 0.163964035657993,
+      "body_first_pulse_rise_mV": 0.013152510818015273,
+      "body_max_rise_mV": 0.163964035657993,
+      "body_holes_start": 38.7757434106932,
+      "body_holes_end": 38.9426895626534,
+      "recorded_max_dt_ps": 1.1750000000010843,
+      "capacitor_deltaQ_fC": -2.5408209288135804e-05,
+      "terminal_trap_integral_fC": 2.5408165845560532e-05,
+      "terminal_right_integral_fC": 2.54082093060905e-05,
+      "trap_residual_fC": -4.3442575271596826e-11,
+      "right_residual_fC": 1.7954695564403212e-14,
+      "component_max_residual_A": 8.335333596574349e-19,
+      "write_sample_V": [
+        0.4844173300631386,
+        0.6969921566790893,
+        0.8465771011030601,
+        0.9599215236709334
+      ],
+      "right_integral_caveat": "BE consistency check only when all accepted solver points are actually recorded; verify log alignment.",
+      "solver": {
+        "attempts": 3374,
+        "accepted": 3367,
+        "hammer_accepted": 2340,
+        "hammer_max_dt_ps": 1.175,
+        "hammer_median_dt_ps": 1.175,
+        "first_step_lines": [
+          "Computing BE-step from 0.0000e+00 s to 5.0000e-13 s (Stepsize: 5.0000e-13",
+          "Computing BE-step from 5.0000e-13 s to 1.1250e-12 s (Stepsize: 6.2500e-13",
+          "Computing BE-step from 1.1250e-12 s to 1.7500e-12 s (Stepsize: 6.2500e-13"
+        ],
+        "finished": true,
+        "wall_seconds": [
+          "3135.15"
+        ]
+      },
+      "missing_accepted_endpoints": 0
+    }
+  ],
+  "pair": {
+    "factor": 8,
+    "net_SN_loss_mV": -0.022097438240109568,
+    "net_last5_mV_per_cycle": -0.0005656643940366024,
+    "net_body_end_rise_mV": 23.70899741604901
+  },
+  "refinement_change": {
+    "from": 4,
+    "to": 8,
+    "delta_net_body_mV": -3.748584068560991,
+    "delta_net_last5_mV_per_cycle": 0.00012111956393390244,
+    "latest_refinement_within_budget": true,
+    "body_budget_mV": 6,
+    "slope_budget_mV_per_cycle": 0.0012,
+    "two_consecutive_body_refinements_within_budget": false,
+    "G1_complete": false,
+    "mesh_convergence_done": false
+  },
+  "errors": [],
+  "all_planned_runs_valid": true,
+  "scope": "h8 time diagnostic; do not declare G1 complete before consecutive stability and mesh checks"
+}
