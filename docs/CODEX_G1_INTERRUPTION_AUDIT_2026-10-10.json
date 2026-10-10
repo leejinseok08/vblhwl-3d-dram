@@ -1,0 +1,149 @@
+{
+  "checked_KST": "2026-10-10T19:31:52.442495+09:00",
+  "boot_KST": "2026-10-10T16:50:00+09:00",
+  "runs": [
+    {
+      "run": "CxN16Atk",
+      "live": false,
+      "last_attempt_ns": 1.0001,
+      "last_log_accepted_ns": 1.0001,
+      "fraction_of_target_2p125ns": 0.4706352941176471,
+      "GoodBye": false,
+      "exit_code": null,
+      "log_modified_KST": "2026-10-10T17:06:46.207909+09:00",
+      "restart_Save_in_deck": false,
+      "data_files": [
+        {
+          "name": "CxN16Atk_sys.plt",
+          "bytes": 581008,
+          "modified_KST": "2026-10-10T17:06:45.292909+09:00"
+        },
+        {
+          "name": "c1_CxN16Atk_dev.plt",
+          "bytes": 5989286,
+          "modified_KST": "2026-10-10T17:06:45.354909+09:00"
+        }
+      ]
+    },
+    {
+      "run": "CxN16Idle",
+      "live": false,
+      "last_attempt_ns": 1.8408,
+      "last_log_accepted_ns": 1.8401999999999998,
+      "fraction_of_target_2p125ns": 0.8659764705882352,
+      "GoodBye": false,
+      "exit_code": null,
+      "log_modified_KST": "2026-10-10T17:06:46.180909+09:00",
+      "restart_Save_in_deck": false,
+      "data_files": [
+        {
+          "name": "CxN16Idle_sys.plt",
+          "bytes": 884980,
+          "modified_KST": "2026-10-10T17:06:46.114909+09:00"
+        },
+        {
+          "name": "c1_CxN16Idle_dev.plt",
+          "bytes": 9098616,
+          "modified_KST": "2026-10-10T17:06:46.176909+09:00"
+        }
+      ]
+    },
+    {
+      "run": "CxMJ8Atk",
+      "live": false,
+      "last_attempt_ns": 0.5305099999999999,
+      "last_log_accepted_ns": 0.53038,
+      "fraction_of_target_2p125ns": 0.24959058823529412,
+      "GoodBye": false,
+      "exit_code": null,
+      "log_modified_KST": "2026-10-10T17:06:45.874909+09:00",
+      "restart_Save_in_deck": false,
+      "data_files": [
+        {
+          "name": "CxMJ8Atk_sys.plt",
+          "bytes": 209584,
+          "modified_KST": "2026-10-10T17:06:32.920908+09:00"
+        },
+        {
+          "name": "c1_CxMJ8Atk_dev.plt",
+          "bytes": 2160566,
+          "modified_KST": "2026-10-10T17:06:33.062908+09:00"
+        }
+      ]
+    },
+    {
+      "run": "CxMJ8Idle",
+      "live": false,
+      "last_attempt_ns": 1.2567,
+      "last_log_accepted_ns": 1.2567,
+      "fraction_of_target_2p125ns": 0.5913882352941177,
+      "GoodBye": false,
+      "exit_code": null,
+      "log_modified_KST": "2026-10-10T17:06:45.907909+09:00",
+      "restart_Save_in_deck": false,
+      "data_files": [
+        {
+          "name": "CxMJ8Idle_sys.plt",
+          "bytes": 340692,
+          "modified_KST": "2026-10-10T17:06:45.484909+09:00"
+        },
+        {
+          "name": "c1_CxMJ8Idle_dev.plt",
+          "bytes": 3512056,
+          "modified_KST": "2026-10-10T17:06:45.626909+09:00"
+        }
+      ]
+    },
+    {
+      "run": "CxMA8Atk",
+      "live": false,
+      "last_attempt_ns": 0.34235,
+      "last_log_accepted_ns": 0.34221999999999997,
+      "fraction_of_target_2p125ns": 0.16104470588235292,
+      "GoodBye": false,
+      "exit_code": null,
+      "log_modified_KST": "2026-10-10T17:06:45.926909+09:00",
+      "restart_Save_in_deck": false,
+      "data_files": [
+        {
+          "name": "CxMA8Atk_sys.plt",
+          "bytes": 173230,
+          "modified_KST": "2026-10-10T17:06:27.848907+09:00"
+        },
+        {
+          "name": "c1_CxMA8Atk_dev.plt",
+          "bytes": 1787326,
+          "modified_KST": "2026-10-10T17:06:28.042907+09:00"
+        }
+      ]
+    },
+    {
+      "run": "CxMA8Idle",
+      "live": false,
+      "last_attempt_ns": 0.44950999999999997,
+      "last_log_accepted_ns": 0.44834,
+      "fraction_of_target_2p125ns": 0.2109835294117647,
+      "GoodBye": false,
+      "exit_code": null,
+      "log_modified_KST": "2026-10-10T17:06:46.108909+09:00",
+      "restart_Save_in_deck": false,
+      "data_files": [
+        {
+          "name": "CxMA8Idle_sys.plt",
+          "bytes": 194254,
+          "modified_KST": "2026-10-10T17:06:44.592909+09:00"
+        },
+        {
+          "name": "c1_CxMA8Idle_dev.plt",
+          "bytes": 2002541,
+          "modified_KST": "2026-10-10T17:06:44.787909+09:00"
+        }
+      ]
+    }
+  ],
+  "input_hash_errors": [],
+  "complete_runs": 0,
+  "live_runs": 0,
+  "status_file_bytes": 0,
+  "runner_pid_exists": false
+}
